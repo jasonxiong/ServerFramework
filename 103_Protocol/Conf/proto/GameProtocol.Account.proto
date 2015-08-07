@@ -1,0 +1,75 @@
+//本文件中主要定义Account Server相关的通信协议
+
+import "GameProtocol.Common.proto";
+import "GameProtocol.USERDB.proto";
+
+//玩家角色数据的摘要信息
+message RoleSummary
+{
+	optional RoleID stRoleID = 1;                   //64位玩家角色标识
+	optional int32 iWorldID = 2;                    //返回角色所在的World
+}
+
+//创建角色的请求
+message CreateRole_Account_Request
+{
+	optional uint32 worldID = 1;			//创建角色所在的世界
+	optional uint32 uPlatform = 2;			//登录的平台标志
+	optional uint32 uin = 3;				//创建角色的uin
+	optional string szNickName = 4;			//创建角色的名字
+}
+
+//创建角色的返回
+message CreateRole_Account_Response
+{
+	optional int32 iResult = 1;				//操作的返回值
+	optional RoleID stRoleID = 2;			//创建的角色的RoleID
+	optional uint32 uWorldID = 3;			//创建角色的世界
+	optional string szNickName = 4;			//创建角色的名字
+}
+
+//拉取区服务器的请求
+message Account_ListZone_Request
+{
+	optional uint32 worldID = 1;			//拉取区服务器信息的世界ID
+	optional uint32 uISPInfo = 2;			//玩家的网络类型，是电信还是网通
+}
+
+//拉取区服务器的返回
+message Account_ListZone_Response
+{
+	optional int32 iResult = 1;				//消息请求的处理结果
+	optional uint32 uWorldID = 2;			//返回世界的ID
+	optional ZoneList stZoneList = 3;		//返回的分区列表
+}
+
+//删除角色信息的请求
+message DeleteRole_Account_Request
+{
+	optional RoleID stRoleID = 1;			//要删除帐号的角色ID
+}
+
+//删除角色信息的返回
+message DeleteRole_Account_Response
+{
+	optional int32 iResult = 1;				//删除角色请求的处理结果
+	optional RoleID stRoleID = 2;			//被删除帐号的角色ID
+	optional uint32 uProfession = 4;		//被删除角色的职业
+	optional uint32 uLevel = 6;				//被删除角色的等级
+}
+
+//查询角色信息的请求
+message Account_ListRole_Request
+{
+	optional uint32 uin = 1;				//查询的玩家uin
+	optional uint32 world = 2;				//查询的玩家所在的世界
+}
+
+//查询角色信息的返回
+message Account_ListRole_Response
+{
+	optional int32 iResult = 1;				//查询角色请求的结果
+	optional uint32 uin = 3;				//查询的玩家的uin
+	optional uint32 world = 4;				//查询的玩家角色所在的世界
+	repeated RoleSummary roles = 5;			//查询返回的玩家的角色摘要信息
+}

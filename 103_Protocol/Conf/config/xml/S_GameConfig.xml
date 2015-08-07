@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="GBK" standalone="yes" ?>
+<metalib tagsetversion="1" name="GameConfig" version="1">
+
+  <!-- PUBLIC_BEGIN 本部分为客户端服务器公用的定义和结构 -->
+  <macro name="SERVER_BUSID_LEN" value="64" desc="服务器BUS ID的长度"/>
+  <macro name="DATE_TIME_LEN" value="64" desc="配置中时间字符串的长度"/>
+  <macro name="QM_HERO_NAME_LENGTH" value="64" desc="名字的最大长度"/>
+  
+  <macro name="MAX_INIT_FIGHT_UNIT_NUM" value="3" desc="出生支持的初始角色最大数量"/>
+  
+  <macro name="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" value="17" desc="最多支持的战斗属性的总数目"/>
+
+  <macro name="MAX_TIME_STRING_LENGTH" value="12" desc="配置的时间字符串的最大长度"/>
+  
+  <macro name="MAX_CROSS_MONSTER_NUM" value="5" desc="PVE关卡支持的最大怪物数量"/>
+  
+  <macro name="MAX_BATTLEFIELD_UNIT_POS_NUM" value="15" desc="战场地图上最多支持的阵营单位站位数量"/>
+  
+  <macro name="MAX_UNIT_AI_ATTRIBUTE_NUM" value="20" desc="战斗单位AI支持的策略最大数量"/>
+  
+  <macro name="MAX_SKILL_RANGE_INFO_NUM" value="7" desc="技能释放距离数组的最大数目"/>
+  
+  <macro name="MAX_SKILL_AREA_POS_NUM" value="20" desc="技能释放区域的坐标最大数目"/>
+  
+  <macro name="MAX_FIGHT_UNIT_AI_NUM" value="3" desc="伙伴的战斗AI最大数目"/>
+  
+  <macro name="MAX_FIGHT_BUFF_PARAM_NUM" value="4" desc="生效的Buff效果参数最大数量"/>
+  
+  <macro name="MAX_FIGHT_REWARD_CONFIG_NUM" value="5" desc="战斗奖励掉落支持的最大数目"/>
+  
+  <macro name="MAX_JOINT_NEED_SKILL_NUM" value="3" desc="战斗合击需求支持的最大技能数目"/>
+  
+  <macro name="MAX_MONSTER_ITEM_NUM" value="5" desc="战斗怪物最多携带的物品数量"/>
+  
+  <!-- PUBLIC_END 本部分为客户端服务器公用的定义和结构 -->
+
+
+  <!-- SERVER_BEGIN 本部分为服务端的定义和结构 -->
+
+  <!-- 玩家出生表 -->
+  <struct name="SRoleBirthConfig" version="1">
+		<entry name="iConfigID" cname="ID" type="int" desc="出生表的ID"/>
+    <entry name="iInitBagNum" cname="背包格子" type="int" desc="起始开启背包格子数"/>
+    <entry name="iInitCoin" cname="金币" type="int" desc="出生时角色的金币"/>
+    <entry name="iInitGold" cname="元宝" type="int" desc="出生时角色的元宝"/>
+    <entry name="iInitEnergy" cname="体力值" type="int" desc="出生时角色的起始体力值"/>
+    <entry name="iUnitNum" cname="角色数目" type="int" desc="出生战斗单位总数"/>
+		<entry name="aiUnitID" cname="角色" type="int" count="MAX_INIT_FIGHT_UNIT_NUM" refer="iUnitNum" desc="出生战斗单位列表"/>
+  </struct>
+  
+  <!-- 战斗单位配置表 -->
+  <struct name="SFightUnitConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="战斗单位的ID"/>
+    <entry name="iProf" cname="职业" type="int" bindmacrosgroup="FightProfType" desc="战斗单位的职业"/>
+    <entry name="iSize" cname="尺寸" type="int" desc="战斗单位的尺寸"/>
+    <entry name="iAINum" cname="战术组" type="int" desc="战斗单位的AI总数"/>
+		<entry name="aiUnitAIID" cname="战术" type="int" count="MAX_FIGHT_UNIT_AI_NUM" refer="iAINum" desc="战斗单位使用的AIID"/>
+    <entry name="iTotalAttribNum" cname="属性组" type="int" desc="战斗单位的属性总数"/>
+    <entry name="aiAttribute" cname="属性" type="int" count="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" refer="iTotalAttribNum" desc="战斗单位的战斗属性"/>
+		<entry name="iNormalSkill" cname="普攻技能" type="int" desc="战斗单位的普攻技能"/>
+		<entry name="iInitSlot" cname="初始槽数" type="int" desc="战斗单位初始物品槽"/>
+		<entry name="iCounterAtkSkillID" cname="反击" type="int" desc="战斗单位的反击技能ID"/>
+  </struct>
+  
+  <!-- 战斗怪物配置表 -->
+  <struct name="SMonsterConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="怪物ID"/>
+    <entry name="iProf" cname="职业" type="int" bindmacrosgroup="FightProfType" desc="战斗单位的职业"/>
+    <entry name="iSize" cname="尺寸" type="int" desc="战斗单位的尺寸"/>
+    <entry name="iMonsterAIID" cname="战术" type="int" desc="怪物使用的AIID"/>
+    <entry name="iAttributeNum" cname="属性组" type="int" desc="怪物的基础属性数量"/>
+		<entry name="aiAttribute" cname="属性" type="int" count="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" refer="iAttributeNum" desc="怪物的基础属性配置"/>
+		<entry name="iNormalSkill" cname="普攻技能" type="int" desc="战斗单位的普攻技能"/>
+		<entry name="iInitSlot" cname="初始槽数" type="int" desc="战斗单位初始物品槽"/>
+		<entry name="iCounterAtkSkillID" cname="反击" type="int" desc="战斗单位的反击技能ID"/>
+  </struct>
+  
+  <!-- 游戏玩家物品表 -->
+  <struct name="SGameItemConfig" version="1">
+    <entry name="iConfigID" cname="物品ID" type="int" desc="物品的ID"/>
+    <entry name="iItemType" cname="物品类型" type="int" bindmacrosgroup="GameItemType" desc="游戏物品类型"/>
+    <entry name="iSkillID" cname="技能ID" type="int" desc="战斗使用物品触发的技能ID"/>
+  </struct>
+    
+  <!-- 战场上站位位置信息 -->
+  <struct name="SFightPosInfo" version="1">
+    <entry name="iPosX" cname="X" type="int" desc="在战场地图上的坐标X"/>
+		<entry name="iPosY" cname="Y" type="int" desc="在战场地图上的坐标Y"/>
+		<entry name="iDirection" cname="面向" type="int" desc="在战场地图上的朝向"/>
+  </struct>
+  
+  <!-- 战斗关卡配置表 -->
+  <struct name="SBattleCrossConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="战斗关卡ID"/>
+    <entry name="iMapID" cname="战场地图" type="int" desc="关卡对应战场地图ID"/>
+		<entry name="iNeedSetForm" cname="设置阵型" type="int" desc="是否需要设置阵型，1表示需要，0表示不需要"/>
+		<entry name="iMonsterGroup" cname="怪物组" type="int" desc="战斗对应的怪物组ID"/>
+		<entry name="iDropRewardID" cname="掉落" type="int" desc="关卡战斗胜利掉落的奖励ID"/>
+		<entry name="iSelfUnitNum" cname="本方站位数" type="int" desc="本方地图站位位置信息"/>
+		<entry name="astFightPosInfo" cname="本方" type="SFightPosInfo" count="MAX_BATTLEFIELD_UNIT_POS_NUM" refer="iSelfUnitNum" desc="战场上己方站位信息"/>
+		<entry name="iEnemyUnitNum" cname="敌方站位数" type="int" desc="敌方组在地图上的站位信息"/>
+		<entry name="astEnemyFightPosInfo" cname="敌方" type="SFightPosInfo" count="MAX_BATTLEFIELD_UNIT_POS_NUM" refer="iEnemyUnitNum" desc="战场上敌人的站位信息"/>
+  </struct>
+  
+  <!-- 单个关卡怪物信息 -->
+  <struct name="OneCrossMonster" version="1">
+    <entry name="iMonsterID" cname="ID" type="int" desc="怪物ID"/>
+		<entry name="iItemNum" cname="物品总数" type="int" desc="怪物携带的物品总数目"/>
+		<entry name="aiItemInfo" cname="物品" type="int" count="MAX_MONSTER_ITEM_NUM" refer="iItemNum" desc="怪物携带的物品信息"/>
+  </struct>
+  
+  <!-- 关卡怪物组表 -->
+  <struct name="SCrossMonsterConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="关卡怪物组ID"/>
+		<entry name="iMonsterNum" cname="怪物数" type="int" desc="关卡的怪物数目"/>
+		<entry name="astMonsterInfo" cname="怪" type="OneCrossMonster" count="MAX_CROSS_MONSTER_NUM" refer="iMonsterNum" desc="关卡怪物组信息"/>
+  </struct>
+  
+  <!-- 战场机关配置表 -->
+  <struct name="STrapConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="机关的ID"/>
+    <entry name="iTrapType" cname="类型" type="int" desc="战场机关的类型"/>
+    <entry name="iTriggerType" cname="触发类型" type="int" desc="战场上机关的触发类型"/>
+		<entry name="iInterruptType" cname="打断类型" type="int" desc="触发机关后，打断单位的后续移动和行动等行为"/>
+		<entry name="iVisiableType" cname="可见性" type="int" desc="该机关可见的类型"/>
+		<entry name="iTrapHP" cname="机关血量" type="int" desc="机关的起始血量"/>
+		<entry name="iTrapValue" cname="地块负分" type="int" desc="计算怪物AI时机关的价值"/>
+		<entry name="iRangeID" cname="触发范围" type="int" desc="机关的触发范围，对应Range表"/>
+  </struct>
+  
+  <!-- 战斗单位的AI配置表 -->
+  <struct name="SFightUnitAIConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="战斗单位AI的ID"/>
+	<entry name="iAIAttrNum" cname="策略组" type="int" desc="战斗单位AI策略的数量"/>
+	<entry name="aiAIAttribute" cname="策略" type="int" count="MAX_UNIT_AI_ATTRIBUTE_NUM" refer="iAIAttrNum" desc="战斗单位AI策略的属性"/>
+  </struct>
+  
+  <!-- 战斗单位的技能配置表 -->
+  <struct name="SFightUnitSkillConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="战斗单位的技能ID"/>
+		<entry name="iSkillType" cname="发动类型" type="int" desc="技能的使用类型"/>
+		<entry name="iComboNum" cname="连击限次" type="int" desc="技能使用最多的连击次数"/>
+		<entry name="iJointAtkID" cname="合击" type="int" desc="技能让周围伙伴合击的ID，对应joint表"/>
+		<entry name="iCDRound" cname="冷却回合" type="int" desc="技能使用冷却的回合数"/>
+		<entry name="iTargetType" cname="目标类型" type="int" desc="技能施加的目标类型"/>
+		<entry name="iTargetAreaID" cname="范围类型" type="int" desc="技能释放的范围ID,对应area表"/>
+		<entry name="iTargetRangeID" cname="命中分布" type="int" desc="技能的命中分布，对应range表"/>
+		<entry name="iHitModifierID" cname="命中修正" type="int" desc="技能的命中修正ID，对应score表"/>
+		<entry name="iDodgeModifierID" cname="闪避修正" type="int" desc="技能的闪避修正ID，对应score表"/>
+		<entry name="iPrecisionModifierID" cname="精准修正" type="int" desc="技能的精准修正ID，对应score表"/>
+		<entry name="iCopeModifierID" cname="招架修正" type="int" desc="技能的招架修正ID，对应score表"/>
+		<entry name="iParryEffect" cname="格挡效果" type="int" desc="技能的格挡效果"/>
+		<entry name="iCritModifierID" cname="暴击修正" type="int" desc="技能的暴击修正ID，对应score表"/>
+		<entry name="iToughModifierID" cname="坚韧修正" type="int" desc="技能的坚韧修正ID，对应score表"/>
+		<entry name="iCritEffect" cname="暴击效果" type="int" desc="技能的暴击效果"/>
+		<entry name="iDamageRangeID" cname="伤害分布" type="int" desc="技能的伤害分布ID，对应range表"/>
+		<entry name="iDamageID" cname="伤害类型" type="int" desc="技能的伤害类型ID，对应damage表"/>
+		<entry name="iDamageBaseNum" cname="基础伤害" type="int" desc="技能的基础伤害"/>
+		<entry name="iDamageModifierID" cname="伤害修正" type="int" desc="技能的伤害修正ID,对应Score表"/>
+		<entry name="iSelfBuff" cname="自身特效" type="int" desc="该技能对自己增加的buff"/>
+		<entry name="iTargetBuff" cname="目标特效" type="int" desc="该技能对目标增加的buff"/>
+		<entry name="iSelfMoveID" cname="自身移动" type="int" desc="该技能对攻击方造成的位移ID"/>
+		<entry name="iTargetMoveID" cname="目标移动" type="int" desc="该技能对防守方造成的位移ID"/>
+		<entry name="iSkillBuffValue" cname="特效价值" type="int" desc="技能产生的Buff效果价值，用于AI计算"/>
+		<entry name="iSecondaryTarget" cname="次要衰减" type="int" desc="技能伤害效果的次要目标"/>
+		<entry name="iSpecialFuncType" cname="特殊功能" type="int" desc="该技能的特殊功能，如移行换位等"/>
+		<entry name="iSpecialFuncParam" cname="功能参数" type="int" desc="该技能的特殊功能的参数"/>
+  </struct>
+  
+  <!-- 技能的释放距离表 -->
+  <struct name="SSkillRangeConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="技能释放距离的ID"/>
+	<entry name="iRangeNum" cname="距离数组" type="int" desc="技能释放距离数组的数目"/>
+	<entry name="aiRangeInfo" cname="距离" type="int" count="MAX_SKILL_RANGE_INFO_NUM" refer="iRangeNum" desc="技能释放距离的详细信息"/>
+	<entry name="iDecayParam" cname="衰减" type="int" desc="技能释放的衰减值"/>
+	<entry name="iRangeAreaParam" cname="范围类型" type="int" desc="技能释放的距离范围类型"/>
+  </struct>
+  
+  <!-- 技能释放范围表 -->
+  <struct name="SSkillAreaConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="技能释放的区域ID"/>
+	<entry name="iAreaPosNum" cname="范围组" type="int" desc="技能释放的区域点数目"/>
+	<entry name="astTargetPosInfo" cname="位置" type="SFightPosInfo" count="MAX_SKILL_AREA_POS_NUM" refer="iAreaPosNum" desc="技能释放的区域点信息"/>
+  </struct>
+  
+  <!-- 技能效果修正表 -->
+  <struct name="SSkillScoreConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="技能效果修正的ID"/>
+	<entry name="iScoreBaseNum" cname="基值" type="int" desc="技能效果修正的基值"/>
+	<entry name="iScoreParam" cname="系数" type="int" desc="技能效果修正的系数"/>
+	<entry name="iAttributeNum" cname="属性数组" type="int" desc="技能修正的属性值"/>
+	<entry name="aiAttribute" cname="属性" type="int" count="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" refer="iAttributeNum" desc="技能修正的属性值"/>
+  </struct>
+  
+  <!-- 技能伤害效果表 -->
+  <struct name="SSkillDamageConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="技能伤害效果ID"/>
+	<entry name="iAttack" cname="攻击强度" type="int" desc="技能伤害效果的攻击强度"/>
+	<entry name="iDefence" cname="防御强度" type="int" desc="技能伤害效果的防御强度"/>
+	<entry name="iSpreadAttrNum" cname="分布组" type="int" desc="伤害分布组属性加成百分比"/>
+	<entry name="aiSpreadAttr" cname="属性" type="int" count="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" refer="iSpreadAttrNum" desc="伤害分布组的属性加成值"/>
+	<entry name="iStrengthAttrNum" cname="强度组" type="int" desc="伤害强度组属性加成百分比"/>
+	<entry name="aiStrengthAttr" cname="对属性" type="int" count="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" refer="iStrengthAttrNum" desc="伤害强度组的属性加成值"/>
+	<entry name="iVampireNum" cname="反馈组" type="int" desc="伤害反馈组的数目"/>
+	<entry name="aiVampireAttr" cname="返属性" type="int" count="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" refer="iVampireNum" desc="伤害反馈组的属性加成值"/>
+  </struct>
+  
+  <!-- 技能增加的buff配置表 -->
+  <struct name="SFightBuffConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="产生Buff的ID"/>
+	<entry name="iAddBuffID" cname="同步" type="int" desc="同步添加的Buff ID"/>
+	<entry name="iDelBuffID" cname="关联" type="int" desc="关联移除的Buff ID"/>
+	<entry name="iBuffType" cname="类型" type="int" desc="Buff的叠加类型"/>
+	<entry name="iBuffLevel" cname="强度" type="int" desc="Buff的效果强度"/>
+	<entry name="iEffectRound" cname="回合" type="int" desc="Buff持续的回合数"/>
+	<entry name="iTriggerType" cname="触发" type="int" desc="Buff触发的类型"/>
+	<entry name="iEffectType" cname="持续" type="int" desc="生效的类型，是否永久生效"/>
+	<entry name="iProcessType" cname="处理" type="int" desc="Buff处理的操作类型"/>
+	<entry name="iProcessNum" cname="方法组" type="int" desc="Buff产生的效果参数总数量"/>
+	<entry name="aiProcessID" cname="操" type="int"	count="MAX_FIGHT_BUFF_PARAM_NUM" refer="iProcessNum"  desc="Buff产生的效果总参数"/>
+  </struct>
+
+  <!-- 战斗技能伙伴合击配置表  -->
+  <struct name="SJointAttackConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="战斗单位面向修正的ID"/>
+		<entry name="iNeedSkillNum" cname="技能组" type="int" desc="合击要求的技能组条件总数目"/>
+		<entry name="aiNeedSkills" cname="技能" type="int"	count="MAX_JOINT_NEED_SKILL_NUM" refer="iNeedSkillNum"  desc="合击要求的技能ID"/>
+  </struct>
+  
+  <!-- 战斗掉落单个奖励的配置 -->
+  <struct name="OneRewardConfig" version="1">
+    <entry name="iDropRate" cname="几率" type="int" desc="掉落的几率"/>
+		<entry name="iDropType" cname="类型" type="int" desc="掉落的类型"/>
+		<entry name="iDropID" cname="内容" type="int" desc="掉落的内容"/>
+		<entry name="iDropMinNum" cname="下限" type="int" desc="掉落的数量下限"/>
+		<entry name="iDropMaxNum" cname="上限" type="int" desc="掉落的数量上限"/>
+  </struct>
+  
+  <!-- 随机掉落奖励表 -->
+  <struct name="SDropRewardConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="掉落的ID"/>
+		<entry name="iAddedRewardID" cname="连锁掉落" type="int" desc="关联的掉落的ID"/>
+		<entry name="iTotalRewardNum" cname="掉落组" type="int" desc="支持的掉落数组的数目"/>
+		<entry name="astRewards" cname="掉落" type="OneRewardConfig"	count="MAX_FIGHT_REWARD_CONFIG_NUM" refer="iTotalRewardNum"  desc="战斗掉落单个奖励的配置"/>
+  </struct>
+  
+  <!-- SERVER_END 本部分为服务端的定义和结构 -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  <!-- ===================================================================================================================== -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- CLIENT_BEGIN 本部分为客户端的定义和结构 -->
+  <macro name="MAX_IP_ADDRESS_LENGTH" value="64" desc="IP地址最大长度"/>
+
+  <!-- Client 客户端通用配置 -->
+  <struct name="QMGeneralConfig" version="1">
+    <entry name="server_ip" cname="server_ip" type="string" size="MAX_IP_ADDRESS_LENGTH" desc="服务端IP地址"/>
+    <entry name="login_port" cname="login_port" type="int" desc="登录服端口"/>
+    <entry name="game_port" cname="game_port" type="int" desc="游戏服端口"/>
+    <entry name="world_id" cname="world_id" type="int" desc="世界ID"/>
+  </struct>
+  
+    <!-- 玩家物品表 -->
+  <struct name="CGameItemConfig" version="1">
+    <entry name="iConfigID" cname="物品ID" type="int" desc="物品的ID"/>
+    <entry name="iItemType" cname="物品类型" type="int" bindmacrosgroup="GameItemType" desc="游戏物品类型"/>
+    <entry name="iItemIcon" cname="物品图标" type="int" desc="物品对应的图标"/>
+    <entry name="iSkillID" cname="技能ID" type="int" desc="战斗使用物品触发的技能ID"/>
+	</struct>
+  
+  <!-- 战斗单位配置表 -->
+  <struct name="CFightUnitConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="战斗单位的ID"/>
+    <entry name="iResourceID" cname="资源ID" type="int" desc="战斗单位的资源ID"/>
+    <entry name="iProf" cname="职业" type="int" bindmacrosgroup="FightProfType" desc="战斗单位的职业"/>
+    <entry name="iSize" cname="尺寸" type="int" desc="战斗单位的尺寸"/>
+    <entry name="iAINum" cname="战术组" type="int" desc="战斗单位的AI总数"/>
+		<entry name="aiUnitAIID" cname="战术" type="int" count="MAX_FIGHT_UNIT_AI_NUM" refer="iAINum" desc="战斗单位使用的AIID"/>
+    <entry name="iTotalAttribNum" cname="属性组" type="int" desc="战斗单位的属性总数"/>
+    <entry name="aiAttribute" cname="属性" type="int" count="MAX_FIGHT_UNIT_ATTRIBUTE_NUM" refer="iTotalAttribNum" desc="战斗单位的战斗属性"/>
+		<entry name="iNormalSkill" cname="普攻技能" type="int" desc="战斗单位的普攻技能"/>
+		<entry name="iInitSlot" cname="初始槽数" type="int" desc="战斗单位初始物品槽"/>
+		<entry name="iCounterAtkSkillID" cname="反击" type="int" desc="战斗单位的反击技能ID"/>
+  </struct>
+  
+  <!-- 战斗怪物配置表 -->
+  <struct name="CMonsterConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="怪物ID"/>
+    <entry name="iResourceID" cname="资源ID" type="int" desc="战斗单位的资源ID"/>
+    <entry name="iProf" cname="职业" type="int" bindmacrosgroup="FightProfType" desc="战斗单位的职业"/>
+  </struct>
+  
+   <!-- 战斗关卡配置表 -->
+  <struct name="CBattleCrossConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="战斗关卡ID"/>
+    <entry name="iMapID" cname="战场地图" type="int" desc="关卡对应战场地图ID"/>
+		<entry name="iDropRewardID" cname="掉落" type="int" desc="关卡战斗胜利掉落的奖励ID"/>
+  </struct>
+  
+  <!-- 战斗单位的技能配置表 -->
+  <struct name="CFightUnitSkillConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="战斗单位的技能ID"/>
+    <entry name="iSkillIcon" cname="图标ID" type="int" desc="技能的图标ID"/>
+		<entry name="iSkillType" cname="发动类型" type="int" desc="技能的使用类型"/>
+		<entry name="iCDRound" cname="冷却回合" type="int" desc="技能使用冷却的回合数"/>
+		<entry name="iTargetType" cname="目标类型" type="int" desc="技能施加的目标类型"/>
+		<entry name="iTargetAreaID" cname="范围类型" type="int" desc="技能释放的范围ID,对应area表"/>
+		<entry name="iDamageRangeID" cname="伤害分布" type="int" desc="技能的伤害分布ID，对应range表"/>
+		<entry name="iDamageID" cname="伤害类型" type="int" desc="技能的伤害类型ID，对应damage表"/>
+		<entry name="iSecondaryTarget" cname="次要衰减" type="int" desc="技能伤害效果的次要目标"/>
+  </struct>
+  
+  <!-- 技能的释放距离表 -->
+  <struct name="CSkillRangeConfig" version="1">
+    <entry name="iConfigID" cname="主键" type="int" desc="技能释放距离的ID"/>
+	<entry name="iRangeNum" cname="距离数组" type="int" desc="技能释放距离数组的数目"/>
+	<entry name="aiRangeInfo" cname="距离" type="int" count="MAX_SKILL_RANGE_INFO_NUM" refer="iRangeNum" desc="技能释放距离的详细信息"/>
+	<entry name="iDecayParam" cname="衰减" type="int" desc="技能释放的衰减值"/>
+	<entry name="iRangeAreaParam" cname="范围类型" type="int" desc="技能释放的距离范围类型"/>
+  </struct>
+  
+  
+  <!-- 技能释放范围表 -->
+  <struct name="CSkillAreaConfig" version="1">
+    <entry name="iConfigID" cname="ID" type="int" desc="技能释放的区域ID"/>
+	<entry name="iAreaPosNum" cname="范围组" type="int" desc="技能释放的区域点数目"/>
+	<entry name="astTargetPosInfo" cname="位置" type="SFightPosInfo" count="MAX_SKILL_AREA_POS_NUM" refer="iAreaPosNum" desc="技能释放的区域点信息"/>
+  </struct>
+  
+  <!-- CLIENT_END 本部分为客户端的定义和结构 -->
+
+</metalib>

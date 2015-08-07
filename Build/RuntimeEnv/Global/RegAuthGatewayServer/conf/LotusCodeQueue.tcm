@@ -1,0 +1,7 @@
+
+#CodeQueueID	ShmKeyFileName	ShmKeyPrjID	ShmSize	CodeQueueType CodeQueueFlag	Description
+
+1  ../../../Common/CQGatewayToRegAuth_0.shm  I  16777216  1  0  GatewayToRegAuth
+2  ../../../Common/CQRegAuthToGateway_0.shm  O  16777216  1  1	RegAuthToGateway
+
+

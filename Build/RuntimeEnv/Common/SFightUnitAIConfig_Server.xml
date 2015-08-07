@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SFightUnitAIConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>88 </Unit>
+        <Count>1 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>1a57852a351be54563ec2e39ca23aeeb</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SFightUnitAIConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iAIAttrNum>20 </iAIAttrNum>
+    <aiAIAttribute>100 120 200 -50 10 0 0 0 0 0 0 0 0 0 100 0 0 0 0 0 </aiAIAttribute>
+</SFightUnitAIConfig>
+</SFightUnitAIConfig_Tab>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SBattleCrossConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>408 </Unit>
+        <Count>1 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>d82300f8228d0c19d8cf9934485e8955</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SBattleCrossConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iMapID>1 </iMapID>
+    <iNeedSetForm>0 </iNeedSetForm>
+    <iMonsterNum>5 </iMonsterNum>
+    <aiMonsterID>2000001 2000001 0 0 0 </aiMonsterID>
+    <iDropRewardID>1 </iDropRewardID>
+    <iSelfUnitNum>0 </iSelfUnitNum>
+    <iEnemyUnitNum>0 </iEnemyUnitNum>
+</SBattleCrossConfig>
+</SBattleCrossConfig_Tab>

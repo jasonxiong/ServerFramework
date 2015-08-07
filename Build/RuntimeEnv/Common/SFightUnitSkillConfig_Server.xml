@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SFightUnitSkillConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>116 </Unit>
+        <Count>1 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>9cfc28fb7ac0fa279725e39804b9e44c</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SFightUnitSkillConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iSkillType>1 </iSkillType>
+    <iComboNum>0 </iComboNum>
+    <iJointAtkID>0 </iJointAtkID>
+    <iCDRound>0 </iCDRound>
+    <iTargetType>4 </iTargetType>
+    <iTargetAreaID>101 </iTargetAreaID>
+    <iTargetRangeID>101 </iTargetRangeID>
+    <iHitModifierID>10 </iHitModifierID>
+    <iDodgeModifierID>20 </iDodgeModifierID>
+    <iPrecisionModifierID>30 </iPrecisionModifierID>
+    <iCopeModifierID>40 </iCopeModifierID>
+    <iParryEffect>8000 </iParryEffect>
+    <iCritModifierID>50 </iCritModifierID>
+    <iToughModifierID>60 </iToughModifierID>
+    <iCritEffect>12000 </iCritEffect>
+    <iDamageRangeID>111 </iDamageRangeID>
+    <iDamageID>1 </iDamageID>
+    <iDamageBaseNum>10 </iDamageBaseNum>
+    <iLevelDamageRate>0 </iLevelDamageRate>
+    <iDamageModifierID>1101 </iDamageModifierID>
+    <iSelfBuff>0 </iSelfBuff>
+    <iTargetBuff>0 </iTargetBuff>
+    <iSelfMoveID>0 </iSelfMoveID>
+    <iTargetMoveID>0 </iTargetMoveID>
+    <iSkillBuffValue>0 </iSkillBuffValue>
+    <iSecondaryTarget>5000 </iSecondaryTarget>
+    <iSpecialFuncType>0 </iSpecialFuncType>
+    <iSpecialFuncParam>0 </iSpecialFuncParam>
+</SFightUnitSkillConfig>
+</SFightUnitSkillConfig_Tab>

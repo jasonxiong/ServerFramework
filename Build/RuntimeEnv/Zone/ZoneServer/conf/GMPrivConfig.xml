@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<GMPriv>
+	<IPList>
+		<ValidIP begin="192.168.0.0" end="192.168.255.255" />
+	</IPList>
+
+	<UinLists>
+		<UinList uin="1010" />
+		<UinList uin="1011" />
+	</UinLists>
+</GMPriv>

@@ -1,0 +1,1 @@
+protoc.exe --python_out=../ *proto

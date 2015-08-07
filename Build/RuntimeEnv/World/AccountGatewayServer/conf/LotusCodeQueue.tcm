@@ -1,0 +1,7 @@
+
+#CodeQueueID	ShmKeyFileName	ShmKeyPrjID	ShmSize	CodeQueueType CodeQueueFlag	Description
+
+1  ../../../Common/CQGatewayToAccount_0.shm  I  16777216  1  0  GatewayToAccount
+2  ../../../Common/CQAccountToGateway_0.shm  O  16777216  1  1 AccountToGateway
+
+

@@ -1,0 +1,45 @@
+[Param]
+IsEnablePlayerLog = 1
+
+[module]
+SSKeyChecked = 1
+[Dirty]
+IsDirtyReplaced = 0
+
+[ModuleSwitch]
+IsGreenEnabled = 0
+IsPortalEnabled = 1
+IsStoreEnabled = 1
+IsPayEnabled = 1
+IsPresentEnabled = 1
+IsMailEnabled = 1
+IsPPStoreEnabled = 1
+IsGuildEnabled = 1
+IsHomeEnabled = 1
+IsActivityMoneyGiftEnabled = 1
+IsActivityTarotEnabled = 1
+IsActivityItemGiftEnabled = 1
+IsVipEnabled = 1
+IsPlatformEnabled = 0
+
+[Pinstance]
+BlackList=
+
+[NPC]
+BlackList=
+
+[CodeQueue]
+CodeQueueNum = 2
+CodeQueuePath = ../../../Common/
+LotusToZone_0 = CQLotusToZone_0.shm
+ZoneToLotus_0 = CQZoneToLotus_0.shm
+LotusToZone_1 = CQLotusToZone_1.shm
+ZoneToLotus_1 = CQZoneToLotus_1.shm
+
+[Param]
+IsEnablePlayerLog = 1
+
+[MsgLimit]
+MsgLimitFile = ../conf/MsgLimitFile.conf
+[MsgDisable]
+MsgDisableFile = ../conf/MsgDisableFile.conf

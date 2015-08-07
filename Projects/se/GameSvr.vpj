@@ -1,0 +1,1407 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	WorkingDir="."
+	BuildSystem="vsbuild">
+	<Config
+		Name="Debug"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdGameSvr.exe"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ -c %xup  %defd -g -o "%bd%n%oe" %i "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ %xup -g -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+	</Config>
+	<Config
+		Name="Release"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdGameSvr.exe"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ -c %xup %defd -o "%bd%n%oe" %i "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ %xup -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+	</Config>
+	<CustomFolders>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d">
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters="">
+		</Folder>
+	</CustomFolders>
+	<Files AutoFolders="DirectoryView">
+		<Folder Name="../../001_ServerLib">
+			<Folder Name="3RdParty">
+				<Folder Name="botan-1.10.5">
+					<Folder Name="botan">
+						<Folder Name="internal">
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/algo_cache.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/asm_engine.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/asm_x86_64.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/assert.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/bit_ops.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/camellia_sbox.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/core_engine.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/def_powm.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/defalloc.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/dev_random.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/dyn_load.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/es_egd.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/es_ftw.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/es_unix.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/hres_timer.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mem_pool.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mlock.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mmap_mem.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mp_asm.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mp_asmi.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mp_core.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mutex.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mux_noop.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/mux_pthr.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/out_buf.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/pk_algs.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/prefetch.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/rdrand.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/rounding.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/simd_32.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/simd_engine.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/simd_sse2.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/stl_util.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/tls_alerts.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/tls_handshake_hash.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/tls_messages.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/tls_reader.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/tls_state.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/unix_cmd.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/workfactor.h"/>
+							<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/internal/xor_buf.h"/>
+						</Folder>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/adler32.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/aes.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/alg_id.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/algo_base.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/algo_factory.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/allocate.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/arc4.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/asn1_int.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/asn1_obj.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/asn1_oid.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/asn1_str.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/auto_rng.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/b64_filt.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/base64.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/basefilt.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/bcrypt.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/benchmark.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ber_dec.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/bigint.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/blinding.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/block_cipher.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/blowfish.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/bmw_512.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/botan.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/bswap.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/buf_comp.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/buf_filt.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/build.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/camellia.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cascade.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cast128.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cast256.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cbc.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cbc_mac.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/certstor.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cfb.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/charset.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cmac.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/comb4p.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cpuid.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/crc24.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/crc32.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/crl_ent.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cryptobox.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ctr.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/cts.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/curve_gfp.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/data_snk.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/data_src.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/datastor.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/der_enc.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/des.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/desx.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/dh.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/divide.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/dl_algo.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/dl_group.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/dlies.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/dsa.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/dyn_engine.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/eax.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ec_group.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ecb.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ecc_key.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ecdh.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ecdsa.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/elgamal.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/eme.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/eme1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/eme_pkcs.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/emsa.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/emsa1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/emsa1_bsi.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/emsa2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/emsa3.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/emsa4.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/emsa_raw.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/engine.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/entropy_src.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/exceptn.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/fd_unix.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/filter.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/filters.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/fpe_fe1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/get_byte.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/get_pbe.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/global_state.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/gost_28147.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/gost_3410.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/gost_3411.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/has160.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/hash.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/hash_id.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/hex.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/hex_filt.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/hmac.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/hmac_rng.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/idea.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/idea_sse2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/if_algo.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/init.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/kasumi.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/kdf.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/kdf1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/kdf2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/keccak.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/key_filt.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/key_spec.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/keypair.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/libstate.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/lion.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/loadstor.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/look_pk.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/lookup.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/lubyrack.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/mac.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/mars.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/md2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/md4.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/md5.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/mdx_hash.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/mem_ops.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/mgf1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/misty1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/mode_pad.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/mp_types.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/noekeon.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/noekeon_simd.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/nr.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/numthry.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ofb.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/oids.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/openpgp.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/package.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/par_hash.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/parsing.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/passhash9.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pbe.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pbes1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pbes2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pbkdf.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pbkdf1.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pbkdf2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pem.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pgp_s2k.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pipe.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pk_filts.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pk_keys.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pk_ops.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pkcs10.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pkcs8.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/point_gfp.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pow_mod.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/prf_ssl3.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/prf_tls.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/prf_x942.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pubkey.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/pubkey_enums.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/randpool.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rc2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rc5.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rc6.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/reducer.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rfc3394.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rmd128.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rmd160.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rng.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rotate.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rsa.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/rw.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/safer_sk.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/salsa20.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/scan_name.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/secmem.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/secqueue.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/seed.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/selftest.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/serp_simd.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/serpent.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/sha160.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/sha1_sse2.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/sha1_x86_64.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/sha2_32.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/sha2_64.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/skein_512.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/skipjack.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/square.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/srp6.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ssl3_mac.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/stream_cipher.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/sym_algo.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/symkey.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tea.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tiger.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/time.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_client.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_connection.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_exceptn.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_magic.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_policy.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_record.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_server.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_session_key.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tls_suites.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/tss.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/turing.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/twofish.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/types.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/ui.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/version.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/whrlpool.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/wid_wake.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509_ca.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509_crl.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509_dn.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509_ext.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509_key.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509_obj.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509cert.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509self.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x509stor.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x919_mac.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/x931_rng.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/xtea.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/xtea_simd.h"/>
+						<F N="../../001_ServerLib/3RdParty/botan-1.10.5/botan/xts.h"/>
+					</Folder>
+				</Folder>
+				<Folder Name="gtest-1.6.0">
+					<Folder Name="gtest">
+						<Folder Name="internal">
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-death-test-internal.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-filepath.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-internal.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-linked_ptr.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-param-util-generated.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-param-util.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-port.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-string.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-tuple.h"/>
+							<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/internal/gtest-type-util.h"/>
+						</Folder>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest-death-test.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest-message.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest-param-test.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest-printers.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest-spi.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest-test-part.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest-typed-test.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest_pred_impl.h"/>
+						<F N="../../001_ServerLib/3RdParty/gtest-1.6.0/gtest/gtest_prod.h"/>
+					</Folder>
+				</Folder>
+				<Folder Name="json-0.5.0">
+					<Folder Name="json">
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/autolink.h"/>
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/config.h"/>
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/features.h"/>
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/forwards.h"/>
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/json.h"/>
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/reader.h"/>
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/value.h"/>
+						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/writer.h"/>
+					</Folder>
+				</Folder>
+				<Folder Name="KingnetUdpLog">
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/kingnet_analyzer.h"/>
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/tinystr.h"/>
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/tinyxml.h"/>
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_codeengine.h"/>
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_config.h"/>
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_lib.h"/>
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_singleton.h"/>
+					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_typedef.h"/>
+				</Folder>
+				<Folder Name="lua-5.2.2">
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lapi.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lauxlib.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lcode.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lctype.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/ldebug.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/ldo.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lfunc.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lgc.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/llex.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/llimits.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lmem.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lobject.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lopcodes.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lparser.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lstate.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lstring.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/ltable.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/ltm.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lua.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/luaconf.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lualib.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lundump.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lvm.h"/>
+					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lzio.h"/>
+				</Folder>
+				<Folder Name="protobuf-2.5.0">
+					<Folder Name="google">
+						<Folder Name="protobuf">
+							<Folder Name="io">
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/coded_stream.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/coded_stream_inl.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/gzip_stream.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/package_info.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/printer.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/tokenizer.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/zero_copy_stream.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/zero_copy_stream_impl.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/io/zero_copy_stream_impl_lite.h"/>
+							</Folder>
+							<Folder Name="stubs">
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_arm_gcc.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_arm_qnx.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_atomicword_compat.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_macosx.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_mips_gcc.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_pnacl.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_x86_gcc.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/atomicops_internals_x86_msvc.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/common.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/hash.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/map-util.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/once.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/platform_macros.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/stl_util.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/stringprintf.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/strutil.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/substitute.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/template_util.h"/>
+								<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/stubs/type_traits.h"/>
+							</Folder>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/descriptor.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/descriptor.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/descriptor_database.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/dynamic_message.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/extension_set.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/generated_enum_reflection.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/generated_message_reflection.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/generated_message_util.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/message.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/message_lite.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/package_info.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/reflection_ops.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/repeated_field.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/service.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/test_util.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/test_util_lite.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/text_format.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_custom_options.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_embed_optimize_for.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_empty.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_import.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_import_lite.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_import_public.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_import_public_lite.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_lite.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_lite_imports_nonlite.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_mset.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_no_generic_services.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unittest_optimize_for.pb.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/unknown_field_set.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/wire_format.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/wire_format_lite.h"/>
+							<F N="../../001_ServerLib/3RdParty/protobuf-2.5.0/google/protobuf/wire_format_lite_inl.h"/>
+						</Folder>
+					</Folder>
+				</Folder>
+				<Folder Name="pugixml-1.2">
+					<F N="../../001_ServerLib/3RdParty/pugixml-1.2/pugiconfig.hpp"/>
+					<F N="../../001_ServerLib/3RdParty/pugixml-1.2/pugixml.hpp"/>
+				</Folder>
+				<Folder Name="zeromq-3.2.3">
+					<F N="../../001_ServerLib/3RdParty/zeromq-3.2.3/zmq.h"/>
+					<F N="../../001_ServerLib/3RdParty/zeromq-3.2.3/zmq_utils.h"/>
+				</Folder>
+			</Folder>
+			<Folder Name="BaseLibs">
+				<F N="../../001_ServerLib/BaseLibs/AESCbcEncryptor.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/AppUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/AttributeManager.h"/>
+				<F N="../../001_ServerLib/BaseLibs/BacktraceInfo.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Base64.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/BiDirQueue.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/CacheStatistic.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/CheckTimer.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/CodeQueue.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/CodeQueueManager.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/CommonDef.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ConfigFile.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/DBClientWrapper.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/DBStatistic.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/DecodeStream.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/EncodeStream.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ErrorDef.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ErrorNOUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/FileUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Foreach.h"/>
+				<F N="../../001_ServerLib/BaseLibs/FreqCtrl.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/HashMap.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/HashMap_K32.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/HashMap_K64.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/HashMap_KStr.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/HashMap_KString.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/HashMap_KStringV32.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/HashUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Int64Utility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/lib_md5.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/LinearQueue.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/LineConfig.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/LogAdapter.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/LogFile.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/lua_tinker.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/lz4.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/MiscDataStore.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/MsgOverViewStatistic.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/MsgStatistic.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Noncopyable.h"/>
+				<F N="../../001_ServerLib/BaseLibs/NowTime.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ObjAllocator.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ObjIdxList.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ObjStatistic.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/oi_tea.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Packer.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/PasswordEncryptionUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/PerformanceStatistic.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/PlatformDefine.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/PlutoStringUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ProtoDataUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Random.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ScriptBase.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SectionConfig.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SessionKeyUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SharedMemory.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/ShmObjectCreator.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SignalUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Singleton.h"/>
+				<F N="../../001_ServerLib/BaseLibs/SingletonTemplate.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SocketUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SortAlgorithm.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SortArray.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/StaticIdxList.h"/>
+				<F N="../../001_ServerLib/BaseLibs/Statistic.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/StringSplitter.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/StringUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/SymmetryEncryption.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/TCPConnector.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/TCPListener.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/TempMemoryMng.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/Thread.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/TimeUtility.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/TimeValue.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/TransactionLock.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/UDPSocket.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/UinPrivManager.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/UnixTime.hpp"/>
+				<F N="../../001_ServerLib/BaseLibs/UnsortArray.h"/>
+				<F N="../../001_ServerLib/BaseLibs/ZmqBus.hpp"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../../004_Errno">
+			<F N="../../004_Errno/ErrorNumDef.hpp"/>
+		</Folder>
+		<Folder Name="../../100_AccountServer">
+			<Folder Name="src">
+				<F N="../../100_AccountServer/src/AccountAddNewNameHandler.cpp"/>
+				<F N="../../100_AccountServer/src/AccountAddNewNameHandler.hpp"/>
+				<F N="../../100_AccountServer/src/AccountApp.cpp"/>
+				<F N="../../100_AccountServer/src/AccountApp.hpp"/>
+				<F N="../../100_AccountServer/src/AccountErrorNumDef.hpp"/>
+				<F N="../../100_AccountServer/src/AccountHandlerSet.cpp"/>
+				<F N="../../100_AccountServer/src/AccountHandlerSet.hpp"/>
+				<F N="../../100_AccountServer/src/AccountMsgTransceiver.cpp"/>
+				<F N="../../100_AccountServer/src/AccountMsgTransceiver.hpp"/>
+				<F N="../../100_AccountServer/src/AccountObjectAllocator.cpp"/>
+				<F N="../../100_AccountServer/src/AccountObjectAllocator.hpp"/>
+				<F N="../../100_AccountServer/src/AccountOssLog.cpp"/>
+				<F N="../../100_AccountServer/src/AccountOssLog.hpp"/>
+				<F N="../../100_AccountServer/src/AccountPublic.hpp"/>
+				<F N="../../100_AccountServer/src/AccountSingleton.hpp"/>
+				<F N="../../100_AccountServer/src/App.hpp"/>
+				<F N="../../100_AccountServer/src/AppDef.hpp"/>
+				<F N="../../100_AccountServer/src/AppLauncher.cpp"/>
+				<F N="../../100_AccountServer/src/CacheTime.cpp"/>
+				<F N="../../100_AccountServer/src/CacheTime.hpp"/>
+				<F N="../../100_AccountServer/src/ClientClosedHandler.cpp"/>
+				<F N="../../100_AccountServer/src/ClientClosedHandler.hpp"/>
+				<F N="../../100_AccountServer/src/ConfigDef.hpp"/>
+				<F N="../../100_AccountServer/src/ConfigMgr.cpp"/>
+				<F N="../../100_AccountServer/src/ConfigMgr.hpp"/>
+				<F N="../../100_AccountServer/src/CreateRoleRequestHandler.cpp"/>
+				<F N="../../100_AccountServer/src/CreateRoleRequestHandler.hpp"/>
+				<F N="../../100_AccountServer/src/CreateRoleRequestObj.cpp"/>
+				<F N="../../100_AccountServer/src/CreateRoleRequestObj.hpp"/>
+				<F N="../../100_AccountServer/src/CreateRoleResponseHandler.cpp"/>
+				<F N="../../100_AccountServer/src/CreateRoleResponseHandler.hpp"/>
+				<F N="../../100_AccountServer/src/CSProtocolEngine.cpp"/>
+				<F N="../../100_AccountServer/src/CSProtocolEngine.hpp"/>
+				<F N="../../100_AccountServer/src/DeleteRoleRequestHandler.cpp"/>
+				<F N="../../100_AccountServer/src/DeleteRoleRequestHandler.hpp"/>
+				<F N="../../100_AccountServer/src/DeleteRoleResponseHandler.cpp"/>
+				<F N="../../100_AccountServer/src/DeleteRoleResponseHandler.hpp"/>
+				<F N="../../100_AccountServer/src/FixedCache.hpp"/>
+				<F N="../../100_AccountServer/src/FixedHashCache.hpp"/>
+				<F N="../../100_AccountServer/src/Handler.cpp"/>
+				<F N="../../100_AccountServer/src/Handler.hpp"/>
+				<F N="../../100_AccountServer/src/HandlerSet.cpp"/>
+				<F N="../../100_AccountServer/src/HandlerSet.hpp"/>
+				<F N="../../100_AccountServer/src/ListRoleRequestHandler.cpp"/>
+				<F N="../../100_AccountServer/src/ListRoleRequestHandler.hpp"/>
+				<F N="../../100_AccountServer/src/ListRoleResponseHandler.cpp"/>
+				<F N="../../100_AccountServer/src/ListRoleResponseHandler.hpp"/>
+				<F N="../../100_AccountServer/src/ListZoneHandler.cpp"/>
+				<F N="../../100_AccountServer/src/ListZoneHandler.hpp"/>
+				<F N="../../100_AccountServer/src/LRUHashCache.hpp"/>
+				<F N="../../100_AccountServer/src/ProtocolEngine.hpp"/>
+				<F N="../../100_AccountServer/src/Public.hpp"/>
+				<F N="../../100_AccountServer/src/RoleNumberObj.cpp"/>
+				<F N="../../100_AccountServer/src/RoleNumberObj.hpp"/>
+				<F N="../../100_AccountServer/src/SessionManager.cpp"/>
+				<F N="../../100_AccountServer/src/SessionManager.hpp"/>
+				<F N="../../100_AccountServer/src/SessionObj.cpp"/>
+				<F N="../../100_AccountServer/src/SessionObj.hpp"/>
+				<F N="../../100_AccountServer/src/SSProtocolEngine.cpp"/>
+				<F N="../../100_AccountServer/src/SSProtocolEngine.hpp"/>
+				<F N="../../100_AccountServer/src/TimeStampConverter.cpp"/>
+				<F N="../../100_AccountServer/src/TimeStampConverter.hpp"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../../101_ZoneServer">
+			<Folder Name="src">
+				<Folder Name="Kernel">
+					<Folder Name="Allocator">
+						<F N="../../101_ZoneServer/src/Kernel/Allocator/ZoneObjectAllocator.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Allocator/ZoneObjectAllocator.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Allocator/ZoneObjectHelper.hpp"/>
+					</Folder>
+					<Folder Name="App">
+						<F N="../../101_ZoneServer/src/Kernel/App/AppDef.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/App/AppLauncher.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/App/AppLoop.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/App/AppLoop.hpp"/>
+					</Folder>
+					<Folder Name="BillLog">
+						<F N="../../101_ZoneServer/src/Kernel/BillLog/ZoneOssLog.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/BillLog/ZoneOssLog.hpp"/>
+					</Folder>
+					<Folder Name="Config">
+						<F N="../../101_ZoneServer/src/Kernel/Config/ConfigManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Config/ConfigManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Config/QMGMPrivConfigManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Config/QMGMPrivConfigManager.hpp"/>
+					</Folder>
+					<Folder Name="Database">
+						<F N="../../101_ZoneServer/src/Kernel/Database/FetchRoleWorldHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Database/FetchRoleWorldHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Database/UpdateRoleInfoHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Database/UpdateRoleInfoHandler.hpp"/>
+					</Folder>
+					<Folder Name="Event">
+						<F N="../../101_ZoneServer/src/Kernel/Event/UnitEventManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Event/UnitEventManager.hpp"/>
+					</Folder>
+					<Folder Name="Handler">
+						<F N="../../101_ZoneServer/src/Kernel/Handler/Handler.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Handler/Handler.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerFactory.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerFactory.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerHelper.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerHelper.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerList.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerList.hpp"/>
+					</Folder>
+					<Folder Name="Position">
+						<F N="../../101_ZoneServer/src/Kernel/Position/ChooseSceneHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/ChooseSceneHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/MovementHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/MovementHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/PositionCalculator.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/PositionCalculator.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/TransportAction.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/TransportAction.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/TransportHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Position/TransportHandler.hpp"/>
+					</Folder>
+					<Folder Name="Protocol">
+						<Folder Name="Message">
+							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/BroadcastMsgHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/BroadcastMsgHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/MsgBodyInitializer.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/MsgBodyInitializer.hpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/ZoneMsgHelper.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/ZoneMsgHelper.hpp"/>
+						</Folder>
+						<F N="../../101_ZoneServer/src/Kernel/Protocol/GameMsgTransceiver.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Protocol/GameMsgTransceiver.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Protocol/GameProtocolEngine.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Protocol/GameProtocolEngine.hpp"/>
+					</Folder>
+					<Folder Name="Scene">
+						<F N="../../101_ZoneServer/src/Kernel/Scene/GameScene.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/GameScene.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneEventListener.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneEventListener.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneSightManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneSightManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneUnitManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneUnitManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceEventListener.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceEventListener.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceUtility.hpp"/>
+					</Folder>
+					<Folder Name="Session">
+						<F N="../../101_ZoneServer/src/Kernel/Session/GameSession.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Session/GameSession.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Session/SessionDefine.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Session/SessionManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Session/SessionManager.hpp"/>
+					</Folder>
+					<Folder Name="Tick">
+						<F N="../../101_ZoneServer/src/Kernel/Tick/AppTick.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Tick/AppTick.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Tick/OnlineStatTick.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Tick/OnlineStatTick.hpp"/>
+					</Folder>
+					<Folder Name="Units">
+						<Folder Name="NPC">
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCFramework.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCFramework.hpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeManager.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeManager.hpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeObj.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeObj.hpp"/>
+						</Folder>
+						<Folder Name="Role">
+							<F N="../../101_ZoneServer/src/Kernel/Units/Role/GameRole.cpp"/>
+							<F N="../../101_ZoneServer/src/Kernel/Units/Role/GameRole.hpp"/>
+						</Folder>
+						<F N="../../101_ZoneServer/src/Kernel/Units/GameObjCommDef.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Units/GameUnitID.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Units/GameUnitID.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Units/PrivateUnitInfo.hpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Units/UnitUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Kernel/Units/UnitUtility.hpp"/>
+					</Folder>
+				</Folder>
+				<Folder Name="Modules">
+					<Folder Name="AccountInfo">
+						<F N="../../101_ZoneServer/src/Modules/AccountInfo/AccountInfoManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/AccountInfo/AccountInfoManager.hpp"/>
+					</Folder>
+					<Folder Name="Achievement">
+						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementEventListener.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementEventListener.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementManager.hpp"/>
+					</Folder>
+					<Folder Name="Atlas">
+						<F N="../../101_ZoneServer/src/Modules/Atlas/AtlasHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Atlas/AtlasHandler.hpp"/>
+					</Folder>
+					<Folder Name="Chat">
+						<F N="../../101_ZoneServer/src/Modules/Chat/ChatHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Chat/ChatHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Chat/ChatUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Chat/ChatUtility.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Chat/GMChatHooker.hpp"/>
+					</Folder>
+					<Folder Name="Collection">
+						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionFramework.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionFramework.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionManager.hpp"/>
+					</Folder>
+					<Folder Name="Combat">
+						<F N="../../101_ZoneServer/src/Modules/Combat/AStarPathUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/AStarPathUtility.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/BattlefieldObj.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/BattlefieldObj.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatEventListener.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatEventListener.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatEventManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatEventManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatFramework.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatFramework.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatReward.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatReward.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatSkill.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatSkill.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatTrapObj.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatTrapObj.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatUnitAI.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatUnitAI.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatUnitObj.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatUnitObj.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/CombatUtility.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/UnitBufferManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/UnitBufferManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/UnitBufferObj.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Combat/UnitBufferObj.hpp"/>
+					</Folder>
+					<Folder Name="FightUnit">
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitObj.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitObj.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/FightUnit/FightUnitUtility.hpp"/>
+					</Folder>
+					<Folder Name="GM">
+						<Folder Name="Commands">
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMCombatHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMCombatHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMFightUnitHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMFightUnitHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMLifeSkillHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMLifeSkillHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMReposityHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMReposityHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMResourceHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMResourceHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMRoleHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMRoleHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSceneHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSceneHandler.hpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSkillHandler.cpp"/>
+							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSkillHandler.hpp"/>
+						</Folder>
+						<F N="../../101_ZoneServer/src/Modules/GM/GMBaseCommand.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/GM/GMBaseCommand.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/GM/GMCommandHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/GM/GMCommandHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/GM/GMCommandManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/GM/GMCommandManager.hpp"/>
+					</Folder>
+					<Folder Name="LifeSkill">
+						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillManager.hpp"/>
+					</Folder>
+					<Folder Name="Login">
+						<F N="../../101_ZoneServer/src/Modules/Login/KickRoleWorldHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Login/KickRoleWorldHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Login/LoginHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Login/LoginHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Login/LogoutHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Login/LogoutHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Login/RoleRecordHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Login/RoleRecordHandler.hpp"/>
+					</Folder>
+					<Folder Name="Mail">
+						<F N="../../101_ZoneServer/src/Modules/Mail/MailFramework.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Mail/MailFramework.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Mail/MailHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Mail/MailHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Mail/MailManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Mail/MailManager.hpp"/>
+					</Folder>
+					<Folder Name="Mine">
+						<F N="../../101_ZoneServer/src/Modules/Mine/MineEventListener.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Mine/MineEventListener.hpp"/>
+					</Folder>
+					<Folder Name="MiniGame">
+						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameFramework.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameFramework.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameManager.hpp"/>
+					</Folder>
+					<Folder Name="NewStart">
+						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartUtility.hpp"/>
+					</Folder>
+					<Folder Name="Reposity">
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsFramework.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsFramework.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsUtility.hpp"/>
+					</Folder>
+					<Folder Name="Resource">
+						<F N="../../101_ZoneServer/src/Modules/Resource/ResourceUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Resource/ResourceUtility.hpp"/>
+					</Folder>
+					<Folder Name="Skill">
+						<F N="../../101_ZoneServer/src/Modules/Skill/SkillFramework.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Skill/SkillFramework.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Skill/SkillHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Skill/SkillHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Skill/SkillManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Skill/SkillManager.hpp"/>
+					</Folder>
+					<Folder Name="Story">
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryEventListener.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryEventListener.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryFramework.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryFramework.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryLuaEngine.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryLuaEngine.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryManager.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryManager.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryMessageSender.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Story/StoryMessageSender.hpp"/>
+					</Folder>
+					<Folder Name="Time">
+						<F N="../../101_ZoneServer/src/Modules/Time/RoleTimeUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Time/RoleTimeUtility.hpp"/>
+					</Folder>
+					<Folder Name="Title">
+						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleHandler.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleHandler.hpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleUtility.hpp"/>
+					</Folder>
+					<Folder Name="Utility">
+						<F N="../../101_ZoneServer/src/Modules/Utility/DropRewardUtility.cpp"/>
+						<F N="../../101_ZoneServer/src/Modules/Utility/DropRewardUtility.hpp"/>
+					</Folder>
+				</Folder>
+				<Folder Name="Utils">
+					<F N="../../101_ZoneServer/src/Utils/Base64URL.cpp"/>
+					<F N="../../101_ZoneServer/src/Utils/Base64URL.hpp"/>
+					<F N="../../101_ZoneServer/src/Utils/ConstantDef.hpp"/>
+					<F N="../../101_ZoneServer/src/Utils/MathHelper.cpp"/>
+					<F N="../../101_ZoneServer/src/Utils/MathHelper.hpp"/>
+					<F N="../../101_ZoneServer/src/Utils/MemCheck.cpp"/>
+					<F N="../../101_ZoneServer/src/Utils/MemCheck.hpp"/>
+					<F N="../../101_ZoneServer/src/Utils/ModuleHelper.cpp"/>
+					<F N="../../101_ZoneServer/src/Utils/ModuleHelper.hpp"/>
+					<F N="../../101_ZoneServer/src/Utils/ModuleShortcut.cpp"/>
+					<F N="../../101_ZoneServer/src/Utils/ModuleShortcut.hpp"/>
+					<F N="../../101_ZoneServer/src/Utils/RttUtility.cpp"/>
+					<F N="../../101_ZoneServer/src/Utils/RttUtility.hpp"/>
+					<F N="../../101_ZoneServer/src/Utils/ZoneErrorNumDef.hpp"/>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="../../102_ConfigEngine">
+			<F N="../../102_ConfigEngine/BattlefieldPathConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/BattlefieldPathConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/ConfigHelper.cpp"/>
+			<F N="../../102_ConfigEngine/ConfigHelper.hpp"/>
+			<F N="../../102_ConfigEngine/GameConfigDefine.hpp"/>
+			<F N="../../102_ConfigEngine/SBattlefieldConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SBattlefieldConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SceneConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SceneConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/ScenePathManager.cpp"/>
+			<F N="../../102_ConfigEngine/ScenePathManager.hpp"/>
+			<F N="../../102_ConfigEngine/SEquipmentConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SEquipmentConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/ServerBusConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/ServerBusConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SFightJudgeConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SFightJudgeConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitAIConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitAIConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitGrowthConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitGrowthConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitRecruitConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SFightUnitRecruitConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SMonsterConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SMonsterConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SNPCConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SNPCConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SPropItemConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SPropItemConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SPveCrossConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SPveCrossConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SRoleBirthConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SRoleBirthConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SShopIndexConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SShopIndexConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/SShopThingsConfigManager.cpp"/>
+			<F N="../../102_ConfigEngine/SShopThingsConfigManager.hpp"/>
+			<F N="../../102_ConfigEngine/TemplateConfigManager.hpp"/>
+		</Folder>
+		<Folder Name="../../103_Protocol">
+			<Folder Name="Conf">
+				<Folder Name="lua">
+					<F N="../../103_Protocol/Conf/lua/combat_ai.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_buff.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_const.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_item.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_level.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_main.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_module.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_skill.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_trap.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_unittest.lua"/>
+					<F N="../../103_Protocol/Conf/lua/combat_value.lua"/>
+					<F N="../../103_Protocol/Conf/lua/CppAPI.lua"/>
+					<F N="../../103_Protocol/Conf/lua/dkjson.lua"/>
+					<F N="../../103_Protocol/Conf/lua/luatest.lua"/>
+					<F N="../../103_Protocol/Conf/lua/story_capi.lua"/>
+					<F N="../../103_Protocol/Conf/lua/story_common.lua"/>
+					<F N="../../103_Protocol/Conf/lua/story_core.lua"/>
+					<F N="../../103_Protocol/Conf/lua/story_extra.lua"/>
+					<F N="../../103_Protocol/Conf/lua/story_gen.lua"/>
+					<F N="../../103_Protocol/Conf/lua/story_unittest.lua"/>
+					<F N="../../103_Protocol/Conf/lua/zone.lua"/>
+				</Folder>
+			</Folder>
+			<Folder Name="Src">
+				<Folder Name="config">
+					<F N="../../103_Protocol/Src/config/GameConfig_metalib.h"/>
+					<F N="../../103_Protocol/Src/config/S_GameConfig.cpp"/>
+					<F N="../../103_Protocol/Src/config/S_GameConfig.h"/>
+					<F N="../../103_Protocol/Src/config/TdrBuf.cpp"/>
+					<F N="../../103_Protocol/Src/config/TdrBuf.h"/>
+					<F N="../../103_Protocol/Src/config/TdrBufUtil.cpp"/>
+					<F N="../../103_Protocol/Src/config/TdrBufUtil.h"/>
+					<F N="../../103_Protocol/Src/config/TdrError.cpp"/>
+					<F N="../../103_Protocol/Src/config/TdrError.h"/>
+					<F N="../../103_Protocol/Src/config/TdrKeywords.h"/>
+					<F N="../../103_Protocol/Src/config/TdrPal.h"/>
+					<F N="../../103_Protocol/Src/config/TdrThirdParty.cpp"/>
+					<F N="../../103_Protocol/Src/config/TdrThirdParty.h"/>
+					<F N="../../103_Protocol/Src/config/TdrTime.cpp"/>
+					<F N="../../103_Protocol/Src/config/TdrTime.h"/>
+					<F N="../../103_Protocol/Src/config/TdrTypeUtil.cpp"/>
+					<F N="../../103_Protocol/Src/config/TdrTypeUtil.h"/>
+				</Folder>
+				<Folder Name="proto">
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Account.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Account.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Common.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Common.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.CS.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.CS.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Fight.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Fight.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.hpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.MsgID.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.MsgID.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.RegAuth.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.RegAuth.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.USERDB.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.USERDB.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.World.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.World.pb.h"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Zone.pb.cpp"/>
+					<F N="../../103_Protocol/Src/proto/GameProtocol.Zone.pb.h"/>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="../../108_WorldServer">
+			<Folder Name="src">
+				<F N="../../108_WorldServer/src/AppDefW.hpp"/>
+				<F N="../../108_WorldServer/src/AppLoopW.cpp"/>
+				<F N="../../108_WorldServer/src/AppLoopW.hpp"/>
+				<F N="../../108_WorldServer/src/AppTick.cpp"/>
+				<F N="../../108_WorldServer/src/AppTick.hpp"/>
+				<F N="../../108_WorldServer/src/ChatHandler.cpp"/>
+				<F N="../../108_WorldServer/src/ChatHandler.hpp"/>
+				<F N="../../108_WorldServer/src/ConfigManager.cpp"/>
+				<F N="../../108_WorldServer/src/ConfigManager.hpp"/>
+				<F N="../../108_WorldServer/src/CreateRoleAccountHandler.cpp"/>
+				<F N="../../108_WorldServer/src/CreateRoleAccountHandler.hpp"/>
+				<F N="../../108_WorldServer/src/DeleteRoleAccountHandler.cpp"/>
+				<F N="../../108_WorldServer/src/DeleteRoleAccountHandler.hpp"/>
+				<F N="../../108_WorldServer/src/FetchRoleWorldHandler.cpp"/>
+				<F N="../../108_WorldServer/src/FetchRoleWorldHandler.hpp"/>
+				<F N="../../108_WorldServer/src/GameMasterHandler.cpp"/>
+				<F N="../../108_WorldServer/src/GameMasterHandler.hpp"/>
+				<F N="../../108_WorldServer/src/Handler.cpp"/>
+				<F N="../../108_WorldServer/src/Handler.hpp"/>
+				<F N="../../108_WorldServer/src/HandlerFactory.cpp"/>
+				<F N="../../108_WorldServer/src/HandlerFactory.hpp"/>
+				<F N="../../108_WorldServer/src/KickRoleWorldHandler.cpp"/>
+				<F N="../../108_WorldServer/src/KickRoleWorldHandler.hpp"/>
+				<F N="../../108_WorldServer/src/ListRoleAccountHandler.cpp"/>
+				<F N="../../108_WorldServer/src/ListRoleAccountHandler.hpp"/>
+				<F N="../../108_WorldServer/src/ListZoneHandler.cpp"/>
+				<F N="../../108_WorldServer/src/ListZoneHandler.hpp"/>
+				<F N="../../108_WorldServer/src/LogoutHandler.cpp"/>
+				<F N="../../108_WorldServer/src/LogoutHandler.hpp"/>
+				<F N="../../108_WorldServer/src/MainApp.cpp"/>
+				<F N="../../108_WorldServer/src/ModuleHelper.cpp"/>
+				<F N="../../108_WorldServer/src/ModuleHelper.hpp"/>
+				<F N="../../108_WorldServer/src/MsgBodyInitializer.cpp"/>
+				<F N="../../108_WorldServer/src/MsgBodyInitializer.hpp"/>
+				<F N="../../108_WorldServer/src/OnlineStatHandler.cpp"/>
+				<F N="../../108_WorldServer/src/OnlineStatHandler.hpp"/>
+				<F N="../../108_WorldServer/src/PVPRankManager.cpp"/>
+				<F N="../../108_WorldServer/src/PVPRankManager.hpp"/>
+				<F N="../../108_WorldServer/src/PVPWorldRankHandler.cpp"/>
+				<F N="../../108_WorldServer/src/PVPWorldRankHandler.hpp"/>
+				<F N="../../108_WorldServer/src/UnitTick.cpp"/>
+				<F N="../../108_WorldServer/src/UnitTick.hpp"/>
+				<F N="../../108_WorldServer/src/UpdateRoleWorldHandler.cpp"/>
+				<F N="../../108_WorldServer/src/UpdateRoleWorldHandler.hpp"/>
+				<F N="../../108_WorldServer/src/WorldBillLog.cpp"/>
+				<F N="../../108_WorldServer/src/WorldBillLog.hpp"/>
+				<F N="../../108_WorldServer/src/WorldErrorNumDef.hpp"/>
+				<F N="../../108_WorldServer/src/WorldGlobalDefine.hpp"/>
+				<F N="../../108_WorldServer/src/WorldMsgHelper.cpp"/>
+				<F N="../../108_WorldServer/src/WorldMsgHelper.hpp"/>
+				<F N="../../108_WorldServer/src/WorldMsgTransceiver.cpp"/>
+				<F N="../../108_WorldServer/src/WorldMsgTransceiver.hpp"/>
+				<F N="../../108_WorldServer/src/WorldNameHandler.cpp"/>
+				<F N="../../108_WorldServer/src/WorldNameHandler.hpp"/>
+				<F N="../../108_WorldServer/src/WorldObjectAllocatorW.cpp"/>
+				<F N="../../108_WorldServer/src/WorldObjectAllocatorW.hpp"/>
+				<F N="../../108_WorldServer/src/WorldObjectHelperW_K32.hpp"/>
+				<F N="../../108_WorldServer/src/WorldObjectHelperW_K64.hpp"/>
+				<F N="../../108_WorldServer/src/WorldOnlineStatTick.cpp"/>
+				<F N="../../108_WorldServer/src/WorldOnlineStatTick.hpp"/>
+				<F N="../../108_WorldServer/src/WorldProtocolEngineW.cpp"/>
+				<F N="../../108_WorldServer/src/WorldProtocolEngineW.hpp"/>
+				<F N="../../108_WorldServer/src/WorldRoleStatus.cpp"/>
+				<F N="../../108_WorldServer/src/WorldRoleStatus.hpp"/>
+				<F N="../../108_WorldServer/src/ZoneTick.cpp"/>
+				<F N="../../108_WorldServer/src/ZoneTick.hpp"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../../111_RoleDBServer">
+			<Folder Name="src">
+				<F N="../../111_RoleDBServer/src/AppDef.hpp"/>
+				<F N="../../111_RoleDBServer/src/AppLauncher.cpp"/>
+				<F N="../../111_RoleDBServer/src/FetchFriendInfoHandler.cpp"/>
+				<F N="../../111_RoleDBServer/src/FetchFriendInfoHandler.hpp"/>
+				<F N="../../111_RoleDBServer/src/Handler.cpp"/>
+				<F N="../../111_RoleDBServer/src/Handler.hpp"/>
+				<F N="../../111_RoleDBServer/src/HandlerSet.cpp"/>
+				<F N="../../111_RoleDBServer/src/HandlerSet.hpp"/>
+				<F N="../../111_RoleDBServer/src/LRUHashCache.hpp"/>
+				<F N="../../111_RoleDBServer/src/ModuleHelper.cpp"/>
+				<F N="../../111_RoleDBServer/src/ModuleHelper.hpp"/>
+				<F N="../../111_RoleDBServer/src/Public.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBApp.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBApp.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBCreateRoleHandler.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBCreateRoleHandler.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBDeleteRoleHandler.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBDeleteRoleHandler.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBErrorNumDef.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBFetchRoleHandler.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBFetchRoleHandler.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBHandlerSet.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBHandlerSet.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBInfoConfig.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBInfoConfig.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBListRoleHandler.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBListRoleHandler.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBLogManager.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBLogManager.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBMsgTransceiver.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBMsgTransceiver.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBObjectAllocator.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBObjectAllocator.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBPublic.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBThread.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBThread.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBThreadManager.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBThreadManager.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBUpdateRoleHandler.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleDBUpdateRoleHandler.hpp"/>
+				<F N="../../111_RoleDBServer/src/RoleSeqRecordObj.cpp"/>
+				<F N="../../111_RoleDBServer/src/RoleSeqRecordObj.hpp"/>
+				<F N="../../111_RoleDBServer/src/SeqConverter.cpp"/>
+				<F N="../../111_RoleDBServer/src/SeqConverter.hpp"/>
+				<F N="../../111_RoleDBServer/src/SSProtocolEngine.cpp"/>
+				<F N="../../111_RoleDBServer/src/SSProtocolEngine.hpp"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../../191_UnitTest">
+			<Folder Name="001_ServerLib">
+				<F N="../../191_UnitTest/001_ServerLib/DBClientWrapperUnitTest.cpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/DBClientWrapperUnitTest.hpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/Main.cpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/ProtoUnitTest.cpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/ProtoUnitTest.hpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/SessionKeyUtilityUnitTest.cpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/SessionKeyUtilityUnitTest.hpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/ZmqUnitTest.cpp"/>
+				<F N="../../191_UnitTest/001_ServerLib/ZmqUnitTest.hpp"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../../Build">
+			<Folder Name="CMakeFiles">
+				<Folder Name="CompilerIdC">
+					<F N="../../Build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c"/>
+				</Folder>
+				<Folder Name="CompilerIdCXX">
+					<F N="../../Build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp"/>
+				</Folder>
+			</Folder>
+			<Folder Name="RuntimeEnv">
+				<Folder Name="Common">
+					<Folder Name="lua">
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_ai.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_buff.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_capi.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_common.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_const.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_core.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_item.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_level.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_main.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_module.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_skill.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_trap.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_unittest.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/combat_value.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/CppAPI.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/dkjson.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/luatest.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/story_capi.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/story_common.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/story_core.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/story_extra.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/story_gen.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/story_unittest.lua"/>
+						<F N="../../Build/RuntimeEnv/Common/lua/zone.lua"/>
+					</Folder>
+				</Folder>
+			</Folder>
+		</Folder>
+	</Files>
+</Project>

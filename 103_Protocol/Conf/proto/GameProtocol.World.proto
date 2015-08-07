@@ -1,0 +1,125 @@
+//World Server相关的协议
+
+import "GameProtocol.Common.proto";
+import "GameProtocol.USERDB.proto";
+
+//World Server通知分区信息发生改变
+message World_ZoneChanged_Notify
+{
+	optional uint32 worldID = 1;			//所在的世界的ID
+	optional ZoneList stZones = 2;			//世界的所有分区信息
+}
+
+//World Server创建角色的请求
+message World_CreateRole_Request
+{
+	optional uint32 uin = 1;					//创建角色的uin
+	optional uint32 world = 2;					//创建角色的玩家所在世界的ID
+	optional GameUserInfo stBirthData = 4;		//创建角色的玩家的基本信息
+}
+
+//World Server创建角色请求的返回
+message World_CreateRole_Response
+{
+	optional int32 iResult = 1;				//创建角色的结果
+	optional RoleID stRoleID = 2;			//创建的玩家的角色ID
+}
+
+//World Server拉取角色数据的请求
+message World_FetchRole_Request
+{
+	optional RoleID stRoleID = 1;			//要拉取数据的玩家角色ID
+	optional bool bIsLogin = 2;				//是否登录拉取数据的请求
+	optional int32 iReqID = 4;				//请求的Zone Server的ZoneID
+}
+
+//World Server拉取角色数据的返回
+message World_FetchRole_Response
+{
+	optional RoleID stRoleID = 1;			//拉取数据的玩家角色ID
+	optional int32 iResult = 2;				//数据查询返回的结果，0表示成功，其他表示失败
+	optional GameUserInfo stUserInfo = 3;	//从DB中下拉到的玩家的数据
+	optional bool bIsLogin = 4;				//是否登录拉取数据的请求
+}
+
+//World Server更新玩家数据的请求
+message World_UpdateRole_Request
+{
+	optional RoleID stRoleID = 1;			//玩家的角色ID
+	optional int32 iReqID = 2;				//请求的Zone Server的ZoneID
+	optional GameUserInfo stUserInfo = 3;	//需要更新到DB中的数据
+	optional bool bNeedResponse = 4;		//是否需要回复
+}
+
+//World Server更新玩家数据的返回
+message World_UpdateRole_Response
+{
+	optional RoleID stRoleID = 1;			//更新的玩家的角色ID
+	optional int32 iResult = 2;				//更新数据返回的结果
+}
+
+
+//World Server踢人的请求
+message World_KickRole_Request
+{
+	optional int32 iFromWorldID = 1;		//发出请求的World ID
+	optional int32 iFromZoneID = 2;			//发出请求的Zone ID
+	optional int32 iSessionID = 3;			//发出请求的FD
+	optional RoleID stKickedRoleID = 4;		//被踢者的角色ID
+	optional bool bIsLogin = 5;				//是否登录导致踢人
+}
+
+//World Server踢人的返回
+message World_KickRole_Response
+{
+	optional int32 iResult = 1;				//踢人请求的结果
+	optional int32 iFromWorldID = 2;		//发起踢人请求的世界ID
+	optional int32 iFromZoneID = 3;			//发起踢人请求的Zone ID
+	optional int32 iSessionID = 4;			//请求的FD
+	optional RoleID stKickedRoleID = 5;		//被踢者的角色ID
+	optional bool bIsLogin = 6;				//是否登录导致踢人
+}
+
+//单个分线Zone的详细信息
+message ZoneOnlineInfo
+{
+	optional int32 iZoneID = 1;				//分线的ID
+	optional int32 iRoleNum = 2;			//分线在线的玩家数量
+}
+
+//单个World的详细信息
+message WorldOnlineInfo
+{
+	optional int32 iWorldID = 1;				//世界ID
+	optional int32 iOnlineRoleNum = 2;			//在线的玩家数量
+	optional int32 iRegisterNum = 3;			//注册玩家数量
+	optional int32 iMaxOnlineNum = 4;			//最大支持在线玩家数量
+	optional int32 iMaxRegisterNum = 5;			//最大支持的注册玩家数量
+	optional int32 iActiveZoneNum = 6;			//活跃的分线数量
+	repeated ZoneOnlineInfo stZoneInfos = 7;	//世界中所有的分线信息
+}
+
+//World向Cluster上报状态的请求
+message World_OnlineStat_Request
+{
+	optional int32 iWorldID = 1;				//上报的世界的ID
+	optional WorldOnlineInfo stWorldInfo = 2;	//上报的世界信息
+	optional int32 uRecordTime = 3;				//上报统计的时刻
+}
+
+//World向Cluster上报状态的返回
+message World_OnlineStat_Response
+{
+	optional int32 iWorldID = 1;				//上报的世界的ID
+	optional int32 iInstanceID = 2;				//Cluster Server的ID
+}
+
+//World转发世界聊天信息
+message World_Chat_Notify
+{
+	optional ChatChannelType iChannel = 1 [default=CHAT_CHANNEL_INVALID];//聊天的频道
+	optional RoleID stRoleID = 2;				//发送者的角色ID
+	optional int32 iZoneID = 4;					//发送者所在分线的ID
+	optional RoleID stTargetID = 5;				//接收者的角色ID
+	optional string szMessage = 6;				//聊天的消息内容
+}

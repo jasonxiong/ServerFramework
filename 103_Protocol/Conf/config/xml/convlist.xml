@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="GBK" standalone="yes" ?>
+<ConvList ResEncoding="UTF-8">
+    <MetalibFile File="ov_res.tdr"/>
+    <EntryMapFilesPath Path="..\xml"/>
+    <BinFilesPath Path="..\bin"/>
+    <ExcelFilesPath Path="..\excel"/>
+    <KeywordFile File="..\xml\TdrKeywords.xml"/>
+    <FileHead CreateTime="0"/>
+
+    <ConvTree Name="配置表">
+      
+		<CommNode Name="服务器_基础配置">
+        	
+			<ResNode Name="玩家出生数据表"
+            	Meta="SRoleBirthConfig" 				
+            	BinFile="server/SRoleBirthConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="系统.xls"
+            	IncludeSheet="玩家出生表"/>	
+				
+			<ResNode Name="战斗单位属性配置表"
+            	Meta="SFightUnitConfig" 				
+            	BinFile="server/SFightUnitConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗单位表"/>	
+								
+			<ResNode Name="战场怪物配置表"
+            	Meta="SMonsterConfig" 				
+            	BinFile="server/SMonsterConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗怪物表"/>
+				
+			<ResNode Name="战斗关卡配置表"
+            	Meta="SBattleCrossConfig" 				
+            	BinFile="server/SBattleCrossConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗关卡表"/>
+				
+			<ResNode Name="关卡怪物组表"
+            	Meta="SCrossMonsterConfig" 				
+            	BinFile="server/SCrossMonsterConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="关卡怪物组表"/>
+				
+			<ResNode Name="战场机关配置表"
+            	Meta="STrapConfig" 				
+            	BinFile="server/STrapConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗机关表"/>
+				
+			<ResNode Name="战斗AI配置表"
+            	Meta="SFightUnitAIConfig" 				
+            	BinFile="server/SFightUnitAIConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗AI表"/>
+				
+			<ResNode Name="战斗单位技能配置表"
+            	Meta="SFightUnitSkillConfig" 				
+            	BinFile="server/SFightUnitSkillConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能表"/>
+				
+			<ResNode Name="技能攻击范围表"
+            	Meta="SSkillRangeConfig" 				
+            	BinFile="server/SSkillRangeConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能距离表"/>
+				
+			<ResNode Name="技能攻击区域表"
+            	Meta="SSkillAreaConfig" 				
+            	BinFile="server/SSkillAreaConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能范围表"/>
+				
+			<ResNode Name="技能攻击权重表"
+            	Meta="SSkillScoreConfig" 				
+            	BinFile="server/SSkillScoreConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能权重表"/>
+				
+			<ResNode Name="技能攻击伤害表"
+            	Meta="SSkillDamageConfig" 				
+            	BinFile="server/SSkillDamageConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能伤害表"/>
+				
+			<ResNode Name="战斗单位BUFF表"
+            	Meta="SFightBuffConfig" 				
+            	BinFile="server/SFightBuffConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能BUFF表"/>
+				
+				<ResNode Name="战斗技能伙伴合击表"
+            	Meta="SJointAttackConfig" 				
+            	BinFile="server/SJointAttackConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能合击表"/>
+				
+				<ResNode Name="游戏物品表"
+            	Meta="SGameItemConfig" 				
+            	BinFile="server/SGameItemConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="系统.xls"
+            	IncludeSheet="玩家物品表"/>
+				
+				<!-- ResNode Name="游戏道具表"
+            	Meta="SPropItemConfig" 				
+            	BinFile="server/SPropItemConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="物品.xls"
+            	IncludeSheet="道具表" /-->
+				
+				<ResNode Name="随机掉落奖励表"
+            	Meta="SDropRewardConfig" 				
+            	BinFile="server/SDropRewardConfig_Server.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="系统.xls"
+            	IncludeSheet="游戏掉落表"/>
+				
+		</CommNode>
+
+	<CommNode Name="客户端_配置">
+		  <ResNode Name="玩家物品表"
+            	Meta="CGameItemConfig" 				
+            	BinFile="client/CGameItemConfig_Client.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="系统.xls"
+            	IncludeSheet="玩家物品表"/>
+		  
+		  <ResNode Name="战斗单位表"
+            	Meta="CFightUnitConfig" 				
+            	BinFile="client/CFightUnitConfig_Client.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗单位表"/>
+            	
+      <ResNode Name="战斗怪物表"
+            	Meta="CMonsterConfig" 				
+            	BinFile="client/CMonsterConfig_Client.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗怪物表"/>
+		  
+		  <ResNode Name="战斗关卡表"
+            	Meta="CBattleCrossConfig" 				
+            	BinFile="client/CBattleCrossConfig_Client.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="关卡.xls"
+            	IncludeSheet="战斗关卡表"/>
+		  
+		  <ResNode Name="技能表"
+            	Meta="CFightUnitSkillConfig" 				
+            	BinFile="client/CFightUnitSkillConfig_Client.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能表"/>
+		  
+		  <ResNode Name="技能距离表"
+            	Meta="CSkillRangeConfig" 				
+            	BinFile="client/CSkillRangeConfig_Client.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能距离表"/>
+		  
+		  <ResNode Name="技能范围表"
+            	Meta="CSkillAreaConfig" 				
+            	BinFile="client/CSkillAreaConfig_Client.bin" 
+            	EntryMapFile="TdrKeywords.xml S_GameConfig.xml"
+            	BinStyles="0" 														
+            	ExcelFile="战斗.xls"
+            	IncludeSheet="技能范围表"/>
+		  
+	</CommNode>
+
+  </ConvTree>
+
+
+</ConvList>
+

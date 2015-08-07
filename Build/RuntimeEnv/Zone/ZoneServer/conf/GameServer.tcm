@@ -1,0 +1,56 @@
+[Param]
+IsEnablePlayerLog = 1
+LogLevel = 63
+
+[module]
+SSKeyChecked = 1
+[Dirty]
+IsDirtyReplaced = 0
+
+[ModuleSwitch]
+IsGreenEnabled = 0
+IsPortalEnabled = 1
+IsStoreEnabled = 1
+IsPayEnabled = 1
+IsPresentEnabled = 1
+IsMailEnabled = 1
+IsPPStoreEnabled = 1
+IsGuildEnabled = 1
+IsHomeEnabled = 1
+IsActivityMoneyGiftEnabled = 1
+IsActivityTarotEnabled = 1
+IsActivityItemGiftEnabled = 1
+IsVipEnabled = 1
+IsPlatformEnabled = 0
+
+[Pinstance]
+BlackList=
+
+[NPC]
+BlackList=
+
+[CodeQueue]
+CodeQueueNum = 2
+CodeQueuePath = ../../../Common/
+GatewayToZone_0 = CQGatewayToZone_0.shm
+ZoneToGateway_0 = CQZoneToGateway_0.shm
+GatewayToZone_1 = CQGatewayToZone_1.shm
+ZoneToGateway_1 = CQZoneToGateway_1.shm
+
+# 内网服务器通信的Bus
+# ID 格式为 WorldID.ServerType.InstanceID.ZoneID
+[ServerBus]
+ServerBusNum = 1
+# Zone to World, Client End
+ServerBusClientID_0 = #WORLDID#.1.1.#ZONEID#
+ServerBusServerID_0 = #WORLDID#.0.1.0
+ServerBusIP_0		= #SERVERIP#
+ServerBusPort_0		= 9200
+
+[Param]
+IsEnablePlayerLog = 1
+
+[MsgLimit]
+MsgLimitFile = ../conf/MsgLimitFile.conf
+[MsgDisable]
+MsgDisableFile = ../conf/MsgDisableFile.conf

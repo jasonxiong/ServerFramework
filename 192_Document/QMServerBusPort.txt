@@ -1,0 +1,11 @@
+Server		Client		Port
+RegAuth		AccountDB	9800
+
+Account		World		9000
+World		RoleDB		9100
+Zone		World		9200
+World		NameDB		9400
+
+World		Cluster		9300
+
+

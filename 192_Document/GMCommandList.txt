@@ -1,0 +1,36 @@
+本文档列出当前支持的所有GM命令：
+1、背包和物品相关：
+	a).背包增加物品：		// AddRepItem <iItemID> <iItemNum> <bIsBinded>
+	
+2、战斗单位相关：
+	a).增加战斗单位：		// AddFightUnit <iUnitID>
+	b).设置战斗单位跟随：	// CarryFightUnit <iUnitID>
+	c).设置战斗单位出战：	// UnitOnForm <iUnitID> <iPosition>
+	d).增加战斗单位属性：	// AddUnitAttr <iUnitID> <iAttrType> <iAddNum>
+	e).增加战斗单位好感度：	// AddRepution <iUnitID> <iAddNum>
+	f).增加单位的冲层经验： // AddFightUnitExp <iUnitID> <iAddExp>
+	
+3).场景相关:
+	a).传送到指定场景：		// Transport <iSceneID> <iPosX> <iPosY>
+
+4).游戏资源相关：
+	a).增加游戏资源:		// AddUserRes <iResType> <iAddNum>
+	b).增加玩家声望：		// AddPrestige <iAddNum>
+
+6).生活技能相关：
+	a).增加生活技能熟练度:	// AddLifeSkillExp <iLifeSkillType> <iAddExp>
+	b) 增加生活技能：				// AddLifeSkill <iLifeSkillID>
+
+7).玩家相关：
+	a).增加减少游戏时间:	// AddRoleTimeTick <iAddNum>
+	b).解锁玩家UI：			// UnlockUI <iSetNum>
+	c).增加属性加点经验：	// AddAttrExp <iAddNum>
+
+8).战斗相关：
+	a).增加战斗战场单位：	// AddCombatUnit <iCamp> <iMonsterID> <iPosX> <iPosY> <iDirection>
+	
+9).招式心法相关：
+	a).增加指定招式						// AddSkill <iSkillID>
+	b).增加指定心法						// AddHeart <iHeartID>
+	c).增加指定招式的熟练度		// AddSkillExp <iSkillID> <iAddNum>
+	d).增加指定心法的熟练度		// AddHeartExp <iSkillID> <iAddNum>

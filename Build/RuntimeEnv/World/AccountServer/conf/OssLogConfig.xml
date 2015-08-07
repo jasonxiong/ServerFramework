@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<udplog_server rid = "1119063">
+		<!--服务器设置-->
+		<item ip="42.62.40.114" port="8010" />
+		<item ip="42.62.40.114" port="8011" />
+		<item ip="42.62.40.114" port="8012" />
+		<item ip="42.62.40.114" port="8013" />
+	</udplog_server>
+	<log_file_type>
+		<!--udp日志tableid-->
+		<item typeinfo="create_accont"	id="40" /> 
+	</log_file_type>
+</config>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SFightUnitConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>112 </Unit>
+        <Count>1 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>567e55e9eb2565dbe5d731c4e32ddb25</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SFightUnitConfig version="1">
+    <iConfigID>100001 </iConfigID>
+    <iProf>FIGHT_PROF_FIGHTER </iProf>
+    <iSize>0 </iSize>
+    <iAINum>3 </iAINum>
+    <aiUnitAIID>1 0 0 </aiUnitAIID>
+    <iTotalAttribNum>17 </iTotalAttribNum>
+    <aiAttribute>10 10 10 250 100 20 5 5 5 5 5 5 30 30 30 30 30 </aiAttribute>
+    <iNormalSkill>10001 </iNormalSkill>
+    <iInitSlot>5 </iInitSlot>
+    <iCounterAtkSkillID>2000001 </iCounterAtkSkillID>
+</SFightUnitConfig>
+</SFightUnitConfig_Tab>

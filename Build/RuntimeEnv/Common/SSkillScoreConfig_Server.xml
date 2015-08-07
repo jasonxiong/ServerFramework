@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SSkillScoreConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>84 </Unit>
+        <Count>56 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>f9ae2490df69bdcd296a40e7d3cefdbd</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SSkillScoreConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>0 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>10 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>500 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 100 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>20 </iConfigID>
+    <iScoreBaseNum>1 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 100 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>30 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>40 </iConfigID>
+    <iScoreBaseNum>1 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>50 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 100 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>60 </iConfigID>
+    <iScoreBaseNum>1 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>10100 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>10200 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>10300 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>10400 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>10500 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>10600 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 100 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>20100 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>20200 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>20300 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>20400 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>20500 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>20600 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 100 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>30100 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>30200 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>30300 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>30400 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>30500 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>30600 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>100100 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 100 0 0 0 100 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>100200 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 100 0 0 0 100 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>200100 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 100 0 0 0 100 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>200200 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 100 0 0 0 100 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>70 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>500 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 100 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>80 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 100 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>2 </iConfigID>
+    <iScoreBaseNum>4000 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>3 </iConfigID>
+    <iScoreBaseNum>10000 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>4 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>0 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 1000 0 0 0 1000 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1001 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 150 0 0 0 150 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1002 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 150 0 0 0 150 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1003 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 150 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1004 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 150 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1005 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 150 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1006 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 150 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1101 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 150 0 0 0 150 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1102 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 150 0 0 0 150 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1103 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 150 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1104 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 150 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1105 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 150 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1106 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 150 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1201 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 300 0 0 0 300 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1202 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 300 0 0 0 300 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1203 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 300 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1204 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 300 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1205 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 300 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>1206 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 300 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>11 </iConfigID>
+    <iScoreBaseNum>0 </iScoreBaseNum>
+    <iScoreParam>500 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>21 </iConfigID>
+    <iScoreBaseNum>1 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>5 </iConfigID>
+    <iScoreBaseNum>10000 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </aiAttribute>
+</SSkillScoreConfig>
+<SSkillScoreConfig version="1">
+    <iConfigID>90 </iConfigID>
+    <iScoreBaseNum>1 </iScoreBaseNum>
+    <iScoreParam>100 </iScoreParam>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>0 0 0 0 0 0 0 0 0 0 0 500 0 0 0 100 0 </aiAttribute>
+</SSkillScoreConfig>
+</SSkillScoreConfig_Tab>

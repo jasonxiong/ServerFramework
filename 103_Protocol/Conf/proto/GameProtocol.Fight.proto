@@ -1,0 +1,456 @@
+//战斗相关的协议
+
+import "GameProtocol.Common.proto";
+import "GameProtocol.USERDB.proto";
+
+//战斗单位战场上的位置
+message UnitPosition
+{
+	optional int32 iPosX = 1;
+	optional int32 iPosY = 2;
+}
+
+//战斗单位的移动路径
+message UnitPath
+{
+	repeated UnitPosition stPoses = 1;
+}
+
+//玩家的战斗类型
+enum CombatType
+{
+	COMBAT_TYPE_INVALID = 0;				//非法的战斗类型
+	COMBAT_TYPE_PVE = 1;					//PVE战斗
+	COMBAT_TYPE_PVP = 2;					//PVP战斗
+}
+
+//战场上战斗单位的类型
+enum CombatUnitType
+{
+	COMBAT_UNIT_TYPE_INVALID = 0;			//非法的战斗单位类型
+	COMBAT_UNIT_TYPE_ROLE = 1;				//主角战斗单位类型
+	COMBAT_UNIT_TYPE_PARTNER = 2;			//伙伴战斗单位类型
+	COMBAT_UNIT_TYPE_MONSTER = 3;			//怪物战斗单位类型
+}
+
+//战斗时推送给客户端的指令类型
+enum UnitDirectiveType
+{
+	UNIT_DIRECTIVE_INVALID = 0;				//非法的指令类型
+	UNIT_DIRECTIVE_PARTNERAI = 1;			//客户端推送伙伴行动AI的指令
+	UNIT_DIRECTIVE_MOVE = 2;				//通知客户端移动的指令
+	UNIT_DIRECTIVE_ACTION = 3;				//通知客户端行动的指令
+	UNIT_DIRECTIVE_SETFORM = 4;				//通知客户端设置阵型的指令
+}
+
+//主角单位战斗行动的类型
+enum ActionType
+{
+	COMBAT_ACTION_INVALID = 0;				//非法的行动类型
+	COMBAT_ACTION_CASTSKILL = 1;			//释放技能
+	COMBAT_ACTION_USEITEM = 2;				//使用道具
+	COMBAT_ACTION_IDLE = 3;					//待机
+	COMBAT_ACTION_TRIGGER_TRAP = 4;			//触发机关
+	COMBAT_ACTION_ATTACK_TRAP = 5;			//攻击机关
+}
+
+//技能使用产生的状态效果
+enum ActionEffectStatus
+{
+	ACTION_EFFECT_STATUS_MINZHONG = 0;		//命中
+	ACTION_EFFECT_STATUS_GEDANG = 1;		//格挡
+	ACTION_EFFECT_STATUS_BAOJI = 2;			//暴击
+	ACTION_EFFECT_STATUS_SHANBI = 3;		//闪避
+	ACTION_EFFECT_STATUS_MAX = 4;			//状态最大，方便程序使用
+}
+
+//战斗单位身上的状态，移动和行动
+enum COMBATUNITSTATUS
+{
+	COMBAT_UNIT_STATUS_NOTMOVE = 1;			//不能移动
+	COMBAT_UNIT_STATUS_NOTACTION = 2;		//不能行动
+	COMBAT_UNIT_STATUS_NOTROUND = 3;		//不能开始行动回合
+	COMBAT_UNIT_STATUS_IGNOREJOINT = 4;		//无视合围，永久有效
+	COMBAT_UNIT_STATUS_UNBENDING = 5;		//不屈，生效状态消失
+}
+
+//战斗单位移动的类型
+enum CombatMoveType
+{
+	COMBAT_MOVE_INVALID = 0;				//非法的移动类型
+	COMBAT_MOVE_NORMAL = 1;					//正常的移动
+	COMBAT_MOVE_TELEPORT = 2;				//直接传送过去
+	COMBAT_MOVE_JUMP = 3;					//跳过去
+	COMBAT_MOVE_RUSH = 4;					//冲过去
+}
+
+//玩家开始战斗的请求
+message Zone_DoCombat_Request
+{
+	optional CombatType eType = 1 [default=COMBAT_TYPE_INVALID];//战斗的类型
+	optional int32 iLevelID = 2;			//如果是PVE，PVE战斗的关卡ID
+}
+
+//玩家开始战斗的返回
+message Zone_DoCombat_Response
+{
+	optional int32 iResult = 1;				//开始战斗请求处理的结果
+}
+
+//战场上战斗单位的动态信息
+message CombatUnit
+{
+	optional CombatUnitType eType = 1;		//战斗单位的类型，包括主角、伙伴、NPC
+	optional int32 iUnitID = 2;				//战斗单位的唯一ID
+	optional int32 iConfigID = 3;			//战斗单位的配置ID
+	optional UnitPosition stPos = 4;		//战斗单位在战场上的位置
+	optional int32 iDirection = 5;			//战斗单位在战场上的方向
+	repeated int32 iAttributes = 6;			//战斗单位的属性信息
+	optional int32 iNormalSkill = 7;		//战斗单位的普攻ID
+	repeated OneSlotInfo stItems = 8;		//战斗单位的物品信息
+	optional int32 iUnitAIID = 9;			//战斗单位的AI ID
+	optional int32 iCamp = 10;				//战斗单位所属的阵营
+}
+
+//战场上战斗双方的阵营信息
+message CombatCamp
+{
+	optional uint32 uiUin = 1;				//该阵营拥有者的uin，如果是怪物则为0
+	optional string strNickName = 3;		//如果是玩家，则为玩家的名字
+	repeated CombatUnit stUnits = 2;		//战斗单位的详细信息
+}
+
+//玩家战场初始化信息的通知
+message Zone_Battlefield_Notify
+{
+	optional int32 iCrossID = 1;				//战斗关卡ID
+	optional CombatCamp stCampActive = 2;		//主动方阵营信息
+	optional CombatCamp stCampPassive = 3;		//被动方阵营信息
+	repeated UnitPosition stActiveposes = 5;	//主动方的合法位置信息
+	repeated UnitPosition stPassivePoses = 6;	//被动方的合法位置信息
+}
+
+//主角进行移动的请求
+message Zone_CombatMove_Request
+{
+	optional UnitPath stPath = 1;			//请求移动的路径
+}
+
+//主角进行移动的返回
+message Zone_CombatMove_Response
+{
+	optional int32 iResult = 1;				//战场上移动的处理结果
+}
+
+//主角单位进行行动的请求
+message Zone_CombatAction_Request
+{
+	optional ActionType eType = 1 [default=COMBAT_ACTION_INVALID];	//主角单位行动的类型，是释放技能、使用物品还是待机
+	optional int32 iCastSkillID = 2;		//如果是释放技能，使用的技能ID
+	optional int32 iItemID = 3;				//如果是使用物品，使用的物品ID
+	optional UnitPosition stPos = 4;		//行动的目标的位置
+	optional int32 iDirection = 5;			//如果是待机，设置的单位的方向
+}
+
+//主角单位进行行动的返回
+message Zone_CombatAction_Response
+{
+	optional int32 iResult = 1;				//主角单位行动的处理结果
+	optional ActionType eType = 2 [default=COMBAT_ACTION_INVALID];			//主角单位行动的类型
+}
+
+//战斗单位战场移动的通知
+message Zone_CombatMove_Notify
+{
+	optional int32 iUnitID = 1;						//战场上移动单位的ID
+	optional UnitPath stPath = 2;					//战斗单位实际移动的路径
+	optional int32 iDirection = 3;					//战场上单位移动后的新方向
+	optional int32 iMoveType = 4;					//战场单位移动的类型,对应CombatMoveType
+	optional int32 iAnimType = 5;					//移动播放的动画类型，给客户端使用
+}
+
+//战斗单位行动目标产生的效果
+message ActionTarget
+{
+	optional int32 iTargetUnitID = 1;		//行动目标战斗单位的ID
+	repeated bool bIsStatSet = 2;			//对行动目标单位产生的状态，数组下标和状态类型ActionEffectStatus对应
+	repeated int32 iCastAttrEffect = 5;		//对技能释放方属性产生的效果
+	repeated int32 iAttrEffect = 3;			//对战斗单位属性产生的效果
+	optional UnitPosition stCastPos = 4;	//如果产生击退状态,则为攻击方新的位置
+	optional UnitPosition stTargetPos = 6;	//如果产生击退状态，则为目标的新位置
+	optional int32 iSpecialFuncType = 7;	//技能产生的特殊效果类型，对应SkillSpecialFuncType
+}
+
+//战斗单位行动的通知
+message Zone_CombatAction_Notify
+{
+	optional int32 iActionUnitID = 1;		//行动的战斗单位ID
+	optional UnitPosition stTargetPos = 9;	//行动的目标的位置
+	optional ActionType eType = 2 [default=COMBAT_ACTION_INVALID];	//战斗单位行动的类型
+	optional int32 iUseSkillType = 8;		//使用技能的类型
+	optional int32 iCostType = 6;			//技能消耗的属性类型
+	optional int32 iCostNum = 7;			//技能消耗的属性数量
+	optional int32 iCastSkillID = 3;		//如果是使用技能,使用的技能ID
+	optional int32 iItemID = 4;				//如果是使用道具，使用的物品ID
+	repeated ActionTarget stTargets = 5;	//本次行动的目标和效果
+	optional int32 iNewTrapHP = 10;			//如果是攻击机关，为机关的最新HP
+}
+
+//单个战斗奖励的详细信息
+message OneRewardInfo
+{
+	optional int32 iRewardType = 1;			//奖励掉落的类型
+	optional int32 iItemID = 2;				//如果是物品，物品的ID
+	optional int32 iResType = 3;			//如果是资源，为资源类型
+	optional int32 iDropNum = 4;			//掉落的数目
+}
+
+//战斗的奖励
+message CombatReward
+{
+	repeated OneRewardInfo stRewardInfo = 1;	//战斗奖励的详细信息
+}
+
+//战斗结束消息的通知
+message Zone_FinCombat_Notify
+{
+	optional bool bIsActiveWin = 1;			//是否主动战斗方获胜
+	optional CombatReward stReward = 2;		//战斗的奖励
+}
+
+//战斗客户端操作指令的通知
+message Zone_UnitDirective_Notify
+{
+	optional UnitDirectiveType iDirective = 1;		//操作的指令类型
+	optional int32 iCombatUnitID = 2;				//操作的战斗单位唯一ID
+}
+
+//客户端更新伙伴AI的请求
+message Zone_UpdatePartnerAI_Request
+{
+	optional int32 iPartnerAIID = 1;				//更新的伙伴AI ID
+}
+
+//客户端更新伙伴AI的返回
+message Zone_UpdatePartnerAI_Response
+{
+	optional int32 iResult = 1;						//更新伙伴请求的处理结果
+}
+
+//BUFF产生的效果
+message BuffEffect
+{
+	optional int32 iBuffID = 1;							//生效的BUFF ID
+	optional int32 iTargetUnitID = 4;					//BUFF生效的目标战斗单位ID
+	optional int32 iAttrType = 2;						//影响的属性类型
+	optional int32 iAttrChange = 3;						//影响的属性改变量
+	optional Zone_CombatAddBuff_Notify stAddBuff = 5;	//如果是增加BUFF，增加BUFF的通知
+}
+
+//移除单个BUFF产生的效果
+message RemoveOneBuffEffect
+{
+	optional int32 iBuffID = 1;						//移除的BUFF ID
+	optional int32 iAttrType = 2;					//被改变的属性类型
+	optional int32 iAttrChange = 3;					//属性发生的变化
+}
+
+//移除BUFF产生的效果
+message RemoveBuffEffect
+{
+	repeated RemoveOneBuffEffect stRemoveOnes = 1;	//移除BUFF产生的效果
+}
+
+//增加的BUFF详细信息
+message AddBuffInfo
+{
+	optional int32 iBuffID = 1;						//增加的BUFF ID
+	optional RemoveBuffEffect stRemoveBuff = 2;		//移除的BUFF产生的效果
+	optional BuffEffect stEffects = 3;				//如果是即时生效的BUFF,此处为BUFF的生效效果
+}
+
+//增加单个战斗单位的BUFF
+message OneAddBuff
+{
+	optional int32 iTargetUnitID = 1;				//增加的BUFF目标单位ID
+	repeated AddBuffInfo stBuffInfo = 2;			//增加的BUFF详细信息
+}
+
+//增加战斗单位BUFF的通知
+message Zone_CombatAddBuff_Notify
+{
+	optional int32 iCastUnitID = 1;					//施加BUFF的战斗单位ID
+	repeated OneAddBuff stAddBuffs = 2;				//增加的BUFF
+}
+
+//战斗单位BUFF生效的通知
+message Zone_DoBuffEffect_Notify
+{
+	optional int32 iTriggerUnitID = 2;				//BUFF触发的战斗单位ID
+	repeated BuffEffect stEffects = 3;				//实际BUFF生效的效果
+}
+
+//移除战斗单位BUFF的通知
+message Zone_RemoveBuff_Notify
+{
+	optional int32 iTargetUnitID = 1;				//移除BUFF的目标战斗单位ID
+	repeated RemoveBuffEffect stEffects = 2;		//移除BUFF产生的效果
+}
+
+//战场增加战斗单位的通知
+message Zone_AddCombatUnit_Notify
+{
+	optional int32 iCampType = 1;				//增加的战斗单位所在的阵营
+	optional CombatUnit stUnit = 2;				//增加的战斗单位详细信息
+}
+
+//强制杀死战斗单位的通知
+message Zone_KillCombatUnit_Notify
+{
+	optional int32 iUnitID = 1;					//杀死的战斗单位的UnitID
+}
+
+//增加战场机关的通知
+message Zone_AddCombatTrap_Notify
+{
+	optional int32 iConfigID = 1;				//机关配置的ID
+	optional int32 iTrapObjID = 2;				//机关对象的ID
+	optional int32 iCamp = 3;					//增加机关的阵营
+	optional UnitPosition stPos = 4;			//机关放置的位置
+	optional int32 iDirection = 5;				//机关的面向
+}
+
+//触发战场机关的通知
+message Zone_TriggerCombatTrap_Notify
+{
+	optional int32 iTrapObjID = 1;				//触发的机关对象ID
+	optional int32 iTriggerObjID = 2;			//触发者的ObjID，为战斗单位或者机关
+	optional int32 iTriggerType = 3;			//触发的类型，被动类型触发者必须为机关,否则必须为战斗单位
+	optional int32 iInterruptType = 4;			//打断触发者行为的类型，打断移动或者行动
+}
+
+//移除战场机关的通知
+message Zone_DeleteCombatTrap_Notify
+{
+	optional int32 iTrapObjID = 1;				//清除的机关对象ID
+}
+
+//战斗单位属性变化的通知
+message Zone_UnitAttrChange_Notify
+{
+	optional int32 iUnitID = 1;					//改变属性的战斗单位ID
+	optional int32 iAttrType = 2;				//改变的战斗属性类型
+	optional int32 iAttrChange = 3;				//改变的战斗属性数值
+}
+
+//发起PVP战斗的请求
+message Zone_StartPVPCombat_Request
+{
+	optional uint32 uiPassiveUin = 1;				//被挑战者的uin
+}
+
+//发起PVP战斗的返回
+message Zone_StartPVPCombat_Response
+{
+	optional int32 iResult = 1;					//发起PVP战斗的返回错误码
+}
+
+//发起PVP战斗的通知
+message Zone_StartPVPCombat_Notify
+{
+	optional uint32 uiActiveUin = 1;			//发起战斗的玩家uin
+	optional string strActiveName = 2;			//发起战斗玩家的名字
+}
+
+//接受PVP战斗的请求
+message Zone_AcceptPVPCombat_Request
+{
+	optional uint32 uiActiveUin = 1;			//战斗主动发起方的uin
+	optional bool bIsAccept = 2;				//是否接受战斗，false为拒绝战斗
+}
+
+//接受PVP战斗的返回
+message Zone_AcceptPVPCombat_Response
+{
+	optional int32 iResult = 1;					//接受PVP战斗的返回错误码
+}
+
+//拒绝PVP战斗的通知
+message Zone_RejectPVPCombat_Notify
+{
+	optional int32 iPassiveUin = 1;				//拒绝战斗的玩家uin
+	optional string strPassiveName = 2;			//拒绝战斗的玩家名字
+}
+
+//场景玩家是否在战斗中的通知
+message Zone_ChangeFightState_Notify
+{
+	optional int32 iUnitID = 1;					//玩家角色的unitid
+	optional bool bIsInFight = 2;				//玩家当前是否在战斗中
+}
+
+//单个战斗单位的站位
+message OneCombatUnitInfo
+{
+	optional int32 iUnitID = 1;					//战斗单位的unitID
+	optional UnitPosition stPos = 2;			//战斗单位的位置
+}
+
+//玩家的战斗单位站位信息
+message CombatForm
+{
+	repeated OneCombatUnitInfo stUnitInfos = 1;	//战斗阵营的单位站位信息
+}
+
+//客户端布阵的请求
+message Zone_SetCombatForm_Request
+{
+	optional CombatForm stForm = 1;				//设置的阵型信息
+}
+
+//客户端布阵的返回
+message Zone_SetCombatForm_Response
+{
+	optional int32 iResult = 1;					//设置阵型是否成功
+}
+
+//客户端布阵的通知
+message Zone_SetCombatForm_Notify
+{
+	optional CombatForm stActiveForm = 1;		//主动战斗方的阵营信息
+	optional CombatForm stPassiveForm = 2;		//被动接受方的阵营信息
+}
+
+//扣除战斗单位BUFF回合数的通知
+message Zone_DecreaseUnitBuff_Notify
+{
+	optional int32 iCombatUnitID = 1;			//减少BUFF回合数的战斗单位UnitID
+}
+
+//单个战斗单位的速度信息
+message OneActionInfo
+{
+	optional int32 iUnitID = 1;					//出手单位的UNITID
+	optional int32 iXianGong = 2;				//战斗单位的先攻值
+}
+
+//推送战斗单位出手信息的通知
+message Zone_ActionUnitInfo_Notify
+{
+	repeated OneActionInfo stInActionInfos = 1;		//在行动队列中的消息
+	repeated OneActionInfo stActionDoneInfos = 2;	//完成行动的战斗单位信息
+}
+
+//单个技能CD信息
+message SkillCDInfo
+{
+	optional int32 iSkillID = 1;				//技能的ID
+	optional int32 iCDRound = 2;				//技能CD的回合数
+}
+
+//战斗单位技能CD回合数的通知
+message Zone_SkillCDRound_Notify
+{
+	optional int32 iUnitID = 1;					//战斗单位的UnitID
+	repeated SkillCDInfo stCDInfos = 2;			//战斗单位技能CD信息
+}

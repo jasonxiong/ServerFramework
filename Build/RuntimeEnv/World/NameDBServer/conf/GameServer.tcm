@@ -1,0 +1,9 @@
+# 内网服务器通信的Bus
+# ID 格式为 WorldID.ServerType.InstanceID.ZoneID
+[ServerBus]
+ServerBusNum = 1
+# World to NameDB, Server End
+ServerBusClientID_0 = #WORLDID#.0.1.0
+ServerBusServerID_0 = #WORLDID#.16.1.0
+ServerBusIP_0       = #SERVERIP#
+ServerBusPort_0     = 9400

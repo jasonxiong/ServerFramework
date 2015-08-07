@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SRoleBirthConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>36 </Unit>
+        <Count>1 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>2ce57db4172d690822867b175bf182c8</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SRoleBirthConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iInitBagNum>280 </iInitBagNum>
+    <iInitCoin>1000 </iInitCoin>
+    <iInitGold>0 </iInitGold>
+    <iInitEnergy>100 </iInitEnergy>
+    <iUnitNum>3 </iUnitNum>
+    <aiUnitID>100001 0 0 </aiUnitID>
+</SRoleBirthConfig>
+</SRoleBirthConfig_Tab>

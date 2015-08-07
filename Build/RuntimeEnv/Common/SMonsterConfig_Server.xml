@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SMonsterConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>100 </Unit>
+        <Count>1 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>170155e4c8e5fbe55be8b6a5db8b0f38</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SMonsterConfig version="1">
+    <iConfigID>2000001 </iConfigID>
+    <iProf>FIGHT_PROF_FIGHTER </iProf>
+    <iSize>0 </iSize>
+    <iMonsterAIID>1 </iMonsterAIID>
+    <iAttributeNum>17 </iAttributeNum>
+    <aiAttribute>1 1 7 20 20 10 7 3 5 5 5 5 1 1 1 1 1 </aiAttribute>
+    <iNormalSkill>10001 </iNormalSkill>
+    <iInitSlot>5 </iInitSlot>
+    <iCounterAtkSkillID>2000001 </iCounterAtkSkillID>
+</SMonsterConfig>
+</SMonsterConfig_Tab>

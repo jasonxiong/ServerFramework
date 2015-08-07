@@ -1,0 +1,84 @@
+//该文件用于存放一些通用的结构体定义和变量定义
+
+//游戏的聊天频道
+enum ChatChannelType
+{
+	CHAT_CHANNEL_INVALID = 0;		//非法的聊天频道
+	CHAT_CHANNEL_WORLD = 1;			//世界聊天
+	CHAT_CHANNEL_PRIVATE = 2;		//私聊
+	CHAT_CHANNEL_SYSTEM = 3;		//系统消息
+}
+
+//单个区服务器的信息
+message ZoneInfo
+{
+	optional uint32 uZoneID = 1;			//区服务器的ID
+	optional string strZoneName = 2;		//区服务器的名字
+	optional uint32 uZoneState = 3;			//区服务器的繁忙状态
+	optional string strZoneIP = 4;			//区服务器的IP
+	optional uint32 uZonePort = 5;			//区服务器的端口
+}
+
+//名字服务器中存储的名字类型
+enum enNameType
+{
+	EN_NAME_TYPE_INVALID = 0;				//非法的添加名字类型
+	EN_NAME_TYPE_ROLE = 1;					//玩家角色的名字
+	EN_NAME_TYPE_MAX = 2;					//最大的名字类型
+}
+
+//区服务器列表信息
+message ZoneList
+{
+	repeated ZoneInfo stZoneInfos = 1;		//拉取到的分区信息
+}
+
+//玩家角色ID
+message RoleID
+{
+	optional uint32 uin = 1;				//玩家角色的UIN
+	optional uint32 uiSeq = 2;				//玩家角色的序号
+}
+
+//登出服务器的请求
+message LogoutServer_Request
+{
+	optional uint32 uin = 1;				//登出的玩家的uin
+	optional uint32 uReason = 2;			//玩家登出的原因
+}
+
+//登出服务器的返回
+message LogoutServer_Response
+{
+	optional int32 iResult = 1;				//登出服务器请求的结果
+}
+
+//新增名字的请求
+message AddNewName_Request
+{
+	optional string strName = 1;			//新增加的名字
+	optional int32 iType = 2;				//新增加名字的类型,角色的名字还是公会的名字
+	optional uint32 name_id = 3;			//名字对应的ID，为角色UIN或者公会ID
+}
+
+//新增名字的返回
+message AddNewName_Response
+{
+	optional int32 iResult = 1;				//新增名字的处理返回结果
+	optional int32 iType = 2;				//增加的名字的类型
+	optional uint32 name_id = 3;			//名字对应的ID，为角色的UIN或者公会ID
+	optional string strName = 4;			//新增加的名字
+}
+
+//删除名字的请求
+message DeleteName_Request
+{
+	optional string strName = 1;			//要删除的名字
+	optional int32 iType = 2;				//要删除的名字类型
+}
+
+//删除名字的返回
+message DeleteName_Response
+{
+	optional int32 iResult = 1;				//删除名字的处理返回结果
+}

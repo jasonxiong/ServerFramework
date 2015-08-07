@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="GBK" standalone="yes" ?>
+<metalib tagsetversion="1" name="GameConfig" version="1">
+	
+	<macro name="MAX_WORLD_PER_CLUSTER" value="40" desc="一个集群中拥有的世界服务器的数量" />
+	<macro name="MAX_SERVER_BUS_ADDR_LEN" value="64" desc="服务器的ZMQ BUS的地址的最大长度，格式为 ip:port"/>
+	<macro name="MAX_SERVER_BUS_NUMBER" value="100" desc="服务器最大支持的ZMQ通信通道的数量"/>
+	<macro name="MAX_HANDLER_NUMBER" value="16384" desc="服务器支持的最大的消息处理Handler的数量"/>
+	<macro name="MAX_ZONE_PER_WORLD" value="8" desc="当前单个世界能支持的最大分区"/>
+	<macro name="MAX_SESSIONKEY_LENGTH" value="64" desc="玩家session key的最大长度"/>
+	
+	<macro name="ROLE_TABLE_SPLIT_FACTOR" value="8" desc="ROLEDB数据库访问的分表因子"/>
+	
+	<macro name="ACCOUNT_TABLE_SPLIT_FACTOR" value="8" desc="AccountDB数据库访问的分表因子"/>
+	
+	<macro name="NAME_TABLE_SPLIT_FACTOR" value="8" desc="NameDB数据库访问的分表因子"/>
+	
+	<macro name="MAX_NICK_NAME_LENGTH" value="64" desc="玩家名字的最大长度"/>
+	
+	<macro name="GAME_START_YEAR" value="2014" desc="游戏正式开始运营的年份"/>
+	
+	<macro name="UNACTIVE_ROLE_TIMEOUT" value="7200" desc="判断玩家不活跃的超时时间,120*60s"/>
+	
+	<macro name="TICK_TIMEVAL_UPDATEDB" value="300" desc="更新玩家数据库的时间间隔，5*60s"/>
+	
+	<macro name="ONE_MIN_TIMEOUT" value="60" desc="一分钟定时"/>
+	
+	<macro name="TEN_SECOND_TIMER" value="10" desc="10秒钟定时"/>
+
+	<macro name="GAME_ROLEUNIT_CONFIG_ID" value="1" desc="游戏主角的ID"/>
+
+	<macro name="MAX_REP_BLOCK_NUM" value="280" desc="玩家最大背包格子数"/>
+	
+	<macro name="MAX_UNIT_ITEM_SLOT" value="5" desc="战斗单位身上物品槽最大数目"/>
+	
+	<macro name="MAX_FIGHT_CD_NUM" value="6" desc="战斗时最多支持的计算CD的数目"/>
+
+	<!-- 游戏出生表支持的出生配置最大数目 -->
+	<macro name="MAX_ROLE_BIRTH_NUM" value="2" desc="游戏支持的最大出生表的行数"/>
+		
+	<!-- 游戏支持的物品配置最大数目 -->
+	<macro name="MAX_GAME_ITEM_CONFIG_NUM" value="1000" desc="游戏支持的物品配置最大数目"/>
+		
+	<!-- 游戏战斗单位表支持的角色和伙伴的最大数目 -->
+	<macro name="MAX_FIGHT_UNIT_NUM" value="500" desc="游戏支持的战斗单位的最大数目"/>
+	
+	<!-- 玩家阵型上阵单位的数量上限 -->
+	<macro name="MAX_FIGHTUNIT_ON_FORM" value="5" desc="玩家阵型上阵单位的数量上限"/>	
+	
+	<!-- 战斗单位AI中最多支持的行动点查找数目 -->
+	<macro name="MAX_FIGHT_AI_POS_NUM" value="150" desc="战斗单位AI中最多支持的行动点查找数目"/>	
+	
+	<!-- 玩家能拥有的战斗单位的数量上限 -->
+	<macro name="MAX_ROLE_FIGHTUNIT_NUM" value="30" desc="玩家能拥有的战斗单位的数量上限"/>	
+	
+	<!-- 游戏战斗单个阵营允许上阵的最大战斗单位数 -->
+	<macro name="MAX_CAMP_FIGHT_UNIT_NUM" value="10" desc="游戏战斗单个阵营允许上阵的最大战斗单位数"/>
+
+	<!-- 游戏战斗战场上最大放置的机关数目 -->
+	<macro name="MAX_COMBAT_TRAP_NUM" value="99" desc="游戏战斗战场上最大放置的机关数目"/>
+
+	<!-- 游戏支持的最大战斗关卡配置数目 -->
+	<macro name="MAX_BATTLE_CROSS_NUM" value="500" desc="游戏支持的最大战斗关卡配置数目"/>
+
+	<!-- 游戏支持的最大关卡怪物组配置数目 -->
+	<macro name="MAX_CROSS_MONSTER_CONFIG_NUM" value="500" desc="游戏支持的最大关卡怪物组配置数目"/>
+
+	<!-- 游戏支持的最大战斗胜负条件数目 -->
+	<macro name="MAX_FIGHT_JUDGE_CONFIG_NUM" value="50" desc="游戏支持的最大战斗胜负条件数目"/>
+
+	<!-- 游戏支持的最大战斗单位AI数目 -->
+	<macro name="MAX_FIGHTUNIT_AI_CONFIG_NUM" value="50" desc="游戏支持的最大战斗单位AI数目"/>
+
+	<!-- 游戏支持的最大战斗怪物的数目 -->
+	<macro name="MAX_MONSTER_CONFIG_NUM" value="1000" desc="游戏支持的最大战斗怪物数目"/>
+
+	<!-- 游戏支持的最大战斗技能数目 -->
+	<macro name="MAX_FIGHT_SKILL_CONFIG_NUM" value="1000" desc="战斗技能的最大数目"/>
+
+	<!-- 游戏支持的最大技能释放距离配置数目 -->
+	<macro name="MAX_SKILL_RANGE_CONFIG_NUM" value="100" desc="游戏支持的最大技能释放距离配置数目"/>
+
+	<!-- 游戏支持的最大技能释放范围配置数目 -->
+	<macro name="MAX_SKILL_AREA_CONFIG_NUM" value="500" desc="游戏支持的最大技能释放范围配置数目"/>
+
+	<!-- 游戏支持的最大技能修正配置数目 -->
+	<macro name="MAX_SKILL_SCORE_CONFIG_NUM" value="500" desc="游戏支持的最大技能修正配置数目"/>
+
+	<!-- 游戏支持的最大技能伤害配置数目 -->
+	<macro name="MAX_SKILL_DAMAGE_CONFIG_NUM" value="500" desc="游戏支持的最大技能伤害配置数目"/>
+
+	<!-- 游戏支持的最大BUFF配置数目 -->
+	<macro name="MAX_FIGHT_BUFF_CONFIG_NUM" value="3000" desc="游戏支持的最大BUFF配置数目"/>
+
+	<!-- 游戏支持的最大战斗奖励配置数目 -->
+	<macro name="MAX_DROP_REWARD_CONFIG_NUM" value="1000" desc="游戏支持的最大战斗奖励配置数目"/>
+
+	<!-- 单个战斗单位能附加的Buff数量上限 -->
+	<macro name="MAX_FIGHT_UNIT_BUFF_NUM" value="32" desc="单个战斗单位能附加的Buff数量上限"/>
+	
+  <!-- 支持的技能伙伴合击配置的上限 -->
+	<macro name="MAX_JOINT_ATTACK_CONFIG_NUM" value="1000" desc="支持的技能伙伴合击配置的上限"/>
+	
+	<!-- 支持的战场机关配置的上限 -->
+	<macro name="MAX_COMBAT_TRAP_CONFIG_NUM" value="1000" desc="支持的战场机关配置的上限"/>
+	
+	<!-- 服务器当前的状态 -->
+	<macrosgroup name="ServerState">
+		<macro cname="StateIdle" value="1" name="SERVER_STATE_IDLE"/>
+		<macro cname="StateBusy" value="2" name="SERVER_STATE_BUSY"/>
+		<macro cname="StateFull" value="3" name="SERVER_STATE_FULL"/>
+	</macrosgroup>
+		
+	<!-- 游戏单位类型 -->
+	<macrosgroup name="GameUnitType">
+    <macro cname="EUT_ROLE" value="1" name="EUT_ROLE" desc="角色"/>
+	</macrosgroup>
+	
+	<!-- 场景单位的状态,每个状态对应二进制中的一个bit -->
+	<macrosgroup name="EUnitStatus">
+		<macro cname="Status_Online" value="1" name="EGUS_ONLINE"/>
+		<macro cname="Status_Logout" value="2" name="EGUS_LOGOUT"/>
+		<macro cname="Status_IsGM" value="4" name="EGUS_ISGM"/>
+		<macro cname="Status_DELETE" value="8" name="EGUS_DELETE"/>
+	</macrosgroup>
+
+	<!-- 设置玩家下线的原因 -->
+	<macrosgroup name="LogoutReasonType">
+		<macro cname="Logout_Request" value="140" name="LOGOUT_REASON_REQUEST"/>
+		<macro cname="Logout_Kickoff" value="141" name="LOGOUT_REASON_KICKOFF"/>
+	</macrosgroup>
+	
+	<!-- 玩家游戏资源类型 -->
+	<macrosgroup name="ResourceType">
+		<macro value="0" name="RESOURCE_TYPE_INVALID" desc="非法的资源类型"/>
+		<macro value="1" name="RESOURCE_TYPE_COIN" desc="游戏金币"/>
+		<macro value="2" name="RESOURCE_TYPE_CASH" desc="游戏充值货币"/>
+		<macro value="3" name="RESOURCE_TYPE_ENERGY" desc="玩家体力值"/>
+		<macro value="4" name="RESOURCE_TYPE_MAX" desc="游戏资源最大"/>
+	</macrosgroup>
+	
+	<!-- 战斗单位职业类型 -->
+	<macrosgroup name="FightProfType">
+		<macro cname="剑士" value="101" name="FIGHT_PROF_MYRMIDON" desc="剑士，近战刺客"/>
+		<macro cname="战士" value="102" name="FIGHT_PROF_FIGHTER" desc="战士，近战肉"/>
+		<macro cname="佣兵" value="103" name="FIGHT_PROF_MERCENARY" desc="佣兵"/>
+		<macro cname="重骑士" value="104" name="FIGHT_PROF_ARMOR" desc="重骑士"/>
+		<macro cname="弓箭手" value="105" name="FIGHT_PROF_ARCHE" desc="弓箭手"/>
+		<macro cname="盗贼" value="106" name="FIGHT_PROF_THIEF" desc="盗贼"/>
+		<macro cname="牧师" value="107" name="FIGHT_PROF_PRIESTS" desc="牧师"/>
+		<macro cname="魔道士" value="108" name="FIGHT_PROF_MAGES" desc="魔道士"/>
+		<macro cname="暗法师" value="109" name="FIGHT_PROF_DARKMAGE" desc="暗法师"/>
+	</macrosgroup>
+	
+	<!-- 战斗属性的类型，与配置中属性数组的下标对应 -->
+	<macrosgroup name="FightAttributeType">
+		<macro cname="生命值" value="0" name="FIGHT_ATTR_HP" desc="生命值属性"/>
+		<macro cname="速度值" value="1" name="FIGHT_ATTR_SPEED" desc="速度值属性,决定行动步长"/>
+		<macro cname="攻击值" value="2" name="FIGHT_ATTR_ATK" desc="攻击值属性"/>
+		<macro cname="法强值" value="3" name="FIGHT_ATTR_AP" desc="法强值属性"/>
+		<macro cname="防御值" value="4" name="FIGHT_ATTR_DEF" desc="防御值属性"/>
+		<macro cname="魔抗值" value="5" name="FIGHT_ATTR_SR" desc="魔抗值属性"/>
+		<macro cname="命中值" value="6" name="FIGHT_ATTR_HIT" desc="命中值属性"/>
+		<macro cname="闪避值" value="7" name="FIGHT_ATTR_AVO" desc="闪避值属性"/>
+		<macro cname="暴击值" value="8" name="FIGHT_ATTR_CRI" desc="暴击值属性"/>
+		<macro cname="韧性值" value="9" name="FIGHT_ATTR_TOU" desc="韧性值属性"/>
+		<macro cname="精准值" value="10" name="FIGHT_ATTR_ACC" desc="精准值属性"/>
+		<macro cname="招架值" value="11" name="FIGHT_ATTR_PAR" desc="招架值属性"/>
+		<macro cname="护盾" value="12" name="FIGHT_ATTR_HUDUN" desc="护盾属性"/>
+		<macro cname="反击" value="13" name="FIGHT_ATTR_FANJI" desc="反击属性"/>
+		<macro cname="连击" value="14" name="FIGHT_ATTR_LIANJI" desc="连击属性"/>
+		<macro cname="最大生命" value="15" name="FIGHT_ATTR_HPMAX" desc="最大生命属性"/>
+		<macro cname="先攻值" value="16" name="FIGHT_ATTR_XIANGONG" desc="先攻值属性,决定出手顺序"/>
+		<macro cname="属性最大" value="17" name="FIGHT_ATTR_MAX" desc="属性最大的，程序使用"/>
+	</macrosgroup>
+	
+	<!-- 场景地图上单位的朝向 -->
+	<macrosgroup name="UnitDirectionType">
+		<macro value="1" name="DIRECTION_SOUTH_EAST" desc="右下"/>
+		<macro value="2" name="DIRECTION_EAST" desc="右"/>
+		<macro value="3" name="DIRECTION_NORTH_EAST" desc="右上"/>
+		<macro value="4" name="DIRECTION_NORTH" desc="上"/>
+		<macro value="5" name="DIRECTION_NORTH_WEST" desc="左上"/>
+		<macro value="6" name="DIRECTION_WEST" desc="左"/>
+		<macro value="7" name="DIRECTION_SOUTH_WEST" desc="左下"/>
+		<macro value="8" name="DIRECTION_SOUTH" desc="下"/>
+	</macrosgroup>
+	
+	<!-- 玩家的物品类型 -->
+	<macrosgroup name="GameItemType">
+		<macro cname="invalid" value="100" name="REP_ITEM_TYPE_INVALID" desc="非法的物品类型"/>
+		<macro cname="equip" value="101" name="REP_ITEM_TYPE_PROP" desc="道具类型"/>
+		<macro cname="prop" value="102" name="REP_ITEM_TYPE_EQUIP" desc="装备类型"/>
+	</macrosgroup>
+	
+	<!-- 玩家物品的叠加类型 -->
+	<macrosgroup name="SuperPositionType">
+		<macro value="100" name="ITEM_SUPERPOSITION_TYPE_INVALID" desc="非法的物品叠加类型"/>
+		<macro value="101" name="ITEM_SUPERPOSITION_TYPE_YES" desc="可叠加的物品类型"/>
+		<macro value="102" name="ITEM_SUPERPOSITION_TYPE_NO" desc="不可叠加的物品类型"/>
+	</macrosgroup>	
+
+	<!-- 角色和小伙伴身上的装备槽类型-->
+	<macrosgroup name="EquipSlotType">
+		<macro value="0" name="EQUIP_SLOT_TYPE_INVALID" desc="非法的装备槽类型"/>
+		<macro value="1" name="EQUIP_SLOT_TYPE_WUQI" desc="武器"/>
+		<macro value="2" name="EQUIP_SLOT_TYPE_SHANGZHUANG" desc="上装"/>
+		<macro value="3" name="EQUIP_SLOT_TYPE_XIAZHUANG" desc="下装"/>
+		<macro value="4" name="EQUIP_SLOT_TYPE_SHIZHUANG" desc="时装"/>
+		<macro value="5" name="EQUIP_SLOT_TYPE_JIEZHI" desc="戒指"/>
+		<macro value="6" name="EQUIP_SLOT_TYPE_XIANGLIAN" desc="项链"/>
+		<macro value="7" name="EQUIP_SLOT_TYPE_YAODAI" desc="腰带"/>
+		<macro value="8" name="EQUIP_SLOT_TYPE_MAX" desc="最大类型，方便程序使用"/>
+	</macrosgroup>	
+	
+	<!-- 游戏战斗单位的策略类型 -->
+	<macrosgroup name="UnitAIType">
+		<macro cname="GONGJI" value="0" name="UNIT_AI_TYPE_GONGJI" desc="攻击"/>
+		<macro cname="ZHUIJI" value="1" name="UNIT_AI_TYPE_ZHUIJI" desc="追击"/>
+		<macro cname="POJIN" value="2" name="UNIT_AI_TYPE_POJIN" desc="迫近"/>
+		<macro cname="JIAOSHOU" value="3" name="UNIT_AI_TYPE_JIAOSHOU" desc="交手"/>
+		<macro cname="HEJI" value="4" name="UNIT_AI_TYPE_HEJI" desc="合击"/>
+		<macro cname="BEIJI" value="5" name="UNIT_AI_TYPE_BEIJI" desc="被击"/>
+		<macro cname="BEIZU" value="6" name="UNIT_AI_TYPE_BEIZU" desc="被阻"/>
+		<macro cname="BEIAI" value="7" name="UNIT_AI_TYPE_BEIAI" desc="被碍"/>
+		<macro cname="ZHILIAO" value="8" name="UNIT_AI_TYPE_ZHILIAO" desc="治疗"/>
+		<macro cname="ZUDANG" value="9" name="UNIT_AI_TYPE_ZUDANG" desc="阻挡"/>
+		<macro cname="FANGAI" value="10" name="UNIT_AI_TYPE_FANGAI" desc="妨碍"/>
+		<macro cname="MUBIAO" value="11" name="UNIT_AI_TYPE_MUBIAO" desc="目标"/>
+		<macro cname="JISHA" value="12" name="UNIT_AI_TYPE_JISHA" desc="击杀"/>
+		<macro cname="ZHENJIU" value="13" name="UNIT_AI_TYPE_ZHENJIU" desc="拯救"/>
+		<macro cname="MAX" value="14" name="UNIT_AI_TYPE_MAX" desc="策略最大"/>
+	</macrosgroup>	
+	
+	<!-- 战斗单位的技能使用类型 -->
+	<macrosgroup name="SkillUseType">
+		<macro value="2" name="SKILL_USE_ON_STAGE" desc="登场使用的技能类型"/>
+		<macro value="1" name="SKILL_USE_ACTIVE" desc="主动使用的技能类型"/>
+		<macro value="3" name="SKILL_USE_ROUNDACTION" desc="单位回合前使用的技能类型"/>
+		<macro value="4" name="SKILL_USE_JIAJI" desc="夹击的技能使用类型"/>
+		<macro value="5" name="SKILL_USE_LIANJI" desc="连击的技能使用类型"/>
+		<macro value="6" name="SKILL_USE_HEJI" desc="合击的技能使用类型"/>
+		<macro value="7" name="SKILL_USE_FANJI" desc="反击的技能使用类型"/>
+		<macro value="8" name="SKILL_USE_AI" desc="AI使用的技能类型"/>
+	</macrosgroup>	
+	
+	<!-- 技能施加的目标类型 -->
+	<macrosgroup name="SkillTargetType">
+		<macro value="0" name="SKILL_TARGET_INVALID" desc="无"/>
+		<macro value="1" name="SKILL_TARGET_SELF" desc="自身"/>
+		<macro value="2" name="SKILL_TARGET_CAMP" desc="友方"/>
+		<macro value="3" name="SKILL_TARGET_NOT_ENEMY" desc="非敌"/>
+		<macro value="4" name="SKILL_TARGET_ENEMY" desc="敌人"/>
+		<macro value="7" name="SKILL_TARGET_ALL" desc="所有人"/>
+		<macro value="8" name="SKILL_TARGET_GROUND" desc="对地的技能"/>
+	</macrosgroup>	
+
+	<!-- 战斗单位所属的战斗阵营信息 -->
+	<macrosgroup name="FightCampType">
+		<macro value="0" name="FIGHT_CAMP_INVALID" desc="非法的战斗阵营"/>
+		<macro value="1" name="FIGHT_CAMP_ACTIVE" desc="主动发起战斗方"/>
+		<macro value="2" name="FIGHT_CAMP_PASSIVE" desc="被动接受战斗方"/>
+		<macro value="3" name="FIGHT_CAMP_NEUTRAL" desc="中立战斗阵营"/>
+	</macrosgroup>	
+	
+	<!-- 战斗单位在战场上的方向信息 -->
+	<macrosgroup name="CombatDirectionType">
+		<macro value="0" name="COMBAT_DIRECTION_INVALID" desc="非法的方向信息"/>
+		<macro value="1" name="COMBAT_DIRECTION_EAST" desc="方向向右"/>
+		<macro value="2" name="COMBAT_DIRECTION_NORTH" desc="方向向上"/>
+		<macro value="3" name="COMBAT_DIRECTION_WEST" desc="方向向左"/>
+		<macro value="4" name="COMBAT_DIRECTION_SOUTH" desc="方向向下"/>
+	</macrosgroup>	
+	
+	<!-- 战斗单位的策略类型 -->
+	<macrosgroup name="CombatUnitAIType">
+		<macro value="0" name="COMBAT_UNIT_AI_JIAOSHOU" desc="交手"/>
+		<macro value="1" name="COMBAT_UNIT_AI_HEJI" desc="合击"/>
+		<macro value="2" name="COMBAT_UNIT_AI_JISHA" desc="击杀"/>
+		<macro value="3" name="COMBAT_UNIT_AI_BEIJI" desc="被击"/>
+		<macro value="4" name="COMBAT_UNIT_AI_ZHUIJI" desc="追击"/>
+		<macro value="5" name="COMBAT_UNIT_AI_RESERVE2" desc="保留2"/>
+		<macro value="6" name="COMBAT_UNIT_AI_RESERVE3" desc="保留3"/>
+		<macro value="7" name="COMBAT_UNIT_AI_RESERVE4" desc="保留4"/>
+		<macro value="8" name="COMBAT_UNIT_AI_RESERVE5" desc="保留5"/>
+		<macro value="9" name="COMBAT_UNIT_AI_RESERVE6" desc="保留6"/>
+		<macro value="10" name="COMBAT_UNIT_AI_RESERVE7" desc="保留7"/>
+		<macro value="11" name="COMBAT_UNIT_AI_RESERVE8" desc="保留8"/>
+		<macro value="12" name="COMBAT_UNIT_AI_RESERVE9" desc="保留9"/>
+		<macro value="13" name="COMBAT_UNIT_AI_RESERVE10" desc="保留10"/>
+		<macro value="14" name="COMBAT_UNIT_AI_SKILL1" desc="技能1"/>
+		<macro value="15" name="COMBAT_UNIT_AI_SKILL2" desc="技能2"/>
+		<macro value="16" name="COMBAT_UNIT_AI_SKILL3" desc="技能3"/>
+		<macro value="17" name="COMBAT_UNIT_AI_SKILL4" desc="技能4"/>
+		<macro value="18" name="COMBAT_UNIT_AI_SKILL5" desc="技能5"/>
+		<macro value="19" name="COMBAT_UNIT_AI_SKILL6" desc="技能6"/>
+	</macrosgroup>	
+	
+	<!-- 战斗Buff的触发类型 -->
+	<macrosgroup name="BuffTriggerType">
+		<macro value="0" name="BUFF_TRIGGER_IMMEDIATELY" desc="即时生效"/>
+		<macro value="1" name="BUFF_TRIGGER_ROUNDBEGIN" desc="回合开始"/>
+		<macro value="2" name="BUFF_TRIGGER_ROUNDEND" desc="回合结束"/>
+		<macro value="3" name="BUFF_TRIGGER_ACTIONROUNDBEGIN" desc="行动回合开始"/>
+		<macro value="4" name="BUFF_TRIGGER_ACTIONROUNDEND" desc="行动回合结束"/>
+		<macro value="10" name="BUFF_TRIGGER_UNDERATTACK" desc="被攻击"/>
+		<macro value="20" name="BUFF_TRIGGER_UNDERDAMAGE" desc="被伤害"/>
+		<macro value="30" name="BUFF_TRIGGER_DODGE" desc="闪避成功"/>
+		<macro value="5" name="BUFF_TRIGGER_MOVE" desc="移动触发BUFF"/>
+		<macro value="15" name="BUFF_TRIGGER_PROCESSDAMAGE" desc="伤害处理触发"/>
+	</macrosgroup>	
+	
+	<!-- 战斗Buff的叠加类型 -->
+	<macrosgroup name="BuffOverlyingType">
+		<macro value="0" name="BUFF_OVERLYING_ALL" desc="无叠加限制"/>
+		<macro value="1" name="BUFF_OVERLYING_ZHONGDU" desc="中毒类型"/>
+		<macro value="2" name="BUFF_OVERLYING_KANGDU" desc="抗毒类型"/>
+		<macro value="10" name="BUFF_OVERLYING_GONGJI" desc="攻击属性"/>
+		<macro value="20" name="BUFF_OVERLYING_BEIKE" desc="被击被克"/>
+		<macro value="30" name="BUFF_OVERLYING_FANZHI" desc="被击反制"/>
+		<macro value="100" name="BUFF_OVERLYING_JINGZHIACTION" desc="禁止行动"/>
+		<macro value="101" name="BUFF_OVERLYING_JINgZHIMOVE" desc="禁止移动"/>
+		<macro value="102" name="BUFF_OERLYING_JINGZHINORMALATK" desc="禁止普攻"/>
+		<macro value="103" name="BUFF_OVERLYING_JINGZHISKILLATK" desc="禁止发招"/>
+		<macro value="104" name="BUFF_OVERLYING_JINGZHIITEM" desc="禁止道具"/>
+		<macro value="1001" name="BUFF_OVERLYING_YINGGONG" desc="硬功修正"/>
+		<macro value="1002" name="BUFF_OVERLYING_RUANGONG" desc="软功修正"/>
+		<macro value="1003" name="BUFF_OVERLYING_NEIGONG" desc="内功修正"/>
+		<macro value="1004" name="BUFF_OVERLYING_QINGGONG" desc="轻功修正"/>
+		<macro value="1005" name="BUFF_OVERLYING_YANGONG" desc="眼功修正"/>
+		<macro value="1006" name="BUFF_OVERLYING_ERGONG" desc="耳功修正"/>
+		<macro value="1007" name="BUFF_OVERLYING_MINGZHONG" desc="命中修正"/>
+		<macro value="1008" name="BUFF_OVERLYING_SHANBI" desc="闪避修正"/>
+		<macro value="1009" name="BUFF_OVERLYING_JINGZHUN" desc="精准修正"/>
+		<macro value="1010" name="BUFF_OVERLYING_ZHAOJIA" desc="招架修正"/>
+		<macro value="1011" name="BUFF_OVERLYING_BAOJI" desc="暴击修正"/>
+		<macro value="1012" name="BUFF_OVERLYING_JIANREN" desc="坚韧修正"/>
+	</macrosgroup>	
+	
+	<!-- 战斗Buff的操作类型 -->
+	<macrosgroup name="BuffOperaType">
+		<macro value="0" name="BUFF_OPERA_INVALID" desc="没有操作类型"/>
+		<macro value="1" name="BUFF_OPERA_ADDATTR" desc="属性加"/>
+		<macro value="2" name="BUFF_OPERA_ADDRATEATTR" desc="属性百分比"/>
+		<macro value="3" name="BUFF_OPERA_REPLACEATTR" desc="属性替换"/>
+		<macro value="4" name="BUFF_OPERA_LOCKATTR" desc="属性锁定"/>
+		<macro value="10" name="BUFF_OPERA_ADDBUFF" desc="附加新BUFF"/>
+		<macro value="11" name="BUFF_OPERA_UNARM" desc="缴械，目标武器失效"/>
+		<macro value="12" name="BUFF_OPERA_IGNOREJOINTATK" desc="无视围攻，该BUFF使围攻无效"/>
+		<macro value="13" name="BUFF_OPERA_UNBENDING" desc="不屈"/>
+		<macro value="14" name="BUFF_OPERA_GUARD" desc="守护"/>
+		<macro value="100" name="BUFF_OPERA_FORBIDROUND" desc="禁止开始战斗回合"/>
+		<macro value="101" name="BUFF_OPERA_FORBIDMOVE" desc="禁止回合移动"/>
+		<macro value="103" name="BUFF_OPERA_FORBIDACTION" desc="禁止回合行动"/>
+	</macrosgroup>	
+	
+	<!-- 战斗Buff的属性目标类型 -->
+	<macrosgroup name="BuffTargetType">
+		<macro value="0" name="BUFF_TARGET_INVALID" desc="没有目标"/>
+		<macro value="1" name="BUFF_TARGET_SELF" desc="携带者"/>
+		<macro value="2" name="BUFF_TARGET_CAST" desc="发动者"/>
+		<macro value="3" name="BUFF_TARGET_TRIGGER" desc="触发者"/>
+	</macrosgroup>	
+	
+	<!-- 战斗Buff的生效参数类型 -->
+	<macrosgroup name="BuffParamType">
+		<macro value="0" name="BUFF_PARAM_TARGET" desc="目标参数"/>
+		<macro value="1" name="BUFF_PARAM_ATTRBUFF" desc="属性类型或状态ID"/>
+		<macro value="2" name="BUFF_PARAM_VALUE" desc="效果值参数"/>
+	</macrosgroup>	
+	
+	<!-- 战斗Buff的持久类型 -->
+	<macrosgroup name="BuffEffectType">
+		<macro value="0" name="BUFF_EFFECT_INVALID" desc="非法的持久类型"/>
+		<macro value="1" name="BUFF_EFFECT_FOREVER" desc="永久生效"/>
+		<macro value="2" name="BUFF_EFFECT_ROUNDS" desc="Buff消失时清除"/>
+	</macrosgroup>	
+	
+	<!-- 战斗奖励的类型 -->
+	<macrosgroup name="RewardType">
+		<macro value="0" name="REWARD_TYPE_INVALID" desc="非法的战斗奖励类型"/>
+		<macro value="2" name="REWARD_TYPE_ITEM" desc="奖励物品类型"/>
+		<macro value="5" name="REWARD_TYPE_FORMEXP" desc="增加阵型中单位经验"/>
+	</macrosgroup>
+
+	<!-- 战斗结果的类型 -->
+	<macrosgroup name="CombatResultType">
+		<macro value="0" name="COMBAT_RESULT_INVALID" desc="非法的战斗结果类型"/>
+		<macro value="1" name="COMBAT_RESULT_ACTIVE_WIN" desc="主动战斗方获胜"/>
+		<macro value="2" name="COMBAT_RESULT_PASSIVE_WIN" desc="被动战斗方获胜"/>
+	</macrosgroup>
+
+	<!-- 技能面向修正的类型 -->
+	<macrosgroup name="FaceModifierType">
+		<macro value="0" name="FACE_MODIFIER_DODGE" desc="闪避的修正"/>
+		<macro value="1" name="FACE_MODIFIER_BLOCK" desc="格挡的修正"/>
+		<macro value="2" name="FACE_MODIFIER_JIANREN" desc="坚韧的修正"/>
+		<macro value="3" name="FACE_MODIFIER_DEFENCE" desc="防御强度的修正"/>
+		<macro value="4" name="FACE_MODIFIER_DAMAGE" desc="伤害的修正"/>
+	</macrosgroup>
+
+	<!-- 机关的类型 -->
+	<macrosgroup name="CombatTrapType">
+		<macro value="0" name="COMBAT_TRAP_INVALID" desc="非法的机关类型"/>
+		<macro value="1" name="COMBAT_TRAP_TRAP" desc="陷阱类型"/>
+		<macro value="2" name="COMBAT_TRAP_ORGAN" desc="机关类型"/>
+	</macrosgroup>
+	
+	<!-- 机关的触发类型 -->
+	<macrosgroup name="TrapTriggerType">
+		<macro value="0" name="TRAP_TRIGGER_INVALID" desc="非法的触发类型"/>
+		<macro value="1" name="TRAP_TRIGGER_MOVEON" desc="停止触发"/>
+		<macro value="2" name="TRAP_TRIGGER_LEAVE" desc="离开触发"/>
+		<macro value="3" name="TRAP_TRIGGER_SKILL" desc="技能触发"/>
+		<macro value="4" name="TRAP_TRIGGER_PASSIVE" desc="被动触发"/>
+		<macro value="5" name="TRAP_TRIGGER_DESTROY" desc="破坏触发"/>
+	</macrosgroup>
+	
+	<!-- 机关的目标打断类型 -->
+	<macrosgroup name="TrapInterruptType">
+		<macro value="0" name="TRAP_INTERRUPT_INVALID" desc="非法的目标打断类型"/>
+		<macro value="1" name="TRAP_INTERRUPT_NONE" desc="不打断目标的行动"/>
+		<macro value="2" name="TRAP_INTERRUPT_MOVE" desc="打断目标的移动"/>
+		<macro value="3" name="TRAP_INTERRUPT_ACTION" desc="打断目标的行动"/>
+		<macro value="4" name="TRAP_INTERRUPT_ALL" desc="全部打断，包括目标的行动和移动"/>
+	</macrosgroup>
+
+	<!-- 机关的可见类型 -->
+	<macrosgroup name="TrapVisiableType">
+		<macro value="0" name="TRAP_VISIBALE_INVALID" desc="非法的可见类型"/>
+		<macro value="1" name="TRAP_VISIBALE_NONE" desc="全部不可见"/>
+		<macro value="2" name="TRAP_VISIBALE_SELF" desc="己方可见"/>
+		<macro value="3" name="TRAP_VISIBALE_ALL" desc="全部都可见，己方和地方"/>
+	</macrosgroup>
+
+	<!-- 调用技能脚本的类型 -->
+	<macrosgroup name="SkillScriptCallType">
+		<macro value="0" name="SKILL_SCRIPT_CALL_INVALID" desc="非法的调用类型"/>
+		<macro value="1" name="SKILL_SCRIPT_CALL_DAMAGE" desc="伤害计算时的调用类型"/>
+		<macro value="2" name="SKILL_SCRIPT_CALL_SKILLDONE" desc="技能结束后的调用类型"/>
+		<macro value="3" name="SKILL_SCRIPT_CALL_CHIEFDODGE" desc="主要目标闪避后的调用类型"/>
+	</macrosgroup>
+
+	<!-- 技能的特殊功能类型 -->
+	<macrosgroup name="SkillSpecialFuncType">
+		<macro value="0" name="SKILL_SPECIAL_FUNC_INVALID" desc="非法的特殊功能类型"/>
+		<macro value="1" name="SKILL_SPECIAL_FUNC_EXCHANGEPOS" desc="移形换位，和对方交换位置"/>
+	</macrosgroup>
+
+	<!-- 技能的命中类型 -->
+	<macrosgroup name="SSkillHitType">
+		<macro value="0" name="SKILL_HIT_INVALID" desc="非法的技能命中类型"/>
+		<macro value="1" name="SKILL_HIT_NOHIT" desc="不检查命中"/>
+		<macro value="2" name="SKILL_HIT_CHIEFDODGE" desc="命中主要目标"/>
+		<macro value="3" name="SKILL_HIT_CHIEFNODODGE" desc="没有命中主要目标"/>
+	</macrosgroup>
+
+</metalib>

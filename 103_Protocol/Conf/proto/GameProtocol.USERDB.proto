@@ -1,0 +1,117 @@
+//本文件用于定义服务器数据存储的格式
+
+//DB中实际保存的玩家数据格式为protobuf序列化后的数据再进行lz4压缩，可以大幅减少存储的数据
+
+import "GameProtocol.Common.proto";
+
+//玩家数据在服务器中存储的格式
+//经过protobuf序列化再lz4压缩后的数据
+message GameUserInfo
+{
+	optional uint32 uin = 1;					//玩家的uin
+	optional uint32 uiSeq = 2;					//玩家角色的Seq
+	optional bytes strBaseInfo = 3;				//玩家的基础数据
+	optional bytes strQuestInfo = 4;			//玩家的任务数据
+	optional bytes strItemInfo = 5;				//玩家仓库背包的道具信息
+	optional bytes strFightInfo = 7;			//玩家其他的战斗信息
+	optional bytes strFriendInfo = 8;			//玩家的好友信息
+	optional bytes strReserved1 = 9;			//保留BLOB字段，作为后面扩展功能使用
+	optional bytes strReserved2 = 10;			//保留BLOB字段，作为后面扩展功能使用
+}
+
+//玩家主要数据在DB中存储的结构
+message BASEDBINFO
+{
+	optional string szNickName = 1;				//玩家的名字
+	repeated int32 iResources = 3;				//玩家的游戏资源，通过数组下标访问
+	optional uint32 uStatus = 9;				//玩家的当前的状态
+	optional int32 iLastLogin = 11;				//玩家上次登录的时间
+	optional int32 iLastLogout = 12;			//玩家上次登出的时间
+	optional int32 iCreateTime = 13;			//玩家帐号创建的时间
+	optional int32 iOnlineTime = 14;			//玩家的总在线时长
+	optional int32 iLoginCount = 15;			//玩家总的游戏登录次数
+	optional int32 iForbidTalkingTime = 16;		//玩家被禁止聊天的时间
+	optional int32 iLoginTime = 17;				//玩家本次登录的时间
+	optional int32 iLogoutTime = 18;			//玩家本次登出游戏的时间
+}
+
+//玩家的任务数据
+message QUESTDBINFO
+{
+}
+
+//背包中单个物品格子的详细信息
+message OneSlotInfo
+{
+	optional int32 iItemID = 1;					//背包中物品的ID
+	optional int32 iItemNum = 2;				//背包中物品的数目
+}
+
+//当前背包中物品格子的详细信息
+message ItemSlotInfo
+{
+	repeated OneSlotInfo stSlots = 1;			//当前背包中物品格子的详细信息
+}
+
+//玩家的仓库背包数据
+message ITEMDBINFO
+{
+	optional int32 m_iOpenedSlotNum = 1;		//当前开启的背包格子数数量
+
+	optional ItemSlotInfo stItemSlot = 2;		//当前背包中物品格子的详细信息
+}
+
+//战斗单位的物品信息
+message UnitItemInfo
+{
+	repeated OneSlotInfo stItems = 1;			//战斗单位身上的物品信息
+}
+
+//单个玩家战斗单位的信息
+message OneFightUnitInfo
+{
+	optional int32 iUnitID = 1;					//战斗单位配置的ID
+	optional int32 iUnitAIID = 2;				//战斗单位的AI ID
+	repeated int32 iAttributes = 3;				//战斗单位的战斗属性
+	optional int32 iNormalSkillID = 4;			//战斗单位普攻ID
+	optional int32 iLevel = 5;					//战斗单位的等级
+	optional int32 iLevelExp = 6;				//战斗单位的经验
+	optional UnitItemInfo stItemInfo = 7;		//战斗单位的物品信息
+}
+
+//玩家的战斗单位背包信息
+message FightUnitRepInfo
+{
+	repeated OneFightUnitInfo stUnits = 1;		//单个的战斗单位的信息	
+}
+
+//战斗单位的阵型信息
+message FightForm
+{
+	repeated int32 iFightUnitIDs = 1;			//阵型中玩家战斗单位的ID 
+}
+
+//玩家的战斗单位数据
+message FIGHTDBINFO
+{
+	optional FightUnitRepInfo stUnitRep = 1;	    //玩家的战斗单位信息
+	optional FightForm stForms = 2;				    //玩家的战斗阵型信息
+}
+
+//玩家的好友数据
+message FRIENDDBINFO
+{
+
+}
+
+//保留BLOB字段1的数据
+message RESERVED1DBINFO
+{
+}
+
+//保留BLOB字段2的数据
+message RESERVED2DBINFO
+{
+
+}
+

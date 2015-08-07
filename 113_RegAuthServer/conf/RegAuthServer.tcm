@@ -1,0 +1,7 @@
+[CodeQueue]
+CodeQueueNum = 2
+CodeQueuePath = ../../../Common/
+LotusToRegAuth_0 = CQLotusToRegAuth_0.shm
+RegAuthToLotus_0 = CQRegAuthToLotus_0.shm
+LotusToRegAuth_1 = CQLotusToRegAuth_1.shm
+RegAuthToLotus_1 = CQRegAuthToLotus_1.shm

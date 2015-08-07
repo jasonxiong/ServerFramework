@@ -1,0 +1,18 @@
+[CodeQueue]
+CodeQueueNum = 2
+CodeQueuePath = ../../../Common/
+GatewayToRegAuth_0 = CQGatewayToRegAuth_0.shm
+RegAuthToGateway_0 = CQRegAuthToGateway_0.shm
+GatewayToRegAuth_1 = CQGatewayToRegAuth_1.shm
+RegAuthToGateway_1 = CQRegAuthToGateway_1.shm
+
+# 内网服务器通信的Bus
+# ID 格式为 WorldID.ServerType.InstanceID.ZoneID
+[ServerBus]
+ServerBusNum = 1
+
+# RegAuthServer to AccountDB
+ServerBusClientID_0 = 0.14.1.0
+ServerBusServerID_0 = 0.15.1.0
+ServerBusIP_0       = #SERVERIP#
+ServerBusPort_0     = 9800

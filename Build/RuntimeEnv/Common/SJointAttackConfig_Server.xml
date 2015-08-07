@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SJointAttackConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>20 </Unit>
+        <Count>29 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>a807560720a78f0113f9bc37adbb95da</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SJointAttackConfig version="1">
+    <iConfigID>10240201 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10250101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10250301 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10260101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10260301 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10270101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10270201 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10240101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10010101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10170301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10170101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10200201 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10200101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10150201 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10150101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10180301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10180101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10210301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10210101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10160301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10160101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10010301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10420201 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10500301 10490201 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10220201 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10450301 10370301 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10550201 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10680301 10640401 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10530301 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10020301 10300301 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>31230101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10050101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>10610101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10320101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>1000101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10120101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>2000101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10120101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>3000101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10140101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>4000101 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10520101 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>1000401 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10050201 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>1000601 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10040401 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>2000201 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10220301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>2000701 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10640301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>3000301 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10300201 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>3000701 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10140401 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>4000201 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10210301 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+<SJointAttackConfig version="1">
+    <iConfigID>4000001 </iConfigID>
+    <iNeedSkillNum>3 </iNeedSkillNum>
+    <aiNeedSkills>10520201 0 0 </aiNeedSkills>
+</SJointAttackConfig>
+</SJointAttackConfig_Tab>

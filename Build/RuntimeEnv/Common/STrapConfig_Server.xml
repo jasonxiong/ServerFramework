@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<STrapConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>32 </Unit>
+        <Count>4 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>b4d3c8a1311c210dd80cb93ed735376c</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<STrapConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iTrapType>1 </iTrapType>
+    <iTriggerType>1 </iTriggerType>
+    <iInterruptType>2 </iInterruptType>
+    <iVisiableType>2 </iVisiableType>
+    <iTrapHP>-1 </iTrapHP>
+    <iTrapValue>100 </iTrapValue>
+    <iRangeID>0 </iRangeID>
+</STrapConfig>
+<STrapConfig version="1">
+    <iConfigID>2 </iConfigID>
+    <iTrapType>2 </iTrapType>
+    <iTriggerType>5 </iTriggerType>
+    <iInterruptType>1 </iInterruptType>
+    <iVisiableType>3 </iVisiableType>
+    <iTrapHP>1 </iTrapHP>
+    <iTrapValue>0 </iTrapValue>
+    <iRangeID>0 </iRangeID>
+</STrapConfig>
+<STrapConfig version="1">
+    <iConfigID>3 </iConfigID>
+    <iTrapType>2 </iTrapType>
+    <iTriggerType>3 </iTriggerType>
+    <iInterruptType>1 </iInterruptType>
+    <iVisiableType>3 </iVisiableType>
+    <iTrapHP>-1 </iTrapHP>
+    <iTrapValue>0 </iTrapValue>
+    <iRangeID>0 </iRangeID>
+</STrapConfig>
+<STrapConfig version="1">
+    <iConfigID>4 </iConfigID>
+    <iTrapType>2 </iTrapType>
+    <iTriggerType>5 </iTriggerType>
+    <iInterruptType>1 </iInterruptType>
+    <iVisiableType>3 </iVisiableType>
+    <iTrapHP>1 </iTrapHP>
+    <iTrapValue>100 </iTrapValue>
+    <iRangeID>0 </iRangeID>
+</STrapConfig>
+</STrapConfig_Tab>

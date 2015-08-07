@@ -1,0 +1,35 @@
+# 内网服务器通信的Bus
+# ID 格式为 WorldID.ServerType.InstanceID.ZoneID
+[ServerBus]
+ServerBusNum = 5
+
+#Account to World, Server End
+ServerBusClientID_0 = #WORLDID#.3.1.0
+ServerBusServerID_0 = #WORLDID#.0.1.0
+ServerBusIP_0       = #SERVERIP#
+ServerBusPort_0     = 9000
+
+# Zone to World, Server End
+ServerBusClientID_1 = #WORLDID#.1.1.#ZONEID#
+ServerBusServerID_1 = #WORLDID#.0.1.0
+ServerBusIP_1       = #SERVERIP#
+ServerBusPort_1     = 9200
+
+#World to RoleDB, Server End
+ServerBusClientID_2 = #WORLDID#.0.1.0
+ServerBusServerID_2 = #WORLDID#.2.1.0
+ServerBusIP_2       = #SERVERIP#
+ServerBusPort_2     = 9100
+
+#World to ClusterServer, Client End
+ServerBusClientID_3 = #WORLDID#.0.1.0
+ServerBusServerID_3 = 0.10.1.0
+ServerBusIP_3       = #SERVERIP#
+ServerBusPort_3     = 9300
+
+# World to NameDB, Client End
+ServerBusClientID_4 = #WORLDID#.0.1.0
+ServerBusServerID_4 = #WORLDID#.16.1.0
+ServerBusIP_4       = #SERVERIP#
+ServerBusPort_4     = 9400
+

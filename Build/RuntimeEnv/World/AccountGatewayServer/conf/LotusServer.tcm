@@ -1,0 +1,53 @@
+[Server]
+
+# useless but do not modify
+ServerID = 1
+
+# Flash
+IsFlashCodeEnabled = 1
+
+# U3D
+IsU3DCodeEnabled = 0
+#tgw
+IsTGWEnabled = 0
+
+# authorize normal uin > 10000
+IsUinAuthEnabled = 0
+
+# authorize special account < 10000
+Is10000AuthEnabled = 0
+
+#
+IsRecordEnabled = 0
+
+[Log]
+LogLevel = -1
+
+[Network]
+
+# max length of packet from client 
+ClientPacketMaxLength = 256000
+
+# max number of packet from client in 60 seconds
+ClientPacketMaxFrequency = 1000
+
+# if server haven't sent any packets in such seconds after connection created, connection will be closed 
+IdleConnectionTimeout = 120
+
+# if client haven't sent any packets in such seconds, connection will be closed
+IdleClientTimeout = 60000
+
+# if server haven't sent any packets in such seconds, connection will be closed
+IdleServerTimeout = 180000
+
+# useless but do not modify
+CheckHelloTimeGap = 100
+
+# useless but do not modify
+InternalSocketBufferSize = 2048000
+
+ExternalSocketRCVBufferSize=256000
+ExternalSocketSNDBufferSize=1000000
+
+[Bill]
+BillFlag = 1

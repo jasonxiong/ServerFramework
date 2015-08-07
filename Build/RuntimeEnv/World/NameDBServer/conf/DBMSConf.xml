@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="GBK" standalone="yes" ?>
+
+<!-- 该文件中配置服务器连接的DB相关信息 -->
+
+<ALLDBMSINFOS>
+	<!-- 第一组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+	<!-- 第二组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+	<!-- 第三组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+	<!-- 第四组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+	<!-- 第五组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+	<!-- 第六组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+	<!-- 第七组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+	<!-- 第八组数据库 -->
+	<DBMSInfo>
+		<m_iMajorVersion>5</m_iMajorVersion>
+		<m_iMinVersion>0</m_iMinVersion>
+		<m_szDBMSName>mysql</m_szDBMSName>
+		<m_szDBMSConnectionInfo>#DB_IP#</m_szDBMSConnectionInfo>
+		<m_szDBMSCurDatabaseName>1_NameDB</m_szDBMSCurDatabaseName>
+		<m_szDBMSUser>#DB_USER#</m_szDBMSUser>
+		<m_szDBMSPassword>#DB_PASSWD#</m_szDBMSPassword>
+	</DBMSInfo>
+
+</ALLDBMSINFOS>
+

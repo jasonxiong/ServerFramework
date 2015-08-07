@@ -1,0 +1,7 @@
+
+#CodeQueueID	ShmKeyFileName	ShmKeyPrjID	ShmSize	CodeQueueType CodeQueueFlag	Description
+
+1  ../../../Common/CQGatewayToZone_0.shm  I  16777216  1  0  GatewayToZone
+2  ../../../Common/CQZoneToGateway_0.shm  O  16777216  1  1 ZoneToGateway
+
+

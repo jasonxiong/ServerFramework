@@ -1,0 +1,218 @@
+//区服务器的相关协议
+
+
+import "GameProtocol.Common.proto";
+import "GameProtocol.USERDB.proto";
+import "GameProtocol.Fight.proto";
+
+enum ReqOperaType
+{
+	REQ_OPERA_TYPE_INVALID = 0;				//非法的背包操作类型
+	REQ_OPERA_TYPE_SPLIT = 1;				//背包物品格子拆分
+	REQ_OPERA_TYPE_EXCHANGE = 2;			//背包物品的交换，包括同ID的合并
+	REQ_OPERA_TYPE_USE = 3;					//背包物品的使用
+	REQ_OPERA_TYPE_DELETE = 4;				//背包物品的丢弃删除
+	REQ_OPERA_TYPE_SORT = 5;				//背包物品的整理
+}
+
+//登录时返回给客户端的数据
+message GameLoginInfo
+{
+	optional BASEDBINFO stBaseInfo = 1;				//玩家的基础数据
+	optional QUESTDBINFO stQuestInfo = 2;			//玩家的任务数据
+	optional ITEMDBINFO stItemInfo = 3;				//玩家的物品信息
+	optional FIGHTDBINFO stFightInfo = 5;			//玩家的其他战斗信息
+	optional FRIENDDBINFO stFriendInfo = 6;			//玩家的好友信息数据
+	optional RESERVED1DBINFO stReserved1 = 7;		//玩家的Reserved1保留字段
+	optional RESERVED2DBINFO stReserved2 = 8;		//玩家的Reserved2保留字段
+}
+
+//玩家登录游戏的请求
+message Zone_LoginServer_Request
+{
+	optional RoleID stRoleID = 1;			//登录玩家的角色ID
+	optional uint32 uLoginReason = 3;		//请求登录的原因
+	optional uint32 uClientVersion = 4;		//客户端版本号
+	optional string strSessionKey = 5;		//请求登录的session key，由帐号服务器生成
+}
+
+//玩家登录游戏的返回
+message Zone_LoginServer_Response
+{
+	optional int32 iResult = 1;				//登录请求返回的结果
+	optional uint32 uin = 2;				//登录的玩家的uin
+	optional int32 iZoneID = 3;				//玩家所登录的区ID
+	optional int32 iWorldID = 4;			//玩家所登录的世界ID
+	optional GameLoginInfo stLoginInfo = 5;	//返回登录的玩家的数据
+}
+
+//玩家登出游戏的通知消息
+message Zone_Logout_Notify
+{
+	optional RoleID stRoleID = 1;		//登出玩家的角色ID
+}
+
+//玩家拉取好友详细信息的请求
+message Zone_GetFriendInfo_Request
+{
+	optional uint32 ucReqType = 1;		//请求的类型
+	optional uint32 uin = 2;			//自己的uin
+	optional uint32 friend_uin = 3;		//好友的uin
+}
+
+//玩家拉取好友详细信息的返回
+message Zone_GetFriendInfo_Response
+{
+	//todo jasonxiong 暂时先预留，后面再填充内容
+	optional int32 iResult = 1;			//消息处理返回的结果
+}
+
+//分区向世界服务器上报状态的请求
+message Zone_OnlineRole_Request
+{
+	optional int32 iWorldID = 1;		//分区所在世界的编号
+	optional int32 iZoneID = 2;			//分区的区编号
+	optional int32 iRoleNum = 3;		//在线的玩家角色数量
+	optional string strRecordTime = 4;	//上报状态的时间
+}
+
+//GM管理员的GM管理请求
+message Zone_GameMaster_Request
+{
+	optional uint32 uin = 1;			//GM操作者的UIN
+	optional string strCommand = 2;		//GM操作命令的字符串
+}
+
+//GM管理员的GM管理返回
+message Zone_GameMaster_Response
+{
+	optional int32 iResult = 1;			//GM命令执行的返回值
+}
+
+//玩家角色登录的通知
+message Zone_LoginServer_Notify
+{
+	optional RoleID stRoleID = 1;		//登录玩家的角色ID
+	optional int32 iZoneID = 4;			//登录玩家的分线ID
+}
+
+//玩家背包物品操作的请求
+message Zone_RepOpera_Request
+{
+	optional ReqOperaType eType = 1 [default=REQ_OPERA_TYPE_INVALID];		//对物品操作的类型
+	optional int32 iSlotIndex = 2;			//操作的主物品的Slot
+	optional int32 iItemNum = 3;			//操作的主物品的数量
+	optional int32 iOtherSlotIndex = 4;		//操作的副物品的Slot，在合并和交换时用到
+	optional int32 iFightUnitID = 5;		//如果是药品，操作的战斗单位配置ID
+}
+
+//玩家背包物品操作的返回
+message Zone_RepOpera_Response
+{
+	optional int32 iResult = 1;					//返回的错误码，非0表示出错
+	optional int32 iSlotIndex = 2;				//操作的主物品的Slot
+	optional OneSlotInfo stSlot = 3;			//操作的主物品的详细信息
+	optional int32 iOtherSlotIndex = 4;			//操作的副物品的Slot
+	optional OneSlotInfo stOtherSlot = 5;		//操作的副物品的详细信息
+	optional ReqOperaType eType = 6 [default=REQ_OPERA_TYPE_INVALID];	//玩家对背包物品的操作类型
+}
+
+//玩家拉取背包信息的请求
+message Zone_GetRepInfo_Request
+{
+
+}
+
+//玩家拉取背包信息的返回
+message Zone_GetRepInfo_Response
+{
+	optional int32 iResult = 1;				//操作返回的错误码
+	optional ITEMDBINFO stItems = 2;		//拉取到的背包的详细信息
+}
+
+//玩家给战斗单位穿装备的请求
+message Zone_WearEquip_Request
+{
+	optional bool bIsWear = 1;				//true表示穿装备，false表示脱装备
+	optional int32 iUnitIndex = 2;			//战斗单位在战斗背包中的索引
+	optional int32 iSlotIndex = 3;			//战斗单位穿的装备在背包中的位置
+	optional int32 iEquipSubType = 4;		//如果是脱装备,脱下装备的子类型
+}
+
+//玩家给战斗单位穿装备的返回
+message Zone_WearEquip_Response
+{
+	optional int32 iResult = 1;				//操作返回的错误码
+	optional bool bIsWear = 2;				//是穿装备还是脱装备
+	optional int32 iUnitIndex = 3;			//战斗单位在战斗背包中的索引
+	optional int32 iEquipSubType = 4;		//装备的子类型
+	optional OneSlotInfo stSlotInfo = 5;	//如果是穿装备，穿上的装备的详细信息
+}
+
+//背包发生变化的格子信息
+message OneRepSlot
+{
+	optional int32 iRepSlot = 1;			//发生改变的背包格子位置
+	optional int32 iChangeChannel = 3;		//道具发生改变的来源类型
+	optional OneSlotInfo stSlotInfo = 2;	//发生改变后的背包最新格子信息
+}
+
+//玩家背包发生变化给客户端的通知
+message Zone_RepChange_Notify
+{
+	repeated OneRepSlot stItems = 1;		//发生变化的道具信息
+}
+
+//出售物品的详细信息
+message SellItemInfo
+{
+	optional int32 iItemSlot = 1;			//出售物品的槽位置
+	optional int32 iSellNum = 2;			//出售物品的数量
+}
+
+//玩家出售物品的请求
+message Zone_SellItem_Request
+{
+	optional int32 iShopID = 1;				//接受物品出售的商店ID
+	repeated SellItemInfo stItems = 2;		//出售的物品的详细信息
+}
+
+//玩家出售物品的返回
+message Zone_SellItem_Response
+{
+	optional int32 iResult = 1;				//出售物品协议的返回
+}
+
+//玩家资源的变化
+message UserResourceChange
+{
+	optional int32 iResType = 1;			//变化的资源类型
+	optional int32 iNewResNum = 2;			//最新的资源数量
+}
+
+//玩家游戏资源变化的通知
+message Zone_ResourceChange_Notify
+{
+	repeated UserResourceChange stChangeInfos = 1;	//玩家资源变化的通知
+}
+
+//玩家聊天的请求
+message Zone_Chat_Request
+{
+	optional ChatChannelType iChannel = 1 [default=CHAT_CHANNEL_INVALID];//聊天的频道
+	optional RoleID stTargetRoleID = 2;		//聊天的对方的角色ID
+	optional string strMessage = 3;			//聊天的消息内容
+}
+
+//玩家聊天的返回
+message Zone_Chat_Response
+{
+	optional int32 iResult = 1;				//聊天请求处理的结果
+}
+
+//战斗单位属性变更结果值的通知
+message Zone_FightAttr_Notify
+{
+	optional int32 iUnitConfigID = 1;			//改变的战斗单位的配置ID
+	repeated int32 iFightUnitAttr = 2;			//战斗单位战斗属性的最终值
+}

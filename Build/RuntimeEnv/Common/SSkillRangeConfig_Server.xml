@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SSkillRangeConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>44 </Unit>
+        <Count>51 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>f3d43dfaa6f9267e8131956b3e0d994e</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SSkillRangeConfig version="1">
+    <iConfigID>10 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 0 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>10 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>10100 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 0 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>10200 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 10000 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>10300 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 10000 10000 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>10400 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 10000 10000 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>10500 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 0 10000 10000 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>10600 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 0 0 10000 10000 </aiRangeInfo>
+    <iDecayParam>10000 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>20100 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 0 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>20200 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 10000 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>20300 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 10000 10000 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>20400 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 10000 10000 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>20500 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 0 10000 10000 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>20600 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 0 0 10000 10000 </aiRangeInfo>
+    <iDecayParam>10000 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>100 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 10000 10000 10000 10000 10000 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>10 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>101 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 9999 10000 9999 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>102 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 9999 9999 10000 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>103 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 9999 9999 0 10000 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>104 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 10000 9999 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>105 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 0 9999 9999 9999 10000 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>10 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>106 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 0 0 9999 9999 10000 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>20 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 10000 10000 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>99 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 10000 10000 10000 10000 10000 10000 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>201 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 9999 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>202 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 9999 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>203 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 0 9999 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>204 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>205 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 0 9999 9999 9999 9999 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>10 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>206 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 0 0 9999 9999 9999 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>111 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 8000 12000 8000 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>112 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 8000 8000 12000 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>113 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 8000 8000 0 12000 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>114 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 12000 8000 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>115 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 0 8000 8000 8000 12000 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>10 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>116 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 0 0 8000 8000 12000 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>10 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>121 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>11 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>122 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>11 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>123 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 9999 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>11 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>124 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 0 0 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>11 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>125 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 9999 9999 9999 9999 9999 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>11 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>126 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>9999 9999 9999 9999 9999 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>11 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>31 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 10000 0 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>3000 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>32 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 10000 10000 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>3000 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>33 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 10000 10000 10000 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>3000 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>131 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 9999 9999 9999 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>132 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 9999 9999 9999 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>133 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 9999 9999 0 9999 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>134 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 9999 9999 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>135 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 9999 9999 9999 9999 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>10 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>136 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>10000 0 0 9999 9999 9999 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>0 </iRangeAreaParam>
+</SSkillRangeConfig>
+<SSkillRangeConfig version="1">
+    <iConfigID>127 </iConfigID>
+    <iRangeNum>7 </iRangeNum>
+    <aiRangeInfo>0 9999 9999 0 0 0 0 </aiRangeInfo>
+    <iDecayParam>0 </iDecayParam>
+    <iRangeAreaParam>11 </iRangeAreaParam>
+</SSkillRangeConfig>
+</SSkillRangeConfig_Tab>

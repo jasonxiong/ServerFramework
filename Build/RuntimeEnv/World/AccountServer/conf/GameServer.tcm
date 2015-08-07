@@ -1,0 +1,18 @@
+[CodeQueue]
+CodeQueueNum = 2
+CodeQueuePath = ../../../Common/
+GatewayToAccount_0 = CQGatewayToAccount_0.shm
+AccountToGateway_0 = CQAccountToGateway_0.shm
+GatewayToAccount_1 = CQGatewayToAccount_1.shm
+AccountToGateway_1 = CQAccountToGateway_1.shm
+
+# 内网服务器通信的Bus
+# ID 格式为 WorldID.ServerType.InstanceID.ZoneID
+[ServerBus]
+ServerBusNum = 1
+
+# AccountServer to World, Client End
+ServerBusClientID_0 = #WORLDID#.3.1.0
+ServerBusServerID_0 = #WORLDID#.0.1.0
+ServerBusIP_0       = #SERVERIP#
+ServerBusPort_0     = 9000

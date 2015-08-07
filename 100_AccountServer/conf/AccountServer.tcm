@@ -1,0 +1,7 @@
+[CodeQueue]
+CodeQueueNum = 2
+CodeQueuePath = ../../../Common/
+LotusToAccount_0 = CQLotusToAccount_0.shm
+AccountToLotus_0 = CQAccountToLotus_0.shm
+LotusToAccount_1 = CQLotusToAccount_1.shm
+AccountToLotus_1 = CQAccountToLotus_1.shm

@@ -1,0 +1,146 @@
+//本文件中主要定义Account Server相关的通信协议
+
+import "GameProtocol.Common.proto";
+
+enum enAccountType
+{
+	LOGIN_PLATFORM_INVALID = 0;		//非法的登录渠道
+	LOGIN_PLATFORM_MAIN = 1;		//游戏官方平台
+}
+
+enum enAddAccountType
+{
+	EN_ADD_ACCOUNT_INVALID = 0;		//非法类型
+	EN_ADD_ACCOUNT_GUEST = 1;		//游客注册
+	EN_ADD_ACCOUNT_REGISTER = 2;	//帐号注册
+	EN_ADD_ACCOUNT_BIND = 3;		//帐号绑定
+}
+
+//玩家帐号的唯一ID
+message AccountID
+{
+	optional string strAccount = 1;		//玩家的帐号
+	optional int32 iAccountType = 2;		//玩家帐号的类型
+}
+
+//----------------------------------------------------------------
+
+//注册平台帐号的请求,包括游客注册、帐号注册和帐号绑定
+message RegAuth_RegAccount_Request
+{
+	optional int32 iRegOpType = 1;			//注册的操作类型，游客注册、帐号注册和帐号绑定3种
+	optional AccountID stAccountID = 2;		//注册的帐号ID
+	optional string strPassword = 3;		//玩家注册帐号的密码
+	optional AccountID stNewAccountID = 4;	//如果是绑定帐号请求，则为绑定的新帐号
+}
+
+//注册平台帐号的返回
+message RegAuth_RegAccount_Response
+{
+	optional int32 iResult = 1;			//注册成功还是失败
+}
+
+//平台帐号的认证请求
+message RegAuth_AuthAccount_Request
+{
+	optional AccountID stAccountID = 1;		//登录认证的玩家帐号
+	optional string strPassword = 3;		//登录认证玩家的密码
+}
+
+//平台帐号的认证返回
+message RegAuth_AuthAccount_Response
+{
+	optional int32 iResult = 1;				//操作的返回结果
+	optional uint32 uin = 2;				//认证的返回的uin
+	optional int32 iLastWorldID = 3;		//上次登录的世界服ID
+	optional string strSessionKey = 4;		//认证返回的sessionkey
+}
+
+//平台帐号的更新请求
+message RegAuth_UpdateAccount_Request
+{
+	optional AccountID stAccountID = 1;		//玩家的AccountID
+	optional string strPassword = 2;		//玩家的帐号密码
+	optional int32 iNewWorldID = 3;			//更新玩家最近登录的世界服
+}
+
+//平台帐号更新请求的返回
+message RegAuth_UpdateAccount_Response
+{
+	optional int32 iResult = 1;				//操作返回的结果
+}
+
+
+//----------------------------------------------------------------
+
+//----------------------------------------------------------------
+
+//帐号数据库服务器相关的协议
+//----------------------------------------------------------------
+
+//增加新帐号记录的请求
+message AccountDB_AddAccount_Request
+{
+	optional AccountID stAccountID = 1;		//插入的帐号ID
+	optional uint32 uin = 2;				//如果是绑定帐号的操作，则有这个字段
+	optional int32 iLastWorldID = 3;		//如果是绑定帐号的操作，则有这个字段
+	optional string strPassword = 4;		//插入的帐号的密码，加密后的
+	optional int32 iAddType = 5;			//增加记录的类型，包括游客注册、帐号注册和帐号绑定
+	optional AccountID stOldAccountID = 6;	//如果是绑定操作，是老的帐号ID
+}
+
+//增加新帐号记录的返回
+message AccountDB_AddAccount_Response
+{
+	optional int32 iResult = 1;				//插入记录请求的处理结果
+	optional int32 iAddType = 2;			//插入记录的类型，区分游客注册、帐号注册和帐号绑定
+	optional AccountID stOldAccountID = 3;	//如果是帐号绑定操作，是老的帐号ID
+}
+
+//拉取帐号记录的请求
+message AccountDB_FetchAccount_Request
+{
+	optional AccountID stAccountID = 1;		//拉取的帐号ID
+	optional bool bIsBindAccount = 2;		//是否绑定帐号时拉取原帐号记录
+	optional AccountID stNewAccountID = 3;	//如果是绑定帐号的操作，此处为新的帐号ID
+	optional string strPassword = 4;		//帐号的密码，如果是绑定，则为新的帐号密码
+}
+
+//拉取帐号记录的返回
+message AccountDB_FetchAccount_Response
+{
+	optional int32 iResult = 1;				//拉取帐号请求的返回结果
+	optional AccountID stAccountID = 2;		//拉取的帐号ID
+	optional uint32 uin = 4;				//拉取的帐号的uin
+	optional int32 iLastWorldID = 5;		//上次登录的世界ID
+	optional bool bIsBinded = 6;			//是否是绑定的帐号
+	optional bool bIsBindAccount = 7;		//是否绑定帐号时拉取原帐号记录
+	optional AccountID stNewAccount = 8;	//如果是绑定帐号的操作，此处为新的帐号ID
+	optional string strNewPassword = 9;		//如果是绑定帐号的操作，此处为新的帐号密码
+}
+
+//更新帐号记录的请求
+message AccountDB_UpdateAccount_Request
+{
+	optional AccountID stAccountID = 1;		//更新的帐号ID
+	optional string strPassword = 3;		//帐号的密码	
+	optional int32 iLastWorldID = 4;		//更新最近登录的世界的ID
+}
+
+//更新帐号记录的返回
+message AccountDB_UpdateAccount_Response
+{
+	optional int32 iResult = 1;				//更新帐号请求的处理结果
+}
+
+//删除帐号记录的请求
+message AccountDB_DeleteAccount_Request
+{
+	optional AccountID stAccountID = 1;		//删除的帐号ID
+}
+
+//删除帐号记录的返回
+message AccountDB_DeleteAccount_Response
+{
+	optional int32 iResult = 1;				//删除帐号请求的处理结果
+}

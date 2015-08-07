@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<SSkillDamageConfig_Tab>
+<TResHeadAll version="5">
+    <resHead type="TResHead">
+        <Magic>1397052237 </Magic>
+        <Version>6 </Version>
+        <Unit>228 </Unit>
+        <Count>6 </Count>
+        <MetalibHash>d7269d94768c21d3823f1ca7ffbf3b84</MetalibHash>
+        <ResVersion>0 </ResVersion>
+        <CreateTime>   0-00-00 00:00:00</CreateTime>
+        <ResEncording>UTF-8</ResEncording>
+        <ContentHash>aa17312afe1a0075df6d30ad7fc43296</ContentHash>
+    </resHead>
+    <resHeadExt type="TResHeadExt">
+        <DataOffset>136 </DataOffset>
+    </resHeadExt>
+</TResHeadAll>
+<SSkillDamageConfig version="1">
+    <iConfigID>10 </iConfigID>
+    <iAttack>70 </iAttack>
+    <iDefence>1 </iDefence>
+    <iSpreadAttrNum>13 </iSpreadAttrNum>
+    <aiSpreadAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiSpreadAttr>
+    <iStrengthAttrNum>13 </iStrengthAttrNum>
+    <aiStrengthAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiStrengthAttr>
+    <iVampireNum>13 </iVampireNum>
+    <aiVampireAttr>0 0 0 0 0 0 0 0 0 0 0 0 0 </aiVampireAttr>
+</SSkillDamageConfig>
+<SSkillDamageConfig version="1">
+    <iConfigID>20 </iConfigID>
+    <iAttack>100200 </iAttack>
+    <iDefence>200200 </iDefence>
+    <iSpreadAttrNum>13 </iSpreadAttrNum>
+    <aiSpreadAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiSpreadAttr>
+    <iStrengthAttrNum>13 </iStrengthAttrNum>
+    <aiStrengthAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiStrengthAttr>
+    <iVampireNum>13 </iVampireNum>
+    <aiVampireAttr>0 0 0 0 0 0 0 0 0 0 0 0 0 </aiVampireAttr>
+</SSkillDamageConfig>
+<SSkillDamageConfig version="1">
+    <iConfigID>1 </iConfigID>
+    <iAttack>70 </iAttack>
+    <iDefence>80 </iDefence>
+    <iSpreadAttrNum>13 </iSpreadAttrNum>
+    <aiSpreadAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiSpreadAttr>
+    <iStrengthAttrNum>13 </iStrengthAttrNum>
+    <aiStrengthAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiStrengthAttr>
+    <iVampireNum>13 </iVampireNum>
+    <aiVampireAttr>0 0 0 0 0 0 0 0 0 0 0 0 0 </aiVampireAttr>
+</SSkillDamageConfig>
+<SSkillDamageConfig version="1">
+    <iConfigID>2 </iConfigID>
+    <iAttack>1 </iAttack>
+    <iDefence>1 </iDefence>
+    <iSpreadAttrNum>13 </iSpreadAttrNum>
+    <aiSpreadAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiSpreadAttr>
+    <iStrengthAttrNum>13 </iStrengthAttrNum>
+    <aiStrengthAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiStrengthAttr>
+    <iVampireNum>13 </iVampireNum>
+    <aiVampireAttr>0 0 0 0 0 0 0 0 0 0 0 0 0 </aiVampireAttr>
+</SSkillDamageConfig>
+<SSkillDamageConfig version="1">
+    <iConfigID>11 </iConfigID>
+    <iAttack>70 </iAttack>
+    <iDefence>80 </iDefence>
+    <iSpreadAttrNum>13 </iSpreadAttrNum>
+    <aiSpreadAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiSpreadAttr>
+    <iStrengthAttrNum>13 </iStrengthAttrNum>
+    <aiStrengthAttr>100 0 0 0 0 0 0 0 0 0 0 0 0 </aiStrengthAttr>
+    <iVampireNum>13 </iVampireNum>
+    <aiVampireAttr>50 0 0 0 0 0 0 0 0 0 0 0 0 </aiVampireAttr>
+</SSkillDamageConfig>
+<SSkillDamageConfig version="1">
+    <iConfigID>0 </iConfigID>
+    <iAttack>1 </iAttack>
+    <iDefence>1 </iDefence>
+    <iSpreadAttrNum>13 </iSpreadAttrNum>
+    <aiSpreadAttr>0 0 0 0 0 0 0 0 0 0 0 0 0 </aiSpreadAttr>
+    <iStrengthAttrNum>13 </iStrengthAttrNum>
+    <aiStrengthAttr>0 0 0 0 0 0 0 0 0 0 0 0 0 </aiStrengthAttr>
+    <iVampireNum>13 </iVampireNum>
+    <aiVampireAttr>0 0 0 0 0 0 0 0 0 0 0 0 0 </aiVampireAttr>
+</SSkillDamageConfig>
+</SSkillDamageConfig_Tab>
