@@ -1,0 +1,11 @@
+#说明：本文件记录了对基础库的修改
+
+#2013-09-02
+#modified by jasonxiong
+#增加一个简单的Json解析器
+#包含增加的文件：
+#----- SJLexer.cpp(.hpp)
+#----- Stack.hpp
+#----- Queue.hpp
+#----- CharConvert.cpp(.hpp)
+#----- ItemAlloc.hpp
