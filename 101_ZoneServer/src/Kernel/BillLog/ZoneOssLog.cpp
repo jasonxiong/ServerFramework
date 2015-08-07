@@ -108,6 +108,8 @@ void CZoneOssLog::TraceUnitFeed(unsigned uin, int iUnitConfigID, int iNewLevel)
 
 int CZoneOssLog::Initialize()
 {
+	//todo jasonxiong5
 	//≥ı ºªØKingnet UdpLog
-	return _analyzer.Init(GAME_OSSLOG_CONFIG_FILE);
+	//return _analyzer.Init(GAME_OSSLOG_CONFIG_FILE);
+	return 0;
 }

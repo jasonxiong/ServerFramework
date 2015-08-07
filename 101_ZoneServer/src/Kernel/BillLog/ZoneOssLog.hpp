@@ -2,7 +2,6 @@
 #define __ZONE_OSS_LOG_HPP__
 
 ///////////////////////////////////////////////////////////////////////////////////// 
-#include "kingnet_analyzer.h"
 #include "LogAdapter.hpp"
 #include "GameConfigDefine.hpp"
 #include "ModuleHelper.hpp"

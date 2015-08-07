@@ -27,7 +27,9 @@ TEST_F(SessionKeyUtilityUnitTest, GenerateTest)
 {
     //生成Session Key
     m_iSessionKeyLen = sizeof(m_szSessionKey)-1;
-    int iRet = CSessionKeyUtility::GenerateSessionKey(m_uin, m_szSessionKey, m_iSessionKeyLen);
+
+    static char szOriginalString[256] = "NewGameServer";
+    int iRet = CSessionKeyUtility::GenerateSessionKey(szOriginalString, strlen(szOriginalString), m_szSessionKey, m_iSessionKeyLen);
 
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
@@ -38,21 +40,20 @@ TEST_F(SessionKeyUtilityUnitTest, DecryptTest)
 {
     //生成Session Key
     m_iSessionKeyLen = sizeof(m_szSessionKey)-1;
-    int iRet = CSessionKeyUtility::GenerateSessionKey(m_uin, m_szSessionKey, m_iSessionKeyLen);
 
+    static char szOriginalString[256] = "NewGameServer";
+    static int iOriginalBuffLen = sizeof(szOriginalString);
+    int iRet = CSessionKeyUtility::GenerateSessionKey(szOriginalString, strlen(szOriginalString), m_szSessionKey, m_iSessionKeyLen);
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
     //解码生成的SessionKey
-    unsigned int uin = 0;
-    unsigned int uTime = 0;
-
     printf("Encrypt Session key: %s, len %d\n", m_szSessionKey, m_iSessionKeyLen);
 
-    iRet = CSessionKeyUtility::DecryptSessionKey(m_szSessionKey, m_iSessionKeyLen, uin, uTime);
+    iRet = CSessionKeyUtility::DecryptSessionKey(m_szSessionKey, m_iSessionKeyLen, szOriginalString, iOriginalBuffLen);
 
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
-    printf("uin = %u, time = %u\n", uin, uTime);
+    printf("original string %s\n", szOriginalString);
 
     return; 
 }

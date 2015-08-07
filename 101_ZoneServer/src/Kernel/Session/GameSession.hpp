@@ -4,7 +4,6 @@
 #include "SessionDefine.hpp"
 #include "ObjAllocator.hpp"
 #include "ConfigHelper.hpp"
-#include "PlatformDefine.hpp"
 #include "GameProtocol.hpp"
 #include "GameConfigDefine.hpp"
 

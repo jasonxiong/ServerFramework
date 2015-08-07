@@ -518,16 +518,6 @@
 						<F N="../../001_ServerLib/3RdParty/json-0.5.0/json/writer.h"/>
 					</Folder>
 				</Folder>
-				<Folder Name="KingnetUdpLog">
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/kingnet_analyzer.h"/>
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/tinystr.h"/>
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/tinyxml.h"/>
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_codeengine.h"/>
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_config.h"/>
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_lib.h"/>
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_singleton.h"/>
-					<F N="../../001_ServerLib/3RdParty/KingnetUdpLog/udplog_typedef.h"/>
-				</Folder>
 				<Folder Name="lua-5.2.2">
 					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lapi.h"/>
 					<F N="../../001_ServerLib/3RdParty/lua-5.2.2/lauxlib.h"/>
@@ -639,24 +629,19 @@
 			<Folder Name="BaseLibs">
 				<F N="../../001_ServerLib/BaseLibs/AESCbcEncryptor.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/AppUtility.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/AttributeManager.h"/>
 				<F N="../../001_ServerLib/BaseLibs/BacktraceInfo.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/Base64.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/BiDirQueue.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/CacheStatistic.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/CheckTimer.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/CodeQueue.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/CodeQueueManager.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/CommonDef.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/ConfigFile.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/DBClientWrapper.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/DBStatistic.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/DecodeStream.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/EncodeStream.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/ErrorDef.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/ErrorNOUtility.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/FileUtility.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/Foreach.h"/>
 				<F N="../../001_ServerLib/BaseLibs/FreqCtrl.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/HashMap.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/HashMap_K32.hpp"/>
@@ -671,36 +656,29 @@
 				<F N="../../001_ServerLib/BaseLibs/LineConfig.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/LogAdapter.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/LogFile.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/lua_tinker.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/lz4.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/MiscDataStore.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/MsgOverViewStatistic.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/MsgStatistic.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/Noncopyable.h"/>
 				<F N="../../001_ServerLib/BaseLibs/NowTime.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/ObjAllocator.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/ObjIdxList.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/ObjStatistic.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/oi_tea.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/Packer.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/PasswordEncryptionUtility.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/PerformanceStatistic.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/PlatformDefine.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/PlutoStringUtility.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/ProtoDataUtility.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/Random.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/ScriptBase.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/SectionConfig.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/SessionKeyUtility.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/SharedMemory.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/ShmObjectCreator.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/SignalUtility.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/Singleton.h"/>
 				<F N="../../001_ServerLib/BaseLibs/SingletonTemplate.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/SocketUtility.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/SortAlgorithm.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/SortArray.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/StaticIdxList.h"/>
+				<F N="../../001_ServerLib/BaseLibs/StaticIdxList.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/Statistic.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/StringSplitter.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/StringUtility.hpp"/>
@@ -711,11 +689,9 @@
 				<F N="../../001_ServerLib/BaseLibs/Thread.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/TimeUtility.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/TimeValue.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/TransactionLock.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/UDPSocket.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/UinPrivManager.hpp"/>
 				<F N="../../001_ServerLib/BaseLibs/UnixTime.hpp"/>
-				<F N="../../001_ServerLib/BaseLibs/UnsortArray.h"/>
 				<F N="../../001_ServerLib/BaseLibs/ZmqBus.hpp"/>
 			</Folder>
 		</Folder>
@@ -832,24 +808,10 @@
 						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerList.cpp"/>
 						<F N="../../101_ZoneServer/src/Kernel/Handler/HandlerList.hpp"/>
 					</Folder>
-					<Folder Name="Position">
-						<F N="../../101_ZoneServer/src/Kernel/Position/ChooseSceneHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/ChooseSceneHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/MovementHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/MovementHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/PositionCalculator.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/PositionCalculator.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/TransportAction.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/TransportAction.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/TransportHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Position/TransportHandler.hpp"/>
-					</Folder>
 					<Folder Name="Protocol">
 						<Folder Name="Message">
 							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/BroadcastMsgHandler.cpp"/>
 							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/BroadcastMsgHandler.hpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/MsgBodyInitializer.cpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/MsgBodyInitializer.hpp"/>
 							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/ZoneMsgHelper.cpp"/>
 							<F N="../../101_ZoneServer/src/Kernel/Protocol/Message/ZoneMsgHelper.hpp"/>
 						</Folder>
@@ -857,24 +819,6 @@
 						<F N="../../101_ZoneServer/src/Kernel/Protocol/GameMsgTransceiver.hpp"/>
 						<F N="../../101_ZoneServer/src/Kernel/Protocol/GameProtocolEngine.cpp"/>
 						<F N="../../101_ZoneServer/src/Kernel/Protocol/GameProtocolEngine.hpp"/>
-					</Folder>
-					<Folder Name="Scene">
-						<F N="../../101_ZoneServer/src/Kernel/Scene/GameScene.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/GameScene.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneEventListener.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneEventListener.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneManager.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneSightManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneSightManager.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneUnitManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SceneUnitManager.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceEventListener.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceEventListener.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceUtility.cpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Scene/SightSpaceUtility.hpp"/>
 					</Folder>
 					<Folder Name="Session">
 						<F N="../../101_ZoneServer/src/Kernel/Session/GameSession.cpp"/>
@@ -890,16 +834,6 @@
 						<F N="../../101_ZoneServer/src/Kernel/Tick/OnlineStatTick.hpp"/>
 					</Folder>
 					<Folder Name="Units">
-						<Folder Name="NPC">
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCFramework.cpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCFramework.hpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCHandler.cpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCHandler.hpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeManager.cpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeManager.hpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeObj.cpp"/>
-							<F N="../../101_ZoneServer/src/Kernel/Units/NPC/NPCTradeObj.hpp"/>
-						</Folder>
 						<Folder Name="Role">
 							<F N="../../101_ZoneServer/src/Kernel/Units/Role/GameRole.cpp"/>
 							<F N="../../101_ZoneServer/src/Kernel/Units/Role/GameRole.hpp"/>
@@ -907,40 +841,16 @@
 						<F N="../../101_ZoneServer/src/Kernel/Units/GameObjCommDef.hpp"/>
 						<F N="../../101_ZoneServer/src/Kernel/Units/GameUnitID.cpp"/>
 						<F N="../../101_ZoneServer/src/Kernel/Units/GameUnitID.hpp"/>
-						<F N="../../101_ZoneServer/src/Kernel/Units/PrivateUnitInfo.hpp"/>
 						<F N="../../101_ZoneServer/src/Kernel/Units/UnitUtility.cpp"/>
 						<F N="../../101_ZoneServer/src/Kernel/Units/UnitUtility.hpp"/>
 					</Folder>
 				</Folder>
 				<Folder Name="Modules">
-					<Folder Name="AccountInfo">
-						<F N="../../101_ZoneServer/src/Modules/AccountInfo/AccountInfoManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/AccountInfo/AccountInfoManager.hpp"/>
-					</Folder>
-					<Folder Name="Achievement">
-						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementEventListener.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementEventListener.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Achievement/AchievementManager.hpp"/>
-					</Folder>
-					<Folder Name="Atlas">
-						<F N="../../101_ZoneServer/src/Modules/Atlas/AtlasHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Atlas/AtlasHandler.hpp"/>
-					</Folder>
 					<Folder Name="Chat">
 						<F N="../../101_ZoneServer/src/Modules/Chat/ChatHandler.cpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Chat/ChatHandler.hpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Chat/ChatUtility.cpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Chat/ChatUtility.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Chat/GMChatHooker.hpp"/>
-					</Folder>
-					<Folder Name="Collection">
-						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionFramework.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionFramework.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Collection/CollectionManager.hpp"/>
 					</Folder>
 					<Folder Name="Combat">
 						<F N="../../101_ZoneServer/src/Modules/Combat/AStarPathUtility.cpp"/>
@@ -988,18 +898,8 @@
 							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMCombatHandler.hpp"/>
 							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMFightUnitHandler.cpp"/>
 							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMFightUnitHandler.hpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMLifeSkillHandler.cpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMLifeSkillHandler.hpp"/>
 							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMReposityHandler.cpp"/>
 							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMReposityHandler.hpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMResourceHandler.cpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMResourceHandler.hpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMRoleHandler.cpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMRoleHandler.hpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSceneHandler.cpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSceneHandler.hpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSkillHandler.cpp"/>
-							<F N="../../101_ZoneServer/src/Modules/GM/Commands/GMSkillHandler.hpp"/>
 						</Folder>
 						<F N="../../101_ZoneServer/src/Modules/GM/GMBaseCommand.cpp"/>
 						<F N="../../101_ZoneServer/src/Modules/GM/GMBaseCommand.hpp"/>
@@ -1008,12 +908,6 @@
 						<F N="../../101_ZoneServer/src/Modules/GM/GMCommandManager.cpp"/>
 						<F N="../../101_ZoneServer/src/Modules/GM/GMCommandManager.hpp"/>
 					</Folder>
-					<Folder Name="LifeSkill">
-						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/LifeSkill/LifeSkillManager.hpp"/>
-					</Folder>
 					<Folder Name="Login">
 						<F N="../../101_ZoneServer/src/Modules/Login/KickRoleWorldHandler.cpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Login/KickRoleWorldHandler.hpp"/>
@@ -1021,34 +915,6 @@
 						<F N="../../101_ZoneServer/src/Modules/Login/LoginHandler.hpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Login/LogoutHandler.cpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Login/LogoutHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Login/RoleRecordHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Login/RoleRecordHandler.hpp"/>
-					</Folder>
-					<Folder Name="Mail">
-						<F N="../../101_ZoneServer/src/Modules/Mail/MailFramework.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Mail/MailFramework.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Mail/MailHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Mail/MailHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Mail/MailManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Mail/MailManager.hpp"/>
-					</Folder>
-					<Folder Name="Mine">
-						<F N="../../101_ZoneServer/src/Modules/Mine/MineEventListener.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Mine/MineEventListener.hpp"/>
-					</Folder>
-					<Folder Name="MiniGame">
-						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameFramework.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameFramework.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/MiniGame/MiniGameManager.hpp"/>
-					</Folder>
-					<Folder Name="NewStart">
-						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartUtility.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/NewStart/NewStartUtility.hpp"/>
 					</Folder>
 					<Folder Name="Reposity">
 						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsFramework.cpp"/>
@@ -1059,42 +925,6 @@
 						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsManager.hpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsUtility.cpp"/>
 						<F N="../../101_ZoneServer/src/Modules/Reposity/RepThingsUtility.hpp"/>
-					</Folder>
-					<Folder Name="Resource">
-						<F N="../../101_ZoneServer/src/Modules/Resource/ResourceUtility.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Resource/ResourceUtility.hpp"/>
-					</Folder>
-					<Folder Name="Skill">
-						<F N="../../101_ZoneServer/src/Modules/Skill/SkillFramework.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Skill/SkillFramework.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Skill/SkillHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Skill/SkillHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Skill/SkillManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Skill/SkillManager.hpp"/>
-					</Folder>
-					<Folder Name="Story">
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryEventListener.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryEventListener.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryFramework.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryFramework.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryLuaEngine.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryLuaEngine.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryManager.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryManager.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryMessageSender.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Story/StoryMessageSender.hpp"/>
-					</Folder>
-					<Folder Name="Time">
-						<F N="../../101_ZoneServer/src/Modules/Time/RoleTimeUtility.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Time/RoleTimeUtility.hpp"/>
-					</Folder>
-					<Folder Name="Title">
-						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleHandler.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleHandler.hpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleUtility.cpp"/>
-						<F N="../../101_ZoneServer/src/Modules/Title/RoleTitleUtility.hpp"/>
 					</Folder>
 					<Folder Name="Utility">
 						<F N="../../101_ZoneServer/src/Modules/Utility/DropRewardUtility.cpp"/>
@@ -1125,68 +955,13 @@
 			<F N="../../102_ConfigEngine/ConfigHelper.cpp"/>
 			<F N="../../102_ConfigEngine/ConfigHelper.hpp"/>
 			<F N="../../102_ConfigEngine/GameConfigDefine.hpp"/>
-			<F N="../../102_ConfigEngine/SBattlefieldConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SBattlefieldConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SceneConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SceneConfigManager.hpp"/>
 			<F N="../../102_ConfigEngine/ScenePathManager.cpp"/>
 			<F N="../../102_ConfigEngine/ScenePathManager.hpp"/>
-			<F N="../../102_ConfigEngine/SEquipmentConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SEquipmentConfigManager.hpp"/>
 			<F N="../../102_ConfigEngine/ServerBusConfigManager.cpp"/>
 			<F N="../../102_ConfigEngine/ServerBusConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SFightJudgeConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SFightJudgeConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitAIConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitAIConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitGrowthConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitGrowthConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitRecruitConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SFightUnitRecruitConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SMonsterConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SMonsterConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SNPCConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SNPCConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SPropItemConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SPropItemConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SPveCrossConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SPveCrossConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SRoleBirthConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SRoleBirthConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SShopIndexConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SShopIndexConfigManager.hpp"/>
-			<F N="../../102_ConfigEngine/SShopThingsConfigManager.cpp"/>
-			<F N="../../102_ConfigEngine/SShopThingsConfigManager.hpp"/>
 			<F N="../../102_ConfigEngine/TemplateConfigManager.hpp"/>
 		</Folder>
 		<Folder Name="../../103_Protocol">
-			<Folder Name="Conf">
-				<Folder Name="lua">
-					<F N="../../103_Protocol/Conf/lua/combat_ai.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_buff.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_const.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_item.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_level.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_main.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_module.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_skill.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_trap.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_unittest.lua"/>
-					<F N="../../103_Protocol/Conf/lua/combat_value.lua"/>
-					<F N="../../103_Protocol/Conf/lua/CppAPI.lua"/>
-					<F N="../../103_Protocol/Conf/lua/dkjson.lua"/>
-					<F N="../../103_Protocol/Conf/lua/luatest.lua"/>
-					<F N="../../103_Protocol/Conf/lua/story_capi.lua"/>
-					<F N="../../103_Protocol/Conf/lua/story_common.lua"/>
-					<F N="../../103_Protocol/Conf/lua/story_core.lua"/>
-					<F N="../../103_Protocol/Conf/lua/story_extra.lua"/>
-					<F N="../../103_Protocol/Conf/lua/story_gen.lua"/>
-					<F N="../../103_Protocol/Conf/lua/story_unittest.lua"/>
-					<F N="../../103_Protocol/Conf/lua/zone.lua"/>
-				</Folder>
-			</Folder>
 			<Folder Name="Src">
 				<Folder Name="config">
 					<F N="../../103_Protocol/Src/config/GameConfig_metalib.h"/>
@@ -1264,14 +1039,8 @@
 				<F N="../../108_WorldServer/src/MainApp.cpp"/>
 				<F N="../../108_WorldServer/src/ModuleHelper.cpp"/>
 				<F N="../../108_WorldServer/src/ModuleHelper.hpp"/>
-				<F N="../../108_WorldServer/src/MsgBodyInitializer.cpp"/>
-				<F N="../../108_WorldServer/src/MsgBodyInitializer.hpp"/>
 				<F N="../../108_WorldServer/src/OnlineStatHandler.cpp"/>
 				<F N="../../108_WorldServer/src/OnlineStatHandler.hpp"/>
-				<F N="../../108_WorldServer/src/PVPRankManager.cpp"/>
-				<F N="../../108_WorldServer/src/PVPRankManager.hpp"/>
-				<F N="../../108_WorldServer/src/PVPWorldRankHandler.cpp"/>
-				<F N="../../108_WorldServer/src/PVPWorldRankHandler.hpp"/>
 				<F N="../../108_WorldServer/src/UnitTick.cpp"/>
 				<F N="../../108_WorldServer/src/UnitTick.hpp"/>
 				<F N="../../108_WorldServer/src/UpdateRoleWorldHandler.cpp"/>
@@ -1350,6 +1119,136 @@
 				<F N="../../111_RoleDBServer/src/SSProtocolEngine.hpp"/>
 			</Folder>
 		</Folder>
+		<Folder Name="../../112_NameDBServer">
+			<Folder Name="src">
+				<F N="../../112_NameDBServer/src/AddNameHandler.cpp"/>
+				<F N="../../112_NameDBServer/src/AddNameHandler.hpp"/>
+				<F N="../../112_NameDBServer/src/AppDef.hpp"/>
+				<F N="../../112_NameDBServer/src/AppLauncher.cpp"/>
+				<F N="../../112_NameDBServer/src/DeleteNameHandler.cpp"/>
+				<F N="../../112_NameDBServer/src/DeleteNameHandler.hpp"/>
+				<F N="../../112_NameDBServer/src/Handler.cpp"/>
+				<F N="../../112_NameDBServer/src/Handler.hpp"/>
+				<F N="../../112_NameDBServer/src/HandlerSet.cpp"/>
+				<F N="../../112_NameDBServer/src/HandlerSet.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBApp.cpp"/>
+				<F N="../../112_NameDBServer/src/NameDBApp.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBErrorNumDef.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBHandlerSet.cpp"/>
+				<F N="../../112_NameDBServer/src/NameDBHandlerSet.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBInfoConfig.cpp"/>
+				<F N="../../112_NameDBServer/src/NameDBInfoConfig.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBLogManager.cpp"/>
+				<F N="../../112_NameDBServer/src/NameDBLogManager.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBMsgTransceiver.cpp"/>
+				<F N="../../112_NameDBServer/src/NameDBMsgTransceiver.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBPublic.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBThread.cpp"/>
+				<F N="../../112_NameDBServer/src/NameDBThread.hpp"/>
+				<F N="../../112_NameDBServer/src/NameDBThreadManager.cpp"/>
+				<F N="../../112_NameDBServer/src/NameDBThreadManager.hpp"/>
+				<F N="../../112_NameDBServer/src/Public.hpp"/>
+				<F N="../../112_NameDBServer/src/SSProtocolEngine.cpp"/>
+				<F N="../../112_NameDBServer/src/SSProtocolEngine.hpp"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../../113_RegAuthServer">
+			<Folder Name="src">
+				<F N="../../113_RegAuthServer/src/AccountDBAddHandler.cpp"/>
+				<F N="../../113_RegAuthServer/src/AccountDBAddHandler.hpp"/>
+				<F N="../../113_RegAuthServer/src/AccountDBFetchHandler.cpp"/>
+				<F N="../../113_RegAuthServer/src/AccountDBFetchHandler.hpp"/>
+				<F N="../../113_RegAuthServer/src/AccountUinObj.cpp"/>
+				<F N="../../113_RegAuthServer/src/AccountUinObj.hpp"/>
+				<F N="../../113_RegAuthServer/src/App.hpp"/>
+				<F N="../../113_RegAuthServer/src/AppDef.hpp"/>
+				<F N="../../113_RegAuthServer/src/AppLauncher.cpp"/>
+				<F N="../../113_RegAuthServer/src/AuthAccountHandler.cpp"/>
+				<F N="../../113_RegAuthServer/src/AuthAccountHandler.hpp"/>
+				<F N="../../113_RegAuthServer/src/CacheTime.cpp"/>
+				<F N="../../113_RegAuthServer/src/CacheTime.hpp"/>
+				<F N="../../113_RegAuthServer/src/ClientClosedHandler.cpp"/>
+				<F N="../../113_RegAuthServer/src/ClientClosedHandler.hpp"/>
+				<F N="../../113_RegAuthServer/src/ConfigMgr.cpp"/>
+				<F N="../../113_RegAuthServer/src/ConfigMgr.hpp"/>
+				<F N="../../113_RegAuthServer/src/CSProtocolEngine.cpp"/>
+				<F N="../../113_RegAuthServer/src/CSProtocolEngine.hpp"/>
+				<F N="../../113_RegAuthServer/src/FixedHashCache.hpp"/>
+				<F N="../../113_RegAuthServer/src/Handler.cpp"/>
+				<F N="../../113_RegAuthServer/src/Handler.hpp"/>
+				<F N="../../113_RegAuthServer/src/HandlerSet.cpp"/>
+				<F N="../../113_RegAuthServer/src/HandlerSet.hpp"/>
+				<F N="../../113_RegAuthServer/src/LRUHashCache.hpp"/>
+				<F N="../../113_RegAuthServer/src/ProtocolEngine.hpp"/>
+				<F N="../../113_RegAuthServer/src/Public.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthApp.cpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthApp.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthBillLog.cpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthBillLog.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthErrorNumDef.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthHandlerSet.cpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthHandlerSet.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthMsgTransceiver.cpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthMsgTransceiver.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthObjectAllocator.cpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthObjectAllocator.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthPublic.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegAuthSingleton.hpp"/>
+				<F N="../../113_RegAuthServer/src/RegisterAccountHandler.cpp"/>
+				<F N="../../113_RegAuthServer/src/RegisterAccountHandler.hpp"/>
+				<F N="../../113_RegAuthServer/src/SessionManager.cpp"/>
+				<F N="../../113_RegAuthServer/src/SessionManager.hpp"/>
+				<F N="../../113_RegAuthServer/src/SessionObj.cpp"/>
+				<F N="../../113_RegAuthServer/src/SessionObj.hpp"/>
+				<F N="../../113_RegAuthServer/src/SSProtocolEngine.cpp"/>
+				<F N="../../113_RegAuthServer/src/SSProtocolEngine.hpp"/>
+				<F N="../../113_RegAuthServer/src/TimeStampConverter.cpp"/>
+				<F N="../../113_RegAuthServer/src/TimeStampConverter.hpp"/>
+				<F N="../../113_RegAuthServer/src/UpdateAccountHandler.cpp"/>
+				<F N="../../113_RegAuthServer/src/UpdateAccountHandler.hpp"/>
+			</Folder>
+		</Folder>
+		<Folder Name="../../114_AccountDBServer">
+			<Folder Name="src">
+				<F N="../../114_AccountDBServer/src/AccountDBApp.cpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBApp.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBErrorNumDef.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBHandlerSet.cpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBHandlerSet.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBInfoConfig.cpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBInfoConfig.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBLogManager.cpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBLogManager.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBMsgTransceiver.cpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBMsgTransceiver.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBPublic.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBThread.cpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBThread.hpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBThreadManager.cpp"/>
+				<F N="../../114_AccountDBServer/src/AccountDBThreadManager.hpp"/>
+				<F N="../../114_AccountDBServer/src/AddAccountHandler.cpp"/>
+				<F N="../../114_AccountDBServer/src/AddAccountHandler.hpp"/>
+				<F N="../../114_AccountDBServer/src/AppDef.hpp"/>
+				<F N="../../114_AccountDBServer/src/AppLauncher.cpp"/>
+				<F N="../../114_AccountDBServer/src/AuthAccountHandler.cpp"/>
+				<F N="../../114_AccountDBServer/src/AuthAccountHandler.hpp"/>
+				<F N="../../114_AccountDBServer/src/DeleteAccountHandler.cpp"/>
+				<F N="../../114_AccountDBServer/src/DeleteAccountHandler.hpp"/>
+				<F N="../../114_AccountDBServer/src/FetchAccountHandler.cpp"/>
+				<F N="../../114_AccountDBServer/src/FetchAccountHandler.hpp"/>
+				<F N="../../114_AccountDBServer/src/Handler.cpp"/>
+				<F N="../../114_AccountDBServer/src/Handler.hpp"/>
+				<F N="../../114_AccountDBServer/src/HandlerSet.cpp"/>
+				<F N="../../114_AccountDBServer/src/HandlerSet.hpp"/>
+				<F N="../../114_AccountDBServer/src/Public.hpp"/>
+				<F N="../../114_AccountDBServer/src/RegisterAccountHandler.cpp"/>
+				<F N="../../114_AccountDBServer/src/RegisterAccountHandler.hpp"/>
+				<F N="../../114_AccountDBServer/src/SSProtocolEngine.cpp"/>
+				<F N="../../114_AccountDBServer/src/SSProtocolEngine.hpp"/>
+				<F N="../../114_AccountDBServer/src/UpdateAccountHandler.cpp"/>
+				<F N="../../114_AccountDBServer/src/UpdateAccountHandler.hpp"/>
+			</Folder>
+		</Folder>
 		<Folder Name="../../191_UnitTest">
 			<Folder Name="001_ServerLib">
 				<F N="../../191_UnitTest/001_ServerLib/DBClientWrapperUnitTest.cpp"/>
@@ -1389,16 +1288,6 @@
 						<F N="../../Build/RuntimeEnv/Common/lua/combat_trap.lua"/>
 						<F N="../../Build/RuntimeEnv/Common/lua/combat_unittest.lua"/>
 						<F N="../../Build/RuntimeEnv/Common/lua/combat_value.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/CppAPI.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/dkjson.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/luatest.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/story_capi.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/story_common.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/story_core.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/story_extra.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/story_gen.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/story_unittest.lua"/>
-						<F N="../../Build/RuntimeEnv/Common/lua/zone.lua"/>
 					</Folder>
 				</Folder>
 			</Folder>

@@ -79,11 +79,6 @@ set(JSONCPP_INC ${3RD_PARTY_DIR}/json-0.5.0)
 set(JSONCPP_LIB json)
 link_directories(${3RD_PARTY_DIR}/json-0.5.0)
 
-#OSS UDP Log
-set(OSSUDPLOG_INC ${3RD_PARTY_DIR}/KingnetUdpLog)
-set(OSSUDPLOG_LIB KingnetUdpLogLib)
-link_directories(${3RD_PARTY_DIR}/KingnetUdpLog)
-
 # 001_ServerLib 
 set (SERVERLIB_DIR ${PROJECT_SOURCE_DIR}/001_ServerLib)
 set (SERVERLIB_INC ${SERVERLIB_DIR}/BaseLibs)
@@ -111,7 +106,7 @@ include_directories(${PROTO_DIR}/proto/)
 set (PROTOCOL_LIB protocol)
 
 # All static lib
-set (ALL_LAS ${SERVERLIB_LAS} ${CONFIG_LAS} ${SERVERLIB_LAS} ${OSSUDPLOG_LIB}
+set (ALL_LAS ${SERVERLIB_LAS} ${CONFIG_LAS} ${SERVERLIB_LAS}
 	${TDRCONFIG_LIB} ${PROTOCOL_LIB} ${LUALIB_LIB} ${ZMQLIB_LIB}
 	${PROTOBUF_LIB} ${JSONCPP_LIB} ${SYSTEM_LAS})
 	#jasonxiong todo 后续重构修改时再添加
@@ -176,11 +171,9 @@ include_directories(${PROTO_INC})
 include_directories(${GTESTLIB_INC})
 include_directories(${CONFIG_INC})
 include_directories(${CRYPTOPP_INC})
-include_directories(${OSSUDPLOG_INC})
 include_directories(${LIBEV_INC})
 include_directories(${BOTAN_INC})
 include_directories(${JSONCPP_INC})
-include_directories(${OSSUDPLOG_INC})
 
 #Link Libraries
 link_directories(${LIBRARY_OUTPUT_PATH})

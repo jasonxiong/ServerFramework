@@ -14,7 +14,6 @@
 #include "StringUtility.hpp"
 #include "ConfigMgr.hpp"
 #include "AccountApp.hpp"
-#include "PlatformDefine.hpp"
 
 using namespace ServerLib;
 

@@ -1,12 +1,12 @@
 [Global]
 CurrentProject=GameSvr.vpj
 [ProjectDates]
-GameSvr.vpj=20150126060457446
+GameSvr.vpj=20150807152616643
 [ActiveConfig]
 GameSvr.vpj=Debug
 [TreeExpansion2]
 - GameSvr.vpj
-  + ..\..\001_ServerLib
+  - ..\..\001_ServerLib
     + 3RdParty
       + botan-1.10.5
         + botan
@@ -16,7 +16,6 @@ GameSvr.vpj=Debug
           + internal
       + json-0.5.0
         + json
-      + KingnetUdpLog
       + lua-5.2.2
       + protobuf-2.5.0
         + google
@@ -25,56 +24,38 @@ GameSvr.vpj=Debug
             + stubs
       + pugixml-1.2
       + zeromq-3.2.3
-    - BaseLibs
+    + BaseLibs
   - ..\..\004_Errno
   + ..\..\100_AccountServer
     - src
   - ..\..\101_ZoneServer
     - src
-      + Kernel
+      - Kernel
         + Allocator
         - App
-        + BillLog
+        - BillLog
         + Config
         - Database
         + Event
         + Handler
-        - Position
-        - Protocol
+        + Protocol
           - Message
-        - Scene
         - Session
         - Tick
         - Units
-          - NPC
           - Role
       - Modules
-        - AccountInfo
-        - Achievement
         - Chat
-        - Collection
         - Combat
         - FightUnit
         + GM
           - Commands
-        + LifeSkill
         - Login
-        - Mail
-        + Mine
-        + MiniGame
-        + NewStart
         - Reposity
-        + Resource
-        + Skill
-        - Story
-        - Time
-        + Title
         - Utility
       + Utils
   + ..\..\102_ConfigEngine
-  - ..\..\103_Protocol
-    - Conf
-      - lua
+  + ..\..\103_Protocol
     - Src
       - config
       - proto
@@ -82,6 +63,12 @@ GameSvr.vpj=Debug
     - src
   + ..\..\111_RoleDBServer
     - src
+  + ..\..\112_NameDBServer
+    + src
+  + ..\..\113_RegAuthServer
+    + src
+  + ..\..\114_AccountDBServer
+    + src
   - ..\..\191_UnitTest
     - 001_ServerLib
   + ..\..\Build
@@ -91,56 +78,74 @@ GameSvr.vpj=Debug
     - RuntimeEnv
       - Common
         - lua
-scroll:75
+scroll:81
 [State]
-SCREEN: 1920 1080 679 202 960 748 0 0 M 0 0 0 0 1527 575 0
+SCREEN: 1920 1080 200 290 1280 790 0 0 M 0 0 0 0 1527 652 0
 CWD: ..\se
-BUFFER: BN="..\..\101_ZoneServer\src\Modules\Combat\UnitBufferManager.cpp"
-BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=608 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.5154 CL=45 LE=0 CX=45 CY=16 WI=5 BI=31 HT=0 HN=0 HF=0 HC=4
 BUFFER: BN="..\..\101_ZoneServer\src\Modules\Combat\BattlefieldObj.hpp"
 BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=8 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.1259 CL=9 LE=0 CX=9 CY=16 WI=5 BI=24 HT=0 HN=0 HF=0 HC=4
-BUFFER: BN="..\..\101_ZoneServer\src\Modules\Story\StoryFramework.hpp"
-BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=104 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=71 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.2386 CL=17 LE=0 CX=17 CY=8 WI=5 BI=25 HT=0 HN=0 HF=0 HC=4
+VIEW: LN=.2348 CL=17 LE=0 CX=17 CY=8 WI=5 BI=48 HT=0 HN=0 HF=0 HC=4
 BUFFER: BN="..\..\101_ZoneServer\src\Kernel\Units\Role\GameRole.cpp"
 BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=8 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.15160 CL=5 LE=0 CX=5 CY=16 WI=5 BI=27 HT=0 HN=0 HF=0 HC=4
+VIEW: LN=.11632 CL=5 LE=0 CX=5 CY=16 WI=5 BI=41 HT=0 HN=0 HF=0 HC=4
 BUFFER: BN="..\..\101_ZoneServer\src\Kernel\Units\GameObjCommDef.hpp"
 BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=8 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.2597 CL=21 LE=0 CX=21 CY=19 WI=5 BI=28 HT=0 HN=0 HF=0 HC=4
+VIEW: LN=.1454 CL=21 LE=0 CX=21 CY=19 WI=5 BI=31 HT=0 HN=0 HF=0 HC=4
 BUFFER: BN="..\..\101_ZoneServer\src\Modules\Combat\CombatUnitObj.cpp"
 BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=8 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.8971 CL=1 LE=0 CX=1 CY=18 WI=5 BI=29 HT=0 HN=0 HF=0 HC=4
-BUFFER: BN="..\..\101_ZoneServer\src\Modules\Mail\MailFramework.hpp"
-BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=8 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.0 CL=1 LE=0 CX=1 CY=0 WI=5 BI=30 HT=0 HN=0 HF=0 HC=4
-BUFFER: BN="..\..\101_ZoneServer\src\Modules\Story\StoryLuaEngine.cpp"
-BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=872 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.2723 CL=31 LE=0 CX=31 CY=21 WI=5 BI=23 HT=0 HN=0 HF=0 HC=4
-BUFFER: BN="..\..\101_ZoneServer\src\Modules\Story\StoryFramework.cpp"
+VIEW: LN=.6772 CL=1 LE=0 CX=1 CY=19 WI=5 BI=30 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="..\..\101_ZoneServer\src\Modules\Combat\UnitBufferManager.cpp"
 BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=616 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
-VIEW: LN=.6783 CL=1 LE=0 CX=1 CY=19 WI=5 BI=26 HT=0 HN=0 HF=0 HC=4
-WINDOW: 100 125 1183 402 -1 -1 N  WF=0 WT=2 ",,,"
-BUFFER: BN="..\..\101_ZoneServer\src\Modules\Story\StoryLuaEngine.cpp"
-VIEW: LN=.2723 CL=31 LE=0 CX=37 CY=21 WI=183 BI=23 HT=0 HN=0 HF=0 HC=4
+VIEW: LN=.5410 CL=1 LE=0 CX=1 CY=22 WI=5 BI=66 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="..\..\100_AccountServer\src\AccountOssLog.hpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=131688 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
+VIEW: LN=.618 CL=27 LE=0 CX=27 CY=28 WI=5 BI=43 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="..\..\100_AccountServer\src\CreateRoleRequestHandler.cpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=616 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
+VIEW: LN=.449 CL=1 LE=0 CX=1 CY=16 WI=5 BI=46 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="..\..\101_ZoneServer\src\Kernel\Session\GameSession.hpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=104 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
+VIEW: LN=.403 CL=2 LE=0 CX=2 CY=17 WI=5 BI=28 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="..\..\101_ZoneServer\src\Kernel\BillLog\ZoneOssLog.hpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=131624 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
+VIEW: LN=.2298 CL=7 LE=0 CX=7 CY=24 WI=5 BI=33 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="..\..\101_ZoneServer\src\Kernel\BillLog\ZoneOssLog.cpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=1 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=616 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
+VIEW: LN=.3477 CL=23 LE=0 CX=23 CY=17 WI=5 BI=29 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="..\..\191_UnitTest\001_ServerLib\SessionKeyUtilityUnitTest.cpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=616 TL=0 MLL=0 ASE=0 LNL=4 LCF=6 CAPS=0 E=0 ESBU2=-1 CL="" SC="" SCE= SCU=
+VIEW: LN=.592 CL=46 LE=0 CX=46 CY=29 WI=5 BI=44 HT=0 HN=0 HF=0 HC=4
 WINDOW: 20 25 1183 402 -1 -1 N  WF=0 WT=3 ",,,"
 BUFFER: BN="..\..\101_ZoneServer\src\Modules\Combat\UnitBufferManager.cpp"
-VIEW: LN=.5154 CL=45 LE=0 CX=51 CY=16 WI=196 BI=31 HT=0 HN=0 HF=0 HC=4
-WINDOW: 0 0 1183 402 -1 -1 M  WF=0 WT=1 ",,,"
-BUFFER: BN="..\..\101_ZoneServer\src\Modules\Story\StoryFramework.cpp"
-VIEW: LN=.6545 CL=1 LE=0 CX=7 CY=14 WI=191 BI=26 HT=0 HN=0 HF=0 HC=4
+VIEW: LN=.5410 CL=1 LE=0 CX=7 CY=22 WI=1017 BI=66 HT=0 HN=0 HF=0 HC=4
+WINDOW: 180 75 1183 456 -1 -1 N  WF=0 WT=1 ",,,"
+BUFFER: BN="..\..\100_AccountServer\src\AccountOssLog.hpp"
+VIEW: LN=.618 CL=27 LE=0 CX=33 CY=28 WI=1301 BI=43 HT=0 HN=0 HF=0 HC=4
+WINDOW: 200 100 1183 456 -1 -1 N  WF=0 WT=2 ",,,"
+BUFFER: BN="..\..\100_AccountServer\src\CreateRoleRequestHandler.cpp"
+VIEW: LN=.449 CL=1 LE=0 CX=7 CY=16 WI=1307 BI=46 HT=0 HN=0 HF=0 HC=4
+WINDOW: 220 125 1183 456 -1 -1 N  WF=0 WT=4 ",,,"
+BUFFER: BN="..\..\101_ZoneServer\src\Kernel\Session\GameSession.hpp"
+VIEW: LN=.403 CL=2 LE=0 CX=8 CY=17 WI=1313 BI=28 HT=0 HN=0 HF=0 HC=4
+WINDOW: 240 150 1183 456 -1 -1 N  WF=0 WT=5 ",,,"
+BUFFER: BN="..\..\101_ZoneServer\src\Kernel\BillLog\ZoneOssLog.hpp"
+VIEW: LN=.2298 CL=7 LE=0 CX=13 CY=24 WI=1319 BI=33 HT=0 HN=0 HF=0 HC=4
+WINDOW: 260 175 1183 456 -1 -1 N  WF=0 WT=6 ",,,"
+BUFFER: BN="..\..\101_ZoneServer\src\Kernel\BillLog\ZoneOssLog.cpp"
+VIEW: LN=.3477 CL=23 LE=0 CX=29 CY=17 WI=1323 BI=29 HT=0 HN=0 HF=0 HC=4
+WINDOW: 280 0 1183 456 -1 -1 M  WF=0 WT=7 ",,,"
+BUFFER: BN="..\..\191_UnitTest\001_ServerLib\SessionKeyUtilityUnitTest.cpp"
+VIEW: LN=.570 CL=19 LE=0 CX=25 CY=21 WI=1325 BI=44 HT=0 HN=0 HF=0 HC=4
 FILEHIST: 9
-..\..\102_ConfigEngine\ScenePathManager.cpp
-..\..\101_ZoneServer\src\Modules\Combat\CombatUnitAI.cpp
-..\..\101_ZoneServer\src\Modules\Combat\AStarPathUtility.hpp
-..\..\101_ZoneServer\src\Modules\Combat\BattlefieldObj.cpp
-..\..\101_ZoneServer\src\Modules\Combat\CombatEventListener.cpp
-..\..\101_ZoneServer\src\Modules\Combat\AStarPathUtility.cpp
-..\..\101_ZoneServer\src\Modules\Story\StoryLuaEngine.cpp
 ..\..\101_ZoneServer\src\Modules\Combat\UnitBufferManager.cpp
 ..\..\101_ZoneServer\src\Modules\Story\StoryFramework.cpp
+..\..\100_AccountServer\src\AccountOssLog.hpp
+..\..\100_AccountServer\src\CreateRoleRequestHandler.cpp
+..\..\101_ZoneServer\src\Kernel\Session\GameSession.hpp
+..\..\101_ZoneServer\src\Kernel\BillLog\ZoneOssLog.hpp
+..\..\101_ZoneServer\src\Kernel\BillLog\ZoneOssLog.cpp
+..\..\001_ServerLib\BaseLibs\SessionKeyUtility.hpp
+..\..\191_UnitTest\001_ServerLib\SessionKeyUtilityUnitTest.cpp
 DEBUG: 0 0 0 0 3 0 gdb
 printf
 strcpy
