@@ -30,8 +30,6 @@ void CAccountOssLog::TraceCreateAccount(unsigned int uin, unsigned int uiSession
 
 int CAccountOssLog::Initialize()
 {
-	//≥ı ºªØKingnet UdpLog
-	//return _analyzer.Init(ACCOUNT_OSSLOG_CONFIG_FILE);
 
     return 0;
 }

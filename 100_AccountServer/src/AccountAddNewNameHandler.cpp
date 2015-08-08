@@ -5,7 +5,6 @@
 #include "LogAdapter.hpp"
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
-#include "RoleNumberObj.hpp"
 #include "SessionObj.hpp"
 #include "AccountSingleton.hpp"
 #include "CreateRoleRequestObj.hpp"
@@ -17,8 +16,7 @@ CAccountAddNewNameHandler::CAccountAddNewNameHandler()
     m_pRequestMsg = NULL;
 }
 
-void CAccountAddNewNameHandler::OnClientMsg(TNetHead_V2* pstNetHead,
-                                       GameProtocolMsg* pstMsg, SHandleResult* pstResult)
+void CAccountAddNewNameHandler::OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
     // ≤ª π”√Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);

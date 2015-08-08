@@ -5,7 +5,6 @@
 #include "LogAdapter.hpp"
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
-#include "RoleNumberObj.hpp"
 #include "SessionObj.hpp"
 #include "AccountSingleton.hpp"
 #include "TimeStampConverter.hpp"
@@ -21,8 +20,7 @@ int CListRoleRequestHandler::CheckParam(unsigned int& rushResultID)
 {
     rushResultID = T_ACCOUNT_SYSTEM_PARA_ERR;
     // 对m_pstRequestMsg中的字段做检查
-    Account_ListRole_Request* pstListRoleRequest =
-        m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountlistrolerequest();
+    Account_ListRole_Request* pstListRoleRequest = m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountlistrolerequest();
 
     // 检查Uin
     if (m_pstRequestMsg->m_stmsghead().m_uin() != pstListRoleRequest->uin())
@@ -55,8 +53,7 @@ void CListRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         return;
     }
 
-    Account_ListRole_Request* pstListRoleRequest =
-        m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountlistrolerequest();
+    Account_ListRole_Request* pstListRoleRequest = m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountlistrolerequest();
     unsigned int uiUin = pstListRoleRequest->uin();
     short nWorldID = pstListRoleRequest->world();
 
@@ -97,19 +94,6 @@ void CListRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     pSessionObj->GetCreatedTime(szTime, sizeof(szTime));
     LOGDETAIL("session cache created time: %s", szTime); // 例如: Wed Sep 29 10:59:46 2010
 
-    //todo jasonxiong 后面可以考虑内存中建立玩家角色缓存信息
-    // 检查该用户在角色个数缓存区中是否有相应结点
-//    CRoleNumberObj* pRoleNumberObj = CLRUHashCache<CRoleNumberObj>::GetByUin(uiUin);
-//    if (pRoleNumberObj) // 命中缓存
-//    {
-//        // 该用户在该world上的角色个数为0
-//        if (0 == pRoleNumberObj->GetRoleNumberOnWorld(nWorldID))
-//        {
-//            SendResponseToLotus(EQEC_Success);
-//            return;
-//        }
-//    }
-//
     SendListRoleRequestToWorld(); // 转发查询角色列表消息给world server
 }
 
@@ -118,8 +102,7 @@ void CListRoleRequestHandler::SendListRoleRequestToWorld()
     // 修改消息头中的TimeStamp
     m_pstRequestMsg->mutable_m_stmsghead()->set_m_uisessionfd(GenerateTimeStamp(m_uiSessionFD, m_unValue));
 
-    if (EncodeAndSendCode(SSProtocolEngine,
-                          NULL, m_pstRequestMsg, GAME_SERVER_WORLD) != 0)
+    if (EncodeAndSendCode(SSProtocolEngine, NULL, m_pstRequestMsg, GAME_SERVER_WORLD) != 0)
     {
         LOGERROR("Failed to send ListRoleRequest to world server\n");
         return;

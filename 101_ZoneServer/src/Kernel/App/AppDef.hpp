@@ -16,7 +16,6 @@ const int STAT_CHCHE_ID_TRANSFER   = 2;        //客户端消息头
 
 #define STAT_CACHE_NAME_TIMER       "TimerCache"
 #define STAT_CACHE_NAME_TIMERINDEX  "TimerIndexCache"
-#define STAT_CACHE_NAME_TRANSFER    "TransferCache"
 
 #define APP_CONFIG_FILE "../conf/GameServer.tcm"
 

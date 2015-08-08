@@ -6,7 +6,6 @@
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
 #include "CreateRoleRequestObj.hpp"
-#include "RoleNumberObj.hpp"
 #include "SessionObj.hpp"
 #include "AccountSingleton.hpp"
 #include "TimeStampConverter.hpp"
@@ -100,40 +99,6 @@ void CCreateRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     if (CFixedHashCache<CCreateRoleRequestObj>::GetFreeNodeNumber() < 1)
     {
         LOGERROR("CreateRoleRequestObj cache is full, uin: %u\n", uiUin);
-        return;
-    }
-
-    // 检查该用户在角色个数缓存区中是否有相应结点
-    CRoleNumberObj* pRoleNumberObj = CLRUHashCache<CRoleNumberObj>::GetByUin(uiUin);
-    if (!pRoleNumberObj)
-    {
-        // 该用户还未在角色个数缓存区中创建结点或者cache被换出
-        // 这里首先需要访问数据库，将数据加载到cache中，如果该用户在所有的world上的角色个数都为0，
-        // 则置cache中none role标志为true。
-
-        // 创建缓存结点并初始化
-        pRoleNumberObj = CLRUHashCache<CRoleNumberObj>::CreateByUin(uiUin);
-        if (!pRoleNumberObj)
-        {
-            LOGERROR("Failed to create RoleNumberObj in cache, uin: %u\n", uiUin);
-            SendFailedResponseToLotus(T_ACCOUNT_SYSTEM_PARA_ERR);
-            return;
-        }
-
-        pRoleNumberObj->Initialize();
-        pRoleNumberObj->SetUin(uiUin);
-
-        // 从数据库中加载该用户在各个world上的角色个数，填充缓存结点
-        /************************************************************************/
-        /* 未做！！！                                                           */
-        /************************************************************************/
-    }
-
-    // 检查该用户在该world上已经创建的角色个数是否达到上限，达到上限则拒绝服务
-    if (MAX_ROLE_NUMBER_PER_USER_WORLD == pRoleNumberObj->GetRoleNumberOnWorld())
-    {
-        LOGERROR("Role number on the world reached the limit, uin: %u, world: %d\n", uiUin, nWorldID);
-        SendFailedResponseToLotus(T_ACCOUNT_ROLE_NUMLIMIT);
         return;
     }
 

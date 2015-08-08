@@ -5,7 +5,6 @@
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
 #include "CreateRoleRequestObj.hpp"
-#include "RoleNumberObj.hpp"
 #include "SessionObj.hpp"
 #include "AccountSingleton.hpp"
 #include "TimeStampConverter.hpp"
@@ -41,15 +40,6 @@ void CCreateRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     // 消息处理成功，即后台创建角色成功
     if (T_SERVER_SUCESS == pstCreateRoleResponse->iresult())
     {
-        // 更新缓存中该用户在该world上的角色个数
-        CRoleNumberObj* pRoleNumberObj = CLRUHashCache<CRoleNumberObj>::GetByUin(uiUin);
-        ASSERT_AND_LOG_RTN_VOID(pRoleNumberObj);
-        pRoleNumberObj->ResetNoneRoleFlag();
-        pRoleNumberObj->AddOneRoleToWorld(pstCreateRoleResponse->stroleid());
-
-        // 发送update消息给NameServer，通知其更新预缓存
-        //SendUpdateNicknameRequestToName(NAMEUPDATETYPE_ADD);
-
         //记录创建角色成功的OSS日志
         CAccountOssLog::TraceCreateAccount(pstCreateRoleResponse->stroleid().uin(), m_uiSessionFD);
     }

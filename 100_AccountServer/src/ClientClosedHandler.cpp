@@ -5,7 +5,6 @@
 #include "LogAdapter.hpp"
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
-#include "RoleNumberObj.hpp"
 #include "SessionObj.hpp"
 #include "AccountSingleton.hpp"
 #include "ClientClosedHandler.hpp"

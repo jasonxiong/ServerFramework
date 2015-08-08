@@ -223,8 +223,7 @@ int CAccountApp::HandleMsgIn(IProtocolEngine* pProtocolEngine, EGameServerID enM
     stRequestMsg.Clear();
 
     // 解码网络数据为本地数据
-    iRet = pProtocolEngine->Decode((unsigned char*)szCodeBuf,
-                                   iCodeLen, &m_stNetHead, &stRequestMsg);
+    iRet = pProtocolEngine->Decode((unsigned char*)szCodeBuf, iCodeLen, &m_stNetHead, &stRequestMsg);
     if (iRet != 0)
     {
         return -1;
@@ -246,8 +245,7 @@ int CAccountApp::HandleMsgIn(IProtocolEngine* pProtocolEngine, EGameServerID enM
 
     if (!pHandler)
     {
-        TRACESVR("Failed to find a message handler, msg id: %u\n",
-                 stRequestMsg.m_stmsghead().m_uimsgid());
+        TRACESVR("Failed to find a message handler, msg id: %u\n", stRequestMsg.m_stmsghead().m_uimsgid());
         return -1;
     }
 

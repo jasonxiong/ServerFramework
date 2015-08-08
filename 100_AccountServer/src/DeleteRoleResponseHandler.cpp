@@ -4,7 +4,6 @@
 #include "LogAdapter.hpp"
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
-#include "RoleNumberObj.hpp"
 #include "SessionObj.hpp"
 #include "AccountSingleton.hpp"
 #include "TimeStampConverter.hpp"
@@ -31,22 +30,6 @@ void CDeleteRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     LOGDEBUG("Handling DeleteRoleResponse from world server, "
              "result: %d, uin: %u, sockfd: %u, value: %d\n",
              pstDeleteRoleResponse->iresult(), uiUin, m_uiSessionFD, m_unValue);
-
-    // 消息处理成功，即后台删除角色成功
-    if (T_SERVER_SUCESS == pstDeleteRoleResponse->iresult())
-    {
-        // 更新缓存中该用户在该world上的角色个数，减1
-        // 如果缓存结点已经被换出则不需要处理
-        CRoleNumberObj* pRoleNumberObj = CLRUHashCache<CRoleNumberObj>::GetByUin(uiUin);
-        if (pRoleNumberObj)
-        {
-            pRoleNumberObj->SubOneRoleFromWorld(pstDeleteRoleResponse->stroleid());
-        }
-
-        // 发送update消息给NameServer，通知其删除缓存中的nickname
-        // todo jasonxiong 先不需要理会NameSvr
-        //SendUpdateNicknameRequestToName();
-    }
 
     CSessionObj* pSession = SessionManager->GetSession(m_uiSessionFD, m_unValue);
 

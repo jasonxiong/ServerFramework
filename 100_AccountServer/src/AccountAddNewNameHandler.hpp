@@ -14,8 +14,7 @@ private:
     CAccountAddNewNameHandler();
 
 public:
-    virtual void OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg,
-                             SHandleResult* pstResult);
+    virtual void OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg, SHandleResult* pstResult);
 
 private:
 

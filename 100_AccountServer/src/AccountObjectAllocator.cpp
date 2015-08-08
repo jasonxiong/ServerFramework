@@ -1,5 +1,4 @@
 #include "CreateRoleRequestObj.hpp"
-#include "RoleNumberObj.hpp"
 #include "SessionObj.hpp"
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
@@ -25,9 +24,6 @@ int CAccountObjectAllocator::Initialize(bool bResume)
     // 创建角色消息缓存区
     CFixedHashCache<CCreateRoleRequestObj>::AllocateFromShm(m_stShm, bResume);
 
-    // 用户在各个world上的角色个数缓存区
-    CLRUHashCache<CRoleNumberObj>::AllocateFromShm(m_stShm, bResume);
-
     return 0;
 }
 
@@ -39,15 +35,8 @@ size_t CAccountObjectAllocator::CaculateTotalSize()
     }
 
     // 创建角色消息缓存区，以uin作为hash key
-    size_t iCreateRoleRequestCacheSize =
-        CFixedHashCache<CCreateRoleRequestObj>::CaculateSize(
-            MAX_ROLE_OBJECT_NUMBER_IN_WORLD);
+    size_t iCreateRoleRequestCacheSize = CFixedHashCache<CCreateRoleRequestObj>::CaculateSize(MAX_ROLE_OBJECT_NUMBER_IN_WORLD);
     m_iTotalSize += iCreateRoleRequestCacheSize;
-
-    // 用户在各个world上的角色个数缓存区，以uin作为hash key
-    size_t iRoleNumberCacheSize =
-        CLRUHashCache<CRoleNumberObj>::CaculateSize(MAX_ROLE_OBJECT_NUMBER_IN_WORLD);
-    m_iTotalSize += iRoleNumberCacheSize;
 
     return m_iTotalSize;
 }
