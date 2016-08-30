@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include <time.h>
 
 #include "Base64URL.hpp"
@@ -10,7 +10,7 @@ using namespace ServerLib;
 #define     BASE64_CODE_NUMBER      (1 << BASE64_BITS)
 #define     BASE64_DECODE_NUMBER    256
 
-// ±àÂë±í
+// ç¼–ç è¡¨
 const unsigned char Base64Encodes[BASE64_CODE_NUMBER] = 
 {
     'z', 'A', 'R', 'i',
@@ -31,13 +31,13 @@ const unsigned char Base64Encodes[BASE64_CODE_NUMBER] =
     'P', '=', 'y', 'h',
 };
 
-// Î²²¿Ìî³äÂë
+// å°¾éƒ¨å¡«å……ç 
 #define     PAD_CODE    'Q'
 
-// ½âÂë±í
+// è§£ç è¡¨
 unsigned char Base64Decodes[BASE64_DECODE_NUMBER];
 
-// ³õÊ¼»¯½âÂë±í
+// åˆå§‹åŒ–è§£ç è¡¨
 void InitBase64Decoder()
 {
     static bool bInited = false;
@@ -57,7 +57,7 @@ void InitBase64Decoder()
     bInited = true;
 }
 
-// Base64URL±àÂë, ³É¹¦·µ»Ø0
+// Base64URLç¼–ç , æˆåŠŸè¿”å›0
 int Base64URLEncode(unsigned char* pszDstBuffer, int& iDstLen, const char* pszSrcBuffer, int iSrcLen)
 {
     ASSERT_AND_LOG_RTN_INT(pszSrcBuffer);
@@ -78,10 +78,10 @@ int Base64URLEncode(unsigned char* pszDstBuffer, int& iDstLen, const char* pszSr
 #define SELECTOR_4(x)   (((unsigned int)((x) & 0xFC0000)) >> 18)
 
 
-    // Ã¿´Î¶Ô3¸ö×Ö·û½øĞĞ±àÂë, ²»×ã3¸ö×Ö·ûµÄÓÃPAD_CODE²¹Æë
+    // æ¯æ¬¡å¯¹3ä¸ªå­—ç¬¦è¿›è¡Œç¼–ç , ä¸è¶³3ä¸ªå­—ç¬¦çš„ç”¨PAD_CODEè¡¥é½
     while (iSrcLeftLen > 0)
     {
-        // 3¸ö×Ö·û²úÉú4¸öASCIIÂë
+        // 3ä¸ªå­—ç¬¦äº§ç”Ÿ4ä¸ªASCIIç 
         if (iDstLeftLen < 4)
         {
 			//nolog
@@ -129,7 +129,7 @@ int Base64URLEncode(unsigned char* pszDstBuffer, int& iDstLen, const char* pszSr
     return 0;
 }
 
-// Base64URL½âÂë, ³É¹¦·µ»Ø0
+// Base64URLè§£ç , æˆåŠŸè¿”å›0
 int Base64URLDecode(char* pszDstBuffer, int& iDstLen, const unsigned char* pszSrcBuffer, int iSrcLen)
 {
     InitBase64Decoder();
@@ -143,7 +143,7 @@ int Base64URLDecode(char* pszDstBuffer, int& iDstLen, const unsigned char* pszSr
         return -1;
     }
 
-    // Ô­Âë³¤¶È±ØĞëÊÇ4µÄ±¶Êı
+    // åŸç é•¿åº¦å¿…é¡»æ˜¯4çš„å€æ•°
     if ((iSrcLen % 4) != 0)
     {
 		//nolog
@@ -153,7 +153,7 @@ int Base64URLDecode(char* pszDstBuffer, int& iDstLen, const unsigned char* pszSr
     int iSrcLeftLen = iSrcLen;
     int iDstLeftLen = iDstLen;
 
-    // Ã¿´Î½«4¸ö×Ö·û½âÂëÎª4¸ö6bitÊıÖµ, È»ºóÆ´½ÓÎª3¸ö8bit×Ö·û
+    // æ¯æ¬¡å°†4ä¸ªå­—ç¬¦è§£ç ä¸º4ä¸ª6bitæ•°å€¼, ç„¶åæ‹¼æ¥ä¸º3ä¸ª8bitå­—ç¬¦
     while (iSrcLeftLen > 0)
     {
         unsigned char ucDecode1 = Base64Decodes[pszSrcBuffer[0]];
@@ -243,14 +243,14 @@ int Base64URLDecode(char* pszDstBuffer, int& iDstLen, const unsigned char* pszSr
 //        printf("%c\n", szSrc[i]);
 //    }
 //
-//    ////ÑûÇëÂë½á¹¹
+//    ////é‚€è¯·ç ç»“æ„
 //    typedef struct tagInviteKey
 //    {
-//        int m_iWorldID;     // ÊÀ½ç·şÎñÆ÷ID
-//        int m_iZoneID;      // ·ÖÏßID
-//        int m_iCreateTime;  // ´´½¨Ê±¼ä(Ãë): Ã¿¸öÍæ¼ÒÃ¿ÃëÖ»ÄÜ´´½¨Ò»¸öÑûÇëÂë. -1 ±íÊ¾´ËÑûÇëÂëÊ§Ğ§
-//        int m_uiUin;        // ½ÇÉ«Uin
-//        int m_uiSeq;        // ½ÇÉ«Seq
+//        int m_iWorldID;     // ä¸–ç•ŒæœåŠ¡å™¨ID
+//        int m_iZoneID;      // åˆ†çº¿ID
+//        int m_iCreateTime;  // åˆ›å»ºæ—¶é—´(ç§’): æ¯ä¸ªç©å®¶æ¯ç§’åªèƒ½åˆ›å»ºä¸€ä¸ªé‚€è¯·ç . -1 è¡¨ç¤ºæ­¤é‚€è¯·ç å¤±æ•ˆ
+//        int m_uiUin;        // è§’è‰²Uin
+//        int m_uiSeq;        // è§’è‰²Seq
 //    }TInviteKey;
 //    
 //    TInviteKey stKey;
@@ -274,3 +274,7 @@ int Base64URLDecode(char* pszDstBuffer, int& iDstLen, const unsigned char* pszSr
 //        stKey.m_iWorldID, stKey.m_iZoneID, stKey.m_iCreateTime, stKey.m_uiUin, stKey.m_uiSeq);
 //
 //}
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __COMBAT_EVENT_MANAGER_HPP__
 #define __COMBAT_EVENT_MANAGER_HPP__
 
@@ -6,33 +6,33 @@
 
 class CGameRoleObj;
 
-//Õ½¶·ÊÂ¼ş¹ÜÀíÆ÷
+//æˆ˜æ–—äº‹ä»¶ç®¡ç†å™¨
 class CCombatEventManager
 {
 public:
 
-    //Õ½¶·¿ªÊ¼ÊÂ¼ş
+    //æˆ˜æ–—å¼€å§‹äº‹ä»¶
     static void NotifyCombatBegin(CGameRoleObj& stRoleObj);
 
-    //Õ½¶·½áÊøÊÂ¼ş
+    //æˆ˜æ–—ç»“æŸäº‹ä»¶
     static void NotifyCombatEnd(CGameRoleObj& stRoleObj);
 
-    //»ØºÏ¿ªÊ¼ÊÂ¼ş
+    //å›åˆå¼€å§‹äº‹ä»¶
     static void NotifyRoundBegin(CGameRoleObj& stRoleObj);
 
-    //»ØºÏ½áÊøÊÂ¼ş
+    //å›åˆç»“æŸäº‹ä»¶
     static void NotifyRoundEnd(CGameRoleObj& stRoleObj);
 
-    //Õ½¶·µ¥Î»ĞĞ¶¯»ØºÏ¿ªÊ¼ÊÂ¼ş
+    //æˆ˜æ–—å•ä½è¡ŒåŠ¨å›åˆå¼€å§‹äº‹ä»¶
     static void NotifyActionRoundBegin(CGameRoleObj& stRoleObj);
 
-    //Õ½¶·µ¥Î»ĞĞ¶¯»ØºÏ½áÊøÊÂ¼ş
+    //æˆ˜æ–—å•ä½è¡ŒåŠ¨å›åˆç»“æŸäº‹ä»¶
     static void NotifyActionRoundEnd(CGameRoleObj& stRoleObj);
 
-    //Õ½¶·µ¥Î»ÒÆ¶¯µÄÊÂ¼ş
+    //æˆ˜æ–—å•ä½ç§»åŠ¨çš„äº‹ä»¶
     static void NotifyCombatUnitMove(CGameRoleObj& stRoleObj);
 
-    //Õ½¶·µ¥Î»ĞĞ¶¯µÄÊÂ¼ş
+    //æˆ˜æ–—å•ä½è¡ŒåŠ¨çš„äº‹ä»¶
     static void NotifyCombatUnitAction(CGameRoleObj& stRoleObj);
 
 private:
@@ -40,3 +40,7 @@ private:
 };
     
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

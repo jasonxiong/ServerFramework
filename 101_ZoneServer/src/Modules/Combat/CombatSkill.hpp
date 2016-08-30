@@ -1,7 +1,7 @@
-#ifndef __COMBAT_SKILL_HPP__
+ï»¿#ifndef __COMBAT_SKILL_HPP__
 #define __COMBAT_SKILL_HPP__
 
-//Õ½¶·ÖĞ¼¼ÄÜ´¦ÀíÀà
+//æˆ˜æ–—ä¸­æŠ€èƒ½å¤„ç†ç±»
 
 #include "GameConfigDefine.hpp"
 
@@ -17,90 +17,94 @@ public:
 
 public:
 
-    //Ê¹ÓÃÕ½¶·¼¼ÄÜ,×îºóÒ»¸ö²ÎÊı±íÊ¾ÊÇ·ñ±ØÈ»ÃüÖĞ
+    //ä½¿ç”¨æˆ˜æ–—æŠ€èƒ½,æœ€åä¸€ä¸ªå‚æ•°è¡¨ç¤ºæ˜¯å¦å¿…ç„¶å‘½ä¸­
     static int CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITPOSITION& stTargetPos, int iSkillID, int iSkillUseType, bool bIsScriptCast = false);
 
 private:
 
-    //¶Ôµ¥¸öÄ¿±êÊ¹ÓÃÕ½¶·¼¼ÄÜ
+    //å¯¹å•ä¸ªç›®æ ‡ä½¿ç”¨æˆ˜æ–—æŠ€èƒ½
     static int CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int iSkillID, bool bIsChiefTarget);
 
-    //ÃüÖĞÅĞ¶¨
+    //å‘½ä¸­åˆ¤å®š
     static bool CheckCanHit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig);
 
-    //¸ñµ²ÅĞ¶¨
+    //æ ¼æŒ¡åˆ¤å®š
     static bool CheckCanBlock(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig);
 
-    //±©»÷ÅĞ¶¨
+    //æš´å‡»åˆ¤å®š
     static bool CheckCanCrit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig);
 
-    //¼ÆËãÉËº¦
+    //è®¡ç®—ä¼¤å®³
     static int GetSkillHurtNum(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig, bool bIsChiefTarget);
 
-    //¼ì²éÊÇ·ñÓĞĞ§µÄ¼¼ÄÜÊÍ·ÅÄ¿±ê
+    //æ£€æŸ¥æ˜¯å¦æœ‰æ•ˆçš„æŠ€èƒ½é‡Šæ”¾ç›®æ ‡
     static bool CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTargetType, int iCastUnitID, int iTargetUnitID);
 
-    //´¦ÀíÊÜ»÷µ¥Î»µÄ×ªÏò
+    //å¤„ç†å—å‡»å•ä½çš„è½¬å‘
     static void TargetUnderAttackDirection(CCombatUnitObj& stTargetUnitObj, int iCastUnitDirection);
 
-    //´¦ÀíÄ¿±êµ¥Î»µÄÉËº¦
+    //å¤„ç†ç›®æ ‡å•ä½çš„ä¼¤å®³
     static int ProcessRealDamage(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, int iDamageNum, ActionTarget& stNotify, const SFightUnitSkillConfig& stSkillConfig);
 
-    //´¦ÀíÄ¿±êµ¥Î»µ¥ÏîÊôĞÔµÄÉËº¦
-    //×¢Òâ£ºÕâ¸öº¯ÊıÖĞ»áĞŞ¸ÄiDamageNumµÄÖµ
+    //å¤„ç†ç›®æ ‡å•ä½å•é¡¹å±æ€§çš„ä¼¤å®³
+    //æ³¨æ„ï¼šè¿™ä¸ªå‡½æ•°ä¸­ä¼šä¿®æ”¹iDamageNumçš„å€¼
     static void ProcessTargetDamage(CCombatUnitObj& stTargetUnitObj, const SSkillDamageConfig& stDamageConfig, ActionTarget& stNotify, int iAttrType, int& iDamageNum);
 
-    //´¦ÀíÊÜ»÷·½µÄ¶ÓÓÑĞ­·À,·µ»ØÖµÎªĞ­·ÀµÄĞ§¹ûÏµÊı
+    //å¤„ç†å—å‡»æ–¹çš„é˜Ÿå‹åé˜²,è¿”å›å€¼ä¸ºåé˜²çš„æ•ˆæœç³»æ•°
     static float ProcessCoordDefense(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stTargetUnitObj);
 
-    //´¦Àí¹¥»÷¼¼ÄÜÔì³ÉµÄµ¥Î»Î»ÒÆ
+    //å¤„ç†æ”»å‡»æŠ€èƒ½é€ æˆçš„å•ä½ä½ç§»
     static int ProcessSkillMove(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, ActionTarget& stNotify, const SFightUnitSkillConfig& stSkillConfig);
 
-    //´¦Àí¼¼ÄÜµÄÌØÊâĞ§¹û
+    //å¤„ç†æŠ€èƒ½çš„ç‰¹æ®Šæ•ˆæœ
     static int ProcessSkillSpecailFunc(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, ActionTarget& stNotify, const SFightUnitSkillConfig& stSkillConfig);
 
 public:
 
-    //Ê×ÒªÄ¿±êµÄÃüÖĞ×´Ì¬
+    //é¦–è¦ç›®æ ‡çš„å‘½ä¸­çŠ¶æ€
     static int m_iChiefTargetDodge;
 
 private:
 
-    //Õ½³¡µÄID
+    //æˆ˜åœºçš„ID
     static int m_iBattlefiledObjID;
     
-    //ÊÍ·Å¼¼ÄÜµÄÕ½¶·µ¥Î»ID
+    //é‡Šæ”¾æŠ€èƒ½çš„æˆ˜æ–—å•ä½ID
     static int m_iCastUnitID;
     
-    //¼¼ÄÜÊÍ·ÅÄ¿±êµÄÕ½¶·µ¥Î»ID
+    //æŠ€èƒ½é‡Šæ”¾ç›®æ ‡çš„æˆ˜æ–—å•ä½ID
     static int m_iTargetUnitID;
     
-    //Ê¹ÓÃµÄ¼¼ÄÜID
+    //ä½¿ç”¨çš„æŠ€èƒ½ID
     static int m_iSkillID;  
 
-    //Õ½¶··¢Æğ·½µÄuin
+    //æˆ˜æ–—å‘èµ·æ–¹çš„uin
     static unsigned m_uiActiveUin;
 
-    //Õ½¶·½ÓÊÜ·½µÄuin
+    //æˆ˜æ–—æ¥å—æ–¹çš„uin
     static unsigned m_uiPassiveUin;
 
-    //¼¼ÄÜÊÍ·Å·½µÄRoleObj,¿ÉÄÜÎª¿Õ
+    //æŠ€èƒ½é‡Šæ”¾æ–¹çš„RoleObj,å¯èƒ½ä¸ºç©º
     static CGameRoleObj* m_pstCastRoleObj;
 
-    //¹¥ÊØË«·½µÄ¾àÀë
+    //æ”»å®ˆåŒæ–¹çš„è·ç¦»
     static int m_iDistance;
 
-    //ÊÇ·ñ½Å±¾ÖĞÊ¹ÓÃµÄ¼¼ÄÜ
+    //æ˜¯å¦è„šæœ¬ä¸­ä½¿ç”¨çš„æŠ€èƒ½
     static bool m_bIsScriptCast;
 
-    //¼¼ÄÜµÄÊ¹ÓÃÀàĞÍ
+    //æŠ€èƒ½çš„ä½¿ç”¨ç±»å‹
     static int m_iUseType;
 
-    //¼¼ÄÜÊ¹ÓÃ¸ø¿Í»§¶ËµÄÍ¨ÖªÏûÏ¢
+    //æŠ€èƒ½ä½¿ç”¨ç»™å®¢æˆ·ç«¯çš„é€šçŸ¥æ¶ˆæ¯
     static GameProtocolMsg m_stCombatActionNotify;
 
-    //Ôö¼ÓBUFF¸ø¿Í»§¶ËµÄÍ¨Öª
+    //å¢åŠ BUFFç»™å®¢æˆ·ç«¯çš„é€šçŸ¥
     static GameProtocolMsg m_stCombatAddBuffNotify;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

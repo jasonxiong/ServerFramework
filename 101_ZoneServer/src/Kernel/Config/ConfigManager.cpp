@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "SectionConfig.hpp"
 #include "ModuleHelper.hpp"
@@ -26,9 +26,9 @@ int CConfigManager::Initialize(bool bResumeMode)
 {
     int iRet = 0;
 
-    //todo jasonxiong5 ÔÙ¼Ó×°±¸
+    //todo jasonxiong5 å†åŠ è£…å¤‡
     /*
-    //ÓÎÏ·×°±¸ÅäÖÃ
+    //æ¸¸æˆè£…å¤‡é…ç½®
     iRet = m_stEquipmentConfigManager.LoadConfig();
     if(iRet)
     {
@@ -36,84 +36,84 @@ int CConfigManager::Initialize(bool bResumeMode)
     } 
     */ 
 
-    //Õ½¶·µ¥Î»ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å•ä½é…ç½®ç®¡ç†å™¨
     iRet = m_stSFightUnitConfigManager.LoadConfig();
     if(iRet)
     {
         return -4;
     }
 
-    //Õ½¶·¹Ø¿¨ÅäÖÃ
+    //æˆ˜æ–—å…³å¡é…ç½®
     iRet = m_stSBattleCrossConfigManager.LoadConfig();
     if(iRet)
     {
         return -8;
     }
 
-    //Õ½¶·¹Ø¿¨ÅäÖÃ
+    //æˆ˜æ–—å…³å¡é…ç½®
     iRet = m_stCrossMonsterConfigManager.LoadConfig();
     if(iRet)
     {
         return -9;
     }
 
-    //Õ½¶·µ¥Î»AIÅäÖÃ
+    //æˆ˜æ–—å•ä½AIé…ç½®
     iRet = m_stSFightUnitAIConfigManager.LoadConfig();
     if(iRet)
     {
         return -11;
     }
 
-    //Õ½¶·¹ÖÎïµÄÅäÖÃ
+    //æˆ˜æ–—æ€ªç‰©çš„é…ç½®
     iRet = m_stSMonsterConfigManager.LoadConfig();
     if(iRet)
     {
         return -12;
     }
 
-    //Õ½³¡µØÍ¼ÐÅÏ¢µÄÅäÖÃ
+    //æˆ˜åœºåœ°å›¾ä¿¡æ¯çš„é…ç½®
     iRet = m_stBattlefieldPathConfigManager.LoadAllBattlefield();
     if(iRet)
     {
         return -13;
     }
 
-    //Õ½¶·¼¼ÄÜµÄÅäÖÃ
+    //æˆ˜æ–—æŠ€èƒ½çš„é…ç½®
     iRet = m_stFightSkillConfigManager.LoadConfig();
     if(iRet)
     {
         return -14;
     }
 
-    //Õ½¶·¼¼ÄÜÊÍ·Å¾àÀëÅäÖÃ
+    //æˆ˜æ–—æŠ€èƒ½é‡Šæ”¾è·ç¦»é…ç½®
     iRet = m_stSkillRangeConfigManager.LoadConfig();
     if(iRet)
     {
         return -15;
     }
 
-    //Õ½¶·¼¼ÄÜÊÍ·Å·¶Î§ÅäÖÃ
+    //æˆ˜æ–—æŠ€èƒ½é‡Šæ”¾èŒƒå›´é…ç½®
     iRet = m_stSkillAreaConfigManager.LoadConfig();
     if(iRet)
     {
         return -16;
     }
 
-    //Õ½¶·¼¼ÄÜÐ§¹ûÐÞÕýÅäÖÃ
+    //æˆ˜æ–—æŠ€èƒ½æ•ˆæžœä¿®æ­£é…ç½®
     iRet = m_stSkillScoreConfigManager.LoadConfig();
     if(iRet)
     {
         return -17;
     }
 
-    //Õ½¶·¼¼ÄÜÉËº¦ÅäÖÃ
+    //æˆ˜æ–—æŠ€èƒ½ä¼¤å®³é…ç½®
     iRet = m_stSkillDamageConfigManager.LoadConfig();
     if(iRet)
     {
         return -18;
     }
 
-    //Õ½¶·BuffÅäÖÃ
+    //æˆ˜æ–—Buffé…ç½®
     iRet = m_stFightBuffConfigManager.LoadConfig();
     if(iRet)
     {
@@ -121,7 +121,7 @@ int CConfigManager::Initialize(bool bResumeMode)
     }
 
     /*
-    //Ëæ»ú½±ÀøÅäÖÃ¹ÜÀíÆ÷
+    //éšæœºå¥–åŠ±é…ç½®ç®¡ç†å™¨
     iRet = m_stDropRewardConfigManager.LoadConfig();
     if(iRet)
     {
@@ -129,42 +129,42 @@ int CConfigManager::Initialize(bool bResumeMode)
     } 
     */ 
 
-    //¼¼ÄÜ»ï°éºÏ»÷µÄÅäÖÃ
+    //æŠ€èƒ½ä¼™ä¼´åˆå‡»çš„é…ç½®
     iRet = m_stJointAtkConfigManager.LoadConfig();
     if(iRet)
     {
         return -38;
     }
 
-    //Õ½³¡»ú¹ØµÄÅäÖÃ
+    //æˆ˜åœºæœºå…³çš„é…ç½®
     iRet = m_stTrapConfigManager.LoadConfig();
     if(iRet)
     {
         return -39;
     }
 
-    //ÓÎÏ·ÎïÆ·µÄÅäÖÃ
+    //æ¸¸æˆç‰©å“çš„é…ç½®
     iRet = m_stGameItemConfigManager.LoadConfig();
     if(iRet)
     {
         return -40;
     }
 
-    //GMÈ¨ÏÞÏà¹ØÅäÖÃ
+    //GMæƒé™ç›¸å…³é…ç½®
     iRet = m_stQMGMPrivConfigManager.LoadGMPrivConfig();
     if(iRet)
     {
         return -60;
     }
 
-	//ÏÈÇå¿ÕÔ­ÓÐÏûÏ¢ÅäÖÃÀïÐÅÏ¢
+	//å…ˆæ¸…ç©ºåŽŸæœ‰æ¶ˆæ¯é…ç½®é‡Œä¿¡æ¯
 	CHandlerFactory::ClearAllDisableMsg();
 
 	//load
 	LoadMsgInterval();
 	LoadMsgDiableList();
 
-    // ´òÓ¡ÅäÖÃÀàÄÚ´æÊ¹ÓÃÇé¿ö
+    // æ‰“å°é…ç½®ç±»å†…å­˜ä½¿ç”¨æƒ…å†µ
     PrintConfigMemoryStatics();
 
     return 0;
@@ -176,10 +176,10 @@ int CConfigManager::PrintConfigMemoryStatics()
 
     int iConfigTotalSize = 0;
 
-    //todo jasonxiong1 ÔÝÊ±Ã»ÓÐÊ¹ÓÃ£¬ºóÃæ¼ÓÅäÖÃÔÙÍ³Ò»Ìí¼Ó
+    //todo jasonxiong1 æš‚æ—¶æ²¡æœ‰ä½¿ç”¨ï¼ŒåŽé¢åŠ é…ç½®å†ç»Ÿä¸€æ·»åŠ 
     /*
-    // ³öÉú±í
-    //Ã»ÓÐÖ°Òµ£¬ËùÓÐÈËµÄ³öÉú±í¶¼Ò»ÑùµÄ
+    // å‡ºç”Ÿè¡¨
+    //æ²¡æœ‰èŒä¸šï¼Œæ‰€æœ‰äººçš„å‡ºç”Ÿè¡¨éƒ½ä¸€æ ·çš„
     int iBirthSize =  sizeof(QMHeroBirthConfig);
     iConfigTotalSize += iBirthSize;
 
@@ -187,7 +187,7 @@ int CConfigManager::PrintConfigMemoryStatics()
         1, sizeof(QMHeroBirthConfig), iBirthSize);
     */
 
-    // ×Ü¼Æ
+    // æ€»è®¡
     LOGDEBUG("Total Memory: %dB, %dMB\n", iConfigTotalSize, iConfigTotalSize/1024/1024);
     LOGDEBUG("*****************************************************************\n");
 
@@ -219,7 +219,7 @@ int CConfigManager::LoadMsgInterval()
     unsigned int uiMsgLimitInterval;
     while(fgets(szLine, sizeof(szLine), fp))
     {
-        //¿ÕÐÐ»òÕß¸ñÊ½²»¶Ô
+        //ç©ºè¡Œæˆ–è€…æ ¼å¼ä¸å¯¹
         if (sscanf(szLine, "%u %u", &uiMsgID, &uiMsgLimitInterval) != 2)
         {
             continue;
@@ -263,7 +263,7 @@ int CConfigManager::LoadMsgDiableList()
     char szMsgDisableFile[MAX_FILENAME_LENGTH];
     stConfigFile.GetItemValue("MsgDisable", "MsgDisableFile", szMsgDisableFile, sizeof(szMsgDisableFile), "../conf/MsgDisableFile.conf");
 
-    //Ã»ÓÐ¾ÍÌø¹ý
+    //æ²¡æœ‰å°±è·³è¿‡
     FILE* fp = fopen(szMsgDisableFile, "r");
     if (fp == NULL)
     {
@@ -275,7 +275,7 @@ int CConfigManager::LoadMsgDiableList()
     unsigned int uiMsgID;
     while(fgets(szLine, sizeof(szLine), fp))
     {
-        //¿ÕÐÐ»òÕß¸ñÊ½²»¶Ô
+        //ç©ºè¡Œæˆ–è€…æ ¼å¼ä¸å¯¹
         if (sscanf(szLine, "%u", &uiMsgID) != 1)
         {
             continue;
@@ -306,3 +306,7 @@ const int CConfigManager::GetMsgInterval(const unsigned int uiMsgID)const
 
     return pstMsgConfig->m_iMsgInterval;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-
+ï»¿
 
 #ifndef __COMBAT_UNIT_OBJ_HPP__
 #define __COMBAT_UNIT_OBJ_HPP__
@@ -14,7 +14,7 @@
 
 class CGameRoleObj;
 
-//Õ½¶·µ¥Î»¶ÔÏó
+//æˆ˜æ–—å•ä½å¯¹è±¡
 class CCombatUnitObj : public CObj
 {
 public:
@@ -26,94 +26,94 @@ public:
 
 public:
 
-    //³õÊ¼»¯¹ÖÎïÕ½¶·¶ÔÏó
+    //åˆå§‹åŒ–æ€ªç‰©æˆ˜æ–—å¯¹è±¡
     int InitMonsterUnitObj(int iCombatUnitObjIndex, const OneCrossMonster& stOneConfig, const SFightPosInfo& stPosInfo, int iUnitType);
 
-    //³õÊ¼»¯½ÇÉ«Õ½¶·¶ÔÏó
+    //åˆå§‹åŒ–è§’è‰²æˆ˜æ–—å¯¹è±¡
     int InitRoleUnitObj(int iCombatUnitObjIndex, CGameRoleObj& stRoleObj, int iFightUnitID, const SFightPosInfo& stPosInfo);
 
-    //Î»ÖÃÏà¹Ø
+    //ä½ç½®ç›¸å…³
     void SetUnitPosition(const TUNITPOSITION& rstUnitPos);
     TUNITPOSITION& GetUnitPosition();
 
-    //ÇåÀíÕ½¶·µ¥Î»µÄBuffĞÅÏ¢
+    //æ¸…ç†æˆ˜æ–—å•ä½çš„Buffä¿¡æ¯
     void ClearUnitBuff();
     
-    //´ò°ü·µ»ØÕ½¶·¶ÔÏóĞÅÏ¢
+    //æ‰“åŒ…è¿”å›æˆ˜æ–—å¯¹è±¡ä¿¡æ¯
     void PackCombatUnitInfo(int iCamp, CombatUnit& stUnitInfo);
 
-    //Õ½¶·µ¥Î»ÊÇ·ñËÀÍö
+    //æˆ˜æ–—å•ä½æ˜¯å¦æ­»äº¡
     bool IsCombatUnitDead();
 
-    //»ñÈ¡Õ½¶·µ¥Î»µÄÕ½¶·ÊôĞÔ
+    //è·å–æˆ˜æ–—å•ä½çš„æˆ˜æ–—å±æ€§
     int GetFightAttr(int iAttrType);
     int AddFightAttr(int iAttrType, int iAddNum, int* iRealAddNum = NULL);
 
-    //»ñÈ¡Õ½¶·µ¥Î»µÄÀàĞÍ
+    //è·å–æˆ˜æ–—å•ä½çš„ç±»å‹
     int GetCombatUnitType();
 
-    //»ñÈ¡Õ½¶·µ¥Î»µÄID
+    //è·å–æˆ˜æ–—å•ä½çš„ID
     int GetCombatUnitID();
 
-    //»ñÈ¡Õ½¶·µ¥Î»ÉíÉÏËùÓĞbuffµÄÅäÖÃID
+    //è·å–æˆ˜æ–—å•ä½èº«ä¸Šæ‰€æœ‰buffçš„é…ç½®ID
     void GetUnitBuffID(std::vector<int>& vBuffIDs);
 
-    //ÊÇ·ñÓĞÏàÍ¬IDµÄBUFF
+    //æ˜¯å¦æœ‰ç›¸åŒIDçš„BUFF
     bool HasBuffOfSameID(int iBuffID);
 
-    //Õ½¶·µ¥Î»µÄ·½Ïò
+    //æˆ˜æ–—å•ä½çš„æ–¹å‘
     void SetUnitDirection(int iDirection);
     int GetUnitDirection();
 
-    //ÉèÖÃÕ½¶·µ¥Î»µÄAI
+    //è®¾ç½®æˆ˜æ–—å•ä½çš„AI
     int SetFightAI(int iFightAIID);
     int ChangeFightAI(int iFightAIID);
     int GetFightAI();
 
-    //¼¼ÄÜÏà¹Ø
+    //æŠ€èƒ½ç›¸å…³
     void GetValidFightSkills(std::vector<int>& vValidSkills);
     int GetNormalSkillID();
     void GetSkillByType(int iSkillType, std::vector<int>& vSkillIDs);
 
-    //×îºó¹¥»÷µÄµ¥Î»ID
+    //æœ€åæ”»å‡»çš„å•ä½ID
     int GetLastAttackUnitID();
     void SetLastAttackUnitID(int iUnitID);
 
-    //BUFFÏà¹Ø
+    //BUFFç›¸å…³
     int AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID, int iCastUnitID, Zone_CombatAddBuff_Notify& stNotify);
     int DoBuffEffectByType(unsigned int uin, int iCrossID, int iTriggerType, int iTriggerUnitID, Zone_DoBuffEffect_Notify& stNotify, int* pDamageNum = NULL);
     int DecreaseBuffRound(Zone_RemoveBuff_Notify& stNotify);
     bool HasBuffOfSameType(int iBuffID);
     void DelUnitBuff(int iBuffID, RemoveBuffEffect& stEffect);
 
-    //»ñÈ¡ÅäÖÃµÄµ¥Î»ID
+    //è·å–é…ç½®çš„å•ä½ID
     int GetConfigID();
 
-    //»ñÈ¡ÅäÖÃµ¥Î»µÄSize
+    //è·å–é…ç½®å•ä½çš„Size
     int GetUnitSize();
 
-    //»ñÈ¡·´»÷¼¼ÄÜµÄID
+    //è·å–åå‡»æŠ€èƒ½çš„ID
     int GetCounterAtkSkill();
 
-    //ÅĞ¶ÏÕ½¶·µ¥Î»ÊÇ·ñÓµÓĞ¸Ã¼¼ÄÜ
+    //åˆ¤æ–­æˆ˜æ–—å•ä½æ˜¯å¦æ‹¥æœ‰è¯¥æŠ€èƒ½
     bool HasFightSkill(int iSkillID);
 
-    //Õ½¶·µ¥Î»ÉíÉÏµÄ×´Ì¬
+    //æˆ˜æ–—å•ä½èº«ä¸Šçš„çŠ¶æ€
     void SetCombatUnitStatus(int iType, bool bSet);
     bool GetCombatUnitStatus(int iType);
 
-    //»ñÈ¡Õ½¶·µ¥Î»ËùÊôµÄuin
+    //è·å–æˆ˜æ–—å•ä½æ‰€å±çš„uin
     unsigned int GetUin();
 
-    //Õ½¶·µ¥Î»»ú¶¯Ä£Ê½£¬iDistance=-1±íÊ¾È¡Ïû»ú¶¯Ä£Ê½
+    //æˆ˜æ–—å•ä½æœºåŠ¨æ¨¡å¼ï¼ŒiDistance=-1è¡¨ç¤ºå–æ¶ˆæœºåŠ¨æ¨¡å¼
     void SetMotorMode(const TUNITPOSITION& stTargetPos, int iDistance, int iNewAIID = 0);
 
-    //»ñÈ¡Õ½¶·µ¥Î»»ú¶¯Ä£Ê½
+    //è·å–æˆ˜æ–—å•ä½æœºåŠ¨æ¨¡å¼
     const TUNITPOSITION& GetMotorTargetPos();
     int GetMotorDistance();
     int GetMotorLeftLen();
 
-    //µ¥Î»¼¼ÄÜµÄCD×´Ì¬
+    //å•ä½æŠ€èƒ½çš„CDçŠ¶æ€
     int GetSkillCDRound(int iSkillID);
     void SetSkillCDRound(int iSkillID, int iRound);
     void DecreaseSkillCDRound(Zone_SkillCDRound_Notify& stNotify);
@@ -121,53 +121,57 @@ public:
 ///////////////////////////////////////////////////////////////////////
 private:
 
-    //Õ½¶·µ¥Î»µÄÀàĞÍ
+    //æˆ˜æ–—å•ä½çš„ç±»å‹
     int m_iCombatUnitType;
 
-    //Õ½³¡ÉÏÕ½¶·µ¥Î»µÄÎ¨Ò»ID
+    //æˆ˜åœºä¸Šæˆ˜æ–—å•ä½çš„å”¯ä¸€ID
     int m_iCombatUnitID;
 
-    //Õ½¶·µ¥Î»ÅäÖÃµÄID
+    //æˆ˜æ–—å•ä½é…ç½®çš„ID
     int m_iConfigID;
 
-    //Õ½¶·µ¥Î»µÄÌå»ı´óĞ¡
+    //æˆ˜æ–—å•ä½çš„ä½“ç§¯å¤§å°
     int m_iSize;
 
-    //Õ½¶·µ¥Î»ÔÚÕ½³¡ÉÏµÄÎ»ÖÃ
+    //æˆ˜æ–—å•ä½åœ¨æˆ˜åœºä¸Šçš„ä½ç½®
     TUNITPOSITION m_stPos;
 
-    //Õ½¶·µ¥Î»ÔÚÕ½³¡ÉÏµÄ³¯Ïò
+    //æˆ˜æ–—å•ä½åœ¨æˆ˜åœºä¸Šçš„æœå‘
     int m_iDirection;
         
-    //Õ½¶·µ¥Î»µÄÊôĞÔ
+    //æˆ˜æ–—å•ä½çš„å±æ€§
     int m_aiAttributes[FIGHT_ATTR_MAX];
 
-    //Õ½¶·µ¥Î»µÄ¼¼ÄÜ
+    //æˆ˜æ–—å•ä½çš„æŠ€èƒ½
     int m_iNormalSkill;
     RepItem m_astUnitItems[MAX_UNIT_ITEM_SLOT];
 
     int m_aiCDRounds[MAX_FIGHT_CD_NUM];
 
-    //Õ½¶·µ¥Î»µÄAI
+    //æˆ˜æ–—å•ä½çš„AI
     int m_iUnitAIID;
 
-    //Õ½¶·µ¥Î»ÉíÉÏµÄBuffĞÅÏ¢
+    //æˆ˜æ–—å•ä½èº«ä¸Šçš„Buffä¿¡æ¯
     CUnitBufferManager m_stBuffManager;
 
-    //×îºó¹¥»÷µÄµ¥Î»ID
+    //æœ€åæ”»å‡»çš„å•ä½ID
     int m_iLastAttackUnitID;
 
-    //Õ½¶·µ¥Î»µ±Ç°µÄ×´Ì¬,Ã¿¸öbit±íÊ¾¶ÔÓ¦×´Ì¬ÊÇ·ñ±»ÉèÖÃ
+    //æˆ˜æ–—å•ä½å½“å‰çš„çŠ¶æ€,æ¯ä¸ªbitè¡¨ç¤ºå¯¹åº”çŠ¶æ€æ˜¯å¦è¢«è®¾ç½®
     unsigned char m_ucUnitStatus;
 
-    //µ¥Î»»ú¶¯Ä£Ê½ÒÆ¶¯Ä¿±êÎ»ÖÃ
+    //å•ä½æœºåŠ¨æ¨¡å¼ç§»åŠ¨ç›®æ ‡ä½ç½®
     TUNITPOSITION m_stMotorTargetPos;
 
-    //µ¥Î»»ú¶¯Ä£Ê½ÒÆ¶¯½ØÖÁ¾àÀë
+    //å•ä½æœºåŠ¨æ¨¡å¼ç§»åŠ¨æˆªè‡³è·ç¦»
     int m_iMotorDistance;
 
-    //Õ½¶·µ¥Î»ËùÊôÍæ¼Òuin,¹ÖÎª0
+    //æˆ˜æ–—å•ä½æ‰€å±ç©å®¶uin,æ€ªä¸º0
     unsigned int m_uiUin;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

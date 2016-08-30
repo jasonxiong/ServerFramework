@@ -1,7 +1,7 @@
-#ifndef __FIGHT_UNIT_MANAGER_HPP__
+ï»¿#ifndef __FIGHT_UNIT_MANAGER_HPP__
 #define __FIGHT_UNIT_MANAGER_HPP__
 
-//Íæ¼ÒÕ½¶·µ¥Î»¹ÜÀíÆ÷
+//ç©å®¶æˆ˜æ–—å•ä½ç®¡ç†å™¨
 
 #include "GameConfigDefine.hpp"
 #include "GameProtocol.hpp"
@@ -19,40 +19,44 @@ public:
 
 public:
 
-    //³õÊ¼»¯ FightUnitManager
+    //åˆå§‹åŒ– FightUnitManager
     int Initialize();
 
     void SetOwner(unsigned int uin);
     unsigned int GetOwner();
 
-    //»ñÈ¡Õ½¶·µ¥Î»ĞÅÏ¢
+    //è·å–æˆ˜æ–—å•ä½ä¿¡æ¯
     CFightUnitObj* GetFightUnitByID(int iFightUnitID);
 
-    //Õ½¶·±³°üÖĞÔö¼ÓÕ½¶·µ¥Î»
+    //æˆ˜æ–—èƒŒåŒ…ä¸­å¢åŠ æˆ˜æ–—å•ä½
     int AddFightUnit(int iFightUnitID);
 
-    //»ñÈ¡ÕóĞÍÕ½¶·µ¥Î»ĞÅÏ¢
+    //è·å–é˜µå‹æˆ˜æ–—å•ä½ä¿¡æ¯
     void GetFormFightUnitInfo(std::vector<int>& vFormUnitInfo);
 
     int InitFightUnitInfoFromDB(const FIGHTDBINFO& rstFightUnitInfo);
     int UpdateFightUnitInfoToDB(FIGHTDBINFO& rstFightUnitInfo);
 
-    //Çå¿ÕÄÚ´æÖĞµÄFightUnitObj
+    //æ¸…ç©ºå†…å­˜ä¸­çš„FightUnitObj
     void ClearFightUnitObj();
 
 private:
 
-    //Íæ¼Ò½ÇÉ«µÄuin
+    //ç©å®¶è§’è‰²çš„uin
     unsigned int m_uiUin;
 
-    //Íæ¼ÒËùÓĞµÄÕ½¶·µ¥Î»µÄĞÅÏ¢
+    //ç©å®¶æ‰€æœ‰çš„æˆ˜æ–—å•ä½çš„ä¿¡æ¯
     int m_iFightUnitNum;
     int m_aiUnitObjID[MAX_ROLE_FIGHTUNIT_NUM];
 
-    //Íæ¼ÒÕóĞÍĞÅÏ¢
+    //ç©å®¶é˜µå‹ä¿¡æ¯
     int m_aiFightForm[MAX_FIGHTUNIT_ON_FORM];
 
     static GameProtocolMsg ms_stZoneMsg; 
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

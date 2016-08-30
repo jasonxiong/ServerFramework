@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __COMBAT_UTILITY_HPP__
 #define __COMBAT_UTILITY_HPP__
 
@@ -6,7 +6,7 @@
 
 using namespace GameConfig;
 
-//Õ½¶·¹¤¾ßº¯ÊıÀà
+//æˆ˜æ–—å·¥å…·å‡½æ•°ç±»
 class CGameRoleObj;
 class CBattlefieldObj;
 class CCombatUnitObj;
@@ -19,50 +19,54 @@ public:
 
     static CBattlefieldObj* GetBattlefiledObj(int iBattlefieldIndex);
 
-    //¸ù¾İÕ½¶·µ¥Î»ID»ñÈ¡CCombatUnitObj
+    //æ ¹æ®æˆ˜æ–—å•ä½IDè·å–CCombatUnitObj
     static CCombatUnitObj* GetCombatUnitObj(int iCombatUnitID); 
 
-    //ÇåÀíÕ½³¡
+    //æ¸…ç†æˆ˜åœº
     static void ClearBattlefield(int iBattlefieldIndex);
 
-    //¼ÆËãÕĞÊ½ÃüÖĞ
+    //è®¡ç®—æ‹›å¼å‘½ä¸­
     static int GetSkillHit(CCombatUnitObj& stCastUnitObj, const SFightUnitSkillConfig& stSkillConfig, int iDistance);
 
-    //¼ÆËãÕĞÊ½ÉÁ±Ü
+    //è®¡ç®—æ‹›å¼é—ªé¿
     static int GetSkillDodge(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig);
 
-    //¼ÆËã¹¥»÷Ç¿¶È
+    //è®¡ç®—æ”»å‡»å¼ºåº¦
     static int GetAttackStrength(CCombatUnitObj& stCastUnitObj, const SFightUnitSkillConfig& stSkillConfig);
 
-    //¼ÆËã·ÀÓùÇ¿¶È
+    //è®¡ç®—é˜²å¾¡å¼ºåº¦
     static int GetDefenceStrength(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig);
 
-    //»ñÈ¡µĞ¶Ôµ¥Î»µÄ¹¥»÷¾àÀë£¬Îª0±íÊ¾²»ÄÜ¹¥»÷
+    //è·å–æ•Œå¯¹å•ä½çš„æ”»å‡»è·ç¦»ï¼Œä¸º0è¡¨ç¤ºä¸èƒ½æ”»å‡»
     static int GetAttackDistance(const TUNITPOSITION& stCastPos, const TUNITPOSITION& stTargetPos, int iTargetRangeID);
 
-    //¸ù¾İScore±í¼ÆËãĞŞÕıÖµ
+    //æ ¹æ®Scoreè¡¨è®¡ç®—ä¿®æ­£å€¼
     static int GetSkillScoreNum(CCombatUnitObj& stCombatUnitObj, const SSkillScoreConfig& stScoreConfig);
 
-    //¸üĞÂÕ½¶·µ¥Î»µÄ·½Ïò
+    //æ›´æ–°æˆ˜æ–—å•ä½çš„æ–¹å‘
     static void UpdateUnitDirection(CCombatUnitObj& stCastUnitObj, const TUNITPOSITION& stTargetPos);
 
-    //»ñÈ¡Õ½¶·µ¥Î»¹¥»÷µÄ·½Ïò, <0 ±íÊ¾³ö´í
+    //è·å–æˆ˜æ–—å•ä½æ”»å‡»çš„æ–¹å‘, <0 è¡¨ç¤ºå‡ºé”™
     static int GetAttackDirection(CCombatUnitObj& stCastUnitObj, const TUNITPOSITION& stTargetPos);
 
-    //ĞŞÕı¼¼ÄÜÉËº¦·¶Î§µÄ×ø±ê
+    //ä¿®æ­£æŠ€èƒ½ä¼¤å®³èŒƒå›´çš„åæ ‡
     static void FixSkillAreaPos(int iCastDirection, const SFightPosInfo& stTargetPos, TUNITPOSITION& stFixedPos);
 
-    //´¦ÀíÕ½¶·µ¥Î»µÄÌØÊâÎ»ÒÆ,bStop±íÊ¾ÊÇ·ñÖĞÍ¾Óö×èµ²Í£ÏÂ
+    //å¤„ç†æˆ˜æ–—å•ä½çš„ç‰¹æ®Šä½ç§»,bStopè¡¨ç¤ºæ˜¯å¦ä¸­é€”é‡é˜»æŒ¡åœä¸‹
     static int ProcessUnitMove(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stUnitObj, UnitPosition& stPosNotify, int iAreaID, int iDirection, bool bStop = true);
 
-    //Íæ¼Òµ±Ç°ÊÇ·ñ¿ÉÒÔ½øĞĞPVPÕ½¶·
+    //ç©å®¶å½“å‰æ˜¯å¦å¯ä»¥è¿›è¡ŒPVPæˆ˜æ–—
     static bool CanDoPVPCombat(unsigned int uin);
 
-    //¸ù¾İÎäÆ÷ÉúĞ§×´Ì¬´¦ÀíÎäÆ÷Ğ§¹û£¬bIsAram±íÊ¾ÊÇ·ñÉúĞ§ÎäÆ÷
+    //æ ¹æ®æ­¦å™¨ç”Ÿæ•ˆçŠ¶æ€å¤„ç†æ­¦å™¨æ•ˆæœï¼ŒbIsAramè¡¨ç¤ºæ˜¯å¦ç”Ÿæ•ˆæ­¦å™¨
     static void ProcessWeaponEffect(CCombatUnitObj& stUnitObj, bool bIsAram);
 
-    //»ñÈ¡×ø±ê·¶Î§ÄÚÄ³ÕóÓªµÄµ¥Î»
+    //è·å–åæ ‡èŒƒå›´å†…æŸé˜µè¥çš„å•ä½
 	static int GetAreaTargetUnits(unsigned uin, const TUNITPOSITION& stPos, int iAreaID, int iCamp, int iDirection, std::vector<int>& vUnits);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

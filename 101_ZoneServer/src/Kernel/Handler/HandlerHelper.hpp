@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __HANDLER_HELPER_HPP__
 #define __HANDLER_HELPER_HPP__
 
@@ -16,7 +16,7 @@ public:
     
     static CGameRoleObj* GetMsgSender(GameProtocolMsg* pZoneMsg, const TNetHead_V2* pNetHead);
 
-    // ÉèÖÃºÍ»ñÈ¡·µ»Ø¸ø¿Í»§¶ËµÄ´íÎóÂë
+    // è®¾ç½®å’Œè·å–è¿”å›ç»™å®¢æˆ·ç«¯çš„é”™è¯¯ç 
     static void SetErrorCode(unsigned int enErrorCode);
     static unsigned int GetErrorCode();
 
@@ -25,3 +25,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

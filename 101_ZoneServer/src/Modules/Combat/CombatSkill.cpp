@@ -1,4 +1,4 @@
-#include <math.h>
+ï»¿#include <math.h>
 
 #include "GameProtocol.hpp"
 #include "MathHelper.hpp"
@@ -44,10 +44,10 @@ CCombatSkill::~CCombatSkill()
 
 }
 
-//Ê¹ÓÃÕ½¶·¼¼ÄÜ
+//ä½¿ç”¨æˆ˜æ–—æŠ€èƒ½
 int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITPOSITION& stTargetPos, int iSkillID, int iSkillUseType, bool bIsScriptCast)
 {
-    //ÉèÖÃ´«ÈëÊı¾İĞÅÏ¢
+    //è®¾ç½®ä¼ å…¥æ•°æ®ä¿¡æ¯
     m_iBattlefiledObjID = iBattlefieldObjID;
     m_iCastUnitID = iCastUnitID;
     m_iSkillID = iSkillID;
@@ -59,7 +59,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
     m_iUseType = iSkillUseType;
     m_pstCastRoleObj = NULL;
 
-    //»ñÈ¡Õ½³¡BattlefieldObj
+    //è·å–æˆ˜åœºBattlefieldObj
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(m_iBattlefiledObjID);
     if(!pstBattlefieldObj)
     {
@@ -70,7 +70,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
     m_uiActiveUin = pstBattlefieldObj->GetActiveUin();
     m_uiPassiveUin = pstBattlefieldObj->GetPassiveUin();
 
-    //ĞĞ¶¯·½µÄuin
+    //è¡ŒåŠ¨æ–¹çš„uin
     unsigned uiCastUin = (pstBattlefieldObj->GetCombatUnitCamp(iCastUnitID)==FIGHT_CAMP_ACTIVE) ? m_uiActiveUin : m_uiPassiveUin;
     m_pstCastRoleObj = CUnitUtility::GetRoleByUin(uiCastUin);
     if(uiCastUin!=0 && !m_pstCastRoleObj)
@@ -79,13 +79,13 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         return T_ZONE_GAMEROLE_NOT_EXIST;
     }
 
-    //ÍÆËÍÕ½¶·µ¥Î»¿ªÊ¼ĞĞ¶¯µÄÍ¨Öª
+    //æ¨é€æˆ˜æ–—å•ä½å¼€å§‹è¡ŒåŠ¨çš„é€šçŸ¥
     static GameProtocolMsg stBeginActionMsg;
     CZoneMsgHelper::GenerateMsgHead(stBeginActionMsg, MSGID_ZONE_BEGINCOMBATACTION_NOTIFY);
 
     pstBattlefieldObj->SendNotifyToBattlefield(stBeginActionMsg);
 
-    //»ñÈ¡Ê©·¨Õß¶ÔÏó
+    //è·å–æ–½æ³•è€…å¯¹è±¡
     CCombatUnitObj* pstCastUnitObj = CCombatUtility::GetCombatUnitObj(iCastUnitID);
     if(!pstCastUnitObj)
     {
@@ -93,7 +93,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡Ä¿±ê¶ÔÏó
+    //è·å–ç›®æ ‡å¯¹è±¡
     int iTargetUnitID = -1;
     CCombatUnitObj* pstTargetUnitObj = pstBattlefieldObj->GetCombatUnitByPos(stTargetPos);
     if(pstTargetUnitObj)
@@ -103,11 +103,11 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
 
     if(pstCastUnitObj->IsCombatUnitDead() || (pstTargetUnitObj&&pstTargetUnitObj->IsCombatUnitDead()))
     {
-        //¹¥·½»òÕßÊØ·½ËÀÍö£¬Ö±½Ó·µ»Ø
+        //æ”»æ–¹æˆ–è€…å®ˆæ–¹æ­»äº¡ï¼Œç›´æ¥è¿”å›
         return T_SERVER_SUCESS;
     }
 
-    //¶ÁÈ¡¼¼ÄÜ±íµÄÅäÖÃ
+    //è¯»å–æŠ€èƒ½è¡¨çš„é…ç½®
     const SFightUnitSkillConfig* pstSkillConfig = FightSkillCfgMgr().GetConfig(iSkillID);
     if(!pstSkillConfig)
     {
@@ -115,17 +115,17 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //Èç¹ûÊÇ·Ç½Å±¾ÖĞÖ÷¶¯Ê¹ÓÃ,´¦ÀíCDÏà¹ØÂß¼­
+    //å¦‚æœæ˜¯éè„šæœ¬ä¸­ä¸»åŠ¨ä½¿ç”¨,å¤„ç†CDç›¸å…³é€»è¾‘
     if(m_iUseType==SKILL_USE_ACTIVE && !bIsScriptCast)
     {
         if(pstCastUnitObj->GetSkillCDRound(iSkillID) != 0)
         {
-            //¼¼ÄÜ»¹ÔÚCD×´Ì¬
+            //æŠ€èƒ½è¿˜åœ¨CDçŠ¶æ€
             LOGERROR("Failed to cast active skill, active uin %u, unit id %d, skill %d\n", m_uiActiveUin, iCastUnitID, iSkillID);
             return T_ZONE_SYSTEM_PARA_ERR;
         }
 
-        //ÉèÖÃ¼¼ÄÜCD×´Ì¬
+        //è®¾ç½®æŠ€èƒ½CDçŠ¶æ€
         static GameProtocolMsg stSkillCDMsg;
         CZoneMsgHelper::GenerateMsgHead(stSkillCDMsg, MSGID_ZONE_SKILLCDROUND_NOTIFY);
         Zone_SkillCDRound_Notify* pstCDNotify = stSkillCDMsg.mutable_m_stmsgbody()->mutable_m_stzone_skillcdround_notify();
@@ -139,7 +139,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         pstBattlefieldObj->SendNotifyToBattlefield(stSkillCDMsg);
     }
 
-    //ÅĞ¶Ï¹¥ÊØË«·½Î»ÖÃÊÇ·ñºÏ·¨
+    //åˆ¤æ–­æ”»å®ˆåŒæ–¹ä½ç½®æ˜¯å¦åˆæ³•
     std::vector<TUNITPOSITION> vCheckPos;
     if(pstTargetUnitObj)
     {
@@ -173,7 +173,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
            m_iUseType!=SKILL_USE_HEJI &&
            m_iUseType!=SKILL_USE_AI)
         {
-            //±ØÈ»ÃüÖĞµÄ¼¼ÄÜ£¬±¨´í·µ»Ø
+            //å¿…ç„¶å‘½ä¸­çš„æŠ€èƒ½ï¼ŒæŠ¥é”™è¿”å›
             LOGERROR("Failed to cast skill, invalid position, skill id %d, uin %u\n", iSkillID, m_uiActiveUin);
             return T_ZONE_SYSTEM_PARA_ERR;
         }
@@ -181,20 +181,20 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         return T_SERVER_SUCESS;
     }
 
-    //´¦Àí¹¥»÷·½µÄ·½Ïò¸üĞÂ
+    //å¤„ç†æ”»å‡»æ–¹çš„æ–¹å‘æ›´æ–°
     CCombatUtility::UpdateUnitDirection(*pstCastUnitObj, stTargetPos);
 
-    //³õÊ¼»¯ÍÆËÍµÄÏûÏ¢
+    //åˆå§‹åŒ–æ¨é€çš„æ¶ˆæ¯
     CZoneMsgHelper::GenerateMsgHead(m_stCombatActionNotify, MSGID_ZONE_COMBATACTION_NOTIFY);
     CZoneMsgHelper::GenerateMsgHead(m_stCombatAddBuffNotify, MSGID_ZONE_COMBATADDBUFF_NOTIFY);
 
-    //»ñÈ¡Ôö¼ÓBUFFÍÆËÍµÄÏûÏ¢Ìå
+    //è·å–å¢åŠ BUFFæ¨é€çš„æ¶ˆæ¯ä½“
     Zone_CombatAddBuff_Notify* pstAddBuffNotify = m_stCombatAddBuffNotify.mutable_m_stmsgbody()->mutable_m_stzone_combataddbuff_notify();
 
-    //»ñÈ¡¼¼ÄÜĞ§¹ûµÄÏûÏ¢Ìå
+    //è·å–æŠ€èƒ½æ•ˆæœçš„æ¶ˆæ¯ä½“
     Zone_CombatAction_Notify* pstNotify = m_stCombatActionNotify.mutable_m_stmsgbody()->mutable_m_stzone_combataction_notify();
 
-    //ÉèÖÃ¼¼ÄÜÊÍ·ÅÏà¹ØĞÅÏ¢
+    //è®¾ç½®æŠ€èƒ½é‡Šæ”¾ç›¸å…³ä¿¡æ¯
     pstNotify->set_iactionunitid(m_iCastUnitID);
     pstNotify->set_etype(COMBAT_ACTION_CASTSKILL);
     pstNotify->set_icastskillid(m_iSkillID);
@@ -202,7 +202,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
     pstNotify->mutable_sttargetpos()->set_iposx(stTargetPos.iPosX);
     pstNotify->mutable_sttargetpos()->set_iposy(stTargetPos.iPosY);
 
-    //Ôö¼Ó¸ø×Ô¼ºµÄbuff
+    //å¢åŠ ç»™è‡ªå·±çš„buff
     int iRet = pstCastUnitObj->AddUnitBuff(m_uiActiveUin, pstBattlefieldObj->GetCrossID(), pstSkillConfig->iSelfBuff, iCastUnitID, *pstAddBuffNotify);
     if(iRet)
     {
@@ -210,7 +210,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         return iRet;
     }
 
-    //¶ÁÈ¡ÉËº¦·¶Î§±í
+    //è¯»å–ä¼¤å®³èŒƒå›´è¡¨
     const SSkillAreaConfig* pstAreaConfig = SkillAreaCfgMgr().GetConfig(pstSkillConfig->iTargetAreaID);
     if(!pstAreaConfig)
     {
@@ -228,7 +228,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
 
     for(int i=0; i<pstAreaConfig->iAreaPosNum; ++i)
     {
-        //¸ù¾İ·½ÏòĞŞÕı²ß»®ÅäÖÃµÄ×ø±ê
+        //æ ¹æ®æ–¹å‘ä¿®æ­£ç­–åˆ’é…ç½®çš„åæ ‡
         CCombatUtility::FixSkillAreaPos(pstCastUnitObj->GetUnitDirection(), pstAreaConfig->astTargetPosInfo[i], stTmpPos);
 
         stTmpPos.iPosX += stTmpTargetPos.iPosX;
@@ -237,20 +237,20 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         CCombatUnitObj* pstOneUnitObj = pstBattlefieldObj->GetCombatUnitByPos(stTmpPos);
         if(!pstOneUnitObj || pstOneUnitObj->IsCombatUnitDead())
         {
-            //Ä¿±êÎ»ÖÃÎŞµ¥Î»»òÒÑËÀÍö
+            //ç›®æ ‡ä½ç½®æ— å•ä½æˆ–å·²æ­»äº¡
             continue;
         }
 
-        //ÅĞ¶ÏÊÇ·ñÕıÈ·µÄÊÍ·ÅÄ¿±ê
+        //åˆ¤æ–­æ˜¯å¦æ­£ç¡®çš„é‡Šæ”¾ç›®æ ‡
         if(!CheckIsValidTarget(*pstBattlefieldObj, pstSkillConfig->iTargetType, iCastUnitID, pstOneUnitObj->GetCombatUnitID()))
         {
             continue;
         }
 
-        //ÅĞ¶ÏÄ¿±êÊÇ·ñÒÑ¾­´¦Àí¹ı£¬ÊÊÓÃÓÚ´óÌå»ıµ¥Î»
+        //åˆ¤æ–­ç›®æ ‡æ˜¯å¦å·²ç»å¤„ç†è¿‡ï¼Œé€‚ç”¨äºå¤§ä½“ç§¯å•ä½
         if(std::find(vProcessedTargets.begin(),vProcessedTargets.end(), pstOneUnitObj->GetCombatUnitID()) != vProcessedTargets.end())
         {
-            //ÒÑ¾­´¦Àí¹ı
+            //å·²ç»å¤„ç†è¿‡
             continue;
         }
 
@@ -265,7 +265,7 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
             bIsChiefTarget = false;
         }
 
-        //¼ÆËã¼¼ÄÜĞ§¹û
+        //è®¡ç®—æŠ€èƒ½æ•ˆæœ
         iRet = CastSkillToOneTarget(iCastUnitID, pstOneUnitObj->GetCombatUnitID(), iSkillID, bIsChiefTarget);
         if(iRet)
         {
@@ -274,54 +274,54 @@ int CCombatSkill::CastSkill(int iBattlefieldObjID, int iCastUnitID, const TUNITP
         }
     }
 
-    //ÍÆËÍÉËº¦µÄÏûÏ¢
+    //æ¨é€ä¼¤å®³çš„æ¶ˆæ¯
     pstBattlefieldObj->SendNotifyToBattlefield(m_stCombatActionNotify);
 
-    //ÍÆËÍÔö¼ÓBUFFµÄÏûÏ¢
+    //æ¨é€å¢åŠ BUFFçš„æ¶ˆæ¯
     if(pstAddBuffNotify->staddbuffs_size() != 0)
     {
         pstBattlefieldObj->SendNotifyToBattlefield(m_stCombatAddBuffNotify);
     }
 
-    //¼¼ÄÜ´¦Àí½áÊøºóµ÷ÓÃ½Å±¾
+    //æŠ€èƒ½å¤„ç†ç»“æŸåè°ƒç”¨è„šæœ¬
     //int iExecuteType = (m_iChiefTargetDodge!=SKILL_HIT_CHIEFNODODGE) ? SKILL_SCRIPT_CALL_CHIEFDODGE : SKILL_SCRIPT_CALL_SKILLDONE;
 
-    //todo jasonxiong4 ½Å±¾ÖØ×ö
+    //todo jasonxiong4 è„šæœ¬é‡åš
     //CModuleHelper::GetStoryFramework()->DoSkillScript(m_uiActiveUin, pstBattlefieldObj->GetCrossID(), iSkillID, iCastUnitID, 
                                                       //stTmpTargetPos.iPosX, stTmpTargetPos.iPosY, iExecuteType);
 
     return T_SERVER_SUCESS;
 }
 
-//¶Ôµ¥¸öÄ¿±êÊ¹ÓÃÕ½¶·¼¼ÄÜ
+//å¯¹å•ä¸ªç›®æ ‡ä½¿ç”¨æˆ˜æ–—æŠ€èƒ½
 int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int iSkillID, bool bIsChiefTarget)
 {
     m_iTargetUnitID = iTargetUnitID;
 
-    //»ñÈ¡¼¼ÄÜĞ§¹ûµÄÏûÏ¢Ìå
+    //è·å–æŠ€èƒ½æ•ˆæœçš„æ¶ˆæ¯ä½“
     Zone_CombatAction_Notify* pstNotify = m_stCombatActionNotify.mutable_m_stmsgbody()->mutable_m_stzone_combataction_notify();
 
-    //»ñÈ¡Ôö¼ÓBUFFµÄÏûÏ¢Ìå
+    //è·å–å¢åŠ BUFFçš„æ¶ˆæ¯ä½“
     Zone_CombatAddBuff_Notify* pstAddBuffNotify = m_stCombatAddBuffNotify.mutable_m_stmsgbody()->mutable_m_stzone_combataddbuff_notify();
 
-    //ÉèÖÃ¹¥»÷Ä¿±êµÄÏà¹ØÏûÏ¢
+    //è®¾ç½®æ”»å‡»ç›®æ ‡çš„ç›¸å…³æ¶ˆæ¯
     ActionTarget* pstTargets = pstNotify->add_sttargets();
     pstTargets->set_itargetunitid(m_iTargetUnitID);
 
-    //³õÊ¼»¯×´Ì¬Êı×é
+    //åˆå§‹åŒ–çŠ¶æ€æ•°ç»„
     for(int i=ACTION_EFFECT_STATUS_MINZHONG; i<ACTION_EFFECT_STATUS_MAX; ++i)
     {
         pstTargets->add_bisstatset(false);
     }
 
-    //³õÊ¼»¯µ¥Î»ÊôĞÔµÄĞ§¹ûÓ°Ïì
+    //åˆå§‹åŒ–å•ä½å±æ€§çš„æ•ˆæœå½±å“
     for(int i=0; i<FIGHT_ATTR_MAX; ++i)
     {
         pstTargets->add_iattreffect(0);
         pstTargets->add_icastattreffect(0);
     }
 
-    //»ñÈ¡Õ½³¡
+    //è·å–æˆ˜åœº
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(m_iBattlefiledObjID);
     if(!pstBattlefieldObj)
     {
@@ -329,7 +329,7 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //¶ÁÈ¡¼¼ÄÜµÄÅäÖÃ
+    //è¯»å–æŠ€èƒ½çš„é…ç½®
     const SFightUnitSkillConfig* pstSkillConfig = FightSkillCfgMgr().GetConfig(iSkillID);
     if(!pstSkillConfig)
     {
@@ -337,7 +337,7 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //»ñÈ¡Ê¹ÓÃ¼¼ÄÜµÄÕ½¶·µ¥Î»
+    //è·å–ä½¿ç”¨æŠ€èƒ½çš„æˆ˜æ–—å•ä½
     CCombatUnitObj* pstCastUnitObj = CCombatUtility::GetCombatUnitObj(iCastUnitID);
     if(!pstCastUnitObj)
     {
@@ -345,7 +345,7 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡¼¼ÄÜÊÍ·ÅµÄÄ¿±êµ¥Î»
+    //è·å–æŠ€èƒ½é‡Šæ”¾çš„ç›®æ ‡å•ä½
     CCombatUnitObj* pstTargetUnitObj = CCombatUtility::GetCombatUnitObj(iTargetUnitID);
     if(!pstTargetUnitObj)
     {
@@ -355,18 +355,18 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
 
     int iRet = T_SERVER_SUCESS;
 
-    //ÅĞ¶Ï¼¼ÄÜÃüÖĞĞŞÕı
+    //åˆ¤æ–­æŠ€èƒ½å‘½ä¸­ä¿®æ­£
     if(pstSkillConfig->iHitModifierID == 0)
     {
-        //¼¼ÄÜÃ»ÓĞÃüÖĞĞŞÕı
+        //æŠ€èƒ½æ²¡æœ‰å‘½ä¸­ä¿®æ­£
 
-        //Èç¹ûÊÇÊ×ÒªÄ¿±ê£¬ÔòÉèÖÃÊ×ÒªÄ¿±ê²»¼ì²éÃüÖĞ
+        //å¦‚æœæ˜¯é¦–è¦ç›®æ ‡ï¼Œåˆ™è®¾ç½®é¦–è¦ç›®æ ‡ä¸æ£€æŸ¥å‘½ä¸­
         if(bIsChiefTarget)
         {
             m_iChiefTargetDodge = SKILL_HIT_NOHIT;
         }
 
-        //´¦ÀíÉËº¦
+        //å¤„ç†ä¼¤å®³
         int iRealDamageNum = 0;
         iRet = pstTargetUnitObj->AddFightAttr(FIGHT_ATTR_HP, -pstSkillConfig->iDamageBaseNum, &iRealDamageNum);
         if(iRet)
@@ -375,10 +375,10 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
             return iRet;
         }
 
-        //¸ø¿Í»§¶ËµôÑªµÄ·µ»Ø
+        //ç»™å®¢æˆ·ç«¯æ‰è¡€çš„è¿”å›
         pstTargets->set_iattreffect(FIGHT_ATTR_HP, iRealDamageNum);
 
-        //¸øÄ¿±êÔö¼Óbuff
+        //ç»™ç›®æ ‡å¢åŠ buff
         iRet = pstTargetUnitObj->AddUnitBuff(m_uiActiveUin, pstBattlefieldObj->GetCrossID(), pstSkillConfig->iTargetBuff, iCastUnitID, *pstAddBuffNotify);
         if(iRet)
         {
@@ -386,7 +386,7 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
             return iRet;
         }
 
-        //Èç¹û²úÉúÉËº¦£¬Ôò´¥·¢Ä¿±êÊÜÉËº¦ÀàĞÍµÄBUFF
+        //å¦‚æœäº§ç”Ÿä¼¤å®³ï¼Œåˆ™è§¦å‘ç›®æ ‡å—ä¼¤å®³ç±»å‹çš„BUFF
         if(pstSkillConfig->iDamageBaseNum > 0)
         {
             iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_UNDERDAMAGE, iTargetUnitID, iCastUnitID);
@@ -399,23 +399,23 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
     }
     else
     {
-        //¼ÆËãÊÇ·ñÃüÖĞ
+        //è®¡ç®—æ˜¯å¦å‘½ä¸­
         bool bIsHit = CheckCanHit(*pstCastUnitObj, *pstTargetUnitObj, *pstSkillConfig);
         if(!bIsHit)
         {
-            //Î´ÃüÖĞ,ÔòÎªÉÁ±Ü×´Ì¬
+            //æœªå‘½ä¸­,åˆ™ä¸ºé—ªé¿çŠ¶æ€
             pstTargets->set_bisstatset(ACTION_EFFECT_STATUS_SHANBI, true);
 
-            //Èç¹ûÊÇÊ×ÒªÄ¿±ê£¬ÔòÉèÖÃÊ×ÒªÄ¿±êÉÁ±Ü
+            //å¦‚æœæ˜¯é¦–è¦ç›®æ ‡ï¼Œåˆ™è®¾ç½®é¦–è¦ç›®æ ‡é—ªé¿
             if(bIsChiefTarget)
             {
                 m_iChiefTargetDodge = SKILL_HIT_CHIEFDODGE;
             }
 
-            //´¦ÀíÄ¿±ê×ªÏòÎªÃæ³¯¹¥»÷·½µÄ·½Ïò
+            //å¤„ç†ç›®æ ‡è½¬å‘ä¸ºé¢æœæ”»å‡»æ–¹çš„æ–¹å‘
             TargetUnderAttackDirection(*pstTargetUnitObj, pstCastUnitObj->GetUnitDirection());
 
-            //²úÉúÉÁ±Ü£¬´¥·¢ÉÁ±ÜÀàĞÍµÄBUFF
+            //äº§ç”Ÿé—ªé¿ï¼Œè§¦å‘é—ªé¿ç±»å‹çš„BUFF
             iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_DODGE, iTargetUnitID, iCastUnitID);
             if(iRet)
             {
@@ -425,16 +425,16 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
         }
         else
         {
-            //ÃüÖĞ
+            //å‘½ä¸­
             pstTargets->set_bisstatset(ACTION_EFFECT_STATUS_MINZHONG, true);
 
-            //Èç¹ûÊÇÊ×ÒªÄ¿±ê£¬ÔòÉèÖÃÊ×ÒªÄ¿±êÎ´ÉÁ±Ü
+            //å¦‚æœæ˜¯é¦–è¦ç›®æ ‡ï¼Œåˆ™è®¾ç½®é¦–è¦ç›®æ ‡æœªé—ªé¿
             if(bIsChiefTarget)
             {
                 m_iChiefTargetDodge = SKILL_HIT_CHIEFNODODGE;
             }
 
-            //´¦Àí·ÀÊØ·½µÄÊÜ»÷buff
+            //å¤„ç†é˜²å®ˆæ–¹çš„å—å‡»buff
             iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_UNDERATTACK, iTargetUnitID, iCastUnitID);
             if(iRet)
             {
@@ -445,41 +445,41 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
             int iDamageNum = 0;
             if(pstSkillConfig->iDamageID != 0)
             {
-                //ÅĞ¶ÏÊÇ·ñ¸ñµ²
+                //åˆ¤æ–­æ˜¯å¦æ ¼æŒ¡
                 bool bIsBlock = CheckCanBlock(*pstCastUnitObj, *pstTargetUnitObj, *pstSkillConfig);
     
-                //ÅĞ¶ÏÊÇ·ñ±©»÷
+                //åˆ¤æ–­æ˜¯å¦æš´å‡»
                 bool bIsCrit = CheckCanCrit(*pstCastUnitObj, *pstTargetUnitObj, *pstSkillConfig);
     
-                //¼ÆËãÉËº¦
+                //è®¡ç®—ä¼¤å®³
                 iDamageNum = GetSkillHurtNum(*pstCastUnitObj, *pstTargetUnitObj, *pstSkillConfig, bIsChiefTarget);
 
-                //Ôö¼Ó±©»÷ĞŞÕı
+                //å¢åŠ æš´å‡»ä¿®æ­£
                 if(bIsCrit)
                 {
                     iDamageNum = iDamageNum * pstSkillConfig->iCritEffect / 10000;
                     pstTargets->set_bisstatset(ACTION_EFFECT_STATUS_BAOJI, true);
                 }
     
-                //Ôö¼Ó¸ñµ²ĞŞÕı
+                //å¢åŠ æ ¼æŒ¡ä¿®æ­£
                 if(bIsBlock)
                 {
                     iDamageNum = iDamageNum * pstSkillConfig->iParryEffect / 10000;
                     pstTargets->set_bisstatset(ACTION_EFFECT_STATUS_GEDANG, true);
     
-                    //´¦ÀíÄ¿±ê×ªÏòÎªÃæ³¯¹¥»÷·½µÄ·½Ïò
+                    //å¤„ç†ç›®æ ‡è½¬å‘ä¸ºé¢æœæ”»å‡»æ–¹çš„æ–¹å‘
                     TargetUnderAttackDirection(*pstTargetUnitObj, pstCastUnitObj->GetUnitDirection());
                 }
     
                 iDamageNum = (iDamageNum<=0) ? 1 : iDamageNum;
     
-                //´¦ÀíĞ­·ÀµÄÂß¼­
+                //å¤„ç†åé˜²çš„é€»è¾‘
                 float fCoordEffectParam = ProcessCoordDefense(*pstBattlefieldObj, *pstTargetUnitObj);
                 iDamageNum = (int)(iDamageNum*fCoordEffectParam);
     
-                //´¦Àí¼¼ÄÜÉËº¦µÄ½Å±¾Âß¼­
+                //å¤„ç†æŠ€èƒ½ä¼¤å®³çš„è„šæœ¬é€»è¾‘
                 //const TUNITPOSITION& stTargetPos = pstTargetUnitObj->GetUnitPosition();
-                //todo jasonxiong4 ½Å±¾ÖØ×ö
+                //todo jasonxiong4 è„šæœ¬é‡åš
                 /*
                 int iDamageRate = CModuleHelper::GetStoryFramework()->DoSkillScript(m_uiActiveUin, pstBattlefieldObj->GetCrossID(), iSkillID, 
                                                                                 iCastUnitID, stTargetPos.iPosX, stTargetPos.iPosY, SKILL_SCRIPT_CALL_DAMAGE);
@@ -489,7 +489,7 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
                 }
                 */
                     
-                //ÉËº¦µÄ´¦Àí£¬°üÀ¨Ä¿±êµÄÉËº¦ºÍ¹¥»÷·½µÄ·´À¡
+                //ä¼¤å®³çš„å¤„ç†ï¼ŒåŒ…æ‹¬ç›®æ ‡çš„ä¼¤å®³å’Œæ”»å‡»æ–¹çš„åé¦ˆ
                 iRet = ProcessRealDamage(*pstBattlefieldObj, *pstCastUnitObj, *pstTargetUnitObj, iDamageNum, *pstTargets, *pstSkillConfig);
                 if(iRet)
                 {
@@ -498,7 +498,7 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
                 }
             }
 
-            //´¦Àí¼¼ÄÜÔì³ÉµÄ¹¥ÊØË«·½µÄÎ»ÒÆ,Ö»¶ÔÖ÷ÒªÄ¿±êÓĞĞ§
+            //å¤„ç†æŠ€èƒ½é€ æˆçš„æ”»å®ˆåŒæ–¹çš„ä½ç§»,åªå¯¹ä¸»è¦ç›®æ ‡æœ‰æ•ˆ
             if(bIsChiefTarget)
             {
                 iRet = ProcessSkillMove(*pstBattlefieldObj, *pstCastUnitObj, *pstTargetUnitObj, *pstTargets, *pstSkillConfig);
@@ -509,7 +509,7 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
                 }
             }
 
-            //Ä¿±êÔö¼ÓTargetbuff
+            //ç›®æ ‡å¢åŠ Targetbuff
             iRet = pstTargetUnitObj->AddUnitBuff(m_uiActiveUin, pstBattlefieldObj->GetCrossID(), pstSkillConfig->iTargetBuff, iCastUnitID, *pstAddBuffNotify);
             if(iRet)
             {
@@ -517,10 +517,10 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
                 return iRet;
             }
 
-            //·ÀÊØ·½´¥·¢ÊÜÉËº¦buff
+            //é˜²å®ˆæ–¹è§¦å‘å—ä¼¤å®³buff
             if(iDamageNum > 0)
             {
-                //²úÉúÉËº¦£¬Ä¿±ê´¥·¢ÊÜÉËº¦BUFF
+                //äº§ç”Ÿä¼¤å®³ï¼Œç›®æ ‡è§¦å‘å—ä¼¤å®³BUFF
                 iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_UNDERDAMAGE, iTargetUnitID, iCastUnitID);
                 if(iRet)
                 {
@@ -530,11 +530,11 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
             }
         }
 
-        //ÉèÖÃÄ¿±êÎª×Ô¼º×îºó¹¥»÷µ¥Î»
+        //è®¾ç½®ç›®æ ‡ä¸ºè‡ªå·±æœ€åæ”»å‡»å•ä½
         pstCastUnitObj->SetLastAttackUnitID(iTargetUnitID);
     }
 
-    //ÊÇÖ÷ÒªÄ¿±ê²¢ÇÒ¼¼ÄÜ»á²úÉúÌØÊâĞ§¹û£¬´¦ÀíÌØÊâĞ§¹û
+    //æ˜¯ä¸»è¦ç›®æ ‡å¹¶ä¸”æŠ€èƒ½ä¼šäº§ç”Ÿç‰¹æ®Šæ•ˆæœï¼Œå¤„ç†ç‰¹æ®Šæ•ˆæœ
     if(bIsChiefTarget && pstSkillConfig->iSpecialFuncType!=0)
     {
         iRet = ProcessSkillSpecailFunc(*pstCastUnitObj, *pstTargetUnitObj, *pstTargets, *pstSkillConfig);
@@ -548,22 +548,22 @@ int CCombatSkill::CastSkillToOneTarget(int iCastUnitID, int iTargetUnitID, int i
     return T_SERVER_SUCESS;
 }
 
-//ÃüÖĞÅĞ¶¨
+//å‘½ä¸­åˆ¤å®š
 bool CCombatSkill::CheckCanHit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig)
 {
-    //´¦Àí¹¥»÷Ä¿±êµÄÊÜÉË×´Ì¬,µ±Ä¿±êHP < 60%*MAXHP Ê±ÎŞ·¨ÉÁ±Ü
+    //å¤„ç†æ”»å‡»ç›®æ ‡çš„å—ä¼¤çŠ¶æ€,å½“ç›®æ ‡HP < 60%*MAXHP æ—¶æ— æ³•é—ªé¿
     if(stTargetUnitObj.GetFightAttr(FIGHT_ATTR_HP) < stTargetUnitObj.GetFightAttr(FIGHT_ATTR_HPMAX)*60/100)
     {
         return true;
     }
 
-    //¼ÆËãÕĞÊ½ÃüÖĞ
+    //è®¡ç®—æ‹›å¼å‘½ä¸­
     int iSkillHit = CCombatUtility::GetSkillHit(stCastUnitObj, stSkillConfig, m_iDistance);
 
-    //¼ÆËãÕĞÊ½ÉÁ±Ü
+    //è®¡ç®—æ‹›å¼é—ªé¿
     int iSkillDodge = CCombatUtility::GetSkillDodge(stCastUnitObj, stTargetUnitObj, stSkillConfig);
 
-    //ÅĞ¶¨¹«Ê½ RAND(0,1) <= (ÕĞÊ½ÃüÖĞ)/(ÕĞÊ½ÃüÖĞ+ÕĞÊ½ÉÁ±Ü)
+    //åˆ¤å®šå…¬å¼ RAND(0,1) <= (æ‹›å¼å‘½ä¸­)/(æ‹›å¼å‘½ä¸­+æ‹›å¼é—ªé¿)
     float fHitRate = (float)iSkillHit/(float)(iSkillDodge+iSkillHit)*100;
 
     int iRandNum = CRandomCalculator::GetRandomNumberInRange(100);
@@ -575,16 +575,16 @@ bool CCombatSkill::CheckCanHit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& st
     return false;
 }
 
-//¸ñµ²ÅĞ¶¨
+//æ ¼æŒ¡åˆ¤å®š
 bool CCombatSkill::CheckCanBlock(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig)
 {
-    //´¦ÀíÄ¿±êµÄÊÜÉË×´Ì¬,µ±Ä¿±ê HP < 30%*MAXHP Ê±ÎŞ·¨¸ñµ²
+    //å¤„ç†ç›®æ ‡çš„å—ä¼¤çŠ¶æ€,å½“ç›®æ ‡ HP < 30%*MAXHP æ—¶æ— æ³•æ ¼æŒ¡
     if(stTargetUnitObj.GetFightAttr(FIGHT_ATTR_HP) < stTargetUnitObj.GetFightAttr(FIGHT_ATTR_HPMAX)*30/100)
     {
         return false;
     }
 
-    //ÕĞÊ½¾«×¼
+    //æ‹›å¼ç²¾å‡†
     const SSkillScoreConfig* pstScoreConfig = SkillScoreCfgMgr().GetConfig(stSkillConfig.iPrecisionModifierID);
     if(!pstScoreConfig)
     {
@@ -594,7 +594,7 @@ bool CCombatSkill::CheckCanBlock(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& 
 
     int iSkillPrecision = CCombatUtility::GetSkillScoreNum(stCastUnitObj, *pstScoreConfig);
 
-    //ÕĞÊ½¸ñµ²
+    //æ‹›å¼æ ¼æŒ¡
     pstScoreConfig = SkillScoreCfgMgr().GetConfig(stSkillConfig.iCopeModifierID);
     if(!pstScoreConfig)
     {
@@ -604,10 +604,10 @@ bool CCombatSkill::CheckCanBlock(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& 
 
     int iSkillBlock = CCombatUtility::GetSkillScoreNum(stTargetUnitObj, *pstScoreConfig);
 
-    //¸ñµ²ÅĞ¶¨
+    //æ ¼æŒ¡åˆ¤å®š
     int iRandomNum = CRandomCalculator::GetRandomNumberInRange(100);
 
-    //¼ÆËã¹«Ê½£º RAND(0,1) < ÕĞÊ½¾«×¼/(ÕĞÊ½¾«×¼+ÕĞÊ½¸ñµ²)  ´ËÊ±Îª¸ñµ²Ê§°Ü
+    //è®¡ç®—å…¬å¼ï¼š RAND(0,1) < æ‹›å¼ç²¾å‡†/(æ‹›å¼ç²¾å‡†+æ‹›å¼æ ¼æŒ¡)  æ­¤æ—¶ä¸ºæ ¼æŒ¡å¤±è´¥
     if(iRandomNum*iSkillBlock >= (100-iRandomNum)*iSkillPrecision)
     {
         return true;
@@ -616,10 +616,10 @@ bool CCombatSkill::CheckCanBlock(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& 
     return false;
 }
 
-//±©»÷ÅĞ¶¨
+//æš´å‡»åˆ¤å®š
 bool CCombatSkill::CheckCanCrit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig)
 {
-    //ÕĞÊ½±©»÷
+    //æ‹›å¼æš´å‡»
     const SSkillScoreConfig* pstScoreConfig = SkillScoreCfgMgr().GetConfig(stSkillConfig.iCritModifierID);
     if(!pstScoreConfig)
     {
@@ -629,7 +629,7 @@ bool CCombatSkill::CheckCanCrit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& s
 
     int iSkillCrit = CCombatUtility::GetSkillScoreNum(stCastUnitObj, *pstScoreConfig);
 
-    //ÕĞÊ½¼áÈÍ
+    //æ‹›å¼åšéŸ§
     pstScoreConfig = SkillScoreCfgMgr().GetConfig(stSkillConfig.iToughModifierID);
     if(!pstScoreConfig)
     {
@@ -639,10 +639,10 @@ bool CCombatSkill::CheckCanCrit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& s
 
     int iSkillTough = CCombatUtility::GetSkillScoreNum(stTargetUnitObj, *pstScoreConfig);
 
-    //±©»÷ÅĞ¶¨
+    //æš´å‡»åˆ¤å®š
     int iRandomNum = CRandomCalculator::GetRandomNumberInRange(100);
 
-    //¼ÆËã¹«Ê½£º RAND(0,1) < ÕĞÊ½¾«×¼/(ÕĞÊ½¾«×¼+ÕĞÊ½¸ñµ²)  ´ËÊ±Îª¸ñµ²Ê§°Ü
+    //è®¡ç®—å…¬å¼ï¼š RAND(0,1) < æ‹›å¼ç²¾å‡†/(æ‹›å¼ç²¾å‡†+æ‹›å¼æ ¼æŒ¡)  æ­¤æ—¶ä¸ºæ ¼æŒ¡å¤±è´¥
     if(iRandomNum*iSkillTough <= (100-iRandomNum)*iSkillCrit)
     {
         return true;
@@ -651,15 +651,15 @@ bool CCombatSkill::CheckCanCrit(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& s
     return false;
 }
 
-//¼ÆËãÉËº¦
+//è®¡ç®—ä¼¤å®³
 int CCombatSkill::GetSkillHurtNum(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig, bool bIsChiefTarget)
 {
-    //»ù±¾ÍşÁ¦
+    //åŸºæœ¬å¨åŠ›
     int iBaseHurt = stSkillConfig.iDamageBaseNum;
 
     if(stSkillConfig.iDamageModifierID != 0)
     {
-        //Ôö¼ÓÉËº¦ĞŞÕı
+        //å¢åŠ ä¼¤å®³ä¿®æ­£
         const SSkillScoreConfig* pstScoreConfig = SkillScoreCfgMgr().GetConfig(stSkillConfig.iDamageModifierID);
         if(!pstScoreConfig)
         {
@@ -672,17 +672,17 @@ int CCombatSkill::GetSkillHurtNum(CCombatUnitObj& stCastUnitObj, CCombatUnitObj&
         iBaseHurt += iDamageModifier;
     }
 
-    //¹¥»÷ÍşÁ¦ = »ù±¾ÍşÁ¦*range[ÉËº¦·Ö²¼].Rx	//xÎªÄ¿±ê¾àÀë
+    //æ”»å‡»å¨åŠ› = åŸºæœ¬å¨åŠ›*range[ä¼¤å®³åˆ†å¸ƒ].Rx	//xä¸ºç›®æ ‡è·ç¦»
     int iRangeIndex = m_iDistance;
     if(iRangeIndex >= MAX_SKILL_RANGE_INFO_NUM)
     {
         iRangeIndex = MAX_SKILL_RANGE_INFO_NUM - 1;
     }
 
-    //¾àÀë×ª»»ÎªÏÂ±êĞèÒª¼õ1
+    //è·ç¦»è½¬æ¢ä¸ºä¸‹æ ‡éœ€è¦å‡1
     iRangeIndex = iRangeIndex - 1;
     
-    //¶ÁÈ¡Range±í
+    //è¯»å–Rangeè¡¨
     const SSkillRangeConfig* pstRangeConfig = SkillRangeCfgMgr().GetConfig(stSkillConfig.iDamageRangeID);
     if(!pstRangeConfig)
     {
@@ -693,10 +693,10 @@ int CCombatSkill::GetSkillHurtNum(CCombatUnitObj& stCastUnitObj, CCombatUnitObj&
 
     int iAttackHurt = iBaseHurt*pstRangeConfig->aiRangeInfo[iRangeIndex]/10000;
     
-    //¹¥»÷Ç¿¶È
+    //æ”»å‡»å¼ºåº¦
     int iAttackStrength = CCombatUtility::GetAttackStrength(stCastUnitObj, stSkillConfig);
 
-    //·ÀÓùÇ¿¶È
+    //é˜²å¾¡å¼ºåº¦
     int iDefenceStrength = CCombatUtility::GetDefenceStrength(stCastUnitObj, stTargetUnitObj, stSkillConfig);
 
 	int iDenominator = iAttackStrength+iDefenceStrength;
@@ -707,18 +707,18 @@ int CCombatSkill::GetSkillHurtNum(CCombatUnitObj& stCastUnitObj, CCombatUnitObj&
 
     if(!bIsChiefTarget)
     {
-        //´ÎÒªÄ¿±ê
+        //æ¬¡è¦ç›®æ ‡
         return (iAttackHurt * iAttackStrength /iDenominator)*stSkillConfig.iSecondaryTarget/10000;
     }
 
-    //Ö÷ÒªÄ¿±ê
+    //ä¸»è¦ç›®æ ‡
     return (iAttackHurt * iAttackStrength /iDenominator);
 }
 
-//¼ì²éÊÇ·ñÓĞĞ§µÄ¼¼ÄÜÊÍ·ÅÄ¿±ê
+//æ£€æŸ¥æ˜¯å¦æœ‰æ•ˆçš„æŠ€èƒ½é‡Šæ”¾ç›®æ ‡
 bool CCombatSkill::CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTargetType, int iCastUnitID, int iTargetUnitID)
 {
-    //¼ì²éÕ½¶·µ¥Î»µÄÕóÓªĞÅÏ¢
+    //æ£€æŸ¥æˆ˜æ–—å•ä½çš„é˜µè¥ä¿¡æ¯
     FightCampType eCastCampType = (FightCampType)stBattlefieldObj.GetCombatUnitCamp(iCastUnitID);
     FightCampType eTargetCampType = (FightCampType)stBattlefieldObj.GetCombatUnitCamp(iTargetUnitID);
     if(eCastCampType == FIGHT_CAMP_INVALID || eTargetCampType == FIGHT_CAMP_INVALID)
@@ -727,14 +727,14 @@ bool CCombatSkill::CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTa
         return false;
     }
 
-    //ÅĞ¶ÏÄ¿±êÊÇ·ñÊÇµĞÈË
+    //åˆ¤æ–­ç›®æ ‡æ˜¯å¦æ˜¯æ•Œäºº
     bool bIsEnemy = (eCastCampType != eTargetCampType);
 	
 	switch(iTargetType)
     {
     case SKILL_TARGET_SELF:
         {
-            //Ö»ÄÜ¶Ô×Ô¼ºÊ¹ÓÃ
+            //åªèƒ½å¯¹è‡ªå·±ä½¿ç”¨
             if(iTargetUnitID != iCastUnitID)
             {
                 return false;
@@ -744,7 +744,7 @@ bool CCombatSkill::CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTa
 
     case SKILL_TARGET_CAMP:
         {
-            //Ö»ÄÜ¶ÔÓÑ·½Ê¹ÓÃ
+            //åªèƒ½å¯¹å‹æ–¹ä½¿ç”¨
             if((iTargetUnitID==iCastUnitID) || bIsEnemy)
             {
                 return false;
@@ -754,7 +754,7 @@ bool CCombatSkill::CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTa
 
     case SKILL_TARGET_NOT_ENEMY:
         {
-            //¿ÉÒÔ¶Ô·ÇµĞ·½Ê¹ÓÃ
+            //å¯ä»¥å¯¹éæ•Œæ–¹ä½¿ç”¨
             if(bIsEnemy)
             {
                 return false;
@@ -764,7 +764,7 @@ bool CCombatSkill::CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTa
 
     case SKILL_TARGET_ENEMY:
         {
-            //¿ÉÒÔ¶ÔµĞÈËÊ¹ÓÃ
+            //å¯ä»¥å¯¹æ•Œäººä½¿ç”¨
             if(!bIsEnemy)
             {
                 return false;
@@ -774,7 +774,7 @@ bool CCombatSkill::CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTa
 
     case SKILL_TARGET_ALL:
         {
-            //¿ÉÒÔ¶ÔËùÓĞÈËÊ¹ÓÃ
+            //å¯ä»¥å¯¹æ‰€æœ‰äººä½¿ç”¨
             return true;
         }
         break;
@@ -789,7 +789,7 @@ bool CCombatSkill::CheckIsValidTarget(CBattlefieldObj& stBattlefieldObj, int iTa
     return true;
 }
 
-//´¦ÀíÊÜ»÷µ¥Î»µÄ×ªÏò
+//å¤„ç†å—å‡»å•ä½çš„è½¬å‘
 void CCombatSkill::TargetUnderAttackDirection(CCombatUnitObj& stTargetUnitObj, int iCastUnitDirection)
 {
     switch(iCastUnitDirection)
@@ -828,10 +828,10 @@ void CCombatSkill::TargetUnderAttackDirection(CCombatUnitObj& stTargetUnitObj, i
     return;
 }
 
-//´¦ÀíÄ¿±êµ¥Î»µÄÉËº¦
+//å¤„ç†ç›®æ ‡å•ä½çš„ä¼¤å®³
 int CCombatSkill::ProcessRealDamage(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, int iDamageNum, ActionTarget& stNotify, const SFightUnitSkillConfig& stSkillConfig)
 {
-    //¶ÁÈ¡ÉËº¦±í
+    //è¯»å–ä¼¤å®³è¡¨
     const SSkillDamageConfig* pstDamageConfig = SkillDamageCfgMgr().GetConfig(stSkillConfig.iDamageID);
     if(!pstDamageConfig)
     {
@@ -839,24 +839,24 @@ int CCombatSkill::ProcessRealDamage(CBattlefieldObj& stBattlefieldObj, CCombatUn
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //ÏÈ´¦Àí¹¥»÷·½µÄ·´À¡
+    //å…ˆå¤„ç†æ”»å‡»æ–¹çš„åé¦ˆ
     int iRealAddHP = 0;
 
     stCastUnitObj.AddFightAttr(FIGHT_ATTR_HP, iDamageNum*pstDamageConfig->aiVampireAttr[FIGHT_ATTR_HP]/100, &iRealAddHP);
 
-    //ÉèÖÃÍÆËÍÏûÏ¢µÄ·µ»Ø
+    //è®¾ç½®æ¨é€æ¶ˆæ¯çš„è¿”å›
     stNotify.set_icastattreffect(FIGHT_ATTR_HP, iRealAddHP);
 
-    //´¦ÀíÊØ»¤ÀàĞÍµÄBUFF,Õâ¸öº¯ÊıÖĞ»áĞŞ¸ÄiDamageNumµÄÖµ
+    //å¤„ç†å®ˆæŠ¤ç±»å‹çš„BUFF,è¿™ä¸ªå‡½æ•°ä¸­ä¼šä¿®æ”¹iDamageNumçš„å€¼
     stBattlefieldObj.DoBuffEffectByType(BUFF_TRIGGER_PROCESSDAMAGE, stTargetUnitObj.GetCombatUnitID(), stCastUnitObj.GetCombatUnitID(), &iDamageNum);
 
-    //´¦ÀíÉúÃüµÄÉËº¦
+    //å¤„ç†ç”Ÿå‘½çš„ä¼¤å®³
     ProcessTargetDamage(stTargetUnitObj, *pstDamageConfig, stNotify, FIGHT_ATTR_HP, iDamageNum);
 
     return T_SERVER_SUCESS;
 }
 
-//´¦ÀíÄ¿±êµ¥Î»µ¥ÏîÊôĞÔµÄÉËº¦
+//å¤„ç†ç›®æ ‡å•ä½å•é¡¹å±æ€§çš„ä¼¤å®³
 void CCombatSkill::ProcessTargetDamage(CCombatUnitObj& stTargetUnitObj, const SSkillDamageConfig& stDamageConfig, ActionTarget& stNotify, int iAttrType, int& iDamageNum)
 {
     if(iDamageNum<=0 || iAttrType<0 || iAttrType>=FIGHT_ATTR_MAX || stDamageConfig.aiSpreadAttr[iAttrType]<=0)
@@ -877,7 +877,7 @@ void CCombatSkill::ProcessTargetDamage(CCombatUnitObj& stTargetUnitObj, const SS
     return;
 }
 
-//´¦ÀíÊÜ»÷·½µÄ¶ÓÓÑĞ­·À,·µ»ØÖµÎªĞ­·ÀµÄĞ§¹ûÏµÊı
+//å¤„ç†å—å‡»æ–¹çš„é˜Ÿå‹åé˜²,è¿”å›å€¼ä¸ºåé˜²çš„æ•ˆæœç³»æ•°
 float CCombatSkill::ProcessCoordDefense(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stTargetUnitObj)
 {
     int iNearByPartnerNum = stBattlefieldObj.GetNearByUnitNum(stTargetUnitObj, false);
@@ -891,13 +891,13 @@ float CCombatSkill::ProcessCoordDefense(CBattlefieldObj& stBattlefieldObj, CComb
     return pow(0.8f, iNearByPartnerNum+iAngleNearByPartnerNum*0.5f);
 }
 
-//´¦Àí¹¥»÷¼¼ÄÜÔì³ÉµÄµ¥Î»Î»ÒÆ
+//å¤„ç†æ”»å‡»æŠ€èƒ½é€ æˆçš„å•ä½ä½ç§»
 int CCombatSkill::ProcessSkillMove(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stCastUnitObj, 
                                    CCombatUnitObj& stTargetUnitObj, ActionTarget& stNotify, const SFightUnitSkillConfig& stSkillConfig)
 {
     int iRet = T_SERVER_SUCESS;
 
-    //ÏÈ´¦Àí¹¥»÷·½µÄ
+    //å…ˆå¤„ç†æ”»å‡»æ–¹çš„
     if(stSkillConfig.iSelfMoveID != 0)
     {
         iRet = CCombatUtility::ProcessUnitMove(stBattlefieldObj, stCastUnitObj, *stNotify.mutable_stcastpos(), stSkillConfig.iSelfMoveID, stCastUnitObj.GetUnitDirection());
@@ -908,7 +908,7 @@ int CCombatSkill::ProcessSkillMove(CBattlefieldObj& stBattlefieldObj, CCombatUni
         }
     }
 
-    //ÔÙ´¦ÀíÊÜ»÷·½µÄ
+    //å†å¤„ç†å—å‡»æ–¹çš„
     if(stSkillConfig.iTargetMoveID != 0)
     {
         iRet = CCombatUtility::ProcessUnitMove(stBattlefieldObj, stTargetUnitObj, *stNotify.mutable_sttargetpos(), stSkillConfig.iTargetMoveID, stCastUnitObj.GetUnitDirection());
@@ -922,12 +922,12 @@ int CCombatSkill::ProcessSkillMove(CBattlefieldObj& stBattlefieldObj, CCombatUni
     return T_SERVER_SUCESS;
 }
 
-//´¦Àí¼¼ÄÜµÄÌØÊâĞ§¹û
+//å¤„ç†æŠ€èƒ½çš„ç‰¹æ®Šæ•ˆæœ
 int CCombatSkill::ProcessSkillSpecailFunc(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, ActionTarget& stNotify, const SFightUnitSkillConfig& stSkillConfig)
 {
     if(stCastUnitObj.GetUnitSize()!=0 || stTargetUnitObj.GetUnitSize()!=0)
     {
-        //´óÌå»ıµ¥Î»²»Ö§³ÖÎ»ÒÆ
+        //å¤§ä½“ç§¯å•ä½ä¸æ”¯æŒä½ç§»
         return 0;
     }
 
@@ -937,7 +937,7 @@ int CCombatSkill::ProcessSkillSpecailFunc(CCombatUnitObj& stCastUnitObj, CCombat
     {
     case SKILL_SPECIAL_FUNC_EXCHANGEPOS:
         {
-            //ÒÆĞĞ»»Î»£¬ºÍÄ¿±êÎ»ÖÃ»¥»»
+            //ç§»è¡Œæ¢ä½ï¼Œå’Œç›®æ ‡ä½ç½®äº’æ¢
             TUNITPOSITION stCastOldPos = stCastUnitObj.GetUnitPosition();
             stCastUnitObj.SetUnitPosition(stTargetUnitObj.GetUnitPosition());
             stTargetUnitObj.SetUnitPosition(stCastOldPos);
@@ -959,3 +959,7 @@ int CCombatSkill::ProcessSkillSpecailFunc(CCombatUnitObj& stCastUnitObj, CCombat
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

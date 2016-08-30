@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "BattlefieldObj.hpp"
@@ -10,20 +10,20 @@
 using namespace ServerLib;
 using namespace GameConfig;
 
-// Ñ°Â·ÁÙÊ±Â·¾¶µãÊı×é
+// å¯»è·¯ä¸´æ—¶è·¯å¾„ç‚¹æ•°ç»„
 static int g_iTempPathNumber;
 static const int MAX_TEMP_PATH_NUMBER = 1024;
 
-// Â·¾¶¿é
+// è·¯å¾„å—
 TSceneBlock CAStarPathUtility::m_astSceneBlock[MAX_PATH_NODE];
 
-// A* ×îĞ¡¶Ñ
+// A* æœ€å°å †
 CPathMinHeap CAStarPathUtility::m_stPathMinHeap;
 
-//µ±Ç°Ê¹ÓÃµØÍ¼¿í¶È
+//å½“å‰ä½¿ç”¨åœ°å›¾å®½åº¦
 int CAStarPathUtility::m_iMapWidth = 0;
 
-//µ±Ç°Ê¹ÓÃµØÍ¼¸ß¶È
+//å½“å‰ä½¿ç”¨åœ°å›¾é«˜åº¦
 int CAStarPathUtility::m_iMapHeight = 0;
 
 int CAStarPathUtility::m_iUnitSize = 0;
@@ -31,7 +31,7 @@ int CAStarPathUtility::m_iUnitSize = 0;
 #define BLOCK_X(pBlock) ( ((pBlock) - &m_astSceneBlock[0]) % (m_iMapWidth) )
 #define BLOCK_Y(pBlock) ( ((pBlock) - &m_astSceneBlock[0]) / (m_iMapWidth) )
 
-//A* Ëã·¨Ñ°Â·
+//A* ç®—æ³•å¯»è·¯
 bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const CScenePathManager& stPathManager, const TUNITPOSITION& stStartPos, 
                                       const TUNITPOSITION& stEndPos, int iSize, std::vector<TUNITPOSITION>& vPath)
 {
@@ -48,13 +48,13 @@ bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const C
         return false;
     }
 
-    //Õâ±ßÖ±½Ó¸ñ×Ó×ø±ê¾ÍÊÇ×îÖÕµãµÄ×ø±ê
+    //è¿™è¾¹ç›´æ¥æ ¼å­åæ ‡å°±æ˜¯æœ€ç»ˆç‚¹çš„åæ ‡
     TSceneBlock *pstStartBlock = &m_astSceneBlock[stStartPos.iPosY*m_iMapWidth+stStartPos.iPosX];
     TSceneBlock *pstEndBlock = &m_astSceneBlock[stEndPos.iPosY*m_iMapWidth+stEndPos.iPosX];
 
     m_stPathMinHeap.Initialize();
 
-    //³õÊ¼»¯BockÊı×éÖĞµÄ¿é
+    //åˆå§‹åŒ–Bockæ•°ç»„ä¸­çš„å—
     for(int y=0; y<m_iMapHeight; ++y)
     {
         for(int x=0; x<m_iMapWidth; ++x)
@@ -63,7 +63,7 @@ bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const C
         }
     }
 
-    // ÒÀ´Î´¦Àíµ±Ç°½ÚµãµÄÖÜÎ§4¸ö½Úµã, Ö±µ½µ½´ï×îºó½Úµã
+    // ä¾æ¬¡å¤„ç†å½“å‰èŠ‚ç‚¹çš„å‘¨å›´4ä¸ªèŠ‚ç‚¹, ç›´åˆ°åˆ°è¾¾æœ€åèŠ‚ç‚¹
     TSceneBlock *pstCenterBlock = pstStartBlock;
     while (1)
     {
@@ -72,10 +72,10 @@ bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const C
             break;
         }
 
-        // ½«µ±Ç°½Úµã¼ÓÈë·â±ÕÁĞ±í
+        // å°†å½“å‰èŠ‚ç‚¹åŠ å…¥å°é—­åˆ—è¡¨
         pstCenterBlock->stAStar.bClosed = true;
 
-        // µ½´ïÖÕµãËùÊôµÄ¿é
+        // åˆ°è¾¾ç»ˆç‚¹æ‰€å±çš„å—
         if (pstCenterBlock->iSceneBlock == pstEndBlock->iSceneBlock)
         {
             break;
@@ -120,7 +120,7 @@ bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const C
             }
         }
 
-        // È¡¿ª·ÅÁĞ±íÖĞÂ·¾¶×îĞ¡µÄ×÷Îªµ±Ç°½Úµã
+        // å–å¼€æ”¾åˆ—è¡¨ä¸­è·¯å¾„æœ€å°çš„ä½œä¸ºå½“å‰èŠ‚ç‚¹
         pstCenterBlock = m_stPathMinHeap.PopHeap();
         if (pstCenterBlock == NULL)
         {
@@ -131,15 +131,15 @@ bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const C
 
     pstStartBlock->stAStar.bClosed = false;
 
-    // A* Ëã·¨½áÊø, ½øĞĞÂ·¾¶ÓÅ»¯
+    // A* ç®—æ³•ç»“æŸ, è¿›è¡Œè·¯å¾„ä¼˜åŒ–
 
-    // È¥µôÖÕµã¿é
+    // å»æ‰ç»ˆç‚¹å—
     if (pstCenterBlock == pstEndBlock)
     {
         pstCenterBlock = pstCenterBlock->stAStar.pstCenterNode;
     }
 
-    // Í³¼ÆÂ·¾¶µã¸öÊı
+    // ç»Ÿè®¡è·¯å¾„ç‚¹ä¸ªæ•°
     g_iTempPathNumber = 0;
     TSceneBlock *pstPathBlock = pstCenterBlock;
     while (pstPathBlock && pstPathBlock != pstStartBlock)
@@ -153,10 +153,10 @@ bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const C
         return false;
     }
 
-    //·â×°×îÖÕµÄÂ·¾¶
+    //å°è£…æœ€ç»ˆçš„è·¯å¾„
     vPath.clear();
 
-    // ½«Â·¾¶µã·´ÏòÁ¬ÆğÀ´
+    // å°†è·¯å¾„ç‚¹åå‘è¿èµ·æ¥
     pstPathBlock = pstCenterBlock;
     for (int i = g_iTempPathNumber - 1; i >= 0; i--)
     {
@@ -165,18 +165,18 @@ bool CAStarPathUtility::FindAStarPath(CBattlefieldObj& stBattlefieldObj, const C
         pstPathBlock = pstPathBlock->stAStar.pstCenterNode;
     }
 
-    // Ìí¼ÓÖÕµã
+    // æ·»åŠ ç»ˆç‚¹
     vPath.push_back(stEndPos);
 
     return true;
 }
 
-// A* ¼ÆËã½ÚµãÈ¨Öµ
+// A* è®¡ç®—èŠ‚ç‚¹æƒå€¼
 int CAStarPathUtility::AStarCountNode(CBattlefieldObj& stBattlefieldObj, const CScenePathManager& stPathManager, int iX, int iY, int iEndX, int iEndY, TSceneBlock *pstCenterBlock)
 {
     TSceneBlock *pstNeighborBlock = &m_astSceneBlock[(iY) * m_iMapWidth + iX];
 
-    //»ñÈ¡ËùÓĞĞèÒªÅĞ¶Ï×èµ²µÄµã
+    //è·å–æ‰€æœ‰éœ€è¦åˆ¤æ–­é˜»æŒ¡çš„ç‚¹
     std::vector<TUNITPOSITION> vCheckPos;
     for(int x=0; x<=m_iUnitSize; ++x)
     {
@@ -186,17 +186,17 @@ int CAStarPathUtility::AStarCountNode(CBattlefieldObj& stBattlefieldObj, const C
         }
     }
 
-    //ÏÈÅĞ¶Ï×èµ²£¬²»ÄÜÓĞ×èµ²
+    //å…ˆåˆ¤æ–­é˜»æŒ¡ï¼Œä¸èƒ½æœ‰é˜»æŒ¡
     for(unsigned i=0; i<vCheckPos.size(); ++i)
     {
-        // ´Ë¿é²»¿ÉĞĞ×ß£¬ºöÂÔ
+        // æ­¤å—ä¸å¯è¡Œèµ°ï¼Œå¿½ç•¥
         if(!stPathManager.BattlefieldPosCanWalk(vCheckPos[i]))
         {
             return 0;
         }
     }
 
-    //Èç¹û²»ÊÇÄ¿±êµã£¬ÔòÅĞ¶Ï¼ì²éÎ»ÖÃÊÇ·ñÓĞÈË
+    //å¦‚æœä¸æ˜¯ç›®æ ‡ç‚¹ï¼Œåˆ™åˆ¤æ–­æ£€æŸ¥ä½ç½®æ˜¯å¦æœ‰äºº
     if(iX!=iEndX || iY!=iEndY)
     {
         for(unsigned i=0; i<vCheckPos.size(); ++i)
@@ -211,29 +211,29 @@ int CAStarPathUtility::AStarCountNode(CBattlefieldObj& stBattlefieldObj, const C
 
     TAStarNode &stAStar = pstNeighborBlock->stAStar;
 
-    // ÒÑ¾­¼ÓÈë·â±ÕÁĞ±í£¬ºöÂÔ
+    // å·²ç»åŠ å…¥å°é—­åˆ—è¡¨ï¼Œå¿½ç•¥
     if (stAStar.bClosed)
     {
         return 0;
     }
 
-    //Ê¡ÂÔG²ÎÊı¿ÉÒÔÌá¸ßËÙ¶È, µ«µÃ²»µ½×îÓÅÂ·¾¶, ·şÎñÆ÷×ö¹ÖÎï¶ÌÂ·¾¶Ñ°Â·²»°­ÊÂ
+    //çœç•¥Gå‚æ•°å¯ä»¥æé«˜é€Ÿåº¦, ä½†å¾—ä¸åˆ°æœ€ä¼˜è·¯å¾„, æœåŠ¡å™¨åšæ€ªç‰©çŸ­è·¯å¾„å¯»è·¯ä¸ç¢äº‹
     int iValueG = pstCenterBlock->stAStar.iValueG + 1;
 
-    // ÔÚ¿ª·ÅÁĞ±íÖĞ£¬µ«Â·¾¶±ÈÏÖÔÚÓÅÏÈ£¬ºöÂÔ
+    // åœ¨å¼€æ”¾åˆ—è¡¨ä¸­ï¼Œä½†è·¯å¾„æ¯”ç°åœ¨ä¼˜å…ˆï¼Œå¿½ç•¥
     if (stAStar.bOpened && stAStar.iValueG < iValueG)
     {
         return 0;
     }
 
-    // ¸üĞÂµ±Ç°½ÚµãGHFÖµ£¬²¢Ö¸ÏòĞÂµÄÖĞĞÄ½Úµã
+    // æ›´æ–°å½“å‰èŠ‚ç‚¹GHFå€¼ï¼Œå¹¶æŒ‡å‘æ–°çš„ä¸­å¿ƒèŠ‚ç‚¹
     stAStar.iValueG = iValueG;
     // stAStar.iValueH = ABS(iX, iEndX) + ABS(iY, iEndY);
     stAStar.iValueF = stAStar.iValueG + ABS(iX, iEndX) + ABS(iY, iEndY);
 
     stAStar.pstCenterNode = pstCenterBlock;
 
-    // ¼ÓÈë¿ª·ÅÁĞ±í
+    // åŠ å…¥å¼€æ”¾åˆ—è¡¨
     if (!stAStar.bOpened)
     {
         bool bPushed = m_stPathMinHeap.PushHeap(pstNeighborBlock);
@@ -258,7 +258,7 @@ CPathMinHeap::CPathMinHeap()
     memset(m_astCloseNode, 0, sizeof(m_astCloseNode));
 }
 
-// ÅĞ¶ÏÊÇ·ñ»º³åÇøÂú
+// åˆ¤æ–­æ˜¯å¦ç¼“å†²åŒºæ»¡
 bool CPathMinHeap::IsHeapFull()
 {
     return (m_iCloseNodes >= MAX_PATH_NODE) || (m_iOpenNodes >= MAX_PATH_NODE);
@@ -287,10 +287,10 @@ TSceneBlock *CPathMinHeap::PopHeap()
         return NULL;
     }
 
-    // ±£´æ×îĞ¡Öµ
+    // ä¿å­˜æœ€å°å€¼
     TSceneBlock *pstMinBlock = m_astOpenNode[0];
 
-    // ±È½ÏÁ½¸ö×Ó½Úµã£¬½«Ğ¡µÄÌáÉıÎª¸¸½Úµã
+    // æ¯”è¾ƒä¸¤ä¸ªå­èŠ‚ç‚¹ï¼Œå°†å°çš„æå‡ä¸ºçˆ¶èŠ‚ç‚¹
     int iParent = 0;
     int iLeftChild, iRightChild;
     for (iLeftChild = 2 * iParent + 1, iRightChild = iLeftChild + 1;
@@ -309,7 +309,7 @@ TSceneBlock *CPathMinHeap::PopHeap()
         }
     }
 
-    // ½«×îºóÒ»¸ö½ÚµãÌîÔÚ¿Õ³öÀ´µÄ½ÚµãÉÏ, ·ÀÖ¹Êı×é¿Õ¶´
+    // å°†æœ€åä¸€ä¸ªèŠ‚ç‚¹å¡«åœ¨ç©ºå‡ºæ¥çš„èŠ‚ç‚¹ä¸Š, é˜²æ­¢æ•°ç»„ç©ºæ´
     if (iParent != m_iOpenNodes - 1)
     {
         bool bPushed = InsertHeap(m_astOpenNode[--m_iOpenNodes], iParent);
@@ -352,7 +352,7 @@ bool CPathMinHeap::InsertHeap(TSceneBlock *pstSceneBlock, int iPosition)
 
     m_astOpenNode[iPosition] = pstSceneBlock;
 
-    // ÒÀ´ÎºÍ¸¸½Úµã±È½Ï£¬Èç¹û±È¸¸½ÚµãĞ¡£¬ÔòÉÏÒÆ
+    // ä¾æ¬¡å’Œçˆ¶èŠ‚ç‚¹æ¯”è¾ƒï¼Œå¦‚æœæ¯”çˆ¶èŠ‚ç‚¹å°ï¼Œåˆ™ä¸Šç§»
     int iChild, iParent;
     for (iChild = iPosition, iParent = (iChild - 1) / 2;
         iChild > 0;
@@ -374,3 +374,7 @@ bool CPathMinHeap::InsertHeap(TSceneBlock *pstSceneBlock, int iPosition)
 
     return true;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __CONIFG_MANAGER_HPP__
+ï»¿#ifndef __CONIFG_MANAGER_HPP__
 #define __CONIFG_MANAGER_HPP__
 
 #include "HandlerFactory.hpp"
@@ -9,69 +9,69 @@
 
 using namespace ServerLib;
 
-// ÏûÏ¢×î´óCDÊ±¼ä 2000ms
+// æ¶ˆæ¯æœ€å¤§CDæ—¶é—´ 2000ms
 const int MAX_MSG_INTERVAL_TIME = 2000;
 
-// Ä¬ÈÏ²»ÏŞÖÆCD
+// é»˜è®¤ä¸é™åˆ¶CD
 const int DEFAULT_MSG_INTERVAL = 0;
 
-//Õ½¶·µ¥Î»ÅäÖÃ¹ÜÀíÆ÷
+//æˆ˜æ–—å•ä½é…ç½®ç®¡ç†å™¨
 extern const char GAME_FIGHT_UNIT_CONFIG_FILE[];
 typedef CTemplateConfigManager<SFightUnitConfig, MAX_FIGHT_UNIT_NUM, GAME_FIGHT_UNIT_CONFIG_FILE> CSFightUnitConfigManager;
 
-//Õ½¶·¹ÖÎïÅäÖÃ¹ÜÀíÆ÷
+//æˆ˜æ–—æ€ªç‰©é…ç½®ç®¡ç†å™¨
 extern const char GAME_FIGHT_MONSTER_CONFIG_FILE[];
 typedef CTemplateConfigManager<SMonsterConfig, MAX_MONSTER_CONFIG_NUM, GAME_FIGHT_MONSTER_CONFIG_FILE> CSMonsterConfigManager;
 
-//Õ½¶·¹Ø¿¨ÅäÖÃ¹ÜÀíÆ÷
+//æˆ˜æ–—å…³å¡é…ç½®ç®¡ç†å™¨
 extern const char GAME_BATTLE_CROSS_CONFIG_FILE[];
 typedef CTemplateConfigManager<SBattleCrossConfig, MAX_BATTLE_CROSS_NUM, GAME_BATTLE_CROSS_CONFIG_FILE> CSBattleCrossConfigManager;
 
-//¹Ø¿¨¹ÖÎï×éÅäÖÃ¹ÜÀíÆ÷
+//å…³å¡æ€ªç‰©ç»„é…ç½®ç®¡ç†å™¨
 extern const char GAME_CROSS_MONSTER_CONFIG_FILE[];
 typedef CTemplateConfigManager<SCrossMonsterConfig, MAX_CROSS_MONSTER_CONFIG_NUM, GAME_CROSS_MONSTER_CONFIG_FILE> CSCrossMonsterConfigManager;
 
-//Õ½¶·¼¼ÄÜÅäÖÃ¹ÜÀí
+//æˆ˜æ–—æŠ€èƒ½é…ç½®ç®¡ç†
 extern const char GAME_FIGHT_SKILL_CONFIG_FILE[];
 typedef CTemplateConfigManager<SFightUnitSkillConfig, MAX_FIGHT_SKILL_CONFIG_NUM, GAME_FIGHT_SKILL_CONFIG_FILE> CFightSkillConfigManager;
 
-//¼¼ÄÜÊÍ·Å¾àÀëÅäÖÃ¹ÜÀí
+//æŠ€èƒ½é‡Šæ”¾è·ç¦»é…ç½®ç®¡ç†
 extern const char GAME_SKILL_RANGE_CONFIG_FILE[];
 typedef CTemplateConfigManager<SSkillRangeConfig, MAX_SKILL_RANGE_CONFIG_NUM, GAME_SKILL_RANGE_CONFIG_FILE> CSkillRangeConfigManager;
 
-//¼¼ÄÜÊÍ·Å·¶Î§ÅäÖÃ¹ÜÀí
+//æŠ€èƒ½é‡Šæ”¾èŒƒå›´é…ç½®ç®¡ç†
 extern const char GAME_SKILL_AREA_CONFIG_FILE[];
 typedef CTemplateConfigManager<SSkillAreaConfig, MAX_SKILL_AREA_CONFIG_NUM, GAME_SKILL_AREA_CONFIG_FILE> CSkillAreaConfigManager;
 
-//¼¼ÄÜĞ§¹ûĞŞÕıÅäÖÃ
+//æŠ€èƒ½æ•ˆæœä¿®æ­£é…ç½®
 extern const char GAME_SKILL_SCORE_CONFIG_FILE[];
 typedef CTemplateConfigManager<SSkillScoreConfig, MAX_SKILL_SCORE_CONFIG_NUM, GAME_SKILL_SCORE_CONFIG_FILE> CSkillScoreConfigManager;
 
-//¼¼ÄÜÉËº¦Ğ§¹ûÅäÖÃ
+//æŠ€èƒ½ä¼¤å®³æ•ˆæœé…ç½®
 extern const char GAME_SKILL_DAMAGE_CONFIG_FILE[];
 typedef CTemplateConfigManager<SSkillDamageConfig, MAX_SKILL_DAMAGE_CONFIG_NUM, GAME_SKILL_DAMAGE_CONFIG_FILE> CSkillDamageConfigManager;
 
-//¼¼ÄÜBuffµÄÅäÖÃ
+//æŠ€èƒ½Buffçš„é…ç½®
 extern const char GAME_FIGHT_BUFF_CONFIG_FILE[];
 typedef CTemplateConfigManager<SFightBuffConfig, MAX_FIGHT_BUFF_CONFIG_NUM, GAME_FIGHT_BUFF_CONFIG_FILE> CSFightBuffConfigManager;
 
-//Ëæ»úµôÂäµÄÅäÖÃ
+//éšæœºæ‰è½çš„é…ç½®
 extern const char GAME_DROP_REWARD_CONFIG_FILE[];
 typedef CTemplateConfigManager<SDropRewardConfig, MAX_DROP_REWARD_CONFIG_NUM, GAME_DROP_REWARD_CONFIG_FILE> CSDropRewardConfigManager;
 
-//Õ½¶·µ¥Î»AIÅäÖÃ
+//æˆ˜æ–—å•ä½AIé…ç½®
 extern const char GAME_FIGHTUNIT_AI_CONFIG_FILE[];
 typedef CTemplateConfigManager<SFightUnitAIConfig, MAX_FIGHTUNIT_AI_CONFIG_NUM, GAME_FIGHTUNIT_AI_CONFIG_FILE> CSFightUnitAIConfigManager;
 
-//Õ½¶·¼¼ÄÜ»ï°éºÏ»÷µÄÅäÖÃ
+//æˆ˜æ–—æŠ€èƒ½ä¼™ä¼´åˆå‡»çš„é…ç½®
 extern const char GAME_JOINT_ATTACK_CONFIG_FILE[];
 typedef CTemplateConfigManager<SJointAttackConfig, MAX_JOINT_ATTACK_CONFIG_NUM, GAME_JOINT_ATTACK_CONFIG_FILE> CSJointAtkConfigManager;
 
-//Õ½¶·Õ½³¡»ú¹ØµÄÅäÖÃ
+//æˆ˜æ–—æˆ˜åœºæœºå…³çš„é…ç½®
 extern const char GAME_COMBAT_TRAP_CONFIG_FILE[];
 typedef CTemplateConfigManager<STrapConfig, MAX_COMBAT_TRAP_CONFIG_NUM, GAME_COMBAT_TRAP_CONFIG_FILE> CSTrapConfigManager;
 
-//ÓÎÏ·Íæ¼ÒÎïÆ·µÄÅäÖÃ
+//æ¸¸æˆç©å®¶ç‰©å“çš„é…ç½®
 extern const char GAME_USER_ITEM_CONFIG_FILE[];
 typedef CTemplateConfigManager<SGameItemConfig, MAX_GAME_ITEM_CONFIG_NUM, GAME_USER_ITEM_CONFIG_FILE> CSGameItemConfigManager;
 
@@ -80,7 +80,7 @@ class CConfigManager
 public:
     int Initialize(bool bResumeMode);
 
-    //GMÈ¨ÏŞÅäÖÃ
+    //GMæƒé™é…ç½®
     CQMGMPrivConfigManager& GetGMPrivConfigManager() { return m_stQMGMPrivConfigManager; };
 
     const int GetMsgInterval(const unsigned int uiMsgID)const;
@@ -89,52 +89,52 @@ public:
 
     int GetServerStartTime(int& iServerStartTime);
 
-    //Õ½¶·µ¥Î»ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å•ä½é…ç½®ç®¡ç†å™¨
     CSFightUnitConfigManager& GetFightUnitConfigManager() { return m_stSFightUnitConfigManager; };
 
-    //Õ½¶·¹Ø¿¨ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å…³å¡é…ç½®ç®¡ç†å™¨
     CSBattleCrossConfigManager& GetBattleCrossConfigManager() { return m_stSBattleCrossConfigManager; };
 
-    //¹Ø¿¨¹ÖÎïÅäÖÃ¹ÜÀíÆ÷
+    //å…³å¡æ€ªç‰©é…ç½®ç®¡ç†å™¨
     CSCrossMonsterConfigManager& GetCrossMonsterConfigManager() { return m_stCrossMonsterConfigManager; };
 
-    //Õ½¶·µ¥Î»AIÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å•ä½AIé…ç½®ç®¡ç†å™¨
     CSFightUnitAIConfigManager& GetFightUnitAIConfigManager() { return m_stSFightUnitAIConfigManager; };
 
-    //Õ½¶·¹ÖÎïÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æ€ªç‰©é…ç½®ç®¡ç†å™¨
     CSMonsterConfigManager& GetMonsterConfigManager() { return m_stSMonsterConfigManager; };
 
-    //Õ½³¡µØÍ¼ĞÅÏ¢ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜åœºåœ°å›¾ä¿¡æ¯é…ç½®ç®¡ç†å™¨
     CBattlefieldPathConfigManager& GetBattlefieldPathConfigManager() { return m_stBattlefieldPathConfigManager; };
 
-    //Õ½¶·¼¼ÄÜÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æŠ€èƒ½é…ç½®ç®¡ç†å™¨
     CFightSkillConfigManager& GetFightSkillConfigManager() { return m_stFightSkillConfigManager; };
 
-    //¼¼ÄÜÊÍ·Å¾àÀë¹ÜÀíÆ÷
+    //æŠ€èƒ½é‡Šæ”¾è·ç¦»ç®¡ç†å™¨
     CSkillRangeConfigManager& GetSkillRangeConfigManager() { return m_stSkillRangeConfigManager; };
 
-    //¼¼ÄÜÊÍ·Å·¶Î§¹ÜÀíÆ÷
+    //æŠ€èƒ½é‡Šæ”¾èŒƒå›´ç®¡ç†å™¨
     CSkillAreaConfigManager& GetSkillAreaConfigManager() { return m_stSkillAreaConfigManager; };
 
-    //¼¼ÄÜĞ§¹ûĞŞÕı¹ÜÀíÆ÷
+    //æŠ€èƒ½æ•ˆæœä¿®æ­£ç®¡ç†å™¨
     CSkillScoreConfigManager& GetSkillScoreConfigManager() { return m_stSkillScoreConfigManager; };
 
-    //¼¼ÄÜÉËº¦ÅäÖÃ¹ÜÀíÆ÷
+    //æŠ€èƒ½ä¼¤å®³é…ç½®ç®¡ç†å™¨
     CSkillDamageConfigManager& GetSkillDamageConfigManager() { return m_stSkillDamageConfigManager; };
 
-    //Õ½¶·BuffÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—Buffé…ç½®ç®¡ç†å™¨
     CSFightBuffConfigManager& GetFightBuffConfigManager() { return m_stFightBuffConfigManager; };
 
-    //Ëæ»ú½±ÀøÅäÖÃ¹ÜÀíÆ÷
+    //éšæœºå¥–åŠ±é…ç½®ç®¡ç†å™¨
     CSDropRewardConfigManager& GetDropRewardConfigManager() { return m_stDropRewardConfigManager; };
 
-    //Õ½¶·¼¼ÄÜ»ï°éºÏ»÷ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æŠ€èƒ½ä¼™ä¼´åˆå‡»é…ç½®ç®¡ç†å™¨
     CSJointAtkConfigManager& GetJointAtkConfigManager() { return m_stJointAtkConfigManager; };
 
-    //Õ½¶·Õ½³¡»ú¹ØÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æˆ˜åœºæœºå…³é…ç½®ç®¡ç†å™¨
     CSTrapConfigManager& GetTrapConfigManager() { return m_stTrapConfigManager; };
 
-    //ÓÎÏ·ÎïÆ·ÅäÖÃ¹ÜÀíÆ÷
+    //æ¸¸æˆç‰©å“é…ç½®ç®¡ç†å™¨
     CSGameItemConfigManager& GetGameItemConfigManager() { return m_stGameItemConfigManager; };
 
 private:
@@ -142,56 +142,60 @@ private:
 
 private:
 
-    //GM¹¤¾ßÈ¨ÏŞÅäÖÃ¹ÜÀíÆ÷
+    //GMå·¥å…·æƒé™é…ç½®ç®¡ç†å™¨
     CQMGMPrivConfigManager m_stQMGMPrivConfigManager;
 
-    //Õ½¶·µ¥Î»ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å•ä½é…ç½®ç®¡ç†å™¨
     CSFightUnitConfigManager m_stSFightUnitConfigManager;
 
-    //Õ½¶·¹Ø¿¨ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å…³å¡é…ç½®ç®¡ç†å™¨
     CSBattleCrossConfigManager m_stSBattleCrossConfigManager;
 
-    //¹Ø¿¨¹ÖÎï×éÅäÖÃ¹ÜÀíÆ÷
+    //å…³å¡æ€ªç‰©ç»„é…ç½®ç®¡ç†å™¨
     CSCrossMonsterConfigManager m_stCrossMonsterConfigManager;
 
-    //Õ½¶·µ¥Î»AIÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å•ä½AIé…ç½®ç®¡ç†å™¨
     CSFightUnitAIConfigManager  m_stSFightUnitAIConfigManager;
 
-    //Õ½¶·¹ÖÎïÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æ€ªç‰©é…ç½®ç®¡ç†å™¨
     CSMonsterConfigManager  m_stSMonsterConfigManager;
 
-    //Õ½³¡µØÍ¼ĞÅÏ¢ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜åœºåœ°å›¾ä¿¡æ¯é…ç½®ç®¡ç†å™¨
     CBattlefieldPathConfigManager m_stBattlefieldPathConfigManager;
 
-    //Õ½¶·¼¼ÄÜÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æŠ€èƒ½é…ç½®ç®¡ç†å™¨
     CFightSkillConfigManager m_stFightSkillConfigManager;
 
-    //Õ½¶·¼¼ÄÜÊÍ·Å¾àÀëÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æŠ€èƒ½é‡Šæ”¾è·ç¦»é…ç½®ç®¡ç†å™¨
     CSkillRangeConfigManager m_stSkillRangeConfigManager;
 
-    //Õ½¶·¼¼ÄÜÊÍ·Å·¶Î§ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æŠ€èƒ½é‡Šæ”¾èŒƒå›´é…ç½®ç®¡ç†å™¨
     CSkillAreaConfigManager m_stSkillAreaConfigManager;
 
-    //Õ½¶·¼¼ÄÜĞ§¹ûĞŞÕıÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æŠ€èƒ½æ•ˆæœä¿®æ­£é…ç½®ç®¡ç†å™¨
     CSkillScoreConfigManager m_stSkillScoreConfigManager;
 
-    //Õ½¶·¼¼ÄÜÉËº¦ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—æŠ€èƒ½ä¼¤å®³é…ç½®ç®¡ç†å™¨
     CSkillDamageConfigManager m_stSkillDamageConfigManager;
 
-    //Õ½¶·BuffÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—Buffé…ç½®ç®¡ç†å™¨
     CSFightBuffConfigManager m_stFightBuffConfigManager;
 
-    //Õ½¶·½±ÀøÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜æ–—å¥–åŠ±é…ç½®ç®¡ç†å™¨
     CSDropRewardConfigManager m_stDropRewardConfigManager;
 
-    //¼¼ÄÜ»ï°éºÏ»÷ÅäÖÃ¹ÜÀíÆ÷
+    //æŠ€èƒ½ä¼™ä¼´åˆå‡»é…ç½®ç®¡ç†å™¨
     CSJointAtkConfigManager m_stJointAtkConfigManager;
 
-    //Õ½³¡¹Ø¿¨ÅäÖÃ¹ÜÀíÆ÷
+    //æˆ˜åœºå…³å¡é…ç½®ç®¡ç†å™¨
     CSTrapConfigManager m_stTrapConfigManager;
 
-    //ÓÎÏ·ÎïÆ·ÅäÖÃ¹ÜÀíÆ÷
+    //æ¸¸æˆç‰©å“é…ç½®ç®¡ç†å™¨
     CSGameItemConfigManager m_stGameItemConfigManager;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

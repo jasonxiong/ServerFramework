@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -16,7 +16,7 @@ CGMCombatHandler::CGMCombatHandler()
     m_pRoleObj = NULL;
 }
 
-//Ö´ÐÐÏàÓ¦GMÃüÁîµÄ¹¦ÄÜ
+//æ‰§è¡Œç›¸åº”GMå‘½ä»¤çš„åŠŸèƒ½
 int CGMCombatHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<std::string> &vParams)
 {
     m_pRoleObj = pRoleObj;
@@ -26,7 +26,7 @@ int CGMCombatHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<
         return -1;
     }
 
-    //Ê×ÏÈ½øÐÐ²ÎÊý¼ì²é
+    //é¦–å…ˆè¿›è¡Œå‚æ•°æ£€æŸ¥
     int iRet = SecurityCheck(iCommandType, vParams);
     if(iRet)
     {
@@ -34,12 +34,12 @@ int CGMCombatHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<
         return iRet;
     }
 
-    //Ö´ÐÐÏàÓ¦µÄGM²Ù×÷
+    //æ‰§è¡Œç›¸åº”çš„GMæ“ä½œ
     switch(iCommandType)
     {
         case GM_COMMAND_ADD_COMBATUNIT:
             {
-                //Ôö¼ÓÕ½³¡Õ½¶·µ¥Î»
+                //å¢žåŠ æˆ˜åœºæˆ˜æ–—å•ä½
                 int iCampType = atoi(vParams[1].c_str());
                 int iMonsterID = atoi(vParams[2].c_str());
                 int iPosX = atoi(vParams[3].c_str());
@@ -67,7 +67,7 @@ int CGMCombatHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<
     return T_SERVER_SUCESS;
 }
 
-//½øÐÐ²ÎÊý¼ì²é
+//è¿›è¡Œå‚æ•°æ£€æŸ¥
 int CGMCombatHandler::SecurityCheck(int iCommandType, std::vector<std::string>& vParams)
 {
     switch(iCommandType)
@@ -91,3 +91,7 @@ int CGMCombatHandler::SecurityCheck(int iCommandType, std::vector<std::string>& 
 
     return T_SERVER_SUCESS;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

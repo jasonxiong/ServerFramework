@@ -1,4 +1,4 @@
-#ifndef __UNIT_BUFFER_MANAGER_HPP__
+ï»¿#ifndef __UNIT_BUFFER_MANAGER_HPP__
 #define __UNIT_BUFFER_MANAGER_HPP__
 
 #include <vector>
@@ -17,70 +17,74 @@ public:
 
     int Initialize();
 
-    //ÓµÓĞµÄÕ½¶·µ¥Î»µÄUnitID
+    //æ‹¥æœ‰çš„æˆ˜æ–—å•ä½çš„UnitID
     int GetOwnerUnitID();
     void SetOwnerUnitID(int iUnitID);
 
-    //Ôö¼ÓÒ»¸öBuff
+    //å¢åŠ ä¸€ä¸ªBuff
     int AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID, int iCastUnitID, Zone_CombatAddBuff_Notify& stNotify);
 
-    //°´ÀàĞÍÉúĞ§Buff
+    //æŒ‰ç±»å‹ç”Ÿæ•ˆBuff
     int DoUnitBuffEffect(unsigned int uin, int iCrossID, int iTriggerType, int iTriggerUnitID, Zone_DoBuffEffect_Notify& stNotify, int* pDamageNum = NULL);
 
-    //¼õÉÙËùÓĞBUFFµÄ»ØºÏÊı
+    //å‡å°‘æ‰€æœ‰BUFFçš„å›åˆæ•°
     int DecreaseAllBuffRound(Zone_RemoveBuff_Notify& stNotify);
 
-    //ÒÆ³ıBUFFĞ§¹û£¬¸ù¾İID
+    //ç§»é™¤BUFFæ•ˆæœï¼Œæ ¹æ®ID
     int DelUnitBuffByID(int iBuffID, RemoveBuffEffect& stRemoveBuffNotify);
 
 public:
 
-    //»ñÈ¡ËùÓĞBUFFµÄÅäÖÃID
+    //è·å–æ‰€æœ‰BUFFçš„é…ç½®ID
     void GetUnitBuffID(std::vector<int>& vBuffIDs);
 
-    //ÊÇ·ñÓĞBUFFIDÍ¬ÀàĞÍµÄBUFF
+    //æ˜¯å¦æœ‰BUFFIDåŒç±»å‹çš„BUFF
     bool HasBuffOfSameType(int iBuffID);
 
-    //ÊÇ·ñÓĞÏàÍ¬IDµÄBUFF
+    //æ˜¯å¦æœ‰ç›¸åŒIDçš„BUFF
     bool HasBuffOfSameID(int iBuffID);
 
-    //ÇåÀíBuffManagerÖĞËùÓĞµÄBuffObj
+    //æ¸…ç†BuffManagerä¸­æ‰€æœ‰çš„BuffObj
     void ClearBuffObj();
 
 private:
 
-    //´¦ÀíBuffÉúĞ§µÄÊµ¼ÊĞ§¹û
+    //å¤„ç†Buffç”Ÿæ•ˆçš„å®é™…æ•ˆæœ
     int DoOneBuffEffect(unsigned int uin, int iCrossID, const SFightBuffConfig& stBuffConfig, BuffEffect& stEffectNotify, int iCastUnitID = -1, int iTriggerUnitID = -1, int* pDamageNum = NULL);
 
-    //´¦Àí¿ÉÒÔµş¼ÓµÄBuff,·µ»Øtrue±íÊ¾ĞÂBuff¿ÉÒÔµş¼ÓÉÏÈ¥
+    //å¤„ç†å¯ä»¥å åŠ çš„Buff,è¿”å›trueè¡¨ç¤ºæ–°Buffå¯ä»¥å åŠ ä¸Šå»
     bool ProcessOverlyingBuff(int iBuffOverlyingType, int iBuffLevel, RemoveBuffEffect& stRemoveBuffNotify);
 
-    //¶ÔÄ¿±êÉúĞ§Ò»¸öBUFFµÄÊµ¼ÊĞ§¹û
+    //å¯¹ç›®æ ‡ç”Ÿæ•ˆä¸€ä¸ªBUFFçš„å®é™…æ•ˆæœ
     int ProcessRealBuffEffect(unsigned int uin, int iCrossID, const SFightBuffConfig& stBuffConfig, int iTargetUnitID, BuffEffect& stEffectNotify, int* pDamageNum = NULL);
 
-    //´¦ÀíÊôĞÔÌæ»»ÀàĞÍBuffµÄÌæ»»Ç°µÄÖµ
+    //å¤„ç†å±æ€§æ›¿æ¢ç±»å‹Buffçš„æ›¿æ¢å‰çš„å€¼
     void ProcessReplaceAttrBuffValue(int iAttrType, int iAddNum);
 
-    //¸ù¾İBuffObjµÄIndexÉ¾³ıBuff
+    //æ ¹æ®BuffObjçš„Indexåˆ é™¤Buff
     int DelUnitBuffByIndex(int& iBuffObjIndex, RemoveBuffEffect& stRemoveBuffNotify);
 
-    //ÒÆ³ıBUFFµÄĞ§¹û
+    //ç§»é™¤BUFFçš„æ•ˆæœ
     int RemoveBuffEffects(CUnitBufferObj& stBuffObj, const SFightBuffConfig& stFightBuffConfig, RemoveOneBuffEffect& stRemoveOneNotify);
 
-    //¸ù¾İID²éÕÒBuffObj
+    //æ ¹æ®IDæŸ¥æ‰¾BuffObj
     CUnitBufferObj* GetUnitBufferObjByID(int iBuffID);
 
-    //´´½¨Ò»¸öĞÂµÄBufferObj
+    //åˆ›å»ºä¸€ä¸ªæ–°çš„BufferObj
     CUnitBufferObj* CreateNewBufferObj();
 
 private:
 
-    //BuffManagerµÄÓµÓĞÕßUnitID
+    //BuffManagerçš„æ‹¥æœ‰è€…UnitID
     int m_iUnitID;
 
-    //ËùÓĞ¸½¼ÓµÄBuffObjµÄindex
+    //æ‰€æœ‰é™„åŠ çš„BuffObjçš„index
     int m_iUnitBuffObjNum;
     int m_aiUnitBuffObjIndex[MAX_FIGHT_UNIT_BUFF_NUM];
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

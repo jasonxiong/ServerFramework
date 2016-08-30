@@ -1,4 +1,4 @@
-#ifndef __LOGOUT_HANDLER__HPP__
+ï»¿#ifndef __LOGOUT_HANDLER__HPP__
 #define __LOGOUT_HANDLER__HPP__
 
 
@@ -22,19 +22,19 @@ private:
     virtual int SecurityCheck();
 
 public:
-    // Íæ¼ÒÏÂÏßÈë¿Ú
+    // ç©å®¶ä¸‹çº¿å…¥å£
     static int LogoutRole(CGameRoleObj* pRoleObj, int iReason);
 
-    // ÏÂÏßÈı²¿Çú
-    // 1. ×¼±¸½×¶Î
+    // ä¸‹çº¿ä¸‰éƒ¨æ›²
+    // 1. å‡†å¤‡é˜¶æ®µ
     static int LogoutPrepare(CGameRoleObj* pRoleObj);
 
-    // 2. Í¬²½Êı¾İ
+    // 2. åŒæ­¥æ•°æ®
 
-    // 3. É¾³ıÊı¾İ, ¶Ï¿ªÁ¬½Ó
+    // 3. åˆ é™¤æ•°æ®, æ–­å¼€è¿æ¥
     static int LogoutAction(CGameRoleObj* pRoleObj);
 
-    // Í¨ÖªworldÏÂÏß
+    // é€šçŸ¥worldä¸‹çº¿
     static int NotifyLogoutToWorld(const RoleID& stRoleID);
 
 private:
@@ -47,3 +47,7 @@ private:
     static int SendSuccessfulResponse(CGameRoleObj* pRoleObj);
 };
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

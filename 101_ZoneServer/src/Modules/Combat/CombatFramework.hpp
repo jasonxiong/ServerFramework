@@ -1,4 +1,4 @@
-#ifndef __COMBAT_FRAMEWORK_HPP__
+ï»¿#ifndef __COMBAT_FRAMEWORK_HPP__
 #define __COMBAT_FRAMEWORK_HPP__
 
 #include "GameProtocol.hpp"
@@ -13,47 +13,47 @@ public:
 
     ~CCombatFramework();
 
-    //Íæ¼Ò¿ªÊ¼Õ½¶·µÄÇëÇó
+    //ç©å®¶å¼€å§‹æˆ˜æ–—çš„è¯·æ±‚
     int DoCombat(CGameRoleObj& stRoleObj, const Zone_DoCombat_Request& rstRequest, bool bNeedResp=true);
 
-    //Íæ¼ÒÖ÷½ÇÕ½¶·µ¥Î»ÒÆ¶¯µÄÇëÇó
+    //ç©å®¶ä¸»è§’æˆ˜æ–—å•ä½ç§»åŠ¨çš„è¯·æ±‚
     int DoCombatMove(CGameRoleObj& stRoleObj, const Zone_CombatMove_Request& rstRequest);
 
-    //Íæ¼ÒÖ÷½ÇÕ½¶·µ¥Î»ĞĞ¶¯µÄÇëÇó
+    //ç©å®¶ä¸»è§’æˆ˜æ–—å•ä½è¡ŒåŠ¨çš„è¯·æ±‚
     int DoCombatAction(CGameRoleObj& stRoleObj, const Zone_CombatAction_Request& rstRequest);
 
-    //Íæ¼ÒÖ÷½Ç
+    //ç©å®¶ä¸»è§’
     int DoUpdatePartnerAI(CGameRoleObj& stRoleObj, const Zone_UpdatePartnerAI_Request& rstRequest);
 
-    //·¢ÆğPVPÕ½¶·µÄÇëÇó
+    //å‘èµ·PVPæˆ˜æ–—çš„è¯·æ±‚
     int StartPVPCombat(CGameRoleObj& stRoleObj, const Zone_StartPVPCombat_Request& rstRequest);
 
-    //½ÓÊÜPVPÕ½¶·µÄÇëÇó
+    //æ¥å—PVPæˆ˜æ–—çš„è¯·æ±‚
     int AcceptPVPCombat(CGameRoleObj& stRoleObj, const Zone_AcceptPVPCombat_Request& rstRequest);
 
-    //ÉèÖÃÕ½¶·ÕóĞÍµÄÇëÇó
+    //è®¾ç½®æˆ˜æ–—é˜µå‹çš„è¯·æ±‚
     int SetCombatForm(CGameRoleObj& stRoleObj, const Zone_SetCombatForm_Request& rstRequest);
 
-    //½áÊøÍæ¼ÒÕ½¶·
+    //ç»“æŸç©å®¶æˆ˜æ–—
     void FinCombat(CGameRoleObj& stRoleObj);
 
 private:
 
     CCombatFramework();
 
-    //³õÊ¼»¯PVEÕ½¶·Õ½³¡ĞÅÏ¢
+    //åˆå§‹åŒ–PVEæˆ˜æ–—æˆ˜åœºä¿¡æ¯
     int InitPveBattlefield(CGameRoleObj& stRoleObj, int iLevelID);
 
-    //³õÊ¼»¯PVPÕ½¶·Õ½³¡ĞÅÏ¢
+    //åˆå§‹åŒ–PVPæˆ˜æ–—æˆ˜åœºä¿¡æ¯
     int InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRoleObj& stPassiveRoleObj);
 
-    //´´½¨Õ½³¡¶ÔÏó£¬·µ»ØCBattlefieldObjµÄindex
+    //åˆ›å»ºæˆ˜åœºå¯¹è±¡ï¼Œè¿”å›CBattlefieldObjçš„index
     CBattlefieldObj* CreateBattlefieldObj(int& iBattlefieldObjIndex);
 
-    //ÍÆËÍÕ½³¡³õÊ¼»¯ĞÅÏ¢
+    //æ¨é€æˆ˜åœºåˆå§‹åŒ–ä¿¡æ¯
     int SendBattlefieldInitNotify(CGameRoleObj& stRoleObj);
 
-    //·¢ËÍ´¦Àí³É¹¦µÄ·µ»Ø
+    //å‘é€å¤„ç†æˆåŠŸçš„è¿”å›
     int SendSuccessResponse();
 
 private:
@@ -65,3 +65,7 @@ private:
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

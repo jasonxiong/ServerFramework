@@ -1,4 +1,4 @@
-#ifndef __LOGIN_HANDLER_HPP__
+ï»¿#ifndef __LOGIN_HANDLER_HPP__
 #define __LOGIN_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -21,36 +21,40 @@ private:
     virtual int SecurityCheck();
 
 public:
-    // µÇÂ¼Èë¿Ú
+    // ç™»å½•å…¥å£
      static int LoginRole(const RoleID& stRoleID, TNetHead_V2* pNetHead, const Zone_LoginServer_Request& rstRequest);
 
-    // µÇÂ¼³É¹¦
+    // ç™»å½•æˆåŠŸ
      static int LoginOK(unsigned int uiUin, bool bNeedResponse = true);
 
-    // µÇÂ¼Ê§°Ü
+    // ç™»å½•å¤±è´¥
      static int LoginFailed(const TNetHead_V2& rstNetHead);
      
-     //Í¨¹ıWorld½«ÏàÍ¬uinµÄÒÑ¾­µÇÂ¼µÄºÅÌßÏÂÏß
+     //é€šè¿‡Worldå°†ç›¸åŒuinçš„å·²ç»ç™»å½•çš„å·è¸¢ä¸‹çº¿
      static int KickRoleFromWorldServer(const RoleID& stRoleID, int iFromSessionID);
 
 private:
     int OnRequestLoginServer();
 
-    //Í¨Öª½ÇÉ«µÇÂ¼
+    //é€šçŸ¥è§’è‰²ç™»å½•
     static int NotifyRoleLogin(CGameRoleObj* pstRoleObj);
 
-    // ½«±¾ÏßÉÏµÄÍæ¼ÒÌßÏÂÏß
+    // å°†æœ¬çº¿ä¸Šçš„ç©å®¶è¸¢ä¸‹çº¿
     int KickRoleFromZoneServer();
     
 private:
 
-    // ·¢ËÍÊ§°Ü»Ø¸´
+    // å‘é€å¤±è´¥å›å¤
      static int SendFailedResponse(const unsigned int uiResultID, const TNetHead_V2& rstNetHead);
 
-     // ·¢ËÍ³É¹¦»Ø¸´
+     // å‘é€æˆåŠŸå›å¤
      static int SendSuccessfulResponse(CGameRoleObj* pLoginRoleObj);
 };
 
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

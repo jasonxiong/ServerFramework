@@ -1,4 +1,4 @@
-#include <time.h>
+ï»¿#include <time.h>
 #include <sys/time.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -41,7 +41,7 @@ uint64_t CRttUtility::GetMilliSeconds(CTimeValue& rstTimeValue)
 
 int CRttUtility::UpdateRTT(const GameCSMsgHead& rstMsgHead)
 {
-    //todo jasonxiong Õâ¸öº¯ÊýÄÚ²¿Êµ¼ÊÉÏÊ²Ã´¶¼Ã»ÓÐ¸É
+    //todo jasonxiong è¿™ä¸ªå‡½æ•°å†…éƒ¨å®žé™…ä¸Šä»€ä¹ˆéƒ½æ²¡æœ‰å¹²
 
     /*
     unsigned int uiUin = rstMsgHead.m_uiUin;
@@ -67,3 +67,7 @@ int CRttUtility::UpdateRTT(const GameCSMsgHead& rstMsgHead)
 
 	return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

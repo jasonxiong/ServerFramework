@@ -1,7 +1,7 @@
-#ifndef __REP_THINGS_UTILITY_HPP__
+ï»¿#ifndef __REP_THINGS_UTILITY_HPP__
 #define __REP_THINGS_UTILITY_HPP__
 
-//Íæ¼Ò±³°üÎïÆ·²Ù×÷¹¤¾ßÀà
+//ç©å®¶èƒŒåŒ…ç‰©å“æ“ä½œå·¥å…·ç±»
 
 #include "GameConfigDefine.hpp"
 
@@ -10,17 +10,21 @@ class CRepThingsUtility
 {
 public:
    
-    //»ñÈ¡ÎïÆ·µÄ´óÀàĞÍ
+    //è·å–ç‰©å“çš„å¤§ç±»å‹
     static int GetItemType(int iItemID);
 
-    //»ñÈ¡ÎïÆ·ÊıÁ¿
+    //è·å–ç‰©å“æ•°é‡
     static int GetItemNumByID(CGameRoleObj& rstRoleObj, int iItemID);
 
-    //ÔöÉ¾ÎïÆ·µÄ½Ó¿Ú,Èç¹ûiAddNumĞ¡ÓÚ0±íÊ¾É¾³ı
+    //å¢åˆ ç‰©å“çš„æ¥å£,å¦‚æœiAddNumå°äº0è¡¨ç¤ºåˆ é™¤
     static int AddItemNumByID(CGameRoleObj& stRoleObj, int iItemID, int iAddNum, int iItemChannel);
 
-    //ÉèÖÃÎïÆ·ÊıÁ¿£¬Èç¹ûÎª0ÔòÉ¾³ıËùÓĞ¸ÃIDµÄÎïÆ·
+    //è®¾ç½®ç‰©å“æ•°é‡ï¼Œå¦‚æœä¸º0åˆ™åˆ é™¤æ‰€æœ‰è¯¥IDçš„ç‰©å“
     static void SetItemNumByID(CGameRoleObj& rstRoleObj, int iItemID, int iItemNum, int iItemChannel);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

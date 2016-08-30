@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __SESSION_DEF_HPP__
 #define __SESSION_DEF_HPP__
 
@@ -8,15 +8,19 @@ const int NETHEAD_V2_SIZE = 24;
 
 typedef struct tagNetHead_V2
 { 
-	unsigned int	m_uiSocketFD; //!<Ì×½Ó×Ö
-	unsigned int	m_uiSocketTime;	//!<Ì×½Ó×Ö´´½¨Ê±¿Ì
-	unsigned int	m_uiSrcIP; //!<Ô´µØÖ·
-	unsigned short	m_ushSrcPort; //!<Ô´¶Ë¿Ú
-	unsigned short	m_ushReservedValue01; //!<×Ö½Ú¶ÔÆë£¬Î´ÓÃ
-	unsigned int	m_uiCodeTime; //!<ÏûÏ¢Ê±¿Ì
-	unsigned int	m_uiCodeFlag; //!<ÏûÏ¢±êÖ¾£¬ÓÃÓÚÊµÏÖÌ×½Ó×Ö¿ØÖÆ
+	unsigned int	m_uiSocketFD; //!<å¥—æŽ¥å­—
+	unsigned int	m_uiSocketTime;	//!<å¥—æŽ¥å­—åˆ›å»ºæ—¶åˆ»
+	unsigned int	m_uiSrcIP; //!<æºåœ°å€
+	unsigned short	m_ushSrcPort; //!<æºç«¯å£
+	unsigned short	m_ushReservedValue01; //!<å­—èŠ‚å¯¹é½ï¼Œæœªç”¨
+	unsigned int	m_uiCodeTime; //!<æ¶ˆæ¯æ—¶åˆ»
+	unsigned int	m_uiCodeFlag; //!<æ¶ˆæ¯æ ‡å¿—ï¼Œç”¨äºŽå®žçŽ°å¥—æŽ¥å­—æŽ§åˆ¶
 }TNetHead_V2;
 
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

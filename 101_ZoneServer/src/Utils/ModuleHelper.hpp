@@ -1,4 +1,4 @@
-#ifndef __MODULE_HELPER_HPP__
+ï»¿#ifndef __MODULE_HELPER_HPP__
 #define __MODULE_HELPER_HPP__
 
 #include "SessionManager.hpp"
@@ -30,30 +30,30 @@ public:
     static CConfigManager* GetConfigManager(){return m_pConfigManager;}
     static void RegisterConfigManager(CConfigManager *pConfigManager);
 
-    // ·şÎñÆ÷ID
+    // æœåŠ¡å™¨ID
     static void RegisterServerID(int iWorldID, int iZoneID, int iInstanceID);
 
     static int GetWorldID() { return m_iWorldID; };
     static int GetZoneID() { return m_iZoneID; };
     static int GetInstanceID() {return m_iInstanceID;}
 
-    // ¼ÓÔØÄ£¿é¿ª¹Ø
+    // åŠ è½½æ¨¡å—å¼€å…³
     static int LoadModuleConfig();
 
-    //ÊÇ·ñ¼ì²é¹ÙÍøkey
+    //æ˜¯å¦æ£€æŸ¥å®˜ç½‘key
     static int IsSSKeyCheckEnabled();
 
     static void SetSSKeyCheck(int iValue) { m_iCheckSSKeyEnabled = iValue; }
 
-    // ÊÇ·ñ¿ªÆôPlayerÈÕÖ¾
+    // æ˜¯å¦å¼€å¯Playeræ—¥å¿—
     static int IsPlayerLogEnabled() {return m_iIsEnablePlayerLog;}
 
-    // Ä£¿é¿ª¹Ø
+    // æ¨¡å—å¼€å…³
     static bool IsModuleSwitchOn(MODULE_ID eModuleID) {return m_aiModuleSwitch[(int)eModuleID];}
 
     static void SetModuleSwitchOn(int iSwtichIndex, int iSwitch);
 
-    // ³¡¾°µ¥Î»ÊÂ¼ş¹ÜÀíÆ÷
+    // åœºæ™¯å•ä½äº‹ä»¶ç®¡ç†å™¨
     static CUnitEventManager* GetUnitEventManager() { return m_pstUnitEventManager; };
     static void RegisterUnitEventManager(CUnitEventManager* pstEventManager) { m_pstUnitEventManager = pstEventManager; };
     
@@ -62,14 +62,14 @@ private:
     static int m_iZoneID;
     static int m_iInstanceID;
 
-    // ¸÷ÖÖÅäÖÃ¿ª¹Ø
+    // å„ç§é…ç½®å¼€å…³
     static int m_iCheckSSKeyEnabled;
     static int m_iIsEnablePlayerLog;
     static int m_aiModuleSwitch[MODULE_MAX_ID];
 
 private:
 
-    // ¸÷ÖÖÄ£¿éÖ¸Õë
+    // å„ç§æ¨¡å—æŒ‡é’ˆ
     static CSessionManager* m_pSessionManager;
     static CGameProtocolEngine* m_pZoneProtocolEngine;
     static CGameMsgTransceiver* m_pZoneMsgTransceiver;
@@ -79,3 +79,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

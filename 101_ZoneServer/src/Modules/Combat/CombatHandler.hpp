@@ -1,4 +1,4 @@
-#ifndef __COMBAT_HANDLER_HPP__
+ï»¿#ifndef __COMBAT_HANDLER_HPP__
 #define __COMBAT_HANDLER_HPP__
 
 #include "SessionDefine.hpp"
@@ -19,31 +19,35 @@ public:
 
 private:
 
-    //´¦Àí¿ªÊ¼Õ½¶·µÄÇëÇó
+    //å¤„ç†å¼€å§‹æˆ˜æ–—çš„è¯·æ±‚
     int OnRequestBeginCombat();
 
-    //´¦ÀíÖ÷½ÇÒÆ¶¯µÄÇëÇó
+    //å¤„ç†ä¸»è§’ç§»åŠ¨çš„è¯·æ±‚
     int OnRequestMovePosition();
 
-    //´¦ÀíÖ÷½ÇĞĞ¶¯µÄÇëÇó
+    //å¤„ç†ä¸»è§’è¡ŒåŠ¨çš„è¯·æ±‚
     int OnRequestCombatAction();
 
-    //¸üĞÂ»ï°éAIµÄÇëÇó
+    //æ›´æ–°ä¼™ä¼´AIçš„è¯·æ±‚
     int OnRequestUpdatePartnerAI();
 
-    //·¢ÆğPVPÕ½¶·µÄÇëÇó
+    //å‘èµ·PVPæˆ˜æ–—çš„è¯·æ±‚
     int OnRequestStartPVPCombat();
 
-    //½ÓÊÜPVPÕ½¶·µÄÇëÇó
+    //æ¥å—PVPæˆ˜æ–—çš„è¯·æ±‚
     int OnRequestAcceptPVPCombat();
     
-    //ÉèÖÃÕ½¶·ÕóĞÍµÄÇëÇó
+    //è®¾ç½®æˆ˜æ–—é˜µå‹çš„è¯·æ±‚
     int OnRequestSetCombatForm();
 
 private:
 
-    // ·¢ËÍÊ§°Ü»Ø¸´
+    // å‘é€å¤±è´¥å›å¤
     int SendFailedResponse(unsigned uiMsgID, const unsigned int uiResultID, const TNetHead_V2& rstNetHead);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

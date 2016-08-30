@@ -1,4 +1,4 @@
-
+﻿
 #include "MathHelper.hpp"
 
 
@@ -19,3 +19,7 @@ float FastSqrtQ3(float x)
 }
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

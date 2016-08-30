@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __CHAT_HANDLER_HPP__
 #define __CHAT_HANDLER_HPP__
 
@@ -19,16 +19,16 @@ public:
 
 private:
 
-    //ÁÄÌìÏûÏ¢µÄ´¦Àí
+    //èŠå¤©æ¶ˆæ¯çš„å¤„ç†
     int OnRequestChat();
 
-    //ÊÀ½çÁÄÌìÏûÏ¢µÄÍÆËÍ
+    //ä¸–ç•ŒèŠå¤©æ¶ˆæ¯çš„æ¨é€
     int OnNotifyChat();
 
 private:
     int SendFailedResponse(int iMsgID, int iResultID, const TNetHead_V2& rstNetHead);
 
-    //·¢ËÍ³É¹¦µÄ»Ø¸´
+    //å‘é€æˆåŠŸçš„å›å¤
     int SendSuccessfulResponse();
 
 protected:
@@ -36,3 +36,7 @@ protected:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

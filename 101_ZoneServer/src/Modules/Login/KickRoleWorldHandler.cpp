@@ -1,4 +1,4 @@
-
+ï»¿
 #include "AppLoop.hpp"
 #include "LogAdapter.hpp"
 #include "HandlerHelper.hpp"
@@ -10,11 +10,11 @@
 
 int CalcForbidTime(int iForbidType, int iIsForbidden)
 {
-	//¶ÔÓ¦·âºÅÊ±¼ä
-	//ÓÀ¾Ã·âºÅÉèÎª2Äê
+	//å¯¹åº”å°å·æ—¶é—´
+	//æ°¸ä¹…å°å·è®¾ä¸º2å¹´
 	int aiForbidTime[] = {0, 3600, 3*3600, 5*3600, 24*3600, 2*365*3600};
 	int tForbidTime = 0;	
-	//·âºÅ
+	//å°å·
 	if (iIsForbidden)
 	{
 		if ((iForbidType < 0))
@@ -27,7 +27,7 @@ int CalcForbidTime(int iForbidType, int iIsForbidden)
 			tForbidTime = time(NULL) + aiForbidTime[iForbidType];
 		}
 	}
-	//½â·â
+	//è§£å°
 	else
 	{
 		tForbidTime = 0;
@@ -65,7 +65,7 @@ int CKickRoleWorldHandler::OnClientMsg()
     return 0;
 }
 
-// ÊÕµ½WorldµÄ±»ÌßÏÂÏßÍ¨Öª
+// æ”¶åˆ°Worldçš„è¢«è¸¢ä¸‹çº¿é€šçŸ¥
 int CKickRoleWorldHandler::OnRequestKickRole()
 {
 	const World_KickRole_Request& rstReq = m_pRequestMsg->m_stmsgbody().m_stworld_kickrole_request();
@@ -74,7 +74,7 @@ int CKickRoleWorldHandler::OnRequestKickRole()
     LOGDEBUG("Recv KickRole Req: Uin = %u\n", uiKickedUin);
 
     CGameRoleObj* pRoleObj = CUnitUtility::GetRoleByUin(uiKickedUin);
-    // ÕÒ²»µ½Íæ¼Ò, ·µ»Ø³É¹¦
+    // æ‰¾ä¸åˆ°ç©å®¶, è¿”å›æˆåŠŸ
     if (!pRoleObj)
     {
         LOGERROR("KickRole OK: Uin = %u\n", uiKickedUin);
@@ -83,10 +83,10 @@ int CKickRoleWorldHandler::OnRequestKickRole()
         return 0;
     }
 
-	//ÉèÖÃÌßÈËÕß
+	//è®¾ç½®è¸¢äººè€…
 	pRoleObj->SetKicker(rstReq);
 
-    // ½«Íæ¼ÒÌßÏÂÏß 
+    // å°†ç©å®¶è¸¢ä¸‹çº¿ 
     int iRet = CLogoutHandler::LogoutRole(pRoleObj, LOGOUT_REASON_KICKOFF);
     if (iRet < 0)
     {
@@ -124,14 +124,14 @@ int CKickRoleWorldHandler::OnForbidKickRole()
 		return 0;
 	}
 
-	//todo£¬¸ø·âºÅÌáÊ¾
+	//todoï¼Œç»™å°å·æç¤º
 	CPromptMsgHelper::SendPromptMsgToRole(pRoleObj, 
 			EQEC_Kick_Reason, PROMPTMSG_TYPE_POPUP, rstReq.m_szForbidReason);
 	
-	//ÉèÖÃTÈËÊ±¼ä
+	//è®¾ç½®Täººæ—¶é—´
 	pRoleObj->SetForbidTime(CalcForbidTime(rstReq.m_cForbidType, rstReq.m_cIsForbidden));
 
-    // ½«Íæ¼ÒÌßÏÂÏß 
+    // å°†ç©å®¶è¸¢ä¸‹çº¿ 
     int iRet = CLogoutHandler::LogoutRole(pRoleObj, EQEC_Logout_Kickoff);
     if (iRet < 0)
     {
@@ -142,7 +142,7 @@ int CKickRoleWorldHandler::OnForbidKickRole()
 	*/
 }
 
-// ÊÕµ½WorldµÄÌßÈËÏÂÏß»Ø¸´
+// æ”¶åˆ°Worldçš„è¸¢äººä¸‹çº¿å›å¤
 int CKickRoleWorldHandler::OnResponseKickRole()
 {
 	World_KickRole_Response* pstKickRoleResp = m_pRequestMsg->mutable_m_stmsgbody()->mutable_m_stworld_kickrole_response();
@@ -157,7 +157,7 @@ int CKickRoleWorldHandler::OnResponseKickRole()
 		return -1;
 	}
 
-    // ÕÒµ½Session
+    // æ‰¾åˆ°Session
     CGameSessionObj *pSession = CModuleHelper::GetSessionManager()->FindSessionByID(pstKickRoleResp->isessionid());
     if (!pSession)
     {
@@ -165,7 +165,7 @@ int CKickRoleWorldHandler::OnResponseKickRole()
         return -1;
     }
 
-	// È·ÈÏSessionÎ´µÇÂ¼
+	// ç¡®è®¤Sessionæœªç™»å½•
 	if (pSession->GetBindingRole() != NULL)
 	{
 		LOGERROR("Session Already Binding Role!\n");
@@ -176,7 +176,7 @@ int CKickRoleWorldHandler::OnResponseKickRole()
     {
 		if (pstKickRoleResp->bislogin())
 		{
-            //Èç¹ûÊÇµÇÂ¼
+            //å¦‚æœæ˜¯ç™»å½•
 			CLoginHandler::LoginFailed(pSession->GetNetHead());
 			CModuleHelper::GetSessionManager()->DeleteSession(pSession->GetID());
 		}
@@ -185,7 +185,7 @@ int CKickRoleWorldHandler::OnResponseKickRole()
         return -3;
     }
 
-    // Èç¹ûÌßÈË³É¹¦, ÔòÔÙ´ÎÈ·ÈÏZoneÃ»ÓĞÊı¾İ
+    // å¦‚æœè¸¢äººæˆåŠŸ, åˆ™å†æ¬¡ç¡®è®¤Zoneæ²¡æœ‰æ•°æ®
     CGameRoleObj* pRoleObj = CUnitUtility::GetRoleByUin(uiUin);
     if (pRoleObj)
     {
@@ -199,7 +199,7 @@ int CKickRoleWorldHandler::OnResponseKickRole()
 		return -4;
 	}
 
-	//Èç¹ûÊÇµÇÂ¼ÔòÖØĞÂÀ­È¡Êı¾İ
+	//å¦‚æœæ˜¯ç™»å½•åˆ™é‡æ–°æ‹‰å–æ•°æ®
 	if(pstKickRoleResp->bislogin())
 	{
 		int iRet = FetchRoleFromWorldServer(pSession->GetRoleID(), 0);
@@ -234,7 +234,7 @@ int CKickRoleWorldHandler::FetchRoleFromWorldServer(const RoleID& stRoleID, char
     return iRet;
 }
 
-// ·µ»Ø³É¹¦»Ø¸´
+// è¿”å›æˆåŠŸå›å¤
 int CKickRoleWorldHandler::SendSuccessfullResponse(const World_KickRole_Request& rstKicker)
 {
     CZoneMsgHelper::GenerateMsgHead(ms_stZoneMsg, MSGID_WORLD_KICKROLE_RESPONSE);
@@ -252,7 +252,7 @@ int CKickRoleWorldHandler::SendSuccessfullResponse(const World_KickRole_Request&
     return 0;
 }
 
-// ·µ»ØÊ§°Ü»Ø¸´
+// è¿”å›å¤±è´¥å›å¤
 int CKickRoleWorldHandler::SendFailedResponse(const World_KickRole_Request& rstKicker)
 {
     CZoneMsgHelper::GenerateMsgHead(ms_stZoneMsg, MSGID_WORLD_KICKROLE_RESPONSE);
@@ -269,3 +269,7 @@ int CKickRoleWorldHandler::SendFailedResponse(const World_KickRole_Request& rstK
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

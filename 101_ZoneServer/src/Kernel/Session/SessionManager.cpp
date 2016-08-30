@@ -1,4 +1,4 @@
-#include <arpa/inet.h>
+ï»¿#include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
 #include "ZoneObjectHelper.hpp"
@@ -24,13 +24,13 @@ CGameSessionObj* CSessionManager::CreateSession(TNetHead_V2* pNetHead, const Rol
 
     int iSessionID = ntohl(pNetHead->m_uiSocketFD);
 
-    // ¼ì²éÊÇ·ñÒÑ¾­Active
+    // æ£€æŸ¥æ˜¯å¦å·²ç»Active
     if (FindSessionByID(iSessionID))
     {
         return NULL;
     }
 
-    // ·ÖÅäĞÂµÄSession
+    // åˆ†é…æ–°çš„Session
     CGameSessionObj* pSession = GameTypeK32<CGameSessionObj>::CreateByKey(iSessionID);
     if (pSession)
     {
@@ -72,3 +72,7 @@ CGameSessionObj* CSessionManager::FindSessionByRoleID(const RoleID& stRoleID)
 
     return NULL;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

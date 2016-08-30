@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __COMBAT_UNIT_AI_HPP__
 #define __COMBAT_UNIT_AI_HPP__
 
@@ -8,14 +8,14 @@
 #include "GameConfigDefine.hpp"
 #include "ModuleShortcut.hpp"
 
-//AI¿ÉÒÆ¶¯µÄÎ»ÖÃµÄ¼ÛÖµĞÅÏ¢
+//AIå¯ç§»åŠ¨çš„ä½ç½®çš„ä»·å€¼ä¿¡æ¯
 struct FightAIPosValue
 {
-    TUNITPOSITION stPos;        //¿ÉÒÆ¶¯µ½µÄÎ»ÖÃµãĞÅÏ¢
-    TUNITPOSITION stTargetPos;  //×î¼Ñ¹¥»÷µãµÄÎ»ÖÃĞÅÏ¢
-    int iAttackValue;           //ĞĞ¶¯µãµÄ¹¥»÷¼ÛÖµ
-    int iDefenceValue;          //ĞĞ¶¯µãµÄ·ÀÓù¼ÛÖµ
-    int iMoveValue;             //ĞĞ¶¯µãµÄÒÆ¶¯¼ÛÖµ
+    TUNITPOSITION stPos;        //å¯ç§»åŠ¨åˆ°çš„ä½ç½®ç‚¹ä¿¡æ¯
+    TUNITPOSITION stTargetPos;  //æœ€ä½³æ”»å‡»ç‚¹çš„ä½ç½®ä¿¡æ¯
+    int iAttackValue;           //è¡ŒåŠ¨ç‚¹çš„æ”»å‡»ä»·å€¼
+    int iDefenceValue;          //è¡ŒåŠ¨ç‚¹çš„é˜²å¾¡ä»·å€¼
+    int iMoveValue;             //è¡ŒåŠ¨ç‚¹çš„ç§»åŠ¨ä»·å€¼
 
     FightAIPosValue()
     {
@@ -28,7 +28,7 @@ struct FightAIPosValue
     };
 };
 
-//ËùÓĞ·Ç¿ØÖÆµ¥Î»µÄAIÂß¼­´¦Àí
+//æ‰€æœ‰éæ§åˆ¶å•ä½çš„AIé€»è¾‘å¤„ç†
 class CCombatUnitAI
 {
 public:
@@ -37,88 +37,92 @@ public:
 
     static int DoActionUnitAI(int iBattlefiledObjID, int iActionUnitID);
 
-    //»ñÈ¡AIÒÆ¶¯µÄÂ·¾¶
+    //è·å–AIç§»åŠ¨çš„è·¯å¾„
     static const UnitPath& GetMoveTargetPath();
 
-    //µ±Ç°Ö´ĞĞµÄAIÊÇ·ñ¿ÉÒÔ¹¥»÷
+    //å½“å‰æ‰§è¡Œçš„AIæ˜¯å¦å¯ä»¥æ”»å‡»
     static bool CanDoAttack();
 
-    //µ±Ç°Ê¹ÓÃµÄ¼¼ÄÜ
+    //å½“å‰ä½¿ç”¨çš„æŠ€èƒ½
     static int GetUseSkill();
 
-    //µ±Ç°¹¥»÷µÄÄ¿±êµ¥Î»
+    //å½“å‰æ”»å‡»çš„ç›®æ ‡å•ä½
     static const TUNITPOSITION& GetTargetUnitPos();
 
 private:
 
-    //»ñÈ¡µ±Ç°ËùÓĞ¿ÉÒÆ¶¯µãµÄ¼¯ºÏ
+    //è·å–å½“å‰æ‰€æœ‰å¯ç§»åŠ¨ç‚¹çš„é›†åˆ
     static int GetAllValidMovePos(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stActionObj);
 
-    //»ñÈ¡µ±Ç°µãÖÜÎ§µÄ¿ÉÒÆ¶¯µã
+    //è·å–å½“å‰ç‚¹å‘¨å›´çš„å¯ç§»åŠ¨ç‚¹
     static void GetNearByValidMovePos(CBattlefieldObj& stBattlefieldObj, TUNITPOSITION& stPos, int iMoveStep);
 
-    //ÅĞ¶Ïµ±Ç°µãÊÇ·ñÓĞĞ§µÄ¿ÉÒÆ¶¯µã
+    //åˆ¤æ–­å½“å‰ç‚¹æ˜¯å¦æœ‰æ•ˆçš„å¯ç§»åŠ¨ç‚¹
     static bool ProcessCurrentMovePos(CBattlefieldObj& stBattlefieldObj, TUNITPOSITION& stPos);
 
-    //¼ÆËãËùÓĞ¿ÉÒÆ¶¯Î»ÖÃµãµÄ¹¥»÷¼ÛÖµ
+    //è®¡ç®—æ‰€æœ‰å¯ç§»åŠ¨ä½ç½®ç‚¹çš„æ”»å‡»ä»·å€¼
     static int ProcessAttackValue(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stActionObj, const SFightUnitAIConfig& stAIConfig);
 
-    //¼ÆËãËùÓĞ¿ÉÒÆ¶¯Î»ÖÃµãµÄ·ÀÓù¼ÛÖµ
+    //è®¡ç®—æ‰€æœ‰å¯ç§»åŠ¨ä½ç½®ç‚¹çš„é˜²å¾¡ä»·å€¼
     static int ProcessDefenceValue(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stActionObj, const SFightUnitAIConfig& stAIConfig);
 
-    //¼ÆËãËùÓĞ¿ÉÒÆ¶¯Î»ÖÃµãµÄÒÆ¶¯¼ÛÖµ
+    //è®¡ç®—æ‰€æœ‰å¯ç§»åŠ¨ä½ç½®ç‚¹çš„ç§»åŠ¨ä»·å€¼
     static int ProcessMoveValue(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stActionObj, const SFightUnitAIConfig& stAIConfig);
 
-    //¼ÆËãÄ³¸ö¿ÉÒÆ¶¯Î»ÖÃµãµÄ¹¥»÷¼ÛÖµ
+    //è®¡ç®—æŸä¸ªå¯ç§»åŠ¨ä½ç½®ç‚¹çš„æ”»å‡»ä»·å€¼
     static int ProcessOnePosAttackValue(CBattlefieldObj& stBattlefieldObj, FightAIPosValue& stPosValue, int& iMaxValue);
 
-    //¼ÆËãÄ³¸ö¿ÉÒÆ¶¯Î»ÖÃµãµÄ·ÀÓù¼ÛÖµ
+    //è®¡ç®—æŸä¸ªå¯ç§»åŠ¨ä½ç½®ç‚¹çš„é˜²å¾¡ä»·å€¼
     static int ProcessOnePosDefenceValue(CBattlefieldObj& stBattlefiledObj, CCombatUnitObj& stActionObj, const SFightUnitAIConfig& stAIConfig, FightAIPosValue& stPosValue);
 
-    //¼ÆËãÄ³¸ö¿ÉÒÆ¶¯Î»ÖÃµãµÄÒÆ¶¯¼ÛÖµ
+    //è®¡ç®—æŸä¸ªå¯ç§»åŠ¨ä½ç½®ç‚¹çš„ç§»åŠ¨ä»·å€¼
     static int ProcessOnePosMoveValue(CBattlefieldObj& stBattlefiledObj, CCombatUnitObj& stActionObj, const SFightUnitAIConfig& stAIConfig, FightAIPosValue& stPosValue);
 
-    //»ñÈ¡µ±Ç°Ê¹ÓÃµÄ¼¼ÄÜ
+    //è·å–å½“å‰ä½¿ç”¨çš„æŠ€èƒ½
     static void GetAIUseSkill(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stActionObj, const SFightUnitAIConfig& stAIConfig);
 
 private:
 
-    //¼ÆËã¼¼ÄÜµÄ¹¥»÷¼ÛÖµ
+    //è®¡ç®—æŠ€èƒ½çš„æ”»å‡»ä»·å€¼
     static int ProcessSkillAttackValue(CCombatUnitObj& stActionObj, CCombatUnitObj& stTargetObj, const SFightUnitAIConfig& stAIConfig, 
                                        const SFightUnitSkillConfig& stSkillConfig, bool bIsToEnemy, const TUNITPOSITION& stPos);
 
-    //»ñÈ¡Î»ÖÃµ½ËùÓĞµĞÈËÎ»ÖÃµÄÆ½¾ù¾àÀë
+    //è·å–ä½ç½®åˆ°æ‰€æœ‰æ•Œäººä½ç½®çš„å¹³å‡è·ç¦»
     static int GetEnemyDisance(const TUNITPOSITION& stPos, std::vector<int>& vEnemyUnits);
 
-    //»ñÈ¡Á½µãÖ®¼ä¿ÉĞĞ×ßµÄ¾àÀë
+    //è·å–ä¸¤ç‚¹ä¹‹é—´å¯è¡Œèµ°çš„è·ç¦»
     static int GetWalkDistance(CBattlefieldObj& stBattlefieldObj, const TUNITPOSITION& stCurPos, const TUNITPOSITION& stTargetPos);
 
 public:
 
-    //µ±Ç°Ö´ĞĞAIµÄÕ½³¡ID
+    //å½“å‰æ‰§è¡ŒAIçš„æˆ˜åœºID
     static int m_iBattlefiledObjID;
     
-    //Ö÷¶¯Õ½¶··½µÄuin
+    //ä¸»åŠ¨æˆ˜æ–—æ–¹çš„uin
     static int m_uiActiveUin;
 
-    //µ±Ç°¼ÆËãAIµÄµ¥Î»ID
+    //å½“å‰è®¡ç®—AIçš„å•ä½ID
     static int m_iActionUnitID;
 
-    //µ±Ç°Õ½³¡µÄµØÍ¼ID
+    //å½“å‰æˆ˜åœºçš„åœ°å›¾ID
     static int m_iMapID;
 
-    //µ±Ç°¼ÆËãµÄAIµÄID
+    //å½“å‰è®¡ç®—çš„AIçš„ID
     static int m_iUnitAIID;
 
-    //AIÊ¹ÓÃµÄ¼¼ÄÜID
+    //AIä½¿ç”¨çš„æŠ€èƒ½ID
     static int m_iUseSkillID;
 
-    //ÓĞĞ§µÄAIĞĞ¶¯µã¼ÛÖµĞÅÏ¢
+    //æœ‰æ•ˆçš„AIè¡ŒåŠ¨ç‚¹ä»·å€¼ä¿¡æ¯
     static int m_iValidPosNum;
     static FightAIPosValue m_astValidPos[MAX_FIGHT_AI_POS_NUM];
 
-    //Ñ¡ÖĞµÄÒÆ¶¯Ä¿±êµãÔÚÓĞĞ§µãÊı×éÖĞµÄÎ»ÖÃ
+    //é€‰ä¸­çš„ç§»åŠ¨ç›®æ ‡ç‚¹åœ¨æœ‰æ•ˆç‚¹æ•°ç»„ä¸­çš„ä½ç½®
     static int m_iMovePosIndex;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "ZoneErrorNumDef.hpp"
 #include "LogAdapter.hpp"
@@ -72,7 +72,7 @@ int CCombatHandler::OnClientMsg()
     return 0;
 }
 
-//´¦Àí¿ªÊ¼Õ½¶·µÄÇëÇó
+//å¤„ç†å¼€å§‹æˆ˜æ–—çš„è¯·æ±‚
 int CCombatHandler::OnRequestBeginCombat()
 {
     int iRet = SecurityCheck();
@@ -85,7 +85,7 @@ int CCombatHandler::OnRequestBeginCombat()
         return -1;
     }
 
-    //Íæ¼Ò¿ªÊ¼Õ½¶·µÄÇëÇó
+    //ç©å®¶å¼€å§‹æˆ˜æ–—çš„è¯·æ±‚
     const Zone_DoCombat_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_docombat_request();
     iRet = CCombatFramework::Instance()->DoCombat(*m_pRoleObj, rstRequest);
     if(iRet)
@@ -95,12 +95,12 @@ int CCombatHandler::OnRequestBeginCombat()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//´¦ÀíÖ÷½ÇÒÆ¶¯µÄÇëÇó
+//å¤„ç†ä¸»è§’ç§»åŠ¨çš„è¯·æ±‚
 int CCombatHandler::OnRequestMovePosition()
 {
     int iRet = SecurityCheck();
@@ -113,7 +113,7 @@ int CCombatHandler::OnRequestMovePosition()
         return -1;
     }
 
-    //Õ½¶·Ö÷½ÇÒÆ¶¯Î»ÖÃµÄ²Ù×÷
+    //æˆ˜æ–—ä¸»è§’ç§»åŠ¨ä½ç½®çš„æ“ä½œ
     const Zone_CombatMove_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_combatmove_request();
     iRet = CCombatFramework::Instance()->DoCombatMove(*m_pRoleObj, rstRequest);
     if(iRet)
@@ -123,12 +123,12 @@ int CCombatHandler::OnRequestMovePosition()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//´¦ÀíÖ÷½ÇĞĞ¶¯µÄÇëÇó
+//å¤„ç†ä¸»è§’è¡ŒåŠ¨çš„è¯·æ±‚
 int CCombatHandler::OnRequestCombatAction()
 {
     int iRet = SecurityCheck();
@@ -141,7 +141,7 @@ int CCombatHandler::OnRequestCombatAction()
         return -1;
     }
 
-    //Ö÷½ÇÕ½¶·µ¥Î»ĞĞ¶¯µÄÇëÇó
+    //ä¸»è§’æˆ˜æ–—å•ä½è¡ŒåŠ¨çš„è¯·æ±‚
     const Zone_CombatAction_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_combataction_request();
     iRet = CCombatFramework::Instance()->DoCombatAction(*m_pRoleObj, rstRequest);
     if(iRet)
@@ -151,12 +151,12 @@ int CCombatHandler::OnRequestCombatAction()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//¸üĞÂ»ï°éAIµÄÇëÇó
+//æ›´æ–°ä¼™ä¼´AIçš„è¯·æ±‚
 int CCombatHandler::OnRequestUpdatePartnerAI()
 {
     int iRet = SecurityCheck();
@@ -169,7 +169,7 @@ int CCombatHandler::OnRequestUpdatePartnerAI()
         return -1;
     }
 
-    //¸üĞÂ»ï°éAIµÄÇëÇó
+    //æ›´æ–°ä¼™ä¼´AIçš„è¯·æ±‚
     const Zone_UpdatePartnerAI_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_updatepartnerai_request();
     iRet = CCombatFramework::Instance()->DoUpdatePartnerAI(*m_pRoleObj, rstRequest);
     if(iRet)
@@ -179,12 +179,12 @@ int CCombatHandler::OnRequestUpdatePartnerAI()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//·¢ÆğPVPÕ½¶·µÄÇëÇó
+//å‘èµ·PVPæˆ˜æ–—çš„è¯·æ±‚
 int CCombatHandler::OnRequestStartPVPCombat()
 {
     int iRet = SecurityCheck();
@@ -197,7 +197,7 @@ int CCombatHandler::OnRequestStartPVPCombat()
         return -1;
     }
 
-    //´¦Àí·¢ÆğPVPÕ½¶·µÄÇëÇó
+    //å¤„ç†å‘èµ·PVPæˆ˜æ–—çš„è¯·æ±‚
     const Zone_StartPVPCombat_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_startpvpcombat_request();
     iRet = CCombatFramework::Instance()->StartPVPCombat(*m_pRoleObj, rstRequest);
     if(iRet)
@@ -207,12 +207,12 @@ int CCombatHandler::OnRequestStartPVPCombat()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//½ÓÊÜPVPÕ½¶·µÄÇëÇó
+//æ¥å—PVPæˆ˜æ–—çš„è¯·æ±‚
 int CCombatHandler::OnRequestAcceptPVPCombat()
 {
     int iRet = SecurityCheck();
@@ -225,7 +225,7 @@ int CCombatHandler::OnRequestAcceptPVPCombat()
         return -1;
     }
 
-    //´¦Àí½ÓÊÜPVPÕ½¶·
+    //å¤„ç†æ¥å—PVPæˆ˜æ–—
     const Zone_AcceptPVPCombat_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_acceptpvpcombat_request();
     iRet = CCombatFramework::Instance()->AcceptPVPCombat(*m_pRoleObj, rstRequest);
     if(iRet)
@@ -235,12 +235,12 @@ int CCombatHandler::OnRequestAcceptPVPCombat()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//ÉèÖÃÕ½¶·ÕóĞÍµÄÇëÇó
+//è®¾ç½®æˆ˜æ–—é˜µå‹çš„è¯·æ±‚
 int CCombatHandler::OnRequestSetCombatForm()
 {
     int iRet = SecurityCheck();
@@ -253,7 +253,7 @@ int CCombatHandler::OnRequestSetCombatForm()
         return -1;
     }
 
-    //´¦ÀíÉèÖÃÕ½¶·ÕóĞÍµÄÇëÇó
+    //å¤„ç†è®¾ç½®æˆ˜æ–—é˜µå‹çš„è¯·æ±‚
     const Zone_SetCombatForm_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_setcombatform_request();
     iRet = CCombatFramework::Instance()->SetCombatForm(*m_pRoleObj, rstRequest);
     if(iRet)
@@ -263,12 +263,12 @@ int CCombatHandler::OnRequestSetCombatForm()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-// ·¢ËÍÊ§°Ü»Ø¸´
+// å‘é€å¤±è´¥å›å¤
 int CCombatHandler::SendFailedResponse(unsigned uiMsgID, const unsigned int uiResultID, const TNetHead_V2& rstNetHead)
 {
     CZoneMsgHelper::GenerateMsgHead(ms_stZoneMsg, uiMsgID);
@@ -328,3 +328,7 @@ int CCombatHandler::SendFailedResponse(unsigned uiMsgID, const unsigned int uiRe
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

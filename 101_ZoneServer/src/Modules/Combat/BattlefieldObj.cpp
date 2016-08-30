@@ -1,4 +1,4 @@
-
+ï»¿
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -40,7 +40,7 @@ int CBattlefieldObj::Initialize()
     m_uiActiveUin = 0;
     m_uiPassiveUin = 0;
 
-    //ÕóÓªĞÅÏ¢
+    //é˜µè¥ä¿¡æ¯
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
         m_aiActiveCombatObjIndex[i] = -1;
@@ -49,14 +49,14 @@ int CBattlefieldObj::Initialize()
         m_astPassivePos[i].iPosX = -1;
     }
 
-    //µ±Ç°»ØºÏÉĞÎ´³öÊÖµÄÕ½¶·µ¥Î»ĞÅÏ¢
+    //å½“å‰å›åˆå°šæœªå‡ºæ‰‹çš„æˆ˜æ–—å•ä½ä¿¡æ¯
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM*2; ++i)
     {
         m_aiCanCombatUnit[i] = -1;
         m_aiActionDoneUnit[i] = -1;
     }
 
-    //½Å±¾É±ËÀÖ÷¶¯·½µ¥Î»ĞÅÏ¢
+    //è„šæœ¬æ€æ­»ä¸»åŠ¨æ–¹å•ä½ä¿¡æ¯
     m_iActiveScriptKilledNum = 0;
     memset(m_aiActiveScriptKilledConfigID, 0, sizeof(m_aiActiveScriptKilledConfigID));
 
@@ -68,23 +68,23 @@ int CBattlefieldObj::Initialize()
     m_iActionUnit = -1;
     m_iRoleCombatUnitStatus = ROLE_COMBAT_UNIT_STAT_INVALID;
 
-    //Õ½³¡»ú¹Ø
+    //æˆ˜åœºæœºå…³
     m_iTrapNum = 0;
     for(int i=0; i<MAX_COMBAT_TRAP_NUM; ++i)
     {
         m_aiCombatTrapIndex[i] = -1;
     }
 
-    //Õ½³¡ObjµÄID
+    //æˆ˜åœºObjçš„ID
     m_iBattlefieldObjID = -1;
 
-	//¹Ø¿¨ID
+	//å…³å¡ID
 	m_iCrossID = 0;
 
-    //µØÍ¼ID
+    //åœ°å›¾ID
     m_iMapID = 0;
 
-    //µØÍ¼¶ÔÓ¦µÄ×èµ²ÅäÖÃ
+    //åœ°å›¾å¯¹åº”çš„é˜»æŒ¡é…ç½®
     m_pstBattlePathManager = NULL;
 
     m_iCombatResult = COMBAT_RESULT_INVALID;
@@ -93,13 +93,13 @@ int CBattlefieldObj::Initialize()
 
     m_iCombatRoundNum = 0;
 
-    //Õ½¶·Õ½³¡µÄ×´Ì¬
+    //æˆ˜æ–—æˆ˜åœºçš„çŠ¶æ€
     m_ucCombatStatus = 0;
 
     return T_SERVER_SUCESS;
 }
 
-//Ö÷¶¯·½µÄuin
+//ä¸»åŠ¨æ–¹çš„uin
 void CBattlefieldObj::SetActiveUin(unsigned int uiUin)
 {
     m_uiActiveUin = uiUin;
@@ -110,7 +110,7 @@ unsigned int CBattlefieldObj::GetActiveUin()
     return m_uiActiveUin;
 }
     
-//±»¶¯·½µÄuin
+//è¢«åŠ¨æ–¹çš„uin
 void CBattlefieldObj::SetPassiveUin(unsigned int uiUin)
 {
     m_uiPassiveUin = uiUin;
@@ -121,7 +121,7 @@ unsigned int CBattlefieldObj::GetPassiveUin()
     return m_uiPassiveUin;
 }
 
-//Õ½³¡ObjµÄÎ¨Ò»ID
+//æˆ˜åœºObjçš„å”¯ä¸€ID
 void CBattlefieldObj::SetBattlefieldObjID(int iObjID)
 {
     m_iBattlefieldObjID = iObjID;
@@ -132,15 +132,15 @@ int CBattlefieldObj::GetBattlefieldObjID()
     return m_iBattlefieldObjID;
 }
 
-//³õÊ¼»¯PVEÕ½³¡
+//åˆå§‹åŒ–PVEæˆ˜åœº
 int CBattlefieldObj::InitPveBattlefield(CGameRoleObj& rstRoleObj, int iCrossID)
 {
-    //»ñÈ¡UIN
+    //è·å–UIN
     m_uiActiveUin = rstRoleObj.GetUin();
 
     m_iCombatResult = COMBAT_RESULT_INVALID;
 
-    //³õÊ¼»¯PVEÕ½³¡ĞÅÏ¢
+    //åˆå§‹åŒ–PVEæˆ˜åœºä¿¡æ¯
     int iRet = InitBattlefieldInfo(iCrossID);
     if(iRet)
     {
@@ -148,7 +148,7 @@ int CBattlefieldObj::InitPveBattlefield(CGameRoleObj& rstRoleObj, int iCrossID)
         return iRet;
     }
 
-    //³õÊ¼»¯PVE¹ÖÎïĞÅÏ¢
+    //åˆå§‹åŒ–PVEæ€ªç‰©ä¿¡æ¯
     iRet = InitMonsterInfo(iCrossID);
     if(iRet)
     {
@@ -156,7 +156,7 @@ int CBattlefieldObj::InitPveBattlefield(CGameRoleObj& rstRoleObj, int iCrossID)
         return iRet;
     }
 
-    //³õÊ¼»¯Ö÷¶¯·½µÄÕ½¶·µ¥Î»ĞÅÏ¢
+    //åˆå§‹åŒ–ä¸»åŠ¨æ–¹çš„æˆ˜æ–—å•ä½ä¿¡æ¯
     iRet = InitFightCampInfo(rstRoleObj);
     if(iRet)
     {
@@ -164,7 +164,7 @@ int CBattlefieldObj::InitPveBattlefield(CGameRoleObj& rstRoleObj, int iCrossID)
         return iRet;
     }
 
-    //ÉèÖÃÕ½¶·¿ªÊ¼Ê±¼ä
+    //è®¾ç½®æˆ˜æ–—å¼€å§‹æ—¶é—´
     m_iStartTime = CTimeUtility::GetNowTime();
 
     m_ucCombatStatus = 0;
@@ -172,16 +172,16 @@ int CBattlefieldObj::InitPveBattlefield(CGameRoleObj& rstRoleObj, int iCrossID)
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯PVPÕ½³¡
+//åˆå§‹åŒ–PVPæˆ˜åœº
 int CBattlefieldObj::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRoleObj& stPassiveRoleObj)
 {
-    //»ñÈ¡UIN
+    //è·å–UIN
     m_uiActiveUin = stActiveRoleObj.GetUin();
     m_uiPassiveUin = stPassiveRoleObj.GetUin();
 
     m_iCombatResult = COMBAT_RESULT_INVALID;
 
-    //³õÊ¼»¯Õ½³¡ĞÅÏ¢
+    //åˆå§‹åŒ–æˆ˜åœºä¿¡æ¯
     int iRet = InitBattlefieldInfo(PVP_COMBAT_CROSS_ID);
     if(iRet)
     {
@@ -189,7 +189,7 @@ int CBattlefieldObj::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRole
         return iRet;
     }
 
-    //³õÊ¼»¯Ö÷¶¯·½µÄÕ½¶·µ¥Î»ĞÅÏ¢
+    //åˆå§‹åŒ–ä¸»åŠ¨æ–¹çš„æˆ˜æ–—å•ä½ä¿¡æ¯
     iRet = InitFightCampInfo(stActiveRoleObj);
     if(iRet)
     {
@@ -197,7 +197,7 @@ int CBattlefieldObj::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRole
         return iRet;
     }
 
-    //³õÊ¼»¯±»¶¯·½µÄÕ½¶·µ¥Î»ĞÅÏ¢
+    //åˆå§‹åŒ–è¢«åŠ¨æ–¹çš„æˆ˜æ–—å•ä½ä¿¡æ¯
     iRet = InitFightCampInfo(stPassiveRoleObj, false);
     if(iRet)
     {
@@ -205,7 +205,7 @@ int CBattlefieldObj::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRole
         return iRet;
     }
 
-    //ÉèÖÃÕ½¶·¿ªÊ¼Ê±¼ä
+    //è®¾ç½®æˆ˜æ–—å¼€å§‹æ—¶é—´
     m_iStartTime = CTimeUtility::GetNowTime();
 
     m_ucCombatStatus = 0;
@@ -213,20 +213,20 @@ int CBattlefieldObj::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRole
     return T_SERVER_SUCESS;
 }
 
-//´ò°ü·µ»ØÕ½³¡µÄĞÅÏ¢
+//æ‰“åŒ…è¿”å›æˆ˜åœºçš„ä¿¡æ¯
 int CBattlefieldObj::PackBattlefiledInfo(Zone_Battlefield_Notify& stNotify)
 {
-    //·µ»ØÕ½³¡ID
+    //è¿”å›æˆ˜åœºID
     stNotify.set_icrossid(m_iCrossID);
 
-    //·µ»ØÖ÷¶¯·½Õ½¶·ÕóÓªĞÅÏ¢
+    //è¿”å›ä¸»åŠ¨æ–¹æˆ˜æ–—é˜µè¥ä¿¡æ¯
     CombatCamp* pstSelfCamp = stNotify.mutable_stcampactive();
     CombatCamp* pstOtherCamp = stNotify.mutable_stcamppassive();
 
     pstSelfCamp->set_uiuin(m_uiActiveUin);
     pstOtherCamp->set_uiuin(m_uiPassiveUin);
 
-    //Èç¹ûÊÇÍæ¼Ò£¬ÉèÖÃÍæ¼ÒµÄÃû×ÖºÍÄêÁä
+    //å¦‚æœæ˜¯ç©å®¶ï¼Œè®¾ç½®ç©å®¶çš„åå­—å’Œå¹´é¾„
     CGameRoleObj* pstActiveRoleObj = CUnitUtility::GetRoleByUin(m_uiActiveUin);
     if(pstActiveRoleObj)
     {
@@ -263,7 +263,7 @@ int CBattlefieldObj::PackBattlefiledInfo(Zone_Battlefield_Notify& stNotify)
         }
     }
 
-    //·µ»ØÖ÷¶¯·½ÓĞĞ§Î»ÖÃĞÅÏ¢
+    //è¿”å›ä¸»åŠ¨æ–¹æœ‰æ•ˆä½ç½®ä¿¡æ¯
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
         if(m_astActivePos[i].iPosX < 0)
@@ -276,7 +276,7 @@ int CBattlefieldObj::PackBattlefiledInfo(Zone_Battlefield_Notify& stNotify)
         pstActivePos->set_iposy(m_astActivePos[i].iPosY);
     }
 
-    //·µ»Ø±»¶¯·½ÓĞĞ§Î»ÖÃĞÅÏ¢
+    //è¿”å›è¢«åŠ¨æ–¹æœ‰æ•ˆä½ç½®ä¿¡æ¯
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
         if(m_astPassivePos[i].iPosX < 0)
@@ -292,10 +292,10 @@ int CBattlefieldObj::PackBattlefiledInfo(Zone_Battlefield_Notify& stNotify)
     return T_SERVER_SUCESS;
 }
 
-//ÇåÀíÕ½³¡
+//æ¸…ç†æˆ˜åœº
 void CBattlefieldObj::ClearBattlefield()
 {
-    //ÇåÀíÕ½¶·µ¥Î»
+    //æ¸…ç†æˆ˜æ–—å•ä½
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
         if(m_aiActiveCombatObjIndex[i] >= 0)
@@ -313,7 +313,7 @@ void CBattlefieldObj::ClearBattlefield()
         m_aiPassiveCombatObjIndex[i] = -1;
     }
 
-    //ÇåÀí»ú¹Øµ¥Î»
+    //æ¸…ç†æœºå…³å•ä½
     for(int i=0; i<m_iTrapNum; ++i)
     {
         GameType<CCombatTrapObj>::Del(m_aiCombatTrapIndex[i]);
@@ -322,13 +322,13 @@ void CBattlefieldObj::ClearBattlefield()
     return;
 }
 
-//»ñÈ¡µØÍ¼ID
+//è·å–åœ°å›¾ID
 int CBattlefieldObj::GetMapID()
 {
     return m_iMapID;
 }
 
-//¸ù¾İ×ø±êÎ»ÖÃ»ñÈ¡Õ½¶·µ¥Î»ĞÅÏ¢
+//æ ¹æ®åæ ‡ä½ç½®è·å–æˆ˜æ–—å•ä½ä¿¡æ¯
 CCombatUnitObj* CBattlefieldObj::GetCombatUnitByPos(const TUNITPOSITION& stPos)
 {
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
@@ -375,7 +375,7 @@ CCombatUnitObj* CBattlefieldObj::GetCombatUnitByPos(const TUNITPOSITION& stPos)
     return NULL;
 }
 
-//»ò·ñÊÇ»ï°éµÄ×îºó¹¥»÷¶ÔÏó
+//æˆ–å¦æ˜¯ä¼™ä¼´çš„æœ€åæ”»å‡»å¯¹è±¡
 bool CBattlefieldObj::IsTeammateLastAttackUnit(int iCastUnitID, int iTargetUnitID)
 {
     int iCastCamp = GetCombatUnitCamp(iCastUnitID);
@@ -424,7 +424,7 @@ bool CBattlefieldObj::IsTeammateLastAttackUnit(int iCastUnitID, int iTargetUnitI
     return false;
 }
 
-//»ñÈ¡µĞÈËĞÅÏ¢
+//è·å–æ•Œäººä¿¡æ¯
 void CBattlefieldObj::GetEnemyUnits(int iCastUnitID, std::vector<int>& vEnemyUnits)
 {
     int iCampType = GetCombatUnitCamp(iCastUnitID);
@@ -456,12 +456,12 @@ void CBattlefieldObj::GetEnemyUnits(int iCastUnitID, std::vector<int>& vEnemyUni
     return;
 }
 
-//´¦ÀíÕ½³¡Ïà¹ØµÄBUFF
+//å¤„ç†æˆ˜åœºç›¸å…³çš„BUFF
 int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int iTriggerUnitID, int* pDamageNum)
 {
     int iRet = T_SERVER_SUCESS;
 
-    static GameProtocolMsg stDoBuffEffect_Notify;   //ÉúĞ§BUFF
+    static GameProtocolMsg stDoBuffEffect_Notify;   //ç”Ÿæ•ˆBUFF
 
     CZoneMsgHelper::GenerateMsgHead(stDoBuffEffect_Notify, MSGID_ZONE_DOBUFFEFFECT_NOTIFY);
     Zone_DoBuffEffect_Notify* pstNotify = stDoBuffEffect_Notify.mutable_m_stmsgbody()->mutable_m_stzone_dobuffeffect_notify();
@@ -471,9 +471,9 @@ int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int
         case BUFF_TRIGGER_ROUNDBEGIN:
         case BUFF_TRIGGER_ROUNDEND:
             {
-                //»ØºÏ¿ªÊ¼Ç°ºÍ»ØºÏ½áÊøºó£¬Õ½³¡ÉÏËùÓĞµ¥Î»¶¼»á´¥·¢
+                //å›åˆå¼€å§‹å‰å’Œå›åˆç»“æŸåï¼Œæˆ˜åœºä¸Šæ‰€æœ‰å•ä½éƒ½ä¼šè§¦å‘
 
-                //ÏÈ´¦Àí×Ô¼ºµÄ
+                //å…ˆå¤„ç†è‡ªå·±çš„
                 for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
                 {
                     if(m_aiActiveCombatObjIndex[i] < 0)
@@ -487,7 +487,7 @@ int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int
                         continue;
                     }
             
-                    //´¦ÀíBUFF
+                    //å¤„ç†BUFF
                     iRet = pstCombatObj->DoBuffEffectByType(m_uiActiveUin, m_iCrossID, iTriggerType, m_aiActiveCombatObjIndex[i], *pstNotify);
                     if(iRet)
                     {
@@ -495,7 +495,7 @@ int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int
                     }
                 }
             
-                //ÔÙ´¦Àí¶Ô·½µÄ
+                //å†å¤„ç†å¯¹æ–¹çš„
                 for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
                 {
                     if(m_aiPassiveCombatObjIndex[i] < 0)
@@ -509,7 +509,7 @@ int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int
                         continue;
                     }
             
-                    //´¦ÀíBUFF
+                    //å¤„ç†BUFF
                     iRet = pstCombatObj->DoBuffEffectByType(m_uiActiveUin, m_iCrossID, iTriggerType, m_aiPassiveCombatObjIndex[i], *pstNotify);
                     if(iRet)
                     {
@@ -526,7 +526,7 @@ int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int
         case BUFF_TRIGGER_UNDERATTACK:
         case BUFF_TRIGGER_MOVE:
             {
-                //»ñÈ¡Ä¿±êÕ½¶·µ¥Î»Obj
+                //è·å–ç›®æ ‡æˆ˜æ–—å•ä½Obj
                 CCombatUnitObj* pstTargetObj = CCombatUtility::GetCombatUnitObj(iTargetUnitID);
                 if(!pstTargetObj)
                 {
@@ -546,7 +546,7 @@ int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int
 
         case BUFF_TRIGGER_PROCESSDAMAGE:
             {
-                //»ñÈ¡Ä¿±êÕ½¶·µ¥Î»µÄObj
+                //è·å–ç›®æ ‡æˆ˜æ–—å•ä½çš„Obj
                 CCombatUnitObj* pstTargetObj = CCombatUtility::GetCombatUnitObj(iTargetUnitID);
                 if(!pstTargetObj)
                 {
@@ -581,7 +581,7 @@ int CBattlefieldObj::DoBuffEffectByType(int iTriggerType, int iTargetUnitID, int
 
 int CBattlefieldObj::DecreaseBuffRound()
 {
-    //ÏÈÍÆËÍ¼õÉÙÕ½¶·µ¥Î»BUFF»ØºÏÊıµÄÏûÏ¢
+    //å…ˆæ¨é€å‡å°‘æˆ˜æ–—å•ä½BUFFå›åˆæ•°çš„æ¶ˆæ¯
     static GameProtocolMsg stMsg;
     CZoneMsgHelper::GenerateMsgHead(stMsg, MSGID_ZONE_DECREASEUNITBUFF_NOTIFY);
 
@@ -591,7 +591,7 @@ int CBattlefieldObj::DecreaseBuffRound()
     CZoneMsgHelper::GenerateMsgHead(m_stRemoveBuff_Notify, MSGID_ZONE_REMOVEBUFF_NOTIFY);
     Zone_RemoveBuff_Notify* pstNotify = m_stRemoveBuff_Notify.mutable_m_stmsgbody()->mutable_m_stzone_removebuff_notify();
 
-    //»ñÈ¡µ±Ç°Õ½¶·µ¥Î»
+    //è·å–å½“å‰æˆ˜æ–—å•ä½
     CCombatUnitObj* pstActionObj = CCombatUtility::GetCombatUnitObj(GetActionUnitID());
     if(!pstActionObj)
     {
@@ -614,41 +614,41 @@ int CBattlefieldObj::DecreaseBuffRound()
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡Õ½¶·Ê¤¸º½á¹û
+//è·å–æˆ˜æ–—èƒœè´Ÿç»“æœ
 bool CBattlefieldObj::GetIsActiveWin()
 {
     return (m_iCombatResult == COMBAT_RESULT_ACTIVE_WIN);
 }
 
-//ÉèÖÃÕ½¶·½á¹û,ÊÇ·ñ¼º·½»ñÊ¤
+//è®¾ç½®æˆ˜æ–—ç»“æœ,æ˜¯å¦å·±æ–¹è·èƒœ
 int CBattlefieldObj::SetCampActiveWin(int iIsActiveWin)
 {
     if(iIsActiveWin)
     {
-        //Ö÷¶¯Õ½¶··½Ê¤Àû
+        //ä¸»åŠ¨æˆ˜æ–—æ–¹èƒœåˆ©
         m_iCombatResult = COMBAT_RESULT_ACTIVE_WIN;
     }
     else
     {
-        //±»¶¯Õ½¶··½Ê¤Àû
+        //è¢«åŠ¨æˆ˜æ–—æ–¹èƒœåˆ©
         m_iCombatResult = COMBAT_RESULT_PASSIVE_WIN;
     }
 
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡¹Ø¿¨µÄID
+//è·å–å…³å¡çš„ID
 int CBattlefieldObj::GetCrossID()
 {
     return m_iCrossID;
 }
 
-//ÉèÖÃµ±Ç°ĞĞ¶¯µ¥Î»µÄ·½Ïò
+//è®¾ç½®å½“å‰è¡ŒåŠ¨å•ä½çš„æ–¹å‘
 int CBattlefieldObj::SetActionUnitDirection(int iDirection)
 {
     if(iDirection <= COMBAT_DIRECTION_INVALID || iDirection > COMBAT_DIRECTION_SOUTH)
     {
-        //·Ç·¨µÄ·½Ïò£¬Ö±½Ó·µ»Ø
+        //éæ³•çš„æ–¹å‘ï¼Œç›´æ¥è¿”å›
         return T_SERVER_SUCESS;
     }
 
@@ -664,7 +664,7 @@ int CBattlefieldObj::SetActionUnitDirection(int iDirection)
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡ÕóÓªÕ½¶·µ¥Î»µÄĞÅÏ¢
+//è·å–é˜µè¥æˆ˜æ–—å•ä½çš„ä¿¡æ¯
 int CBattlefieldObj::GetCombatUnitByCamp(int iCampType, int iUnitIndex)
 {
     if(iUnitIndex < 0 || iUnitIndex >= MAX_CAMP_FIGHT_UNIT_NUM)
@@ -675,7 +675,7 @@ int CBattlefieldObj::GetCombatUnitByCamp(int iCampType, int iUnitIndex)
     CCombatUnitObj* pstUnitObj = NULL;
     if(iCampType == FIGHT_CAMP_ACTIVE)
     {
-        //Õ½¶·Ö÷¶¯·¢Æğ·½
+        //æˆ˜æ–—ä¸»åŠ¨å‘èµ·æ–¹
         if(m_aiActiveCombatObjIndex[iUnitIndex] < 0)
         {
             return -1;
@@ -686,7 +686,7 @@ int CBattlefieldObj::GetCombatUnitByCamp(int iCampType, int iUnitIndex)
     }
     else if(iCampType == FIGHT_CAMP_PASSIVE)
     {
-        //Õ½¶·±»¶¯½ÓÊÜ·½
+        //æˆ˜æ–—è¢«åŠ¨æ¥å—æ–¹
         if(m_aiPassiveCombatObjIndex[iUnitIndex] < 0)
         {
             return -1;
@@ -704,7 +704,7 @@ int CBattlefieldObj::GetCombatUnitByCamp(int iCampType, int iUnitIndex)
     return pstUnitObj->GetCombatUnitID();
 }
 
-//Õ½¶·µ¥Î»µÄ»ØºÏÊı
+//æˆ˜æ–—å•ä½çš„å›åˆæ•°
 int CBattlefieldObj::GetCombatRoundNum()
 {
     return m_iCombatRoundNum;
@@ -715,14 +715,14 @@ void CBattlefieldObj::SetCombatRoundNum(int iRoundNum)
     m_iCombatRoundNum = iRoundNum;
 }
 
-//Ôö¼ÓÕ½³¡ÉÏµÄÕ½¶·µ¥Î»
+//å¢åŠ æˆ˜åœºä¸Šçš„æˆ˜æ–—å•ä½
 int CBattlefieldObj::AddCombatUnit(int iCampType, int iConfigID, int iPosX, int iPosY, int iDirection, int iUnitType, int& iUnitID)
 {
     /*
-    //·µ»ØÔö¼ÓµÄÕ½¶·µ¥Î»unitID
+    //è¿”å›å¢åŠ çš„æˆ˜æ–—å•ä½unitID
     iUnitID = -1;
 
-    //¶ÁÈ¡¹ÖÎïÅäÖÃ
+    //è¯»å–æ€ªç‰©é…ç½®
     const SMonsterConfig* pstMonsterConfig = MonsterCfgMgr().GetConfig(iConfigID);
     if(!pstMonsterConfig)
     {
@@ -746,7 +746,7 @@ int CBattlefieldObj::AddCombatUnit(int iCampType, int iConfigID, int iPosX, int 
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //²éÕÒµ±Ç°¿ÕÏĞµÄindex
+    //æŸ¥æ‰¾å½“å‰ç©ºé—²çš„index
     int iIndex = -1;
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
@@ -762,7 +762,7 @@ int CBattlefieldObj::AddCombatUnit(int iCampType, int iConfigID, int iPosX, int 
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //·ÖÅäCCombatUnitObj
+    //åˆ†é…CCombatUnitObj
     CCombatUnitObj* pstCombatUnitObj = CreateCombatUnitObj(piCombatUnitObjIndex[iIndex]);
     if(!pstCombatUnitObj)
     {
@@ -775,42 +775,42 @@ int CBattlefieldObj::AddCombatUnit(int iCampType, int iConfigID, int iPosX, int 
     bool bFoundPos = false;
     for(int i=0; i<4; ++i)
     {
-        //ÓÒ
+        //å³
         stTmpPos.iPosX = stPos.iPosX + i;
         stTmpPos.iPosY = stPos.iPosY;
         if(IsPosCanWalk(stTmpPos))
         {
-            //¸ÃÎ»ÖÃÃ»ÓĞÈË²¢ÇÒ¿ÉĞĞ×ß
+            //è¯¥ä½ç½®æ²¡æœ‰äººå¹¶ä¸”å¯è¡Œèµ°
             bFoundPos = true;
             break;
         }
         
-        //×ó
+        //å·¦
         stTmpPos.iPosX = stPos.iPosX - i;
         stTmpPos.iPosY = stPos.iPosY;
         if(IsPosCanWalk(stTmpPos))
         {
-            //¸ÃÎ»ÖÃÃ»ÓĞÈË²¢ÇÒ¿ÉĞĞ×ß
+            //è¯¥ä½ç½®æ²¡æœ‰äººå¹¶ä¸”å¯è¡Œèµ°
             bFoundPos = true;
             break;
         }
 
-        //ÉÏ
+        //ä¸Š
         stTmpPos.iPosX = stPos.iPosX;
         stTmpPos.iPosY = stPos.iPosY + i;
         if(IsPosCanWalk(stTmpPos))
         {
-            //¸ÃÎ»ÖÃÃ»ÓĞÈË²¢ÇÒ¿ÉĞĞ×ß
+            //è¯¥ä½ç½®æ²¡æœ‰äººå¹¶ä¸”å¯è¡Œèµ°
             bFoundPos = true;
             break;
         }
 
-        //ÏÂ
+        //ä¸‹
         stTmpPos.iPosX = stPos.iPosX;
         stTmpPos.iPosY = stPos.iPosY - i;
         if(IsPosCanWalk(stTmpPos))
         {
-            //¸ÃÎ»ÖÃÃ»ÓĞÈË²¢ÇÒ¿ÉĞĞ×ß
+            //è¯¥ä½ç½®æ²¡æœ‰äººå¹¶ä¸”å¯è¡Œèµ°
             bFoundPos = true;
             break;
         }
@@ -818,7 +818,7 @@ int CBattlefieldObj::AddCombatUnit(int iCampType, int iConfigID, int iPosX, int 
 
     if(!bFoundPos)
     {
-        //Ã»ÕÒµ½ºÏ·¨µÄµã
+        //æ²¡æ‰¾åˆ°åˆæ³•çš„ç‚¹
         LOGERROR("Failed to add combat unit, can not find valid pos, uin %u\n", m_uiActiveUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
@@ -837,25 +837,25 @@ int CBattlefieldObj::AddCombatUnit(int iCampType, int iConfigID, int iPosX, int 
 
     pstCombatUnitObj->SetUnitDirection(iDirection);
 
-    //Ìí¼Óµ½ĞĞ¶¯½áÊø¶ÓÁĞ
+    //æ·»åŠ åˆ°è¡ŒåŠ¨ç»“æŸé˜Ÿåˆ—
     m_aiActionDoneUnit[m_iActionDoneUnitNum++] = iUnitID;
 
     LOGDEBUG("Success to init one monster info, monster id %d, uin %u\n", iConfigID, m_uiActiveUin);
 
-    //ÍÆËÍ¸ø¿Í»§¶ËµÄÏûÏ¢
+    //æ¨é€ç»™å®¢æˆ·ç«¯çš„æ¶ˆæ¯
     static GameProtocolMsg stAddUnitNotify;
     CZoneMsgHelper::GenerateMsgHead(stAddUnitNotify, MSGID_ZONE_ADDCOMBATUNIT_NOTIFY);
     
     Zone_AddCombatUnit_Notify* pstNotify = stAddUnitNotify.mutable_m_stmsgbody()->mutable_m_stzone_addcombatunit_notify();
     pstNotify->set_icamptype(iCampType);
     
-    //·â×°µ¥Î»µÄÏêÏ¸ĞÅÏ¢
+    //å°è£…å•ä½çš„è¯¦ç»†ä¿¡æ¯
     PackOneCombatUnitInfo(iCampType, piCombatUnitObjIndex[iIndex], *pstNotify->mutable_stunit());
     
-    //ÍÆËÍÏûÏ¢¸ø¿Í»§¶Ë
+    //æ¨é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
     SendNotifyToBattlefield(stAddUnitNotify);
 
-    //ÊÍ·ÅÕ½¶·µ¥Î»µÄµÇ³¡¼¼ÄÜ
+    //é‡Šæ”¾æˆ˜æ–—å•ä½çš„ç™»åœºæŠ€èƒ½
     std::vector<int> vSkillIDs;
     pstCombatUnitObj->GetSkillByType(SKILL_USE_ON_STAGE, vSkillIDs);
 
@@ -873,10 +873,10 @@ int CBattlefieldObj::AddCombatUnit(int iCampType, int iConfigID, int iPosX, int 
     return T_SERVER_SUCESS;
 }
 
-//ÇĞ»»Õ½¶·µ¥Î»µÄAI
+//åˆ‡æ¢æˆ˜æ–—å•ä½çš„AI
 int CBattlefieldObj::ChangeCombatUnitAI(int iCombatUnitID, int iNewAI)
 {
-    //»ñÈ¡Õ½¶·µ¥Î»
+    //è·å–æˆ˜æ–—å•ä½
     CCombatUnitObj* pstUnitObj = CCombatUtility::GetCombatUnitObj(iCombatUnitID);
     if(!pstUnitObj)
     {
@@ -894,10 +894,10 @@ int CBattlefieldObj::ChangeCombatUnitAI(int iCombatUnitID, int iNewAI)
     return T_SERVER_SUCESS;
 }
 
-//Ç¿ÖÆÉ±ËÀÕ½¶·µ¥Î»
+//å¼ºåˆ¶æ€æ­»æˆ˜æ–—å•ä½
 int CBattlefieldObj::KillCombatUnit(int iCombatUnitID, bool bSendNotify)
 {
-    //»ñÈ¡Õ½¶·µ¥Î»
+    //è·å–æˆ˜æ–—å•ä½
     CCombatUnitObj* pstUnitObj = CCombatUtility::GetCombatUnitObj(iCombatUnitID);
     if(!pstUnitObj)
     {
@@ -912,7 +912,7 @@ int CBattlefieldObj::KillCombatUnit(int iCombatUnitID, bool bSendNotify)
         return iRet;
     }
 
-    //É±ËÀÖ÷¶¯·½µ¥Î»£¬±£´æÉ±ËÀµÄµ¥Î»ÅäÖÃID
+    //æ€æ­»ä¸»åŠ¨æ–¹å•ä½ï¼Œä¿å­˜æ€æ­»çš„å•ä½é…ç½®ID
     if(GetCombatUnitCamp(iCombatUnitID) == FIGHT_CAMP_ACTIVE)
     {
         m_aiActiveScriptKilledConfigID[m_iActiveScriptKilledNum++] = pstUnitObj->GetConfigID();
@@ -920,7 +920,7 @@ int CBattlefieldObj::KillCombatUnit(int iCombatUnitID, bool bSendNotify)
 
     if(bSendNotify)
     {
-        //ÍÆËÍÇ¿ÖÆÉ±ËÀµÄÏûÏ¢
+        //æ¨é€å¼ºåˆ¶æ€æ­»çš„æ¶ˆæ¯
         static GameProtocolMsg stKillUnitNotify;
         CZoneMsgHelper::GenerateMsgHead(stKillUnitNotify, MSGID_ZONE_KILLCOMBATUNIT_NOTIFY);
     
@@ -930,22 +930,22 @@ int CBattlefieldObj::KillCombatUnit(int iCombatUnitID, bool bSendNotify)
         SendNotifyToBattlefield(stKillUnitNotify);
     }
 
-    //ÇåÀíËÀÍöµÄµ¥Î»
+    //æ¸…ç†æ­»äº¡çš„å•ä½
     ClearDeadCombatUnit();
 
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡Õ½¶·¿ªÊ¼Ê±¼ä
+//è·å–æˆ˜æ–—å¼€å§‹æ—¶é—´
 int CBattlefieldObj::GetCombatStartTime()
 {
     return m_iStartTime;
 }
 
-//´¦ÀíĞĞ¶¯»ØºÏ¿ªÊ¼Ç°µÄ¼¼ÄÜ
+//å¤„ç†è¡ŒåŠ¨å›åˆå¼€å§‹å‰çš„æŠ€èƒ½
 int CBattlefieldObj::DoRoundActionSkill()
 {
-    //»ñÈ¡µ±Ç°ĞĞ¶¯µ¥Î»
+    //è·å–å½“å‰è¡ŒåŠ¨å•ä½
     CCombatUnitObj* pstActionUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
     if(!pstActionUnitObj)
     {
@@ -953,11 +953,11 @@ int CBattlefieldObj::DoRoundActionSkill()
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡Õ½¶·µ¥Î»ËùÓĞ¼¼ÄÜ
+    //è·å–æˆ˜æ–—å•ä½æ‰€æœ‰æŠ€èƒ½
     std::vector<int> vSkillIDs;
     pstActionUnitObj->GetSkillByType(SKILL_USE_ROUNDACTION, vSkillIDs);
 
-    //ÊÍ·Å¼¼ÄÜ
+    //é‡Šæ”¾æŠ€èƒ½
     int iRet = T_SERVER_SUCESS;
     for(unsigned i=0; i<vSkillIDs.size(); ++i)
     {
@@ -972,19 +972,19 @@ int CBattlefieldObj::DoRoundActionSkill()
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡×î´óÒÆ¶¯¾àÀë£¬¿¼ÂÇÎ§À§Âß¼­
+//è·å–æœ€å¤§ç§»åŠ¨è·ç¦»ï¼Œè€ƒè™‘å›´å›°é€»è¾‘
 int CBattlefieldObj::GetMaxMoveDistance(CCombatUnitObj& stUnitObj)
 {
     if(stUnitObj.GetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTMOVE))
     {
-        //²»ÄÜÒÆ¶¯
+        //ä¸èƒ½ç§»åŠ¨
         return 0;
     }
 
     int iNearByEnemyNum = 0;
     if(!stUnitObj.GetCombatUnitStatus(COMBAT_UNIT_STATUS_IGNOREJOINT) && stUnitObj.GetUnitSize()==0)
     {
-        //Ã»ÓĞÎŞÊÓºÏÎ§µÄ×´Ì¬²¢ÇÒ²»ÊÇ´óÌå»ıµ¥Î»£¬¼ÆËãµĞÈËÊıÄ¿
+        //æ²¡æœ‰æ— è§†åˆå›´çš„çŠ¶æ€å¹¶ä¸”ä¸æ˜¯å¤§ä½“ç§¯å•ä½ï¼Œè®¡ç®—æ•Œäººæ•°ç›®
         iNearByEnemyNum = GetNearByUnitNum(stUnitObj, true);
     }
 
@@ -997,13 +997,13 @@ int CBattlefieldObj::GetMaxMoveDistance(CCombatUnitObj& stUnitObj)
     return iMoveDistance;
 }
 
-//»ñÈ¡Õ½¶·µ¥Î»ÖÜÎ§µÄÕóÓªµ¥Î»ÊıÁ¿
+//è·å–æˆ˜æ–—å•ä½å‘¨å›´çš„é˜µè¥å•ä½æ•°é‡
 int CBattlefieldObj::GetNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy)
 {
     int iTotalUnitNum = 0;
     TUNITPOSITION& stPos = stUnitObj.GetUnitPosition();
 
-    //¼ì²é×ó±ß
+    //æ£€æŸ¥å·¦è¾¹
     CCombatUnitObj* pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX-1, stPos.iPosY));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1011,7 +1011,7 @@ int CBattlefieldObj::GetNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy)
         ++iTotalUnitNum;
     }
 
-    //¼ì²éÓÒ±ß
+    //æ£€æŸ¥å³è¾¹
     pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX+1, stPos.iPosY));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1019,7 +1019,7 @@ int CBattlefieldObj::GetNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy)
         ++iTotalUnitNum;
     }
 
-    //¼ì²éÉÏ±ß
+    //æ£€æŸ¥ä¸Šè¾¹
     pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX, stPos.iPosY+1));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1027,7 +1027,7 @@ int CBattlefieldObj::GetNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy)
         ++iTotalUnitNum;
     }
 
-    //¼ì²éÏÂ±ß
+    //æ£€æŸ¥ä¸‹è¾¹
     pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX, stPos.iPosY-1));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1038,13 +1038,13 @@ int CBattlefieldObj::GetNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy)
     return iTotalUnitNum;
 }
 
-//»ñÈ¡Õ½¶·µ¥Î»Ğ±½ÇÎ»ÖÃµÄÕóÓªµ¥Î»ÊıÁ¿
+//è·å–æˆ˜æ–—å•ä½æ–œè§’ä½ç½®çš„é˜µè¥å•ä½æ•°é‡
 int CBattlefieldObj::GetAngleNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy)
 {
     int iTotalUnitNum = 0;
     TUNITPOSITION& stPos = stUnitObj.GetUnitPosition();
 
-    //¼ì²é×óÏÂ±ß
+    //æ£€æŸ¥å·¦ä¸‹è¾¹
     CCombatUnitObj* pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX-1, stPos.iPosY-1));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1052,7 +1052,7 @@ int CBattlefieldObj::GetAngleNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEn
         ++iTotalUnitNum;
     }
 
-    //¼ì²é×óÉÏ±ß
+    //æ£€æŸ¥å·¦ä¸Šè¾¹
     pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX-1, stPos.iPosY+1));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1060,7 +1060,7 @@ int CBattlefieldObj::GetAngleNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEn
         ++iTotalUnitNum;
     }
 
-    //¼ì²éÓÒÏÂ
+    //æ£€æŸ¥å³ä¸‹
     pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX+1, stPos.iPosY-1));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1068,7 +1068,7 @@ int CBattlefieldObj::GetAngleNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEn
         ++iTotalUnitNum;
     }
 
-    //¼ì²éÓÒÉÏ
+    //æ£€æŸ¥å³ä¸Š
     pstNearUnitObj = GetCombatUnitByPos(TUNITPOSITION(stPos.iPosX+1, stPos.iPosY+1));
     if(pstNearUnitObj && 
        ((bIsEnemy&&!IsUnitInSameCamp(stUnitObj,*pstNearUnitObj)) || (!bIsEnemy&&IsUnitInSameCamp(stUnitObj,*pstNearUnitObj))))
@@ -1079,16 +1079,16 @@ int CBattlefieldObj::GetAngleNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEn
     return iTotalUnitNum;
 }
 
-//Õ½³¡ÉÏÄ³¸öÎ»ÖÃÊÇ·ñ¿ÉÒÔĞĞ×ß
+//æˆ˜åœºä¸ŠæŸä¸ªä½ç½®æ˜¯å¦å¯ä»¥è¡Œèµ°
 bool CBattlefieldObj::IsPosCanWalk(const TUNITPOSITION& stPos, int iUnitID)
 {
-    //¸ÃÎ»ÖÃ²»ÄÜÊÇ×èµ²»ò×èµ²ÀàĞÍµÄ»ú¹Ø
+    //è¯¥ä½ç½®ä¸èƒ½æ˜¯é˜»æŒ¡æˆ–é˜»æŒ¡ç±»å‹çš„æœºå…³
     if(!m_pstBattlePathManager->BattlefieldPosCanWalk(stPos) || GetBlockTrapByPos(stPos))
     {
         return false;
     }
 
-    //¸ÃÎ»ÖÃ²»ÄÜÓĞÈË£¬Èç¹ûÊÇiUnitIDµÄÈËÔòÈÏÎª¿É×ß
+    //è¯¥ä½ç½®ä¸èƒ½æœ‰äººï¼Œå¦‚æœæ˜¯iUnitIDçš„äººåˆ™è®¤ä¸ºå¯èµ°
     CCombatUnitObj* pstUnitObj = GetCombatUnitByPos(stPos);
     if(pstUnitObj && pstUnitObj->GetCombatUnitID()!=iUnitID)
     {
@@ -1098,38 +1098,38 @@ bool CBattlefieldObj::IsPosCanWalk(const TUNITPOSITION& stPos, int iUnitID)
     return true;
 }
 
-//»ñÈ¡Õ½¶·µØÍ¼×èµ²ÅäÖÃ
+//è·å–æˆ˜æ–—åœ°å›¾é˜»æŒ¡é…ç½®
 const CScenePathManager& CBattlefieldObj::GetBattlePathManager()
 {
     return *m_pstBattlePathManager;
 }
 
-//Õ½³¡ÉÏÔö¼Ó»ú¹Ø,·µ»ØTrapObj¶ÔÏóµÄID
+//æˆ˜åœºä¸Šå¢åŠ æœºå…³,è¿”å›TrapObjå¯¹è±¡çš„ID
 int CBattlefieldObj::AddCombatTrap(int iConfigID, int iCamp, const TUNITPOSITION& stPos, int iDirection)
 {
-    //ÊÇ·ñ³¬¹ıÖ§³ÖµÄ×î´óÊıÁ¿
+    //æ˜¯å¦è¶…è¿‡æ”¯æŒçš„æœ€å¤§æ•°é‡
     if(m_iTrapNum >= MAX_COMBAT_TRAP_NUM)
     {
         LOGERROR("Failed to add combat trap, number reach max %d, uin %u\n", MAX_COMBAT_TRAP_NUM, m_uiActiveUin);
         return -1;
     }
 
-    //¸ÃÎ»ÖÃÊÇ·ñ×èµ²»òÕßÓĞÈË
+    //è¯¥ä½ç½®æ˜¯å¦é˜»æŒ¡æˆ–è€…æœ‰äºº
     if(!IsPosCanWalk(stPos))
     {
         LOGERROR("Failed to add combat trap, pos %d:%d, battlefield id %d, uin %u\n", stPos.iPosX, stPos.iPosY, m_iCrossID, m_uiActiveUin);
         return -1;
     }
 
-    //¸ÃÎ»ÖÃÊÇ·ñÓĞ»ú¹Ø
+    //è¯¥ä½ç½®æ˜¯å¦æœ‰æœºå…³
     if(GetTrapByPos(stPos))
     {
-        //¸ÃÎ»ÖÃÒÑ¾­ÓĞ»ú¹Ø
+        //è¯¥ä½ç½®å·²ç»æœ‰æœºå…³
         LOGERROR("Failed to add combat trap, pos %d:%d already have trap, uin %u\n", stPos.iPosX, stPos.iPosY, m_uiActiveUin);
         return -1;
     }
 
-    //·ÅÖÃ»ú¹Ø
+    //æ”¾ç½®æœºå…³
     m_aiCombatTrapIndex[m_iTrapNum] = GameType<CCombatTrapObj>::Create();
     if(m_aiCombatTrapIndex[m_iTrapNum] < 0)
     {
@@ -1146,7 +1146,7 @@ int CBattlefieldObj::AddCombatTrap(int iConfigID, int iCamp, const TUNITPOSITION
 
     ++m_iTrapNum;
 
-    //³õÊ¼»¯»ú¹Ø
+    //åˆå§‹åŒ–æœºå…³
     int iRet = pstTrapObj->InitTrap(iConfigID, iCamp, stPos, iDirection);
     if(iRet)
     {
@@ -1154,7 +1154,7 @@ int CBattlefieldObj::AddCombatTrap(int iConfigID, int iCamp, const TUNITPOSITION
         return -1;
     }
 
-    //ÍÆËÍÔö¼Ó»ú¹ØµÄÍ¨Öª
+    //æ¨é€å¢åŠ æœºå…³çš„é€šçŸ¥
     static GameProtocolMsg stMsg;
     CZoneMsgHelper::GenerateMsgHead(stMsg, MSGID_ZONE_ADDCOMBATTRAP_NOTIFY);
 
@@ -1171,10 +1171,10 @@ int CBattlefieldObj::AddCombatTrap(int iConfigID, int iCamp, const TUNITPOSITION
     return m_aiCombatTrapIndex[m_iTrapNum-1];
 }
 
-//´¥·¢Õ½³¡ÉÏµÄ»ú¹Ø
+//è§¦å‘æˆ˜åœºä¸Šçš„æœºå…³
 int CBattlefieldObj::TriggerCombatTrap(int iTriggerObjID, int iTrapObjID, int iTriggerType)
 {
-    //»ñÈ¡TrapObj
+    //è·å–TrapObj
     CCombatTrapObj* pstTrapObj = GameType<CCombatTrapObj>::Get(iTrapObjID);
     if(!pstTrapObj)
     {
@@ -1182,13 +1182,13 @@ int CBattlefieldObj::TriggerCombatTrap(int iTriggerObjID, int iTrapObjID, int iT
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶Ï´¥·¢ÀàĞÍ
+    //åˆ¤æ–­è§¦å‘ç±»å‹
     if(pstTrapObj->GetConfig()->iTriggerType != iTriggerType)
     {
         return T_SERVER_SUCESS;
     }
 
-    //Èç¹ûÊÇÖ÷¶¯´¥·¢£¬Ôò´¦ÀíÍ£Ö¹ĞĞ¶¯ºÍÒÆ¶¯µÈÂß¼­
+    //å¦‚æœæ˜¯ä¸»åŠ¨è§¦å‘ï¼Œåˆ™å¤„ç†åœæ­¢è¡ŒåŠ¨å’Œç§»åŠ¨ç­‰é€»è¾‘
     if(iTriggerType != TRAP_TRIGGER_PASSIVE)
     {
         CCombatUnitObj* pstUnitObj = CCombatUtility::GetCombatUnitObj(iTriggerObjID);
@@ -1202,21 +1202,21 @@ int CBattlefieldObj::TriggerCombatTrap(int iTriggerObjID, int iTrapObjID, int iT
         {
             case TRAP_INTERRUPT_MOVE:
                 {
-                    // ÉèÖÃ²»ÄÜÒÆ¶¯µÄ×´Ì¬
+                    // è®¾ç½®ä¸èƒ½ç§»åŠ¨çš„çŠ¶æ€
                     pstUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTMOVE, true);
                 }
                 break;
 
             case TRAP_INTERRUPT_ACTION:
                 {
-                    //ÉèÖÃ²»ÄÜĞĞ¶¯×´Ì¬
+                    //è®¾ç½®ä¸èƒ½è¡ŒåŠ¨çŠ¶æ€
                     pstUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTACTION, true);
                 }
                 break;
 
             case TRAP_INTERRUPT_ALL:
                 {
-                    //ÉèÖÃ²»ÄÜÒÆ¶¯²¢ÇÒ²»ÄÜĞĞ¶¯
+                    //è®¾ç½®ä¸èƒ½ç§»åŠ¨å¹¶ä¸”ä¸èƒ½è¡ŒåŠ¨
                     pstUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTMOVE, true);
                     pstUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTACTION, true);
                 }
@@ -1224,14 +1224,14 @@ int CBattlefieldObj::TriggerCombatTrap(int iTriggerObjID, int iTrapObjID, int iT
 
             default:
                 {
-                    //²»´ò¶ÏÈÎºÎĞĞÎª
+                    //ä¸æ‰“æ–­ä»»ä½•è¡Œä¸º
                     ;
                 }
                 break;
         }
     }
 
-    //ÍÆËÍ¸ø¿Í»§¶ËµÄÏûÏ¢
+    //æ¨é€ç»™å®¢æˆ·ç«¯çš„æ¶ˆæ¯
     static GameProtocolMsg stMsg;
     CZoneMsgHelper::GenerateMsgHead(stMsg, MSGID_ZONE_TRIGGERTRAP_NOTIFY);
 
@@ -1243,17 +1243,17 @@ int CBattlefieldObj::TriggerCombatTrap(int iTriggerObjID, int iTrapObjID, int iT
 
     SendNotifyToBattlefield(stMsg);
 
-    //todo jasonxiong5 ÖØĞÂ¿ª·¢½Å±¾
-    //Ö´ĞĞ½Å±¾º¯Êı
+    //todo jasonxiong5 é‡æ–°å¼€å‘è„šæœ¬
+    //æ‰§è¡Œè„šæœ¬å‡½æ•°
     //CModuleHelper::GetStoryFramework()->DoTrapTriggerScript(m_uiActiveUin, iTriggerObjID, iTrapObjID, pstTrapObj->GetTrapConfigID(), iTriggerType);
 
     return T_SERVER_SUCESS;
 }
 
-//Çå³ıÕ½³¡ÉÏµÄ»ú¹Ø
+//æ¸…é™¤æˆ˜åœºä¸Šçš„æœºå…³
 void CBattlefieldObj::DeleteCombatTrap(int iTrapObjID)
 {
-    //ÏÈ´ÓÕ½³¡ĞÅÏ¢ÖĞÉ¾³ı
+    //å…ˆä»æˆ˜åœºä¿¡æ¯ä¸­åˆ é™¤
     for(int i=0; i<m_iTrapNum; ++i)
     {
         if(m_aiCombatTrapIndex[i] == iTrapObjID)
@@ -1263,10 +1263,10 @@ void CBattlefieldObj::DeleteCombatTrap(int iTrapObjID)
         }
     }
     
-    //É¾³ı¶ÔÏó
+    //åˆ é™¤å¯¹è±¡
     GameType<CCombatTrapObj>::Del(iTrapObjID);
 
-    //ÍÆËÍ¸ø¿Í»§¶ËµÄÒÆ³ıÍ¨Öª
+    //æ¨é€ç»™å®¢æˆ·ç«¯çš„ç§»é™¤é€šçŸ¥
     static GameProtocolMsg stGameMsg;
     CZoneMsgHelper::GenerateMsgHead(stGameMsg, MSGID_ZONE_DELETECOMBATTRAP_NOTIFY);
 
@@ -1278,10 +1278,10 @@ void CBattlefieldObj::DeleteCombatTrap(int iTrapObjID)
     return;
 }
 
-//´¥·¢ÏİÚåÀàĞÍµÄ»ú¹Ø
+//è§¦å‘é™·é˜±ç±»å‹çš„æœºå…³
 int CBattlefieldObj::TriggerPitfallTrap(int iTriggerType)
 {
-    //»ñÈ¡Õ½¶·µ¥Î»
+    //è·å–æˆ˜æ–—å•ä½
     CCombatUnitObj* pstActionUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
     if(!pstActionUnitObj)
     {
@@ -1289,7 +1289,7 @@ int CBattlefieldObj::TriggerPitfallTrap(int iTriggerType)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡»ú¹Ø
+    //è·å–æœºå…³
     CCombatTrapObj* pstTrapObj = GetTrapByPos(pstActionUnitObj->GetUnitPosition());
     if(!pstTrapObj || pstTrapObj->GetConfig()->iTriggerType != iTriggerType)
     {
@@ -1299,10 +1299,10 @@ int CBattlefieldObj::TriggerPitfallTrap(int iTriggerType)
     return TriggerCombatTrap(m_iActionUnit, GetTrapIndexByPos(pstActionUnitObj->GetUnitPosition()), iTriggerType);
 }
 
-//ÊÖ¶¯´¥·¢»ú¹Ø
+//æ‰‹åŠ¨è§¦å‘æœºå…³
 int CBattlefieldObj::ManualTriggerTrap(const TUNITPOSITION& stPos)
 {
-    //»ñÈ¡ĞĞ¶¯µ¥Î»¶ÔÏó
+    //è·å–è¡ŒåŠ¨å•ä½å¯¹è±¡
     CCombatUnitObj* pstActionUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
     if(!pstActionUnitObj)
     {
@@ -1310,7 +1310,7 @@ int CBattlefieldObj::ManualTriggerTrap(const TUNITPOSITION& stPos)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡»ú¹Ø¶ÔÏó
+    //è·å–æœºå…³å¯¹è±¡
     CCombatTrapObj* pstTrapObj = GetTrapByPos(stPos);
     if(!pstTrapObj)
     {
@@ -1318,23 +1318,23 @@ int CBattlefieldObj::ManualTriggerTrap(const TUNITPOSITION& stPos)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶Ï»ú¹ØÊÇ·ñ¿É¼û¡¢ÊÇ·ñËÀÍö
+    //åˆ¤æ–­æœºå…³æ˜¯å¦å¯è§ã€æ˜¯å¦æ­»äº¡
     if(!IsTrapVisible(*pstActionUnitObj, *pstTrapObj) || pstTrapObj->IsTrapDead())
     {
         LOGERROR("Failed to trigger combat trap, unit id %d, trap pos %d:%d, uin %u\n", m_iActionUnit, stPos.iPosX, stPos.iPosY, m_uiActiveUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶Ï´¥·¢¾àÀëÊÇ·ñºÏ·¨
+    //åˆ¤æ–­è§¦å‘è·ç¦»æ˜¯å¦åˆæ³•
     int iDistance = CCombatUtility::GetAttackDistance(pstActionUnitObj->GetUnitPosition(), stPos, pstTrapObj->GetConfig()->iRangeID);
     if(iDistance == 0)
     {
-        //´¥·¢¾àÀë²»ºÏ·¨
+        //è§¦å‘è·ç¦»ä¸åˆæ³•
         LOGERROR("Failed to trigger combat trap, invalid distance, uin %u\n", m_uiActiveUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //´¥·¢»ú¹Ø
+    //è§¦å‘æœºå…³
     int iRet = TriggerCombatTrap(m_iActionUnit, GetTrapIndexByPos(stPos), TRAP_TRIGGER_PASSIVE);
     if(iRet)
     {
@@ -1345,10 +1345,10 @@ int CBattlefieldObj::ManualTriggerTrap(const TUNITPOSITION& stPos)
     return T_SERVER_SUCESS;
 }
 
-//¹¥»÷Õ½³¡»ú¹Ø
+//æ”»å‡»æˆ˜åœºæœºå…³
 int CBattlefieldObj::AttackCombatTrap(const TUNITPOSITION& stPos)
 {
-    //ÍÆËÍµÄ¹¥»÷ÏûÏ¢
+    //æ¨é€çš„æ”»å‡»æ¶ˆæ¯
     static GameProtocolMsg stGameMsg;
     CZoneMsgHelper::GenerateMsgHead(stGameMsg, MSGID_ZONE_COMBATACTION_NOTIFY);
 
@@ -1359,7 +1359,7 @@ int CBattlefieldObj::AttackCombatTrap(const TUNITPOSITION& stPos)
     pstNotify->set_etype(COMBAT_ACTION_CASTSKILL);
     pstNotify->set_iuseskilltype(SKILL_USE_ACTIVE);
 
-    //»ñÈ¡ĞĞ¶¯µ¥Î»¶ÔÏó
+    //è·å–è¡ŒåŠ¨å•ä½å¯¹è±¡
     CCombatUnitObj* pstActionUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
     if(!pstActionUnitObj)
     {
@@ -1367,7 +1367,7 @@ int CBattlefieldObj::AttackCombatTrap(const TUNITPOSITION& stPos)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡»ú¹Ø¶ÔÏó
+    //è·å–æœºå…³å¯¹è±¡
     CCombatTrapObj* pstTrapObj = GetTrapByPos(stPos);
     if(!pstTrapObj)
     {
@@ -1375,7 +1375,7 @@ int CBattlefieldObj::AttackCombatTrap(const TUNITPOSITION& stPos)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡ĞĞ¶¯µ¥Î»µÄÆÕ¹¥ÅäÖÃ
+    //è·å–è¡ŒåŠ¨å•ä½çš„æ™®æ”»é…ç½®
     const SFightUnitSkillConfig* pstSkillConfig = FightSkillCfgMgr().GetConfig(pstActionUnitObj->GetNormalSkillID());
     if(!pstSkillConfig)
     {
@@ -1385,30 +1385,30 @@ int CBattlefieldObj::AttackCombatTrap(const TUNITPOSITION& stPos)
 
     pstNotify->set_icastskillid(pstActionUnitObj->GetNormalSkillID());
 
-    //ÅĞ¶Ï»ú¹ØÊÇ·ñ¿É¼û
+    //åˆ¤æ–­æœºå…³æ˜¯å¦å¯è§
     if(!IsTrapVisible(*pstActionUnitObj, *pstTrapObj) || pstTrapObj->IsTrapDead() || !pstTrapObj->IsTrapCanAttacked())
     {
         LOGERROR("Failed to trigger combat trap, unit id %d, trap pos %d:%d, uin %u\n", m_iActionUnit, stPos.iPosX, stPos.iPosY, m_uiActiveUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶Ï´¥·¢¾àÀëÊÇ·ñºÏ·¨
+    //åˆ¤æ–­è§¦å‘è·ç¦»æ˜¯å¦åˆæ³•
     int iDistance = CCombatUtility::GetAttackDistance(pstActionUnitObj->GetUnitPosition(), stPos, pstSkillConfig->iTargetRangeID);
     if(iDistance == 0)
     {
-        //´¥·¢¾àÀë²»ºÏ·¨
+        //è§¦å‘è·ç¦»ä¸åˆæ³•
         LOGERROR("Failed to attack combat trap, invalid distance, uin %u\n", m_uiActiveUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //¿Û³ı»ú¹ØÑªÁ¿
+    //æ‰£é™¤æœºå…³è¡€é‡
     pstTrapObj->AddTrapHP(-1);
     
     pstNotify->set_inewtraphp(pstTrapObj->GetTrapHP());
 
     if(pstTrapObj->IsTrapDead())
     {
-        //ÒÑ¾­ËÀÍö£¬´¥·¢»ú¹Ø
+        //å·²ç»æ­»äº¡ï¼Œè§¦å‘æœºå…³
         int iRet = TriggerCombatTrap(m_iActionUnit, GetTrapIndexByPos(stPos), TRAP_TRIGGER_DESTROY);
         if(iRet)
         {
@@ -1417,33 +1417,33 @@ int CBattlefieldObj::AttackCombatTrap(const TUNITPOSITION& stPos)
         }
     }
 
-    //ÍÆËÍ»ú¹Ø±»¹¥»÷µÄÏûÏ¢
+    //æ¨é€æœºå…³è¢«æ”»å‡»çš„æ¶ˆæ¯
     SendNotifyToBattlefield(stGameMsg);
 
     return T_SERVER_SUCESS;
 }
 
-//ÅĞ¶Ï»ú¹ØÊÇ·ñ¿É¼û
+//åˆ¤æ–­æœºå…³æ˜¯å¦å¯è§
 bool CBattlefieldObj::IsTrapVisible(CCombatUnitObj& stUnitObj, CCombatTrapObj& stTrapObj)
 {
-    //»ñÈ¡µ¥Î»µÄÕóÓª
+    //è·å–å•ä½çš„é˜µè¥
     int iActionCamp = GetCombatUnitCamp(stUnitObj.GetCombatUnitID());
 
-    //»ñÈ¡»ú¹ØµÄÕóÓª
+    //è·å–æœºå…³çš„é˜µè¥
     int iTrapCamp = stTrapObj.GetTrapCamp();
     
     switch(stTrapObj.GetConfig()->iVisiableType)
     {
         case TRAP_VISIBALE_ALL:
             {
-                //ËùÓĞÈË¿É¼û
+                //æ‰€æœ‰äººå¯è§
                 return true;
             }
             break;
 
         case TRAP_VISIBALE_SELF:
             {
-                //¼º·½ÕóÓª¿É¼û
+                //å·±æ–¹é˜µè¥å¯è§
                 if(iActionCamp == iTrapCamp)
                 {
                     return true;
@@ -1472,7 +1472,7 @@ bool CBattlefieldObj::IsTrapVisibleToActionUnit(CCombatTrapObj& stTrapObj)
     return IsTrapVisible(*pstActionUnitObj, stTrapObj);
 }
 
-//»ñÈ¡Õ½³¡»ú¹ØÏêÏ¸ĞÅÏ¢
+//è·å–æˆ˜åœºæœºå…³è¯¦ç»†ä¿¡æ¯
 void CBattlefieldObj::GetCombatTrapInfo(std::vector<TCOMBATTRAPINFO>& vTrapInfo)
 {
     for(int i=0; i<m_iTrapNum; ++i)
@@ -1505,7 +1505,7 @@ void CBattlefieldObj::AddCombatUnitAttr(CCombatUnitObj& stUnitObj, int iAttrType
 
     if(iRealAddValue != 0)
     {
-        //ÍÆËÍÏûÏ¢Í¨Öª
+        //æ¨é€æ¶ˆæ¯é€šçŸ¥
         static GameProtocolMsg stMsg;
         CZoneMsgHelper::GenerateMsgHead(stMsg, MSGID_ZONE_UNITATTRCHANGE_NOTIFY);
     
@@ -1520,13 +1520,13 @@ void CBattlefieldObj::AddCombatUnitAttr(CCombatUnitObj& stUnitObj, int iAttrType
     return;
 }
 
-//É¾³ıÕ½¶·µ¥Î»ÉíÉÏµÄBUFF
+//åˆ é™¤æˆ˜æ–—å•ä½èº«ä¸Šçš„BUFF
 void CBattlefieldObj::DelUnitBuff(int iUnitID, int iBuffID)
 {
     CCombatUnitObj* pstUnitObj = CCombatUtility::GetCombatUnitObj(iUnitID);
     if(!pstUnitObj || !pstUnitObj->HasBuffOfSameID (iBuffID))
     {
-        //Õ½¶·µ¥Î»²»´æÔÚ»òÕßÉíÉÏÃ»ÓĞBUFF
+        //æˆ˜æ–—å•ä½ä¸å­˜åœ¨æˆ–è€…èº«ä¸Šæ²¡æœ‰BUFF
         return;
     }
 
@@ -1543,7 +1543,7 @@ void CBattlefieldObj::DelUnitBuff(int iUnitID, int iBuffID)
     return;
 }
 
-//ÍÆËÍÏûÏ¢¸øÕ½³¡ÉÏËùÓĞÍæ¼Ò
+//æ¨é€æ¶ˆæ¯ç»™æˆ˜åœºä¸Šæ‰€æœ‰ç©å®¶
 void CBattlefieldObj::SendNotifyToBattlefield(GameProtocolMsg& stNotify)
 {
     CZoneMsgHelper::SendZoneMsgToRole(stNotify, CUnitUtility::GetRoleByUin(m_uiActiveUin));
@@ -1552,7 +1552,7 @@ void CBattlefieldObj::SendNotifyToBattlefield(GameProtocolMsg& stNotify)
     return;
 }
 
-//µ±Ç°ĞĞ¶¯µÄÍæ¼Ò½ÇÉ«ÊÇ·ñÓĞĞ§
+//å½“å‰è¡ŒåŠ¨çš„ç©å®¶è§’è‰²æ˜¯å¦æœ‰æ•ˆ
 bool CBattlefieldObj::IsValidActionRole(unsigned int uin)
 {
     if((GetCombatUnitCamp(m_iActionUnit)==FIGHT_CAMP_ACTIVE && uin==m_uiActiveUin)
@@ -1564,23 +1564,23 @@ bool CBattlefieldObj::IsValidActionRole(unsigned int uin)
     return false;
 }
 
-//ÊÇ·ñĞèÒªÉèÖÃÕóĞÍ
+//æ˜¯å¦éœ€è¦è®¾ç½®é˜µå‹
 bool CBattlefieldObj::IsNeedSetForm()
 {
     return (m_bActiveNeedSetForm || m_bPassiveNeedSetForm);
 }
 
-//ÉèÖÃÕ½¶·ÕóĞÍ
+//è®¾ç½®æˆ˜æ–—é˜µå‹
 int CBattlefieldObj::SetCombatForm(unsigned int uin, const CombatForm& stForm)
 {
-    //¼ì²éµ±Ç°Õ½³¡×´Ì¬
+    //æ£€æŸ¥å½“å‰æˆ˜åœºçŠ¶æ€
     if(GetActionUnitStatus() != ROLE_COMBAT_UNIT_STAT_SETFORM)
     {
         LOGERROR("Failed to set combat form, invalid battle status, uin %u\n", uin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //¼ì²éunitidÊÇ·ñºÏ·¨
+    //æ£€æŸ¥unitidæ˜¯å¦åˆæ³•
     int* paiCombatObjIndex = (uin==m_uiActiveUin) ? m_aiActiveCombatObjIndex : m_aiPassiveCombatObjIndex;
 
     int iTotalUnitNum = 0;
@@ -1614,7 +1614,7 @@ int CBattlefieldObj::SetCombatForm(unsigned int uin, const CombatForm& stForm)
         }
     }
     
-    //ÉèÖÃËùÓĞÕ½¶·µ¥Î»µÄÎ»ÖÃ
+    //è®¾ç½®æ‰€æœ‰æˆ˜æ–—å•ä½çš„ä½ç½®
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
         if(paiCombatObjIndex[i] < 0)
@@ -1631,7 +1631,7 @@ int CBattlefieldObj::SetCombatForm(unsigned int uin, const CombatForm& stForm)
         pstCombatUnitObj->SetUnitPosition(TUNITPOSITION(stForm.stunitinfos(i).stpos().iposx(), stForm.stunitinfos(i).stpos().iposy()));
     }
 
-    //ÉèÖÃ±ê¼Ç
+    //è®¾ç½®æ ‡è®°
     if(uin == m_uiActiveUin)
     {
         m_bActiveNeedSetForm = false;
@@ -1643,14 +1643,14 @@ int CBattlefieldObj::SetCombatForm(unsigned int uin, const CombatForm& stForm)
 
     if(!IsNeedSetForm())
     {
-        //ÕóĞÍÒÑ¾­ÉèÖÃÍê³É£¬ÉèÖÃÕ½³¡×´Ì¬
+        //é˜µå‹å·²ç»è®¾ç½®å®Œæˆï¼Œè®¾ç½®æˆ˜åœºçŠ¶æ€
         SetActionUnitStatus(ROLE_COMBAT_UNIT_STAT_INVALID);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//ÍÆËÍÕ½¶·ÕóĞÍµÄÍ¨Öª
+//æ¨é€æˆ˜æ–—é˜µå‹çš„é€šçŸ¥
 void CBattlefieldObj::SendCombatFormNotify()
 {
     static GameProtocolMsg stMsg;
@@ -1690,7 +1690,7 @@ void CBattlefieldObj::SendCombatFormNotify()
     return;
 }
 
-//ÍÆËÍµ±Ç°Õ½³¡µÄ³öÊÖĞÅÏ¢
+//æ¨é€å½“å‰æˆ˜åœºçš„å‡ºæ‰‹ä¿¡æ¯
 void CBattlefieldObj::SendActionUnitNotify()
 {
     static GameProtocolMsg stMsg;
@@ -1737,7 +1737,7 @@ void CBattlefieldObj::SendActionUnitNotify()
     return;
 }
 
-//±£´æÕ½³¡Õ½¶·µ¥Î»ÏêÏ¸ĞÅÏ¢
+//ä¿å­˜æˆ˜åœºæˆ˜æ–—å•ä½è¯¦ç»†ä¿¡æ¯
 void CBattlefieldObj::SaveCombatUnitInfo()
 {
     CGameRoleObj* pstRoleObj = CUnitUtility::GetRoleByUin(m_uiActiveUin);
@@ -1746,14 +1746,14 @@ void CBattlefieldObj::SaveCombatUnitInfo()
         return;
     }
 
-    //ÏÈÉèÖÃÖ÷¶¯·½ÕóĞÍÖĞ³ı½Å±¾É±ËÀµÄµ¥Î»ÍâHP¡¢MPÎª1
+    //å…ˆè®¾ç½®ä¸»åŠ¨æ–¹é˜µå‹ä¸­é™¤è„šæœ¬æ€æ­»çš„å•ä½å¤–HPã€MPä¸º1
     std::vector<int> vExcludeConfigID;
     for(int i=0; i<m_iActiveScriptKilledNum; ++i)
     {
         vExcludeConfigID.push_back(m_aiActiveScriptKilledConfigID[i]);
     }
 
-    //±£´æÖ÷¶¯·½´æ»îµ¥Î»µÄHPºÍMP
+    //ä¿å­˜ä¸»åŠ¨æ–¹å­˜æ´»å•ä½çš„HPå’ŒMP
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
         if(m_aiActiveCombatObjIndex[i] < 0)
@@ -1773,12 +1773,12 @@ void CBattlefieldObj::SaveCombatUnitInfo()
     return;
 }
 
-//ÇåÀíÕ½³¡ÉÏËÀµôµÄµ¥Î»
+//æ¸…ç†æˆ˜åœºä¸Šæ­»æ‰çš„å•ä½
 void CBattlefieldObj::ClearDeadCombatUnit()
 {
    CCombatUnitObj* pstUnitObj = NULL;
 
-    //ÏÈÇåÀíÖ÷¶¯·½µÄ
+    //å…ˆæ¸…ç†ä¸»åŠ¨æ–¹çš„
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM;)
     {
         if(m_aiActiveCombatObjIndex[i] < 0)
@@ -1793,10 +1793,10 @@ void CBattlefieldObj::ClearDeadCombatUnit()
             continue;
         }
 
-        //µ¥Î»ÒÑ¾­ËÀÍö£¬ÇåÀí
+        //å•ä½å·²ç»æ­»äº¡ï¼Œæ¸…ç†
         ClearOneCombatUnitObj(m_aiActiveCombatObjIndex[i]);
 
-        //´Ó¿ÉĞĞ¶¯¶ÓÁĞÖĞÉ¾³ı
+        //ä»å¯è¡ŒåŠ¨é˜Ÿåˆ—ä¸­åˆ é™¤
         for(int j=0; j<m_iCanCombatUnitNum; ++j)
         {
             if(m_aiCanCombatUnit[j] == m_aiActiveCombatObjIndex[i])
@@ -1808,7 +1808,7 @@ void CBattlefieldObj::ClearDeadCombatUnit()
             }
         }
 
-        //½«ºóĞøµÄÇ°ÒÆ£¬±£Ö¤Ë³Ğò
+        //å°†åç»­çš„å‰ç§»ï¼Œä¿è¯é¡ºåº
         for(int j=i; j<(MAX_CAMP_FIGHT_UNIT_NUM-1); ++j)
         {
             m_aiActiveCombatObjIndex[j] = m_aiActiveCombatObjIndex[j+1];
@@ -1817,7 +1817,7 @@ void CBattlefieldObj::ClearDeadCombatUnit()
         m_aiActiveCombatObjIndex[MAX_CAMP_FIGHT_UNIT_NUM-1] = -1;
     }
 
-    //ÔÙÇåÀí±»¶¯·½µÄ
+    //å†æ¸…ç†è¢«åŠ¨æ–¹çš„
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM;)
     {
         if(m_aiPassiveCombatObjIndex[i] < 0)
@@ -1832,10 +1832,10 @@ void CBattlefieldObj::ClearDeadCombatUnit()
             continue;
         }
 
-        //µ¥Î»ÒÑ¾­ËÀÍö£¬ÇåÀí
+        //å•ä½å·²ç»æ­»äº¡ï¼Œæ¸…ç†
         ClearOneCombatUnitObj(m_aiPassiveCombatObjIndex[i]);
 
-        //´Ó¿ÉĞĞ¶¯¶ÓÁĞÖĞÉ¾³ı
+        //ä»å¯è¡ŒåŠ¨é˜Ÿåˆ—ä¸­åˆ é™¤
         for(int j=0; j<m_iCanCombatUnitNum; ++j)
         {
             if(m_aiCanCombatUnit[j] == m_aiPassiveCombatObjIndex[i])
@@ -1847,7 +1847,7 @@ void CBattlefieldObj::ClearDeadCombatUnit()
             }
         }
 
-        //½«ºóĞøµÄÇ°ÒÆ£¬±£Ö¤Ë³Ğò
+        //å°†åç»­çš„å‰ç§»ï¼Œä¿è¯é¡ºåº
         for(int j=i; j<(MAX_CAMP_FIGHT_UNIT_NUM-1); ++j)
         {
             m_aiPassiveCombatObjIndex[j] = m_aiPassiveCombatObjIndex[j+1];
@@ -1859,7 +1859,7 @@ void CBattlefieldObj::ClearDeadCombatUnit()
     return;
 }
 
-//¼õÉÙĞĞ¶¯µ¥Î»¼¼ÄÜCD»ØºÏ
+//å‡å°‘è¡ŒåŠ¨å•ä½æŠ€èƒ½CDå›åˆ
 void CBattlefieldObj::DecreaseActionSkillCDRound()
 {
     CCombatUnitObj* pstUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
@@ -1880,12 +1880,12 @@ void CBattlefieldObj::DecreaseActionSkillCDRound()
     return;
 }
 
-//³õÊ¼»¯¹ÖÎïĞÅÏ¢
+//åˆå§‹åŒ–æ€ªç‰©ä¿¡æ¯
 int CBattlefieldObj::InitBattlefieldInfo(int iCrossID)
 {
     m_iCrossID = iCrossID;
 
-    //¶ÁÈ¡Õ½¶·¹Ø¿¨ÅäÖÃ
+    //è¯»å–æˆ˜æ–—å…³å¡é…ç½®
     const SBattleCrossConfig* pstCrossConfig = BattleCrossCfgMgr().GetConfig(m_iCrossID);
     if(!pstCrossConfig)
     {
@@ -1893,25 +1893,25 @@ int CBattlefieldObj::InitBattlefieldInfo(int iCrossID)
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //ÅĞ¶ÏÊÇ·ñĞèÒªÉèÖÃÕóĞÍ
+    //åˆ¤æ–­æ˜¯å¦éœ€è¦è®¾ç½®é˜µå‹
     m_bActiveNeedSetForm = false;
     m_bPassiveNeedSetForm = false;
     if(pstCrossConfig->iNeedSetForm)
     {
-        //ĞèÒªÉèÖÃÕóĞÍ
+        //éœ€è¦è®¾ç½®é˜µå‹
         m_bActiveNeedSetForm = true;
 
         if(m_iCrossID == PVP_COMBAT_CROSS_ID)
         {
-            //Èç¹ûÊÇPVPÕ½¶·
+            //å¦‚æœæ˜¯PVPæˆ˜æ–—
             m_bPassiveNeedSetForm = true;
         }
     }
 
-    //ÉèÖÃµØÍ¼ID
+    //è®¾ç½®åœ°å›¾ID
     m_iMapID = pstCrossConfig->iMapID;
 
-    //ÉèÖÃµØÍ¼×èµ²ÅäÖÃ
+    //è®¾ç½®åœ°å›¾é˜»æŒ¡é…ç½®
     m_pstBattlePathManager = BattlefieldPathCfgMgr().GetBattlefieldPathConfigManager(m_iMapID);
     if(!m_pstBattlePathManager)
     {
@@ -1919,16 +1919,16 @@ int CBattlefieldObj::InitBattlefieldInfo(int iCrossID)
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //»ñÈ¡Ë«·½ºÏ·¨µÄÕ¾Î»Î»ÖÃ
+    //è·å–åŒæ–¹åˆæ³•çš„ç«™ä½ä½ç½®
     GetBattlefieldValidPos(*pstCrossConfig);
 
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯¹ÖÎïĞÅÏ¢
+//åˆå§‹åŒ–æ€ªç‰©ä¿¡æ¯
 int CBattlefieldObj::InitMonsterInfo(int iCrossID)
 {
-    //¶ÁÈ¡Õ½¶·¹Ø¿¨ÅäÖÃ
+    //è¯»å–æˆ˜æ–—å…³å¡é…ç½®
     const SBattleCrossConfig* pstCrossConfig = BattleCrossCfgMgr().GetConfig(iCrossID);
     if(!pstCrossConfig)
     {
@@ -1936,7 +1936,7 @@ int CBattlefieldObj::InitMonsterInfo(int iCrossID)
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //¶ÁÈ¡¹Ø¿¨¹ÖÎï×éÅäÖÃ
+    //è¯»å–å…³å¡æ€ªç‰©ç»„é…ç½®
     const SCrossMonsterConfig* pstMonsterGroupConfig = CrossMonterCfgMgr().GetConfig(pstCrossConfig->iMonsterGroup);
     if(!pstMonsterGroupConfig)
     {
@@ -1946,13 +1946,13 @@ int CBattlefieldObj::InitMonsterInfo(int iCrossID)
 
     int iRet = T_SERVER_SUCESS;
 
-    //³õÊ¼»¯¹ÖÎïÕ½¶·ĞÅÏ¢
+    //åˆå§‹åŒ–æ€ªç‰©æˆ˜æ–—ä¿¡æ¯
     for(int i=0; i<pstMonsterGroupConfig->iMonsterNum; ++i)
     {
         const OneCrossMonster& stOneConfig = pstMonsterGroupConfig->astMonsterInfo[i];
         if(stOneConfig.iMonsterID==0 || m_astPassivePos[i].iPosX<0)
         {
-            //ÓĞĞ§¹ÖÎïµÄÅäÖÃÊÇÁ¬ĞøµÄ£¬Åöµ½IDÎª0ÈÏÎª½áÊøÁË
+            //æœ‰æ•ˆæ€ªç‰©çš„é…ç½®æ˜¯è¿ç»­çš„ï¼Œç¢°åˆ°IDä¸º0è®¤ä¸ºç»“æŸäº†
             break;
         }
 
@@ -1967,10 +1967,10 @@ int CBattlefieldObj::InitMonsterInfo(int iCrossID)
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯µ¥Ö»¹ÖÎïĞÅÏ¢
+//åˆå§‹åŒ–å•åªæ€ªç‰©ä¿¡æ¯
 int CBattlefieldObj::InitOneMonsterInfo(int iUnitIndex, const OneCrossMonster& stOneConfig, const SFightPosInfo& stPosInfo)    
 {
-    //·ÖÅäCCombatUnitObj
+    //åˆ†é…CCombatUnitObj
     CCombatUnitObj* pstCombatUnitObj = CreateCombatUnitObj(m_aiPassiveCombatObjIndex[iUnitIndex]);
     if(!pstCombatUnitObj)
     {
@@ -1985,7 +1985,7 @@ int CBattlefieldObj::InitOneMonsterInfo(int iUnitIndex, const OneCrossMonster& s
         return iRet;
     }
 
-    //ÊÍ·ÅÕ½¶·µ¥Î»µÄµÇ³¡¼¼ÄÜ
+    //é‡Šæ”¾æˆ˜æ–—å•ä½çš„ç™»åœºæŠ€èƒ½
     std::vector<int> vSkillIDs;
     pstCombatUnitObj->GetSkillByType(SKILL_USE_ON_STAGE, vSkillIDs);
 
@@ -2004,13 +2004,13 @@ int CBattlefieldObj::InitOneMonsterInfo(int iUnitIndex, const OneCrossMonster& s
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯µ¥¸öÕóÓªĞÅÏ¢
+//åˆå§‹åŒ–å•ä¸ªé˜µè¥ä¿¡æ¯
 int CBattlefieldObj::InitFightCampInfo(CGameRoleObj& rstRoleObj, bool bIsActive)   
 {
-    //»ñÈ¡½ÇÉ«Õ½¶·µ¥Î»¹ÜÀíÆ÷
+    //è·å–è§’è‰²æˆ˜æ–—å•ä½ç®¡ç†å™¨
     CFightUnitManager& rstFightUnitManager = rstRoleObj.GetFightUnitManager();
 
-    //»ñÈ¡ÕóĞÍÖĞÕ½¶·µ¥Î»µÄĞÅÏ¢
+    //è·å–é˜µå‹ä¸­æˆ˜æ–—å•ä½çš„ä¿¡æ¯
     std::vector<int> vFormUnitInfo;
     rstFightUnitManager.GetFormFightUnitInfo(vFormUnitInfo);
 
@@ -2045,7 +2045,7 @@ int CBattlefieldObj::InitFightCampInfo(CGameRoleObj& rstRoleObj, bool bIsActive)
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯µ¥¸öÕ½¶·µ¥Î»ĞÅÏ¢
+//åˆå§‹åŒ–å•ä¸ªæˆ˜æ–—å•ä½ä¿¡æ¯
 int CBattlefieldObj::InitOneFightUnitInfo(int iUnitIndex, CGameRoleObj& rstRoleObj, int iFightUnitID, const SFightPosInfo& stPosInfo, bool bIsActive)
 {
     int* paiCombatObjIndex = NULL;
@@ -2058,7 +2058,7 @@ int CBattlefieldObj::InitOneFightUnitInfo(int iUnitIndex, CGameRoleObj& rstRoleO
         paiCombatObjIndex = m_aiPassiveCombatObjIndex;
     }
 
-    //´´½¨Õ½³¡Õ½¶·µ¥Î»¶ÔÏó
+    //åˆ›å»ºæˆ˜åœºæˆ˜æ–—å•ä½å¯¹è±¡
     CCombatUnitObj* pstCombatUnitObj = CreateCombatUnitObj(paiCombatObjIndex[iUnitIndex]);
     if(!pstCombatUnitObj)
     {
@@ -2066,7 +2066,7 @@ int CBattlefieldObj::InitOneFightUnitInfo(int iUnitIndex, CGameRoleObj& rstRoleO
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //³õÊ¼»¯Õ½³¡Õ½¶·µ¥Î»¶ÔÏó
+    //åˆå§‹åŒ–æˆ˜åœºæˆ˜æ–—å•ä½å¯¹è±¡
     int iRet = pstCombatUnitObj->InitRoleUnitObj(paiCombatObjIndex[iUnitIndex], rstRoleObj, iFightUnitID, stPosInfo);
     if(iRet)
     {
@@ -2074,7 +2074,7 @@ int CBattlefieldObj::InitOneFightUnitInfo(int iUnitIndex, CGameRoleObj& rstRoleO
         return iRet;
     }
 
-    //ÊÍ·ÅÕ½¶·µ¥Î»µÄµÇ³¡¼¼ÄÜ
+    //é‡Šæ”¾æˆ˜æ–—å•ä½çš„ç™»åœºæŠ€èƒ½
     std::vector<int> vSkillIDs;
     pstCombatUnitObj->GetSkillByType(SKILL_USE_ON_STAGE, vSkillIDs);
 
@@ -2091,7 +2091,7 @@ int CBattlefieldObj::InitOneFightUnitInfo(int iUnitIndex, CGameRoleObj& rstRoleO
     return T_SERVER_SUCESS;
 }
 
-//´ò°ü·µ»Øµ¥¸öÕ½¶·¶ÔÏóĞÅÏ¢
+//æ‰“åŒ…è¿”å›å•ä¸ªæˆ˜æ–—å¯¹è±¡ä¿¡æ¯
 int CBattlefieldObj::PackOneCombatUnitInfo(int iCamp, int iUnitObjIndex, CombatUnit& stUnitInfo)
 {
     if(iUnitObjIndex < 0)
@@ -2110,7 +2110,7 @@ int CBattlefieldObj::PackOneCombatUnitInfo(int iCamp, int iUnitObjIndex, CombatU
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯»ØºÏ³öÊÖµ¥Î»ĞÅÏ¢
+//åˆå§‹åŒ–å›åˆå‡ºæ‰‹å•ä½ä¿¡æ¯
 void CBattlefieldObj::InitRoundActionUnits()
 {
     m_iCanCombatUnitNum = 0;
@@ -2139,13 +2139,13 @@ void CBattlefieldObj::InitRoundActionUnits()
     return;
 }
 
-//Ìí¼ÓÒ»¸öÕ½¶·µ¥Î»µ½»ØºÏ³öÊÖÁĞ±í
+//æ·»åŠ ä¸€ä¸ªæˆ˜æ–—å•ä½åˆ°å›åˆå‡ºæ‰‹åˆ—è¡¨
 void CBattlefieldObj::AddOneUnitToRoundActionList(int iUnitObjIndex)
 {
     CCombatUnitObj* pstCombatUnitObj = GameType<CCombatUnitObj>::Get(iUnitObjIndex);
     if(!pstCombatUnitObj || pstCombatUnitObj->IsCombatUnitDead())
     {
-        //ÕÒ²»µ½»òÕßµ¥Î»ÒÑ¾­ËÀÍö£¬²»Ìí¼Ó
+        //æ‰¾ä¸åˆ°æˆ–è€…å•ä½å·²ç»æ­»äº¡ï¼Œä¸æ·»åŠ 
         return;
     }
 
@@ -2154,10 +2154,10 @@ void CBattlefieldObj::AddOneUnitToRoundActionList(int iUnitObjIndex)
     return;
 }
 
-//»ñÈ¡Õ½¶·µ¥Î»µÄÕóÓª
+//è·å–æˆ˜æ–—å•ä½çš„é˜µè¥
 int CBattlefieldObj::GetCombatUnitCamp(int iCombatUnitiD)
 {
-    //ÏÈÅĞ¶ÏÊÇ·ñÊÇÖ÷¶¯³öÊÖ·½
+    //å…ˆåˆ¤æ–­æ˜¯å¦æ˜¯ä¸»åŠ¨å‡ºæ‰‹æ–¹
     for(int i=0; i<MAX_CAMP_FIGHT_UNIT_NUM; ++i)
     {
         if(m_aiActiveCombatObjIndex[i] == iCombatUnitiD)
@@ -2174,16 +2174,16 @@ int CBattlefieldObj::GetCombatUnitCamp(int iCombatUnitiD)
     return FIGHT_CAMP_INVALID;
 }
 
-//Õ½¶·µ¥Î»ÊÇ·ñÍ¬Ò»ÕóÓª
+//æˆ˜æ–—å•ä½æ˜¯å¦åŒä¸€é˜µè¥
 bool CBattlefieldObj::IsUnitInSameCamp(CCombatUnitObj& stUnitObj, CCombatUnitObj& stOtherUnitObj)
 {
     return (GetCombatUnitCamp(stUnitObj.GetCombatUnitID())==GetCombatUnitCamp(stOtherUnitObj.GetCombatUnitID()));
 }
 
-//ÉèÖÃ»ï°éµÄÕ½¶·AI
+//è®¾ç½®ä¼™ä¼´çš„æˆ˜æ–—AI
 int CBattlefieldObj::SetPartnerAI(int iPartnerAIID)
 {
-    //ÅĞ¶Ïµ±Ç°Õ½¶·µ¥Î»ÊÇ·ñÊÇ»ï°é
+    //åˆ¤æ–­å½“å‰æˆ˜æ–—å•ä½æ˜¯å¦æ˜¯ä¼™ä¼´
     if(GetActionUnitType() != COMBAT_UNIT_TYPE_PARTNER)
     {
         LOGERROR("Failed to set partner AI, action unit is not partner, uin %u\n", m_uiActiveUin);
@@ -2200,7 +2200,7 @@ int CBattlefieldObj::SetPartnerAI(int iPartnerAIID)
     return pstPartnerUnitObj->SetFightAI(iPartnerAIID);
 }
 
-//ÅĞ¶Ïµ±Ç°ÊÇ·ñÓĞÎ´³öÊÖµ¥Î»
+//åˆ¤æ–­å½“å‰æ˜¯å¦æœ‰æœªå‡ºæ‰‹å•ä½
 bool CBattlefieldObj::HasActionCombatUnit()
 {
     for(int i=0; i<m_iCanCombatUnitNum; ++i)
@@ -2218,8 +2218,8 @@ bool CBattlefieldObj::HasActionCombatUnit()
     return false;
 }
 
-//todo jasonxiong5 Õâ±ßÒªÓÃĞÂµÄÏÈ¹¥ÖØĞÂ¿ª·¢
-//ÉèÖÃµ±Ç°³öÊÖµÄÕ½¶·µ¥Î»
+//todo jasonxiong5 è¿™è¾¹è¦ç”¨æ–°çš„å…ˆæ”»é‡æ–°å¼€å‘
+//è®¾ç½®å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½
 void CBattlefieldObj::SetActionCombatUnit()
 {
     if(m_iActionUnit >= 0)
@@ -2228,13 +2228,13 @@ void CBattlefieldObj::SetActionCombatUnit()
         return;
     }
 
-    //±éÀúµ±Ç°ĞĞ¶¯Êı×é£¬ÕÒ³öµ±Ç°³öÊÖµÄÕ½¶·µ¥Î»
+    //éå†å½“å‰è¡ŒåŠ¨æ•°ç»„ï¼Œæ‰¾å‡ºå½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½
     int iActionIndex = -1;
     for(int i=0; i<m_iCanCombatUnitNum; ++i)
     {
         if(m_aiCanCombatUnit[i] < 0)
         {
-            //ÒÑ¾­ĞĞ¶¯¹ı
+            //å·²ç»è¡ŒåŠ¨è¿‡
             continue;
         }
 
@@ -2268,7 +2268,7 @@ void CBattlefieldObj::SetActionCombatUnit()
 
         if(pstActionUnitObj->IsCombatUnitDead())
         {
-            //µ¥Î»ËÀÍö£¬²»ÄÜĞĞ¶¯
+            //å•ä½æ­»äº¡ï¼Œä¸èƒ½è¡ŒåŠ¨
             m_aiCanCombatUnit[i] = -1;
 
             continue;
@@ -2285,17 +2285,17 @@ void CBattlefieldObj::SetActionCombatUnit()
     return;
 }
 
-//Çå³ıµ±Ç°³öÊÖµÄÕ½¶·µ¥Î»
+//æ¸…é™¤å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½
 void CBattlefieldObj::ClearActionCombatUnit()
 {
-    //ÉèÖÃµ±Ç°ĞĞ¶¯µ¥Î»µ½ÒÑ³öÊÖÖĞ
+    //è®¾ç½®å½“å‰è¡ŒåŠ¨å•ä½åˆ°å·²å‡ºæ‰‹ä¸­
     m_aiActionDoneUnit[m_iActionDoneUnitNum++] = m_iActionUnit;
     m_iActionUnit = -1;
 
     return;
 }
 
-//»ñÈ¡µ±Ç°³öÊÖµÄÕ½¶·µ¥Î»µÄÀàĞÍ
+//è·å–å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½çš„ç±»å‹
 int CBattlefieldObj::GetActionUnitType()
 {
     CCombatUnitObj* pstActionUnitObj = GameType<CCombatUnitObj>::Get(m_iActionUnit);
@@ -2308,13 +2308,13 @@ int CBattlefieldObj::GetActionUnitType()
     return pstActionUnitObj->GetCombatUnitType();
 }
 
-//»ñÈ¡µ±Ç°³öÊÖµ¥Î»µÄID
+//è·å–å½“å‰å‡ºæ‰‹å•ä½çš„ID
 int CBattlefieldObj::GetActionUnitID()
 {
     return m_iActionUnit;
 }
 
-//Ö÷½ÇÕ½¶·µ¥Î»µ±Ç°µÄ×´Ì¬
+//ä¸»è§’æˆ˜æ–—å•ä½å½“å‰çš„çŠ¶æ€
 int CBattlefieldObj::GetActionUnitStatus()
 {
     return m_iRoleCombatUnitStatus;
@@ -2325,13 +2325,13 @@ void CBattlefieldObj::SetActionUnitStatus(int iStatus)
     m_iRoleCombatUnitStatus = iStatus;
 }
 
-//ÅĞ¶ÏÊÇ·ñÄÜ¹»½áÊøÕ½¶·
+//åˆ¤æ–­æ˜¯å¦èƒ½å¤Ÿç»“æŸæˆ˜æ–—
 bool CBattlefieldObj::CanEndCombat()
 {
     return (m_iCombatResult != COMBAT_RESULT_INVALID);
 }
 
-//ÍÆËÍ¿Í»§¶ËÖ÷½Ç²Ù×÷µÄÖ¸Áî
+//æ¨é€å®¢æˆ·ç«¯ä¸»è§’æ“ä½œçš„æŒ‡ä»¤
 void CBattlefieldObj::NotifyRoleUnitDirective(int iDirective)
 {
     static GameProtocolMsg stUnitDirectiveNotify;
@@ -2342,22 +2342,22 @@ void CBattlefieldObj::NotifyRoleUnitDirective(int iDirective)
     pstNotify->set_idirective((UnitDirectiveType)iDirective);
     pstNotify->set_icombatunitid(m_iActionUnit);
 
-    //ÍÆËÍÍ¨Öª
+    //æ¨é€é€šçŸ¥
     SendNotifyToBattlefield(stUnitDirectiveNotify);
 
     return;
 }
 
-//¿ªÊ¼Õ½¶·µ¥Î»µÄÒÆ¶¯
+//å¼€å§‹æˆ˜æ–—å•ä½çš„ç§»åŠ¨
 int CBattlefieldObj::DoCombatUnitMove(const UnitPath& stPath)
 {
     if(stPath.stposes_size() == 0)
     {
-        //Õ½¶·µ¥Î»²»ÒÆ¶¯
+        //æˆ˜æ–—å•ä½ä¸ç§»åŠ¨
         return T_SERVER_SUCESS;
     }
 
-    //»ñÈ¡µ±Ç°ĞĞ¶¯µÄÕ½¶·µ¥Î»Obj
+    //è·å–å½“å‰è¡ŒåŠ¨çš„æˆ˜æ–—å•ä½Obj
     CCombatUnitObj* pstActionUnitObj = GameType<CCombatUnitObj>::Get(m_iActionUnit);
     if(!pstActionUnitObj)
     {
@@ -2365,26 +2365,26 @@ int CBattlefieldObj::DoCombatUnitMove(const UnitPath& stPath)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶ÏÊÇ·ñ¿ÉÒÔÒÆ¶¯
+    //åˆ¤æ–­æ˜¯å¦å¯ä»¥ç§»åŠ¨
     if(pstActionUnitObj->GetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTMOVE))
     {
-        //²»ÄÜÒÆ¶¯
+        //ä¸èƒ½ç§»åŠ¨
         pstActionUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTMOVE, false);
 
         return T_SERVER_SUCESS;
     }
 
-    //»ñÈ¡Õ½¶·µ¥Î»×î´óÒÆ¶¯¾àÀë
+    //è·å–æˆ˜æ–—å•ä½æœ€å¤§ç§»åŠ¨è·ç¦»
     int iMaxWalkPosNum = GetMaxMoveDistance(*pstActionUnitObj);
 
-    //¼ì²é²½³¤
+    //æ£€æŸ¥æ­¥é•¿
     if(stPath.stposes_size()>iMaxWalkPosNum || stPath.stposes_size()>MAX_POSITION_NUMBER_IN_PATH)
     {
         LOGERROR("Failed to do combat unit move, pos num reach max %d, unit index %d, uin %u\n", iMaxWalkPosNum, m_iActionUnit, m_uiActiveUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //·â×°ĞÂµÄÂ·¾¶
+    //å°è£…æ–°çš„è·¯å¾„
     TUNITPATH stUnitPath;
     for(int i=0; i<stPath.stposes_size(); ++i)
     {
@@ -2394,14 +2394,14 @@ int CBattlefieldObj::DoCombatUnitMove(const UnitPath& stPath)
         ++stUnitPath.iPosNum;
     }
 
-    //¼ì²éÂ·¾¶ÊÇ·ñ¿ÉÁ¬ĞøĞĞ×ß
+    //æ£€æŸ¥è·¯å¾„æ˜¯å¦å¯è¿ç»­è¡Œèµ°
     if(!m_pstBattlePathManager->CanContinueWalk(pstActionUnitObj->GetUnitPosition(), stUnitPath))
     {
         LOGERROR("Failed to do combat unit move, path can not walk, uin %u\n", m_uiActiveUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //¼ì²éÂ·¾¶ÉÏµÄµãÊÇ·ñ¿ÉĞĞ×ß
+    //æ£€æŸ¥è·¯å¾„ä¸Šçš„ç‚¹æ˜¯å¦å¯è¡Œèµ°
     for(int i=0; i<stUnitPath.iPosNum; ++i)
     {
         if(!IsPosCanWalk(stUnitPath.astPos[i], m_iActionUnit))
@@ -2411,27 +2411,27 @@ int CBattlefieldObj::DoCombatUnitMove(const UnitPath& stPath)
         }
     }
 
-    //´¦ÀíÂ·¾¶ÉÏµÄ»ú¹Ø
+    //å¤„ç†è·¯å¾„ä¸Šçš„æœºå…³
     int iTargetIndex = stUnitPath.iPosNum-1;
     for(int i=0; i<stUnitPath.iPosNum; ++i)
     {
         CCombatTrapObj* pstTrapObj = GetTrapByPos(stUnitPath.astPos[i]);
         if(!pstTrapObj)
         {
-            //Ã»ÓĞ»ú¹Ø
+            //æ²¡æœ‰æœºå…³
             continue;
         }
 
-        //³¢ÊÔ´¥·¢Í£Ö¹´¥·¢ÀàĞÍµÄ»ú¹Ø
+        //å°è¯•è§¦å‘åœæ­¢è§¦å‘ç±»å‹çš„æœºå…³
         if(pstTrapObj->GetConfig()->iTriggerType == TRAP_TRIGGER_MOVEON)
         {
             TriggerCombatTrap(m_iActionUnit, pstTrapObj->GetObjectID(), TRAP_TRIGGER_MOVEON);
         }
 
-        //ÅĞ¶ÏÊÇ·ñ´ò¶ÏĞĞ¶¯
+        //åˆ¤æ–­æ˜¯å¦æ‰“æ–­è¡ŒåŠ¨
         if(pstTrapObj->GetConfig()->iInterruptType == TRAP_INTERRUPT_MOVE)
         {
-            //´ò¶ÏÒÆ¶¯
+            //æ‰“æ–­ç§»åŠ¨
             iTargetIndex = i;
 
             break;
@@ -2441,10 +2441,10 @@ int CBattlefieldObj::DoCombatUnitMove(const UnitPath& stPath)
     return DoCombatUnitMove(iTargetIndex+1, stUnitPath.astPos);
 }
 
-//¿ªÊ¼Õ½¶·µ¥Î»µÄÒÆ¶¯,AIÒÆ¶¯Ö»ÓĞÄ¿±êµã
+//å¼€å§‹æˆ˜æ–—å•ä½çš„ç§»åŠ¨,AIç§»åŠ¨åªæœ‰ç›®æ ‡ç‚¹
 int CBattlefieldObj::DoCombatUnitMove(int iMoveDistance, const TUNITPOSITION* pstMovePath)
 {
-    //»ñÈ¡µ±Ç°ĞĞ¶¯µÄÕ½¶·µ¥Î»Obj
+    //è·å–å½“å‰è¡ŒåŠ¨çš„æˆ˜æ–—å•ä½Obj
     CCombatUnitObj* pstActionUnitObj = GameType<CCombatUnitObj>::Get(m_iActionUnit);
     if(!pstActionUnitObj)
     {
@@ -2455,17 +2455,17 @@ int CBattlefieldObj::DoCombatUnitMove(int iMoveDistance, const TUNITPOSITION* ps
     if(pstActionUnitObj->GetUnitPosition().iPosX == pstMovePath[iMoveDistance-1].iPosX
        && pstActionUnitObj->GetUnitPosition().iPosY == pstMovePath[iMoveDistance-1].iPosY)
     {
-        //Ä¿±êÎ»ÖÃ¾ÍÊÇµ±Ç°Î»ÖÃ
+        //ç›®æ ‡ä½ç½®å°±æ˜¯å½“å‰ä½ç½®
         return T_SERVER_SUCESS;
     }
 
-    //ÉèÖÃ×îĞÂµÄ·½Ïò
+    //è®¾ç½®æœ€æ–°çš„æ–¹å‘
     CCombatUtility::UpdateUnitDirection(*pstActionUnitObj, pstMovePath[iMoveDistance-1]);
 
-    //ÉèÖÃ×îĞÂµÄÎ»ÖÃ
+    //è®¾ç½®æœ€æ–°çš„ä½ç½®
     pstActionUnitObj->SetUnitPosition(pstMovePath[iMoveDistance-1]);
 
-    //ÍÆËÍÒÆ¶¯µÄÍ¨Öª
+    //æ¨é€ç§»åŠ¨çš„é€šçŸ¥
     static GameProtocolMsg stCombatUnitMoveNotify;
 
     CZoneMsgHelper::GenerateMsgHead(stCombatUnitMoveNotify, MSGID_ZONE_COMBATMOVE_NOTIFY);
@@ -2475,7 +2475,7 @@ int CBattlefieldObj::DoCombatUnitMove(int iMoveDistance, const TUNITPOSITION* ps
     pstNotify->set_idirection(pstActionUnitObj->GetUnitDirection());
     pstNotify->set_imovetype(COMBAT_MOVE_NORMAL);
 
-    //·â×°Â·¾¶·µ»Ø¸ø¿Í»§¶Ë
+    //å°è£…è·¯å¾„è¿”å›ç»™å®¢æˆ·ç«¯
     for(int i=0; i<iMoveDistance; ++i)
     {
         UnitPosition* pstPos = pstNotify->mutable_stpath()->add_stposes();
@@ -2485,7 +2485,7 @@ int CBattlefieldObj::DoCombatUnitMove(int iMoveDistance, const TUNITPOSITION* ps
 
     SendNotifyToBattlefield(stCombatUnitMoveNotify);
 
-    //ÉúĞ§ÒÆ¶¯´¥·¢µÄBUFF,ÒÆ¶¯N¸ñ´¥·¢N´Î
+    //ç”Ÿæ•ˆç§»åŠ¨è§¦å‘çš„BUFF,ç§»åŠ¨Næ ¼è§¦å‘Næ¬¡
     for(int i=0; i<iMoveDistance; ++i)
     {
         int iRet = DoBuffEffectByType(BUFF_TRIGGER_MOVE, m_iActionUnit, m_iActionUnit);
@@ -2499,7 +2499,7 @@ int CBattlefieldObj::DoCombatUnitMove(int iMoveDistance, const TUNITPOSITION* ps
     return T_SERVER_SUCESS;
 }
 
-//Õ½¶·µ¥Î»Ê¹ÓÃ¼¼ÄÜ
+//æˆ˜æ–—å•ä½ä½¿ç”¨æŠ€èƒ½
 int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTargetPos, int iSkillUseType)
 {
     CCombatUnitObj* pstActionUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
@@ -2509,12 +2509,12 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //³¢ÊÔ´¦Àí»ú¶¯Ä£Ê½
+    //å°è¯•å¤„ç†æœºåŠ¨æ¨¡å¼
     if(pstActionUnitObj->GetMotorDistance() >= 0)
     {
         if(pstActionUnitObj->GetMotorLeftLen() <= pstActionUnitObj->GetMotorDistance())
         {
-            //ÒÑÂú×ãÈ¡Ïû»ú¶¯Ä£Ê½Ìõ¼ş£¬È¡Ïû»ú¶¯Ä£Ê½
+            //å·²æ»¡è¶³å–æ¶ˆæœºåŠ¨æ¨¡å¼æ¡ä»¶ï¼Œå–æ¶ˆæœºåŠ¨æ¨¡å¼
             pstActionUnitObj->SetMotorMode(TUNITPOSITION(-1,0), -1);
         }
 
@@ -2523,7 +2523,7 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
 
     if(pstActionUnitObj->GetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTACTION))
     {
-        //¹¥»÷·½µ±Ç°²»ÄÜĞĞ¶¯
+        //æ”»å‡»æ–¹å½“å‰ä¸èƒ½è¡ŒåŠ¨
         pstActionUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTACTION, false);
 
         return T_SERVER_SUCESS;
@@ -2533,7 +2533,7 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
     int iRet = T_SERVER_SUCESS;
     if(!pstTargetUnitObj)
     {
-        //Ä¿±êÎ»ÖÃ²»ÊÇÕ½¶·µ¥Î»¶Ô¿ÕÎ»·Å¼¼ÄÜ
+        //ç›®æ ‡ä½ç½®ä¸æ˜¯æˆ˜æ–—å•ä½å¯¹ç©ºä½æ”¾æŠ€èƒ½
         iRet = CCombatSkill::CastSkill(m_iBattlefieldObjID, m_iActionUnit, stTargetPos, iSkillID, iSkillUseType);
         if(iRet)
         {
@@ -2545,7 +2545,7 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
     {
         int iTargetUnitID = pstTargetUnitObj->GetCombatUnitID();
 
-        //Ä¿±êÎ»ÖÃÓĞÕ½¶·µ¥Î»
+        //ç›®æ ‡ä½ç½®æœ‰æˆ˜æ–—å•ä½
         int iRet = CCombatSkill::CastSkill(m_iBattlefieldObjID, m_iActionUnit, pstTargetUnitObj->GetUnitPosition(), iSkillID, iSkillUseType);
         if(iRet)
         {
@@ -2553,19 +2553,19 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
             return iRet;
         }
     
-        //Èç¹ûÄ¿±êÒÑ¾­ËÀÍö£¬²»½øĞĞÏÂÃæµÄ´¦Àí
+        //å¦‚æœç›®æ ‡å·²ç»æ­»äº¡ï¼Œä¸è¿›è¡Œä¸‹é¢çš„å¤„ç†
         if(IsCombatUnitDead(iTargetUnitID))
         {
             return T_SERVER_SUCESS;
         }
     
-        //¼¼ÄÜµÄÖ÷ÒªÄ¿±êÊÇ·ñ²úÉúÉÁ±Ü
+        //æŠ€èƒ½çš„ä¸»è¦ç›®æ ‡æ˜¯å¦äº§ç”Ÿé—ªé¿
         int iChiefTargetDodge = CCombatSkill::m_iChiefTargetDodge;
     
-        //´¦Àí¹¥»÷µ¥Î»¼¼ÄÜµÄÁ¬»÷
+        //å¤„ç†æ”»å‡»å•ä½æŠ€èƒ½çš„è¿å‡»
         iRet = DoComboAttack(*pstTargetUnitObj, iSkillID);
     
-        //¼¼ÄÜ¹¥»÷´¦ÀíÍê³É,²»ÊÇÍ¬Ò»¸öÕóÓª²¢ÇÒÊÇÆÕ¹¥,Ôò´¦Àí¶ÓÓÑµÄ¼Ğ»÷
+        //æŠ€èƒ½æ”»å‡»å¤„ç†å®Œæˆ,ä¸æ˜¯åŒä¸€ä¸ªé˜µè¥å¹¶ä¸”æ˜¯æ™®æ”»,åˆ™å¤„ç†é˜Ÿå‹çš„å¤¹å‡»
         if(!IsUnitInSameCamp(*pstActionUnitObj,*pstTargetUnitObj) && pstActionUnitObj->GetNormalSkillID()==iSkillID)
         {
             iRet = DoPincerAttack(*pstTargetUnitObj);
@@ -2576,7 +2576,7 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
             }
         }
     
-        //Èç¹ûÖ÷ÒªÄ¿±ê²úÉúÉÁ±Ü£¬²¢ÇÒ²»ÊÇ¶Ô×Ô¼º,Ôò³¢ÊÔ´¥·¢·´»÷
+        //å¦‚æœä¸»è¦ç›®æ ‡äº§ç”Ÿé—ªé¿ï¼Œå¹¶ä¸”ä¸æ˜¯å¯¹è‡ªå·±,åˆ™å°è¯•è§¦å‘åå‡»
         if(iChiefTargetDodge==SKILL_HIT_CHIEFDODGE && pstTargetUnitObj->GetCombatUnitID()!=m_iActionUnit)
         {
             iRet = DoCounterAttack(*pstTargetUnitObj, *pstActionUnitObj);
@@ -2587,7 +2587,7 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
             }
         }
     
-        //´¦Àí¹¥»÷Õß¼¼ÄÜµÄ»ï°éºÏ»÷
+        //å¤„ç†æ”»å‡»è€…æŠ€èƒ½çš„ä¼™ä¼´åˆå‡»
         iRet = DoJointAttack(*pstTargetUnitObj, iSkillID);
         if(iRet)
         {
@@ -2599,18 +2599,18 @@ int CBattlefieldObj::DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTarg
     return T_SERVER_SUCESS;
 }
 
-//Õ½¶·µ¥Î»Ê¹ÓÃµÀ¾ß,Ôö¼ÓBUFF»òÕß·ÅÖÃ»ú¹Ø
+//æˆ˜æ–—å•ä½ä½¿ç”¨é“å…·,å¢åŠ BUFFæˆ–è€…æ”¾ç½®æœºå…³
 int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetPos)
 {
-    //todo jasonxiong5 µÀ¾ßÊ¹ÓÃÕâ¸öÒªÖØĞÂ¿ª·¢Âß¼­
+    //todo jasonxiong5 é“å…·ä½¿ç”¨è¿™ä¸ªè¦é‡æ–°å¼€å‘é€»è¾‘
     /*
-    //ÍÆËÍ¿ªÊ¼Ê¹ÓÃµÀ¾ßµÄÏûÏ¢
+    //æ¨é€å¼€å§‹ä½¿ç”¨é“å…·çš„æ¶ˆæ¯
     static GameProtocolMsg stActionBeginMsg;
     CZoneMsgHelper::GenerateMsgHead(stActionBeginMsg, MSGID_ZONE_BEGINCOMBATACTION_NOTIFY);
 
     SendNotifyToBattlefield(stActionBeginMsg);
 
-    //¶ÁÈ¡µÀ¾ßÅäÖÃ
+    //è¯»å–é“å…·é…ç½®
     const SPropItemConfig* pstPropConfig = PropItemCfgMgr().Get(iItemID);
     if(!pstPropConfig)
     {
@@ -2618,7 +2618,7 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //»ñÈ¡Ê¹ÓÃµÀ¾ßÕ½¶·µ¥Î»Obj
+    //è·å–ä½¿ç”¨é“å…·æˆ˜æ–—å•ä½Obj
     CCombatUnitObj* pstCastUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
     if(!pstCastUnitObj)
     {
@@ -2626,7 +2626,7 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶ÏÊÇ·ñÄÜ¹»Ê¹ÓÃ
+    //åˆ¤æ–­æ˜¯å¦èƒ½å¤Ÿä½¿ç”¨
     int iDistance = CCombatUtility::GetAttackDistance(pstCastUnitObj->GetUnitPosition(), stTargetPos, pstPropConfig->iRangeID);
     if(iDistance == 0)
     {
@@ -2634,7 +2634,7 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //¿Û³ıÍæ¼ÒµÀ¾ß
+    //æ‰£é™¤ç©å®¶é“å…·
     CGameRoleObj* pstRoleObj = NULL;
     int iCastUnitCamp = GetCombatUnitCamp(m_iActionUnit);
     switch(iCastUnitCamp)
@@ -2675,12 +2675,12 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
     {
         case PROP_ITEM_YAOPIN:
             {
-                //Ò©Æ·
+                //è¯å“
 
-                //ÅĞ¶Ï·ÅÖÃµÄµ¥Î»ÊÇ·ñÓĞĞèÇóµÄ¼¼ÄÜ
+                //åˆ¤æ–­æ”¾ç½®çš„å•ä½æ˜¯å¦æœ‰éœ€æ±‚çš„æŠ€èƒ½
                 if(pstPropConfig->iTrapNeedSkill!=0 && !pstCastUnitObj->HasFightSkill(pstPropConfig->iTrapNeedSkill))
                 {
-                    //Ã»ÓĞĞèÇóµÄ¼¼ÄÜ
+                    //æ²¡æœ‰éœ€æ±‚çš„æŠ€èƒ½
                     LOGERROR("Failed to use prop item, no need skill, skill id %d, item id %d, uin %u\n", pstPropConfig->iTrapNeedSkill, iItemID, m_uiActiveUin);
                     return T_ZONE_SYSTEM_PARA_ERR;
                 }
@@ -2697,7 +2697,7 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
                     return T_ZONE_SYSTEM_PARA_ERR;
                 }
 
-                //ÉúĞ§µÀ¾ßĞ§¹û
+                //ç”Ÿæ•ˆé“å…·æ•ˆæœ
                 iRet = pstTargetUnitObj->AddUnitBuff(m_uiActiveUin, m_iCrossID, pstPropConfig->iBuffID, m_iActionUnit, *pstNotify);
                 if(iRet)
                 {
@@ -2711,15 +2711,15 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
 
         case PROP_ITEM_JIGUAN:
             {
-                //ÅĞ¶Ï·ÅÖÃµÄµ¥Î»ÊÇ·ñÓĞĞèÇóµÄ¼¼ÄÜ
+                //åˆ¤æ–­æ”¾ç½®çš„å•ä½æ˜¯å¦æœ‰éœ€æ±‚çš„æŠ€èƒ½
                 if(pstPropConfig->iTrapNeedSkill!=0 && !pstCastUnitObj->HasFightSkill(pstPropConfig->iTrapNeedSkill))
                 {
-                    //Ã»ÓĞĞèÇóµÄ¼¼ÄÜ
+                    //æ²¡æœ‰éœ€æ±‚çš„æŠ€èƒ½
                     LOGERROR("Failed to add combat trap, no need skill, skill id %d, item id %d, uin %u\n", pstPropConfig->iTrapNeedSkill, iItemID, m_uiActiveUin);
                     return T_ZONE_SYSTEM_PARA_ERR;
                 }
 
-                //ÔÚÕ½³¡ÉÏ·ÅÖÃ»ú¹Ø
+                //åœ¨æˆ˜åœºä¸Šæ”¾ç½®æœºå…³
                 int iTrapObjID = AddCombatTrap(pstPropConfig->iAddTrapID, GetCombatUnitCamp(m_iActionUnit), stTargetPos, pstPropConfig->iTrapDirection);
                 if(iTrapObjID < 0)
                 {
@@ -2737,7 +2737,7 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
             break;
     }
 
-    //ÍÆËÍActionNotifyÏûÏ¢
+    //æ¨é€ActionNotifyæ¶ˆæ¯
     static GameProtocolMsg stActionNotifyMsg;
     CZoneMsgHelper::GenerateMsgHead(stActionNotifyMsg, MSGID_ZONE_COMBATACTION_NOTIFY);
 
@@ -2752,7 +2752,7 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
 
     SendNotifyToBattlefield(stActionNotifyMsg);
 
-    //´¦ÀíÊ¹ÓÃÎïÆ·½Å±¾½Ó¿Ú
+    //å¤„ç†ä½¿ç”¨ç‰©å“è„šæœ¬æ¥å£
     CModuleHelper::GetStoryFramework()->DoUseItemScript(m_uiActiveUin, m_iCrossID, iItemID, m_iActionUnit, stTargetPos.iPosX, stTargetPos.iPosY);
     */
 
@@ -2760,7 +2760,7 @@ int CBattlefieldObj::DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetP
     return T_SERVER_SUCESS;
 }
 
-//´¦Àí¼¼ÄÜµÄÁ¬»÷
+//å¤„ç†æŠ€èƒ½çš„è¿å‡»
 int CBattlefieldObj::DoComboAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID)
 {
     const SFightUnitSkillConfig* pstSkillConfig = FightSkillCfgMgr().GetConfig(iSkillID);
@@ -2781,14 +2781,14 @@ int CBattlefieldObj::DoComboAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID
     int iRet = T_SERVER_SUCESS;
     for(int i=0; i<pstSkillConfig->iComboNum; ++i)
     {
-        //ÅĞ¶ÏÊÇ·ñ»á³öÏÖÁ¬»÷
+        //åˆ¤æ–­æ˜¯å¦ä¼šå‡ºç°è¿å‡»
         if(CRandomCalculator::GetRandomNumberInRange(100) >= iComboAttr)
         {
-            //Ã»ÓĞËæ»ú³öÁ¬»÷
+            //æ²¡æœ‰éšæœºå‡ºè¿å‡»
             break;
         }
 
-        //´¦Àí¼¼ÄÜµÄÁ¬»÷
+        //å¤„ç†æŠ€èƒ½çš„è¿å‡»
         iRet = CCombatSkill::CastSkill(m_iBattlefieldObjID, m_iActionUnit, stTargetUnitObj.GetUnitPosition(), iSkillID, SKILL_USE_LIANJI);
         if(iRet)
         {
@@ -2800,7 +2800,7 @@ int CBattlefieldObj::DoComboAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID
     return T_SERVER_SUCESS;
 }
 
-//´¦Àí¼¼ÄÜµÄ¼Ğ»÷
+//å¤„ç†æŠ€èƒ½çš„å¤¹å‡»
 int CBattlefieldObj::DoPincerAttack(CCombatUnitObj& stTargetUnitObj)
 {
     CCombatUnitObj* pstActionUnitObj = CCombatUtility::GetCombatUnitObj(m_iActionUnit);
@@ -2813,20 +2813,20 @@ int CBattlefieldObj::DoPincerAttack(CCombatUnitObj& stTargetUnitObj)
     TUNITPOSITION& stActionPos = pstActionUnitObj->GetUnitPosition();
     TUNITPOSITION& stTargetPos = stTargetUnitObj.GetUnitPosition();
 
-    //»ñÈ¡¾µÏñÎ»ÖÃµÄ×ø±ê
+    //è·å–é•œåƒä½ç½®çš„åæ ‡
     TUNITPOSITION stMirrorPos;
     stMirrorPos.iPosX = stTargetPos.iPosX*2-stActionPos.iPosX;
     stMirrorPos.iPosY = stTargetPos.iPosY*2-stActionPos.iPosY;
 
-    //»ñÈ¡¾µÏñÎ»ÖÃµÄµ¥Î»
+    //è·å–é•œåƒä½ç½®çš„å•ä½
     CCombatUnitObj* pstMirrorUnitObj = GetCombatUnitByPos(stMirrorPos);
     if(!pstMirrorUnitObj || !IsUnitInSameCamp(*pstActionUnitObj,*pstMirrorUnitObj))
     {
-        //¾µÏñÎ»ÖÃÃ»ÓĞµ¥Î»»ò²»ÊÇÍ¬ÕóÓª
+        //é•œåƒä½ç½®æ²¡æœ‰å•ä½æˆ–ä¸æ˜¯åŒé˜µè¥
         return T_SERVER_SUCESS;
     }
 
-    //´¦ÀíÆÕ¹¥¹¥»÷
+    //å¤„ç†æ™®æ”»æ”»å‡»
     int iRet = CCombatSkill::CastSkill(m_iBattlefieldObjID, pstMirrorUnitObj->GetCombatUnitID(), stTargetUnitObj.GetUnitPosition(), pstMirrorUnitObj->GetNormalSkillID(), SKILL_USE_JIAJI);
     if(iRet)
     {
@@ -2837,17 +2837,17 @@ int CBattlefieldObj::DoPincerAttack(CCombatUnitObj& stTargetUnitObj)
     return T_SERVER_SUCESS;
 }
 
-//´¦Àí¼¼ÄÜµÄ·´»÷
+//å¤„ç†æŠ€èƒ½çš„åå‡»
 int CBattlefieldObj::DoCounterAttack(CCombatUnitObj& stCounterAtkUnitObj, CCombatUnitObj& stTargetObj)
 {
-    //ÅĞ¶ÏÊÇ·ñ´¥·¢·´»÷
+    //åˆ¤æ–­æ˜¯å¦è§¦å‘åå‡»
     if(CRandomCalculator::GetRandomNumberInRange(100) >= stCounterAtkUnitObj.GetFightAttr(FIGHT_ATTR_FANJI))
     {
-        //Ã»ÓĞ´¥·¢·´»÷
+        //æ²¡æœ‰è§¦å‘åå‡»
         return T_SERVER_SUCESS;
     }
 
-    //´¥·¢·´»÷¼¼ÄÜ
+    //è§¦å‘åå‡»æŠ€èƒ½
     int iSkillID = stCounterAtkUnitObj.GetCounterAtkSkill();
     int iRet = CCombatSkill::CastSkill(m_iBattlefieldObjID, stCounterAtkUnitObj.GetCombatUnitID(), stTargetObj.GetUnitPosition(), iSkillID, SKILL_USE_FANJI);
     if(iRet)
@@ -2859,10 +2859,10 @@ int CBattlefieldObj::DoCounterAttack(CCombatUnitObj& stCounterAtkUnitObj, CComba
     return T_SERVER_SUCESS;
 }
 
-//´¦Àí»ï°é¼¼ÄÜµÄºÏ»÷
+//å¤„ç†ä¼™ä¼´æŠ€èƒ½çš„åˆå‡»
 int CBattlefieldObj::DoJointAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID)
 {
-    //¶ÁÈ¡¹¥»÷¼¼ÄÜµÄÅäÖÃ
+    //è¯»å–æ”»å‡»æŠ€èƒ½çš„é…ç½®
     const SFightUnitSkillConfig* pstSkillConfig = FightSkillCfgMgr().GetConfig(iSkillID);
     if(!pstSkillConfig)
     {
@@ -2870,13 +2870,13 @@ int CBattlefieldObj::DoJointAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //¸Ã¼¼ÄÜÊÇ·ñÓĞºÏ»÷
+    //è¯¥æŠ€èƒ½æ˜¯å¦æœ‰åˆå‡»
     if(pstSkillConfig->iJointAtkID == 0)
     {
         return T_SERVER_SUCESS;
     }
 
-    //¶ÁÈ¡ºÏ»÷¼¼ÄÜµÄÅäÖÃ
+    //è¯»å–åˆå‡»æŠ€èƒ½çš„é…ç½®
     const SJointAttackConfig* pstJointAtkConfig = JointAtkCfgMgr().GetConfig(pstSkillConfig->iJointAtkID);
     if(!pstJointAtkConfig)
     {
@@ -2891,7 +2891,7 @@ int CBattlefieldObj::DoJointAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //±éÀú¹¥»÷µ¥Î»ÖÜ±ßµÄ¾Å¹¬¸ñ
+    //éå†æ”»å‡»å•ä½å‘¨è¾¹çš„ä¹å®«æ ¼
     int iRet = T_SERVER_SUCESS;
     TUNITPOSITION& stActionPos = pstActionUnitObj->GetUnitPosition();
     for(int iDeltaX = -1; iDeltaX <= 1; ++iDeltaX)
@@ -2902,11 +2902,11 @@ int CBattlefieldObj::DoJointAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID
             CCombatUnitObj* pstJointUnitObj = GetCombatUnitByPos(stPos);
             if(!pstJointUnitObj || !IsUnitInSameCamp(*pstActionUnitObj, *pstJointUnitObj))
             {
-                //Ã»ÓĞµ¥Î»»òÕß²»ÊÇ¹¥·½µÄ¶ÓÓÑ
+                //æ²¡æœ‰å•ä½æˆ–è€…ä¸æ˜¯æ”»æ–¹çš„é˜Ÿå‹
                 continue;
             }
 
-            //ÅĞ¶Ïµ¥Î»¼¼ÄÜÊÇ·ñÂú×ãºÏ»÷ÒªÇó
+            //åˆ¤æ–­å•ä½æŠ€èƒ½æ˜¯å¦æ»¡è¶³åˆå‡»è¦æ±‚
             for(int i=0; i<pstJointAtkConfig->iNeedSkillNum; ++i)
             {
                 if(pstJointAtkConfig->aiNeedSkills[i] == 0)
@@ -2916,11 +2916,11 @@ int CBattlefieldObj::DoJointAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID
 
                 if(!pstJointUnitObj->HasFightSkill(pstJointAtkConfig->aiNeedSkills[i]))
                 {
-                    //Ã»ÓĞÕâ¸öºÏ»÷¼¼ÄÜ
+                    //æ²¡æœ‰è¿™ä¸ªåˆå‡»æŠ€èƒ½
                     continue;
                 }
 
-                //ÕÒµ½£¬ºÏ»÷»ï°éÊ¹ÓÃºÏ»÷¼¼ÄÜ
+                //æ‰¾åˆ°ï¼Œåˆå‡»ä¼™ä¼´ä½¿ç”¨åˆå‡»æŠ€èƒ½
                 iRet = CCombatSkill::CastSkill(m_iBattlefieldObjID, pstJointUnitObj->GetCombatUnitID(), stTargetUnitObj.GetUnitPosition(), pstJointAtkConfig->aiNeedSkills[i], SKILL_USE_HEJI);
                 if(iRet)
                 {
@@ -2933,7 +2933,7 @@ int CBattlefieldObj::DoJointAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID
     return T_SERVER_SUCESS;
 }
 
-//ÅĞ¶ÏÕ½¶·µ¥Î»ÊÇ·ñËÀÍö
+//åˆ¤æ–­æˆ˜æ–—å•ä½æ˜¯å¦æ­»äº¡
 bool CBattlefieldObj::IsCombatUnitDead(int iUnitID)
 {
     CCombatUnitObj* pstUnitObj = CCombatUtility::GetCombatUnitObj(iUnitID);
@@ -2945,7 +2945,7 @@ bool CBattlefieldObj::IsCombatUnitDead(int iUnitID)
     return pstUnitObj->IsCombatUnitDead();
 }
 
-//»ñÈ¡×èµ²ÀàĞÍµÄ»ú¹Ø
+//è·å–é˜»æŒ¡ç±»å‹çš„æœºå…³
 CCombatTrapObj* CBattlefieldObj::GetBlockTrapByPos(const TUNITPOSITION& stPos)
 {
     CCombatTrapObj* pstTrapObj = GetTrapByPos(stPos);
@@ -2957,7 +2957,7 @@ CCombatTrapObj* CBattlefieldObj::GetBlockTrapByPos(const TUNITPOSITION& stPos)
     return pstTrapObj;
 }
 
-//¸ù¾İ»ú¹ØµÄÎ»ÖÃ»ñÈ¡»ú¹Ø
+//æ ¹æ®æœºå…³çš„ä½ç½®è·å–æœºå…³
 CCombatTrapObj* CBattlefieldObj::GetTrapByPos(const TUNITPOSITION& stPos)
 {
     for(int i=0; i<m_iTrapNum; ++i)
@@ -2998,7 +2998,7 @@ int CBattlefieldObj::GetTrapIndexByPos(const TUNITPOSITION& stPos)
     return -1;
 }
 
-//Õ½³¡×´Ì¬£¬¹©½Å±¾Ê¹ÓÃ
+//æˆ˜åœºçŠ¶æ€ï¼Œä¾›è„šæœ¬ä½¿ç”¨
 bool CBattlefieldObj::GetCombatStatus(int iStatusType)
 {
     return ((m_ucCombatStatus>>iStatusType) & 0x01);
@@ -3018,10 +3018,10 @@ void CBattlefieldObj::SetCombatStatus(int iStatusType, bool bIsSet)
     return;
 }
 
-//»ñÈ¡µØÍ¼ÉÏÓĞĞ§Õ¾Î»Î»ÖÃ
+//è·å–åœ°å›¾ä¸Šæœ‰æ•ˆç«™ä½ä½ç½®
 void CBattlefieldObj::GetBattlefieldValidPos(const SBattleCrossConfig& stCrossConfig)
 {
-    //³õÊ¼»¯Ö÷¶¯·½Õ¾Î»Î»ÖÃ
+    //åˆå§‹åŒ–ä¸»åŠ¨æ–¹ç«™ä½ä½ç½®
     int iValidPosNum = 0;
     for(int i=0; i<stCrossConfig.iSelfUnitNum; ++i)
     {
@@ -3036,7 +3036,7 @@ void CBattlefieldObj::GetBattlefieldValidPos(const SBattleCrossConfig& stCrossCo
         ++iValidPosNum;
     }
 
-    //³õÊ¼»¯±»¶¯·½Õ¾Î»Î»ÖÃ
+    //åˆå§‹åŒ–è¢«åŠ¨æ–¹ç«™ä½ä½ç½®
     iValidPosNum = 0;
     for(int i=0; i<stCrossConfig.iEnemyUnitNum; ++i)
     {
@@ -3054,7 +3054,7 @@ void CBattlefieldObj::GetBattlefieldValidPos(const SBattleCrossConfig& stCrossCo
     return;
 }
 
-//´´½¨CCombatUnitObj,²ÎÊı·µ»ØObjIndex
+//åˆ›å»ºCCombatUnitObj,å‚æ•°è¿”å›ObjIndex
 CCombatUnitObj* CBattlefieldObj::CreateCombatUnitObj(int& iCombatUnitObjIndex)
 {
     iCombatUnitObjIndex = GameType<CCombatUnitObj>::Create();
@@ -3074,7 +3074,7 @@ CCombatUnitObj* CBattlefieldObj::CreateCombatUnitObj(int& iCombatUnitObjIndex)
     return pstCombatUnitObj;
 }
 
-//É¾³ıÒ»¸öÕ½³¡µ¥Î»
+//åˆ é™¤ä¸€ä¸ªæˆ˜åœºå•ä½
 void CBattlefieldObj::ClearOneCombatUnitObj(int iCombatUnitID)
 {
     CCombatUnitObj* pstUnitObj = CCombatUtility::GetCombatUnitObj(iCombatUnitID);
@@ -3083,10 +3083,14 @@ void CBattlefieldObj::ClearOneCombatUnitObj(int iCombatUnitID)
         return;
     }
 
-    //ÇåÀíBUFF
+    //æ¸…ç†BUFF
     pstUnitObj->ClearUnitBuff();
 
     GameType<CCombatUnitObj>::Del(iCombatUnitID);
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

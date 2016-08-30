@@ -1,4 +1,4 @@
-#include "BroadcastMsgHandler.hpp"
+﻿#include "BroadcastMsgHandler.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneMsgHelper.hpp"
 
@@ -12,3 +12,7 @@ int CBroadcastMsgHandler::OnClientMsg()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

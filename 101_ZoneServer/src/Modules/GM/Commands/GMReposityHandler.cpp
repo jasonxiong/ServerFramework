@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -14,7 +14,7 @@ CGMReposityHandler::CGMReposityHandler()
     m_pRoleObj = NULL;
 }
 
-//Ö´ĞĞÏàÓ¦GMÃüÁîµÄ¹¦ÄÜ
+//æ‰§è¡Œç›¸åº”GMå‘½ä»¤çš„åŠŸèƒ½
 int CGMReposityHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<std::string> &vParams)
 {
     m_pRoleObj = pRoleObj;
@@ -24,7 +24,7 @@ int CGMReposityHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vecto
         return -1;
     }
 
-    //Ê×ÏÈ½øĞĞ²ÎÊı¼ì²é
+    //é¦–å…ˆè¿›è¡Œå‚æ•°æ£€æŸ¥
     int iRet = SecurityCheck(iCommandType, vParams);
     if(iRet)
     {
@@ -34,12 +34,12 @@ int CGMReposityHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vecto
 
     CRepThingsManager& stRepThingsManager = m_pRoleObj->GetRepThingsManager();
 
-    //Ö´ĞĞÏàÓ¦µÄGM²Ù×÷
+    //æ‰§è¡Œç›¸åº”çš„GMæ“ä½œ
     switch(iCommandType)
     {
         case GM_COMMAND_ADD_REPITEM:
             {
-                //±³°üÔö¼ÓÎïÆ·
+                //èƒŒåŒ…å¢åŠ ç‰©å“
                 int iItemID = atoi(vParams[1].c_str());
                 int iItemNum = atoi(vParams[2].c_str());
 
@@ -64,7 +64,7 @@ int CGMReposityHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vecto
     return T_SERVER_SUCESS;
 }
 
-//½øĞĞ²ÎÊı¼ì²é
+//è¿›è¡Œå‚æ•°æ£€æŸ¥
 int CGMReposityHandler::SecurityCheck(int iCommandType, std::vector<std::string>& vParams)
 {
     if(iCommandType == GM_COMMAND_ADD_REPITEM)
@@ -78,3 +78,7 @@ int CGMReposityHandler::SecurityCheck(int iCommandType, std::vector<std::string>
 
     return T_SERVER_SUCESS;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

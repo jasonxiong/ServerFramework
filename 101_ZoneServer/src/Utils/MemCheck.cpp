@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+﻿#include "GameProtocol.hpp"
 #include "MemCheck.hpp"
 #include "ConfigHelper.hpp"
 #include "GameRole.hpp"
@@ -30,3 +30,7 @@ int CMemCheck::CheckRoleException(unsigned int uiMsgID, int iLineNum)
 	}
 	return iCheckID;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

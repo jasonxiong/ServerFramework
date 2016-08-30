@@ -1,4 +1,4 @@
-#include "AppTick.hpp"
+ï»¿#include "AppTick.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneOssLog.hpp"
 #include "TimeUtility.hpp"
@@ -47,7 +47,7 @@ int CAppTick::CountObjStat()
 	ObjectStatisticSingleton::Instance()->AddObjectStat(i++, GameType<CUnitBufferObj>::GetUsedObjNumber());
 	ObjectStatisticSingleton::Instance()->AddObjectStat(i++, GameType<CCombatTrapObj>::GetUsedObjNumber());
 
-	//Çå0
+	//æ¸…0
 	CTimeValue stZero(0, 0);
 	CAppLoop::m_stLotusMsgMaxProsessTime = stZero;
 	CAppLoop::m_stWorldMsgMaxProcessTime = stZero;
@@ -62,7 +62,7 @@ int CAppTick::OnTick()
 
 	m_OnlineStatTick.OnTick();
 
-	// Ò»·ÖÖÓTick
+	// ä¸€åˆ†é’ŸTick
 	int iSlapTime = CTimeUtility::m_uiTimeTick - m_iLastStaticsTick;
 	if (iSlapTime >= 60)
     {
@@ -81,3 +81,7 @@ int CAppTick::OnTick()
     
 	return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

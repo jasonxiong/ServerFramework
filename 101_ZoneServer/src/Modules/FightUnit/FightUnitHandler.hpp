@@ -1,4 +1,4 @@
-#ifndef __FIGHT_UNIT_HANDLER_HPP__
+﻿#ifndef __FIGHT_UNIT_HANDLER_HPP__
 #define __FIGHT_UNIT_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -20,3 +20,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

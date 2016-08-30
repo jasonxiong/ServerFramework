@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -22,33 +22,33 @@ CCombatTrapObj::~CCombatTrapObj()
 
 int CCombatTrapObj::Initialize()
 {
-    //»ú¹ØµÄÅäÖÃID
+    //æœºå…³çš„é…ç½®ID
     m_iConfigID = 0;
 
-    //»ú¹ØµÄÅäÖÃ
+    //æœºå…³çš„é…ç½®
     m_pstConfig = NULL;
 
-    //»ú¹ØµÄµ±Ç°ÑªÁ¿
+    //æœºå…³çš„å½“å‰è¡€é‡
     m_iTrapHp = 0;
 
-    //µ±Ç°ËùÊôµÄÕóÓª
+    //å½“å‰æ‰€å±çš„é˜µè¥
     m_iCamp = FIGHT_CAMP_INVALID;
 
-    //»ú¹Øµ±Ç°µÄÎ»ÖÃ
-    m_stPos.iPosX = -1; //X -1±íÊ¾ÊÇ·Ç·¨µÄÎ»ÖÃ
+    //æœºå…³å½“å‰çš„ä½ç½®
+    m_stPos.iPosX = -1; //X -1è¡¨ç¤ºæ˜¯éæ³•çš„ä½ç½®
 
-    //»ú¹ØµÄÃæÏò
+    //æœºå…³çš„é¢å‘
     m_iDirection = COMBAT_DIRECTION_INVALID;
 
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯»ú¹Ø
+//åˆå§‹åŒ–æœºå…³
 int CCombatTrapObj::InitTrap(int iConfigID, int iCamp, const TUNITPOSITION& stPos, int iDirection)
 {
     m_iConfigID = iConfigID;
 
-    //ÉèÖÃÅäÖÃ
+    //è®¾ç½®é…ç½®
     m_pstConfig = TrapCfgMgr().GetConfig(iConfigID);
     if(!m_pstConfig)
     {
@@ -58,10 +58,10 @@ int CCombatTrapObj::InitTrap(int iConfigID, int iCamp, const TUNITPOSITION& stPo
 
     m_iCamp = iCamp;
 
-    //Èç¹ûÑªÁ¿ <0 Ôò²»ÄÜ±»¹¥»÷
+    //å¦‚æœè¡€é‡ <0 åˆ™ä¸èƒ½è¢«æ”»å‡»
     m_iTrapHp = m_pstConfig->iTrapHP;
 
-    //ÉèÖÃÎ»ÖÃ
+    //è®¾ç½®ä½ç½®
     m_stPos.iPosX = stPos.iPosX;
     m_stPos.iPosY = stPos.iPosY;
 
@@ -70,13 +70,13 @@ int CCombatTrapObj::InitTrap(int iConfigID, int iCamp, const TUNITPOSITION& stPo
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡»ú¹Øµ±Ç°µÄÎ»ÖÃ
+//è·å–æœºå…³å½“å‰çš„ä½ç½®
 const TUNITPOSITION& CCombatTrapObj::GetPosition()
 {
     return m_stPos;
 }
 
-//ĞŞ¸Ä»ú¹ØµÄÑªÁ¿
+//ä¿®æ”¹æœºå…³çš„è¡€é‡
 void CCombatTrapObj::AddTrapHP(int iAddNum)
 {
     m_iTrapHp += iAddNum;
@@ -93,33 +93,37 @@ int CCombatTrapObj::GetTrapHP()
     return m_iTrapHp;
 }
 
-//ÅĞ¶Ï»ú¹ØÊÇ·ñÒÑËğ»µ
+//åˆ¤æ–­æœºå…³æ˜¯å¦å·²æŸå
 bool CCombatTrapObj::IsTrapDead()
 {
     return (m_iTrapHp == 0);
 }
 
-//ÅĞ¶Ï»ú¹ØÊÇ·ñ¿É±»¹¥»÷
+//åˆ¤æ–­æœºå…³æ˜¯å¦å¯è¢«æ”»å‡»
 bool CCombatTrapObj::IsTrapCanAttacked()
 {
     return (m_iTrapHp >= 0);
 }
 
-//»ñÈ¡¸Ã»ú¹ØµÄÅäÖÃ
+//è·å–è¯¥æœºå…³çš„é…ç½®
 const STrapConfig* CCombatTrapObj::GetConfig()
 {
     return m_pstConfig;
 }
 
-//»ñÈ¡»ú¹ØµÄÅäÖÃID
+//è·å–æœºå…³çš„é…ç½®ID
 int CCombatTrapObj::GetTrapConfigID()
 {
     return m_iConfigID;
 }
 
-//»ñÈ¡»ú¹ØµÄÕóÓª
+//è·å–æœºå…³çš„é˜µè¥
 int CCombatTrapObj::GetTrapCamp()
 {
     return m_iCamp;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

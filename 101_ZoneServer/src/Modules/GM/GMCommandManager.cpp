@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -20,25 +20,25 @@ CGMCommandManager* CGMCommandManager::Instance()
     return m_pInstance;
 }
 
-//³õÊ¼»¯GMÃüÁî¹ÜÀíÆ÷
+//åˆå§‹åŒ–GMå‘½ä»¤ç®¡ç†å™¨
 int CGMCommandManager::Init()
 {
-    //×¢²áËùÓĞµÄGMÃüÁîµÄ´¦ÀíHandler
+    //æ³¨å†Œæ‰€æœ‰çš„GMå‘½ä»¤çš„å¤„ç†Handler
 
-    //×¢²á±³°üÏà¹ØµÄHandler CGMReposityHandler
+    //æ³¨å†ŒèƒŒåŒ…ç›¸å…³çš„Handler CGMReposityHandler
     RegisterGMCommand(std::string("AddRepItem"), &m_stReposityHandler);
 
-    //×¢²áÕ½¶·µ¥Î»Ïà¹ØµÄHandler CGMFightUnitHandler
+    //æ³¨å†Œæˆ˜æ–—å•ä½ç›¸å…³çš„Handler CGMFightUnitHandler
     RegisterGMCommand(std::string("AddFightUnit"), &m_stFightUnitHandler);
     RegisterGMCommand(std::string("AddUnitAttr"), &m_stFightUnitHandler);
     
-    //Íæ¼ÒÕ½¶·Ïà¹ØµÄHandler
+    //ç©å®¶æˆ˜æ–—ç›¸å…³çš„Handler
     RegisterGMCommand(std::string("AddCombatUnit"), &m_stCombatHandler);
 
     return 0;
 }
 
-//²éÕÒGMÃüÁî´¦ÀíµÄHandler
+//æŸ¥æ‰¾GMå‘½ä»¤å¤„ç†çš„Handler
 IGMBaseCommand* CGMCommandManager::GetCommandHandler(const std::string& strCommand)
 {
     int iCommandType = GetHandlerType(strCommand);
@@ -99,3 +99,7 @@ int CGMCommandManager::GetHandlerType(const std::string& strCommand)
 
     return GM_COMMAND_TYPE_INVALID;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

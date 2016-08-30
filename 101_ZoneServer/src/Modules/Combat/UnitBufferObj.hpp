@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __UNIT_BUFFER_OBJ_HPP__
 #define __UNIT_BUFFER_OBJ_HPP__
 
@@ -6,7 +6,7 @@
 #include "GameConfigDefine.hpp"
 #include "ZoneObjectAllocator.hpp"
 
-//Õ½¶·µ¥Î»µÄBuff¶ÔÏó
+//æˆ˜æ–—å•ä½çš„Buffå¯¹è±¡
 class CUnitBufferObj : public CObj
 {
 public:
@@ -18,39 +18,43 @@ public:
 
 public:
 
-    //³õÊ¼»¯Ò»¸öBuff
+    //åˆå§‹åŒ–ä¸€ä¸ªBuff
     int InitUnitBuff(int iBuffID, int iCastUnitID, int iRemainRounds);
     
     //BuffID
     int GetUnitBuffID();
     void SetUnitBuffID(int iBuffID);
 
-    //BuffÊ£Óà»ØºÏÊı
+    //Buffå‰©ä½™å›åˆæ•°
     int GetRemainRound();
     void SetRemainRound(int iRemainRound);
 
-    //Buff²úÉúµÄÊµ¼ÊĞ§¹û
+    //Buffäº§ç”Ÿçš„å®é™…æ•ˆæœ
     int GetBuffEffect();
     void SetBuffEffect(int iRealEffect);
 
-    //Ìí¼Ó¸ÃBuffµÄÕ½¶·µ¥Î»ID
+    //æ·»åŠ è¯¥Buffçš„æˆ˜æ–—å•ä½ID
     int GetCastUnitID();
     void GetCastUnitID(int iCastUnitID);
 
 ///////////////////////////////////////////////////////////////////////
 private:
     
-    //²úÉúµÄBuffµÄID
+    //äº§ç”Ÿçš„Buffçš„ID
     int m_iBuffID;
 
-    //BuffÊ£ÓàµÄ»ØºÏÊı
+    //Buffå‰©ä½™çš„å›åˆæ•°
     int m_iRemainRounds;
 
-    //Buff²úÉúµÄÊµ¼ÊĞ§¹û
+    //Buffäº§ç”Ÿçš„å®é™…æ•ˆæœ
     int m_iRealEffect;
 
-    //Ê©¼Ó¸ÃBuffµÄÕ½¶·µ¥Î»ID
+    //æ–½åŠ è¯¥Buffçš„æˆ˜æ–—å•ä½ID
     int m_iCastUnitID;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

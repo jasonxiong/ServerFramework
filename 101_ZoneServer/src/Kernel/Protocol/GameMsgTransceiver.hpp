@@ -1,8 +1,8 @@
-
+ï»¿
 #ifndef __GAME_MSG_TRANSCEIVER_HPP__
 #define __GAME_MSG_TRANSCEIVER_HPP__
 
-// ·â×°CodeQueue/zmqµÈÍ¨µÀµÄ²Ù×÷, Í³Ò»»¯ÏûÏ¢µÄÊÕÈ¡ºÍ·¢ËÍ½çÃæ
+// å°è£…CodeQueue/zmqç­‰é€šé“çš„æ“ä½œ, ç»Ÿä¸€åŒ–æ¶ˆæ¯çš„æ”¶å–å’Œå‘é€ç•Œé¢
 #include "ConfigHelper.hpp"
 #include "CodeQueueManager.hpp"
 #include "ZmqBus.hpp"
@@ -14,11 +14,11 @@ const int MAX_FD_NUMBER = 1000000;
 class CGameMsgTransceiver
 {
 public:
-    // ³õÊ¼»¯ËùÓĞµÄ×ÊÔ´, °üÀ¨CodeQueue, zmqµÈ
+    // åˆå§‹åŒ–æ‰€æœ‰çš„èµ„æº, åŒ…æ‹¬CodeQueue, zmqç­‰
     int Initialize(bool bResumeMode);
 
 public:
-    // ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+    // å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
     int SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer, int iInstanceID = 0);
     int RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgLength, EGameServerID enMsgPeer, int iInstanceID = 0);
 
@@ -29,14 +29,18 @@ public:
 
 private:
 
-    //ZoneServer ºÍ LotusServerÖ®¼äÍ¨¹ıCodeQueueÍ¨ĞÅ
+    //ZoneServer å’Œ LotusServerä¹‹é—´é€šè¿‡CodeQueueé€šä¿¡
 	CCodeQueueManager m_stCodeQueueManager;
 	
 private:
 
-    //ZoneServer ºÍ WorldServerÖ®¼äÍ¨¹ıZMQ½øĞĞÍ¨ĞÅ
+    //ZoneServer å’Œ WorldServerä¹‹é—´é€šè¿‡ZMQè¿›è¡Œé€šä¿¡
     ZmqBus m_oZone2WorldClient;
 };
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

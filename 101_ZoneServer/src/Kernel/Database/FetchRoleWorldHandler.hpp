@@ -1,4 +1,4 @@
-#ifndef __FETCH_ROLE_WORLD_HANDLER_HPP__
+ï»¿#ifndef __FETCH_ROLE_WORLD_HANDLER_HPP__
 #define __FETCH_ROLE_WORLD_HANDLER_HPP__
 #include "Handler.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -17,13 +17,13 @@ private:
     int OnFetchRole();
 
     ////////////////////////////////////////////////////////
-    // µÇÂ¼½ÇÉ«
+    // ç™»å½•è§’è‰²
     int LoginRole();
 
-    // ³õÊ¼»¯½ÇÉ«Êı¾İ
+    // åˆå§‹åŒ–è§’è‰²æ•°æ®
     int InitRoleData();
     
-    // µÇÂ¼ºó³õÊ¼»¯
+    // ç™»å½•ååˆå§‹åŒ–
     int InitRoleAfterLogin();
 		
 private:
@@ -33,3 +33,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

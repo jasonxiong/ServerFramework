@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+ï»¿#include "GameProtocol.hpp"
 #include "ObjAllocator.hpp"
 #include "ZoneObjectAllocator.hpp"
 #include "ConfigManager.hpp"
@@ -51,7 +51,7 @@ CObjAllocator* AllocateShmObj(CSharedMemory& rstSharedMemory, const int iObjCoun
 
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -109,7 +109,7 @@ CObjAllocator* AllocateShmObjK32(CSharedMemory& rstSharedMemory, const int iObjC
 
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -121,7 +121,7 @@ CObjAllocator* AllocateShmObjK32(CSharedMemory& rstSharedMemory, const int iObjC
 
     rstSharedMemory.UseShmBlock(CObjAllocator::CountSize(sizeof(TYPE_Obj), iObjCount));
 
-    CHashMap_K32* pHashMap = NULL; //½ÚµãÊıÁ¿Îª¶ÔÏóÊıÁ¿Á½±¶
+    CHashMap_K32* pHashMap = NULL; //èŠ‚ç‚¹æ•°é‡ä¸ºå¯¹è±¡æ•°é‡ä¸¤å€
 
     if (!bResume)
     {
@@ -187,7 +187,7 @@ CObjAllocator* AllocateShmObjK64(CSharedMemory& rstSharedMemory, const int iObjC
 
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -199,7 +199,7 @@ CObjAllocator* AllocateShmObjK64(CSharedMemory& rstSharedMemory, const int iObjC
 
     rstSharedMemory.UseShmBlock(CObjAllocator::CountSize(sizeof(TYPE_Obj), iObjCount));
 
-    CHashMap_K64* pHashMap = NULL; //½ÚµãÊıÁ¿Îª¶ÔÏóÊıÁ¿Á½±¶
+    CHashMap_K64* pHashMap = NULL; //èŠ‚ç‚¹æ•°é‡ä¸ºå¯¹è±¡æ•°é‡ä¸¤å€
 
     if (!bResume)
     {
@@ -284,7 +284,7 @@ int CZoneObjectAllocator::Initialize(bool bResumeMode)
         return -7;
     }
 
-    //Íæ¼ÒÕ½¶·Õ½³¡ĞÅÏ¢
+    //ç©å®¶æˆ˜æ–—æˆ˜åœºä¿¡æ¯
     pAllocator = AllocateShmObj<CBattlefieldObj>(m_stSharedMemory, MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE, bResumeMode);
 	if(!pAllocator)
 	{
@@ -292,7 +292,7 @@ int CZoneObjectAllocator::Initialize(bool bResumeMode)
 		return -11;
 	}
 
-    //Õ½¶·Ê±Õ½¶·µ¥Î»ĞÅÏ¢
+    //æˆ˜æ–—æ—¶æˆ˜æ–—å•ä½ä¿¡æ¯
     pAllocator = AllocateShmObj<CCombatUnitObj>(m_stSharedMemory, MAX_COMBAT_UNIT_OBJECT_NUMBER_IN_ZONE, bResumeMode);
 	if(!pAllocator)
 	{
@@ -300,7 +300,7 @@ int CZoneObjectAllocator::Initialize(bool bResumeMode)
 		return -12;
 	}
 
-    //Õ½¶·Ê±µ¥Î»µÄBuffĞÅÏ¢
+    //æˆ˜æ–—æ—¶å•ä½çš„Buffä¿¡æ¯
     pAllocator = AllocateShmObj<CUnitBufferObj>(m_stSharedMemory, MAX_COMBAT_BUFF_OBJECT_NUMBER_IN_ZONE, bResumeMode);
 	if(!pAllocator)
 	{
@@ -308,7 +308,7 @@ int CZoneObjectAllocator::Initialize(bool bResumeMode)
 		return -13;
 	}
 
-    //Õ½¶·Õ½³¡»ú¹ØĞÅÏ¢
+    //æˆ˜æ–—æˆ˜åœºæœºå…³ä¿¡æ¯
     pAllocator = AllocateShmObj<CCombatTrapObj>(m_stSharedMemory, MAX_COMBAT_TRAP_OBJECT_NUMBER_IN_ZONE, bResumeMode);
     if(!pAllocator)
     {
@@ -342,58 +342,62 @@ size_t CZoneObjectAllocator::GetObjTotalSize()
     TRACESVR("SessionHash: Number = %d, Size = %lu\n", 
         MAX_GAMESESSION_NUMBER << 1, iSessionHashSize);
 
-    // ½ÇÉ«¶ÔÏó
+    // è§’è‰²å¯¹è±¡
     size_t iRoleSize = CObjAllocator::CountSize(sizeof(CGameRoleObj), MAX_ROLE_OBJECT_NUMBER_IN_ZONE); 
     m_iObjTotalSize += iRoleSize;
     TRACESVR("Role: Number = %d, UnitSize = %lu, Total = %lu\n", 
         MAX_ROLE_OBJECT_NUMBER_IN_ZONE, sizeof(CGameRoleObj), iRoleSize);
 
-    // ½ÇÉ«Hash
+    // è§’è‰²Hash
     size_t iRoleHashSize = CHashMap_K32::CountSize(MAX_ROLE_OBJECT_NUMBER_IN_ZONE << 1);
     m_iObjTotalSize += iRoleHashSize;
     TRACESVR("RoleHash: Number = %d,  Size = %lu\n", 
         MAX_ROLE_OBJECT_NUMBER_IN_ZONE << 1, iRoleHashSize);
 
-    //³¡¾°µ¥Î»µÄUnitID
+    //åœºæ™¯å•ä½çš„UnitID
     size_t iSceneUnitSize = CObjAllocator::CountSize(sizeof(CGameUnitID), MAX_UNIT_NUMBER_IN_ZONE); 
     m_iObjTotalSize += iSceneUnitSize;
     TRACESVR("Unit: Number = %d, UnitSize = %lu, Total = %lu\n", 
         MAX_UNIT_NUMBER_IN_ZONE, sizeof(CGameUnitID), iSceneUnitSize);
 
-    //Õ½¶·µ¥Î»µÄID
+    //æˆ˜æ–—å•ä½çš„ID
     size_t iFightUnitSize = CObjAllocator::CountSize(sizeof(CFightUnitObj), MAX_FIGHT_UNIT_NUMBER_IN_ZONE); 
     m_iObjTotalSize += iFightUnitSize;
     TRACESVR("FightUnit: Number = %d, UnitSize = %lu, Total = %lu\n", 
         MAX_FIGHT_UNIT_NUMBER_IN_ZONE, sizeof(CFightUnitObj), iFightUnitSize);
 
-    //Õ½¶·Õ½³¡¶ÔÏó
+    //æˆ˜æ–—æˆ˜åœºå¯¹è±¡
     size_t iBattlefieldObjSize = CObjAllocator::CountSize(sizeof(CBattlefieldObj), MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE);
     m_iObjTotalSize += iBattlefieldObjSize;
     TRACESVR("battlefield obj: Number = %d, UnitSize = %lu, Total = %lu\n",
              MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE, sizeof(CBattlefieldObj), iBattlefieldObjSize);
 
-    //Õ½¶·Ê±Õ½¶·µ¥Î»¶ÔÏó
+    //æˆ˜æ–—æ—¶æˆ˜æ–—å•ä½å¯¹è±¡
     size_t iCombatUnitObjSize = CObjAllocator::CountSize(sizeof(CCombatUnitObj), MAX_COMBAT_UNIT_OBJECT_NUMBER_IN_ZONE);
     m_iObjTotalSize += iCombatUnitObjSize;
     TRACESVR("combat unit obj: Number = %d, UnitSize = %lu, Total = %lu\n",
              MAX_COMBAT_UNIT_OBJECT_NUMBER_IN_ZONE, sizeof(CCombatUnitObj), iCombatUnitObjSize);
 
-    //Õ½¶·Buff¶ÔÏó
+    //æˆ˜æ–—Buffå¯¹è±¡
     size_t iUnitBufferObjSize = CObjAllocator::CountSize(sizeof(CUnitBufferObj), MAX_COMBAT_BUFF_OBJECT_NUMBER_IN_ZONE);
     m_iObjTotalSize += iUnitBufferObjSize;
     TRACESVR("unit buff obj: Number = %d, UnitSize = %lu, Total = %lu\n",
              MAX_COMBAT_BUFF_OBJECT_NUMBER_IN_ZONE, sizeof(CUnitBufferObj), iUnitBufferObjSize);
 
-    //Õ½¶·Õ½³¡»ú¹Ø¶ÔÏó
+    //æˆ˜æ–—æˆ˜åœºæœºå…³å¯¹è±¡
     size_t iCombatTrapObjSize = CObjAllocator::CountSize(sizeof(CCombatTrapObj), MAX_COMBAT_TRAP_OBJECT_NUMBER_IN_ZONE);
     m_iObjTotalSize += iCombatTrapObjSize;
     TRACESVR("combat trap obj: Number = %d, UnitSize = %lu, Total = %lu\n",
              MAX_COMBAT_TRAP_OBJECT_NUMBER_IN_ZONE, sizeof(CCombatTrapObj), iCombatTrapObjSize);
 
-    // ×Ü¼Æ
+    // æ€»è®¡
     TRACESVR("Total Memory: %luB, %luMB\n", m_iObjTotalSize, m_iObjTotalSize/1024/1024);
     TRACESVR("*****************************************************************\n");
 
     return m_iObjTotalSize;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

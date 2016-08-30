@@ -1,4 +1,4 @@
-#include <string.h>
+Ôªø#include <string.h>
 
 #include "HandlerFactory.hpp"
 #include "LogAdapter.hpp"
@@ -30,7 +30,7 @@ IHandler* CHandlerFactory::GetHandler(const unsigned int uiMsgID, EZoneMsgType e
 		return NULL;
 	}
 
-    // øÕªß∂Àœ˚œ¢÷ªƒ‹µ˜”√øÕªß∂ÀHandler, ∑˛ŒÒ∆˜œ˚œ¢ø…“‘÷±Ω”µ˜”√øÕªß∂ÀHandler
+    // ÂÆ¢Êà∑Á´ØÊ∂àÊÅØÂè™ËÉΩË∞ÉÁî®ÂÆ¢Êà∑Á´ØHandler, ÊúçÂä°Âô®Ê∂àÊÅØÂèØ‰ª•Áõ¥Êé•Ë∞ÉÁî®ÂÆ¢Êà∑Á´ØHandler
     if(enMsgType == pstMsgConfig->m_enMsgType || EKMT_SERVER == enMsgType)
     {
         return m_apHandler[uiMsgID];
@@ -62,7 +62,7 @@ int CHandlerFactory::RegisterHandler(const unsigned int uiMsgID, const IHandler*
 		return -1;
 	}
 
-    // ∑¿÷π÷ÿ∏¥◊¢≤·
+    // Èò≤Ê≠¢ÈáçÂ§çÊ≥®ÂÜå
     if (m_apHandler[uiMsgID])
     {
         TRACESVR("Duplicated Handler Registered: uiMsgID = %d, Handler = %p\n", uiMsgID, pHandler);
@@ -114,3 +114,7 @@ bool CHandlerFactory::IsMsgDisabled(const unsigned int uiMsgID)
 
 	return m_astMsgConfig[uiMsgID].m_bDisabled;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

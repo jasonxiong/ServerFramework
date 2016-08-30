@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __HANDLER_FACTORY_HPP__
 #define __HANDLER_FACTORY_HPP__
 
@@ -12,23 +12,23 @@ using namespace GameConfig;
 
 typedef enum tagenZoneMsgType
 {
-	EKMT_CLIENT = 1,    // ¿Í»§¶ËÏûÏ¢
-	EKMT_SERVER = 2,    // ·şÎñÆ÷ÏûÏ¢
+	EKMT_CLIENT = 1,    // å®¢æˆ·ç«¯æ¶ˆæ¯
+	EKMT_SERVER = 2,    // æœåŠ¡å™¨æ¶ˆæ¯
 
 }EZoneMsgType;
 
 typedef enum tagEnumZoneMsgFlag
 {
-	// ²»¼ì²é
+	// ä¸æ£€æŸ¥
 	EKMF_CHECKNONE		= 0,
 
-	// Èç¹û²»Éæ¼°¸´»îºÍ×Ô¶¯²Ù×÷, Ôò±ØĞë¼ì²éËÀÍö×´Ì¬
+	// å¦‚æœä¸æ¶‰åŠå¤æ´»å’Œè‡ªåŠ¨æ“ä½œ, åˆ™å¿…é¡»æ£€æŸ¥æ­»äº¡çŠ¶æ€
 	EKMF_CHECKDEAD		= 1,	
 
-	// Èç¹ûÉæ¼°µ½ÈÎºÎÎïÆ·, Ôò±ØĞë¼ì²é±³°ü×´Ì¬
+	// å¦‚æœæ¶‰åŠåˆ°ä»»ä½•ç‰©å“, åˆ™å¿…é¡»æ£€æŸ¥èƒŒåŒ…çŠ¶æ€
 	EKMF_CHECKBAGLOCK	= 2,	
 
-	// ¼ì²éÈ«²¿
+	// æ£€æŸ¥å…¨éƒ¨
 	EKMF_CHECKALL		= EKMF_CHECKDEAD | EKMF_CHECKBAGLOCK,
 
 }EZoneMsgFlag;
@@ -44,13 +44,13 @@ typedef struct tagZoneMsgConfig
 class CHandlerFactory
 {
 public:
-    // »ñÈ¡ÏûÏ¢´¦Àíº¯Êı
+    // è·å–æ¶ˆæ¯å¤„ç†å‡½æ•°
 	static IHandler* GetHandler(const unsigned int uiMsgID, EZoneMsgType enMsgType = EKMT_SERVER);
 
-	// »ñÈ¡ÏûÏ¢ÅäÖÃĞÅÏ¢
+	// è·å–æ¶ˆæ¯é…ç½®ä¿¡æ¯
 	static TZoneMsgConfig* GetMsgConfig(const unsigned int uiMsgID);
 
-    // ×¢²áÏûÏ¢´¦Àíº¯Êı
+    // æ³¨å†Œæ¶ˆæ¯å¤„ç†å‡½æ•°
 	static int RegisterHandler(const unsigned int uiMsgID, const IHandler* pHandler, 
 		EZoneMsgType enMsgType = EKMT_SERVER, 
 		unsigned int uiHandlerFlag = EKMF_CHECKALL
@@ -65,3 +65,7 @@ protected:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

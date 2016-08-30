@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "ZoneErrorNumDef.hpp"
 #include "LogAdapter.hpp"
@@ -12,7 +12,7 @@
 using namespace GameConfig;
 using namespace ServerLib;
 
-//Íæ¼Ò±³°üÎïÆ··¢Éú±ä»¯µÄÍ¨Öª
+//ç©å®¶èƒŒåŒ…ç‰©å“å‘ç”Ÿå˜åŒ–çš„é€šçŸ¥
 GameProtocolMsg CRepThingsManager::m_stRepChangeNotify;
 
 CRepThingsManager::CRepThingsManager()
@@ -25,7 +25,7 @@ CRepThingsManager::~CRepThingsManager()
 
 }
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 int CRepThingsManager::Initialize()
 {
     m_uiUin = 0;
@@ -46,7 +46,7 @@ CGameRoleObj* CRepThingsManager::GetOwner()
     return GameTypeK32<CGameRoleObj>::GetByKey(m_uiUin);
 }
 
-//±³°üÔö¼ÓÎïÆ·
+//èƒŒåŒ…å¢åŠ ç‰©å“
 int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
 {
     if(iItemID<=0 || iItemNum<=0)
@@ -54,7 +54,7 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ĞŞ¸ÄµÄslotĞÅÏ¢
+    //ä¿®æ”¹çš„slotä¿¡æ¯
     std::vector<int> vItemSlot;
 
     int iType = CRepThingsUtility::GetItemType(iItemID);
@@ -62,7 +62,7 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
     {
     case REP_ITEM_TYPE_EQUIP:
         {
-            //¼Ó×°±¸,²»ÄÜµş¼Ó
+            //åŠ è£…å¤‡,ä¸èƒ½å åŠ 
             if(iItemNum != 1)
             {
                 LOGERROR("Failed to add rep equipment, id %d, num %d, uin %u\n", iItemID, iItemNum, m_uiUin);
@@ -76,7 +76,7 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
                 return T_ZONE_USER_REP_FULL;
             }
         
-            //Ôö¼ÓÎïÆ·
+            //å¢åŠ ç‰©å“
             m_astRepItem[iItemSlot].iItemID = iItemID;
             m_astRepItem[iItemSlot].iItemNum = iItemNum;
 
@@ -93,7 +93,7 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
                 return T_ZONE_SYSTEM_INVALID_CFG;
             }
 
-            //¼ÓµÀ¾ß£¬¿ÉÒÔµş¼Ó
+            //åŠ é“å…·ï¼Œå¯ä»¥å åŠ 
             for(int i=0; i<m_iRepBlockNum; ++i)
             {
                 if(iItemNum == 0)
@@ -101,14 +101,14 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
                     break;
                 }
 
-                //ÏÈ³¢ÊÔµş¼ÓµÀ¾ß
+                //å…ˆå°è¯•å åŠ é“å…·
                 if(m_astRepItem[i].iItemID==iItemID && 
                    m_astRepItem[i].bIsBinded==bIsBinded &&
                    m_astRepItem[i].iItemNum<pstPropConfig->iMaxNum)
                 {
                     if(m_astRepItem[i].iItemNum+iItemNum<=pstPropConfig->iMaxNum)
                     {
-                        //·ÅÈëºó²»³¬¹ıµş¼ÓÉÏÏŞ
+                        //æ”¾å…¥åä¸è¶…è¿‡å åŠ ä¸Šé™
                         m_astRepItem[i].iItemNum += iItemNum;
                         iItemNum = 0;
 
@@ -116,7 +116,7 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
                     }
                     else
                     {
-                        //·ÅÈëºó³¬¹ıÉÏÏŞÁË
+                        //æ”¾å…¥åè¶…è¿‡ä¸Šé™äº†
                         iItemNum -= (pstPropConfig->iMaxNum - m_astRepItem[i].iItemNum);
 
                         m_astRepItem[i].iItemNum = pstPropConfig->iMaxNum;
@@ -130,7 +130,7 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
                 break;
             }
 
-            //»¹ÓĞÎ´·ÅÈëµÄ£¬ÕÒ¿ÕÎ»·ÅÈë
+            //è¿˜æœ‰æœªæ”¾å…¥çš„ï¼Œæ‰¾ç©ºä½æ”¾å…¥
             for(int i=0; i<m_iRepBlockNum; ++i)
             {
                 if(iItemNum == 0)
@@ -161,18 +161,18 @@ int CRepThingsManager::AddRepItem(int iItemID, int iItemNum, int iItemChannel)
         break;
     }
 
-    //·¢ËÍ±³°ü±ä»¯µÄÍ¨Öª
+    //å‘é€èƒŒåŒ…å˜åŒ–çš„é€šçŸ¥
     SendRepChangeNotify(vItemSlot, iItemChannel);
 
     return T_SERVER_SUCESS;
 }
 
-//±³°üÔö¼ÓÎïÆ·
+//èƒŒåŒ…å¢åŠ ç‰©å“
 int CRepThingsManager::AddRepItem(const RepItem& stItem, int iItemSlot, int iItemChannel)
 {
     if(iItemSlot<0 || iItemSlot>=m_iRepBlockNum)
     {
-        //Ã»Ö¸¶¨·ÅµÄ¸ñ×Ó,Ôò²éÕÒ¿Õ¸ñ
+        //æ²¡æŒ‡å®šæ”¾çš„æ ¼å­,åˆ™æŸ¥æ‰¾ç©ºæ ¼
         iItemSlot = GetEmptyItemSlot();
         if(iItemSlot < 0)
         {
@@ -182,7 +182,7 @@ int CRepThingsManager::AddRepItem(const RepItem& stItem, int iItemSlot, int iIte
     }
     else
     {
-        //Ö¸¶¨ÁË¸ñ×ÓÎ»ÖÃ£¬ÔòÅĞ¶ÏÖ¸¶¨µÄÎ»ÖÃÊÇ·ñÓĞÎïÆ·
+        //æŒ‡å®šäº†æ ¼å­ä½ç½®ï¼Œåˆ™åˆ¤æ–­æŒ‡å®šçš„ä½ç½®æ˜¯å¦æœ‰ç‰©å“
         if(m_astRepItem[iItemSlot].iItemID != 0)
         {
             return T_ZONE_SYSTEM_PARA_ERR;
@@ -190,10 +190,10 @@ int CRepThingsManager::AddRepItem(const RepItem& stItem, int iItemSlot, int iIte
     }
 
 
-    //Ö±½Ó°ÑÎïÆ·ĞÅÏ¢¿½±´½øÈ¥
+    //ç›´æ¥æŠŠç‰©å“ä¿¡æ¯æ‹·è´è¿›å»
     memcpy((void*)&m_astRepItem[iItemSlot], (void*)&stItem, sizeof(stItem));
 
-    //·¢ËÍ±³°ü±ä»¯µÄÍ¨Öª
+    //å‘é€èƒŒåŒ…å˜åŒ–çš„é€šçŸ¥
     std::vector<int> vItemSlot;
     vItemSlot.push_back(iItemSlot);
 
@@ -202,7 +202,7 @@ int CRepThingsManager::AddRepItem(const RepItem& stItem, int iItemSlot, int iIte
     return T_SERVER_SUCESS;
 }
 
-//±³°üÉ¾³ıÎïÆ·
+//èƒŒåŒ…åˆ é™¤ç‰©å“
 int CRepThingsManager::DeleteRepItem(int iItemSlot, int iItemNum, int iItemChannel)
 {
     if(iItemSlot<0 || iItemSlot>=m_iRepBlockNum)
@@ -225,7 +225,7 @@ int CRepThingsManager::DeleteRepItem(int iItemSlot, int iItemNum, int iItemChann
         stItem.Reset();
     }
 
-    //·¢ËÍ±³°ü±ä»¯µÄÍ¨Öª
+    //å‘é€èƒŒåŒ…å˜åŒ–çš„é€šçŸ¥
     std::vector<int> vItemSlot;
     vItemSlot.push_back(iItemSlot);
 
@@ -234,7 +234,7 @@ int CRepThingsManager::DeleteRepItem(int iItemSlot, int iItemNum, int iItemChann
     return T_SERVER_SUCESS;
 }
 
-//±³°üÉ¾³ıÎïÆ·
+//èƒŒåŒ…åˆ é™¤ç‰©å“
 int CRepThingsManager::DeleteRepItem(int iItemSlot, RepItem& stDeleteItem, int iItemChannel)
 {
     if(iItemSlot<0 || iItemSlot>=m_iRepBlockNum)
@@ -249,7 +249,7 @@ int CRepThingsManager::DeleteRepItem(int iItemSlot, RepItem& stDeleteItem, int i
 
     stItem.Reset();
 
-    //·¢ËÍ±³°ü±ä»¯µÄÍ¨Öª
+    //å‘é€èƒŒåŒ…å˜åŒ–çš„é€šçŸ¥
     std::vector<int> vItemSlot;
     vItemSlot.push_back(iItemSlot);
 
@@ -258,7 +258,7 @@ int CRepThingsManager::DeleteRepItem(int iItemSlot, RepItem& stDeleteItem, int i
     return T_SERVER_SUCESS;
 }
 
-//±³°üÉ¾³ıÎïÆ·
+//èƒŒåŒ…åˆ é™¤ç‰©å“
 int CRepThingsManager::DeleteRepItemByID(int iItemID, int iItemChannel)
 {
     for(int i=0; i<m_iRepBlockNum; ++i)
@@ -272,10 +272,10 @@ int CRepThingsManager::DeleteRepItemByID(int iItemID, int iItemChannel)
     return T_ZONE_SYSTEM_PARA_ERR;
 }
 
-//±³°üÉ¾³ı¹Ì¶¨ÊıÁ¿µÄÎïÆ·
+//èƒŒåŒ…åˆ é™¤å›ºå®šæ•°é‡çš„ç‰©å“
 int CRepThingsManager::DeleteRepItemByID(int iItemID, int iItemNum, int iItemChannel)
 {
-    //ÏÈÅĞ¶ÏÊıÁ¿ÊÇ·ñ×ã¹»
+    //å…ˆåˆ¤æ–­æ•°é‡æ˜¯å¦è¶³å¤Ÿ
     int iTotalNum = 0;
     for(int i=0; i<m_iRepBlockNum; ++i)
     {
@@ -290,7 +290,7 @@ int CRepThingsManager::DeleteRepItemByID(int iItemID, int iItemNum, int iItemCha
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //¹»É¾£¬Êµ¼ÊÉ¾³ıÎïÆ·
+    //å¤Ÿåˆ ï¼Œå®é™…åˆ é™¤ç‰©å“
     for(int i=0; i<m_iRepBlockNum; ++i)
     {
         if(iItemNum == 0)
@@ -318,7 +318,7 @@ int CRepThingsManager::DeleteRepItemByID(int iItemID, int iItemNum, int iItemCha
     return T_SERVER_SUCESS;
 }
 
-//±³°ü½»»»ÎïÆ·,Èç¹ûÊÇÏàÍ¬IDµÄÔòºÏ²¢ 2->1
+//èƒŒåŒ…äº¤æ¢ç‰©å“,å¦‚æœæ˜¯ç›¸åŒIDçš„åˆ™åˆå¹¶ 2->1
 int CRepThingsManager::ExchangeRepItem(int iItemSlot1, int iItemSlot2, bool bIsSortExchange)
 {
     if(iItemSlot1<0 || iItemSlot1>=m_iRepBlockNum
@@ -345,7 +345,7 @@ int CRepThingsManager::ExchangeRepItem(int iItemSlot1, int iItemSlot2, bool bIsS
             return T_ZONE_SYSTEM_INVALID_CFG;
         }
 
-        //Èç¹û½»»»µÄÊÇÏàÍ¬IDµÄ¿Éµş¼ÓÎïÆ·£¬Ôò³¢ÊÔºÏ²¢
+        //å¦‚æœäº¤æ¢çš„æ˜¯ç›¸åŒIDçš„å¯å åŠ ç‰©å“ï¼Œåˆ™å°è¯•åˆå¹¶
         int iNewItemNum = stItem1.iItemNum + stItem2.iItemNum;
         if(iNewItemNum > pstPropConfig->iMaxNum)
         {
@@ -358,10 +358,10 @@ int CRepThingsManager::ExchangeRepItem(int iItemSlot1, int iItemSlot2, bool bIsS
             stItem2.iItemNum = 0;
         }
 
-        //ºÏ²¢Íê³Éºó¶¼±ä³É°ó¶¨×´Ì¬
+        //åˆå¹¶å®Œæˆåéƒ½å˜æˆç»‘å®šçŠ¶æ€
         stItem1.bIsBinded = true;
 
-        //Èç¹ûSlot2ÊıÄ¿Îª0£¬ÔòÇå¿Õ
+        //å¦‚æœSlot2æ•°ç›®ä¸º0ï¼Œåˆ™æ¸…ç©º
         if(stItem2.iItemNum == 0)
         {
             stItem2.Reset();
@@ -370,7 +370,7 @@ int CRepThingsManager::ExchangeRepItem(int iItemSlot1, int iItemSlot2, bool bIsS
     }
     else
     {
-        //½»»»2¸öÎïÆ·²ÛµÄÎïÆ·
+        //äº¤æ¢2ä¸ªç‰©å“æ§½çš„ç‰©å“
         RepItem stTmpItem;
         
         memcpy((void*)&stTmpItem, (void*)&stItem1, sizeof(stItem1));
@@ -380,7 +380,7 @@ int CRepThingsManager::ExchangeRepItem(int iItemSlot1, int iItemSlot2, bool bIsS
 
     if(!bIsSortExchange)
     {
-        //·¢ËÍ±³°ü±ä»¯µÄÍ¨Öª
+        //å‘é€èƒŒåŒ…å˜åŒ–çš„é€šçŸ¥
         std::vector<int> vItemSlot;
         vItemSlot.push_back(iItemSlot1);
         vItemSlot.push_back(iItemSlot2);
@@ -391,7 +391,7 @@ int CRepThingsManager::ExchangeRepItem(int iItemSlot1, int iItemSlot2, bool bIsS
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡±³°üÖĞÎïÆ·µÄÊıÁ¿
+//è·å–èƒŒåŒ…ä¸­ç‰©å“çš„æ•°é‡
 int CRepThingsManager::GetRepItemNum(int iItemSlot)
 {
     if(iItemSlot < 0 || iItemSlot >= m_iRepBlockNum)
@@ -417,22 +417,22 @@ int CRepThingsManager::GetRepItemNumByID(int iItemID)
     return iItemNum;
 }
 
-//Ôö¼Ó±³°üÖĞÎïÆ·ÊıÁ¿£¬Îª¸º±íÊ¾É¾³ı
+//å¢åŠ èƒŒåŒ…ä¸­ç‰©å“æ•°é‡ï¼Œä¸ºè´Ÿè¡¨ç¤ºåˆ é™¤
 int CRepThingsManager::AddItemNumByID(int iItemID, int iItemNum, int iItemChannel)
 {
     if(iItemNum > 0)
     {
-        //Ôö¼ÓÎïÆ·
+        //å¢åŠ ç‰©å“
         return AddRepItem(iItemID, iItemNum, iItemChannel);
     }
     else if(iItemNum < 0)
     {
         iItemNum = -iItemNum;
 
-        //É¾³ıÎïÆ·
+        //åˆ é™¤ç‰©å“
         std::vector<int> vItemSlot;
 
-        //ÏÈÉ¾³ı·Ç°ó¶¨µÄ,´ÓºóÍùÇ°É¾
+        //å…ˆåˆ é™¤éç»‘å®šçš„,ä»åå¾€å‰åˆ 
         for(int i=m_iRepBlockNum-1; i>=0; --i)
         {
             if(iItemNum == 0)
@@ -457,7 +457,7 @@ int CRepThingsManager::AddItemNumByID(int iItemID, int iItemNum, int iItemChanne
             }
         }
 
-        //ÔÙÉ¾³ı°ó¶¨µÄ£¬´ÓºóÍùÇ°É¾
+        //å†åˆ é™¤ç»‘å®šçš„ï¼Œä»åå¾€å‰åˆ 
         for(int i=m_iRepBlockNum-1; i>=0; --i)
         {
             if(iItemNum == 0)
@@ -487,14 +487,14 @@ int CRepThingsManager::AddItemNumByID(int iItemID, int iItemNum, int iItemChanne
             return T_ZONE_SYSTEM_PARA_ERR;
         }
 
-        //ÍÆËÍ±³°ü±ä»¯µÄÍ¨Öª
+        //æ¨é€èƒŒåŒ…å˜åŒ–çš„é€šçŸ¥
         SendRepChangeNotify(vItemSlot, iItemChannel);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡±³°üÖĞÎïÆ·µÄID
+//è·å–èƒŒåŒ…ä¸­ç‰©å“çš„ID
 int CRepThingsManager::GetRepItemID(int iItemSlot)
 {
     if(iItemSlot < 0 || iItemSlot >= m_iRepBlockNum)
@@ -505,7 +505,7 @@ int CRepThingsManager::GetRepItemID(int iItemSlot)
     return m_astRepItem[iItemSlot].iItemID;
 }
 
-//»ñÈ¡±³°ü¿Õ¸ñ×ÓµÄSlotIndex
+//è·å–èƒŒåŒ…ç©ºæ ¼å­çš„SlotIndex
 int CRepThingsManager::GetEmptyItemSlotIndex()
 {
     for(int i=0; i<m_iRepBlockNum; ++i)
@@ -519,20 +519,20 @@ int CRepThingsManager::GetEmptyItemSlotIndex()
     return -1;
 }
 
-//±³°üÕûÀíÎïÆ·
+//èƒŒåŒ…æ•´ç†ç‰©å“
 int CRepThingsManager::SortRepItem()
 {
     //int iNewNum = 0;
 
-    //todo jasonxiong4 ºóÃæÔÙÀ´¿ª·¢
+    //todo jasonxiong4 åé¢å†æ¥å¼€å‘
     /*
-    //ÏÈ´¦ÀíÍ¬ÀàĞÍµÄÎïÆ·ºÏ²¢,Ä¿Ç°Ö»ÓĞµÀ¾ß
+    //å…ˆå¤„ç†åŒç±»å‹çš„ç‰©å“åˆå¹¶,ç›®å‰åªæœ‰é“å…·
     for(int i=0; i<m_iRepBlockNum; ++i)
     {
         int iItemType = CRepThingsUtility::GetItemType(m_astRepItem[i].iItemID);
         if(iItemType != REP_ITEM_TYPE_PROP)
         {
-            //²»ÊÇµÀ¾ß
+            //ä¸æ˜¯é“å…·
             continue;
         }
 
@@ -568,12 +568,12 @@ int CRepThingsManager::SortRepItem()
     }
     */
 
-    //ÅÅĞò¹æÔòÎª ×°±¸¡¢ÈÎÎñµÀ¾ß¡¢ÆÕÍ¨µÀ¾ß
+    //æ’åºè§„åˆ™ä¸º è£…å¤‡ã€ä»»åŠ¡é“å…·ã€æ™®é€šé“å…·
     int iCurrentIndex = 0;
     
     int iRet = T_SERVER_SUCESS;
 
-    //ÏÈÕûÀí×°±¸µÄ´óÀà
+    //å…ˆæ•´ç†è£…å¤‡çš„å¤§ç±»
     int iEquipIndex = iCurrentIndex;
     for(int i=iCurrentIndex; i<m_iRepBlockNum; ++i)
     {
@@ -594,7 +594,7 @@ int CRepThingsManager::SortRepItem()
         }
     }
 
-    //ÕûÀí×°±¸µÄĞ¡Àà
+    //æ•´ç†è£…å¤‡çš„å°ç±»
     SortEquipBySubType(iEquipIndex, iCurrentIndex, EQUIP_SLOT_TYPE_SHIZHUANG);
     SortEquipBySubType(iEquipIndex, iCurrentIndex, EQUIP_SLOT_TYPE_WUQI);
     SortEquipBySubType(iEquipIndex, iCurrentIndex, EQUIP_SLOT_TYPE_SHANGZHUANG);
@@ -603,7 +603,7 @@ int CRepThingsManager::SortRepItem()
     SortEquipBySubType(iEquipIndex, iCurrentIndex, EQUIP_SLOT_TYPE_JIEZHI);
     SortEquipBySubType(iEquipIndex, iCurrentIndex, EQUIP_SLOT_TYPE_YAODAI);
 
-    //ÕûÀíµÀ¾ßµÄ´óÀà
+    //æ•´ç†é“å…·çš„å¤§ç±»
     int iPropIndex = iCurrentIndex;
     for(int i=iPropIndex; i<m_iRepBlockNum; ++i)
     {
@@ -624,16 +624,16 @@ int CRepThingsManager::SortRepItem()
         }
     }
 
-    //ÕûÀíµÀ¾ßµÄĞ¡Àà
-    SortPropItemBySubType(iPropIndex, iCurrentIndex, 4);    //ÈÎÎñµÀ¾ß
-    SortPropItemBySubType(iPropIndex, iCurrentIndex, 1);    //Ò©Æ·µÀ¾ß
-    SortPropItemBySubType(iPropIndex, iCurrentIndex, 2);    //¹¦ÄÜµÀ¾ß
-    SortPropItemBySubType(iPropIndex, iCurrentIndex, 3);    //²ÄÁÏµÀ¾ß
+    //æ•´ç†é“å…·çš„å°ç±»
+    SortPropItemBySubType(iPropIndex, iCurrentIndex, 4);    //ä»»åŠ¡é“å…·
+    SortPropItemBySubType(iPropIndex, iCurrentIndex, 1);    //è¯å“é“å…·
+    SortPropItemBySubType(iPropIndex, iCurrentIndex, 2);    //åŠŸèƒ½é“å…·
+    SortPropItemBySubType(iPropIndex, iCurrentIndex, 3);    //ææ–™é“å…·
 
     return T_SERVER_SUCESS;
 }
 
-//¿ªÆô±³°ü¸ñ×Ó
+//å¼€å¯èƒŒåŒ…æ ¼å­
 int CRepThingsManager::OpenRepBlock()
 {
     if(m_iRepBlockNum >= MAX_REP_BLOCK_NUM)
@@ -642,7 +642,7 @@ int CRepThingsManager::OpenRepBlock()
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //todo jasonxiong4 ºóÃæÔÙÀ´¿ª·¢
+    //todo jasonxiong4 åé¢å†æ¥å¼€å‘
     /*
     m_iRepBlockNum += REP_ONE_OPEN_BLOCK_NUM;
     if(m_iRepBlockNum > MAX_REP_BLOCK_NUM)
@@ -654,7 +654,7 @@ int CRepThingsManager::OpenRepBlock()
     return T_SERVER_SUCESS;
 }
 
-//¿ªÆôËùÓĞµÄ±³°ü¸ñ×Ó
+//å¼€å¯æ‰€æœ‰çš„èƒŒåŒ…æ ¼å­
 int CRepThingsManager::OpenAllRepBlock()
 {
     if(m_iRepBlockNum >= MAX_REP_BLOCK_NUM)
@@ -668,7 +668,7 @@ int CRepThingsManager::OpenAllRepBlock()
     return T_SERVER_SUCESS;
 }
 
-//±³°üÎïÆ·Êı¾İ¿â²Ù×÷º¯Êı
+//èƒŒåŒ…ç‰©å“æ•°æ®åº“æ“ä½œå‡½æ•°
 void CRepThingsManager::UpdateRepItemToDB(ITEMDBINFO& rstItemInfo)
 {
     rstItemInfo.set_m_iopenedslotnum(m_iRepBlockNum);
@@ -680,14 +680,14 @@ void CRepThingsManager::UpdateRepItemToDB(ITEMDBINFO& rstItemInfo)
 
         if(m_astRepItem[i].iItemID == 0)
         {
-            //¿ÕµÄÎïÆ·²Û
+            //ç©ºçš„ç‰©å“æ§½
             continue;
         }
 
         pstOneBlockInfo->set_iitemid(m_astRepItem[i].iItemID);
         pstOneBlockInfo->set_iitemnum(m_astRepItem[i].iItemNum);
 
-        //·â×°µÀ¾ßºÍ×°±¸µÄÏêÏ¸ĞÅÏ¢
+        //å°è£…é“å…·å’Œè£…å¤‡çš„è¯¦ç»†ä¿¡æ¯
         int iItemType = CRepThingsUtility::GetItemType(m_astRepItem[i].iItemID);
         switch (iItemType)
         {
@@ -763,10 +763,10 @@ int CRepThingsManager::GetEmptyItemSlot()
     return -1;
 }
 
-//°´×°±¸×ÓÀàĞÍ½øĞĞÅÅĞò,µÚÒ»¸ö²ÎÊı»á¸üĞÂÆğÊ¼µÄÎ»ÖÃ
+//æŒ‰è£…å¤‡å­ç±»å‹è¿›è¡Œæ’åº,ç¬¬ä¸€ä¸ªå‚æ•°ä¼šæ›´æ–°èµ·å§‹çš„ä½ç½®
 int CRepThingsManager::SortEquipBySubType(int& iBeginIndex, int iMaxIndex, int iSubType)
 {
-    //todo jasonxiong5 ÔÙÀ´¿ª·¢
+    //todo jasonxiong5 å†æ¥å¼€å‘
     /*
     int iRet = T_SERVER_SUCESS;
 
@@ -802,7 +802,7 @@ int CRepThingsManager::SortEquipBySubType(int& iBeginIndex, int iMaxIndex, int i
     return T_SERVER_SUCESS;
 }
 
-//°´µÀ¾ß×ÓÀàĞÍ½øĞĞÅÅĞò£¬µÚÒ»¸ö²ÎÊı»á¸üĞÂÆğÊ¼µÄÎ»ÖÃ
+//æŒ‰é“å…·å­ç±»å‹è¿›è¡Œæ’åºï¼Œç¬¬ä¸€ä¸ªå‚æ•°ä¼šæ›´æ–°èµ·å§‹çš„ä½ç½®
 int CRepThingsManager::SortPropItemBySubType(int& iBeginIndex, int iMaxIndex, int iSubType)
 {
     //int iRet = T_SERVER_SUCESS;
@@ -841,7 +841,7 @@ int CRepThingsManager::SortPropItemBySubType(int& iBeginIndex, int iMaxIndex, in
     return T_SERVER_SUCESS;
 }
 
-//·¢ËÍ±³°üÎïÆ·±ä»¯µÄÍ¨Öª
+//å‘é€èƒŒåŒ…ç‰©å“å˜åŒ–çš„é€šçŸ¥
 void CRepThingsManager::SendRepChangeNotify(std::vector<int>& vItemSlot, int iItemChannel)
 {
     CZoneMsgHelper::GenerateMsgHead(m_stRepChangeNotify, MSGID_ZONE_REPCHANGE_NOTIFY);
@@ -859,7 +859,7 @@ void CRepThingsManager::SendRepChangeNotify(std::vector<int>& vItemSlot, int iIt
         pstRepSlot->set_irepslot(vItemSlot[i]);
         pstRepSlot->set_ichangechannel(iItemChannel);
         
-        //ÎïÆ·µÄÏêÏ¸ĞÅÏ¢
+        //ç‰©å“çš„è¯¦ç»†ä¿¡æ¯
         OneSlotInfo* pstSlotInfo = pstRepSlot->mutable_stslotinfo();
         RepItem& stItemInfo = m_astRepItem[vItemSlot[i]];
 
@@ -889,8 +889,12 @@ void CRepThingsManager::SendRepChangeNotify(std::vector<int>& vItemSlot, int iIt
         }
     }
 
-    //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+    //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
     CZoneMsgHelper::SendZoneMsgToRole(m_stRepChangeNotify, GetOwner());
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

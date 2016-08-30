@@ -1,4 +1,4 @@
-#ifndef __GAME_ROLE_HPP__
+ï»¿#ifndef __GAME_ROLE_HPP__
 #define __GAME_ROLE_HPP__
 
 #include <vector>
@@ -17,20 +17,20 @@
 
 using namespace ServerLib;
 
-// ·À³ÁÃÔ×´Ì¬
+// é˜²æ²‰è¿·çŠ¶æ€
 typedef enum tagEnumAAStatus
 {
-    EAS_HEALTHY     = 0,        // ½¡¿µ0 ~ 3Ğ¡Ê±
-    EAS_TIRED       = 1,        // Æ£ÀÍ3 ~ 5Ğ¡Ê±
-    EAS_UNHEALTHY   = 2,        // ²»½¡¿µ >5Ğ¡Ê±
+    EAS_HEALTHY     = 0,        // å¥åº·0 ~ 3å°æ—¶
+    EAS_TIRED       = 1,        // ç–²åŠ³3 ~ 5å°æ—¶
+    EAS_UNHEALTHY   = 2,        // ä¸å¥åº· >5å°æ—¶
 } TAAStatus;
 
-// ÏûÏ¢¼ÇÂ¼
+// æ¶ˆæ¯è®°å½•
 typedef struct
 {
-    unsigned short m_wMsgID;    //ÏûÏ¢ID
-    unsigned char m_ucSource;   //À´Ô´
-    timeval m_stTimeval;        //Ê±¼ä
+    unsigned short m_wMsgID;    //æ¶ˆæ¯ID
+    unsigned char m_ucSource;   //æ¥æº
+    timeval m_stTimeval;        //æ—¶é—´
 }MsgInfo;
 
 const int MAX_MSG_QUEUE_LEN = 400;
@@ -46,7 +46,7 @@ typedef struct tagMsgInfoQueue
     };
 }MsgInfoQueue;
 
-// Ä£¿éËø
+// æ¨¡å—é”
 typedef enum
 {
     MAIL_LOCK = 0,
@@ -69,7 +69,7 @@ public:
 ///////////////////////////////////////////////////////////////////////
 public:
 
-    // ³õÊ¼»¯Íæ¼ÒÊôĞÔ
+    // åˆå§‹åŒ–ç©å®¶å±æ€§
     int InitRole(const RoleID& stRoleID);
 
     void SetRoleID(const RoleID& stRoleID) { m_stRoleInfo.stRoleID.CopyFrom(stRoleID); };
@@ -84,37 +84,37 @@ public:
     void SetSessionID(int iSessionID);
     CGameSessionObj* GetSession();
 
-    //sznickname Ãû×Ö
+    //sznickname åå­—
     void SetNickName(const char* strNickName);
     const char* GetNickName();
 
-    //uStatus ×´Ì¬
+    //uStatus çŠ¶æ€
     unsigned GetRoleStatus() { return m_stRoleInfo.stUnitInfo.uiUnitStatus; };
     void SetRoleStatus(int uStatus) { m_stRoleInfo.stUnitInfo.uiUnitStatus = uStatus; };
 
-    //iLastLogin ÉÏ´ÎµÇÂ¼Ê±¼ä
+    //iLastLogin ä¸Šæ¬¡ç™»å½•æ—¶é—´
     int GetLastLoginTime() ;
     void SetLastLoginTime(int iLastLoginTime) ;
 
-    //iLastLogout ÉÏ´ÎÏÂÏßÊ±¼ä
+    //iLastLogout ä¸Šæ¬¡ä¸‹çº¿æ—¶é—´
     int GetLastLogoutTime(){ return m_stRoleInfo.stBaseInfo.iLastLogout;}
     void SetLastLogoutTime(int iLastLogoutTime){m_stRoleInfo.stBaseInfo.iLastLogout = iLastLogoutTime; LOGDEBUG("Debug: set lastlogouttime:%d, uin:%d\n", m_stRoleInfo.stBaseInfo.iLastLogout, m_stRoleInfo.stRoleID.uin());}
     bool IsFirstLoginToday();
 
-    //iCreateTime ÕÊºÅ´´½¨µÄÊ±¼ä
+    //iCreateTime å¸å·åˆ›å»ºçš„æ—¶é—´
     void SetCreateTime(int iCreateTime);
     int GetCreateTime();
     
-    //×ÜÔÚÏßÊ±¼ä
+    //æ€»åœ¨çº¿æ—¶é—´
     void SetOnlineTotalTime(int iOnlineTime);
     int GetOnlineTotalTime();
     int GetOnlineThisTime()const;
 
-    //iLoginCount Íæ¼Ò×ÜµÄµÇÂ¼´ÎÊı
+    //iLoginCount ç©å®¶æ€»çš„ç™»å½•æ¬¡æ•°
     int GetLoginCount() {return m_stRoleInfo.stBaseInfo.iLoginCount;}
     void SetLoginCount(int iCount) { m_stRoleInfo.stBaseInfo.iLoginCount = iCount;}
 
-    //iForbidTalkingTime ½ûÖ¹Íæ¼Ò·¢ÑÔµÄÊ±¼ä
+    //iForbidTalkingTime ç¦æ­¢ç©å®¶å‘è¨€çš„æ—¶é—´
     void SetForbidTalkingTime(int iForbidTalkingTime)
     {
         m_stRoleInfo.stBaseInfo.iForbidTalkingTime = iForbidTalkingTime;
@@ -125,27 +125,27 @@ public:
         return m_stRoleInfo.stBaseInfo.iForbidTalkingTime;
     }
 
-    //iLoginTime ±¾´ÎµÇÂ¼µÄÊ±¼ä
+    //iLoginTime æœ¬æ¬¡ç™»å½•çš„æ—¶é—´
     void InitLoginTime();
     int GetLoginTime() ;
 
-    //iLogoutTime ±¾´ÎµÇ³öÓÎÏ·µÄÊ±¼ä
+    //iLogoutTime æœ¬æ¬¡ç™»å‡ºæ¸¸æˆçš„æ—¶é—´
     int GetLogoutTime() ;
     void SetLogoutTime(int iLogoutTime) ;
 
-    //todo jasonxiong1 µÈºóÃæ¿ª·¢GMÄ£¿éÊ±ÔÙÍ³Ò»¿ª·¢
+    //todo jasonxiong1 ç­‰åé¢å¼€å‘GMæ¨¡å—æ—¶å†ç»Ÿä¸€å¼€å‘
     bool IsGM() { return false; };
 
-    //Íæ¼ÒµÄÕ½³¡ĞÅÏ¢
+    //ç©å®¶çš„æˆ˜åœºä¿¡æ¯
     void SetBattlefieObjID(int iBattlefiedObjIndex) { m_stRoleInfo.stBaseInfo.iBattlefieldObjIndex = iBattlefiedObjIndex; };
     int GetBattlefieObjID() { return m_stRoleInfo.stBaseInfo.iBattlefieldObjIndex; };
 
-    //Íæ¼ÒµÄÕ½¶·Ê¤¸ºĞÅÏ¢
+    //ç©å®¶çš„æˆ˜æ–—èƒœè´Ÿä¿¡æ¯
     void SetCombatResult(bool bIsWin) { m_stRoleInfo.stBaseInfo.bIsSelfWin = bIsWin; };
     bool GetCombatResult() { return m_stRoleInfo.stBaseInfo.bIsSelfWin; };
 
 public:
-    //»ù´¡ĞÅÏ¢µÄÊı¾İ¿â²Ù×÷º¯Êı
+    //åŸºç¡€ä¿¡æ¯çš„æ•°æ®åº“æ“ä½œå‡½æ•°
     void UpdateBaseInfoToDB(BASEDBINFO& rstBaseInfo);
     void InitBaseInfoFromDB(const BASEDBINFO& rstBaseInfo);
 
@@ -158,35 +158,35 @@ public:
 ///////////////////////////////////////////////////////////////////////
 ///
 public:
-    // Ë¢ĞÂÍæ¼ÒµÄ×îºó»î¶¯µÄĞÅÏ¢
+    // åˆ·æ–°ç©å®¶çš„æœ€åæ´»åŠ¨çš„ä¿¡æ¯
     void ActiveRefresh();
     bool IsUnactive();
 
 public:
-    // ÊÀ½çÁÄÌì»¹Ê£ÓàÀäÈ´Ê±¼ä
+    // ä¸–ç•ŒèŠå¤©è¿˜å‰©ä½™å†·å´æ—¶é—´
     int GetWorldChatCD();
     void RefreshWorldChatCD();
 
-    //¸½½üÁÄÌì
+    //é™„è¿‘èŠå¤©
     void RefreshNearbyChatTime();
     bool CanChatNearbyNow();
 
 public:
-    // Tick ¼ÆËã
+    // Tick è®¡ç®—
     void OnTick();
 
 public:
-    // ·À³ÁÃÔ×´Ì¬
+    // é˜²æ²‰è¿·çŠ¶æ€
     void SetAAStatus(TAAStatus enAAStatus) {m_enAAStatus = enAAStatus;};
     TAAStatus GetAAStatus() {return m_enAAStatus;};
 
 /////////////////////////////////////////////////////////////////////////////////////////
 public:
-    // µ÷ÊÔÊ¹ÓÃ
+    // è°ƒè¯•ä½¿ç”¨
     void PrintMyself();
 
 public:
-    // ÔÚÏß×´Ì¬
+    // åœ¨çº¿çŠ¶æ€
     void SetOnline();
     void SetOffline();
     bool IsOnline();
@@ -206,45 +206,45 @@ public:
     bool TryToRefreshActivityDayLimit();
 
 public:
-    // ÕæÕıµÄGMÕÊºÅ, ²»°üÀ¨10000ºÅÒÔÏÂµÄ
-    //todo jasonxiong ºóĞø¿ª·¢GM¹¦ÄÜÊ±ÔÙÖØĞÂ¿ª·¢
+    // çœŸæ­£çš„GMå¸å·, ä¸åŒ…æ‹¬10000å·ä»¥ä¸‹çš„
+    //todo jasonxiong åç»­å¼€å‘GMåŠŸèƒ½æ—¶å†é‡æ–°å¼€å‘
     bool IsRealGM() { return false; }
 
 /////////////////////////////////////////////////////////////////////////////////////////
-// ³ÉÔ±±äÁ¿
+// æˆå‘˜å˜é‡
 private:
     int m_iSessionID;
 
-    //Íæ¼Ò½ÇÉ«µÄÊı¾İĞÅÏ¢
+    //ç©å®¶è§’è‰²çš„æ•°æ®ä¿¡æ¯
     TROLEINFO m_stRoleInfo;
 
-    //½ûÖ¹µÇÂ¼Ê±¼ä
+    //ç¦æ­¢ç™»å½•æ—¶é—´
     int m_iForbidTime;
 
-    // ×îºóÊÀ½çÁÄÌìÊ±¼ä
+    // æœ€åä¸–ç•ŒèŠå¤©æ—¶é—´
     int m_iLastWorldChatTime;
 
-    // ÉÏ´Î¸½½üÁÄÌìÊ±¼ä
+    // ä¸Šæ¬¡é™„è¿‘èŠå¤©æ—¶é—´
     int m_iLastNearbyChatTime;
 
 private:
-    // ºÃÓÑ
+    // å¥½å‹
     //CFriendManager m_stFriendManager;
 
-    // ²Ù×÷¼ÇÂ¼
+    // æ“ä½œè®°å½•
     int m_iLastActiveTime;
 
-    // ¼ÇÂ¼ÌßÎÒÏÂÏßµÄÈË
+    // è®°å½•è¸¢æˆ‘ä¸‹çº¿çš„äºº
     World_KickRole_Request m_stKicker;
 
-    // Tick¼ÇÂ¼
+    // Tickè®°å½•
     int m_iLastTickTime;
     int m_iLastUpdateDBTickTime;
     int m_iLastUpdateCheckTimeoutTime;
     int m_iLastMinTime;
     int m_iLastTenSecondTime;
         
-    // ·À³ÁÃÔ×´Ì¬
+    // é˜²æ²‰è¿·çŠ¶æ€
     TAAStatus m_enAAStatus;
 
 public:
@@ -264,20 +264,20 @@ public:
     }
 
 private:
-    //ĞĞÎªËø
-    //  ÇëÇóÏŞ´Î£¬·ÀÖ¹¶ñÒâÇëÇóÔì³ÉÒì²½ÊÂÎñÒì³££¬³öÏÖµÀ¾ß¸´ÖÆµÈÎÊÌâ
+    //è¡Œä¸ºé”
+    //  è¯·æ±‚é™æ¬¡ï¼Œé˜²æ­¢æ¶æ„è¯·æ±‚é€ æˆå¼‚æ­¥äº‹åŠ¡å¼‚å¸¸ï¼Œå‡ºç°é“å…·å¤åˆ¶ç­‰é—®é¢˜
     bool m_abLock[MAX_LOCK_NUM];
 
 public:
 
-    //Íæ¼Ò±³°ü¹ÜÀíÆ÷
+    //ç©å®¶èƒŒåŒ…ç®¡ç†å™¨
     CRepThingsManager m_stRepThingsManager;
 
     CRepThingsManager& GetRepThingsManager();
     void UpdateRepThingsToDB(ITEMDBINFO& rstItemDBInfo);
     void InitRepThingsFromDB(const ITEMDBINFO& rstItemDBInfo);
 
-    //Íæ¼ÒµÄÕ½¶·µ¥Î»¹ÜÀíÆ÷
+    //ç©å®¶çš„æˆ˜æ–—å•ä½ç®¡ç†å™¨
     CFightUnitManager m_stFightUnitManager;
 
     CFightUnitManager& GetFightUnitManager();
@@ -295,7 +295,7 @@ public:
     bool IsMsgFreqLimit(const int iMsgID) const;
     void PushMsgID(const int iMsgID, const unsigned char ucSource);
 private:
-    //ÏûÏ¢¶ÓÁĞ
+    //æ¶ˆæ¯é˜Ÿåˆ—
     MsgInfoQueue m_stMsgInfoQueue;
 
 public:
@@ -303,7 +303,7 @@ public:
     void SetLogoutRequestReason(unsigned char ucLogoutReason) {m_ucLogoutReason = ucLogoutReason;}
 
 private:
-    //¼ÇÂ¼ÏÂÏßÔ­Òò
+    //è®°å½•ä¸‹çº¿åŸå› 
     unsigned char m_ucLogoutReason;
 
 public:
@@ -314,3 +314,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

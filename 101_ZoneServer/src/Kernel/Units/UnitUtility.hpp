@@ -1,4 +1,4 @@
-#ifndef __UNIT_UNTILITY_HPP__
+ï»¿#ifndef __UNIT_UNTILITY_HPP__
 #define __UNIT_UNTILITY_HPP__
 
 #include "GameProtocol.hpp"
@@ -10,27 +10,27 @@ using namespace ServerLib;
 class CUnitUtility
 {
 public:
-    // ´ÓUnitID»ñÈ¡µ¥Î»ÊôĞÔ, µ¥Î»¶ÔÏó, ÒÔ¼°ËùÊô³¡¾°
+    // ä»UnitIDè·å–å•ä½å±æ€§, å•ä½å¯¹è±¡, ä»¥åŠæ‰€å±åœºæ™¯
 	static TUNITINFO* GetUnitInfo(const int iUnitID);
 
     static CGameRoleObj* GetRoleObj(const int iUnitID);
 
-    // »ñÈ¡½ÇÉ«µ¥Î»
+    // è·å–è§’è‰²å•ä½
     static CGameRoleObj* GetRoleByUin(const int uiUin);
     static CGameRoleObj* GetRoleByID(const RoleID& rstRoleID);
 
 	static bool IsEqualRole(const RoleID& rstRoleID1, const RoleID& rstRoleID2);
 
 public:
-    // µ¥Î»×´Ì¬·½·¨
+    // å•ä½çŠ¶æ€æ–¹æ³•
 
-    // ÉèÖÃµ¥Î»×´Ì¬
+    // è®¾ç½®å•ä½çŠ¶æ€
     static void SetUnitStatus(TUNITINFO* pstUnit, EUnitStatus enStatus);
 
-    // Çå³ıµ¥Î»×´Ì¬
+    // æ¸…é™¤å•ä½çŠ¶æ€
     static void ClearUnitStatus(TUNITINFO* pstUnit, EUnitStatus enStatus);
 
-    // ÅĞ¶Ïµ¥Î»×´Ì¬
+    // åˆ¤æ–­å•ä½çŠ¶æ€
     static inline bool IsUnitStatusSet(TUNITINFO* pstUnit, EUnitStatus enStatus)
     {
         ASSERT_AND_LOG_RTN_BOOL(pstUnit);
@@ -38,13 +38,13 @@ public:
         return pstUnit->uiUnitStatus & enStatus;
     }
 
-    // ÔÚÏß×´Ì¬
+    // åœ¨çº¿çŠ¶æ€
     static inline bool IsUnitOnline(TUNITINFO* pstUnit)
     {
         return IsUnitStatusSet(pstUnit, EGUS_ONLINE);
     }
 
-    // ÉèÖÃÉ¾³ı×´Ì¬
+    // è®¾ç½®åˆ é™¤çŠ¶æ€
     static inline void SetDeletedStatus(TUNITINFO* pstUnit)
     {
         ASSERT_AND_LOG_RTN_VOID(pstUnit);
@@ -53,24 +53,24 @@ public:
     }
 
 public:
-    // ·ÖÅäºÍÊÍ·ÅUnitID
+    // åˆ†é…å’Œé‡Šæ”¾UnitID
     static int AllocateUnitID();
     static void FreeUnitID(const int iUnitID);
 
-    // ÔÚGameUnitIDÖĞ°ó¶¨µ¥Î»ºÍ³¡¾°
+    // åœ¨GameUnitIDä¸­ç»‘å®šå•ä½å’Œåœºæ™¯
     static int BindUnitToObject(int iUnitID, int iObjectIdx, unsigned char ucObjectType);
 
-    // ´´½¨Ò»¸öµ¥Î»¶ÔÏó
+    // åˆ›å»ºä¸€ä¸ªå•ä½å¯¹è±¡
     static CObj* CreateUnit(unsigned char ucUnitType, unsigned int uiKey = 0);
 
-	// É¾³ıÒ»¸öµ¥Î», ÊÍ·ÅUnitID, Ïú»Ù¶ÔÏóID. 
-	// ¶ÔÏóÉ¾³ıÊÇÒ»¸ö·Ç³£Î£ÏÕµÄĞĞÎª, Òò´ËÒªÏÈ½«µ¥Î»ÖÃÎªEUS_DELETED×´Ì¬, ÔÚAppTickÖĞÉ¾³ı
+	// åˆ é™¤ä¸€ä¸ªå•ä½, é‡Šæ”¾UnitID, é”€æ¯å¯¹è±¡ID. 
+	// å¯¹è±¡åˆ é™¤æ˜¯ä¸€ä¸ªéå¸¸å±é™©çš„è¡Œä¸º, å› æ­¤è¦å…ˆå°†å•ä½ç½®ä¸ºEUS_DELETEDçŠ¶æ€, åœ¨AppTickä¸­åˆ é™¤
     static int DeleteUnit(TUNITINFO* pUnitInfo);
 
 public:
-    // ÎªÁË¾«Ï¸¿ØÖÆÃ¿ÖÖµ¥Î»µÄ±éÀú½ø¶È, ¶ÔÏµÍ³µ¥Î»·Ö±ğ¼ÆÊı
+    // ä¸ºäº†ç²¾ç»†æ§åˆ¶æ¯ç§å•ä½çš„éå†è¿›åº¦, å¯¹ç³»ç»Ÿå•ä½åˆ†åˆ«è®¡æ•°
 
-    // »ñÈ¡ÏÂÒ»¸öµ¥Î»Ë÷Òı
+    // è·å–ä¸‹ä¸€ä¸ªå•ä½ç´¢å¼•
     static int IterateRoleIdx();
     static int IterateEggIdx();
 
@@ -82,3 +82,7 @@ void create_dump(void);
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

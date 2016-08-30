@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "GameRole.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -10,7 +10,7 @@
    
 using namespace GameConfig;   
 
-//»ñÈ¡ÎïÆ·µÄ´óÀàĞÍ
+//è·å–ç‰©å“çš„å¤§ç±»å‹
 int CRepThingsUtility::GetItemType(int iItemID)
 {
     if(iItemID == 0)
@@ -18,7 +18,7 @@ int CRepThingsUtility::GetItemType(int iItemID)
         return REP_ITEM_TYPE_INVALID;
     }
 
-    //IDÎª3000000ÒÔÏÂµÄÊÇµÀ¾ß
+    //IDä¸º3000000ä»¥ä¸‹çš„æ˜¯é“å…·
     if(iItemID<3000000)
     {
         return REP_ITEM_TYPE_PROP;
@@ -27,25 +27,25 @@ int CRepThingsUtility::GetItemType(int iItemID)
     return REP_ITEM_TYPE_EQUIP;
 }
 
-//»ñÈ¡ÎïÆ·ÊıÁ¿
+//è·å–ç‰©å“æ•°é‡
 int CRepThingsUtility::GetItemNumByID(CGameRoleObj& rstRoleObj, int iItemID)
 {
-    //»ñÈ¡±³°üÎïÆ·¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç‰©å“ç®¡ç†å™¨
     CRepThingsManager& rstThingsManager = rstRoleObj.GetRepThingsManager();
 
     return rstThingsManager.GetRepItemNumByID(iItemID);
 }
 
-//ÔöÉ¾ÎïÆ·µÄ½Ó¿Ú,Èç¹ûiAddNumĞ¡ÓÚ0±íÊ¾É¾³ı
+//å¢åˆ ç‰©å“çš„æ¥å£,å¦‚æœiAddNumå°äº0è¡¨ç¤ºåˆ é™¤
 int CRepThingsUtility::AddItemNumByID(CGameRoleObj& stRoleObj, int iItemID, int iAddNum, int iItemChannel)
 {
-    //»ñÈ¡±³°üÎïÆ·¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç‰©å“ç®¡ç†å™¨
     CRepThingsManager& rstThingsManager = stRoleObj.GetRepThingsManager();
 
     return rstThingsManager.AddItemNumByID(iItemID, iAddNum, iItemChannel);
 }
 
-//ÉèÖÃÎïÆ·ÊıÁ¿£¬Èç¹ûÎª0ÔòÉ¾³ıËùÓĞ¸ÃIDµÄÎïÆ·
+//è®¾ç½®ç‰©å“æ•°é‡ï¼Œå¦‚æœä¸º0åˆ™åˆ é™¤æ‰€æœ‰è¯¥IDçš„ç‰©å“
 void CRepThingsUtility::SetItemNumByID(CGameRoleObj& rstRoleObj, int iItemID, int iItemNum, int iItemChannel)
 {
     int iRepItemNum = CRepThingsUtility::GetItemNumByID(rstRoleObj, iItemID);
@@ -55,3 +55,7 @@ void CRepThingsUtility::SetItemNumByID(CGameRoleObj& rstRoleObj, int iItemID, in
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

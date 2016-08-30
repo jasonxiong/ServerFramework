@@ -1,8 +1,8 @@
-
+ï»¿
 #ifndef __GAME_UNIT_ID_HPP__
 #define __GAME_UNIT_ID_HPP__
 
-// ³¡¾°µ¥Î»IDÀà. ¸ºÔğ½¨Á¢µ¥Î»ºÍËùÊô³¡¾°Ö®¼äµÄÁªÏµ
+// åœºæ™¯å•ä½IDç±». è´Ÿè´£å»ºç«‹å•ä½å’Œæ‰€å±åœºæ™¯ä¹‹é—´çš„è”ç³»
 
 #include "GameProtocol.hpp"
 #include "ObjIdxList.hpp"
@@ -22,39 +22,39 @@ public:
     DECLARE_DYN
 
 public:
-    // °ó¶¨¶ÔÏóIdx
+    // ç»‘å®šå¯¹è±¡Idx
     void BindObject(int iObjectIdx, unsigned char ucObjectType);
 
 public:
-    // »ñÈ¡°ó¶¨¶ÔÏóµÄIdx
+    // è·å–ç»‘å®šå¯¹è±¡çš„Idx
     int GetBindObjectIdx();
 
-    // »ñÈ¡°ó¶¨¶ÔÏóµÄÀàĞÍ
+    // è·å–ç»‘å®šå¯¹è±¡çš„ç±»å‹
     int GetBindObjectType();
 
 public:
-    // »ñÈ¡°ó¶¨¶ÔÏóµÄÊôĞÔ
+    // è·å–ç»‘å®šå¯¹è±¡çš„å±æ€§
     TUNITINFO* GetBindUnitInfo();
 
 public:
-    // ÉèÖÃºÍ»ñÈ¡Í¬Ò»³¡¾°ÄÚµÄµ¥Î»Á´±í
+    // è®¾ç½®å’Œè·å–åŒä¸€åœºæ™¯å†…çš„å•ä½é“¾è¡¨
     TObjIdxListNode& GetListNode();
 
-    // ÉèÖÃºÍ»ñÈ¡Í¬Ò»³¡¾°ÄÚÏàÍ¬ÀàĞÍµ¥Î»µÄÁ´±í
+    // è®¾ç½®å’Œè·å–åŒä¸€åœºæ™¯å†…ç›¸åŒç±»å‹å•ä½çš„é“¾è¡¨
     TObjIdxListNode& GetListNode2();
 
 private:
-    // ÉèÖÃ¶ÔÏóµÄÊôĞÔ
+    // è®¾ç½®å¯¹è±¡çš„å±æ€§
     void BindUnitInfo();
 
 private: 
     int m_iBindObjectIdx;
     unsigned char m_ucBindObjectType;
     
-    // Í¬Ò»³¡¾°ÄÚ, ËùÓĞµ¥Î»µÄÁ´±í
+    // åŒä¸€åœºæ™¯å†…, æ‰€æœ‰å•ä½çš„é“¾è¡¨
     TObjIdxListNode m_stListNode;
 
-    // Í¬Ò»³¡¾°ÄÚ, ÏàÍ¬ÀàĞÍµÄµ¥Î»Á´±í
+    // åŒä¸€åœºæ™¯å†…, ç›¸åŒç±»å‹çš„å•ä½é“¾è¡¨
     TObjIdxListNode m_stListNode2;
 
 private:
@@ -65,3 +65,7 @@ extern TObjIdxListNode* GetGameUnitIDListNode(int iIdx);
 extern TObjIdxListNode* GetGameUnitIDListNode2(int iIdx);
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

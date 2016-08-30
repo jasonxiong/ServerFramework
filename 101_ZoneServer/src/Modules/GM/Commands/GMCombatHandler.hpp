@@ -1,4 +1,4 @@
-#ifndef __GM_COMBAT_HANDLER_HPP__
+ï»¿#ifndef __GM_COMBAT_HANDLER_HPP__
 #define __GM_COMBAT_HANDLER_HPP__
 
 #include "GMBaseCommand.hpp"
@@ -11,11 +11,11 @@ public:
     ~CGMCombatHandler() { };
 
 public:
-    //Ö´ĞĞÏàÓ¦GMÃüÁîµÄ¹¦ÄÜ
+    //æ‰§è¡Œç›¸åº”GMå‘½ä»¤çš„åŠŸèƒ½
     virtual int Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<std::string>& vParams);
 
 protected:
-    //½øĞĞ²ÎÊı¼ì²é
+    //è¿›è¡Œå‚æ•°æ£€æŸ¥
     virtual int SecurityCheck(int iCommandType, std::vector<std::string>& vParams);
 
 private:
@@ -23,3 +23,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,24 +1,28 @@
-#ifndef __BASE64_URL_HPP__
+ï»¿#ifndef __BASE64_URL_HPP__
 #define __BASE64_URL_HPP__
 
-// Base64±àÂë, ²¢¶ÔURLÌØÊâ×Ö·û½øĞĞÁËÌæ»»
-// ²Î¿¼: http://tools.ietf.org/html/rfc4648
+// Base64ç¼–ç , å¹¶å¯¹URLç‰¹æ®Šå­—ç¬¦è¿›è¡Œäº†æ›¿æ¢
+// å‚è€ƒ: http://tools.ietf.org/html/rfc4648
 //
 // Author: Brianzhang
 // Date: 2010-10-24
 //
-// Base64µÄ»ù±¾Ô­ÀíÊÇ½«6-bitµÄ¶ş½øÖÆÊıÖµÌæ»»Îª64¸ö8-bitASCII¿É´òÓ¡×Ö·ûÖĞµÄÒ»¸ö
-// Òò´Ë, Ô­Ê¼ÊıÖµÖĞÃ¿3¸ö8-bit×Ö·û(¼´4¸ö6-bitÊıÖµ)»á±»Ìæ»»Îª4¸ö8-bitASCIIÂë, ±àÂëºó³¤¶ÈÔö¼Ó1/3
+// Base64çš„åŸºæœ¬åŸç†æ˜¯å°†6-bitçš„äºŒè¿›åˆ¶æ•°å€¼æ›¿æ¢ä¸º64ä¸ª8-bitASCIIå¯æ‰“å°å­—ç¬¦ä¸­çš„ä¸€ä¸ª
+// å› æ­¤, åŸå§‹æ•°å€¼ä¸­æ¯3ä¸ª8-bitå­—ç¬¦(å³4ä¸ª6-bitæ•°å€¼)ä¼šè¢«æ›¿æ¢ä¸º4ä¸ª8-bitASCIIç , ç¼–ç åé•¿åº¦å¢åŠ 1/3
 // 
-// ÎªÁËºÍ±ê×¼µÄBase64±àÂë²»Í¬, ±¾Ëã·¨´òÂÒÁËASCIIÂëµÄ´ÎĞò, ÒÔÆğµ½·ÀÆÆ½âµÄ×÷ÓÃ
-// ¾ßÌåÌæ»»¹ØÏµ¼ûÊµÏÖÎÄ¼şBase64URL.cpp
+// ä¸ºäº†å’Œæ ‡å‡†çš„Base64ç¼–ç ä¸åŒ, æœ¬ç®—æ³•æ‰“ä¹±äº†ASCIIç çš„æ¬¡åº, ä»¥èµ·åˆ°é˜²ç ´è§£çš„ä½œç”¨
+// å…·ä½“æ›¿æ¢å…³ç³»è§å®ç°æ–‡ä»¶Base64URL.cpp
 //
 
-// Base64URL±àÂë, ³É¹¦·µ»Ø0
+// Base64URLç¼–ç , æˆåŠŸè¿”å›0
 int Base64URLEncode(unsigned char* pszDstBuffer, int& iDstLen, const char* pszSrcBuffer, int iSrcLen);
 
-// Base64URL½âÂë, ³É¹¦·µ»Ø0
+// Base64URLè§£ç , æˆåŠŸè¿”å›0
 int Base64URLDecode(char* pszDstBuffer, int& iDstLen, const unsigned char* pszSrcBuffer, int iSrcLen);
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

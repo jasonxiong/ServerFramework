@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -39,23 +39,23 @@ CCombatFramework::~CCombatFramework()
 
 }
 
-//Íæ¼Ò¿ªÊ¼Õ½¶·µÄÇëÇó
+//ç©å®¶å¼€å§‹æˆ˜æ–—çš„è¯·æ±‚
 int CCombatFramework::DoCombat(CGameRoleObj& stRoleObj, const Zone_DoCombat_Request& rstRequest, bool bNeedResp)
 {
-    //³õÊ¼»¯³ÉÔ±±äÁ¿
+    //åˆå§‹åŒ–æˆå‘˜å˜é‡
     m_uiUin = stRoleObj.GetUin();
     m_stGameMsg.Clear();
 
-    //ÅĞ¶Ïµ±Ç°ÊÇ·ñÔÚÕ½¶·ÖĞ
+    //åˆ¤æ–­å½“å‰æ˜¯å¦åœ¨æˆ˜æ–—ä¸­
     if(stRoleObj.GetBattlefieObjID() >= 0)
     {
-        //ÒÑ¾­ÔÚÕ½¶·ÖĞ£¬·µ»Ø
+        //å·²ç»åœ¨æˆ˜æ–—ä¸­ï¼Œè¿”å›
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_DOCOMBAT_RESPONSE);
 
-    //À­È¡ÏìÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–å“åº”çš„æ¶ˆæ¯ä½“
     Zone_DoCombat_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_docombat_response();
     
     int iRet = T_SERVER_SUCESS;
@@ -63,7 +63,7 @@ int CCombatFramework::DoCombat(CGameRoleObj& stRoleObj, const Zone_DoCombat_Requ
     {
         case COMBAT_TYPE_PVE:
             {
-                //PVEÕ½¶·
+                //PVEæˆ˜æ–—
                 iRet = InitPveBattlefield(stRoleObj, rstRequest.ilevelid());
                 if(iRet)
                 {
@@ -86,7 +86,7 @@ int CCombatFramework::DoCombat(CGameRoleObj& stRoleObj, const Zone_DoCombat_Requ
             break;
     }
 
-     //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+     //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     if(bNeedResp)
@@ -94,28 +94,28 @@ int CCombatFramework::DoCombat(CGameRoleObj& stRoleObj, const Zone_DoCombat_Requ
         SendSuccessResponse();
     }
 
-    //ÍÆËÍÕ½³¡³õÊ¼»¯ĞÅÏ¢
+    //æ¨é€æˆ˜åœºåˆå§‹åŒ–ä¿¡æ¯
     SendBattlefieldInitNotify(stRoleObj);
 
-    //Å×³ö¿ªÊ¼Õ½¶·ÊÂ¼ş
+    //æŠ›å‡ºå¼€å§‹æˆ˜æ–—äº‹ä»¶
     CCombatEventManager::NotifyCombatBegin(stRoleObj);
 
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼ÒÖ÷½ÇÕ½¶·µ¥Î»ÒÆ¶¯µÄÇëÇó
+//ç©å®¶ä¸»è§’æˆ˜æ–—å•ä½ç§»åŠ¨çš„è¯·æ±‚
 int CCombatFramework::DoCombatMove(CGameRoleObj& stRoleObj, const Zone_CombatMove_Request& rstRequest)
 {
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     m_uiUin = stRoleObj.GetUin();
     m_stGameMsg.Clear();
 
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_COMBATMOVE_RESPONSE);
 
-    //À­È¡ÏìÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–å“åº”çš„æ¶ˆæ¯ä½“
     Zone_CombatMove_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_combatmove_response();
 
-    //À­È¡Õ½³¡ĞÅÏ¢
+    //æ‹‰å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
@@ -125,7 +125,7 @@ int CCombatFramework::DoCombatMove(CGameRoleObj& stRoleObj, const Zone_CombatMov
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶ÏÊÇ·ñÊÇÖ÷½ÇÒÆ¶¯£¬Ö÷½Çµ±Ç°×´Ì¬ÊÇ·ñÕıÈ·
+    //åˆ¤æ–­æ˜¯å¦æ˜¯ä¸»è§’ç§»åŠ¨ï¼Œä¸»è§’å½“å‰çŠ¶æ€æ˜¯å¦æ­£ç¡®
     if((pstBattlefieldObj->GetActionUnitType()!=COMBAT_UNIT_TYPE_ROLE
        && pstBattlefieldObj->GetActionUnitType()!=COMBAT_UNIT_TYPE_PARTNER)
        ||pstBattlefieldObj->GetActionUnitStatus()!=ROLE_COMBAT_UNIT_STAT_MOVE)
@@ -146,30 +146,30 @@ int CCombatFramework::DoCombatMove(CGameRoleObj& stRoleObj, const Zone_CombatMov
         return iRet;
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
 
-    //Å×³öÕ½¶·µ¥Î»¿ªÊ¼ĞĞ¶¯ÊÂ¼ş
+    //æŠ›å‡ºæˆ˜æ–—å•ä½å¼€å§‹è¡ŒåŠ¨äº‹ä»¶
     CCombatEventManager::NotifyCombatUnitAction(stRoleObj);
 
     return T_SERVER_SUCESS;
 }
     
-//Íæ¼ÒÖ÷½ÇÕ½¶·µ¥Î»ĞĞ¶¯µÄÇëÇó
+//ç©å®¶ä¸»è§’æˆ˜æ–—å•ä½è¡ŒåŠ¨çš„è¯·æ±‚
 int CCombatFramework::DoCombatAction(CGameRoleObj& stRoleObj, const Zone_CombatAction_Request& rstRequest)    
 {
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     m_uiUin = stRoleObj.GetUin();
     m_stGameMsg.Clear();
 
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_COMBATACTION_RESPONSE);
 
-    //À­È¡ÏìÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–å“åº”çš„æ¶ˆæ¯ä½“
     Zone_CombatAction_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_combataction_response();
 
-    //À­È¡Õ½³¡ĞÅÏ¢
+    //æ‹‰å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
@@ -179,7 +179,7 @@ int CCombatFramework::DoCombatAction(CGameRoleObj& stRoleObj, const Zone_CombatA
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶ÏÊÇ·ñÖ÷½ÇĞĞ¶¯ÒÔ¼°ĞĞ¶¯×´Ì¬
+    //åˆ¤æ–­æ˜¯å¦ä¸»è§’è¡ŒåŠ¨ä»¥åŠè¡ŒåŠ¨çŠ¶æ€
     if((pstBattlefieldObj->GetActionUnitType()!=COMBAT_UNIT_TYPE_ROLE
         && pstBattlefieldObj->GetActionUnitType()!=COMBAT_UNIT_TYPE_PARTNER)
        ||pstBattlefieldObj->GetActionUnitStatus()!=ROLE_COMBAT_UNIT_STAT_ACTION)
@@ -190,7 +190,7 @@ int CCombatFramework::DoCombatAction(CGameRoleObj& stRoleObj, const Zone_CombatA
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶Ï²Ù×÷·ÅÊÇ·ñÕıÈ·
+    //åˆ¤æ–­æ“ä½œæ”¾æ˜¯å¦æ­£ç¡®
     if(!pstBattlefieldObj->IsValidActionRole(m_uiUin))
     {
         LOGERROR("Failed to do combat role unit action, unit id %d, uin %u\n", pstBattlefieldObj->GetActionUnitID(), m_uiUin);
@@ -205,16 +205,16 @@ int CCombatFramework::DoCombatAction(CGameRoleObj& stRoleObj, const Zone_CombatA
     {
         case COMBAT_ACTION_CASTSKILL:
             {
-                //¶ÔÄ¿±êÊÍ·Å¼¼ÄÜ
+                //å¯¹ç›®æ ‡é‡Šæ”¾æŠ€èƒ½
                 CCombatTrapObj* pstTrapObj = pstBattlefieldObj->GetTrapByPos(stTargetPos);
                 if(pstTrapObj && pstBattlefieldObj->IsTrapVisibleToActionUnit(*pstTrapObj))
                 {    
-                    //ÊÇ»ú¹Ø²¢ÇÒ»ú¹Ø¿É¼û,¹¥»÷»ú¹Ø
+                    //æ˜¯æœºå…³å¹¶ä¸”æœºå…³å¯è§,æ”»å‡»æœºå…³
                     iRet = pstBattlefieldObj->AttackCombatTrap(stTargetPos);
                 }
                 else
                 {    
-                    //×ßÆÕÍ¨¹¥»÷Á÷³Ì
+                    //èµ°æ™®é€šæ”»å‡»æµç¨‹
                     iRet = pstBattlefieldObj->DoCombatCastSkill(rstRequest.icastskillid(), stTargetPos, SKILL_USE_ACTIVE);
                 }
             }
@@ -222,28 +222,28 @@ int CCombatFramework::DoCombatAction(CGameRoleObj& stRoleObj, const Zone_CombatA
 
         case COMBAT_ACTION_USEITEM:
             {
-                //Ê¹ÓÃÎïÆ·
+                //ä½¿ç”¨ç‰©å“
                 iRet = pstBattlefieldObj->DoCombatUseItem(rstRequest.iitemid(), stTargetPos);
             }
             break;
 
         case COMBAT_ACTION_IDLE:
             {
-                //´ı»úĞ­ÒéÖĞĞèÒªÉèÖÃ·½Ïò
+                //å¾…æœºåè®®ä¸­éœ€è¦è®¾ç½®æ–¹å‘
                 iRet = pstBattlefieldObj->SetActionUnitDirection(rstRequest.idirection());
             }
             break;
 
         case COMBAT_ACTION_TRIGGER_TRAP:
             {
-                //´¥·¢»ú¹Ø
+                //è§¦å‘æœºå…³
                 iRet = pstBattlefieldObj->ManualTriggerTrap(stTargetPos);
             }
             break;
 
         case COMBAT_ACTION_ATTACK_TRAP:
             {
-                //¹¥»÷»ú¹Ø 
+                //æ”»å‡»æœºå…³ 
                 iRet = pstBattlefieldObj->AttackCombatTrap(stTargetPos);
             }
             break;
@@ -265,31 +265,31 @@ int CCombatFramework::DoCombatAction(CGameRoleObj& stRoleObj, const Zone_CombatA
         return iRet;
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_etype(rstRequest.etype());
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
 
-    //Å×³öÕ½¶·µ¥Î»ĞĞ¶¯»ØºÏ½áÊøÊÂ¼ş
+    //æŠ›å‡ºæˆ˜æ–—å•ä½è¡ŒåŠ¨å›åˆç»“æŸäº‹ä»¶
     CCombatEventManager::NotifyActionRoundEnd(stRoleObj);
 
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼ÒÖ÷½Ç
+//ç©å®¶ä¸»è§’
 int CCombatFramework::DoUpdatePartnerAI(CGameRoleObj& stRoleObj, const Zone_UpdatePartnerAI_Request& rstRequest)
 {
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     m_uiUin = stRoleObj.GetUin();
     m_stGameMsg.Clear();
 
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_UPDATEPARTNERAI_RESPONSE);
 
-    //À­È¡ÏìÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–å“åº”çš„æ¶ˆæ¯ä½“
     Zone_UpdatePartnerAI_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_updatepartnerai_response();
 
-    //À­È¡Õ½³¡ĞÅÏ¢
+    //æ‹‰å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
@@ -299,7 +299,7 @@ int CCombatFramework::DoUpdatePartnerAI(CGameRoleObj& stRoleObj, const Zone_Upda
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÉèÖÃ»ï°éµÄAI
+    //è®¾ç½®ä¼™ä¼´çš„AI
     int iRet = pstBattlefieldObj->SetPartnerAI(rstRequest.ipartneraiid());
     if(iRet)
     {
@@ -309,12 +309,12 @@ int CCombatFramework::DoUpdatePartnerAI(CGameRoleObj& stRoleObj, const Zone_Upda
         return iRet;
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
 
-    //Èç¹û³öÊÖÕ½¶·µ¥Î»·ÇÖ÷½Ç£¬ÔòÔ¤ÏÈ¼ÆËãAI
+    //å¦‚æœå‡ºæ‰‹æˆ˜æ–—å•ä½éä¸»è§’ï¼Œåˆ™é¢„å…ˆè®¡ç®—AI
     if(pstBattlefieldObj->GetActionUnitType() != COMBAT_UNIT_TYPE_ROLE)
     {
         iRet = CCombatUnitAI::DoActionUnitAI(stRoleObj.GetBattlefieObjID(), pstBattlefieldObj->GetActionUnitID());
@@ -322,43 +322,43 @@ int CCombatFramework::DoUpdatePartnerAI(CGameRoleObj& stRoleObj, const Zone_Upda
         {
             LOGERROR("Failed to do action unit AI, ret %d, uin %u\n", iRet, m_uiUin);
     
-            //³ö´í,½áÊøÕ½¶·
+            //å‡ºé”™,ç»“æŸæˆ˜æ–—
             CCombatFramework::FinCombat(stRoleObj);
             return iRet;
         }
     }
 
-    //Å×³öÕ½¶·µ¥Î»ÒÆ¶¯ÊÂ¼ş
+    //æŠ›å‡ºæˆ˜æ–—å•ä½ç§»åŠ¨äº‹ä»¶
     CCombatEventManager::NotifyCombatUnitMove(stRoleObj);
 
     return T_SERVER_SUCESS;
 }
 
-//·¢ÆğPVPÕ½¶·µÄÇëÇó
+//å‘èµ·PVPæˆ˜æ–—çš„è¯·æ±‚
 int CCombatFramework::StartPVPCombat(CGameRoleObj& stRoleObj, const Zone_StartPVPCombat_Request& rstRequest)
 {
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     m_uiUin = stRoleObj.GetUin();
     m_stGameMsg.Clear();
 
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_STARTPVPCOMBAT_RESPONSE);
 
-    //À­È¡ÏìÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–å“åº”çš„æ¶ˆæ¯ä½“
     Zone_StartPVPCombat_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_startpvpcombat_response();
 
-    //Ë«·½ÊÇ·ñ¿ÉÒÔÕ½¶·
+    //åŒæ–¹æ˜¯å¦å¯ä»¥æˆ˜æ–—
     if(!CCombatUtility::CanDoPVPCombat(m_uiUin) || !CCombatUtility::CanDoPVPCombat(rstRequest.uipassiveuin()))
     {
         LOGERROR("Failed to do pvp combat, active:passive %u:%u\n", m_uiUin, rstRequest.uipassiveuin());
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
 
-    //ÍÆËÍÏûÏ¢¸ø¶Ô·½
+    //æ¨é€æ¶ˆæ¯ç»™å¯¹æ–¹
     static GameProtocolMsg stMsg;
     CZoneMsgHelper::GenerateMsgHead(stMsg, MSGID_ZONE_STARTPVPCOMBAT_NBOTIFY);
 
@@ -371,21 +371,21 @@ int CCombatFramework::StartPVPCombat(CGameRoleObj& stRoleObj, const Zone_StartPV
     return T_SERVER_SUCESS;
 }
 
-//½ÓÊÜPVPÕ½¶·µÄÇëÇó
+//æ¥å—PVPæˆ˜æ–—çš„è¯·æ±‚
 int CCombatFramework::AcceptPVPCombat(CGameRoleObj& stRoleObj, const Zone_AcceptPVPCombat_Request& rstRequest)
 {
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     m_uiUin = stRoleObj.GetUin();
     m_stGameMsg.Clear();
 
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_ACCEPTPVPCOMBAT_RESPONSE);
 
-    //À­È¡ÏìÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–å“åº”çš„æ¶ˆæ¯ä½“
     Zone_AcceptPVPCombat_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_acceptpvpcombat_response();
 
     if(!rstRequest.bisaccept())
     {
-        //ÊÇ¾Ü¾øÕ½¶·
+        //æ˜¯æ‹’ç»æˆ˜æ–—
         static GameProtocolMsg stMsg;
         CZoneMsgHelper::GenerateMsgHead(stMsg, MSGID_ZONE_REJECTPVPCOMBAT_NOTIFY);
 
@@ -393,21 +393,21 @@ int CCombatFramework::AcceptPVPCombat(CGameRoleObj& stRoleObj, const Zone_Accept
         pstRejectNotify->set_ipassiveuin(m_uiUin);
         pstRejectNotify->set_strpassivename(stRoleObj.GetNickName());
 
-        //ÍÆËÍ¾Ü¾øµÄÍ¨Öª¸ø¶Ô·½
+        //æ¨é€æ‹’ç»çš„é€šçŸ¥ç»™å¯¹æ–¹
         CZoneMsgHelper::SendZoneMsgToRole(stMsg, CUnitUtility::GetRoleByUin(rstRequest.uiactiveuin()));
     }
     else
     {    
-        //ÊÇ½ÓÊÜÕ½¶·
+        //æ˜¯æ¥å—æˆ˜æ–—
 
-        //Ë«·½ÊÇ·ñ¿ÉÒÔÕ½¶·
+        //åŒæ–¹æ˜¯å¦å¯ä»¥æˆ˜æ–—
         if(!CCombatUtility::CanDoPVPCombat(m_uiUin) || !CCombatUtility::CanDoPVPCombat(rstRequest.uiactiveuin()))
         {
             LOGERROR("Failed to do pvp combat, active:passive %u:%u\n", rstRequest.uiactiveuin(), m_uiUin);
             return T_ZONE_SYSTEM_PARA_ERR;
         }
     
-        //¿ªÊ¼PVPÕ½¶·
+        //å¼€å§‹PVPæˆ˜æ–—
         CGameRoleObj* pstActiveRoleObj = CUnitUtility::GetRoleByUin(rstRequest.uiactiveuin());
         if(!pstActiveRoleObj)
         {
@@ -422,39 +422,39 @@ int CCombatFramework::AcceptPVPCombat(CGameRoleObj& stRoleObj, const Zone_Accept
         }
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
 
     if(rstRequest.bisaccept())
     {
-        //Èç¹ûÊÇ½ÓÊÜÕ½¶·
+        //å¦‚æœæ˜¯æ¥å—æˆ˜æ–—
 
-        //ÍÆËÍÕ½³¡³õÊ¼»¯ĞÅÏ¢
+        //æ¨é€æˆ˜åœºåˆå§‹åŒ–ä¿¡æ¯
         SendBattlefieldInitNotify(stRoleObj);
     
-        //Å×³ö¿ªÊ¼Õ½¶·ÊÂ¼ş
+        //æŠ›å‡ºå¼€å§‹æˆ˜æ–—äº‹ä»¶
         CCombatEventManager::NotifyCombatBegin(stRoleObj);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//todo jasonxiong4 ÕóĞÍÉèÖÃÖØ×ö
-//ÉèÖÃÕ½¶·ÕóĞÍµÄÇëÇó
+//todo jasonxiong4 é˜µå‹è®¾ç½®é‡åš
+//è®¾ç½®æˆ˜æ–—é˜µå‹çš„è¯·æ±‚
 int CCombatFramework::SetCombatForm(CGameRoleObj& stRoleObj, const Zone_SetCombatForm_Request& rstRequest)
 {
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     m_uiUin = stRoleObj.GetUin();
     m_stGameMsg.Clear();
 
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_SETCOMBATFORM_RESPONSE);
 
-    //À­È¡ÏìÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–å“åº”çš„æ¶ˆæ¯ä½“
     Zone_SetCombatForm_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_setcombatform_response();
 
-   //»ñÈ¡Õ½³¡
+   //è·å–æˆ˜åœº
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
@@ -469,24 +469,24 @@ int CCombatFramework::SetCombatForm(CGameRoleObj& stRoleObj, const Zone_SetComba
         return iRet;
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
 
     if(!pstBattlefieldObj->IsNeedSetForm())
     {
-        //ÍÆËÍÉèÖÃµÄÕóĞÍĞÅÏ¢
+        //æ¨é€è®¾ç½®çš„é˜µå‹ä¿¡æ¯
         pstBattlefieldObj->SendCombatFormNotify();
 
-        //ËùÓĞµÄ¶¼ÒÑ¾­ÉèÖÃÍê³É£¬Ôò¿ªÊ¼Õ½¶·
+        //æ‰€æœ‰çš„éƒ½å·²ç»è®¾ç½®å®Œæˆï¼Œåˆ™å¼€å§‹æˆ˜æ–—
         CCombatEventManager::NotifyRoundBegin(stRoleObj);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//½áÊøÍæ¼ÒÕ½¶·
+//ç»“æŸç©å®¶æˆ˜æ–—
 void CCombatFramework::FinCombat(CGameRoleObj& stRoleObj)
 {
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
@@ -497,25 +497,25 @@ void CCombatFramework::FinCombat(CGameRoleObj& stRoleObj)
 
     if(stRoleObj.GetUin() == pstBattlefieldObj->GetActiveUin())
     {
-        //Ö÷¶¯·½³ö´í
+        //ä¸»åŠ¨æ–¹å‡ºé”™
         pstBattlefieldObj->SetCampActiveWin(false);
     }
     else
     {
-        //±»¶¯·½³ö´í
+        //è¢«åŠ¨æ–¹å‡ºé”™
         pstBattlefieldObj->SetCampActiveWin(true);
     }
 
-    //ÍÆËÍÕ½¶·½áÊøµÄÍ¨Öª
+    //æ¨é€æˆ˜æ–—ç»“æŸçš„é€šçŸ¥
     CCombatEventManager::NotifyCombatEnd(stRoleObj);
 
     return;
 }
 
-//³õÊ¼»¯PVEÕ½¶·Õ½³¡ĞÅÏ¢
+//åˆå§‹åŒ–PVEæˆ˜æ–—æˆ˜åœºä¿¡æ¯
 int CCombatFramework::InitPveBattlefield(CGameRoleObj& stRoleObj, int iLevelID)
 {
-    //´´½¨Õ½³¡
+    //åˆ›å»ºæˆ˜åœº
     int iBattlefieldObjIndex = -1;
     CBattlefieldObj* pstBattlefieldObj = CreateBattlefieldObj(iBattlefieldObjIndex);
     if(!pstBattlefieldObj)
@@ -524,7 +524,7 @@ int CCombatFramework::InitPveBattlefield(CGameRoleObj& stRoleObj, int iLevelID)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //³õÊ¼»¯Õ½³¡
+    //åˆå§‹åŒ–æˆ˜åœº
     int iRet = pstBattlefieldObj->InitPveBattlefield(stRoleObj, iLevelID);
     if(iRet)
     {
@@ -535,16 +535,16 @@ int CCombatFramework::InitPveBattlefield(CGameRoleObj& stRoleObj, int iLevelID)
         return iRet;
     }
 
-    //ÉèÖÃÍæ¼ÒÉíÉÏµÄÕ½³¡ĞÅÏ¢
+    //è®¾ç½®ç©å®¶èº«ä¸Šçš„æˆ˜åœºä¿¡æ¯
     stRoleObj.SetBattlefieObjID(iBattlefieldObjIndex);
 
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯PVPÕ½¶·Õ½³¡ĞÅÏ¢
+//åˆå§‹åŒ–PVPæˆ˜æ–—æˆ˜åœºä¿¡æ¯
 int CCombatFramework::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRoleObj& stPassiveRoleObj)
 {
-    //´´½¨Õ½³¡
+    //åˆ›å»ºæˆ˜åœº
     int iBattlefieldObjIndex = -1;
     CBattlefieldObj* pstBattlefieldObj = CreateBattlefieldObj(iBattlefieldObjIndex);
     if(!pstBattlefieldObj)
@@ -553,7 +553,7 @@ int CCombatFramework::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRol
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //³õÊ¼»¯Õ½³¡
+    //åˆå§‹åŒ–æˆ˜åœº
     int iRet = pstBattlefieldObj->InitPVPBattlefield(stActiveRoleObj, stPassiveRoleObj);
     if(iRet)
     {
@@ -563,14 +563,14 @@ int CCombatFramework::InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRol
         return iRet;
     }
 
-    //ÉèÖÃÍæ¼ÒÉíÉÏµÄÕ½³¡ĞÅÏ¢
+    //è®¾ç½®ç©å®¶èº«ä¸Šçš„æˆ˜åœºä¿¡æ¯
     stActiveRoleObj.SetBattlefieObjID(iBattlefieldObjIndex);
     stPassiveRoleObj.SetBattlefieObjID(iBattlefieldObjIndex);
 
     return T_SERVER_SUCESS;
 }
 
-//´´½¨Õ½³¡¶ÔÏó£¬·µ»ØCBattlefieldObjµÄindex
+//åˆ›å»ºæˆ˜åœºå¯¹è±¡ï¼Œè¿”å›CBattlefieldObjçš„index
 CBattlefieldObj* CCombatFramework::CreateBattlefieldObj(int& iBattlefieldObjIndex)
 {
     iBattlefieldObjIndex = GameType<CBattlefieldObj>::Create();
@@ -592,7 +592,7 @@ CBattlefieldObj* CCombatFramework::CreateBattlefieldObj(int& iBattlefieldObjInde
     return pstBattlefieldObj;
 }
 
-//ÍÆËÍÕ½³¡³õÊ¼»¯ĞÅÏ¢
+//æ¨é€æˆ˜åœºåˆå§‹åŒ–ä¿¡æ¯
 int CCombatFramework::SendBattlefieldInitNotify(CGameRoleObj& stRoleObj)
 {
     static GameProtocolMsg stBattlefieldNotify;
@@ -601,7 +601,7 @@ int CCombatFramework::SendBattlefieldInitNotify(CGameRoleObj& stRoleObj)
 
     Zone_Battlefield_Notify* pstNotify = stBattlefieldNotify.mutable_m_stmsgbody()->mutable_m_stzone_battlefield_notify();
 
-    //»ñÈ¡µ±Ç°µÄÕ½³¡¶ÔÏó
+    //è·å–å½“å‰çš„æˆ˜åœºå¯¹è±¡
     CBattlefieldObj* pstBattlefieldObj = GameType<CBattlefieldObj>::Get(stRoleObj.GetBattlefieObjID());
     if(!pstBattlefieldObj)
     {
@@ -616,13 +616,13 @@ int CCombatFramework::SendBattlefieldInitNotify(CGameRoleObj& stRoleObj)
         return iRet;
     }
 
-    //ÍÆËÍÍ¨Öª¸ø¿Í»§¶Ë
+    //æ¨é€é€šçŸ¥ç»™å®¢æˆ·ç«¯
     pstBattlefieldObj->SendNotifyToBattlefield(stBattlefieldNotify);
 
     return T_SERVER_SUCESS;
 }
 
-//·¢ËÍ´¦Àí³É¹¦µÄ·µ»Ø
+//å‘é€å¤„ç†æˆåŠŸçš„è¿”å›
 int CCombatFramework::SendSuccessResponse()
 {
     CGameRoleObj* pstRoleObj = GameTypeK32<CGameRoleObj>::GetByKey(m_uiUin);
@@ -636,3 +636,7 @@ int CCombatFramework::SendSuccessResponse()
 
     return T_SERVER_SUCESS;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

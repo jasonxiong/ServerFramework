@@ -1,7 +1,7 @@
-#ifndef __DROP_REWARD_UTILITY_HPP__
+ï»¿#ifndef __DROP_REWARD_UTILITY_HPP__
 #define __DROP_REWARD_UTILITY_HPP__
 
-//Ëæ»úµôÂä¹¤¾ßÀà
+//éšæœºæ‰è½å·¥å…·ç±»
 
 #include "GameProtocol.hpp"
 
@@ -10,11 +10,15 @@ class CDropRewardUtility
 {
 public:
 
-    //»ñÈ¡Ëæ»ú½±Àø
+    //è·å–éšæœºå¥–åŠ±
     static int GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj, CombatReward& stReward, int iItemChannel, int iRandParam = 100);
 
-    //»ñÈ¡Ëæ»ú½±Àø
+    //è·å–éšæœºå¥–åŠ±
     static int GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj, int iItemChannel, int iRandParam = 100);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

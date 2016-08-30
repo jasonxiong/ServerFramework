@@ -1,4 +1,4 @@
-#include <math.h>
+ï»¿#include <math.h>
 
 #include <google/protobuf/text_format.h>
 #include "GameProtocol.hpp"
@@ -51,12 +51,12 @@ int CGameProtocolEngine::OnRecvCode(char* pszMsgBuffer, int iMsgLength, EGameSer
 	if (enMsgPeer == GAME_SERVER_LOTUSZONE)
 	{
 		enMsgType = EKMT_CLIENT;
-		//socket id ×ö×ª»»
+		//socket id åšè½¬æ¢
 		unsigned  int uiSessionID = ntohl(pstNetHead->m_uiSocketFD);
 		uiSessionID += iInstanceID * MAX_FD_NUMBER;
 		pstNetHead->m_uiSocketFD = htonl(uiSessionID);
 
-		// ¿Õ°ü£¬Á¬½Ó¶Ï¿ª
+		// ç©ºåŒ…ï¼Œè¿æ¥æ–­å¼€
 		if (iMsgLength == NETHEAD_V2_SIZE)
 		{
 			GameCSMsgHead* pstHead = m_stMsg.mutable_m_stmsghead();
@@ -64,7 +64,7 @@ int CGameProtocolEngine::OnRecvCode(char* pszMsgBuffer, int iMsgLength, EGameSer
 		}
 		else
 		{
-			//½âÂë»ñµÃZoneMsgºÍNetHead
+			//è§£ç è·å¾—ZoneMsgå’ŒNetHead
 			iRet = DecodeClient(pszMsgBuffer, iMsgLength, m_stMsg, enMsgPeer);
 			if(iRet < 0)
 			{
@@ -72,7 +72,7 @@ int CGameProtocolEngine::OnRecvCode(char* pszMsgBuffer, int iMsgLength, EGameSer
 				return -1;
 			}
 
-			//todo jasonxiong2 ÓĞĞ§°ü½âÂëºóĞèÒªĞ£ÑéÍæ¼Òsession keyÊÇ·ñÓĞĞ§
+			//todo jasonxiong2 æœ‰æ•ˆåŒ…è§£ç åéœ€è¦æ ¡éªŒç©å®¶session keyæ˜¯å¦æœ‰æ•ˆ
 		}
 	}
 	else
@@ -86,7 +86,7 @@ int CGameProtocolEngine::OnRecvCode(char* pszMsgBuffer, int iMsgLength, EGameSer
 		}
 	}
 
-	//¸ù¾İMsgID»ñÈ¡ÏûÏ¢´¦ÀíÆ÷Handler
+	//æ ¹æ®MsgIDè·å–æ¶ˆæ¯å¤„ç†å™¨Handler
 	unsigned int uiMsgID = m_stMsg.m_stmsghead().m_uimsgid();
 
 	IHandler* pHandler = CHandlerFactory::GetHandler(uiMsgID, enMsgType);
@@ -96,7 +96,7 @@ int CGameProtocolEngine::OnRecvCode(char* pszMsgBuffer, int iMsgLength, EGameSer
 		return -2;
 	}
 	 
-	//°ÑÏûÏ¢½»ÓÉHandler´¦Àí
+	//æŠŠæ¶ˆæ¯äº¤ç”±Handlerå¤„ç†
 	pHandler->SetClientMsg(&m_stMsg, pstNetHead, enMsgPeer);
 	pHandler->SetMsgID(uiMsgID);
 
@@ -112,7 +112,7 @@ int CGameProtocolEngine::OnRecvCode(char* pszMsgBuffer, int iMsgLength, EGameSer
 
 int CGameProtocolEngine::DecodeClient(const char* pszMsgBuffer, const int iMsgLength, GameProtocolMsg& rstMsg, EGameServerID enMsgPeer)
 {
-	//ÍøÂçÊı¾İ½âÂë³É±¾µØÊı¾İ
+	//ç½‘ç»œæ•°æ®è§£ç æˆæœ¬åœ°æ•°æ®
 	int iBuffOffSet = 0;
 
 	int iMsgType = ESMT_FROM_CLIENT;
@@ -142,7 +142,7 @@ int CGameProtocolEngine::DecodeClient(const char* pszMsgBuffer, const int iMsgLe
 	timeval stTime;
 	stTime.tv_sec = stTime.tv_usec = 0;
 
-	//todo jasonxiong ÏûÏ¢Í³¼ÆÕâ±ßÔİÊ±ÏÈÉèÖÃÎª0£¬µÈºóĞø¿ª·¢ÔÙÈ·ÈÏÊÇ·ñĞèÒªĞŞ¸Ä
+	//todo jasonxiong æ¶ˆæ¯ç»Ÿè®¡è¿™è¾¹æš‚æ—¶å…ˆè®¾ç½®ä¸º0ï¼Œç­‰åç»­å¼€å‘å†ç¡®è®¤æ˜¯å¦éœ€è¦ä¿®æ”¹
 	MsgStatisticSingleton::Instance()->AddMsgStat(uiMsgID, ESMR_SUCCEED, 
 												  iMsgLength, stTime, iMsgType);
 
@@ -161,7 +161,7 @@ int CGameProtocolEngine::DecodeClient(const char* pszMsgBuffer, const int iMsgLe
 					pTempTm->tm_year + 1900, pTempTm->tm_mon + 1, pTempTm->tm_mday,
 					pTempTm->tm_hour, pTempTm->tm_min, pTempTm->tm_sec);
 	
-				//´òÓ¡ÏûÏ¢ÄÚÈİµ½ÎÄ¼ş
+				//æ‰“å°æ¶ˆæ¯å†…å®¹åˆ°æ–‡ä»¶
 				static std::string strMsgInfo;
 				::google::protobuf::TextFormat::PrintToString(m_stMsg, &strMsgInfo);
 				fprintf(pProtoLogFile, "%s\n\n", strMsgInfo.c_str());
@@ -219,7 +219,7 @@ int CGameProtocolEngine::SendZoneMsg(GameProtocolMsg& rstZoneMsg, const TNetHead
 	if (enMsgPeer == GAME_SERVER_LOTUSZONE)
 	{
 		TNetHead_V2 stTmpNetHead = rstNetHead;
-		//socket id ×ö×ª»»
+		//socket id åšè½¬æ¢
 		unsigned  int uiSessionID = ntohl(rstNetHead.m_uiSocketFD);
 		int iInstanceID = uiSessionID / MAX_FD_NUMBER;
 		stTmpNetHead.m_uiSocketFD = htonl(uiSessionID % MAX_FD_NUMBER);
@@ -271,7 +271,7 @@ int CGameProtocolEngine::SendZoneMsg(GameProtocolMsg& rstZoneMsg, const TNetHead
 						pTempTm->tm_year + 1900, pTempTm->tm_mon + 1, pTempTm->tm_mday,
 						pTempTm->tm_hour, pTempTm->tm_min, pTempTm->tm_sec);
 
-					//´òÓ¡ÏûÏ¢ÄÚÈİµ½ÎÄ¼ş
+					//æ‰“å°æ¶ˆæ¯å†…å®¹åˆ°æ–‡ä»¶
 					static std::string strMsgInfo;
 					::google::protobuf::TextFormat::PrintToString(rstZoneMsg, &strMsgInfo);
 					fprintf(pProtoLogFile, "%s\n\n", strMsgInfo.c_str());
@@ -285,7 +285,7 @@ int CGameProtocolEngine::SendZoneMsg(GameProtocolMsg& rstZoneMsg, const TNetHead
 	return iRet;
 }
 
-// ½«ÅúÁ¿Êı¾İ·¢ËÍµ½Lotus
+// å°†æ‰¹é‡æ•°æ®å‘é€åˆ°Lotus
 int CGameProtocolEngine::SendZoneMsgListToMultiLotus(GameProtocolMsg& rstZoneMsg, 
 													   unsigned int auiSocketFD[MAX_SOCKETFD_NUMBER], 
 													   unsigned int uiSocketNumber)
@@ -296,14 +296,14 @@ int CGameProtocolEngine::SendZoneMsgListToMultiLotus(GameProtocolMsg& rstZoneMsg
 	{
 		iRealSocketNumber = GameTypeK32<CGameRoleObj>::GetUsedObjNumber();
 
-		// ¹ã²¥µçĞÅÍ¨µÀ
+		// å¹¿æ’­ç”µä¿¡é€šé“
 		iRet = SendZoneMsgListToLotus(rstZoneMsg, auiSocketFD, SEND_ALL_SESSION, 0, iRealSocketNumber);
 		if (iRet < 0)
 		{
 			LOGERROR("SendZoneMsgListToLotus 0 failed, iRet:%d\n", iRet);
 		}
 
-		// ¹ã²¥ÁªÍ¨Í¨µÀ
+		// å¹¿æ’­è”é€šé€šé“
 		iRet = SendZoneMsgListToLotus(rstZoneMsg, auiSocketFD, SEND_ALL_SESSION, 1, 0);
 		if (iRet < 0)
 		{
@@ -319,14 +319,14 @@ int CGameProtocolEngine::SendZoneMsgListToMultiLotus(GameProtocolMsg& rstZoneMsg
 		unsigned int uiSocketFD = ntohl(auiSocketFD[0]);
 		if (uiSocketFD >= (unsigned int)MAX_FD_NUMBER)
 		{
-			// ¹ã²¥µçĞÅÍ¨µÀ
+			// å¹¿æ’­ç”µä¿¡é€šé“
 			iRet = SendZoneMsgListToLotus(rstZoneMsg, auiSocketFD, SEND_ALL_SESSION, 0, iRealSocketNumber);
 			if (iRet < 0)
 			{
 				LOGERROR("SendZoneMsgListToLotus 0 failed, iRet:%d\n", iRet);
 			}
 
-			// ¹ã²¥ÁªÍ¨Í¨µÀ£¬³ıÁËauiSocketFD[0]
+			// å¹¿æ’­è”é€šé€šé“ï¼Œé™¤äº†auiSocketFD[0]
 			iRet = SendZoneMsgListToLotus(rstZoneMsg, auiSocketFD, SEND_ALL_SESSION_BUTONE, 1, 0);
 			if (iRet < 0)
 			{
@@ -335,14 +335,14 @@ int CGameProtocolEngine::SendZoneMsgListToMultiLotus(GameProtocolMsg& rstZoneMsg
 		}
 		else
 		{
-			// ¹ã²¥µçĞÅÍ¨µÀ£¬³ıÁËauiSocketFD[0]
+			// å¹¿æ’­ç”µä¿¡é€šé“ï¼Œé™¤äº†auiSocketFD[0]
 			iRet = SendZoneMsgListToLotus(rstZoneMsg, auiSocketFD, SEND_ALL_SESSION_BUTONE, 0, iRealSocketNumber);
 			if (iRet < 0)
 			{
 				LOGERROR("SendZoneMsgListToLotus 0 failed, iRet:%d\n", iRet);
 			}
 
-			// ¹ã²¥ÁªÍ¨Í¨µÀ
+			// å¹¿æ’­è”é€šé€šé“
 			iRet = SendZoneMsgListToLotus(rstZoneMsg, auiSocketFD, SEND_ALL_SESSION, 1, 0);
 			if (iRet < 0)
 			{
@@ -403,7 +403,7 @@ int CGameProtocolEngine::SendZoneMsgListToMultiLotus(GameProtocolMsg& rstZoneMsg
 	return 0;
 }
 
-// ½«ÅúÁ¿Êı¾İ·¢ËÍµ½Lotus
+// å°†æ‰¹é‡æ•°æ®å‘é€åˆ°Lotus
 int CGameProtocolEngine::SendZoneMsgListToLotus(GameProtocolMsg& rstZoneMsg, 
 												  unsigned int auiSocketFD[MAX_SOCKETFD_NUMBER], 
 												  unsigned int uiSocketNumber, int iInstanceID, int iStaticSocketNumber)
@@ -421,17 +421,17 @@ int CGameProtocolEngine::SendZoneMsgListToLotus(GameProtocolMsg& rstZoneMsg,
 	switch (uiSocketNumber)
 	{
 	case SEND_ALL_SESSION:
-		// ¹ã²¥¸øËùÓĞµÄÈË
+		// å¹¿æ’­ç»™æ‰€æœ‰çš„äºº
 		iNetHeadUinListSize = 2 * sizeof(unsigned int);
 		break;
 
 	case SEND_ALL_SESSION_BUTONE:
-		// ¹ã²¥¸ø³ıauiSocketFD[0]ÒÔÍâµÄÈË
+		// å¹¿æ’­ç»™é™¤auiSocketFD[0]ä»¥å¤–çš„äºº
 		iNetHeadUinListSize = 3 * sizeof(unsigned int);
 		break;
 
 	default:
-		// ÆÕÍ¨¹ã²¥
+		// æ™®é€šå¹¿æ’­
 		iNetHeadUinListSize = (uiSocketNumber + 2) * sizeof(unsigned int);
 		break;
 	}
@@ -459,21 +459,21 @@ int CGameProtocolEngine::SendZoneMsgListToLotus(GameProtocolMsg& rstZoneMsg,
 		return -1;
 	}
 
-	*(unsigned int*)&m_szGameMsg[0] = SEND_MULTI_SESSION; // ÌØÊâ±êÊ¶Î», ¸æËßLotus°´UinList¸ñÊ½½âÎöºóÃæµÄÊı¾İ
+	*(unsigned int*)&m_szGameMsg[0] = SEND_MULTI_SESSION; // ç‰¹æ®Šæ ‡è¯†ä½, å‘Šè¯‰LotusæŒ‰UinListæ ¼å¼è§£æåé¢çš„æ•°æ®
 	*(unsigned int*)&m_szGameMsg[sizeof(unsigned int)] = uiSocketNumber;
 	switch (uiSocketNumber)
 	{
 	case SEND_ALL_SESSION:
-		// ¹ã²¥¸øËùÓĞµÄÈË
+		// å¹¿æ’­ç»™æ‰€æœ‰çš„äºº
 		break;
 
 	case SEND_ALL_SESSION_BUTONE:
-		// ¹ã²¥¸ø³ıauiSocketFD[0]ÒÔÍâµÄÈË
+		// å¹¿æ’­ç»™é™¤auiSocketFD[0]ä»¥å¤–çš„äºº
 		memcpy(&m_szGameMsg[2*sizeof(unsigned int)], auiSocketFD, 1 * sizeof(unsigned int));
 		break;
 
 	default:
-		// ÆÕÍ¨¹ã²¥
+		// æ™®é€šå¹¿æ’­
 		memcpy(&m_szGameMsg[2*sizeof(unsigned int)], auiSocketFD, uiSocketNumber * sizeof(unsigned int));
 		break;
 	}
@@ -506,3 +506,7 @@ void CGameProtocolEngine::SetService(CAppLoop* pAppLoop)
 {
 	m_pAppLoop = pAppLoop;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

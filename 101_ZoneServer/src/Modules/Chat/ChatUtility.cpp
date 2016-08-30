@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameRole.hpp"
 #include "ZoneErrorNumDef.hpp"
 #include "LogAdapter.hpp"
@@ -27,33 +27,33 @@ int CChatUtility::SendChatMsg(CGameRoleObj& stRoleObj, int iChannel, const char*
             {
                 pstNotify->set_ichannel((ChatChannelType)iChannel);
                 pstNotify->mutable_stroleid()->CopyFrom(stRoleObj.GetRoleID());
-                //todo jasonxiong2 µ¥»ú°æÃ»ÓĞÃû×Ö
+                //todo jasonxiong2 å•æœºç‰ˆæ²¡æœ‰åå­—
                 //pstNotify->set_sznickname(stRoleObj.GetNickName());
                 pstNotify->set_izoneid(CModuleHelper::GetZoneID());
                 pstNotify->set_szmessage(pMsg);
 
-                //ÏÈ¹ã²¥¸ø±¾ÏßµÄÍæ¼Ò
+                //å…ˆå¹¿æ’­ç»™æœ¬çº¿çš„ç©å®¶
                 CZoneMsgHelper::SendZoneMsgToZoneAll(stChatNotify);
 
-                //×ª·¢¸øÊÀ½ç·şÎñÆ÷
+                //è½¬å‘ç»™ä¸–ç•ŒæœåŠ¡å™¨
                 CZoneMsgHelper::SendZoneMsgToWorld(stChatNotify);
             }
             break;
 
         case CHAT_CHANNEL_SYSTEM:
             {
-                //ÏµÍ³ÏûÏ¢
+                //ç³»ç»Ÿæ¶ˆæ¯
                 pstNotify->set_ichannel((ChatChannelType)iChannel);
                 pstNotify->set_szmessage(pMsg);
 
-                //·¢ËÍ¸ø¿Í»§¶Ë
+                //å‘é€ç»™å®¢æˆ·ç«¯
                 CZoneMsgHelper::SendZoneMsgToRole(stChatNotify, &stRoleObj);
             }
             break;
 
         case CHAT_CHANNEL_PRIVATE:
             {
-                //Íæ¼ÒË½ÁÄ£¬ÔİÊ±²»¿ª·¢
+                //ç©å®¶ç§èŠï¼Œæš‚æ—¶ä¸å¼€å‘
                 ;
             }
             break;
@@ -69,3 +69,7 @@ int CChatUtility::SendChatMsg(CGameRoleObj& stRoleObj, int iChannel, const char*
     return T_SERVER_SUCESS;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

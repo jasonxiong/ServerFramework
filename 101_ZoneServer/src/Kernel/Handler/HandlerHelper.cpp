@@ -1,4 +1,4 @@
-
+﻿
 #include "GameProtocol.hpp"
 #include "ModuleHelper.hpp"
 #include "HandlerHelper.hpp"
@@ -21,11 +21,11 @@ CGameSessionObj* CHandlerHelper::FindValidSession(const int iSessionID, const Ro
     CGameSessionObj* pSession = pSessionManager->FindSessionByID(iSessionID);
     if(!pSession)
     {
-        //�Ự�����ڣ�
+        //会话不存在？
         return NULL;
     }
 
-    //Ч��Ự�Ƿ�Ϸ�
+    //效验会话是否合法
     if((stRoleID.uin()!=pSession->GetRoleID().uin()) || (stRoleID.uiseq()!=pSession->GetRoleID().uiseq()))
     {
         return NULL;
@@ -62,7 +62,7 @@ CGameRoleObj* CHandlerHelper::GetMsgSender(GameProtocolMsg* pZoneMsg, const TNet
         return NULL;
     }
 
-    // ˢ�»�Ľ�ɫ��Ϣ
+    // 刷新活动的角色信息
     pRoleObj->ActiveRefresh();
 
     return pRoleObj;
@@ -77,3 +77,7 @@ unsigned int CHandlerHelper::GetErrorCode()
 {
     return m_enErrorCode;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

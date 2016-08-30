@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "GameRole.hpp"
 #include "ZoneObjectHelper.hpp"
@@ -47,9 +47,9 @@ int CGMCommandHandler::OnClientMsg()
 
 int CGMCommandHandler::ParseParameter()
 {
-    //ËµÃ÷£º ÊäÈëµÄGMÃüÁîµÄ²ÎÊı¸ñÊ½ÒªÇóÎª:
-    //      1.GMÃüÁîÒÔ×Ö·û "//" ×÷Îª¿ªÊ¼,ÓëÊµ¼ÊGMÃüÁîÖ®¼äÊ¹ÓÃ¿Õ¸ñ·Ö¸ô;
-    //      2.ºóÃæ¸úËæµÄÎªÓÃ»§Êµ¼ÊÊäÈëµÄGMÃüÁî£¬ÒÔ¿Õ¸ñÎª·Ö¸ô·û;
+    //è¯´æ˜ï¼š è¾“å…¥çš„GMå‘½ä»¤çš„å‚æ•°æ ¼å¼è¦æ±‚ä¸º:
+    //      1.GMå‘½ä»¤ä»¥å­—ç¬¦ "//" ä½œä¸ºå¼€å§‹,ä¸å®é™…GMå‘½ä»¤ä¹‹é—´ä½¿ç”¨ç©ºæ ¼åˆ†éš”;
+    //      2.åé¢è·Ÿéšçš„ä¸ºç”¨æˆ·å®é™…è¾“å…¥çš„GMå‘½ä»¤ï¼Œä»¥ç©ºæ ¼ä¸ºåˆ†éš”ç¬¦;
     const char* pszParam = m_pRequestMsg->m_stmsgbody().m_stzone_gamemaster_request().strcommand().c_str();
     if(strlen(pszParam) < 3)
     {
@@ -57,14 +57,14 @@ int CGMCommandHandler::ParseParameter()
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //Ê×ÏÈ¼ì²éÆğÊ¼×Ö·û,ÊÇ·ñÎª "//"
+    //é¦–å…ˆæ£€æŸ¥èµ·å§‹å­—ç¬¦,æ˜¯å¦ä¸º "//"
     if(pszParam[0]!='/' || pszParam[1]!='/')
     {
         LOGERROR("Failed to parse GM command param %s, uin %u\n", pszParam, m_pRoleObj->GetUin());
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÔÙÌø¹ıÒ»¸ö¿Õ¸ñ£¬¿ªÊ¼½âÎöºóÃæµÄÃüÁî²ÎÊı
+    //å†è·³è¿‡ä¸€ä¸ªç©ºæ ¼ï¼Œå¼€å§‹è§£æåé¢çš„å‘½ä»¤å‚æ•°
     int iBegin = 3;
     for(int i=3; i<(int)strlen(pszParam)+1; ++i)
     {
@@ -73,14 +73,14 @@ int CGMCommandHandler::ParseParameter()
             continue;
         }
 
-        //Ìø¹ı¿Õ¸ñµÄ×Ö·û´®
+        //è·³è¿‡ç©ºæ ¼çš„å­—ç¬¦ä¸²
         if(i-iBegin != 0)
         {
-            //Ò»¸ö²ÎÊı½áÊø
+            //ä¸€ä¸ªå‚æ•°ç»“æŸ
             m_vParams.push_back(std::string(pszParam+iBegin, i-iBegin));
         }
 
-        //¿ªÊ¼È¡ÏÂÒ»¸öÓĞĞ§²ÎÊı
+        //å¼€å§‹å–ä¸‹ä¸€ä¸ªæœ‰æ•ˆå‚æ•°
         iBegin = i+1;
     }
 
@@ -91,11 +91,11 @@ int CGMCommandHandler::OnRequestGM()
 {
     unsigned uin = m_pRequestMsg->m_stmsghead().m_uin();
 
-    //Çå¿Õ²ÎÊı
+    //æ¸…ç©ºå‚æ•°
     m_vParams.clear();
     m_stGameMsg.Clear();
 
-    //Ğ£Ñé²ÎÊıµÄÓĞĞ§ĞÔ
+    //æ ¡éªŒå‚æ•°çš„æœ‰æ•ˆæ€§
     int iRet = SecurityCheck();
     if(iRet)
     {
@@ -104,7 +104,7 @@ int CGMCommandHandler::OnRequestGM()
         return iRet;
     }
 
-    //½âÎöÃüÁîĞĞ²ÎÊı
+    //è§£æå‘½ä»¤è¡Œå‚æ•°
     iRet = ParseParameter();
     if(iRet)
     {
@@ -113,10 +113,10 @@ int CGMCommandHandler::OnRequestGM()
         return iRet;
     }
 
-    //ÅĞ¶ÏÊÇ·ñ¾ßÓĞGMÈ¨ÏŞ
+    //åˆ¤æ–­æ˜¯å¦å…·æœ‰GMæƒé™
     if(CheckIsGMUser())
     {
-        //ÊÇÓĞĞ§µÄGMÈ¨ÏŞµÄÓÃ»§£¬ÉèÖÃGMÏà¹ØÈ¨ÏŞ
+        //æ˜¯æœ‰æ•ˆçš„GMæƒé™çš„ç”¨æˆ·ï¼Œè®¾ç½®GMç›¸å…³æƒé™
         CUnitUtility::SetUnitStatus(&(m_pRoleObj->GetUnitInfo()), EGUS_ISGM);
     }
 
@@ -127,7 +127,7 @@ int CGMCommandHandler::OnRequestGM()
         return -3;
     }
 
-    //Ö´ĞĞGMÃüÁî
+    //æ‰§è¡ŒGMå‘½ä»¤
     iRet = RunCommand();
     if(iRet)
     {
@@ -136,7 +136,7 @@ int CGMCommandHandler::OnRequestGM()
         return iRet;
     }
 
-    //·µ»Ø¸ø¿Í»§¶ËÖ´ĞĞ³É¹¦
+    //è¿”å›ç»™å®¢æˆ·ç«¯æ‰§è¡ŒæˆåŠŸ
     SendSuccessfulResponse();
 
     return T_SERVER_SUCESS;
@@ -144,7 +144,7 @@ int CGMCommandHandler::OnRequestGM()
 
 int CGMCommandHandler::RunCommand()
 {
-    //²éÕÒ´¦ÀíµÄHandler
+    //æŸ¥æ‰¾å¤„ç†çš„Handler
     IGMBaseCommand* pCommandHandler = CGMCommandManager::Instance()->GetCommandHandler(m_vParams[0]);
     if(!pCommandHandler)
     {
@@ -154,7 +154,7 @@ int CGMCommandHandler::RunCommand()
 
     int iCommandType = CGMCommandManager::Instance()->GetHandlerType(m_vParams[0]);
 
-    //Ö´ĞĞGMÃüÁî
+    //æ‰§è¡ŒGMå‘½ä»¤
     int iRet = pCommandHandler->Run(m_pRoleObj, iCommandType, m_vParams);
     if(iRet)
     {
@@ -165,10 +165,10 @@ int CGMCommandHandler::RunCommand()
     return T_SERVER_SUCESS;
 }
 
-//¼ì²éÊÇ·ñÊÇGMÓÃ»§
+//æ£€æŸ¥æ˜¯å¦æ˜¯GMç”¨æˆ·
 int CGMCommandHandler::CheckIsGMUser()
 {
-    //Ê×ÏÈ¼ì²éÊÇ·ñGMÍæ¼ÒµÄuin
+    //é¦–å…ˆæ£€æŸ¥æ˜¯å¦GMç©å®¶çš„uin
     CQMGMPrivConfigManager& rstGMPrivConfigMgr = CModuleHelper::GetConfigManager()->GetGMPrivConfigManager();
     if(rstGMPrivConfigMgr.CheckIsGMUin(m_pRoleObj->GetUin()))
     {
@@ -209,3 +209,7 @@ int CGMCommandHandler::SendSuccessfulResponse()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

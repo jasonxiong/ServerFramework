@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "ZoneErrorNumDef.hpp"
 #include "LogAdapter.hpp"
@@ -10,16 +10,16 @@
 
 #include "DropRewardUtility.hpp"
 
-//»ñÈ¡Ëæ»ú½±Àø
+//è·å–éšæœºå¥–åŠ±
 int CDropRewardUtility::GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj, CombatReward& stReward, int iItemChannel, int iRandParam)
 {
     if(iDropRewardID == 0)
     {
-        //Ã»ÓĞÅäÖÃËæ»ú½±Àø
+        //æ²¡æœ‰é…ç½®éšæœºå¥–åŠ±
         return T_SERVER_SUCESS;
     }
 
-    //»ñÈ¡Ëæ»ú½±ÀøµÄÅäÖÃ
+    //è·å–éšæœºå¥–åŠ±çš„é…ç½®
     const SDropRewardConfig* pstRewardConfig = DropRewardCfgMgr().GetConfig(iDropRewardID);
     if(!pstRewardConfig)
     {
@@ -27,7 +27,7 @@ int CDropRewardUtility::GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //Ëæ»ú½±ÀøµÄÄÚÈİ
+    //éšæœºå¥–åŠ±çš„å†…å®¹
     int iRandMax = 0;
     for(int i=0; i<pstRewardConfig->iTotalRewardNum; ++i)
     {
@@ -52,10 +52,10 @@ int CDropRewardUtility::GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //Ëæ»ú½±ÀøµÄÊıÁ¿
+    //éšæœºå¥–åŠ±çš„æ•°é‡
     int iNum = CRandomCalculator::GetRandomNumber(pstRewardConfig->astRewards[iIndex].iDropMinNum, pstRewardConfig->astRewards[iIndex].iDropMaxNum);
 
-    //¸ù¾İÀàĞÍÔö¼Ó½±Àø
+    //æ ¹æ®ç±»å‹å¢åŠ å¥–åŠ±
     int iRet = T_SERVER_SUCESS;
     const OneRewardConfig& stOneConfig = pstRewardConfig->astRewards[iIndex];
     switch(stOneConfig.iDropType)
@@ -65,7 +65,7 @@ int CDropRewardUtility::GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj
                 iRet = CRepThingsUtility::AddItemNumByID(stRoleObj, stOneConfig.iDropID, iNum, iItemChannel);
                 if(iRet == 0)
                 {
-                    //Ìí¼ÓÎïÆ·³É¹¦£¬Ôö¼Ó·µ»Ø
+                    //æ·»åŠ ç‰©å“æˆåŠŸï¼Œå¢åŠ è¿”å›
                     OneRewardInfo* pstOneInfo = stReward.add_strewardinfo();
                     pstOneInfo->set_irewardtype(stOneConfig.iDropType);
                     pstOneInfo->set_iitemid(stOneConfig.iDropID);
@@ -84,14 +84,14 @@ int CDropRewardUtility::GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj
 
     if(pstRewardConfig->iAddedRewardID != 0)
     {
-        //ÓĞ¹ØÁª½±Àø£¬Ôö¼Ó¹ØÁª½±Àø
+        //æœ‰å…³è”å¥–åŠ±ï¼Œå¢åŠ å…³è”å¥–åŠ±
         return GetDropReward(pstRewardConfig->iAddedRewardID, stRoleObj, stReward, iItemChannel);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡Ëæ»ú½±Àø
+//è·å–éšæœºå¥–åŠ±
 int CDropRewardUtility::GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj, int iItemChannel, int iRandParam)
 {
     static CombatReward stReward;
@@ -99,3 +99,7 @@ int CDropRewardUtility::GetDropReward(int iDropRewardID, CGameRoleObj& stRoleObj
 
     return GetDropReward(iDropRewardID,stRoleObj,stReward, iItemChannel, iRandParam);
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __ASTAR_PATH_UTILITY_HPP__
+ï»¿#ifndef __ASTAR_PATH_UTILITY_HPP__
 #define __ASTAR_PATH_UTILITY_HPP__
 
 #include <vector>
@@ -6,32 +6,32 @@
 #include "GameConfigDefine.hpp"
 #include "ScenePathManager.hpp"
 
-// A* Ëã·¨²ÎÊı
+// A* ç®—æ³•å‚æ•°
 struct tagSceneBlock;
 #pragma pack(1)
 typedef struct tagAStarNode
 {
     unsigned short iValueG;
-    unsigned short iValueF;   // FGHÖµ
+    unsigned short iValueF;   // FGHå€¼
 
-	char bClosed:1;  // ÊÇ·ñÔÚ·â±ÕÁ´±í
-	char bOpened:1;  // ÊÇ·ñÔÚ¿ª·ÅÁ´±í
+	char bClosed:1;  // æ˜¯å¦åœ¨å°é—­é“¾è¡¨
+	char bOpened:1;  // æ˜¯å¦åœ¨å¼€æ”¾é“¾è¡¨
 
-    tagSceneBlock *pstCenterNode; // ÖĞĞÄ½Úµã
+    tagSceneBlock *pstCenterNode; // ä¸­å¿ƒèŠ‚ç‚¹
 
 }TAStarNode;
 
-// µØÍ¼¿é
+// åœ°å›¾å—
 typedef struct tagSceneBlock
 {
-    unsigned short iSceneBlock;      // µØÍ¼¿éµÄ±àºÅ
+    unsigned short iSceneBlock;      // åœ°å›¾å—çš„ç¼–å·
 
     TAStarNode stAStar;   
 }TSceneBlock;
 
 #pragma pack()
 
-// Â·¾¶µã×îĞ¡¶Ñ£¬ÓÅ»¯A*Ëã·¨µÄ¿ª·ÅÁĞ±í
+// è·¯å¾„ç‚¹æœ€å°å †ï¼Œä¼˜åŒ–A*ç®—æ³•çš„å¼€æ”¾åˆ—è¡¨
 
 #define MAX_PATH_NODE ((int)(MAX_MAP_BLOCK_WIDTH_NUM * MAX_MAP_BLOCK_HEIGHT_NUM))
 
@@ -42,13 +42,13 @@ public:
 
     void Initialize();
 
-    // µ¯³öÂ·¾¶×îĞ¡µÄµã
+    // å¼¹å‡ºè·¯å¾„æœ€å°çš„ç‚¹
     TSceneBlock *PopHeap();
 
-    // Ñ¹ÈëÒ»¸öÂ·¾¶µã
+    // å‹å…¥ä¸€ä¸ªè·¯å¾„ç‚¹
     bool PushHeap(TSceneBlock *pstSceneBlock);
 
-	// ÅĞ¶ÏÊÇ·ñ»º³åÇøÂú
+	// åˆ¤æ–­æ˜¯å¦ç¼“å†²åŒºæ»¡
 	bool IsHeapFull();
 
 private:
@@ -61,37 +61,41 @@ private:
     TSceneBlock *m_astCloseNode[MAX_PATH_NODE];
 };
 
-//A*Ñ°Â·¹¤¾ßÀà
+//A*å¯»è·¯å·¥å…·ç±»
 class CBattlefieldObj;
 class CAStarPathUtility
 {
 public:
     
-    //A* Ëã·¨Ñ°Â·
+    //A* ç®—æ³•å¯»è·¯
     static bool FindAStarPath(CBattlefieldObj& stBattlefieldObj, const CScenePathManager& stPathManager, const TUNITPOSITION& stStartPos, 
                               const TUNITPOSITION& stEndPos, int iSize, std::vector<TUNITPOSITION>& vPath);
 
 private:
 
-    // A* ¼ÆËã½ÚµãÈ¨Öµ
+    // A* è®¡ç®—èŠ‚ç‚¹æƒå€¼
     static int AStarCountNode(CBattlefieldObj& stBattlefieldObj, const CScenePathManager& stPathManager, int iX, int iY, int iEndX, int iEndY, TSceneBlock *pstCenterBlock);
 
 private:
 
-    // Â·¾¶¿é
+    // è·¯å¾„å—
     static TSceneBlock m_astSceneBlock[MAX_PATH_NODE];
 
-    // A* ×îĞ¡¶Ñ
+    // A* æœ€å°å †
     static CPathMinHeap m_stPathMinHeap;
 
-    //µ±Ç°Ê¹ÓÃµØÍ¼¿í¶È
+    //å½“å‰ä½¿ç”¨åœ°å›¾å®½åº¦
     static int m_iMapWidth;
 
-    //µ±Ç°Ê¹ÓÃµØÍ¼¸ß¶È
+    //å½“å‰ä½¿ç”¨åœ°å›¾é«˜åº¦
     static int m_iMapHeight;
 
-    //Ñ°Â·µÄÕ½¶·µ¥Î»µÄ´óĞ¡
+    //å¯»è·¯çš„æˆ˜æ–—å•ä½çš„å¤§å°
     static int m_iUnitSize;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

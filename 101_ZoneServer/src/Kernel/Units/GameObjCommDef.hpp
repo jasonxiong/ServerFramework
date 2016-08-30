@@ -1,19 +1,19 @@
-#ifndef __GAME_OBJ_COMM_DEF_HPP__
+ï»¿#ifndef __GAME_OBJ_COMM_DEF_HPP__
 #define __GAME_OBJ_COMM_DEF_HPP__
 
-//±¾ÎÄ¼şÖĞÖ÷Òª¶¨ÒåÓÎÏ·ÖĞÊ¹ÓÃµÄµ¥Î»ºÍ½ÇÉ«µÄ»ù±¾Êı¾İ½á¹¹
+//æœ¬æ–‡ä»¶ä¸­ä¸»è¦å®šä¹‰æ¸¸æˆä¸­ä½¿ç”¨çš„å•ä½å’Œè§’è‰²çš„åŸºæœ¬æ•°æ®ç»“æ„
 
 #include "GameProtocol.hpp"
 #include "GameConfigDefine.hpp"
 
 using namespace GameConfig;
 
-//³¡¾°ÉÏµ¥Î»µÄ¶¨ÒåĞÅÏ¢
+//åœºæ™¯ä¸Šå•ä½çš„å®šä¹‰ä¿¡æ¯
 struct TUNITINFO
 {
-    int iUnitID;                    //³¡¾°µ¥Î»µÄID
-    unsigned char ucUnitType;       //³¡¾°µ¥Î»µÄÀàĞÍ
-    unsigned int uiUnitStatus;      //³¡¾°µ¥Î»µ±Ç°µÄ×´Ì¬
+    int iUnitID;                    //åœºæ™¯å•ä½çš„ID
+    unsigned char ucUnitType;       //åœºæ™¯å•ä½çš„ç±»å‹
+    unsigned int uiUnitStatus;      //åœºæ™¯å•ä½å½“å‰çš„çŠ¶æ€
 
     TUNITINFO()
     {
@@ -21,20 +21,20 @@ struct TUNITINFO
     };
 };
 
-//Íæ¼Ò½ÇÉ«»ù±¾ĞÅÏ¢½á¹¹¶¨Òå
+//ç©å®¶è§’è‰²åŸºæœ¬ä¿¡æ¯ç»“æ„å®šä¹‰
 struct TROLEBASEINFO
 {
-    char szNickName[MAX_NICK_NAME_LENGTH];  //Íæ¼ÒµÄÃû×Ö
-    int iLastLogin;             //Íæ¼ÒÉÏ´ÎµÇÂ¼µÄÊ±¼ä
-    int iLastLogout;            //Íæ¼ÒÉÏ´ÎµÇ³öÓÎÏ·µÄÊ±¼ä
-    int iCreateTime;            //Íæ¼ÒÕÊºÅ´´½¨µÄÊ±¼ä
-    int iOnlineTime;            //Íæ¼ÒµÄ×ÜÔÚÏßÊ±³¤
-    int iLoginCount;            //Íæ¼Ò×ÜµÄµÇÂ¼´ÎÊı
-    int iForbidTalkingTime;     //Íæ¼ÒÁÄÌì±»½ûÖ¹·¢ÑÔµÄÊ±¼ä
-    int iLoginTime;             //Íæ¼Ò±¾´ÎµÇÂ¼µÄÊ±¼ä
-    int iLogoutTime;            //Íæ¼Ò±¾´ÎµÇ³öÓÎÏ·µÄÊ±¼ä
-    int iBattlefieldObjIndex;   //Íæ¼ÒµÄÕ½¶·Õ½³¡ĞÅÏ¢
-    bool bIsSelfWin;            //Íæ¼Ò½øĞĞÕ½¶·Ê¤¸º½á¹û
+    char szNickName[MAX_NICK_NAME_LENGTH];  //ç©å®¶çš„åå­—
+    int iLastLogin;             //ç©å®¶ä¸Šæ¬¡ç™»å½•çš„æ—¶é—´
+    int iLastLogout;            //ç©å®¶ä¸Šæ¬¡ç™»å‡ºæ¸¸æˆçš„æ—¶é—´
+    int iCreateTime;            //ç©å®¶å¸å·åˆ›å»ºçš„æ—¶é—´
+    int iOnlineTime;            //ç©å®¶çš„æ€»åœ¨çº¿æ—¶é•¿
+    int iLoginCount;            //ç©å®¶æ€»çš„ç™»å½•æ¬¡æ•°
+    int iForbidTalkingTime;     //ç©å®¶èŠå¤©è¢«ç¦æ­¢å‘è¨€çš„æ—¶é—´
+    int iLoginTime;             //ç©å®¶æœ¬æ¬¡ç™»å½•çš„æ—¶é—´
+    int iLogoutTime;            //ç©å®¶æœ¬æ¬¡ç™»å‡ºæ¸¸æˆçš„æ—¶é—´
+    int iBattlefieldObjIndex;   //ç©å®¶çš„æˆ˜æ–—æˆ˜åœºä¿¡æ¯
+    bool bIsSelfWin;            //ç©å®¶è¿›è¡Œæˆ˜æ–—èƒœè´Ÿç»“æœ
 
     TROLEBASEINFO()
     {
@@ -42,12 +42,16 @@ struct TROLEBASEINFO
     };
 };
 
-//½ÇÉ«µÄÊı¾İĞÅÏ¢
+//è§’è‰²çš„æ•°æ®ä¿¡æ¯
 struct TROLEINFO
 {
-    RoleID stRoleID;            //½ÇÉ«ID
-    TROLEBASEINFO stBaseInfo;   //½ÇÉ«µÄ»ù´¡ĞÅÏ¢
-    TUNITINFO stUnitInfo;       //½ÇÉ«µÄUnitµ¥Î»ĞÅÏ¢
+    RoleID stRoleID;            //è§’è‰²ID
+    TROLEBASEINFO stBaseInfo;   //è§’è‰²çš„åŸºç¡€ä¿¡æ¯
+    TUNITINFO stUnitInfo;       //è§’è‰²çš„Unitå•ä½ä¿¡æ¯
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

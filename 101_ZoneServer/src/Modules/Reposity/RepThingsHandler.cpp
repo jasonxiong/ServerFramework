@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -53,7 +53,7 @@ int CRepThingsHandler::OnClientMsg()
     return 0;
 }
 
-//Íæ¼Ò±³°üÎïÆ·µÄ²Ù×÷
+//ç©å®¶èƒŒåŒ…ç‰©å“çš„æ“ä½œ
 int CRepThingsHandler::OnRequestOperaRepItem()
 {
     int iRet = SecurityCheck();
@@ -66,7 +66,7 @@ int CRepThingsHandler::OnRequestOperaRepItem()
         return -1;
     }
 
-    //Íæ¼Ò±³°üÎïÆ·µÄ²Ù×÷
+    //ç©å®¶èƒŒåŒ…ç‰©å“çš„æ“ä½œ
     const Zone_RepOpera_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_repopera_request();
     iRet = CRepThingsFramework::Instance()->OperaRepItem(m_pRequestMsg->m_stmsghead().m_uin(), rstRequest);
     if(iRet)
@@ -76,12 +76,12 @@ int CRepThingsHandler::OnRequestOperaRepItem()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼ÒÀ­È¡±³°üµÄÏêÏ¸ĞÅÏ¢
+//ç©å®¶æ‹‰å–èƒŒåŒ…çš„è¯¦ç»†ä¿¡æ¯
 int CRepThingsHandler::OnRequestGetRepInfo()
 {
     int iRet = SecurityCheck();
@@ -94,7 +94,7 @@ int CRepThingsHandler::OnRequestGetRepInfo()
         return -1;
     }
 
-    //À­È¡Íæ¼ÒµÄ±³°üÎïÆ·ĞÅÏ¢
+    //æ‹‰å–ç©å®¶çš„èƒŒåŒ…ç‰©å“ä¿¡æ¯
     const Zone_GetRepInfo_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_getrepinfo_request();
     iRet = CRepThingsFramework::Instance()->GetRepItemInfo(m_pRequestMsg->m_stmsghead().m_uin(), rstRequest);
     if(iRet)
@@ -104,12 +104,12 @@ int CRepThingsHandler::OnRequestGetRepInfo()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼Ò´©´÷Õ½¶·µ¥Î»×°±¸µÄ²Ù×÷
+//ç©å®¶ç©¿æˆ´æˆ˜æ–—å•ä½è£…å¤‡çš„æ“ä½œ
 int CRepThingsHandler::OnRequestWearEquipment()
 {
     int iRet = SecurityCheck();
@@ -122,7 +122,7 @@ int CRepThingsHandler::OnRequestWearEquipment()
         return -1;
     }
 
-    //Íæ¼Ò´©´÷Õ½¶·×°±¸µÄ²Ù×÷
+    //ç©å®¶ç©¿æˆ´æˆ˜æ–—è£…å¤‡çš„æ“ä½œ
     const Zone_WearEquip_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_wearequip_request();
     iRet = CRepThingsFramework::Instance()->WearEquipment(m_pRequestMsg->m_stmsghead().m_uin(), rstRequest);
     if(iRet)
@@ -132,12 +132,12 @@ int CRepThingsHandler::OnRequestWearEquipment()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼Ò³öÊÛ±³°üÎïÆ·
+//ç©å®¶å‡ºå”®èƒŒåŒ…ç‰©å“
 int CRepThingsHandler::OnRequestSellItem()
 {
     int iRet = SecurityCheck();
@@ -150,7 +150,7 @@ int CRepThingsHandler::OnRequestSellItem()
         return -1;
     }
 
-    //Íæ¼Ò³öÊÛ±³°üÎïÆ·
+    //ç©å®¶å‡ºå”®èƒŒåŒ…ç‰©å“
     const Zone_SellItem_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_sellitem_request();
     iRet = CRepThingsFramework::Instance()->SellRepItem(m_pRequestMsg->m_stmsghead().m_uin(), rstRequest);
     if(iRet)
@@ -160,12 +160,12 @@ int CRepThingsHandler::OnRequestSellItem()
         return -2;
     }
 
-    //´¦Àí³É¹¦ÔÚFrameworkÖĞ·µ»Ø£¬´Ë´¦²»ĞèÒª·µ»Ø°ü
+    //å¤„ç†æˆåŠŸåœ¨Frameworkä¸­è¿”å›ï¼Œæ­¤å¤„ä¸éœ€è¦è¿”å›åŒ…
 
     return T_SERVER_SUCESS;
 }
 
-// ·¢ËÍÊ§°Ü»Ø¸´
+// å‘é€å¤±è´¥å›å¤
 int CRepThingsHandler::SendFailedResponse(unsigned uiMsgID, const unsigned int uiResultID, const TNetHead_V2& rstNetHead)
 {
     CZoneMsgHelper::GenerateMsgHead(ms_stZoneMsg, uiMsgID);
@@ -208,3 +208,7 @@ int CRepThingsHandler::SendFailedResponse(unsigned uiMsgID, const unsigned int u
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

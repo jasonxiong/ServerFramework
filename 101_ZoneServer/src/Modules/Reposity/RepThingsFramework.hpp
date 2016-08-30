@@ -1,4 +1,4 @@
-#ifndef __REP_THINGS_FRAMEWORK_HPP__
+ï»¿#ifndef __REP_THINGS_FRAMEWORK_HPP__
 #define __REP_THINGS_FRAMEWORK_HPP__
 
 #include "GameProtocol.hpp"
@@ -15,36 +15,36 @@ public:
 
     ~CRepThingsFramework();
 
-    //Íæ¼Ò¶Ô±³°üÎïÆ·µÄ²Ù×÷
+    //ç©å®¶å¯¹èƒŒåŒ…ç‰©å“çš„æ“ä½œ
     int OperaRepItem(unsigned int uin, const Zone_RepOpera_Request& rstRequest);
 
-    //Íæ¼ÒÀ­È¡±³°üÎïÆ·µÄÏêÏ¸ĞÅÏ¢
+    //ç©å®¶æ‹‰å–èƒŒåŒ…ç‰©å“çš„è¯¦ç»†ä¿¡æ¯
     int GetRepItemInfo(unsigned int uin, const Zone_GetRepInfo_Request& rstRequest);
 
-    //Íæ¼Ò´Ó±³°ü´©×°±¸
+    //ç©å®¶ä»èƒŒåŒ…ç©¿è£…å¤‡
     int WearEquipment(unsigned int uin, const Zone_WearEquip_Request& rstRequest);
 
-    //Íæ¼Ò³öÊÛ±³°üÎïÆ·
+    //ç©å®¶å‡ºå”®èƒŒåŒ…ç‰©å“
     int SellRepItem(unsigned int uin, const Zone_SellItem_Request& rstRequest);
 
 private:
     
-    //²ğ·Ö±³°ü¸ñ×ÓÖĞµÄÎïÆ·
+    //æ‹†åˆ†èƒŒåŒ…æ ¼å­ä¸­çš„ç‰©å“
     int SplitRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iItemNum, Zone_RepOpera_Response& rstResponse);
 
-    //½»»»ºÍºÏ²¢±³°ü¸ñ×ÓÖĞµÄÎïÆ·
+    //äº¤æ¢å’Œåˆå¹¶èƒŒåŒ…æ ¼å­ä¸­çš„ç‰©å“
     int ExchangeRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iOtherSlotIndex, Zone_RepOpera_Response& rstResponse);
 
-    //Ê¹ÓÃ±³°üÖĞµÄÎïÆ·
+    //ä½¿ç”¨èƒŒåŒ…ä¸­çš„ç‰©å“
     int UseRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iItemNum, int iFightUnitID, Zone_RepOpera_Response& rstResponse);
 
-    //É¾³ı±³°üÖĞµÄÎïÆ·
+    //åˆ é™¤èƒŒåŒ…ä¸­çš„ç‰©å“
     int DeleteRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iItemNum, Zone_RepOpera_Response& rstResponse);
 
-    //ÕûÀíÎïÆ·±³°ü
+    //æ•´ç†ç‰©å“èƒŒåŒ…
     int SortRepItem(CGameRoleObj& stRoleObj, Zone_RepOpera_Response& rstResponse);
 
-    //·¢ËÍ´¦Àí³É¹¦µÄ·µ»Ø
+    //å‘é€å¤„ç†æˆåŠŸçš„è¿”å›
     int SendSuccessResponse();
 
     CRepThingsFramework();
@@ -57,3 +57,7 @@ private:
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

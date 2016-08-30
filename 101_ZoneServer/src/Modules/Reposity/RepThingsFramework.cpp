@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -39,10 +39,10 @@ CRepThingsFramework::~CRepThingsFramework()
 
 }
 
-//Íæ¼Ò¶Ô±³°üÎïÆ·µÄ²Ù×÷
+//ç©å®¶å¯¹èƒŒåŒ…ç‰©å“çš„æ“ä½œ
 int CRepThingsFramework::OperaRepItem(unsigned int uin, const Zone_RepOpera_Request& rstRequest)
 {
-    //³õÊ¼»¯³ÉÔ±±äÁ¿
+    //åˆå§‹åŒ–æˆå‘˜å˜é‡
     m_uiUin = uin;
     m_stGameMsg.Clear();
 
@@ -55,7 +55,7 @@ int CRepThingsFramework::OperaRepItem(unsigned int uin, const Zone_RepOpera_Requ
         return T_ZONE_GAMEROLE_NOT_EXIST;
     }
 
-    //À­È¡ÏàÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–ç›¸åº”çš„æ¶ˆæ¯ä½“
     Zone_RepOpera_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_repopera_response();
 
     ReqOperaType eType = rstRequest.etype();
@@ -106,7 +106,7 @@ int CRepThingsFramework::OperaRepItem(unsigned int uin, const Zone_RepOpera_Requ
         return iRet;
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_etype(rstRequest.etype());
     pstResp->set_iresult(T_SERVER_SUCESS);
 
@@ -115,10 +115,10 @@ int CRepThingsFramework::OperaRepItem(unsigned int uin, const Zone_RepOpera_Requ
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼ÒÀ­È¡±³°üÎïÆ·µÄÏêÏ¸ĞÅÏ¢
+//ç©å®¶æ‹‰å–èƒŒåŒ…ç‰©å“çš„è¯¦ç»†ä¿¡æ¯
 int CRepThingsFramework::GetRepItemInfo(unsigned int uin, const Zone_GetRepInfo_Request& rstRequest)
 {
-    //³õÊ¼»¯³ÉÔ±±äÁ¿
+    //åˆå§‹åŒ–æˆå‘˜å˜é‡
     m_uiUin = uin;
     m_stGameMsg.Clear();
 
@@ -131,13 +131,13 @@ int CRepThingsFramework::GetRepItemInfo(unsigned int uin, const Zone_GetRepInfo_
         return T_ZONE_GAMEROLE_NOT_EXIST;
     }
 
-    //À­È¡ÏàÓ¦µÄÏûÏ¢Ìå
+    //æ‹‰å–ç›¸åº”çš„æ¶ˆæ¯ä½“
     Zone_GetRepInfo_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_getrepinfo_response();
 
-    //»ñÈ¡±³°ü¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç®¡ç†å™¨
     pstRoleObj->GetRepThingsManager().UpdateRepItemToDB(*pstResp->mutable_stitems());
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
@@ -145,12 +145,12 @@ int CRepThingsFramework::GetRepItemInfo(unsigned int uin, const Zone_GetRepInfo_
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼Ò´Ó±³°ü´©×°±¸
+//ç©å®¶ä»èƒŒåŒ…ç©¿è£…å¤‡
 int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Request& rstRequest)
 {
-    //todo jasonxiong5 ÔÙÀ´¿ª·¢
+    //todo jasonxiong5 å†æ¥å¼€å‘
     /*
-    //³õÊ¼»¯³ÉÔ±±äÁ¿
+    //åˆå§‹åŒ–æˆå‘˜å˜é‡
     m_uiUin = uin;
     m_stGameMsg.Clear();
 
@@ -165,13 +165,13 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
 
     int iRet = T_SERVER_SUCESS;
 
-    //±³°ü´©×°±¸ÏàÓ¦µÄÏûÏ¢Ìå
+    //èƒŒåŒ…ç©¿è£…å¤‡ç›¸åº”çš„æ¶ˆæ¯ä½“
     Zone_WearEquip_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_wearequip_response();
 
-    //´©×°±¸
+    //ç©¿è£…å¤‡
     if(rstRequest.biswear())
     {
-        //»ñÈ¡±³°ü¹ÜÀíÆ÷
+        //è·å–èƒŒåŒ…ç®¡ç†å™¨
         CRepThingsManager& stRepThingsManager = pstRoleObj->GetRepThingsManager();
     
         int iEquipItemID = stRepThingsManager.GetRepItemID(rstRequest.islotindex());
@@ -183,8 +183,8 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             return T_ZONE_SYSTEM_INVALID_CFG;
         }
     
-        //todo jasonxiong4 Õâ±ßĞŞ¸ÄÎª°´IDÈ¡
-        //»ñÈ¡Õ½¶·µ¥Î»µÄĞÅÏ¢
+        //todo jasonxiong4 è¿™è¾¹ä¿®æ”¹ä¸ºæŒ‰IDå–
+        //è·å–æˆ˜æ–—å•ä½çš„ä¿¡æ¯
         CFightUnitObj* pstFightUnitObj = pstRoleObj->GetFightUnitManager().GetFightUnitByID(rstRequest.iunitindex());
         if(!pstFightUnitObj)
         {
@@ -192,11 +192,11 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             return T_ZONE_SYSTEM_PARA_ERR;
         }
 
-        //ÏÈÉ¾³ı¸ÃÎ»ÖÃµÄ×°±¸
+        //å…ˆåˆ é™¤è¯¥ä½ç½®çš„è£…å¤‡
         RepItem* stOldEquipment = pstFightUnitObj->GetItemInfo(pstEquipConfig->iEquipType);
         if(stOldEquipment->iItemID != 0)
         {
-            //¶ÁÈ¡ÀÏ×°±¸µÄÅäÖÃ
+            //è¯»å–è€è£…å¤‡çš„é…ç½®
             const SEquipmentConfig* pstOldEquipConfig = EquipmentCfgMgr().GetConfig(stOldEquipment->iItemID);
             if(!pstOldEquipConfig)
             {
@@ -213,10 +213,10 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
         
             if(stOldEquipment->iItemID != 0)
             {
-                //Õ½¶·µ¥Î»ÉíÉÏÍÑÏÂµÄ×°±¸·Åµ½±³°üÖĞ
+                //æˆ˜æ–—å•ä½èº«ä¸Šè„±ä¸‹çš„è£…å¤‡æ”¾åˆ°èƒŒåŒ…ä¸­
                 if(stRepThingsManager.GetEmptyItemSlotIndex() < 0)
                 {
-                    //±³°üÎŞ¿ÕÎ»£¬²»ÄÜĞ¶ÏÂ
+                    //èƒŒåŒ…æ— ç©ºä½ï¼Œä¸èƒ½å¸ä¸‹
                     return T_ZONE_USER_REP_FULL;
                 }
         
@@ -228,7 +228,7 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             }
         }
     
-        //´Ó±³°üÖĞÉ¾³ı×°±¸
+        //ä»èƒŒåŒ…ä¸­åˆ é™¤è£…å¤‡
         RepItem stWearEquip;
         iRet = stRepThingsManager.DeleteRepItem(rstRequest.islotindex(), stWearEquip, 0);
         if(iRet)
@@ -237,7 +237,7 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             return iRet;
         }
     
-        //Õ½¶·µ¥Î»ÉíÉÏ´©ÉÏ×°±¸
+        //æˆ˜æ–—å•ä½èº«ä¸Šç©¿ä¸Šè£…å¤‡
         iRet = pstFightUnitObj->UnitEquipItem(pstEquipConfig->iEquipType, stWearEquip, true);
         if(iRet)
         {
@@ -245,27 +245,27 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             return iRet;
         }
 
-        //·â×°·µ»Ø
+        //å°è£…è¿”å›
         OneSlotInfo* pstSlotInfo = pstResp->mutable_stslotinfo();
         pstSlotInfo->set_iitemid(stWearEquip.iItemID);
         pstSlotInfo->set_iitemnum(stWearEquip.iItemNum);
     }
-    //ÍÑ×°±¸
+    //è„±è£…å¤‡
     else
     {
         CRepThingsManager& stRepTingsManager = pstRoleObj->GetRepThingsManager();
 
-        //ÏÈÅĞ¶Ï±³°üÖĞÊÇ·ñÓĞ¿ÕÎ»
+        //å…ˆåˆ¤æ–­èƒŒåŒ…ä¸­æ˜¯å¦æœ‰ç©ºä½
         if(stRepTingsManager.GetEmptyItemSlotIndex() < 0)
         {
             LOGERROR("Failed to take off equipment, rep full, uin %u\n", m_uiUin);
             return T_ZONE_SYSTEM_PARA_ERR;
         }
 
-        //»ñÈ¡Õ½¶·µ¥Î»µÄĞÅÏ¢
+        //è·å–æˆ˜æ–—å•ä½çš„ä¿¡æ¯
         CFightUnitManager& stFightUnitManager = pstRoleObj->GetFightUnitManager();
 
-        //todo jasonxiong4 Õâ±ßĞŞ¸ÄÎª°´IDÈ¡
+        //todo jasonxiong4 è¿™è¾¹ä¿®æ”¹ä¸ºæŒ‰IDå–
         CFightUnitObj* pstUnitObj = stFightUnitManager.GetFightUnitByID(rstRequest.iunitindex());
         if(!pstUnitObj)
         {
@@ -273,7 +273,7 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             return T_ZONE_SYSTEM_PARA_ERR;
         }
 
-        //»ñÈ¡¸Ã×°±¸ĞÅÏ¢
+        //è·å–è¯¥è£…å¤‡ä¿¡æ¯
         RepItem* stOldEquipInfo = pstUnitObj->GetItemInfo(rstRequest.iequipsubtype());
         const SEquipmentConfig* pstEquipConfig = EquipmentCfgMgr().GetConfig(stOldEquipInfo->iItemID);
         if(!pstEquipConfig)
@@ -282,7 +282,7 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             return T_ZONE_SYSTEM_PARA_ERR;
         }
 
-        //ÏÈ´ÓÕ½¶·µ¥Î»ÉíÉÏÍÑÏÂ×°±¸
+        //å…ˆä»æˆ˜æ–—å•ä½èº«ä¸Šè„±ä¸‹è£…å¤‡
         RepItem stEquipItem;
         iRet = pstUnitObj->UnitEquipItem(rstRequest.iequipsubtype(), stEquipItem, false);
         if(iRet)
@@ -297,7 +297,7 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
             return T_ZONE_SYSTEM_PARA_ERR;
         }
 
-        //½«ÍÑÏÂµÄ×°±¸·Å½ø±³°ü
+        //å°†è„±ä¸‹çš„è£…å¤‡æ”¾è¿›èƒŒåŒ…
         iRet = stRepTingsManager.AddRepItem(stEquipItem, rstRequest.islotindex(), 0);
         if(iRet)
         {
@@ -306,7 +306,7 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
         }
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_biswear(rstRequest.biswear());
     pstResp->set_iunitindex(rstRequest.iunitindex());
     pstResp->set_iequipsubtype(rstRequest.iequipsubtype());
@@ -318,10 +318,10 @@ int CRepThingsFramework::WearEquipment(unsigned int uin, const Zone_WearEquip_Re
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼Ò³öÊÛ±³°üÎïÆ·
+//ç©å®¶å‡ºå”®èƒŒåŒ…ç‰©å“
 int CRepThingsFramework::SellRepItem(unsigned int uin, const Zone_SellItem_Request& rstRequest)
 {
-    //³õÊ¼»¯³ÉÔ±±äÁ¿
+    //åˆå§‹åŒ–æˆå‘˜å˜é‡
     m_uiUin = uin;
     m_stGameMsg.Clear();
 
@@ -334,20 +334,20 @@ int CRepThingsFramework::SellRepItem(unsigned int uin, const Zone_SellItem_Reque
         return T_ZONE_GAMEROLE_NOT_EXIST;
     }
 
-    //»ñÈ¡±³°ü¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç®¡ç†å™¨
     CRepThingsManager& rstRepThingsManager = pstRoleObj->GetRepThingsManager();
 
     int iRet = T_SERVER_SUCESS;
 
-    //Íæ¼Ò³öÊÛ±³°üÎïÆ·µÄ·µ»Ø
+    //ç©å®¶å‡ºå”®èƒŒåŒ…ç‰©å“çš„è¿”å›
     Zone_SellItem_Response* pstResp = m_stGameMsg.mutable_m_stmsgbody()->mutable_m_stzone_sellitem_response();
 
-    //¿Û³ıÎïÆ·
+    //æ‰£é™¤ç‰©å“
     for(int i=0; i<rstRequest.stitems_size(); ++i)
     {
         const SellItemInfo& rstSellInfo = rstRequest.stitems(i);
 
-        //É¾³ıÎïÆ·
+        //åˆ é™¤ç‰©å“
         iRet = rstRepThingsManager.DeleteRepItem(rstSellInfo.iitemslot(), rstSellInfo.isellnum(), 0);
         if(iRet)
         {
@@ -356,7 +356,7 @@ int CRepThingsFramework::SellRepItem(unsigned int uin, const Zone_SellItem_Reque
         }
     }
 
-    //Ìî³ä²¢»Ø°ü¸ø¿Í»§¶Ë
+    //å¡«å……å¹¶å›åŒ…ç»™å®¢æˆ·ç«¯
     pstResp->set_iresult(T_SERVER_SUCESS);
 
     SendSuccessResponse();
@@ -364,28 +364,28 @@ int CRepThingsFramework::SellRepItem(unsigned int uin, const Zone_SellItem_Reque
     return T_SERVER_SUCESS;
 }
 
-//²ğ·Ö±³°ü¸ñ×ÓÖĞµÄÎïÆ·, iItemNumÊÇĞèÒª²ğ·Öµ½ĞÂÎïÆ·¸ñ×ÓÀïµÄÊıÄ¿
+//æ‹†åˆ†èƒŒåŒ…æ ¼å­ä¸­çš„ç‰©å“, iItemNumæ˜¯éœ€è¦æ‹†åˆ†åˆ°æ–°ç‰©å“æ ¼å­é‡Œçš„æ•°ç›®
 int CRepThingsFramework::SplitRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iItemNum, Zone_RepOpera_Response& rstResponse)
 {
-    //ÅĞ¶Ï²ÎÊı
+    //åˆ¤æ–­å‚æ•°
     if(iItemNum == 0)
     {
         LOGERROR("Failed to split rep item, invalid num %d, uin %u\n", iItemNum, m_uiUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡±³°ü¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç®¡ç†å™¨
     CRepThingsManager& stRepThingsManager = stRoleObj.GetRepThingsManager();
 
     int iRealItemNum = stRepThingsManager.GetRepItemNum(iSlotIndex);
-    //ÅĞ¶Ï²ğ·ÖÎïÆ·µÄÊıÁ¿ÊÇ·ñ¹»
+    //åˆ¤æ–­æ‹†åˆ†ç‰©å“çš„æ•°é‡æ˜¯å¦å¤Ÿ
     if(iRealItemNum <= iItemNum)
     {
         LOGERROR("Failed to spilt rep item, num need:real %d:%d, slot %d, uin %u\n", iItemNum, iRealItemNum, iSlotIndex, m_uiUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶Ï²ğ·Ö³öÀ´µÄÎïÆ·ÊÇ·ñÄÜ·Å½øÈ¥
+    //åˆ¤æ–­æ‹†åˆ†å‡ºæ¥çš„ç‰©å“æ˜¯å¦èƒ½æ”¾è¿›å»
     int iEmptyRepSlot = stRepThingsManager.GetEmptyItemSlotIndex();
     if(iEmptyRepSlot < 0)
     {
@@ -393,7 +393,7 @@ int CRepThingsFramework::SplitRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, i
         return T_ZONE_USER_REP_FULL;
     }
 
-    //ÏÈ¼õÔ­À´¸ñ×ÓµÄÎïÆ·
+    //å…ˆå‡åŸæ¥æ ¼å­çš„ç‰©å“
     int iRet = stRepThingsManager.DeleteRepItem(iSlotIndex, iItemNum);
     if(iRet)
     {
@@ -403,7 +403,7 @@ int CRepThingsFramework::SplitRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, i
 
     int iItemID = stRepThingsManager.GetRepItemID(iSlotIndex);
 
-    //Ôö¼ÓĞÂ¸ñ×ÓÀïµÄÎïÆ·
+    //å¢åŠ æ–°æ ¼å­é‡Œçš„ç‰©å“
     RepItem stAddItem;
     stAddItem.iItemID = iItemID;
     stAddItem.iItemNum = iItemNum;
@@ -420,13 +420,13 @@ int CRepThingsFramework::SplitRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, i
     return T_SERVER_SUCESS;
 }
 
-//½»»»ºÍºÏ²¢±³°ü¸ñ×ÓÖĞµÄÎïÆ·
+//äº¤æ¢å’Œåˆå¹¶èƒŒåŒ…æ ¼å­ä¸­çš„ç‰©å“
 int CRepThingsFramework::ExchangeRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iOtherSlotIndex, Zone_RepOpera_Response& rstResponse)
 {
-    //»ñÈ¡±³°ü¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç®¡ç†å™¨
     CRepThingsManager& stRepThingsManager = stRoleObj.GetRepThingsManager();
 
-    //½»»»ºÍºÏ²¢±³°ü¸ñ×Ó
+    //äº¤æ¢å’Œåˆå¹¶èƒŒåŒ…æ ¼å­
     int iRet = stRepThingsManager.ExchangeRepItem(iSlotIndex, iOtherSlotIndex);
     if(iRet)
     {
@@ -439,23 +439,23 @@ int CRepThingsFramework::ExchangeRepItem(CGameRoleObj& stRoleObj, int iSlotIndex
     return T_SERVER_SUCESS;
 }
 
-//Ê¹ÓÃ±³°üÖĞµÄÎïÆ·
+//ä½¿ç”¨èƒŒåŒ…ä¸­çš„ç‰©å“
 int CRepThingsFramework::UseRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iItemNum, int iFightUnitID, Zone_RepOpera_Response& rstResponse)
 {
-    //»ñÈ¡±³°ü¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç®¡ç†å™¨
     CRepThingsManager& stRepThingsManager = stRoleObj.GetRepThingsManager();
 
-    //»ñÈ¡Ê¹ÓÃÎïÆ·µÄID
+    //è·å–ä½¿ç”¨ç‰©å“çš„ID
     int iItemID = stRepThingsManager.GetRepItemID(iSlotIndex);
 
-    //¼ì²éÎïÆ·ÊıÁ¿ÊÇ·ñ¹»
+    //æ£€æŸ¥ç‰©å“æ•°é‡æ˜¯å¦å¤Ÿ
     if(iItemNum > stRepThingsManager.GetRepItemNum(iSlotIndex))
     {
         LOGERROR("Failed to use rep item, item id %d, uin %u\n", iItemID, m_uiUin);
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÏÈ¿Û³ıÎïÆ·
+    //å…ˆæ‰£é™¤ç‰©å“
     int iRet = stRepThingsManager.DeleteRepItem(iSlotIndex, iItemNum, 0);
     if(iRet)
     {
@@ -466,10 +466,10 @@ int CRepThingsFramework::UseRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int
     return T_SERVER_SUCESS;
 }
 
-//É¾³ı±³°üÖĞµÄÎïÆ·
+//åˆ é™¤èƒŒåŒ…ä¸­çš„ç‰©å“
 int CRepThingsFramework::DeleteRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, int iItemNum, Zone_RepOpera_Response& rstResponse)
 {
-    //»ñÈ¡±³°ü¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç®¡ç†å™¨
     CRepThingsManager& stRepThingsManager = stRoleObj.GetRepThingsManager();
 
     int iSlotItemNum = stRepThingsManager.GetRepItemNum(iSlotIndex);
@@ -490,10 +490,10 @@ int CRepThingsFramework::DeleteRepItem(CGameRoleObj& stRoleObj, int iSlotIndex, 
     return T_SERVER_SUCESS;
 }
 
-//ÕûÀíÎïÆ·±³°ü
+//æ•´ç†ç‰©å“èƒŒåŒ…
 int CRepThingsFramework::SortRepItem(CGameRoleObj& stRoleObj, Zone_RepOpera_Response& rstResponse)
 {
-    //»ñÈ¡±³°ü¹ÜÀíÆ÷
+    //è·å–èƒŒåŒ…ç®¡ç†å™¨
     CRepThingsManager& stRepThingsManager = stRoleObj.GetRepThingsManager();
 
     int iRet = stRepThingsManager.SortRepItem();
@@ -521,3 +521,7 @@ int CRepThingsFramework::SendSuccessResponse()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

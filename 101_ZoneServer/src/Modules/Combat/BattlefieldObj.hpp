@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __BATTLEFIELD_OBJ_HPP__
 #define __BATTLEFIELD_OBJ_HPP__
 
@@ -15,20 +15,20 @@ class CGameRoleObj;
 
 using namespace GameConfig;
 
-//Ö÷½ÇÕ½¶·µ¥Î»µ±Ç°µÄ×´Ì¬ÀàĞÍ
+//ä¸»è§’æˆ˜æ–—å•ä½å½“å‰çš„çŠ¶æ€ç±»å‹
 enum enRoleCombatUnitStatType
 {
-    ROLE_COMBAT_UNIT_STAT_INVALID = 0,      //·Ç·¨µÄ×´Ì¬
-    ROLE_COMBAT_UNIT_STAT_IDLE = 1,         //¿ÕÏĞ×´Ì¬
-    ROLE_COMBAT_UNIT_STAT_MOVE = 2,         //µÈ´ıÒÆ¶¯×´Ì¬
-    ROLE_COMBAT_UNIT_STAT_ACTION = 3,       //µÈ´ıĞĞ¶¯×´Ì¬
-    ROLE_COMBAT_UNIT_STAT_SETFORM = 4,      //µÈ´ıÉèÖÃÕóĞÍ
+    ROLE_COMBAT_UNIT_STAT_INVALID = 0,      //éæ³•çš„çŠ¶æ€
+    ROLE_COMBAT_UNIT_STAT_IDLE = 1,         //ç©ºé—²çŠ¶æ€
+    ROLE_COMBAT_UNIT_STAT_MOVE = 2,         //ç­‰å¾…ç§»åŠ¨çŠ¶æ€
+    ROLE_COMBAT_UNIT_STAT_ACTION = 3,       //ç­‰å¾…è¡ŒåŠ¨çŠ¶æ€
+    ROLE_COMBAT_UNIT_STAT_SETFORM = 4,      //ç­‰å¾…è®¾ç½®é˜µå‹
 };
 
-//PVPÕ½¶·¹Ø¿¨µÄID
+//PVPæˆ˜æ–—å…³å¡çš„ID
 #define PVP_COMBAT_CROSS_ID 100
 
-//Õ½¶·Õ½³¡¶ÔÏó
+//æˆ˜æ–—æˆ˜åœºå¯¹è±¡
 class CBattlefieldObj : public CObj
 {
 public:
@@ -40,323 +40,327 @@ public:
 
 public:
 
-    //Ö÷¶¯·½µÄuin
+    //ä¸»åŠ¨æ–¹çš„uin
     void SetActiveUin(unsigned int uiUin);
     unsigned int GetActiveUin();
     
-    //±»¶¯·½µÄuin
+    //è¢«åŠ¨æ–¹çš„uin
     void SetPassiveUin(unsigned int uiUin);
     unsigned int GetPassiveUin();
 
-    //Õ½³¡ObjµÄÎ¨Ò»ID
+    //æˆ˜åœºObjçš„å”¯ä¸€ID
     void SetBattlefieldObjID(int iObjID);
     int GetBattlefieldObjID();
 
-    //³õÊ¼»¯PVEÕ½³¡
+    //åˆå§‹åŒ–PVEæˆ˜åœº
     int InitPveBattlefield(CGameRoleObj& rstRoleObj, int iCrossID);
 
-    //³õÊ¼»¯PVPÕ½³¡
+    //åˆå§‹åŒ–PVPæˆ˜åœº
     int InitPVPBattlefield(CGameRoleObj& stActiveRoleObj, CGameRoleObj& stPassiveRoleObj);
 
-    //´ò°ü·µ»ØÕ½³¡µÄĞÅÏ¢
+    //æ‰“åŒ…è¿”å›æˆ˜åœºçš„ä¿¡æ¯
     int PackBattlefiledInfo(Zone_Battlefield_Notify& stNotify);
 
-    //ÇåÀíÕ½³¡
+    //æ¸…ç†æˆ˜åœº
     void ClearBattlefield();
 
-    //³õÊ¼»¯»ØºÏ³öÊÖµ¥Î»ĞÅÏ¢
+    //åˆå§‹åŒ–å›åˆå‡ºæ‰‹å•ä½ä¿¡æ¯
     void InitRoundActionUnits();
 
-    //ÅĞ¶Ïµ±Ç°ÊÇ·ñÓĞÎ´³öÊÖµ¥Î»
+    //åˆ¤æ–­å½“å‰æ˜¯å¦æœ‰æœªå‡ºæ‰‹å•ä½
     bool HasActionCombatUnit();
 
-    //ÉèÖÃµ±Ç°³öÊÖµÄÕ½¶·µ¥Î»
+    //è®¾ç½®å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½
     void SetActionCombatUnit();
 
-    //Çå³ıµ±Ç°³öÊÖµÄÕ½¶·µ¥Î»
+    //æ¸…é™¤å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½
     void ClearActionCombatUnit();
 
-    //»ñÈ¡µ±Ç°³öÊÖµÄÕ½¶·µ¥Î»µÄÀàĞÍ
+    //è·å–å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½çš„ç±»å‹
     int GetActionUnitType();
 
-    //»ñÈ¡µ±Ç°³öÊÖµ¥Î»µÄID
+    //è·å–å½“å‰å‡ºæ‰‹å•ä½çš„ID
     int GetActionUnitID();
 
-    //Ö÷½ÇÕ½¶·µ¥Î»µ±Ç°µÄ×´Ì¬
+    //ä¸»è§’æˆ˜æ–—å•ä½å½“å‰çš„çŠ¶æ€
     int GetActionUnitStatus();
     void SetActionUnitStatus(int iStatus);
 
-    //ÅĞ¶ÏÊÇ·ñÄÜ¹»½áÊøÕ½¶·
+    //åˆ¤æ–­æ˜¯å¦èƒ½å¤Ÿç»“æŸæˆ˜æ–—
     bool CanEndCombat();
 
-    //ÍÆËÍ¿Í»§¶ËÖ÷½Ç²Ù×÷µÄÖ¸Áî
+    //æ¨é€å®¢æˆ·ç«¯ä¸»è§’æ“ä½œçš„æŒ‡ä»¤
     void NotifyRoleUnitDirective(int iDirective);
 
-    //¿ªÊ¼Õ½¶·µ¥Î»µÄÒÆ¶¯
+    //å¼€å§‹æˆ˜æ–—å•ä½çš„ç§»åŠ¨
     int DoCombatUnitMove(const UnitPath& stPath);
 
-    //¿ªÊ¼Õ½¶·µ¥Î»µÄÒÆ¶¯,AIÒÆ¶¯Ö»ÓĞÄ¿±êµã
+    //å¼€å§‹æˆ˜æ–—å•ä½çš„ç§»åŠ¨,AIç§»åŠ¨åªæœ‰ç›®æ ‡ç‚¹
     int DoCombatUnitMove(int iMoveDistance, const TUNITPOSITION* pstMovePath);
 
-    //Õ½¶·µ¥Î»Ê¹ÓÃ¼¼ÄÜ
+    //æˆ˜æ–—å•ä½ä½¿ç”¨æŠ€èƒ½
     int DoCombatCastSkill(int iSkillID, const TUNITPOSITION& stTargetPos, int iSkillUseType);
 
-    //Õ½¶·µ¥Î»Ê¹ÓÃµÀ¾ß
+    //æˆ˜æ–—å•ä½ä½¿ç”¨é“å…·
     int DoCombatUseItem(int iItemID, const TUNITPOSITION& stTargetPos);
 
-    //»ñÈ¡Õ½¶·µ¥Î»µÄÕóÓª
+    //è·å–æˆ˜æ–—å•ä½çš„é˜µè¥
     int GetCombatUnitCamp(int iCombatUnitiD);
 
-    //Õ½¶·µ¥Î»ÊÇ·ñÍ¬Ò»ÕóÓª
+    //æˆ˜æ–—å•ä½æ˜¯å¦åŒä¸€é˜µè¥
     bool IsUnitInSameCamp(CCombatUnitObj& stUnitObj, CCombatUnitObj& stOtherUnitObj);
 
-    //ÉèÖÃ»ï°éµÄÕ½¶·AI
+    //è®¾ç½®ä¼™ä¼´çš„æˆ˜æ–—AI
     int SetPartnerAI(int iPartnerAIID);
 
-    //»ñÈ¡µØÍ¼ID
+    //è·å–åœ°å›¾ID
     int GetMapID();
 
-    //¸ù¾İ×ø±êÎ»ÖÃ»ñÈ¡Õ½¶·µ¥Î»ĞÅÏ¢
+    //æ ¹æ®åæ ‡ä½ç½®è·å–æˆ˜æ–—å•ä½ä¿¡æ¯
     CCombatUnitObj* GetCombatUnitByPos(const TUNITPOSITION& stPos);
 
-    //»ò·ñÊÇ»ï°éµÄ×îºó¹¥»÷¶ÔÏó
+    //æˆ–å¦æ˜¯ä¼™ä¼´çš„æœ€åæ”»å‡»å¯¹è±¡
     bool IsTeammateLastAttackUnit(int iCastUnitID, int iTargetUnitID);
 
-    //»ñÈ¡µĞÈËĞÅÏ¢
+    //è·å–æ•Œäººä¿¡æ¯
     void GetEnemyUnits(int iCastUnitID, std::vector<int>& vEnemyUnits);
 
-    //´¦ÀíÕ½³¡Ïà¹ØµÄBUFF
+    //å¤„ç†æˆ˜åœºç›¸å…³çš„BUFF
     int DoBuffEffectByType(int iTriggerType, int iTargetUnitID=-1, int iTriggerUnitID=-1, int* pDamageNum = NULL);
     int DecreaseBuffRound();
 
-    //»ñÈ¡Õ½¶·Ê¤¸º½á¹û
+    //è·å–æˆ˜æ–—èƒœè´Ÿç»“æœ
     bool GetIsActiveWin();
 
-    //ÉèÖÃÕ½¶·½á¹û,ÊÇ·ñ¼º·½»ñÊ¤
+    //è®¾ç½®æˆ˜æ–—ç»“æœ,æ˜¯å¦å·±æ–¹è·èƒœ
     int SetCampActiveWin(int iIsActiveWin);
 
-    //»ñÈ¡¹Ø¿¨µÄID
+    //è·å–å…³å¡çš„ID
     int GetCrossID();
 
-    //ÉèÖÃµ±Ç°ĞĞ¶¯µ¥Î»µÄ·½Ïò
+    //è®¾ç½®å½“å‰è¡ŒåŠ¨å•ä½çš„æ–¹å‘
     int SetActionUnitDirection(int iDirection);
 
-    //»ñÈ¡ÕóÓªÕ½¶·µ¥Î»µÄUnitID
+    //è·å–é˜µè¥æˆ˜æ–—å•ä½çš„UnitID
     int GetCombatUnitByCamp(int iCampType, int iUnitIndex);
 
-    //Õ½¶·µ¥Î»µÄ»ØºÏÊı
+    //æˆ˜æ–—å•ä½çš„å›åˆæ•°
     int GetCombatRoundNum();
     void SetCombatRoundNum(int iRoundNum);
 
-    //Ôö¼ÓÕ½³¡ÉÏµÄÕ½¶·µ¥Î»
+    //å¢åŠ æˆ˜åœºä¸Šçš„æˆ˜æ–—å•ä½
     int AddCombatUnit(int iCampType, int iConfigID, int iPosX, int iPosY, int iDirection, int iUnitType, int& iUnitID);
 
-    //ÇĞ»»Õ½¶·µ¥Î»µÄAI
+    //åˆ‡æ¢æˆ˜æ–—å•ä½çš„AI
     int ChangeCombatUnitAI(int iCombatUnitID, int iNewAI);
 
-    //Ç¿ÖÆÉ±ËÀÕ½¶·µ¥Î»
+    //å¼ºåˆ¶æ€æ­»æˆ˜æ–—å•ä½
     int KillCombatUnit(int iCombatUnitID, bool bSendNotify=true);
 
-    //»ñÈ¡Õ½¶·¿ªÊ¼Ê±¼ä
+    //è·å–æˆ˜æ–—å¼€å§‹æ—¶é—´
     int GetCombatStartTime();
 
-    //´¦ÀíĞĞ¶¯»ØºÏ¿ªÊ¼Ç°µÄ¼¼ÄÜ
+    //å¤„ç†è¡ŒåŠ¨å›åˆå¼€å§‹å‰çš„æŠ€èƒ½
     int DoRoundActionSkill();
 
-    //»ñÈ¡×î´óÒÆ¶¯¾àÀë£¬¿¼ÂÇÎ§À§Âß¼­
+    //è·å–æœ€å¤§ç§»åŠ¨è·ç¦»ï¼Œè€ƒè™‘å›´å›°é€»è¾‘
     int GetMaxMoveDistance(CCombatUnitObj& stUnitObj);
 
-    //»ñÈ¡Õ½¶·µ¥Î»ÖÜÎ§µÄÕóÓªµ¥Î»ÊıÁ¿
+    //è·å–æˆ˜æ–—å•ä½å‘¨å›´çš„é˜µè¥å•ä½æ•°é‡
     int GetNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy);
 
-    //»ñÈ¡Õ½¶·µ¥Î»Ğ±½ÇÎ»ÖÃµÄÕóÓªµ¥Î»ÊıÁ¿
+    //è·å–æˆ˜æ–—å•ä½æ–œè§’ä½ç½®çš„é˜µè¥å•ä½æ•°é‡
     int GetAngleNearByUnitNum(CCombatUnitObj& stUnitObj, bool bIsEnemy);
 
-    //Õ½³¡ÉÏÄ³¸öÎ»ÖÃÊÇ·ñ¿ÉÒÔĞĞ×ß, iUnitID±íÊ¾Èç¹ûÎ»ÖÃÉÏÊÇ¸Ãµ¥Î»¿ÉÒÔĞĞ×ß
+    //æˆ˜åœºä¸ŠæŸä¸ªä½ç½®æ˜¯å¦å¯ä»¥è¡Œèµ°, iUnitIDè¡¨ç¤ºå¦‚æœä½ç½®ä¸Šæ˜¯è¯¥å•ä½å¯ä»¥è¡Œèµ°
     bool IsPosCanWalk(const TUNITPOSITION& stPos, int iUnitID = -1);
 
-    //»ñÈ¡Õ½¶·µØÍ¼×èµ²ÅäÖÃ
+    //è·å–æˆ˜æ–—åœ°å›¾é˜»æŒ¡é…ç½®
     const CScenePathManager& GetBattlePathManager();
 
-    //Õ½³¡ÉÏÔö¼Ó»ú¹Ø,·µ»Ø»ú¹ØµÄObjID£¬Ğ¡ÓÚ0±íÊ¾Ôö¼ÓÊ§°Ü
+    //æˆ˜åœºä¸Šå¢åŠ æœºå…³,è¿”å›æœºå…³çš„ObjIDï¼Œå°äº0è¡¨ç¤ºå¢åŠ å¤±è´¥
     int AddCombatTrap(int iConfigID, int iCamp, const TUNITPOSITION& stPos, int iDirection);
 
-    //´¥·¢Õ½³¡ÉÏµÄ»ú¹Ø
+    //è§¦å‘æˆ˜åœºä¸Šçš„æœºå…³
     int TriggerCombatTrap(int iTriggerObjID, int iTrapObjID, int iTriggerType);
 
-    //Çå³ıÕ½³¡ÉÏµÄ»ú¹Ø
+    //æ¸…é™¤æˆ˜åœºä¸Šçš„æœºå…³
     void DeleteCombatTrap(int iTrapObjID);
 
-    //´¥·¢ÏİÚåÀàĞÍµÄ»ú¹Ø
+    //è§¦å‘é™·é˜±ç±»å‹çš„æœºå…³
     int TriggerPitfallTrap(int iTriggerType);
 
-    //ÊÖ¶¯´¥·¢»ú¹Ø
+    //æ‰‹åŠ¨è§¦å‘æœºå…³
     int ManualTriggerTrap(const TUNITPOSITION& stPos);
 
-    //¹¥»÷Õ½³¡»ú¹Ø
+    //æ”»å‡»æˆ˜åœºæœºå…³
     int AttackCombatTrap(const TUNITPOSITION& stPos);
 
-    //ÅĞ¶Ï»ú¹ØÊÇ·ñ¿É¼û
+    //åˆ¤æ–­æœºå…³æ˜¯å¦å¯è§
     bool IsTrapVisible(CCombatUnitObj& stUnitObj, CCombatTrapObj& stTrapObj);
     bool IsTrapVisibleToActionUnit(CCombatTrapObj& stTrapObj);
 
-    //»ñÈ¡Õ½³¡»ú¹ØÏêÏ¸ĞÅÏ¢
+    //è·å–æˆ˜åœºæœºå…³è¯¦ç»†ä¿¡æ¯
 	void GetCombatTrapInfo(std::vector<TCOMBATTRAPINFO>& vTrapInfo);
 
-    //¸ù¾İ»ú¹ØµÄÎ»ÖÃ»ñÈ¡»ú¹Ø
+    //æ ¹æ®æœºå…³çš„ä½ç½®è·å–æœºå…³
     CCombatTrapObj* GetTrapByPos(const TUNITPOSITION& stPos);
     int GetTrapIndexByPos(const TUNITPOSITION& stPos);
 
-    //Õ½³¡×´Ì¬£¬¹©½Å±¾Ê¹ÓÃ
+    //æˆ˜åœºçŠ¶æ€ï¼Œä¾›è„šæœ¬ä½¿ç”¨
     bool GetCombatStatus(int iStatusType);
     void SetCombatStatus(int iStatusType, bool bIsSet);
 
-    //Ö±½Ó¸Ä±äÕ½¶·µ¥Î»µÄÊôĞÔ
+    //ç›´æ¥æ”¹å˜æˆ˜æ–—å•ä½çš„å±æ€§
     void AddCombatUnitAttr(CCombatUnitObj& stUnitObj, int iAttrType, int iAddValue);
 
-    //É¾³ıÕ½¶·µ¥Î»ÉíÉÏµÄBUFF
+    //åˆ é™¤æˆ˜æ–—å•ä½èº«ä¸Šçš„BUFF
     void DelUnitBuff(int iUnitID, int iBuffID);
 
-    //ÍÆËÍÏûÏ¢¸øÕ½³¡ÉÏËùÓĞÍæ¼Ò
+    //æ¨é€æ¶ˆæ¯ç»™æˆ˜åœºä¸Šæ‰€æœ‰ç©å®¶
     void SendNotifyToBattlefield(GameProtocolMsg& stNotify);
 
-    //µ±Ç°ĞĞ¶¯µÄÍæ¼Ò½ÇÉ«ÊÇ·ñÓĞĞ§
+    //å½“å‰è¡ŒåŠ¨çš„ç©å®¶è§’è‰²æ˜¯å¦æœ‰æ•ˆ
     bool IsValidActionRole(unsigned int uin);
 
-    //ÊÇ·ñĞèÒªÉèÖÃÕóĞÍ
+    //æ˜¯å¦éœ€è¦è®¾ç½®é˜µå‹
     bool IsNeedSetForm();
 
-    //ÉèÖÃÕ½¶·ÕóĞÍ
+    //è®¾ç½®æˆ˜æ–—é˜µå‹
     int SetCombatForm(unsigned int uin, const CombatForm& stForm);
 
-    //ÍÆËÍÕ½¶·ÕóĞÍµÄÍ¨Öª
+    //æ¨é€æˆ˜æ–—é˜µå‹çš„é€šçŸ¥
     void SendCombatFormNotify();
 
-    //ÅĞ¶ÏÕ½¶·µ¥Î»ÊÇ·ñËÀÍö
+    //åˆ¤æ–­æˆ˜æ–—å•ä½æ˜¯å¦æ­»äº¡
     bool IsCombatUnitDead(int iUnitID);
 
-    //ÍÆËÍµ±Ç°Õ½³¡µÄ³öÊÖĞÅÏ¢
+    //æ¨é€å½“å‰æˆ˜åœºçš„å‡ºæ‰‹ä¿¡æ¯
     void SendActionUnitNotify();
 
-    //±£´æÕ½³¡Õ½¶·µ¥Î»ÏêÏ¸ĞÅÏ¢
+    //ä¿å­˜æˆ˜åœºæˆ˜æ–—å•ä½è¯¦ç»†ä¿¡æ¯
     void SaveCombatUnitInfo();
 
-    //ÇåÀíÕ½³¡ÉÏËÀµôµÄµ¥Î»
+    //æ¸…ç†æˆ˜åœºä¸Šæ­»æ‰çš„å•ä½
     void ClearDeadCombatUnit();
 
-    //¼õÉÙĞĞ¶¯µ¥Î»¼¼ÄÜCD»ØºÏ
+    //å‡å°‘è¡ŒåŠ¨å•ä½æŠ€èƒ½CDå›åˆ
     void DecreaseActionSkillCDRound();
 
 private:
 
-    //³õÊ¼»¯Õ½³¡ĞÅÏ¢
+    //åˆå§‹åŒ–æˆ˜åœºä¿¡æ¯
     int InitBattlefieldInfo(int iCrossID);
 
-    //³õÊ¼»¯¹ÖÎïĞÅÏ¢
+    //åˆå§‹åŒ–æ€ªç‰©ä¿¡æ¯
     int InitMonsterInfo(int iCrossID);
     
-    //³õÊ¼»¯µ¥Ö»¹ÖÎïĞÅÏ¢
+    //åˆå§‹åŒ–å•åªæ€ªç‰©ä¿¡æ¯
     int InitOneMonsterInfo(int iUnitIndex, const OneCrossMonster& stOneConfig, const SFightPosInfo& stPosInfo);
 
-    //³õÊ¼»¯µ¥¸öÕóÓªĞÅÏ¢
+    //åˆå§‹åŒ–å•ä¸ªé˜µè¥ä¿¡æ¯
     int InitFightCampInfo(CGameRoleObj& rstRoleObj, bool bIsActive = true);    
 
-    //³õÊ¼»¯µ¥¸öÕ½¶·µ¥Î»ĞÅÏ¢
+    //åˆå§‹åŒ–å•ä¸ªæˆ˜æ–—å•ä½ä¿¡æ¯
     int InitOneFightUnitInfo(int iUnitIndex, CGameRoleObj& rstRoleObj, int iFightUnitID, const SFightPosInfo& stPosInfo, bool bIsActive);
 
-    //´ò°ü·µ»Øµ¥¸öÕ½¶·¶ÔÏóĞÅÏ¢
+    //æ‰“åŒ…è¿”å›å•ä¸ªæˆ˜æ–—å¯¹è±¡ä¿¡æ¯
     int PackOneCombatUnitInfo(int iCamp, int iUnitObjIndex, CombatUnit& stUnitInfo);
 
-    //Ìí¼ÓÒ»¸öÕ½¶·µ¥Î»µ½»ØºÏ³öÊÖÁĞ±í
+    //æ·»åŠ ä¸€ä¸ªæˆ˜æ–—å•ä½åˆ°å›åˆå‡ºæ‰‹åˆ—è¡¨
     void AddOneUnitToRoundActionList(int iUnitObjIndex);
 
-    //´¦Àí¼¼ÄÜµÄÁ¬»÷
+    //å¤„ç†æŠ€èƒ½çš„è¿å‡»
     int DoComboAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID);
 
-    //´¦Àí¼¼ÄÜµÄ¼Ğ»÷
+    //å¤„ç†æŠ€èƒ½çš„å¤¹å‡»
     int DoPincerAttack(CCombatUnitObj& stTargetUnitObj);
 
-    //´¦Àí¼¼ÄÜµÄ·´»÷
+    //å¤„ç†æŠ€èƒ½çš„åå‡»
     int DoCounterAttack(CCombatUnitObj& stCounterAtkUnitObj, CCombatUnitObj& stTargetObj);
 
-    //´¦Àí»ï°é¼¼ÄÜµÄºÏ»÷
+    //å¤„ç†ä¼™ä¼´æŠ€èƒ½çš„åˆå‡»
     int DoJointAttack(CCombatUnitObj& stTargetUnitObj, int iSkillID);
 
-    //»ñÈ¡×èµ²ÀàĞÍµÄ»ú¹Ø
+    //è·å–é˜»æŒ¡ç±»å‹çš„æœºå…³
     CCombatTrapObj* GetBlockTrapByPos(const TUNITPOSITION& stPos);
 
-    //»ñÈ¡µØÍ¼ÉÏÓĞĞ§Õ¾Î»Î»ÖÃ
+    //è·å–åœ°å›¾ä¸Šæœ‰æ•ˆç«™ä½ä½ç½®
     void GetBattlefieldValidPos(const SBattleCrossConfig& stCrossConfig);
 
 private:
     
-    //´´½¨CCombatUnitObj,²ÎÊı·µ»ØObjIndex
+    //åˆ›å»ºCCombatUnitObj,å‚æ•°è¿”å›ObjIndex
     CCombatUnitObj* CreateCombatUnitObj(int& iCombatUnitObjIndex);
 
-    //É¾³ıÒ»¸öÕ½³¡µ¥Î»
+    //åˆ é™¤ä¸€ä¸ªæˆ˜åœºå•ä½
     void ClearOneCombatUnitObj(int iCombatUnitID);
 
 ///////////////////////////////////////////////////////////////////////
 private:
 
-    //Õ½³¡¶ÔÏóµÄÎ¨Ò»ID
+    //æˆ˜åœºå¯¹è±¡çš„å”¯ä¸€ID
     int m_iBattlefieldObjID;
 
-    //Ö÷¶¯Õ½¶··½
+    //ä¸»åŠ¨æˆ˜æ–—æ–¹
     unsigned int m_uiActiveUin;
     int m_aiActiveCombatObjIndex[MAX_CAMP_FIGHT_UNIT_NUM];
     SFightPosInfo m_astActivePos[MAX_CAMP_FIGHT_UNIT_NUM];
     bool m_bActiveNeedSetForm;
 
-    //±»¶¯Õ½¶··½
+    //è¢«åŠ¨æˆ˜æ–—æ–¹
     unsigned int m_uiPassiveUin;
     int m_aiPassiveCombatObjIndex[MAX_CAMP_FIGHT_UNIT_NUM];
     SFightPosInfo m_astPassivePos[MAX_CAMP_FIGHT_UNIT_NUM];
     bool m_bPassiveNeedSetForm;
 
-    //Ö÷¶¯·½½Å±¾Ç¿ÖÆÉ±ËÀµÄµ¥Î»ÅäÖÃID
+    //ä¸»åŠ¨æ–¹è„šæœ¬å¼ºåˆ¶æ€æ­»çš„å•ä½é…ç½®ID
     int m_iActiveScriptKilledNum;
     int m_aiActiveScriptKilledConfigID[MAX_CAMP_FIGHT_UNIT_NUM];
 
-    //µ±Ç°ĞĞ¶¯µ¥Î»Ïà¹ØµÄĞÅÏ¢
+    //å½“å‰è¡ŒåŠ¨å•ä½ç›¸å…³çš„ä¿¡æ¯
     int m_iActionUnit;
     int m_iCanCombatUnitNum;
     int m_aiCanCombatUnit[MAX_CAMP_FIGHT_UNIT_NUM*2];
     int m_iActionDoneUnitNum;
     int m_aiActionDoneUnit[MAX_CAMP_FIGHT_UNIT_NUM*2];
 
-    //Õ½³¡ÉÏµÄ»ú¹ØĞÅÏ¢
+    //æˆ˜åœºä¸Šçš„æœºå…³ä¿¡æ¯
     int m_iTrapNum;
     int m_aiCombatTrapIndex[MAX_COMBAT_TRAP_NUM];
 
-    //µ±Ç°ĞĞ¶¯µ¥Î»µÄ×´Ì¬
+    //å½“å‰è¡ŒåŠ¨å•ä½çš„çŠ¶æ€
     int m_iRoleCombatUnitStatus;
 
-	//±¾´ÎÕ½¶·µÄ¹Ø¿¨ID
+	//æœ¬æ¬¡æˆ˜æ–—çš„å…³å¡ID
 	int m_iCrossID;
 
-    //±¾´ÎÕ½¶·µÄµØÍ¼ID
+    //æœ¬æ¬¡æˆ˜æ–—çš„åœ°å›¾ID
     int m_iMapID;
 
-    //±¾´ÎÕ½¶·µØÍ¼µÄ×èµ²¹ÜÀíÆ÷
+    //æœ¬æ¬¡æˆ˜æ–—åœ°å›¾çš„é˜»æŒ¡ç®¡ç†å™¨
     const CScenePathManager* m_pstBattlePathManager;
 
-    //±¾´ÎÕ½¶·µÄÊ¤¸º½á¹û
+    //æœ¬æ¬¡æˆ˜æ–—çš„èƒœè´Ÿç»“æœ
     int m_iCombatResult;
 
-    //ÉèÖÃµ±Ç°Õ½¶·µÄ»ØºÏÊı
+    //è®¾ç½®å½“å‰æˆ˜æ–—çš„å›åˆæ•°
     int m_iCombatRoundNum;
 
-    //Õ½¶·¿ªÊ¼µÄÊ±¼ä
+    //æˆ˜æ–—å¼€å§‹çš„æ—¶é—´
     int m_iStartTime;
 
-    //±¾³¡Õ½¶·µÄ×´Ì¬£¬¹©½Å±¾Ê¹ÓÃ
+    //æœ¬åœºæˆ˜æ–—çš„çŠ¶æ€ï¼Œä¾›è„šæœ¬ä½¿ç”¨
     unsigned char m_ucCombatStatus;
 
 private:
 
-    //BUFFÏà¹ØÍÆËÍ¸ø¿Í»§¶ËµÄÏûÏ¢
-    static GameProtocolMsg m_stRemoveBuff_Notify;               //ÒÆ³ıBUFF
+    //BUFFç›¸å…³æ¨é€ç»™å®¢æˆ·ç«¯çš„æ¶ˆæ¯
+    static GameProtocolMsg m_stRemoveBuff_Notify;               //ç§»é™¤BUFF
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

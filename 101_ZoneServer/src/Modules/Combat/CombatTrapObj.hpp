@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __COMBAT_TRAP_OBJ_HPP__
 #define __COMBAT_TRAP_OBJ_HPP__
 
@@ -8,8 +8,8 @@
 
 struct TCOMBATTRAPINFO
 {
-    int iConfigID;          //»ú¹ØµÄÅäÖÃID
-    int iTrapObjID;         //»ú¹Ø¶ÔÏóµÄObjID
+    int iConfigID;          //æœºå…³çš„é…ç½®ID
+    int iTrapObjID;         //æœºå…³å¯¹è±¡çš„ObjID
 
     TCOMBATTRAPINFO()
     {
@@ -17,7 +17,7 @@ struct TCOMBATTRAPINFO
     };
 };
 
-//Õ½³¡ÉÏ»ú¹ØµÄ¶ÔÏóTrapObj
+//æˆ˜åœºä¸Šæœºå…³çš„å¯¹è±¡TrapObj
 class CCombatTrapObj : public CObj
 {
 public:
@@ -29,52 +29,56 @@ public:
 
 public:
 
-    //³õÊ¼»¯»ú¹Ø
+    //åˆå§‹åŒ–æœºå…³
     int InitTrap(int iConfigID, int iCamp, const TUNITPOSITION& stPos, int iDirection);
 
-    //»ñÈ¡»ú¹Øµ±Ç°µÄÎ»ÖÃ
+    //è·å–æœºå…³å½“å‰çš„ä½ç½®
     const TUNITPOSITION& GetPosition();
 
-    //ĞŞ¸Ä»ú¹ØµÄÑªÁ¿
+    //ä¿®æ”¹æœºå…³çš„è¡€é‡
     void AddTrapHP(int iAddNum);
     int GetTrapHP();
 
-    //ÅĞ¶Ï»ú¹ØÊÇ·ñÒÑËğ»µ
+    //åˆ¤æ–­æœºå…³æ˜¯å¦å·²æŸå
     bool IsTrapDead();
 
-    //ÅĞ¶Ï»ú¹ØÊÇ·ñ¿É±»¹¥»÷
+    //åˆ¤æ–­æœºå…³æ˜¯å¦å¯è¢«æ”»å‡»
     bool IsTrapCanAttacked();
 
-    //»ñÈ¡¸Ã»ú¹ØµÄÅäÖÃ
+    //è·å–è¯¥æœºå…³çš„é…ç½®
     const GameConfig::STrapConfig* GetConfig();
 
-    //»ñÈ¡»ú¹ØµÄÅäÖÃID
+    //è·å–æœºå…³çš„é…ç½®ID
     int GetTrapConfigID();
 
-    //»ñÈ¡»ú¹ØµÄÕóÓª
+    //è·å–æœºå…³çš„é˜µè¥
     int GetTrapCamp();
 
 ///////////////////////////////////////////////////////////////////////
 private:
 
-    //»ú¹ØµÄÅäÖÃID
+    //æœºå…³çš„é…ç½®ID
     int m_iConfigID;
 
-    //»ú¹ØµÄÅäÖÃ
+    //æœºå…³çš„é…ç½®
     const GameConfig::STrapConfig* m_pstConfig;
 
-    //»ú¹ØµÄµ±Ç°ÑªÁ¿
+    //æœºå…³çš„å½“å‰è¡€é‡
     int m_iTrapHp;
 
-    //»ú¹ØËùÊôµÄÕóÓª
+    //æœºå…³æ‰€å±çš„é˜µè¥
     int m_iCamp;
 
-    //»ú¹ØµÄµ±Ç°Î»ÖÃ
+    //æœºå…³çš„å½“å‰ä½ç½®
     TUNITPOSITION m_stPos;
 
-    //»ú¹Øµ±Ç°µÄ³¯Ïò
+    //æœºå…³å½“å‰çš„æœå‘
     int m_iDirection;
 };
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __CHAT_UTILITY_HPP__
+﻿#ifndef __CHAT_UTILITY_HPP__
 #define __CHAT_UTILITY_HPP__
 
 class CGameRoleObj;
@@ -9,3 +9,7 @@ public:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

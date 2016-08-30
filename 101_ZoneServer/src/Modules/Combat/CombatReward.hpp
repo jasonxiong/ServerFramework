@@ -1,7 +1,7 @@
-#ifndef __COMBAT_REWARD_HPP__
+ï»¿#ifndef __COMBAT_REWARD_HPP__
 #define __COMBAT_REWARD_HPP__
 
-//Õ½¶·½±ÀøµÄ´¦Àí
+//æˆ˜æ–—å¥–åŠ±çš„å¤„ç†
 
 #include "GameProtocol.hpp"
 
@@ -10,8 +10,12 @@ class CCombatReward
 {
 public:
     
-    //ÁìÈ¡Õ½¶·½±Àø
+    //é¢†å–æˆ˜æ–—å¥–åŠ±
     static int GetCombatReward(int iLevelID, CGameRoleObj& stRoleObj, CombatReward& stReward);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

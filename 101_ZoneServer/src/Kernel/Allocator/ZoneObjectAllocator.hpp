@@ -1,4 +1,4 @@
-#ifndef __ZONE_OBJECT_ALLOCATOR_HPP__
+﻿#ifndef __ZONE_OBJECT_ALLOCATOR_HPP__
 #define __ZONE_OBJECT_ALLOCATOR_HPP__
 
 #include "ObjAllocator.hpp"
@@ -21,3 +21,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

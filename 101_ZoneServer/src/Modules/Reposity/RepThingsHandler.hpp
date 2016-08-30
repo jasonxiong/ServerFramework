@@ -1,4 +1,4 @@
-#ifndef __REP_THINGS_HANDLER_HPP__
+ï»¿#ifndef __REP_THINGS_HANDLER_HPP__
 #define __REP_THINGS_HANDLER_HPP__
 
 #include "SessionDefine.hpp"
@@ -19,22 +19,26 @@ public:
 
 private:
 
-    //Íæ¼Ò¶Ô±³°üÎïÆ·µÄ²Ù×÷
+    //ç©å®¶å¯¹èƒŒåŒ…ç‰©å“çš„æ“ä½œ
     int OnRequestOperaRepItem();
 
-    //Íæ¼ÒÀ­È¡±³°üµÄÏêÏ¸ĞÅÏ¢
+    //ç©å®¶æ‹‰å–èƒŒåŒ…çš„è¯¦ç»†ä¿¡æ¯
     int OnRequestGetRepInfo();
 
-    //Íæ¼Ò´©´÷Õ½¶·µ¥Î»×°±¸µÄ²Ù×÷
+    //ç©å®¶ç©¿æˆ´æˆ˜æ–—å•ä½è£…å¤‡çš„æ“ä½œ
     int OnRequestWearEquipment();
 
-    //Íæ¼Ò³öÊÛ±³°üÎïÆ·
+    //ç©å®¶å‡ºå”®èƒŒåŒ…ç‰©å“
     int OnRequestSellItem();
 
 private:
 
-    // ·¢ËÍÊ§°Ü»Ø¸´
+    // å‘é€å¤±è´¥å›å¤
      static int SendFailedResponse(unsigned uiMsgID, const unsigned int uiResultID, const TNetHead_V2& rstNetHead);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

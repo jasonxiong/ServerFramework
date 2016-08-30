@@ -1,4 +1,4 @@
-#ifndef __GM_COMMAND_HANDLER_HPP__
+ï»¿#ifndef __GM_COMMAND_HANDLER_HPP__
 #define __GM_COMMAND_HANDLER_HPP__
 
 #include <string>
@@ -24,7 +24,7 @@ private:
     int OnRequestGM();
     int RunCommand();
 
-    //¼ì²éÊÇ·ñÊÇGMÓÃ»§
+    //æ£€æŸ¥æ˜¯å¦æ˜¯GMç”¨æˆ·
     int CheckIsGMUser();
 
 private:
@@ -36,8 +36,12 @@ protected:
 
 private:
 
-    //½âÎö³öÀ´µÄGMÃüÁîĞĞµÄ²ÎÊı
+    //è§£æå‡ºæ¥çš„GMå‘½ä»¤è¡Œçš„å‚æ•°
     std::vector<std::string> m_vParams;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

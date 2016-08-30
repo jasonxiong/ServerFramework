@@ -1,4 +1,4 @@
-#ifndef __MEM_CHECK_HPP__
+﻿#ifndef __MEM_CHECK_HPP__
 #define __MEM_CHECK_HPP__
 
 
@@ -11,3 +11,7 @@ public:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

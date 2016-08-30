@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+Ôªø#include "GameProtocol.hpp"
 #include "StringUtility.hpp"
 #include "SectionConfig.hpp"
 #include "StringSplitter.hpp"
@@ -47,7 +47,7 @@ void CModuleHelper::RegisterServerID(int iWorldID, int iZoneID, int iInstanceID)
     m_iInstanceID = iInstanceID;
 }
 
-// º”‘ÿƒ£øÈø™πÿ
+// Âä†ËΩΩÊ®°ÂùóÂºÄÂÖ≥
 int CModuleHelper::LoadModuleConfig()
 {
     CSectionConfig stConfigFile;
@@ -89,3 +89,7 @@ void CModuleHelper::SetModuleSwitchOn(int iSwitchIndex, int iSwitch)
 
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

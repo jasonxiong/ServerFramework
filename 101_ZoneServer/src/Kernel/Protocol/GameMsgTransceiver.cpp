@@ -1,4 +1,4 @@
-
+ï»¿
 #include "Int64Utility.hpp"
 #include "GameProtocol.hpp"
 #include "ConfigHelper.hpp"
@@ -14,15 +14,15 @@
 
 using namespace ServerLib;
 
-// ¶ÁÈ¡CodeQueueÅäÖÃ
-// ³õÊ¼»¯ËùÓĞµÄ×ÊÔ´, °üÀ¨CodeQueue, TBusµÈ
+// è¯»å–CodeQueueé…ç½®
+// åˆå§‹åŒ–æ‰€æœ‰çš„èµ„æº, åŒ…æ‹¬CodeQueue, TBusç­‰
 int CGameMsgTransceiver::Initialize(bool bResumeMode)
 {
     int iWorldID = CModuleHelper::GetWorldID();
     int iZoneID = CModuleHelper::GetZoneID();
     int iInstanceID = CModuleHelper::GetInstanceID();
 
-	// ³õÊ¼»¯Zone/Lotus CodeQueueÏûÏ¢Í¨µÀ
+	// åˆå§‹åŒ–Zone/Lotus CodeQueueæ¶ˆæ¯é€šé“
 	int iRet;
 	iRet = m_stCodeQueueManager.LoadCodeQueueConfig(APP_CONFIG_FILE, "Zone");
 	if (iRet < 0)
@@ -39,7 +39,7 @@ int CGameMsgTransceiver::Initialize(bool bResumeMode)
 	}
     
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    // ³õÊ¼»¯ZMQ BUS Í¨µÀ
+    // åˆå§‹åŒ–ZMQ BUS é€šé“
     uint64_t ullZone2WorldClientID = GetServerBusID(iWorldID, GAME_SERVER_ZONE, iInstanceID, iZoneID);
     uint64_t ullZone2WorldServerID = GetServerBusID(iWorldID, GAME_SERVER_WORLD);
 
@@ -50,7 +50,7 @@ int CGameMsgTransceiver::Initialize(bool bResumeMode)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //³õÊ¼»¯ZMQ BUS Í¨µÀ
+    //åˆå§‹åŒ–ZMQ BUS é€šé“
     iRet = m_oZone2WorldClient.ZmqInit(pszRealBusAddr, EN_ZMQ_SOCKET_PAIR, EN_ZMQ_PROC_TCP, EN_ZMQ_SERVICE_CLIENT);
     if(iRet)
     {
@@ -63,7 +63,7 @@ int CGameMsgTransceiver::Initialize(bool bResumeMode)
     return 0;
 }
 
-// ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+// å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
 int CGameMsgTransceiver::SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer, int iInstanceID)
 {
 
@@ -122,7 +122,7 @@ int CGameMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgL
         }
     }
     
-    //todo jasonxiong ºóÃæ¿¼ÂÇÌí¼Ó¼à¿Ø
+    //todo jasonxiong åé¢è€ƒè™‘æ·»åŠ ç›‘æ§
     /*
     if (iRet < 0 || riMsgLength <= 0)
     {
@@ -135,3 +135,7 @@ int CGameMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgL
     return iRet;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

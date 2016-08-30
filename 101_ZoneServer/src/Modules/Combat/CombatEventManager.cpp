@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameRole.hpp"
 #include "CombatEventListener.hpp"
 
@@ -6,51 +6,55 @@
 
 CCombatEventListener CCombatEventManager::m_stCombatEventListener;
 
-//Õ½¶·¿ªÊ¼ÊÂ¼ş
+//æˆ˜æ–—å¼€å§‹äº‹ä»¶
 void CCombatEventManager::NotifyCombatBegin(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnCombatBeginEvent(stRoleObj);
 }
 
-//Õ½¶·½áÊøÊÂ¼ş
+//æˆ˜æ–—ç»“æŸäº‹ä»¶
 void CCombatEventManager::NotifyCombatEnd(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnCombatEndEvent(stRoleObj);
 }
 
-//»ØºÏ¿ªÊ¼ÊÂ¼ş
+//å›åˆå¼€å§‹äº‹ä»¶
 void CCombatEventManager::NotifyRoundBegin(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnRoundBeginEvent(stRoleObj);
 }
 
-//»ØºÏ½áÊøÊÂ¼ş
+//å›åˆç»“æŸäº‹ä»¶
 void CCombatEventManager::NotifyRoundEnd(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnRoundEndEvent(stRoleObj);
 }
 
-//Õ½¶·µ¥Î»ĞĞ¶¯»ØºÏ¿ªÊ¼ÊÂ¼ş
+//æˆ˜æ–—å•ä½è¡ŒåŠ¨å›åˆå¼€å§‹äº‹ä»¶
 void CCombatEventManager::NotifyActionRoundBegin(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnActionRoundBeginEvent(stRoleObj);
 }
 
-//Õ½¶·µ¥Î»ĞĞ¶¯»ØºÏ½áÊøÊÂ¼ş
+//æˆ˜æ–—å•ä½è¡ŒåŠ¨å›åˆç»“æŸäº‹ä»¶
 void CCombatEventManager::NotifyActionRoundEnd(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnActionRoundEndEvent(stRoleObj);
 }
 
-//Õ½¶·µ¥Î»ÒÆ¶¯µÄÊÂ¼ş
+//æˆ˜æ–—å•ä½ç§»åŠ¨çš„äº‹ä»¶
 void CCombatEventManager::NotifyCombatUnitMove(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnCombatUnitMoveEvent(stRoleObj);
 }
 
-//Õ½¶·µ¥Î»ĞĞ¶¯µÄÊÂ¼ş
+//æˆ˜æ–—å•ä½è¡ŒåŠ¨çš„äº‹ä»¶
 void CCombatEventManager::NotifyCombatUnitAction(CGameRoleObj& stRoleObj)
 {
     m_stCombatEventListener.OnCombatUnitActionEvent(stRoleObj);
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

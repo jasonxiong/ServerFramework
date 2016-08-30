@@ -1,4 +1,4 @@
-#include <unistd.h>
+ï»¿#include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
 #include <sys/file.h>
@@ -16,10 +16,10 @@
 
 using namespace ServerLib;
 
-// ²âÊÔÆô¶¯Ä£Ê½
+// æµ‹è¯•å¯åŠ¨æ¨¡å¼
 void RunTestMode(int argc, char** argv);
 
-// ÄÚ´æµ÷ÊÔÄ£Ê½
+// å†…å­˜è°ƒè¯•æ¨¡å¼
 void CheckShareMemoryMode(int argc, char** argv)
 {
 	//TODO -Werror=unused-but-set-variable
@@ -42,16 +42,16 @@ void CheckShareMemoryMode(int argc, char** argv)
 
 	int iTotalMemSize = sizeof(CAppLoop) + sizeof(CSharedMemory);
 
-	//»ñÈ¡¹²ÏíÄÚ´æ
-	int iMemID = shmget(iShmKey, iTotalMemSize, 0444);//Ö»¶Á·½Ê½
+	//è·å–å…±äº«å†…å­˜
+	int iMemID = shmget(iShmKey, iTotalMemSize, 0444);//åªè¯»æ–¹å¼
 	if (iMemID < 0)
 	{
 		printf("Error: get shm:key %d size:%d fail. error:%s\n", iShmKey, iTotalMemSize, strerror(errno));
 		return;
 	}
 
-	//Á´½Ó¹²ÏíÄÚ´æ
-	char* pShm = (char*)shmat(iMemID, NULL, SHM_RDONLY);//Ö»¶Á·½Ê½Á´½Ó
+	//é“¾æ¥å…±äº«å†…å­˜
+	char* pShm = (char*)shmat(iMemID, NULL, SHM_RDONLY);//åªè¯»æ–¹å¼é“¾æ¥
 	if (!pShm)
 	{
 		printf("Error: attach shm fail. shm id:%d. error:%s\n", iMemID, strerror(errno));
@@ -62,7 +62,7 @@ void CheckShareMemoryMode(int argc, char** argv)
 
 	while (true)
 	{
-		//ÕâÀïÃæÊÇÎªÁËÄÜ±àÒë£¬unused pAppLoop
+		//è¿™é‡Œé¢æ˜¯ä¸ºäº†èƒ½ç¼–è¯‘ï¼Œunused pAppLoop
 		if (pAppLoop)
 		{
 			sleep(60);
@@ -70,7 +70,7 @@ void CheckShareMemoryMode(int argc, char** argv)
 	}
 }
 
-// Õı³£·şÎñÆ÷Ä£Ê½
+// æ­£å¸¸æœåŠ¡å™¨æ¨¡å¼
 void NormalServerMode(int argc, char** argv)
 {
 	bool bResume;
@@ -80,7 +80,7 @@ void NormalServerMode(int argc, char** argv)
 
 	CAppUtility::AppLaunch(argc, argv, CAppLoop::SetAppCmd, bResume, iWorldID, iInstanceID, &iZoneID, NULL, NULL, true);
 
-	//todo jasonxiong Õâ±ßÊ¹ÓÃ¹²ÏíÄÚ´æÓĞµãÎÊÌâ£¬ËùÒÔÖ±½Ónew³öÀ´ËãÁË
+	//todo jasonxiong è¿™è¾¹ä½¿ç”¨å…±äº«å†…å­˜æœ‰ç‚¹é—®é¢˜ï¼Œæ‰€ä»¥ç›´æ¥newå‡ºæ¥ç®—äº†
 	/*
 	CSharedMemory stShmMain;
 	CAppLoop* pAppLoop = CShmObjectCreator<CAppLoop>::CreateObjectByKey
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
 	return 0;
 }
 
-// ²âÊÔÄ£Ê½
+// æµ‹è¯•æ¨¡å¼
 void RunTestMode(int argc, char** argv)
 {
 #ifdef _DEBUG_
@@ -131,11 +131,11 @@ void RunTestMode(int argc, char** argv)
     int iZoneID = 1;
     int iInstanceID = 1;
 
-    // Ê±¼äÓÅ»¯
+    // æ—¶é—´ä¼˜åŒ–
     NowTimeSingleton::Instance()->RefreshNowTime();
     NowTimeSingleton::Instance()->RefreshNowTimeVal();
 
-    // ÉèÖÃ½ø³ÌËæ»úÊıÖÖ×Ó
+    // è®¾ç½®è¿›ç¨‹éšæœºæ•°ç§å­
     CRandomCalculator::Initialize();
 
     CSharedMemory stShmMain;
@@ -157,3 +157,7 @@ void RunTestMode(int argc, char** argv)
 
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __APP_ALLOCATOR_HPP__
+ï»¿#ifndef __APP_ALLOCATOR_HPP__
 #define __APP_ALLOCATOR_HPP__
 
 #include "ObjAllocator.hpp"
@@ -11,7 +11,7 @@ using namespace ServerLib;
 
 //////////////////////////////////////////////////////////////////////////
 
-//¶ÔÏó²Ù×÷Æ÷
+//å¯¹è±¡æ“ä½œå™¨
 template <class TYPE_Object>
 class GameType
 {
@@ -97,7 +97,7 @@ CObjAllocator* GameType<TYPE_Object>::m_pAllocator = 0;
 
 //////////////////////////////////////////////////////////////////////////
 
-//¶ÔÏó²Ù×÷Æ÷
+//å¯¹è±¡æ“ä½œå™¨
 template <class TYPE_Object>
 class GameTypeK32
 {
@@ -154,7 +154,7 @@ public:
         return (TYPE_Object*) m_pAllocator->GetNextObj(iIdx);
     }
 
-	//É¾³ı¶ÔÏó»¹±ØĞëÉ¾³ıHash
+	//åˆ é™¤å¯¹è±¡è¿˜å¿…é¡»åˆ é™¤Hash
 	static int DeleteByKey(const unsigned int uiKey)
 	{
 		int iIdx = 0;
@@ -340,3 +340,7 @@ CHashMap_K64* GameTypeK64<TYPE_Object>::m_pHashMap = 0;
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

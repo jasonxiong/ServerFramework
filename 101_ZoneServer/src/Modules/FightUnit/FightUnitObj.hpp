@@ -1,4 +1,4 @@
-#ifndef __FIGHT_UNIT_OBJ_HPP__
+ï»¿#ifndef __FIGHT_UNIT_OBJ_HPP__
 #define __FIGHT_UNIT_OBJ_HPP__
 
 #include "GameProtocol.hpp"
@@ -6,7 +6,7 @@
 #include "ZoneObjectAllocator.hpp"
 #include "RepThingsManager.hpp"
 
-//Íæ¼ÒÕ½¶·µ¥Î»¶ÔÏó
+//ç©å®¶æˆ˜æ–—å•ä½å¯¹è±¡
 
 class CFightUnitObj : public CObj
 {
@@ -22,74 +22,78 @@ public:
 
 public:
 
-    //»ñÈ¡Õ½¶·µ¥Î»µÄID
+    //è·å–æˆ˜æ–—å•ä½çš„ID
     int GetFightUnitID() { return m_iConfigID; };
 
-    //×°Ğ¶ÎïÆ·, bIsEquip = true ±íÊ¾×°ÎïÆ·£¬= false ±íÊ¾Ğ¶ÎïÆ·
+    //è£…å¸ç‰©å“, bIsEquip = true è¡¨ç¤ºè£…ç‰©å“ï¼Œ= false è¡¨ç¤ºå¸ç‰©å“
     int UnitEquipItem(int iSlot, RepItem& stItem, bool bIsEquip);
 
-    //¸ù¾İÎ»ÖÃ»ñÈ¡ÎïÆ·ĞÅÏ¢
+    //æ ¹æ®ä½ç½®è·å–ç‰©å“ä¿¡æ¯
     RepItem* GetItemInfo(int iSlot);
 
-    //¸ù¾İID³õÊ¼»¯Õ½¶·µ¥Î»ĞÅÏ¢
+    //æ ¹æ®IDåˆå§‹åŒ–æˆ˜æ–—å•ä½ä¿¡æ¯
     int InitFightUnitByID(int iFightUnitID);
 
-    //³õÊ¼»¯Õ½¶·¶ÔÏóµÄÊôĞÔ
+    //åˆå§‹åŒ–æˆ˜æ–—å¯¹è±¡çš„å±æ€§
     int InitFightAttr(int* aiAttribute, int iAttrMaxNum);
 
-    //³õÊ¼»¯Õ½¶·¶ÔÏóµÄÎïÆ·
+    //åˆå§‹åŒ–æˆ˜æ–—å¯¹è±¡çš„ç‰©å“
     void InitFightUnitItem(RepItem* pstItems, int iItemMaxNum);
 
-    //»ñÈ¡ÆÕ¹¥ID
+    //è·å–æ™®æ”»ID
     int GetNormalSkill();
 
-    //Õ½¶·µ¥Î»µÄAIĞÅÏ¢
+    //æˆ˜æ–—å•ä½çš„AIä¿¡æ¯
     int GetFightUnitAIID();
 
-    //Õ½¶·µ¥Î»ÊôĞÔ
+    //æˆ˜æ–—å•ä½å±æ€§
     int GetFightUnitAttr(int iAttr);
     int AddFightUnitAttr(int iAttr, int iAddAttrNum);
     int AddUnitAttrWithoutNotify(int iAttr, int iAddAttrNum);
 
-	//µÈ¼¶
+	//ç­‰çº§
 	inline int GetLevel(){ return m_iLevel;}
 
-	//¾­Ñé
+	//ç»éªŒ
 	inline int GetExp(){return m_iLevelExp;}
 
 public:
     
-    //Êı¾İ¿â²Ù×÷º¯Êı
+    //æ•°æ®åº“æ“ä½œå‡½æ•°
     void InitFightUnitFromDB(const OneFightUnitInfo& stUnitInfo);
     void UpdateFightUnitToDB(OneFightUnitInfo& stUnitInfo); 
 
 ///////////////////////////////////////////////////////////////////////
 public:
 
-    //Íæ¼Ò½ÇÉ«µÄuin
+    //ç©å®¶è§’è‰²çš„uin
     unsigned int m_uiUin;
 
-    //Õ½¶·µ¥Î»ÅäÖÃID
+    //æˆ˜æ–—å•ä½é…ç½®ID
     int m_iConfigID;
 
-    //Íæ¼ÒÕ½¶·µ¥Î»µÄAI ID
+    //ç©å®¶æˆ˜æ–—å•ä½çš„AI ID
     int m_iFightUnitAIID;
 
-	//µÈ¼¶
+	//ç­‰çº§
 	int m_iLevel;
 
-	//¾­Ñé
+	//ç»éªŒ
 	int m_iLevelExp;
 
-    //Õ½¶·µ¥Î»µÄÊôĞÔ
+    //æˆ˜æ–—å•ä½çš„å±æ€§
     int m_aiUnitAttribute[MAX_FIGHT_UNIT_ATTRIBUTE_NUM];
 
-    //Õ½¶·µ¥Î»µÄÆÕ¹¥
+    //æˆ˜æ–—å•ä½çš„æ™®æ”»
     int m_iNormalSkill;
 
-    //Õ½¶·µ¥Î»ÎïÆ·ĞÅÏ¢
+    //æˆ˜æ–—å•ä½ç‰©å“ä¿¡æ¯
     int m_iSlotNum;
     RepItem m_astItems[MAX_UNIT_ITEM_SLOT];
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

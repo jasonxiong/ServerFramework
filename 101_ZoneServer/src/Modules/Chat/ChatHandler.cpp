@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "GameRole.hpp"
 #include "ZoneObjectHelper.hpp"
@@ -64,11 +64,11 @@ int CChatHandler::OnRequestChat()
     CGameRoleObj* pstRoleObj = GameTypeK32<CGameRoleObj>::GetByKey(uiUin);
     ASSERT_AND_LOG_RTN_INT(pstRoleObj);
 
-    //Íæ¼ÒÁÄÌì²Ù×÷µÄ´¦Àí
+    //ç©å®¶èŠå¤©æ“ä½œçš„å¤„ç†
     const Zone_Chat_Request& rstRequest = m_pRequestMsg->m_stmsgbody().m_stzone_chat_request();
     CChatUtility::SendChatMsg(*pstRoleObj, rstRequest.ichannel(), rstRequest.strmessage().c_str());
 
-    //´¦ÀíÁÄÌìÏûÏ¢³É¹¦£¬·µ»Ø
+    //å¤„ç†èŠå¤©æ¶ˆæ¯æˆåŠŸï¼Œè¿”å›
     SendSuccessfulResponse();
 
     return T_SERVER_SUCESS;
@@ -76,7 +76,7 @@ int CChatHandler::OnRequestChat()
 
 int CChatHandler::OnNotifyChat()
 {
-    //¹ã²¥¸ø±¾ÏßµÄËùÓĞÓÃ»§
+    //å¹¿æ’­ç»™æœ¬çº¿çš„æ‰€æœ‰ç”¨æˆ·
     CZoneMsgHelper::SendZoneMsgToZoneAll(*m_pRequestMsg);
 
     return T_SERVER_SUCESS;
@@ -93,7 +93,7 @@ int CChatHandler::SendFailedResponse(int iMsgID, int iResultID, const TNetHead_V
     return 0;
 }
 
-//·¢ËÍ³É¹¦µÄ»Ø¸´
+//å‘é€æˆåŠŸçš„å›å¤
 int CChatHandler::SendSuccessfulResponse()
 {
     CZoneMsgHelper::GenerateMsgHead(m_stGameMsg, MSGID_ZONE_CHAT_RESPONSE);
@@ -107,3 +107,7 @@ int CChatHandler::SendSuccessfulResponse()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

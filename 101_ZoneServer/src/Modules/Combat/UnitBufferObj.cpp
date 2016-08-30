@@ -1,4 +1,4 @@
-
+ï»¿
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -23,22 +23,22 @@ CUnitBufferObj::~CUnitBufferObj()
 
 int CUnitBufferObj::Initialize()
 {
-    //²úÉúµÄBuffµÄID
+    //äº§ç”Ÿçš„Buffçš„ID
     m_iBuffID = 0;
 
-    //BuffÊ£ÓàµÄ»ØºÏÊı
+    //Buffå‰©ä½™çš„å›åˆæ•°
     m_iRemainRounds = 0;
 
-    //Buff²úÉúµÄÊµ¼ÊĞ§¹û
+    //Buffäº§ç”Ÿçš„å®é™…æ•ˆæœ
     m_iRealEffect = 0;
 
-    //Ê©¼Ó¸ÃBuffµÄÕ½¶·µ¥Î»ID
+    //æ–½åŠ è¯¥Buffçš„æˆ˜æ–—å•ä½ID
     m_iCastUnitID = -1;
 
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯Ò»¸öBuff
+//åˆå§‹åŒ–ä¸€ä¸ªBuff
 int CUnitBufferObj::InitUnitBuff(int iBuffID, int iCastUnitID, int iRemainRounds)
 {
     m_iBuffID = iBuffID;
@@ -61,7 +61,7 @@ void CUnitBufferObj::SetUnitBuffID(int iBuffID)
     m_iBuffID = iBuffID;
 }
 
-//BuffÊ£Óà»ØºÏÊı
+//Buffå‰©ä½™å›åˆæ•°
 int CUnitBufferObj::GetRemainRound()
 {
     return m_iRemainRounds;
@@ -72,7 +72,7 @@ void CUnitBufferObj::SetRemainRound(int iRemainRound)
     m_iRemainRounds = iRemainRound;
 }
 
-//Buff²úÉúµÄÊµ¼ÊĞ§¹û
+//Buffäº§ç”Ÿçš„å®é™…æ•ˆæœ
 int CUnitBufferObj::GetBuffEffect()
 {
     return m_iRealEffect;
@@ -83,7 +83,7 @@ void CUnitBufferObj::SetBuffEffect(int iRealEffect)
     m_iRealEffect = iRealEffect;
 }
 
-//Ìí¼Ó¸ÃBuffµÄÕ½¶·µ¥Î»ID
+//æ·»åŠ è¯¥Buffçš„æˆ˜æ–—å•ä½ID
 int CUnitBufferObj::GetCastUnitID()
 {
     return m_iCastUnitID;
@@ -97,3 +97,7 @@ void CUnitBufferObj::GetCastUnitID(int iCastUnitID)
     
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

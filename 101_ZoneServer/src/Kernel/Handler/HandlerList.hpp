@@ -1,4 +1,4 @@
-#ifndef __HANDLER_LIST_HPP__
+ï»¿#ifndef __HANDLER_LIST_HPP__
 #define __HANDLER_LIST_HPP__
 
 #include "LoginHandler.hpp"
@@ -18,7 +18,7 @@ public:
 	int RegisterAllHandler();
 
 private:
-	// ËùÓĞµÄÏûÏ¢´¦Àíº¯Êı
+	// æ‰€æœ‰çš„æ¶ˆæ¯å¤„ç†å‡½æ•°
 	CLoginHandler m_stLoginHandler;
 	CLogoutHandler m_stLogoutHandler;
     CFetchRoleWorldHandler m_stFetchRoleWorldHandler;
@@ -32,3 +32,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

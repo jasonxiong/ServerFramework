@@ -1,4 +1,4 @@
-#include <iconv.h>
+ï»¿#include <iconv.h>
 #include <errno.h>
 
 #include "ZoneMsgHelper.hpp"
@@ -15,7 +15,7 @@ using namespace ServerLib;
 
 GameProtocolMsg CZoneMsgHelper::m_stZoneMsg;
 
-// ·¢ËÍÏûÏ¢¸ø±¾ÏßËùÓĞÓÃ»§
+// å‘é€æ¶ˆæ¯ç»™æœ¬çº¿æ‰€æœ‰ç”¨æˆ·
 int CZoneMsgHelper::SendZoneMsgToZoneAll(GameProtocolMsg& rstGameMsg)
 {
 	if (GameTypeK32<CGameRoleObj>::GetUsedObjNumber() == 0)
@@ -30,7 +30,7 @@ int CZoneMsgHelper::SendZoneMsgToZoneAll(GameProtocolMsg& rstGameMsg)
     return 0;
 }
 
-// ·¢ËÍÏûÏ¢¸ø±¾ÏßËùÓĞÓÃ»§, ³ıÁËpMe
+// å‘é€æ¶ˆæ¯ç»™æœ¬çº¿æ‰€æœ‰ç”¨æˆ·, é™¤äº†pMe
 int CZoneMsgHelper::SendZoneMsgToZoneAllExcludeMe(GameProtocolMsg& rstZoneMsg, CGameRoleObj* pMe)
 {
 	ASSERT_AND_LOG_RTN_INT(pMe);
@@ -49,7 +49,7 @@ void CZoneMsgHelper::GenerateMsgHead(GameProtocolMsg& rstGameMsg, const unsigned
 {
     rstGameMsg.Clear();
 
-    // ³õÊ¼»¯Í·²¿
+    // åˆå§‹åŒ–å¤´éƒ¨
     GameCSMsgHead* pstMsgHead = rstGameMsg.mutable_m_stmsghead();
     pstMsgHead->set_m_uimsgid((ProtocolMsgID)uiMsgID);
 }
@@ -68,8 +68,8 @@ int CZoneMsgHelper::SendZoneMsgToClient(GameProtocolMsg& rstZoneMsg,
         return -1;
     }
 
-	// Î´ÉÏÏß, ÏÈ²»ÏÂ·¢ÏûÏ¢
-	// logout responseÊÇÓÎÏ·Àï×îºóÒ»¸ö»Ø°ü£¬Íæ¼Ò×´Ì¬ÒÑ¾­±»ÉèÖÃ³ÉÀëÏßÁË£¬ËùÒÔÌØÊâ´¦Àí
+	// æœªä¸Šçº¿, å…ˆä¸ä¸‹å‘æ¶ˆæ¯
+	// logout responseæ˜¯æ¸¸æˆé‡Œæœ€åä¸€ä¸ªå›åŒ…ï¼Œç©å®¶çŠ¶æ€å·²ç»è¢«è®¾ç½®æˆç¦»çº¿äº†ï¼Œæ‰€ä»¥ç‰¹æ®Šå¤„ç†
 	CGameRoleObj* pRoleObj = pSession->GetBindingRole();
 	if (pRoleObj
 		&& (!pRoleObj->IsOnline()) 
@@ -108,10 +108,10 @@ int CZoneMsgHelper::SendZoneMsgToRole(GameProtocolMsg& rstGameMsg, CGameRoleObj 
         return -1;
     }
 
-    // ÉèÖÃUin
+    // è®¾ç½®Uin
     rstGameMsg.mutable_m_stmsghead()->set_m_uin(pRoleObj->GetUin());
 
-    // ·¢ËÍÊı¾İ
+    // å‘é€æ•°æ®
     int iRet = SendZoneMsgToClient(rstGameMsg, pSession->GetNetHead());
 
     return iRet;
@@ -119,7 +119,7 @@ int CZoneMsgHelper::SendZoneMsgToRole(GameProtocolMsg& rstGameMsg, CGameRoleObj 
 
 #define ENABLE_UINLIST
 
-// ·¢ËÍÏûÏ¢¸øºÜ¶àÈË
+// å‘é€æ¶ˆæ¯ç»™å¾ˆå¤šäºº
 int CZoneMsgHelper::SendZoneMsgToRoleList(GameProtocolMsg& rstZoneMsg, const TRoleObjList& rstRoleList)
 {
 #ifndef ENABLE_UINLIST
@@ -134,7 +134,7 @@ int CZoneMsgHelper::SendZoneMsgToRoleList(GameProtocolMsg& rstZoneMsg, const TRo
     unsigned int auiSocketFD[MAX_SOCKETFD_NUMBER];
     unsigned int uiSocketNumber = 0;
 
-    // ·ÖÅú·¢³öÈ¥
+    // åˆ†æ‰¹å‘å‡ºå»
     for (int i = 0; i < rstRoleList.m_iRoleNumber; i++)
     {
 		if (!rstRoleList.m_apstRoleObj[i]->IsOnline())
@@ -160,7 +160,7 @@ int CZoneMsgHelper::SendZoneMsgToRoleList(GameProtocolMsg& rstZoneMsg, const TRo
         }
     }
 
-    // ×îºóÒ»²¿·Ö
+    // æœ€åä¸€éƒ¨åˆ†
     if (uiSocketNumber > 0)
     {
         if (uiSocketNumber > 1)
@@ -170,7 +170,7 @@ int CZoneMsgHelper::SendZoneMsgToRoleList(GameProtocolMsg& rstZoneMsg, const TRo
             return 0;
         }
 
-        // Ò»¸öÈË, °´Ô­À´µÄ¸ñÊ½·¢
+        // ä¸€ä¸ªäºº, æŒ‰åŸæ¥çš„æ ¼å¼å‘
 		CGameSessionObj* pSessionObj = CModuleHelper::GetSessionManager()->FindSessionByID(ntohl(auiSocketFD[0]));
 		if (pSessionObj)
 		{
@@ -186,13 +186,13 @@ void CZoneMsgHelper::WorldChat(char* pszMessage)
 {
     ASSERT_AND_LOG_RTN_VOID(pszMessage);
 
-    //todo jasonxiong ºóÃæĞèÒªÖ§³ÖÁÄÌìÊ±Í³Ò»ÔÙ¿ª·¢
+    //todo jasonxiong åé¢éœ€è¦æ”¯æŒèŠå¤©æ—¶ç»Ÿä¸€å†å¼€å‘
     /*
     memset(&m_stZoneMsg, 0, sizeof(m_stZoneMsg));
     CZoneMsgHelper::GenerateMsgHead(m_stZoneMsg, MSGID_CHAT_NOTIFY);
 
     CHAT_NOTIFY& rstNotify = m_stZoneMsg.m_stMsgBody.m_stChat_Notify;
-    rstNotify.m_stRoleID.m_uiUin = 0;//±êÃ÷ÊÇÏµÍ³ÏûÏ¢    
+    rstNotify.m_stRoleID.m_uiUin = 0;//æ ‡æ˜æ˜¯ç³»ç»Ÿæ¶ˆæ¯    
     rstNotify.m_ucChannel = CHANNEL_WORLD;    
     SAFE_STRCPY(rstNotify.m_szMessage, pszMessage, sizeof(rstNotify.m_szMessage));
 
@@ -201,3 +201,7 @@ void CZoneMsgHelper::WorldChat(char* pszMessage)
 }
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

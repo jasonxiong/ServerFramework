@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <string.h>
 
 #include "ProtoDataUtility.hpp"
@@ -49,7 +49,7 @@ int CFetchRoleWorldHandler::OnFetchRole()
     const World_FetchRole_Response& rstFetchResp = m_pRequestMsg->m_stmsgbody().m_stworld_fetchrole_response();
     unsigned int uiUin = rstFetchResp.stroleid().uin();
 
-    // »ñÈ¡»á»°
+    // è·å–ä¼šè¯
     CSessionManager* pSessionManager = CModuleHelper::GetSessionManager();
     m_pSession = pSessionManager->FindSessionByRoleID(rstFetchResp.stroleid());
     if(!m_pSession)
@@ -58,7 +58,7 @@ int CFetchRoleWorldHandler::OnFetchRole()
         return -2;
     }
 
-    // Session ÒÑ¾­±»Ê¹ÓÃ,loginÊ±¼ì²é
+    // Session å·²ç»è¢«ä½¿ç”¨,loginæ—¶æ£€æŸ¥
     if (rstFetchResp.bislogin() && m_pSession->GetBindingRole() != NULL)
     {
         TRACESVR("Session Already Binding Role: Uin = %u, Session = %d\n",
@@ -68,7 +68,7 @@ int CFetchRoleWorldHandler::OnFetchRole()
         return -3;
     }
 
-    // »ñÈ¡½ÇÉ«ĞÅÏ¢Ê§°Ü
+    // è·å–è§’è‰²ä¿¡æ¯å¤±è´¥
     if (rstFetchResp.iresult() != 0)
     {
         TRACESVR("FetchRole Failed: Uin = %u, ResultID = %d\n", uiUin, rstFetchResp.iresult());
@@ -78,14 +78,14 @@ int CFetchRoleWorldHandler::OnFetchRole()
         return -4;
     }
 
-    // ¼ì²éuinÊÇ·ñÒ»ÖÂ
+    // æ£€æŸ¥uinæ˜¯å¦ä¸€è‡´
     if (uiUin != m_pSession->GetRoleID().uin())
     {
         CHandlerHelper::SetErrorCode(T_ZONE_SESSION_EXISTS_ERR);
         CLoginHandler::LoginFailed(m_pSession->GetNetHead());
         pSessionManager->DeleteSession(m_pSession->GetID());
 
-        // Çå³ıWorld»º´æ
+        // æ¸…é™¤Worldç¼“å­˜
         CLogoutHandler::NotifyLogoutToWorld(rstFetchResp.stroleid());
 
         TRACESVR("Invalid Session: Uin = %u\n", uiUin);
@@ -95,7 +95,7 @@ int CFetchRoleWorldHandler::OnFetchRole()
 
     TRACESVR("FetchRole OK: Uin = %u\n", uiUin);
 
-    // µÇÂ¼½ÇÉ«
+    // ç™»å½•è§’è‰²
     int iRet = LoginRole();
     if (iRet < 0)
     {
@@ -103,7 +103,7 @@ int CFetchRoleWorldHandler::OnFetchRole()
         CLoginHandler::LoginFailed(m_pSession->GetNetHead());
         pSessionManager->DeleteSession(m_pSession->GetID());
 
-        // Çå³ıWorld»º´æ
+        // æ¸…é™¤Worldç¼“å­˜
         CLogoutHandler::NotifyLogoutToWorld(rstFetchResp.stroleid());
 
         TRACESVR("LoginRole Failed: iRet = %d\n", iRet);
@@ -113,12 +113,12 @@ int CFetchRoleWorldHandler::OnFetchRole()
 
     TRACESVR("LoginRole OK: Uin = %u\n", uiUin);
 
-    // ²éÑ¯ÓÊ¼ş·âÊı
-    //todo jasonxiong ºóÃæÔÙÍ³Ò»¿ª·¢£¬ÔİÊ±É¾³ıµô¹¦ÄÜ
+    // æŸ¥è¯¢é‚®ä»¶å°æ•°
+    //todo jasonxiong åé¢å†ç»Ÿä¸€å¼€å‘ï¼Œæš‚æ—¶åˆ é™¤æ‰åŠŸèƒ½
     QueryMailNumber();
 
-    // À­È¡ÓÎÏ·ºÃÓÑ»º´æµ½½ÇÉ«Êı¾İÖĞ
-    //todo jasonxiong ºóÃæÔÙÍ³Ò»¿ª·¢£¬ÔİÊ±É¾³ıµô¹¦ÄÜ
+    // æ‹‰å–æ¸¸æˆå¥½å‹ç¼“å­˜åˆ°è§’è‰²æ•°æ®ä¸­
+    //todo jasonxiong åé¢å†ç»Ÿä¸€å¼€å‘ï¼Œæš‚æ—¶åˆ é™¤æ‰åŠŸèƒ½
     FetchGameFriend();
 
     return 0;
@@ -129,7 +129,7 @@ int CFetchRoleWorldHandler::LoginRole()
     const World_FetchRole_Response& rstFetchResp = m_pRequestMsg->m_stmsgbody().m_stworld_fetchrole_response();
     unsigned int uiUin = rstFetchResp.stroleid().uin();
 
-    // ´´½¨½ÇÉ«¶ÔÏó
+    // åˆ›å»ºè§’è‰²å¯¹è±¡
     m_pRoleObj = (CGameRoleObj*)CUnitUtility::CreateUnit(EUT_ROLE, uiUin);
     if(!m_pRoleObj)
     {
@@ -137,7 +137,7 @@ int CFetchRoleWorldHandler::LoginRole()
         return -1;
     }
 
-    // ³õÊ¼»¯½ÇÉ«Êı¾İÏµÍ³
+    // åˆå§‹åŒ–è§’è‰²æ•°æ®ç³»ç»Ÿ
     int iRet = m_pRoleObj->InitRole(rstFetchResp.stroleid());
     if (iRet < 0)
     {
@@ -148,11 +148,11 @@ int CFetchRoleWorldHandler::LoginRole()
         return -2;
     }
 
-    // ½«»á»°ºÍ½ÇÉ«°ó¶¨
+    // å°†ä¼šè¯å’Œè§’è‰²ç»‘å®š
     m_pSession->SetBindingRole(m_pRoleObj);
     m_pRoleObj->SetSessionID(m_pSession->GetID());
 
-    // ³õÊ¼»¯½ÇÉ«Êı¾İ
+    // åˆå§‹åŒ–è§’è‰²æ•°æ®
     iRet = InitRoleData();
     if (iRet < 0)
     {
@@ -162,16 +162,16 @@ int CFetchRoleWorldHandler::LoginRole()
         return -3;
     }
 
-    // Í¨ÖªµÇÂ¼³É¹¦
+    // é€šçŸ¥ç™»å½•æˆåŠŸ
     CLoginHandler::LoginOK(uiUin);
 
-    // µÇÂ½ºó³õÊ¼»¯
+    // ç™»é™†ååˆå§‹åŒ–
     InitRoleAfterLogin();
 
     return 0;
 }
 
-// ³õÊ¼»¯½ÇÉ«Êı¾İ
+// åˆå§‹åŒ–è§’è‰²æ•°æ®
 int CFetchRoleWorldHandler::InitRoleData()
 {
     const World_FetchRole_Response& rstFetchResp = m_pRequestMsg->m_stmsgbody().m_stworld_fetchrole_response();
@@ -186,7 +186,7 @@ int CFetchRoleWorldHandler::InitRoleData()
 
     int iRet = T_SERVER_SUCESS;
 
-    //1.³õÊ¼»¯Íæ¼ÒµÄ»ù±¾ĞÅÏ¢
+    //1.åˆå§‹åŒ–ç©å®¶çš„åŸºæœ¬ä¿¡æ¯
     BASEDBINFO stBaseInfo;
     if(!DecodeProtoData(rstFetchResp.stuserinfo().strbaseinfo(), stBaseInfo))
     {
@@ -195,7 +195,7 @@ int CFetchRoleWorldHandler::InitRoleData()
     }
     m_pRoleObj->InitBaseInfoFromDB(stBaseInfo);
 
-    //2.³õÊ¼»¯Íæ¼ÒµÄÈÎÎñĞÅÏ¢
+    //2.åˆå§‹åŒ–ç©å®¶çš„ä»»åŠ¡ä¿¡æ¯
     QUESTDBINFO stQuestInfo;
     if(!DecodeProtoData(rstFetchResp.stuserinfo().strquestinfo(), stQuestInfo))
     {
@@ -204,7 +204,7 @@ int CFetchRoleWorldHandler::InitRoleData()
     }
     //m_pRoleObj->InitStoryFromDB(stQuestInfo);
     
-    //3.³õÊ¼»¯Íæ¼ÒµÄÎïÆ·ĞÅÏ¢
+    //3.åˆå§‹åŒ–ç©å®¶çš„ç‰©å“ä¿¡æ¯
     ITEMDBINFO stItemInfo;
     if(!DecodeProtoData(rstFetchResp.stuserinfo().striteminfo(), stItemInfo))
     {
@@ -213,7 +213,7 @@ int CFetchRoleWorldHandler::InitRoleData()
     }
     m_pRoleObj->InitRepThingsFromDB(stItemInfo);
 
-    //4.³õÊ¼»¯Íæ¼ÒµÄÆäËûÕ½¶·ĞÅÏ¢
+    //4.åˆå§‹åŒ–ç©å®¶çš„å…¶ä»–æˆ˜æ–—ä¿¡æ¯
     FIGHTDBINFO stFightInfo;
     if(!DecodeProtoData(rstFetchResp.stuserinfo().strfightinfo(), stFightInfo))
     {
@@ -231,7 +231,7 @@ int CFetchRoleWorldHandler::InitRoleData()
         return iRet;
     }
 
-    //5.³õÊ¼»¯Íæ¼ÒµÄºÃÓÑĞÅÏ¢
+    //5.åˆå§‹åŒ–ç©å®¶çš„å¥½å‹ä¿¡æ¯
     FRIENDDBINFO stFriendInfo;
     if(!DecodeProtoData(rstFetchResp.stuserinfo().strfriendinfo(), stFriendInfo))
     {
@@ -239,7 +239,7 @@ int CFetchRoleWorldHandler::InitRoleData()
         return -26;
     }
 
-    //6.³õÊ¼»¯Íæ¼ÒµÄReserved1×Ö¶Î
+    //6.åˆå§‹åŒ–ç©å®¶çš„Reserved1å­—æ®µ
     RESERVED1DBINFO stReserved1Info;
     if(!DecodeProtoData(rstFetchResp.stuserinfo().strreserved1(), stReserved1Info))
     {
@@ -247,7 +247,7 @@ int CFetchRoleWorldHandler::InitRoleData()
         return -27;
     }
 
-    //7.³õÊ¼»¯Íæ¼ÒµÄReserved2×Ö¶Î
+    //7.åˆå§‹åŒ–ç©å®¶çš„Reserved2å­—æ®µ
     RESERVED2DBINFO stReserved2Info;
     if(!DecodeProtoData(rstFetchResp.stuserinfo().strreserved2(), stReserved2Info))
     {
@@ -255,10 +255,10 @@ int CFetchRoleWorldHandler::InitRoleData()
         return -28;
     }
      
-    //todo jasonxiong ³õÊ¼»¯Íæ¼ÒµÄÆäËûĞÅÏ¢
+    //todo jasonxiong åˆå§‹åŒ–ç©å®¶çš„å…¶ä»–ä¿¡æ¯
 
-    // GM±êÖ¾
-    //todo jasonxiong ÏÈ×¢ÊÍµôËùÓĞGMÏà¹ØµÄ¹¦ÄÜ£¬ºóĞøĞèÒªÊ±ÔÙ½øĞĞ¿ª·¢
+    // GMæ ‡å¿—
+    //todo jasonxiong å…ˆæ³¨é‡Šæ‰æ‰€æœ‰GMç›¸å…³çš„åŠŸèƒ½ï¼Œåç»­éœ€è¦æ—¶å†è¿›è¡Œå¼€å‘
     /*
     m_pRoleObj->GetRoleInfo().m_stBaseProfile.m_cGMType = rstDBRoleInfo.fGM;
     CWhiteListConfig& rWhiteListConfig = WhiteListCfgMgr();
@@ -273,7 +273,7 @@ int CFetchRoleWorldHandler::InitRoleData()
     } 
     */ 
 
-    // ¸÷ÖÖÊ±¼ä
+    // å„ç§æ—¶é—´
     m_pRoleObj->SetLoginCount(stBaseInfo.ilogincount()+1);
 
     m_pRoleObj->SetOnline();      
@@ -281,7 +281,7 @@ int CFetchRoleWorldHandler::InitRoleData()
     return 0;
 }
 
-// µÇÂ¼ºó³õÊ¼»¯
+// ç™»å½•ååˆå§‹åŒ–
 int CFetchRoleWorldHandler::InitRoleAfterLogin()
 {
     return 0;
@@ -289,7 +289,7 @@ int CFetchRoleWorldHandler::InitRoleAfterLogin()
 
 int CFetchRoleWorldHandler::QueryMailNumber()
 {
-    //todo jasonxiong ºóÃæÔÙÍ³Ò»¿ª·¢
+    //todo jasonxiong åé¢å†ç»Ÿä¸€å¼€å‘
     /*
     CMailMsgHandler* pHandler =
         dynamic_cast<CMailMsgHandler*>(CHandlerFactory::GetHandler(MSGID_MAIL_MAILNUMBER_NOTIFY));
@@ -303,7 +303,7 @@ int CFetchRoleWorldHandler::QueryMailNumber()
 
 int CFetchRoleWorldHandler::FetchGameFriend()
 {
-    //todo jasonxiong ºóÃæÔÙÍ³Ò»¿ª·¢
+    //todo jasonxiong åé¢å†ç»Ÿä¸€å¼€å‘
     /*
     CFriendMsgHandler* pHandler =
         dynamic_cast<CFriendMsgHandler*>(CHandlerFactory::GetHandler(MSGID_FRIEND_FETCHGAMEFRIEND_REQUEST));
@@ -315,3 +315,7 @@ int CFetchRoleWorldHandler::FetchGameFriend()
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

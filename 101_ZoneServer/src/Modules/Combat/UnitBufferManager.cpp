@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -37,7 +37,7 @@ int CUnitBufferManager::Initialize()
     return 0;
 }
 
-//ÓµÓĞµÄÕ½¶·µ¥Î»µÄUnitID
+//æ‹¥æœ‰çš„æˆ˜æ–—å•ä½çš„UnitID
 int CUnitBufferManager::GetOwnerUnitID()
 {
     return m_iUnitID;
@@ -48,16 +48,16 @@ void CUnitBufferManager::SetOwnerUnitID(int iUnitID)
     m_iUnitID = iUnitID;
 }
 
-//Ôö¼ÓÒ»¸öBuff
+//å¢åŠ ä¸€ä¸ªBuff
 int CUnitBufferManager::AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID, int iCastUnitID, Zone_CombatAddBuff_Notify& stNotify)
 {
     if(iBuffID == 0)
     {
-        //Ã»ÓĞĞÂ¼ÓBUFF
+        //æ²¡æœ‰æ–°åŠ BUFF
         return T_SERVER_SUCESS;
     }
 
-    //¶ÁÈ¡BuffÅäÖÃ
+    //è¯»å–Buffé…ç½®
     const SFightBuffConfig* pstBuffConfig = FightBuffCfgMgr().GetConfig(iBuffID);
     if(!pstBuffConfig)
     {
@@ -65,24 +65,24 @@ int CUnitBufferManager::AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID,
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //ÉèÖÃÍ¨ÖªµÄÄÚÈİ
+    //è®¾ç½®é€šçŸ¥çš„å†…å®¹
     stNotify.set_icastunitid(iCastUnitID);
 
-    //Ôö¼ÓÒ»¸öÄ¿±ê
+    //å¢åŠ ä¸€ä¸ªç›®æ ‡
     OneAddBuff* pstOneAddBuff = stNotify.add_staddbuffs();
     pstOneAddBuff->set_itargetunitid(m_iUnitID);
 
-    //Ôö¼ÓÒ»¸ö·µ»ØµÄBUFFĞÅÏ¢
+    //å¢åŠ ä¸€ä¸ªè¿”å›çš„BUFFä¿¡æ¯
     AddBuffInfo* pstOneBuffNotify = pstOneAddBuff->add_stbuffinfo();
 
-    //Èç¹ûÓĞµş¼ÓÀàĞÍ£¬´¦Àíµş¼Ó
+    //å¦‚æœæœ‰å åŠ ç±»å‹ï¼Œå¤„ç†å åŠ 
     if(pstBuffConfig->iBuffType != BUFF_OVERLYING_ALL)
     {
-        //ÓĞµş¼ÓÀàĞÍ£¬ÏÈÅĞ¶ÏBuffµş¼Ó
+        //æœ‰å åŠ ç±»å‹ï¼Œå…ˆåˆ¤æ–­Buffå åŠ 
         bool bCanOverlying = ProcessOverlyingBuff(pstBuffConfig->iBuffType, pstBuffConfig->iBuffLevel, *(pstOneBuffNotify->mutable_stremovebuff()));
         if(!bCanOverlying)
         {
-            //ĞÂµÄBuff²»ÄÜµş¼Ó
+            //æ–°çš„Buffä¸èƒ½å åŠ 
             return T_SERVER_SUCESS;
         }
     }
@@ -91,9 +91,9 @@ int CUnitBufferManager::AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID,
 
     if(pstBuffConfig->iEffectRound != 0)
     {
-        //ÓĞ»ØºÏÊıÏŞÖÆµÄBUFF£¬ĞèÒª¼ÇÂ¼BUFFĞÅÏ¢
+        //æœ‰å›åˆæ•°é™åˆ¶çš„BUFFï¼Œéœ€è¦è®°å½•BUFFä¿¡æ¯
 
-        //´´½¨ĞÂµÄBuffObj
+        //åˆ›å»ºæ–°çš„BuffObj
         CUnitBufferObj* pstNewBuffObj = CreateNewBufferObj();
         if(!pstNewBuffObj)
         {
@@ -101,15 +101,15 @@ int CUnitBufferManager::AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID,
             return T_ZONE_SYSTEM_PARA_ERR;
         }
     
-        //³õÊ¼»¯ĞÂµÄBuff
+        //åˆå§‹åŒ–æ–°çš„Buff
         pstNewBuffObj->InitUnitBuff(iBuffID, iCastUnitID, pstBuffConfig->iEffectRound);
     }
 
     int iRet = T_SERVER_SUCESS;
-    //ÊÇ·ñ¼´Ê±ÉúĞ§µÄBuff
+    //æ˜¯å¦å³æ—¶ç”Ÿæ•ˆçš„Buff
     if(pstBuffConfig->iTriggerType == BUFF_TRIGGER_IMMEDIATELY)
     {
-        //¼´Ê±ÉúĞ§µÄBuff£¬´¦ÀíBuffĞ§¹û
+        //å³æ—¶ç”Ÿæ•ˆçš„Buffï¼Œå¤„ç†Buffæ•ˆæœ
         iRet = DoOneBuffEffect(uin, iCrossID, *pstBuffConfig, *(pstOneBuffNotify->mutable_steffects()), iCastUnitID);
         if(iRet)
         {
@@ -117,12 +117,12 @@ int CUnitBufferManager::AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID,
             return iRet;
         }
 
-        //todo jasonxiong5 ÖØĞÂ¿ª·¢½Å±¾ÏµÍ³
-        //µ÷ÓÃBUFFÉúĞ§´¥·¢µÄ½Å±¾
+        //todo jasonxiong5 é‡æ–°å¼€å‘è„šæœ¬ç³»ç»Ÿ
+        //è°ƒç”¨BUFFç”Ÿæ•ˆè§¦å‘çš„è„šæœ¬
         //CModuleHelper::GetStoryFramework()->DoBuffScript(uin, iCrossID, pstBuffConfig->iConfigID, m_iUnitID, iCastUnitID, iCastUnitID);
     }
 
-    //ÅĞ¶ÏÊÇ·ñÓĞÍ¬²½µÄBuff£¬Èç¹ûÓĞÔòÌí¼Ó
+    //åˆ¤æ–­æ˜¯å¦æœ‰åŒæ­¥çš„Buffï¼Œå¦‚æœæœ‰åˆ™æ·»åŠ 
     if(pstBuffConfig->iAddBuffID != 0)
     {
         iRet = AddUnitBuff(uin, iCrossID, pstBuffConfig->iAddBuffID, iCastUnitID, stNotify);
@@ -136,7 +136,7 @@ int CUnitBufferManager::AddUnitBuff(unsigned int uin, int iCrossID, int iBuffID,
     return T_SERVER_SUCESS;
 }
 
-//°´ÀàĞÍÉúĞ§Buff
+//æŒ‰ç±»å‹ç”Ÿæ•ˆBuff
 int CUnitBufferManager::DoUnitBuffEffect(unsigned int uin, int iCrossID, int iTriggerType, int iTriggerUnitID, Zone_DoBuffEffect_Notify& stNotify, int* pDamageNum)
 {
     stNotify.set_itriggerunitid(iTriggerUnitID);
@@ -151,13 +151,13 @@ int CUnitBufferManager::DoUnitBuffEffect(unsigned int uin, int iCrossID, int iTr
             continue;
         }
 
-        //ÅĞ¶ÏÊÇ·ñ»¹Ê£Óà»ØºÏÊı
+        //åˆ¤æ–­æ˜¯å¦è¿˜å‰©ä½™å›åˆæ•°
         if(pstBuffObj->GetRemainRound() <= 0)
         {
             continue;
         }
 
-        //¶ÁÈ¡BuffÅäÖÃ
+        //è¯»å–Buffé…ç½®
         const SFightBuffConfig* pstBuffConfig = FightBuffCfgMgr().GetConfig(pstBuffObj->GetUnitBuffID());
         if(!pstBuffConfig)
         {
@@ -165,13 +165,13 @@ int CUnitBufferManager::DoUnitBuffEffect(unsigned int uin, int iCrossID, int iTr
             return T_ZONE_SYSTEM_INVALID_CFG;
         }
 
-        //ÅĞ¶Ï´¥·¢ÀàĞÍÊÇ·ñÒ»ÖÂ
+        //åˆ¤æ–­è§¦å‘ç±»å‹æ˜¯å¦ä¸€è‡´
         if(pstBuffConfig->iTriggerType != iTriggerType)
         {
             continue;
         }
 
-        //ÉúĞ§µ¥¸öBuff
+        //ç”Ÿæ•ˆå•ä¸ªBuff
         int iRet = DoOneBuffEffect(uin, iCrossID, *pstBuffConfig, *(stNotify.add_steffects()), pstBuffObj->GetCastUnitID(), iTriggerUnitID, pDamageNum);
         if(iRet)
         {
@@ -179,22 +179,22 @@ int CUnitBufferManager::DoUnitBuffEffect(unsigned int uin, int iCrossID, int iTr
             return iRet;
         }
 
-        //todo jasonxiong5 ÖØĞÂ¿ª·¢½Å±¾
-        //µ÷ÓÃBUFFÉúĞ§´¥·¢µÄ½Å±¾
+        //todo jasonxiong5 é‡æ–°å¼€å‘è„šæœ¬
+        //è°ƒç”¨BUFFç”Ÿæ•ˆè§¦å‘çš„è„šæœ¬
         //CModuleHelper::GetStoryFramework()->DoBuffScript(uin, iCrossID, pstBuffObj->GetUnitBuffID(), m_iUnitID, pstBuffObj->GetCastUnitID(), iTriggerUnitID);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//¼õÉÙËùÓĞBUFFµÄ»ØºÏÊı
+//å‡å°‘æ‰€æœ‰BUFFçš„å›åˆæ•°
 int CUnitBufferManager::DecreaseAllBuffRound(Zone_RemoveBuff_Notify& stNotify)
 {
     int iRet = T_SERVER_SUCESS;
 
     stNotify.set_itargetunitid(m_iUnitID);
 
-    //±éÀúËùÓĞµÄBUFF
+    //éå†æ‰€æœ‰çš„BUFF
     for(int i=0; i<m_iUnitBuffObjNum;)
     {
         CUnitBufferObj* pstBuffObj = GameType<CUnitBufferObj>::Get(m_aiUnitBuffObjIndex[i]);
@@ -206,14 +206,14 @@ int CUnitBufferManager::DecreaseAllBuffRound(Zone_RemoveBuff_Notify& stNotify)
         
         if(pstBuffObj->GetRemainRound() > 1)
         {
-            //BUFF»¹ÓĞĞ§£¬¼õÉÙ»ØºÏÊı
+            //BUFFè¿˜æœ‰æ•ˆï¼Œå‡å°‘å›åˆæ•°
             pstBuffObj->SetRemainRound(pstBuffObj->GetRemainRound()-1);
 
             ++i;
             continue;
         }
 
-        //BUFFÊ§Ğ§£¬ÒÆ³ıBUFF
+        //BUFFå¤±æ•ˆï¼Œç§»é™¤BUFF
         iRet = DelUnitBuffByIndex(m_aiUnitBuffObjIndex[i], *stNotify.add_steffects());
         if(iRet)
         {
@@ -225,7 +225,7 @@ int CUnitBufferManager::DecreaseAllBuffRound(Zone_RemoveBuff_Notify& stNotify)
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡ËùÓĞBUFFµÄÅäÖÃID
+//è·å–æ‰€æœ‰BUFFçš„é…ç½®ID
 void CUnitBufferManager::GetUnitBuffID(std::vector<int>& vBuffIDs)
 {
     for(int i=0; i<m_iUnitBuffObjNum; ++i)
@@ -242,10 +242,10 @@ void CUnitBufferManager::GetUnitBuffID(std::vector<int>& vBuffIDs)
     return;
 }
 
-//ÊÇ·ñÓĞBUFFIDÍ¬ÀàĞÍµÄBUFF
+//æ˜¯å¦æœ‰BUFFIDåŒç±»å‹çš„BUFF
 bool CUnitBufferManager::HasBuffOfSameType(int iBuffID)
 {
-    //¶ÁÈ¡BUFFÅäÖÃ
+    //è¯»å–BUFFé…ç½®
     const SFightBuffConfig* pstNewBuffConfig = FightBuffCfgMgr().GetConfig(iBuffID);
     if(!pstNewBuffConfig)
     {
@@ -265,7 +265,7 @@ bool CUnitBufferManager::HasBuffOfSameType(int iBuffID)
             continue;
         }
 
-        //ÅĞ¶ÏÊÇ·ñÍ¬ÀàĞÍµÄBuff
+        //åˆ¤æ–­æ˜¯å¦åŒç±»å‹çš„Buff
         const SFightBuffConfig* pstBuffConfig = FightBuffCfgMgr().GetConfig(pstBuffObj->GetUnitBuffID());
         if(!pstBuffConfig)
         {
@@ -282,7 +282,7 @@ bool CUnitBufferManager::HasBuffOfSameType(int iBuffID)
     return false;
 }
 
-//ÊÇ·ñÓĞÏàÍ¬IDµÄBUFF
+//æ˜¯å¦æœ‰ç›¸åŒIDçš„BUFF
 bool CUnitBufferManager::HasBuffOfSameID(int iBuffID)
 {
     if(iBuffID <= 0)
@@ -312,7 +312,7 @@ bool CUnitBufferManager::HasBuffOfSameID(int iBuffID)
     return false;
 }
 
-//ÇåÀíBuffManagerÖĞËùÓĞµÄBuffObj
+//æ¸…ç†BuffManagerä¸­æ‰€æœ‰çš„BuffObj
 void CUnitBufferManager::ClearBuffObj()
 {
     for(int i=0; i<MAX_FIGHT_UNIT_BUFF_NUM; ++i)
@@ -330,24 +330,24 @@ void CUnitBufferManager::ClearBuffObj()
     return;
 }
 
-//´¦ÀíBuffÉúĞ§µÄÊµ¼ÊĞ§¹û
+//å¤„ç†Buffç”Ÿæ•ˆçš„å®é™…æ•ˆæœ
 int CUnitBufferManager::DoOneBuffEffect(unsigned int uin, int iCrossID, const SFightBuffConfig& stBuffConfig, BuffEffect& stEffectNotify, int iCastUnitID, int iTriggerUnitID, int* pDamageNum)
 {
     int iRet = T_SERVER_SUCESS;
 
-    //¸ù¾İBuffÉúĞ§µÄÄ¿±ê£¬Ö´ĞĞÏàÓ¦µÄ²Ù×÷
+    //æ ¹æ®Buffç”Ÿæ•ˆçš„ç›®æ ‡ï¼Œæ‰§è¡Œç›¸åº”çš„æ“ä½œ
     switch(stBuffConfig.aiProcessID[BUFF_PARAM_TARGET])
     {
         case BUFF_TARGET_SELF:
             {
-                //ÖĞBuffµÄµ¥Î»±¾Éí
+                //ä¸­Buffçš„å•ä½æœ¬èº«
                 iRet = ProcessRealBuffEffect(uin, iCrossID, stBuffConfig, m_iUnitID, stEffectNotify);
             }
             break;
 
         case BUFF_TARGET_CAST:
             {
-                //Ê©·¨Õß,²Ù×÷ÀàĞÍÖ»ÄÜÊÇ¼ÓBUFF
+                //æ–½æ³•è€…,æ“ä½œç±»å‹åªèƒ½æ˜¯åŠ BUFF
                 if(stBuffConfig.iProcessType!=BUFF_OPERA_ADDBUFF && stBuffConfig.iProcessType!=BUFF_OPERA_GUARD)
                 {
                     iRet = T_ZONE_SYSTEM_INVALID_CFG;
@@ -361,7 +361,7 @@ int CUnitBufferManager::DoOneBuffEffect(unsigned int uin, int iCrossID, const SF
 
         case BUFF_TARGET_TRIGGER:
             {
-                //´¥·¢Õß,²Ù×÷ÀàĞÍÖ»ÄÜÊÇ¼ÓBUFF
+                //è§¦å‘è€…,æ“ä½œç±»å‹åªèƒ½æ˜¯åŠ BUFF
                 if(stBuffConfig.iProcessType != BUFF_OPERA_ADDBUFF && stBuffConfig.iProcessType!=BUFF_OPERA_GUARD)
                 {
                     iRet = T_ZONE_SYSTEM_INVALID_CFG;
@@ -390,7 +390,7 @@ int CUnitBufferManager::DoOneBuffEffect(unsigned int uin, int iCrossID, const SF
     return T_SERVER_SUCESS;
 }
 
-//´¦Àí¿ÉÒÔµş¼ÓµÄBuff,·µ»Øtrue±íÊ¾ĞÂBuff¿ÉÒÔµş¼ÓÉÏÈ¥
+//å¤„ç†å¯ä»¥å åŠ çš„Buff,è¿”å›trueè¡¨ç¤ºæ–°Buffå¯ä»¥å åŠ ä¸Šå»
 bool CUnitBufferManager::ProcessOverlyingBuff(int iBuffOverlyingType, int iBuffLevel, RemoveBuffEffect& stRemoveBuffNotify)
 {
     for(int i=0; i<m_iUnitBuffObjNum; ++i)
@@ -406,7 +406,7 @@ bool CUnitBufferManager::ProcessOverlyingBuff(int iBuffOverlyingType, int iBuffL
             continue;
         }
 
-        //ÅĞ¶ÏÊÇ·ñÍ¬ÀàĞÍµÄBuff
+        //åˆ¤æ–­æ˜¯å¦åŒç±»å‹çš„Buff
         const SFightBuffConfig* pstBuffConfig = FightBuffCfgMgr().GetConfig(pstBuffObj->GetUnitBuffID());
         if(!pstBuffConfig)
         {
@@ -419,34 +419,34 @@ bool CUnitBufferManager::ProcessOverlyingBuff(int iBuffOverlyingType, int iBuffL
             continue;
         }
 
-        //ÅĞ¶ÏĞÂBuffÇ¿¶È
+        //åˆ¤æ–­æ–°Buffå¼ºåº¦
         if(iBuffLevel < pstBuffConfig->iBuffLevel)
         {
-            //Í¬ÀàĞÍµÄ²»ÄÜÌæ»»
+            //åŒç±»å‹çš„ä¸èƒ½æ›¿æ¢
             return false;
         }
 
-        //ĞÂµÄÄÜ¹»Ìæ»»ÀÏµÄ£¬ÒÆ³ıÀÏµÄBuff
+        //æ–°çš„èƒ½å¤Ÿæ›¿æ¢è€çš„ï¼Œç§»é™¤è€çš„Buff
         DelUnitBuffByIndex(m_aiUnitBuffObjIndex[i], stRemoveBuffNotify);
 
-        //·µ»Ø¿ÉÒÔÌæ»»
+        //è¿”å›å¯ä»¥æ›¿æ¢
         return true;
     }
 
     return true;
 }
 
-//¶ÔÄ¿±êÉúĞ§Ò»¸öBUFFµÄÊµ¼ÊĞ§¹û
+//å¯¹ç›®æ ‡ç”Ÿæ•ˆä¸€ä¸ªBUFFçš„å®é™…æ•ˆæœ
 int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, const SFightBuffConfig& stBuffConfig, int iTargetUnitID, BuffEffect& stEffectNotify, int* pDamageNum)
 {
-    //ÅĞ¶ÏBuffµÄ²Ù×÷ÀàĞÍÊÇ·ñÕıÈ·
+    //åˆ¤æ–­Buffçš„æ“ä½œç±»å‹æ˜¯å¦æ­£ç¡®
     if(iTargetUnitID==m_iUnitID && (stBuffConfig.iProcessType==BUFF_OPERA_ADDBUFF || stBuffConfig.iProcessType==BUFF_OPERA_GUARD))
     {
         LOGERROR("Failed to process attr change buff on other units, buff id %d\n", stBuffConfig.iConfigID);
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //»ñÈ¡Ä¿±ê¶ÔÏó
+    //è·å–ç›®æ ‡å¯¹è±¡
     CCombatUnitObj* pstTargetUnitObj = CCombatUtility::GetCombatUnitObj(iTargetUnitID);
     if(!pstTargetUnitObj)
     {
@@ -454,25 +454,25 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÉèÖÃÉúĞ§µÄBUFF IDºÍÄ¿±ê
+    //è®¾ç½®ç”Ÿæ•ˆçš„BUFF IDå’Œç›®æ ‡
     stEffectNotify.set_ibuffid(stBuffConfig.iConfigID);
     stEffectNotify.set_itargetunitid(iTargetUnitID);
 
     int iRet = T_SERVER_SUCESS;
 
-    //¸ù¾İ²Ù×÷ÀàĞÍ£¬Ö´ĞĞÏàÓ¦µÄ²Ù×÷
+    //æ ¹æ®æ“ä½œç±»å‹ï¼Œæ‰§è¡Œç›¸åº”çš„æ“ä½œ
     switch(stBuffConfig.iProcessType)
     {
         case BUFF_OPERA_ADDATTR:
             {
-                //¼ÓÄ¿±êµÄÊôĞÔ
+                //åŠ ç›®æ ‡çš„å±æ€§
                 int iEffect = 0;
                 pstTargetUnitObj->AddFightAttr(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF], stBuffConfig.aiProcessID[BUFF_PARAM_VALUE], &iEffect);
 
                 if(stBuffConfig.iEffectType == BUFF_EFFECT_ROUNDS)
                 {
-                    //·ÇÓÀ¾Ã£¬ĞèÒª¼ÇÂ¼ÉúĞ§µÄĞ§¹û
-                    //»ñÈ¡BuffObj
+                    //éæ°¸ä¹…ï¼Œéœ€è¦è®°å½•ç”Ÿæ•ˆçš„æ•ˆæœ
+                    //è·å–BuffObj
                     CUnitBufferObj* pstBuffObj = GetUnitBufferObjByID(stBuffConfig.iConfigID);
                     if(!pstBuffObj)
                     {
@@ -483,7 +483,7 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
                     pstBuffObj->SetBuffEffect(pstBuffObj->GetBuffEffect()+iEffect);
                 }
 
-                //´¦ÀíÊôĞÔÌæ»»ÀàĞÍBuffµÄÌæ»»Ç°µÄÖµ
+                //å¤„ç†å±æ€§æ›¿æ¢ç±»å‹Buffçš„æ›¿æ¢å‰çš„å€¼
                 ProcessReplaceAttrBuffValue(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF], iEffect);
 
                 stEffectNotify.set_iattrtype(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF]);
@@ -493,16 +493,16 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
 
         case BUFF_OPERA_ADDRATEATTR:
             {
-                //¼ÓÄ¿±êµÄ°Ù·Ö±ÈÊôĞÔ
+                //åŠ ç›®æ ‡çš„ç™¾åˆ†æ¯”å±æ€§
                 int iAddAttr = 0;
                 if(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF] == FIGHT_ATTR_HP)
                 {
-                    //ÑªÁ¿È¡×î´óÑªÁ¿
+                    //è¡€é‡å–æœ€å¤§è¡€é‡
                     iAddAttr = pstTargetUnitObj->GetFightAttr(FIGHT_ATTR_HPMAX)*stBuffConfig.aiProcessID[BUFF_PARAM_VALUE]/100;
                 }
                 else
                 {
-                    //ÆäËûµÄÊôĞÔ¶¼È¡µ±Ç°Öµ
+                    //å…¶ä»–çš„å±æ€§éƒ½å–å½“å‰å€¼
                     iAddAttr = pstTargetUnitObj->GetFightAttr(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF])*stBuffConfig.aiProcessID[BUFF_PARAM_VALUE]/100;
                 }
 
@@ -511,9 +511,9 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
 
                 if(stBuffConfig.iEffectType == BUFF_EFFECT_ROUNDS)
                 {
-                    //·ÇÓÀ¾Ã£¬ĞèÒª¼ÇÂ¼ÉúĞ§µÄĞ§¹û
+                    //éæ°¸ä¹…ï¼Œéœ€è¦è®°å½•ç”Ÿæ•ˆçš„æ•ˆæœ
 
-                    //»ñÈ¡BuffObj
+                    //è·å–BuffObj
                     CUnitBufferObj* pstBuffObj = GetUnitBufferObjByID(stBuffConfig.iConfigID);
                     if(!pstBuffObj)
                     {
@@ -524,7 +524,7 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
                     pstBuffObj->SetBuffEffect(pstBuffObj->GetBuffEffect()+iEffect);
                 }
 
-                //´¦ÀíÊôĞÔÌæ»»ÀàĞÍBuffµÄÌæ»»Ç°µÄÖµ
+                //å¤„ç†å±æ€§æ›¿æ¢ç±»å‹Buffçš„æ›¿æ¢å‰çš„å€¼
                 ProcessReplaceAttrBuffValue(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF], iEffect);
 
                 stEffectNotify.set_iattrtype(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF]);
@@ -534,7 +534,7 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
 
         case BUFF_OPERA_REPLACEATTR:
             {
-                //Ìæ»»Ä¿±êÊôĞÔ
+                //æ›¿æ¢ç›®æ ‡å±æ€§
                 int iOldAttr = pstTargetUnitObj->GetFightAttr(stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF]);
 
                 int iAddAttr = stBuffConfig.aiProcessID[BUFF_PARAM_VALUE] - iOldAttr;
@@ -543,9 +543,9 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
 
                 if(stBuffConfig.iEffectType == BUFF_EFFECT_ROUNDS)
                 {
-                    //·ÇÓÀ¾Ã£¬ĞèÒª¼ÇÂ¼Ô­À´µÄÊôĞÔÖµ
+                    //éæ°¸ä¹…ï¼Œéœ€è¦è®°å½•åŸæ¥çš„å±æ€§å€¼
 
-                    //»ñÈ¡BuffObj
+                    //è·å–BuffObj
                     CUnitBufferObj* pstBuffObj = GetUnitBufferObjByID(stBuffConfig.iConfigID);
                     if(!pstBuffObj)
                     {
@@ -563,63 +563,63 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
 
         case BUFF_OPERA_LOCKATTR:
             {
-                //ÔİÊ±Ã»ÓĞ£¬²»×ö
+                //æš‚æ—¶æ²¡æœ‰ï¼Œä¸åš
                 ;
             }
             break;
 
         case BUFF_OPERA_ADDBUFF:
             {
-                //¸øÄ¿±êÔö¼ÓÒ»¸öBuff
+                //ç»™ç›®æ ‡å¢åŠ ä¸€ä¸ªBuff
                 iRet = pstTargetUnitObj->AddUnitBuff(uin, iCrossID, stBuffConfig.aiProcessID[BUFF_PARAM_ATTRBUFF], m_iUnitID, *(stEffectNotify.mutable_staddbuff()));
             }
             break;
 
         case BUFF_OPERA_UNARM:
             {
-                //½ÉĞµ£¬ÈÃÎäÆ÷²»ÉúĞ§
+                //ç¼´æ¢°ï¼Œè®©æ­¦å™¨ä¸ç”Ÿæ•ˆ
                 CCombatUtility::ProcessWeaponEffect(*pstTargetUnitObj, false);
             }
             break;
 
         case BUFF_OPERA_FORBIDACTION:
             {
-                //½ûÖ¹ĞĞ¶¯
+                //ç¦æ­¢è¡ŒåŠ¨
                 pstTargetUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTACTION, true);
             }
             break;
 
         case BUFF_OPERA_FORBIDROUND:
             {
-                //½ûÖ¹½øÈëĞĞ¶¯»ØºÏ
+                //ç¦æ­¢è¿›å…¥è¡ŒåŠ¨å›åˆ
                 pstTargetUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTROUND, true);
             }
             break;
 
         case BUFF_OPERA_FORBIDMOVE:
             {
-                //½ûÖ¹ÒÆ¶¯
+                //ç¦æ­¢ç§»åŠ¨
                 pstTargetUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTMOVE, true);
             }
             break;
 
         case BUFF_OPERA_IGNOREJOINTATK:
             {
-                //ÎŞÊÓºÏÎ§
+                //æ— è§†åˆå›´
                 pstTargetUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_IGNOREJOINT, true);
             }
             break;
 
         case BUFF_OPERA_UNBENDING:
             {
-                //²»Çü
+                //ä¸å±ˆ
                 pstTargetUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_UNBENDING, true);
             }
             break;
 
         case BUFF_OPERA_GUARD:
             {
-                //ÊØ»¤ÀàĞÍµÄBUFF
+                //å®ˆæŠ¤ç±»å‹çš„BUFF
                 if(!pDamageNum)
                 {
                     return T_ZONE_SYSTEM_PARA_ERR;
@@ -627,7 +627,7 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
 
                 if(pstTargetUnitObj->IsCombatUnitDead())
                 {
-                    //Ä¿±êÒÑ¾­ËÀÍö
+                    //ç›®æ ‡å·²ç»æ­»äº¡
                     return T_SERVER_SUCESS;
                 }
 
@@ -659,10 +659,10 @@ int CUnitBufferManager::ProcessRealBuffEffect(unsigned int uin, int iCrossID, co
     return T_SERVER_SUCESS;
 }
 
-//´¦ÀíÊôĞÔÌæ»»ÀàĞÍBuffµÄÌæ»»Ç°µÄÖµ
+//å¤„ç†å±æ€§æ›¿æ¢ç±»å‹Buffçš„æ›¿æ¢å‰çš„å€¼
 void CUnitBufferManager::ProcessReplaceAttrBuffValue(int iAttrType, int iAddNum)
 {
-   //±éÀúËùÓĞµÄBUFF£¬´¦ÀíÊôĞÔÌæ»»ÀàĞÍµÄÖµ
+   //éå†æ‰€æœ‰çš„BUFFï¼Œå¤„ç†å±æ€§æ›¿æ¢ç±»å‹çš„å€¼
     for(int i=0; i<m_iUnitBuffObjNum; ++i)
     {
         CUnitBufferObj* pstBuffObj= GameType<CUnitBufferObj>::Get(m_aiUnitBuffObjIndex[i]);
@@ -681,7 +681,7 @@ void CUnitBufferManager::ProcessReplaceAttrBuffValue(int iAttrType, int iAddNum)
         if(pstFightBuffConfig->iProcessType==BUFF_OPERA_REPLACEATTR && 
            pstFightBuffConfig->aiProcessID[BUFF_PARAM_ATTRBUFF]==iAttrType)
         {
-            //¶ÔBUFFÖĞ¼ÇÂ¼µÄÖµ½øĞĞÍ¬ÑùµÄ´¦Àí
+            //å¯¹BUFFä¸­è®°å½•çš„å€¼è¿›è¡ŒåŒæ ·çš„å¤„ç†
             pstBuffObj->SetBuffEffect(pstBuffObj->GetBuffEffect()+iAddNum);
         }
     }
@@ -689,10 +689,10 @@ void CUnitBufferManager::ProcessReplaceAttrBuffValue(int iAttrType, int iAddNum)
     return;
 }
 
-//¸ù¾İBuffObjµÄIndexÉ¾³ıBuff
+//æ ¹æ®BuffObjçš„Indexåˆ é™¤Buff
 int CUnitBufferManager::DelUnitBuffByIndex(int& iBuffObjIndex, RemoveBuffEffect& stRemoveBuffNotify)
 {
-    //»ñÈ¡BuffObj
+    //è·å–BuffObj
     CUnitBufferObj* pstBuffObj = GameType<CUnitBufferObj>::Get(iBuffObjIndex);
     if(!pstBuffObj)
     {
@@ -700,7 +700,7 @@ int CUnitBufferManager::DelUnitBuffByIndex(int& iBuffObjIndex, RemoveBuffEffect&
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //»ñÈ¡BUFFÅäÖÃ
+    //è·å–BUFFé…ç½®
     const SFightBuffConfig* pstFightBuffConfig = FightBuffCfgMgr().GetConfig(pstBuffObj->GetUnitBuffID());
     if(!pstFightBuffConfig)
     {
@@ -708,13 +708,13 @@ int CUnitBufferManager::DelUnitBuffByIndex(int& iBuffObjIndex, RemoveBuffEffect&
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //ÉèÖÃ·µ»Ø
+    //è®¾ç½®è¿”å›
     RemoveOneBuffEffect* pstRemoveOneNotify = stRemoveBuffNotify.add_stremoveones();
     pstRemoveOneNotify->set_ibuffid(pstBuffObj->GetUnitBuffID());
 
     if(pstFightBuffConfig->iEffectType == BUFF_EFFECT_ROUNDS)
     {
-        //·ÇÓÀ¾ÃÉúĞ§£¬ĞèÒªÒÆ³ıBUFFĞ§¹û
+        //éæ°¸ä¹…ç”Ÿæ•ˆï¼Œéœ€è¦ç§»é™¤BUFFæ•ˆæœ
         int iRet = RemoveBuffEffects(*pstBuffObj, *pstFightBuffConfig, *pstRemoveOneNotify);
         if(iRet)
         {
@@ -723,11 +723,11 @@ int CUnitBufferManager::DelUnitBuffByIndex(int& iBuffObjIndex, RemoveBuffEffect&
         }
     }
 
-    //É¾³ıBUFF
+    //åˆ é™¤BUFF
     GameType<CUnitBufferObj>::Del(iBuffObjIndex);
     iBuffObjIndex = m_aiUnitBuffObjIndex[--m_iUnitBuffObjNum];
 
-    //Èç¹ûÓĞ¹ØÁªBUFF£¬Ôò³¢ÊÔÉ¾³ı¹ØÁªBUFF
+    //å¦‚æœæœ‰å…³è”BUFFï¼Œåˆ™å°è¯•åˆ é™¤å…³è”BUFF
     if(pstFightBuffConfig->iDelBuffID != 0)
     {
         return DelUnitBuffByID(pstFightBuffConfig->iDelBuffID, stRemoveBuffNotify);
@@ -736,7 +736,7 @@ int CUnitBufferManager::DelUnitBuffByIndex(int& iBuffObjIndex, RemoveBuffEffect&
     return T_SERVER_SUCESS;
 }
 
-//ÒÆ³ıBUFFĞ§¹û£¬¸ù¾İID
+//ç§»é™¤BUFFæ•ˆæœï¼Œæ ¹æ®ID
 int CUnitBufferManager::DelUnitBuffByID(int iBuffID, RemoveBuffEffect& stRemoveBuffNotify)
 {
     for(int i=0; i<m_iUnitBuffObjNum; ++i)
@@ -747,25 +747,25 @@ int CUnitBufferManager::DelUnitBuffByID(int iBuffID, RemoveBuffEffect& stRemoveB
             continue;
         }
 
-        //É¾³ı¶ÔÓ¦IDµÄBUFF
+        //åˆ é™¤å¯¹åº”IDçš„BUFF
         return DelUnitBuffByIndex(m_aiUnitBuffObjIndex[i], stRemoveBuffNotify);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//ÒÆ³ıBUFFµÄĞ§¹û
+//ç§»é™¤BUFFçš„æ•ˆæœ
 int CUnitBufferManager::RemoveBuffEffects(CUnitBufferObj& stBuffObj, const SFightBuffConfig& stFightBuffConfig, RemoveOneBuffEffect& stRemoveOneNotify)
 {
-    //ÅĞ¶ÏBUFFµÄĞ§¹ûÀàĞÍ·ÇÓÀ¾Ã£¬²¢ÇÒÄ¿±êÊÇ×Ô¼º
+    //åˆ¤æ–­BUFFçš„æ•ˆæœç±»å‹éæ°¸ä¹…ï¼Œå¹¶ä¸”ç›®æ ‡æ˜¯è‡ªå·±
     if(stFightBuffConfig.iEffectType == BUFF_EFFECT_FOREVER
        || stFightBuffConfig.aiProcessID[BUFF_PARAM_TARGET]!=BUFF_TARGET_SELF)
     {
-        //·ÇÓÀ¾ÃÀàĞÍ£¬²»ÒÆ³ı
+        //éæ°¸ä¹…ç±»å‹ï¼Œä¸ç§»é™¤
         return T_SERVER_SUCESS;
     }
 
-    //»ñÈ¡Õ½¶·µ¥Î»CombatUnitObj
+    //è·å–æˆ˜æ–—å•ä½CombatUnitObj
     CCombatUnitObj* pstCombatObj = CCombatUtility::GetCombatUnitObj(m_iUnitID);
     if(!pstCombatObj)
     {
@@ -773,7 +773,7 @@ int CUnitBufferManager::RemoveBuffEffects(CUnitBufferObj& stBuffObj, const SFigh
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //¸ù¾İBUFFÀàĞÍ£¬ÒÆ³ıBUFFĞ§¹û
+    //æ ¹æ®BUFFç±»å‹ï¼Œç§»é™¤BUFFæ•ˆæœ
     switch(stFightBuffConfig.iProcessType)
     {
         case BUFF_OPERA_ADDATTR:
@@ -805,7 +805,7 @@ int CUnitBufferManager::RemoveBuffEffects(CUnitBufferObj& stBuffObj, const SFigh
 
         case BUFF_OPERA_UNARM:
             {
-                //¿Û³ı½ÉĞµµÄĞ§¹û
+                //æ‰£é™¤ç¼´æ¢°çš„æ•ˆæœ
                 CCombatUtility::ProcessWeaponEffect(*pstCombatObj, true);
             }
             break;
@@ -859,7 +859,7 @@ int CUnitBufferManager::RemoveBuffEffects(CUnitBufferObj& stBuffObj, const SFigh
     return T_SERVER_SUCESS;
 }
 
-//¸ù¾İID²éÕÒBuffObj
+//æ ¹æ®IDæŸ¥æ‰¾BuffObj
 CUnitBufferObj* CUnitBufferManager::GetUnitBufferObjByID(int iBuffID)
 {
     for(int i=0; i<m_iUnitBuffObjNum; ++i)
@@ -879,16 +879,16 @@ CUnitBufferObj* CUnitBufferManager::GetUnitBufferObjByID(int iBuffID)
     return NULL;
 }
 
-//´´½¨Ò»¸öĞÂµÄBufferObj
+//åˆ›å»ºä¸€ä¸ªæ–°çš„BufferObj
 CUnitBufferObj* CUnitBufferManager::CreateNewBufferObj()
 {
     if(m_iUnitBuffObjNum >= MAX_FIGHT_UNIT_BUFF_NUM)
     {
-        //³¬¹ıÖ§³ÖµÄBuffÉÏÏŞ
+        //è¶…è¿‡æ”¯æŒçš„Buffä¸Šé™
         return NULL;
     }
 
-    //´´½¨²¢³õÊ¼»¯ĞÂµÄBuffObj
+    //åˆ›å»ºå¹¶åˆå§‹åŒ–æ–°çš„BuffObj
     m_aiUnitBuffObjIndex[m_iUnitBuffObjNum] = GameType<CUnitBufferObj>::Create();
     if(m_aiUnitBuffObjIndex[m_iUnitBuffObjNum] < 0)
     {
@@ -907,3 +907,7 @@ CUnitBufferObj* CUnitBufferManager::CreateNewBufferObj()
 
     return pstNewBuffObj;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

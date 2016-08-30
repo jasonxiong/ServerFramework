@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __UNIT_EVENT_MANAGER_HPP__
 #define __UNIT_EVENT_MANAGER_HPP__
 
@@ -8,7 +8,7 @@
 #include "GameRole.hpp"
 #include "SessionDefine.hpp"
 
-//·şÎñ¶ËËùÓĞÊÂ¼şÍ¨Öª´¦ÀíµÄÈë¿Ú
+//æœåŠ¡ç«¯æ‰€æœ‰äº‹ä»¶é€šçŸ¥å¤„ç†çš„å…¥å£
 
 class CUnitEventManager
 {
@@ -22,3 +22,7 @@ public:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

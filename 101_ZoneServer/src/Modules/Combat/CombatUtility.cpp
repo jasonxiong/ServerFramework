@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameRole.hpp"
 #include "BattlefieldObj.hpp"
 #include "ZoneObjectHelper.hpp"
@@ -18,13 +18,13 @@ CBattlefieldObj* CCombatUtility::GetBattlefiledObj(int iBattlefieldIndex)
     return GameType<CBattlefieldObj>::Get(iBattlefieldIndex);
 }
 
-//¸ù¾İÕ½¶·µ¥Î»ID»ñÈ¡CCombatUnitObj
+//æ ¹æ®æˆ˜æ–—å•ä½IDè·å–CCombatUnitObj
 CCombatUnitObj* CCombatUtility::GetCombatUnitObj(int iCombatUnitID)
 {
     return GameType<CCombatUnitObj>::Get(iCombatUnitID);
 }
 
-//ÇåÀíÕ½³¡
+//æ¸…ç†æˆ˜åœº
 void CCombatUtility::ClearBattlefield(int iBattlefieldIndex)
 {
     if(iBattlefieldIndex < 0)
@@ -32,7 +32,7 @@ void CCombatUtility::ClearBattlefield(int iBattlefieldIndex)
         return;
     }
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(iBattlefieldIndex);
     if(!pstBattlefieldObj)
     {
@@ -40,7 +40,7 @@ void CCombatUtility::ClearBattlefield(int iBattlefieldIndex)
         return;
     }
 
-    //ÇåÀíÍæ¼ÒÉíÉÏµÄÕ½³¡ID
+    //æ¸…ç†ç©å®¶èº«ä¸Šçš„æˆ˜åœºID
     CGameRoleObj* pstActiveRoleObj = CUnitUtility::GetRoleByUin(pstBattlefieldObj->GetActiveUin());
     if(pstActiveRoleObj)
     {
@@ -53,19 +53,19 @@ void CCombatUtility::ClearBattlefield(int iBattlefieldIndex)
         pstPassiveRoleObj->SetBattlefieObjID(-1);
     }
 
-    //ÇåÀíÕ½³¡
+    //æ¸…ç†æˆ˜åœº
     pstBattlefieldObj->ClearBattlefield();
 
-    //É¾³ıÕ½³¡
+    //åˆ é™¤æˆ˜åœº
     GameType<CBattlefieldObj>::Del(iBattlefieldIndex);
 
     return;
 }
 
-//¼ÆËãÕĞÊ½ÃüÖĞ
+//è®¡ç®—æ‹›å¼å‘½ä¸­
 int CCombatUtility::GetSkillHit(CCombatUnitObj& stCastUnitObj, const SFightUnitSkillConfig& stSkillConfig, int iDistance)
 {
-    //¶ÁÈ¡¼¼ÄÜµÄÃüÖĞScore±í
+    //è¯»å–æŠ€èƒ½çš„å‘½ä¸­Scoreè¡¨
     const SSkillScoreConfig* pstScoreConfig = SkillScoreCfgMgr().GetConfig(stSkillConfig.iHitModifierID);
     if(!pstScoreConfig)
     {
@@ -73,7 +73,7 @@ int CCombatUtility::GetSkillHit(CCombatUnitObj& stCastUnitObj, const SFightUnitS
         return 0;
     }
 
-    //¶ÁÈ¡¼¼ÄÜµÄÃüÖĞRange±í
+    //è¯»å–æŠ€èƒ½çš„å‘½ä¸­Rangeè¡¨
     const SSkillRangeConfig* pstRangeConfig = SkillRangeCfgMgr().GetConfig(stSkillConfig.iTargetRangeID);
     if(!pstRangeConfig)
     {
@@ -81,29 +81,29 @@ int CCombatUtility::GetSkillHit(CCombatUnitObj& stCastUnitObj, const SFightUnitS
         return 0;
     }
 
-    //¼ÆËã»ù±¾ÃüÖĞ
+    //è®¡ç®—åŸºæœ¬å‘½ä¸­
     int iBaseHit = CCombatUtility::GetSkillScoreNum(stCastUnitObj, *pstScoreConfig);
 
-    //¼ÆËã¹¥·½µ½ÊØ·½µÄ¾àÀë
+    //è®¡ç®—æ”»æ–¹åˆ°å®ˆæ–¹çš„è·ç¦»
     int iRangeIndex = iDistance;
     if(iRangeIndex >= MAX_SKILL_RANGE_INFO_NUM)
     {
-        //¾àÀëMAX_SKILL_RANGE_INFO_NUMÌØÊâº¬Òå£¬Õâ±ß×î´óµ½MAX_SKILL_RANGE_INFO_NUM-1
+        //è·ç¦»MAX_SKILL_RANGE_INFO_NUMç‰¹æ®Šå«ä¹‰ï¼Œè¿™è¾¹æœ€å¤§åˆ°MAX_SKILL_RANGE_INFO_NUM-1
         iRangeIndex = MAX_SKILL_RANGE_INFO_NUM-1;
     }
 
-    //¾àÀë×ª»»³ÉÏÂ±êĞèÒª¼õ1
+    //è·ç¦»è½¬æ¢æˆä¸‹æ ‡éœ€è¦å‡1
     iRangeIndex = iRangeIndex - 1;
 
-    //¼ÆËãÕĞÊ½ÃüÖĞ
+    //è®¡ç®—æ‹›å¼å‘½ä¸­
 
     return iBaseHit*pstRangeConfig->aiRangeInfo[iRangeIndex]/10000;
 }
 
-//¼ÆËãÕĞÊ½ÉÁ±Ü
+//è®¡ç®—æ‹›å¼é—ªé¿
 int CCombatUtility::GetSkillDodge(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig)
 {
-    //¶ÁÈ¡¼¼ÄÜµÄÃüÖĞScore±í
+    //è¯»å–æŠ€èƒ½çš„å‘½ä¸­Scoreè¡¨
     const SSkillScoreConfig* pstScoreConfig = SkillScoreCfgMgr().GetConfig(stSkillConfig.iDodgeModifierID);
     if(!pstScoreConfig)
     {
@@ -111,16 +111,16 @@ int CCombatUtility::GetSkillDodge(CCombatUnitObj& stCastUnitObj, CCombatUnitObj&
         return 0;
     }
 
-    //¼ÆËã»ù±¾ÉÁ±Ü
+    //è®¡ç®—åŸºæœ¬é—ªé¿
     int iBaseDodge = CCombatUtility::GetSkillScoreNum(stTargetUnitObj, *pstScoreConfig);
 
     return (iBaseDodge);
 }
 
-//¼ÆËã¹¥»÷Ç¿¶È
+//è®¡ç®—æ”»å‡»å¼ºåº¦
 int CCombatUtility::GetAttackStrength(CCombatUnitObj& stCastUnitObj, const SFightUnitSkillConfig& stSkillConfig)
 {
-    //ÉËº¦ÅäÖÃ±í
+    //ä¼¤å®³é…ç½®è¡¨
     const SSkillDamageConfig* pstDamageConfig = SkillDamageCfgMgr().GetConfig(stSkillConfig.iDamageID);
     if(!pstDamageConfig)
     {
@@ -129,7 +129,7 @@ int CCombatUtility::GetAttackStrength(CCombatUnitObj& stCastUnitObj, const SFigh
         return 0;
     }
 
-    //Score±í
+    //Scoreè¡¨
     const SSkillScoreConfig* pstScoreConfig = SkillScoreCfgMgr().GetConfig(pstDamageConfig->iAttack);
     if(!pstScoreConfig)
     {
@@ -138,15 +138,15 @@ int CCombatUtility::GetAttackStrength(CCombatUnitObj& stCastUnitObj, const SFigh
         return 0;
     }
     
-    //¹¥»÷Ç¿¶È
+    //æ”»å‡»å¼ºåº¦
 
     return CCombatUtility::GetSkillScoreNum(stCastUnitObj, *pstScoreConfig);
 }
 
-//¼ÆËã·ÀÓùÇ¿¶È
+//è®¡ç®—é˜²å¾¡å¼ºåº¦
 int CCombatUtility::GetDefenceStrength(CCombatUnitObj& stCastUnitObj, CCombatUnitObj& stTargetUnitObj, const SFightUnitSkillConfig& stSkillConfig)
 {
-    //ÉËº¦ÅäÖÃ±í
+    //ä¼¤å®³é…ç½®è¡¨
     const SSkillDamageConfig* pstDamageConfig = SkillDamageCfgMgr().GetConfig(stSkillConfig.iDamageID);
     if(!pstDamageConfig)
     {
@@ -155,7 +155,7 @@ int CCombatUtility::GetDefenceStrength(CCombatUnitObj& stCastUnitObj, CCombatUni
         return 0;
     }
 
-    //Score±í
+    //Scoreè¡¨
     const SSkillScoreConfig* pstScoreConfig = SkillScoreCfgMgr().GetConfig(pstDamageConfig->iDefence);
     if(!pstScoreConfig)
     {
@@ -164,20 +164,20 @@ int CCombatUtility::GetDefenceStrength(CCombatUnitObj& stCastUnitObj, CCombatUni
         return 0;
     }
 
-    //·ÀÓùÇ¿¶È
+    //é˜²å¾¡å¼ºåº¦
     int iDefenceStrength = CCombatUtility::GetSkillScoreNum(stTargetUnitObj, *pstScoreConfig);
 
     return (iDefenceStrength);
 }
 
-//»ñÈ¡µĞ¶Ôµ¥Î»µÄ¹¥»÷¾àÀë£¬Îª0±íÊ¾²»ÄÜ¹¥»÷
+//è·å–æ•Œå¯¹å•ä½çš„æ”»å‡»è·ç¦»ï¼Œä¸º0è¡¨ç¤ºä¸èƒ½æ”»å‡»
 int CCombatUtility::GetAttackDistance( const TUNITPOSITION& stCastPos, const TUNITPOSITION& stTargetPos, int iTargetRangeID)
 {
-    //ÏÈ¼ÆËã¹¥ÊØ·½µÄX,Y¾àÀë
+    //å…ˆè®¡ç®—æ”»å®ˆæ–¹çš„X,Yè·ç¦»
     int iDeltaX = stTargetPos.iPosX - stCastPos.iPosX;
     int iDeltaY = stTargetPos.iPosY - stCastPos.iPosY;
 
-    //»ñÈ¡RangeÅäÖÃ
+    //è·å–Rangeé…ç½®
     const SSkillRangeConfig* pstRangeConfig = SkillRangeCfgMgr().GetConfig(iTargetRangeID);
     if(!pstRangeConfig)
     {
@@ -185,18 +185,18 @@ int CCombatUtility::GetAttackDistance( const TUNITPOSITION& stCastPos, const TUN
         return 0;
     }
 
-    //±éÀúRangeÅäÖÃ
+    //éå†Rangeé…ç½®
     for(int i=0; i<pstRangeConfig->iRangeNum; ++i)
     {
         if(pstRangeConfig->aiRangeInfo[i] == 0)
         {
-            //¸ÃÎ»ÖÃµÄÄ¿±ê´ò²»µ½
+            //è¯¥ä½ç½®çš„ç›®æ ‡æ‰“ä¸åˆ°
             continue;
         }
 
         int iAreaID = i+1+pstRangeConfig->iRangeAreaParam;
 
-        //¶ÁÈ¡Area±íÅäÖÃ
+        //è¯»å–Areaè¡¨é…ç½®
         const SSkillAreaConfig* pstAreaConfig = SkillAreaCfgMgr().GetConfig(iAreaID);
         if(!pstAreaConfig)
         {
@@ -204,7 +204,7 @@ int CCombatUtility::GetAttackDistance( const TUNITPOSITION& stCastPos, const TUN
             return 0;
         }
 
-        //±éÀúAreaÖĞµÄ×ø±êÎ»ÖÃ
+        //éå†Areaä¸­çš„åæ ‡ä½ç½®
         for(int j=0; j<pstAreaConfig->iAreaPosNum; ++j)
         {
             if(pstAreaConfig->astTargetPosInfo[j].iPosX==iDeltaX
@@ -218,28 +218,28 @@ int CCombatUtility::GetAttackDistance( const TUNITPOSITION& stCastPos, const TUN
     return 0;
 }
 
-//¸ù¾İScore±í¼ÆËãĞŞÕıÖµ
+//æ ¹æ®Scoreè¡¨è®¡ç®—ä¿®æ­£å€¼
 int CCombatUtility::GetSkillScoreNum(CCombatUnitObj& stCombatUnitObj, const SSkillScoreConfig& stScoreConfig)
 {
-    //¼ÆËã»ù±¾Score
+    //è®¡ç®—åŸºæœ¬Score
     int iBaseScore = stScoreConfig.iScoreBaseNum;
     for(int i=0; i<FIGHT_ATTR_MAX; ++i)
     {
-        //³ËµÄ²ÎÊıÊÇ°Ù·Ö±È£¬ÏÂÃæĞèÒª³ı100
+        //ä¹˜çš„å‚æ•°æ˜¯ç™¾åˆ†æ¯”ï¼Œä¸‹é¢éœ€è¦é™¤100
         iBaseScore += stScoreConfig.aiAttribute[i] * stCombatUnitObj.GetFightAttr(i);
     }
 
-    //iScoreParamÊÇ°Ù·Ö±È£¬ĞèÒª³ı100
+    //iScoreParamæ˜¯ç™¾åˆ†æ¯”ï¼Œéœ€è¦é™¤100
     return iBaseScore*stScoreConfig.iScoreParam/(100*100);
 }
 
-//¸üĞÂÕ½¶·µ¥Î»µÄ·½Ïò
+//æ›´æ–°æˆ˜æ–—å•ä½çš„æ–¹å‘
 void CCombatUtility::UpdateUnitDirection(CCombatUnitObj& stCastUnitObj, const TUNITPOSITION& stTargetPos)
 {
     if(stCastUnitObj.GetUnitPosition().iPosX==stTargetPos.iPosX
        && stCastUnitObj.GetUnitPosition().iPosY==stTargetPos.iPosY)
     {
-        //Èç¹ûÄ¿±êÊÇ×ÔÉí£¬²»×ªÏò
+        //å¦‚æœç›®æ ‡æ˜¯è‡ªèº«ï¼Œä¸è½¬å‘
         return;
     }
 
@@ -252,7 +252,7 @@ void CCombatUtility::UpdateUnitDirection(CCombatUnitObj& stCastUnitObj, const TU
     return;
 }
 
-//»ñÈ¡Õ½¶·µ¥Î»¹¥»÷µÄ·½Ïò, <0 ±íÊ¾³ö´í
+//è·å–æˆ˜æ–—å•ä½æ”»å‡»çš„æ–¹å‘, <0 è¡¨ç¤ºå‡ºé”™
 int CCombatUtility::GetAttackDirection(CCombatUnitObj& stCastUnitObj, const TUNITPOSITION& stTargetPos)
 {
     const TUNITPOSITION& stCastPos = stCastUnitObj.GetUnitPosition();
@@ -284,7 +284,7 @@ int CCombatUtility::GetAttackDirection(CCombatUnitObj& stCastUnitObj, const TUNI
     return -1;
 }
 
-//ĞŞÕı¼¼ÄÜÉËº¦·¶Î§µÄ×ø±ê
+//ä¿®æ­£æŠ€èƒ½ä¼¤å®³èŒƒå›´çš„åæ ‡
 void CCombatUtility::FixSkillAreaPos(int iCastDirection, const SFightPosInfo& stTargetPos, TUNITPOSITION& stFixedPos)
 {
     switch(iCastDirection)
@@ -328,12 +328,12 @@ void CCombatUtility::FixSkillAreaPos(int iCastDirection, const SFightPosInfo& st
     return;
 }
 
-//´¦ÀíÕ½¶·µ¥Î»µÄÌØÊâÎ»ÒÆ
+//å¤„ç†æˆ˜æ–—å•ä½çš„ç‰¹æ®Šä½ç§»
 int CCombatUtility::ProcessUnitMove(CBattlefieldObj& stBattlefieldObj, CCombatUnitObj& stUnitObj, UnitPosition& stPosNotify, int iAreaID, int iDirection, bool bStop)
 {
     if(stUnitObj.GetUnitSize() != 0)
     {
-        //´óÌå»ıµ¥Î»²»Ö§³ÖÌØÊâÎ»ÒÆ
+        //å¤§ä½“ç§¯å•ä½ä¸æ”¯æŒç‰¹æ®Šä½ç§»
         return 0;
     }
 
@@ -349,16 +349,16 @@ int CCombatUtility::ProcessUnitMove(CBattlefieldObj& stBattlefieldObj, CCombatUn
     TUNITPOSITION stCanMovePos;
     for(int i=0; i<pstAreaConfig->iAreaPosNum; ++i)
     {
-        //¸ù¾İ·½ÏòĞŞÕıÅäÖÃµÄ×ø±ê
+        //æ ¹æ®æ–¹å‘ä¿®æ­£é…ç½®çš„åæ ‡
         CCombatUtility::FixSkillAreaPos(iDirection,pstAreaConfig->astTargetPosInfo[i], stTmpPos);
 
         stTmpPos.iPosX += stUnitObj.GetUnitPosition().iPosX;
         stTmpPos.iPosY += stUnitObj.GetUnitPosition().iPosY;
 
-        //¸ÃÎ»ÖÃ²»ÄÜĞĞ×ß²¢ÇÒĞèÒªÍ£ÏÂÀ´
+        //è¯¥ä½ç½®ä¸èƒ½è¡Œèµ°å¹¶ä¸”éœ€è¦åœä¸‹æ¥
         if(!stBattlefieldObj.IsPosCanWalk(stTmpPos,-1) && bStop)
         {
-            //²»¼ì²éºóĞøÎ»ÖÃ
+            //ä¸æ£€æŸ¥åç»­ä½ç½®
             break;
         }
 
@@ -380,23 +380,23 @@ int CCombatUtility::ProcessUnitMove(CBattlefieldObj& stBattlefieldObj, CCombatUn
     }
     else
     {
-        //ÒÆ¶¯µ½µ±Ç°Î»ÖÃ
+        //ç§»åŠ¨åˆ°å½“å‰ä½ç½®
         stPosNotify.set_iposx(stUnitObj.GetUnitPosition().iPosX);
         stPosNotify.set_iposy(stUnitObj.GetUnitPosition().iPosY);
     }
 
-    //µ±Ç°Î»ÖÃÈç¹ûÊÇÌØÊâ×èµ²£¬ÔòÉ±ËÀµ¥Î»
+    //å½“å‰ä½ç½®å¦‚æœæ˜¯ç‰¹æ®Šé˜»æŒ¡ï¼Œåˆ™æ€æ­»å•ä½
     if(stBattlefieldObj.IsPosCanWalk(stUnitObj.GetUnitPosition(), stUnitObj.GetCombatUnitID()) 
        && !stBattlefieldObj.IsPosCanWalk(stUnitObj.GetUnitPosition(), stUnitObj.GetCombatUnitID()))
     {
-        //ÌØÊâ×èµ²Î»ÖÃ,É±ËÀµ¥Î»
+        //ç‰¹æ®Šé˜»æŒ¡ä½ç½®,æ€æ­»å•ä½
         stBattlefieldObj.KillCombatUnit(stUnitObj.GetCombatUnitID(), false);
     }
 
     return T_SERVER_SUCESS;
 }
 
-//Íæ¼Òµ±Ç°ÊÇ·ñ¿ÉÒÔ½øĞĞPVPÕ½¶·
+//ç©å®¶å½“å‰æ˜¯å¦å¯ä»¥è¿›è¡ŒPVPæˆ˜æ–—
 bool CCombatUtility::CanDoPVPCombat(unsigned int uin)
 {
     CGameRoleObj* pstRoleObj = CUnitUtility::GetRoleByUin(uin);
@@ -405,7 +405,7 @@ bool CCombatUtility::CanDoPVPCombat(unsigned int uin)
         return false;
     }
 
-    //Íæ¼Òµ±Ç°ÊÇ·ñÔÚÕ½¶·ÖĞ
+    //ç©å®¶å½“å‰æ˜¯å¦åœ¨æˆ˜æ–—ä¸­
     if(pstRoleObj->GetBattlefieObjID() >= 0)
     {
         return false;
@@ -414,8 +414,8 @@ bool CCombatUtility::CanDoPVPCombat(unsigned int uin)
     return true;
 }
 
-//todo jasonxiong5 ºóÃæĞèÒªĞŞ¸ÄÎªÎïÆ·
-//¸ù¾İÎäÆ÷ÉúĞ§×´Ì¬´¦ÀíÎäÆ÷Ğ§¹û£¬bIsAram±íÊ¾ÊÇ·ñÉúĞ§ÎäÆ÷
+//todo jasonxiong5 åé¢éœ€è¦ä¿®æ”¹ä¸ºç‰©å“
+//æ ¹æ®æ­¦å™¨ç”Ÿæ•ˆçŠ¶æ€å¤„ç†æ­¦å™¨æ•ˆæœï¼ŒbIsAramè¡¨ç¤ºæ˜¯å¦ç”Ÿæ•ˆæ­¦å™¨
 void CCombatUtility::ProcessWeaponEffect(CCombatUnitObj& stUnitObj, bool bIsAram)
 {
     CGameRoleObj* pstRoleObj = CUnitUtility::GetRoleByUin(stUnitObj.GetUin());
@@ -424,7 +424,7 @@ void CCombatUtility::ProcessWeaponEffect(CCombatUnitObj& stUnitObj, bool bIsAram
         return;
     }
 
-    //»ñÈ¡Õ½¶·µ¥Î»ĞÅÏ¢
+    //è·å–æˆ˜æ–—å•ä½ä¿¡æ¯
     CFightUnitObj* pstFightUnitObj = pstRoleObj->GetFightUnitManager().GetFightUnitByID(stUnitObj.GetConfigID());
     if(!pstFightUnitObj)
     {
@@ -432,21 +432,21 @@ void CCombatUtility::ProcessWeaponEffect(CCombatUnitObj& stUnitObj, bool bIsAram
     }
 
     /*
-    //»ñÈ¡ÎäÆ÷ĞÅÏ¢
+    //è·å–æ­¦å™¨ä¿¡æ¯
     const SEquipmentConfig* pstEquipConfig = EquipmentCfgMgr().GetConfig(pstFightUnitObj->GetItemInfo(0).iItemID);
     if(!pstEquipConfig)
     {
         return;
     }
 
-    //»ñÈ¡Õ½³¡
+    //è·å–æˆ˜åœº
     CBattlefieldObj* pstBattlefiledObj = CCombatUtility::GetBattlefiledObj(*pstRoleObj);
     if(!pstBattlefiledObj)
     {
         return;
     }
 
-    //´¦ÀíÎäÆ÷Ğ§¹û
+    //å¤„ç†æ­¦å™¨æ•ˆæœ
     if(bIsAram)
     {
         for(int i=0; i<FIGHT_ATTR_MAX; ++i)
@@ -466,7 +466,7 @@ void CCombatUtility::ProcessWeaponEffect(CCombatUnitObj& stUnitObj, bool bIsAram
     return;
 }
 
-//»ñÈ¡×ø±ê·¶Î§ÄÚÄ³ÕóÓªµÄµ¥Î»
+//è·å–åæ ‡èŒƒå›´å†…æŸé˜µè¥çš„å•ä½
 int CCombatUtility::GetAreaTargetUnits(unsigned uin, const TUNITPOSITION& stPos, int iAreaID, int iCamp, int iDirection, std::vector<int>& vUnits)
 {
     vUnits.clear();
@@ -485,7 +485,7 @@ int CCombatUtility::GetAreaTargetUnits(unsigned uin, const TUNITPOSITION& stPos,
         return -2;
     }
 
-    //¶ÁÈ¡Area±í
+    //è¯»å–Areaè¡¨
     const SSkillAreaConfig* pstAreaConfig = SkillAreaCfgMgr().GetConfig(iAreaID);
     if(!pstAreaConfig)
     {
@@ -493,16 +493,16 @@ int CCombatUtility::GetAreaTargetUnits(unsigned uin, const TUNITPOSITION& stPos,
         return -3;
     }
 
-    //±éÀúAreaÖĞµÄËùÓĞÎ»ÖÃ
+    //éå†Areaä¸­çš„æ‰€æœ‰ä½ç½®
     TUNITPOSITION stTmpPos;
     for(int j=0; j<pstAreaConfig->iAreaPosNum; ++j)
     {
-        //¸ù¾İ·½ÏòĞŞÕıÅäÖÃµÄ×ø±ê
+        //æ ¹æ®æ–¹å‘ä¿®æ­£é…ç½®çš„åæ ‡
         CCombatUtility::FixSkillAreaPos(iDirection, pstAreaConfig->astTargetPosInfo[j], stTmpPos);
         stTmpPos.iPosX += stPos.iPosX;
         stTmpPos.iPosY += stPos.iPosY;
 
-        //»ñÈ¡Õ½¶·µ¥Î»
+        //è·å–æˆ˜æ–—å•ä½
         CCombatUnitObj* pstUnitObj = pstBattlefieldObj->GetCombatUnitByPos(stTmpPos);
         if(pstUnitObj && pstBattlefieldObj->GetCombatUnitCamp(pstUnitObj->GetCombatUnitID())==iCamp)
         {
@@ -513,3 +513,7 @@ int CCombatUtility::GetAreaTargetUnits(unsigned uin, const TUNITPOSITION& stPos,
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "ZoneObjectHelper.hpp"
 #include "GameRole.hpp"
@@ -23,7 +23,7 @@ int CGameUnitID::Initialize()
 
 int CGameUnitID::Resume()
 {
-    // 0 ÊÇÎÞÐ§µÄUnitID
+    // 0 æ˜¯æ— æ•ˆçš„UnitID
     if (GetObjectID() == 0)
     {
         return 0;
@@ -34,29 +34,29 @@ int CGameUnitID::Resume()
     return 0;
 }
 
-// °ó¶¨¶ÔÏóIdx
+// ç»‘å®šå¯¹è±¡Idx
 void CGameUnitID::BindObject(int iObjectIdx, unsigned char ucObjectType)
 {
     m_iBindObjectIdx = iObjectIdx;
     m_ucBindObjectType = ucObjectType;
 
-    // ÉèÖÃ¶ÔÏóÊôÐÔ
+    // è®¾ç½®å¯¹è±¡å±žæ€§
     BindUnitInfo();
 }
 
-// »ñÈ¡°ó¶¨¶ÔÏóµÄÊôÐÔ
+// èŽ·å–ç»‘å®šå¯¹è±¡çš„å±žæ€§
 TUNITINFO* CGameUnitID::GetBindUnitInfo()
 {
     return m_pstUnitInfo;
 }
 
-// »ñÈ¡°ó¶¨¶ÔÏóµÄIdx
+// èŽ·å–ç»‘å®šå¯¹è±¡çš„Idx
 int CGameUnitID::GetBindObjectIdx()
 {
     return m_iBindObjectIdx;
 }
 
-// »ñÈ¡°ó¶¨¶ÔÏóµÄÀàÐÍ
+// èŽ·å–ç»‘å®šå¯¹è±¡çš„ç±»åž‹
 int CGameUnitID::GetBindObjectType()
 {
     return m_ucBindObjectType;
@@ -88,13 +88,13 @@ void CGameUnitID::BindUnitInfo()
 		m_pstUnitInfo->iUnitID, m_iBindObjectIdx, m_pstUnitInfo->ucUnitType);
 }
 
-// ÉèÖÃºÍ»ñÈ¡Í¬Ò»³¡¾°ÄÚµÄµ¥Î»Á´±í
+// è®¾ç½®å’ŒèŽ·å–åŒä¸€åœºæ™¯å†…çš„å•ä½é“¾è¡¨
 TObjIdxListNode& CGameUnitID::GetListNode()
 {
     return m_stListNode;
 }
 
-// ÉèÖÃºÍ»ñÈ¡Í¬Ò»³¡¾°ÄÚÏàÍ¬ÀàÐÍµ¥Î»µÄÁ´±í
+// è®¾ç½®å’ŒèŽ·å–åŒä¸€åœºæ™¯å†…ç›¸åŒç±»åž‹å•ä½çš„é“¾è¡¨
 TObjIdxListNode& CGameUnitID::GetListNode2()
 {
     return m_stListNode2;
@@ -121,3 +121,7 @@ TObjIdxListNode* GetGameUnitIDListNode2(int iIdx)
 
     return &(pGameUnitID->GetListNode2());
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

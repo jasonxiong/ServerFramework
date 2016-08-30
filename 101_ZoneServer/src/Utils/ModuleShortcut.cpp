@@ -1,99 +1,103 @@
-#include "GameProtocol.hpp"
+ï»¿#include "GameProtocol.hpp"
 #include "ModuleShortcut.hpp"
 #include "ModuleHelper.hpp"
 
-//»ñÈ¡Õ½¶·µ¥Î»µÄÅäÖÃ
+//èŽ·å–æˆ˜æ–—å•ä½çš„é…ç½®
 CSFightUnitConfigManager& FightUnitCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetFightUnitConfigManager();
 }
 
-//»ñÈ¡Õ½¶·¹Ø¿¨ÅäÖÃ
+//èŽ·å–æˆ˜æ–—å…³å¡é…ç½®
 CSBattleCrossConfigManager& BattleCrossCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetBattleCrossConfigManager();
 }
 
-//»ñÈ¡¹Ø¿¨¹ÖÎï×éÅäÖÃ
+//èŽ·å–å…³å¡æ€ªç‰©ç»„é…ç½®
 CSCrossMonsterConfigManager& CrossMonterCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetCrossMonsterConfigManager();
 }
 
-//»ñÈ¡Õ½¶·µ¥Î»AIµÄÅäÖÃ
+//èŽ·å–æˆ˜æ–—å•ä½AIçš„é…ç½®
 CSFightUnitAIConfigManager& FightUnitAICfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetFightUnitAIConfigManager();
 }
 
-//»ñÈ¡Õ½¶·¹ÖÎïµÄÅäÖÃ
+//èŽ·å–æˆ˜æ–—æ€ªç‰©çš„é…ç½®
 CSMonsterConfigManager& MonsterCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetMonsterConfigManager();
 }
 
-//»ñÈ¡Õ½³¡×èµ²µÄÅäÖÃ
+//èŽ·å–æˆ˜åœºé˜»æŒ¡çš„é…ç½®
 CBattlefieldPathConfigManager& BattlefieldPathCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetBattlefieldPathConfigManager();
 }
 
-//»ñÈ¡Õ½¶·¼¼ÄÜµÄÅäÖÃ
+//èŽ·å–æˆ˜æ–—æŠ€èƒ½çš„é…ç½®
 CFightSkillConfigManager& FightSkillCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetFightSkillConfigManager();
 }
 
-//»ñÈ¡¼¼ÄÜÊÍ·Å¾àÀëÅäÖÃ
+//èŽ·å–æŠ€èƒ½é‡Šæ”¾è·ç¦»é…ç½®
 CSkillRangeConfigManager& SkillRangeCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetSkillRangeConfigManager();
 }
 
-//»ñÈ¡¼¼ÄÜÊÍ·Å·¶Î§ÅäÖÃ
+//èŽ·å–æŠ€èƒ½é‡Šæ”¾èŒƒå›´é…ç½®
 CSkillAreaConfigManager& SkillAreaCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetSkillAreaConfigManager();
 }
 
-//»ñÈ¡¼¼ÄÜÐÞÕýÅäÖÃ
+//èŽ·å–æŠ€èƒ½ä¿®æ­£é…ç½®
 CSkillScoreConfigManager& SkillScoreCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetSkillScoreConfigManager();
 }
 
-//»ñÈ¡¼¼ÄÜÉËº¦ÅäÖÃ
+//èŽ·å–æŠ€èƒ½ä¼¤å®³é…ç½®
 CSkillDamageConfigManager& SkillDamageCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetSkillDamageConfigManager();
 }
 
-//»ñÈ¡Õ½¶·BuffÅäÖÃ
+//èŽ·å–æˆ˜æ–—Buffé…ç½®
 CSFightBuffConfigManager& FightBuffCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetFightBuffConfigManager();
 }
 
-//»ñÈ¡Ëæ»úµôÂäµÄÅäÖÃ
+//èŽ·å–éšæœºæŽ‰è½çš„é…ç½®
 CSDropRewardConfigManager& DropRewardCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetDropRewardConfigManager();
 }
 
-//¼¼ÄÜ»ï°éºÏ»÷µÄÅäÖÃ
+//æŠ€èƒ½ä¼™ä¼´åˆå‡»çš„é…ç½®
 CSJointAtkConfigManager& JointAtkCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetJointAtkConfigManager();
 }
 
-//Õ½³¡»ú¹ØµÄÅäÖÃ
+//æˆ˜åœºæœºå…³çš„é…ç½®
 CSTrapConfigManager& TrapCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetTrapConfigManager();
 }
 
-//ÓÎÏ·ÎïÆ·µÄÅäÖÃ
+//æ¸¸æˆç‰©å“çš„é…ç½®
 CSGameItemConfigManager& ItemCfgMgr()
 {
     return CModuleHelper::GetConfigManager()->GetGameItemConfigManager();
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

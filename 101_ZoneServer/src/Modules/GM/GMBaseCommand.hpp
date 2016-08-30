@@ -1,7 +1,7 @@
-#ifndef __GM_BASE_COMMAND_HPP__
+ï»¿#ifndef __GM_BASE_COMMAND_HPP__
 #define __GM_BASE_COMMAND_HPP__
 
-//ËùÓĞGMÃüÁî¹¦ÄÜ´¦ÀíµÄ»ùÀà
+//æ‰€æœ‰GMå‘½ä»¤åŠŸèƒ½å¤„ç†çš„åŸºç±»
 #include <vector>
 #include <string>
 
@@ -9,12 +9,12 @@
 
 enum GMCommandType
 {
-    GM_COMMAND_TYPE_INVALID         = 0,        //·Ç·¨µÄGM command ÀàĞÍ
-    GM_COMMAND_ADD_REPITEM          = 1,        //±³°üÔö¼ÓÎïÆ·
-    GM_COMMAND_ADD_FIGHTUNIT        = 2,        //Ôö¼ÓÍæ¼ÒµÄÕ½¶·µ¥Î»
-    GM_COMMAND_ADD_UNITATTR         = 5,        //Ôö¼ÓÕ½¶·µ¥Î»µÄÊôĞÔ
-    GM_COMMAND_ADD_COMBATUNIT       = 13,       //Ôö¼ÓÕ½³¡ÉÏµÄÕ½¶·µ¥Î»
-    GM_COMMAND_ADD_SKILL            = 14,       //Ôö¼ÓÖ¸¶¨ÕĞÊ½
+    GM_COMMAND_TYPE_INVALID         = 0,        //éæ³•çš„GM command ç±»å‹
+    GM_COMMAND_ADD_REPITEM          = 1,        //èƒŒåŒ…å¢åŠ ç‰©å“
+    GM_COMMAND_ADD_FIGHTUNIT        = 2,        //å¢åŠ ç©å®¶çš„æˆ˜æ–—å•ä½
+    GM_COMMAND_ADD_UNITATTR         = 5,        //å¢åŠ æˆ˜æ–—å•ä½çš„å±æ€§
+    GM_COMMAND_ADD_COMBATUNIT       = 13,       //å¢åŠ æˆ˜åœºä¸Šçš„æˆ˜æ–—å•ä½
+    GM_COMMAND_ADD_SKILL            = 14,       //å¢åŠ æŒ‡å®šæ‹›å¼
 };
 
 class CGameRoleObj;
@@ -24,12 +24,12 @@ class IGMBaseCommand
 public:
     virtual ~IGMBaseCommand();
 
-    //Ö´ĞĞÏàÓ¦GMÃüÁîµÄ¹¦ÄÜ
+    //æ‰§è¡Œç›¸åº”GMå‘½ä»¤çš„åŠŸèƒ½
     virtual int Run(CGameRoleObj* pRoleObj, int iCommandType, std::vector<std::string>& vParams) = 0;
 
 protected:
 
-    //½øĞĞ²ÎÊı¼ì²é
+    //è¿›è¡Œå‚æ•°æ£€æŸ¥
     virtual int SecurityCheck(int iCommandType, std::vector<std::string>& vParams) = 0;
 
 protected:
@@ -37,3 +37,7 @@ protected:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

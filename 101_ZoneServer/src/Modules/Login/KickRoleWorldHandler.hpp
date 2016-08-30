@@ -1,4 +1,4 @@
-// ´¦ÀíÌßÈËÊÂ¼ş
+ï»¿// å¤„ç†è¸¢äººäº‹ä»¶
 
 #ifndef __KICKROLE_WORLD_HANDLER_HPP__
 #define __KICKROLE_WORLD_HANDLER_HPP__
@@ -19,25 +19,29 @@ public:
     virtual int OnClientMsg();
 
 public:
-    // ·µ»Ø³É¹¦»Ø¸´
+    // è¿”å›æˆåŠŸå›å¤
     static int SendSuccessfullResponse(const World_KickRole_Request& rstResp);
 
-    // ·µ»ØÊ§°Ü»Ø¸´
+    // è¿”å›å¤±è´¥å›å¤
     static int SendFailedResponse(const World_KickRole_Request& rstResp);
 
 private:
-    // ´¦ÀíÀ´×ÔWorldµÄÏÂÏßÍ¨Öª, ±»ÌßÏÂÏß
+    // å¤„ç†æ¥è‡ªWorldçš„ä¸‹çº¿é€šçŸ¥, è¢«è¸¢ä¸‹çº¿
     int OnRequestKickRole();
 
-    // ´¦ÀíÀ´×ÔWorldµÄÏÂÏß»Ø¸´, ÌßÈËÏÂÏß
+    // å¤„ç†æ¥è‡ªWorldçš„ä¸‹çº¿å›å¤, è¸¢äººä¸‹çº¿
     int OnResponseKickRole();
 
-	//´¦ÀíÀ´×Ô·âºÅµÄÌßÈËÏÂÏß
+	//å¤„ç†æ¥è‡ªå°å·çš„è¸¢äººä¸‹çº¿
 	int OnForbidKickRole();
 
 private:
-    // ´ÓWorldÏÂÀ­Íæ¼ÒÊı¾İ
+    // ä»Worldä¸‹æ‹‰ç©å®¶æ•°æ®
     int FetchRoleFromWorldServer(const RoleID& stRoleID, char cEnterType);    
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

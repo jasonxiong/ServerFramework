@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "ZoneErrorNumDef.hpp"
 #include "GameRole.hpp"
@@ -9,13 +9,13 @@
 
 #include "FightUnitUtility.hpp"
 
-//»ñÈ¡Õ½¶·µ¥Î»ÊôĞÔ
+//è·å–æˆ˜æ–—å•ä½å±æ€§
 int CFightUnitUtility::GetFightUnitAttr(CGameRoleObj& rstRoleObj, int iFightUnitID, int iAttrType)
 {
-    //»ñÈ¡Õ½¶·µ¥Î»¹ÜÀíÆ÷
+    //è·å–æˆ˜æ–—å•ä½ç®¡ç†å™¨
     CFightUnitManager& stUnitManager = rstRoleObj.GetFightUnitManager();
 
-    //»ñÈ¡Õ½¶·µ¥Î»
+    //è·å–æˆ˜æ–—å•ä½
     CFightUnitObj* pstUnitObj = stUnitManager.GetFightUnitByID(iFightUnitID);
     if(!pstUnitObj)
     {
@@ -25,13 +25,13 @@ int CFightUnitUtility::GetFightUnitAttr(CGameRoleObj& rstRoleObj, int iFightUnit
     return pstUnitObj->GetFightUnitAttr(iAttrType);
 }
 
-//Ôö¼ÓÕ½¶·µ¥Î»ÊôĞÔ
+//å¢åŠ æˆ˜æ–—å•ä½å±æ€§
 int CFightUnitUtility::AddFightUnitAttr(CGameRoleObj& rstRoleObj, int iFightUnitID, int iAttrType, int iAddAttrNum)
 {
-    //»ñÈ¡Õ½¶·µ¥Î»¹ÜÀíÆ÷
+    //è·å–æˆ˜æ–—å•ä½ç®¡ç†å™¨
     CFightUnitManager& stUnitManager = rstRoleObj.GetFightUnitManager();
 
-    //»ñÈ¡Õ½¶·µ¥Î»
+    //è·å–æˆ˜æ–—å•ä½
     CFightUnitObj* pstUnitObj = stUnitManager.GetFightUnitByID(iFightUnitID);
     if(!pstUnitObj)
     {
@@ -41,7 +41,7 @@ int CFightUnitUtility::AddFightUnitAttr(CGameRoleObj& rstRoleObj, int iFightUnit
     return pstUnitObj->AddFightUnitAttr(iAttrType, iAddAttrNum);
 }
 
-//±£´æÕ½¶·µ¥Î»µÄÊôĞÔ
+//ä¿å­˜æˆ˜æ–—å•ä½çš„å±æ€§
 int CFightUnitUtility::SaveCombatUnitAttr(CGameRoleObj& stRoleObj, int iFightUnitID, int iAttrType, int iSaveNum)
 {
     CFightUnitManager& stFightUnitMgr = stRoleObj.GetFightUnitManager();
@@ -51,7 +51,7 @@ int CFightUnitUtility::SaveCombatUnitAttr(CGameRoleObj& stRoleObj, int iFightUni
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //×îÉÙÎª1µã
+    //æœ€å°‘ä¸º1ç‚¹
     iSaveNum = iSaveNum<=0 ? 1 : iSaveNum;
 
     pstUnitObj->AddFightUnitAttr(iAttrType, iSaveNum-pstUnitObj->GetFightUnitAttr(iAttrType));
@@ -59,3 +59,7 @@ int CFightUnitUtility::SaveCombatUnitAttr(CGameRoleObj& stRoleObj, int iFightUni
     return T_SERVER_SUCESS;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

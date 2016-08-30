@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __I_HANDLER_HPP__
 #define __I_HANDLER_HPP__
 
@@ -15,7 +15,7 @@ public:
 	IHandler();
 	virtual ~IHandler();
 
-	// ±£´æÇëÇó²ÎÊı
+	// ä¿å­˜è¯·æ±‚å‚æ•°
 	void SetClientMsg(const GameProtocolMsg* pRequestMsg, const TNetHead_V2* pNetHead, EGameServerID enMsgPeer = GAME_SERVER_LOTUSZONE);
 
 	void SetMsgID(int iMsgID)
@@ -29,15 +29,15 @@ public:
 	}
 
 public:
-    // ÏûÏ¢´¦ÀíÈë¿Ú
+    // æ¶ˆæ¯å¤„ç†å…¥å£
 	virtual int OnClientMsg() = 0;
 
 protected:
-    // ¼ì²é·¢ËÍÕß
+    // æ£€æŸ¥å‘é€è€…
     virtual int SecurityCheck();
 
 protected:
-	// ÏûÏ¢±äÁ¿
+	// æ¶ˆæ¯å˜é‡
 	GameProtocolMsg* m_pRequestMsg;
 	TNetHead_V2* m_pNetHead;
 	CGameSessionObj* m_pSession;
@@ -52,3 +52,7 @@ protected:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

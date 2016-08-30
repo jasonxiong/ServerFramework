@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -23,19 +23,19 @@ CFightUnitManager::~CFightUnitManager()
 
 }
 
-//³õÊ¼»¯ FightUnitManager
+//åˆå§‹åŒ– FightUnitManager
 int CFightUnitManager::Initialize()
 {
     m_uiUin = 0;
 
-    //ËùÓĞÕ½¶·µ¥Î»µÄĞÅÏ¢
+    //æ‰€æœ‰æˆ˜æ–—å•ä½çš„ä¿¡æ¯
     m_iFightUnitNum = 0;
     for(int i=0; i<MAX_ROLE_FIGHTUNIT_NUM; ++i)
     {
         m_aiUnitObjID[i] = -1;
     }
 
-    //ÕóĞÍĞÅÏ¢
+    //é˜µå‹ä¿¡æ¯
     memset(m_aiFightForm, 0, sizeof(m_aiFightForm));
 
     return T_SERVER_SUCESS;
@@ -51,7 +51,7 @@ unsigned int CFightUnitManager::GetOwner()
     return m_uiUin;
 }
 
-//»ñÈ¡Õ½¶·µ¥Î»ĞÅÏ¢
+//è·å–æˆ˜æ–—å•ä½ä¿¡æ¯
 CFightUnitObj* CFightUnitManager::GetFightUnitByID(int iFightUnitID)
 {
     for(int i=0; i<m_iFightUnitNum; ++i)
@@ -66,7 +66,7 @@ CFightUnitObj* CFightUnitManager::GetFightUnitByID(int iFightUnitID)
     return NULL;
 }
 
-//Õ½¶·±³°üÖĞÔö¼ÓÕ½¶·µ¥Î»
+//æˆ˜æ–—èƒŒåŒ…ä¸­å¢åŠ æˆ˜æ–—å•ä½
 int CFightUnitManager::AddFightUnit(int iFightUnitID)
 {
     if(m_iFightUnitNum >= MAX_ROLE_FIGHTUNIT_NUM)
@@ -76,7 +76,7 @@ int CFightUnitManager::AddFightUnit(int iFightUnitID)
         return T_ZONE_SYSTEM_PARA_ERR;
     }
 
-    //ÅĞ¶ÏÏàÍ¬IDµÄÊÇ·ñ´æÔÚ
+    //åˆ¤æ–­ç›¸åŒIDçš„æ˜¯å¦å­˜åœ¨
     CFightUnitObj* pstUnitObj = GetFightUnitByID(iFightUnitID);
     if(pstUnitObj)
     {
@@ -117,7 +117,7 @@ int CFightUnitManager::AddFightUnit(int iFightUnitID)
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡ÕóĞÍÕ½¶·µ¥Î»ĞÅÏ¢
+//è·å–é˜µå‹æˆ˜æ–—å•ä½ä¿¡æ¯
 void CFightUnitManager::GetFormFightUnitInfo(std::vector<int>& vFormUnitInfo)
 {
     for(int i=0; i<MAX_FIGHTUNIT_ON_FORM; ++i)
@@ -137,7 +137,7 @@ int CFightUnitManager::InitFightUnitInfoFromDB(const FIGHTDBINFO& rstFightUnitIn
 {
     const FightUnitRepInfo& stUnitRep = rstFightUnitInfo.stunitrep();
 
-    //³õÊ¼»¯Íæ¼ÒËùÓĞÕ½¶·µ¥Î»µÄĞÅÏ¢
+    //åˆå§‹åŒ–ç©å®¶æ‰€æœ‰æˆ˜æ–—å•ä½çš„ä¿¡æ¯
     for(int i=0; i<stUnitRep.stunits_size(); ++i)
     {
         m_aiUnitObjID[i] = GameType<CFightUnitObj>::Create();
@@ -161,7 +161,7 @@ int CFightUnitManager::InitFightUnitInfoFromDB(const FIGHTDBINFO& rstFightUnitIn
         ++m_iFightUnitNum;
     }
 
-    //³õÊ¼»¯Õ½¶·ÕóĞÍ
+    //åˆå§‹åŒ–æˆ˜æ–—é˜µå‹
     for(int i=0; i<rstFightUnitInfo.stforms().ifightunitids_size(); ++i)
     {
         m_aiFightForm[i] = rstFightUnitInfo.stforms().ifightunitids(i);
@@ -174,7 +174,7 @@ int CFightUnitManager::UpdateFightUnitInfoToDB(FIGHTDBINFO& rstFightUnitInfo)
 {
     FightUnitRepInfo* pstUnitRep = rstFightUnitInfo.mutable_stunitrep();
 
-    //¸üĞÂÍæ¼ÒËùÓĞÕ½¶·µ¥Î»µÄĞÅÏ¢
+    //æ›´æ–°ç©å®¶æ‰€æœ‰æˆ˜æ–—å•ä½çš„ä¿¡æ¯
     for(int i=0; i<m_iFightUnitNum; ++i)
     {
         CFightUnitObj* pstFightUnitObj = GameType<CFightUnitObj>::Get(m_aiUnitObjID[i]);
@@ -187,7 +187,7 @@ int CFightUnitManager::UpdateFightUnitInfoToDB(FIGHTDBINFO& rstFightUnitInfo)
         pstFightUnitObj->UpdateFightUnitToDB(*pstUnitRep->add_stunits());
     }
 
-    //¸üĞÂÍæ¼ÒÕóĞÍĞÅÏ¢
+    //æ›´æ–°ç©å®¶é˜µå‹ä¿¡æ¯
     for(int i=0; i<MAX_FIGHTUNIT_ON_FORM; ++i)
     {
         if(m_aiFightForm[i] == 0)
@@ -201,7 +201,7 @@ int CFightUnitManager::UpdateFightUnitInfoToDB(FIGHTDBINFO& rstFightUnitInfo)
     return T_SERVER_SUCESS;
 }
 
-//Çå¿ÕÄÚ´æÖĞµÄFightUnitObj
+//æ¸…ç©ºå†…å­˜ä¸­çš„FightUnitObj
 void CFightUnitManager::ClearFightUnitObj()
 {
     for(int i=0; i<m_iFightUnitNum; ++i)
@@ -214,3 +214,7 @@ void CFightUnitManager::ClearFightUnitObj()
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

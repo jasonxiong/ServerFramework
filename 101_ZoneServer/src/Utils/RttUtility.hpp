@@ -1,8 +1,8 @@
-
+ï»¿
 #ifndef __RTT_CALCULATOR_HPP__
 #define __RTT_CALCULATOR_HPP__
 
-// Ê¹ÓÃ[Jacobson 1988]Ëã·¨Í³¼ÆÍøÂçRTT
+// ä½¿ç”¨[Jacobson 1988]ç®—æ³•ç»Ÿè®¡ç½‘ç»œRTT
 
 #include "GameConfigDefine.hpp"
 #include "GameProtocol.hpp"
@@ -12,9 +12,9 @@ using namespace ServerLib;
 
 typedef struct tagRoundTripTime
 {
-    double m_srtt;   // Æ½¾ùRTT
-    double m_drtt;   // ·½²îRTT
-    double m_rtt;    // ¼ÆËãºóµÄRTT
+    double m_srtt;   // å¹³å‡RTT
+    double m_drtt;   // æ–¹å·®RTT
+    double m_rtt;    // è®¡ç®—åçš„RTT
 
     int Initialize()
     {
@@ -29,17 +29,21 @@ typedef struct tagRoundTripTime
 class CRttUtility
 {
 public:
-    // ½«32Î»Êı×ª»»Îª64Î»Êı
+    // å°†32ä½æ•°è½¬æ¢ä¸º64ä½æ•°
     static uint64_t Convert32to64(unsigned int high, unsigned int low);
 
-    // »ñÈ¡µ±Ç°µÄºÁÃëÊ±¼ä
+    // è·å–å½“å‰çš„æ¯«ç§’æ—¶é—´
     static uint64_t GetNowMilliSeconds();
 
-    // »ñÈ¡Ê±¼äµÄºÁÃëÖµ
+    // è·å–æ—¶é—´çš„æ¯«ç§’å€¼
     static uint64_t GetMilliSeconds(CTimeValue& rstTimeValue);
 
-    // ¸üĞÂ¿Í»§¶ËRtt
+    // æ›´æ–°å®¢æˆ·ç«¯Rtt
     static int UpdateRTT(const GameCSMsgHead& rstMsgHead);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __ONLINE_STAT_TICK_HPP__
+﻿#ifndef __ONLINE_STAT_TICK_HPP__
 #define __ONLINE_STAT_TICK_HPP__
 
 #include <time.h>
@@ -23,3 +23,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

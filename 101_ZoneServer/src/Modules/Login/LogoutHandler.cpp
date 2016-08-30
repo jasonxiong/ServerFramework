@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "ModuleHelper.hpp"
 #include "GameSession.hpp"
@@ -59,8 +59,8 @@ int CLogoutHandler::OnRequestLogout()
 		return -2;
 	}
 
-	//ÉèÖÃÏÂÏßÔ­Òò
-	//todo jasonxiong ÔİÊ±²»ĞèÒªÉèÖÃÏÂÏßÔ­Òò
+	//è®¾ç½®ä¸‹çº¿åŸå› 
+	//todo jasonxiong æš‚æ—¶ä¸éœ€è¦è®¾ç½®ä¸‹çº¿åŸå› 
 	//m_pRoleObj->SetLogoutRequestReason(m_pRequestMsg->m_stmsgbody().m_stlogoutserver_response();
     iRet = LogoutRole(m_pRoleObj, 0);
 
@@ -83,16 +83,16 @@ int CLogoutHandler::LogoutRole(CGameRoleObj* pRoleObj, int iReason)
     pRoleObj->SetLogoutTime(stNow);
 	pRoleObj->SetLogoutReason(iReason);
 
-    // 1. µÇ³ö×¼±¸, Í£Ö¹½ÇÉ«µÄËùÓĞĞĞÎª, ¸üĞÂ½ÇÉ«µÄÊı¾İ
+    // 1. ç™»å‡ºå‡†å¤‡, åœæ­¢è§’è‰²çš„æ‰€æœ‰è¡Œä¸º, æ›´æ–°è§’è‰²çš„æ•°æ®
     LogoutPrepare(pRoleObj);
 
-	//ÏòWorldÍÆËÍLogout Notify
+	//å‘Worldæ¨é€Logout Notify
 	CZoneMsgHelper::GenerateMsgHead(m_stZoneMsg, MSGID_ZONE_LOGOUT_NOTIFY);
 	Zone_Logout_Notify* pstNotify = m_stZoneMsg.mutable_m_stmsgbody()->mutable_m_stzone_logout_notify();
 	pstNotify->mutable_stroleid()->CopyFrom(pRoleObj->GetRoleID());
 	CZoneMsgHelper::SendZoneMsgToWorld(m_stZoneMsg);
 
-    //Í¬²½Íæ¼Ò½ÇÉ«Êı¾İµ½Êı¾İ¿â
+    //åŒæ­¥ç©å®¶è§’è‰²æ•°æ®åˆ°æ•°æ®åº“
     int iRet = CUpdateRoleInfo_Handler::UpdateRoleInfo(pRoleObj, 1);
     if(iRet)
     {
@@ -103,7 +103,7 @@ int CLogoutHandler::LogoutRole(CGameRoleObj* pRoleObj, int iReason)
     return 0;
 }
 
-// µÇ³ö×¼±¸¹¤×÷, Í£Ö¹Íæ¼ÒµÄËùÓĞĞĞÎª
+// ç™»å‡ºå‡†å¤‡å·¥ä½œ, åœæ­¢ç©å®¶çš„æ‰€æœ‰è¡Œä¸º
 int CLogoutHandler::LogoutPrepare(CGameRoleObj* pRoleObj)
 {
     ASSERT_AND_LOG_RTN_INT(pRoleObj);
@@ -111,12 +111,12 @@ int CLogoutHandler::LogoutPrepare(CGameRoleObj* pRoleObj)
     CGameSessionObj* pSessionObj = pRoleObj->GetSession();
     ASSERT_AND_LOG_RTN_INT(pSessionObj);
 
-    // ¼ÇÂ¼Á÷Ë®
+    // è®°å½•æµæ°´
     CZoneOssLog::TraceLogout(*pRoleObj);
 
     unsigned int uiUin = pRoleObj->GetRoleID().uin();
 
-	//Í£Ö¹Íæ¼ÒÕ½¶·
+	//åœæ­¢ç©å®¶æˆ˜æ–—
 	CCombatFramework::Instance()->FinCombat(*pRoleObj);
 
     LOGDETAIL("LogoutPrepare:  Uin = %u, Sessoion = %d\n", uiUin, pSessionObj->GetID());
@@ -124,7 +124,7 @@ int CLogoutHandler::LogoutPrepare(CGameRoleObj* pRoleObj)
     return 0;
 }
 
-// ÏûÏ¢Í¨ÖªºÍÊı¾İÉ¾³ı
+// æ¶ˆæ¯é€šçŸ¥å’Œæ•°æ®åˆ é™¤
 int CLogoutHandler::LogoutAction(CGameRoleObj* pRoleObj)
 {
     ASSERT_AND_LOG_RTN_INT(pRoleObj);
@@ -132,38 +132,38 @@ int CLogoutHandler::LogoutAction(CGameRoleObj* pRoleObj)
     CGameSessionObj* pSessionObj = pRoleObj->GetSession();
     ASSERT_AND_LOG_RTN_INT(pSessionObj);
 
-    // ·µ»Ø³É¹¦»Ø¸´
+    // è¿”å›æˆåŠŸå›å¤
 	if(pRoleObj->GetKicker().ifromworldid() <= 0)
 	{
-		//Ö»ÓĞÖ÷¶¯µÇ³öÊ±²Å·¢ËÍresp
+		//åªæœ‰ä¸»åŠ¨ç™»å‡ºæ—¶æ‰å‘é€resp
 		SendSuccessfulResponse(pRoleObj);
 	}
 
-	// Í¨ÖªÊÓÒ°ÄÚÍæ¼Ò
+	// é€šçŸ¥è§†é‡å†…ç©å®¶
     NotifyRoleLogout(pRoleObj);
 
-	// ¼¤·¢µÇ³öÊÂ¼ş
+	// æ¿€å‘ç™»å‡ºäº‹ä»¶
     CModuleHelper::GetUnitEventManager()->NotifyUnitLogout(&(pRoleObj->GetRoleInfo().stUnitInfo));
 
-    // ¶Ï¿ª»á»°
+    // æ–­å¼€ä¼šè¯
     CModuleHelper::GetSessionManager()->DeleteSession(pSessionObj->GetID());
 
-	// Í¨ÖªWorld£¬¸Ä±äÍæ¼Ò×´Ì¬
+	// é€šçŸ¥Worldï¼Œæ”¹å˜ç©å®¶çŠ¶æ€
     NotifyLogoutToWorld(pRoleObj->GetRoleID());
 
     unsigned int uiUin = pRoleObj->GetRoleID().uin();
 
-    // Í¨ÖªWorldÌßÈË³É¹¦
+    // é€šçŸ¥Worldè¸¢äººæˆåŠŸ
     World_KickRole_Request& rstKicker = pRoleObj->GetKicker();
     if (rstKicker.ifromworldid() > 0)
     {
 		CKickRoleWorldHandler::SendSuccessfullResponse(rstKicker);
     }
 
-	//É¾³ıÕ½¶·µ¥Î»¶ÔÏó
+	//åˆ é™¤æˆ˜æ–—å•ä½å¯¹è±¡
 	pRoleObj->GetFightUnitManager().ClearFightUnitObj();
 
-    //É¾³ıÍæ¼Ò½ÇÉ«
+    //åˆ é™¤ç©å®¶è§’è‰²
     CUnitUtility::DeleteUnit(&(pRoleObj->GetUnitInfo()));
 
     pRoleObj = NULL;
@@ -196,7 +196,7 @@ int CLogoutHandler::SecurityCheck()
 			return -3;
 		}
 
-		LOGDEBUG("Connect Closed: Uin = %u£¬ Session = %d\n", 
+		LOGDEBUG("Connect Closed: Uin = %uï¼Œ Session = %d\n", 
 			m_pRoleObj->GetRoleID().uin(), iSessionID);
 
 		return 0;
@@ -227,7 +227,7 @@ void CLogoutHandler::NotifyRoleLogout(CGameRoleObj* pstRoleObj)
 	CZoneMsgHelper::GenerateMsgHead(m_stZoneMsg, MSGID_ZONE_LOGOUT_NOTIFY);
 	m_stZoneMsg.mutable_m_stmsgbody()->mutable_m_stzone_logout_notify()->mutable_stroleid()->CopyFrom(pstRoleObj->GetRoleID());
 
-	//·¢ËÍ¸ø×Ô¼º
+	//å‘é€ç»™è‡ªå·±
 	CZoneMsgHelper::SendZoneMsgToRole(m_stZoneMsg, pstRoleObj);
 
 	return;
@@ -257,3 +257,7 @@ int CLogoutHandler::SendSuccessfulResponse(CGameRoleObj* pRoleObj)
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

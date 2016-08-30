@@ -1,4 +1,4 @@
-
+ï»¿
 #include "UnitEventManager.hpp"
 #include "ModuleHelper.hpp"
 #include "GameProtocol.hpp"
@@ -21,7 +21,7 @@ void CUnitEventManager::NotifyUnitLogout(TUNITINFO* pUnit)
 
 void CUnitEventManager::NotifyTick()
 {
-    // ¸ù¾ÝÏµÍ³ÏµÍ³µÄÏÐÃ¦×´Ì¬, ¶¯Ì¬µ÷ÕûÏµÍ³¸ºÔØ
+    // æ ¹æ®ç³»ç»Ÿç³»ç»Ÿçš„é—²å¿™çŠ¶æ€, åŠ¨æ€è°ƒæ•´ç³»ç»Ÿè´Ÿè½½
     EGameServerStatus enServerStatus = GetServerStatus();
 
     int iNumber = (enServerStatus == GAME_SERVER_STATUS_BUSY) ? 2 : 200;
@@ -40,14 +40,14 @@ void CUnitEventManager::NotifyTick()
         }
 
         TUNITINFO* pUnitInfo = &pRoleObj->GetRoleInfo().stUnitInfo;
-        // ³¢ÊÔÉ¾³ýµ¥Î»
+        // å°è¯•åˆ é™¤å•ä½
         if (CUnitUtility::IsUnitStatusSet(pUnitInfo, EGUS_DELETE))
         {
             CUnitUtility::DeleteUnit(pUnitInfo);
             continue;
         }
 
-        // ½ÇÉ«Tick
+        // è§’è‰²Tick
         pRoleObj->OnTick();
     }
 
@@ -59,3 +59,7 @@ void CUnitEventManager::NotifyCombatEnd(CGameRoleObj& stRoleObj, bool bIsWin)
 
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

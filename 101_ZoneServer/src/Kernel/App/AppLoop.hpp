@@ -1,4 +1,4 @@
-#ifndef __APP_LOOP_HPP__
+ï»¿#ifndef __APP_LOOP_HPP__
 #define __APP_LOOP_HPP__
 
 #include "GameProtocolEngine.hpp"
@@ -14,7 +14,7 @@ using namespace ServerLib;
 class CAppLoop
 {
 public:
-    // ĞÅºÅ´¦Àí
+    // ä¿¡å·å¤„ç†
     static int ms_iAppCmd;
     static void SetAppCmd(int iAppCmd);
 
@@ -32,15 +32,15 @@ public:
     static CTimeValue m_stTickMaxProcessTime;
 
 private:
-    // ÅäÖÃ¼ÓÔØ
+    // é…ç½®åŠ è½½
     int LoadConfig();
     int ReloadConfig();
 
-    // Í£·ş
+    // åœæœ
     bool Stop();
 
 private:
-    // ½«Êı¾İÀà°üº¬ÔÚCAppLoopÖĞ£¬ÔÚ¹²ÏíÄÚ´æ»Ö¸´
+    // å°†æ•°æ®ç±»åŒ…å«åœ¨CAppLoopä¸­ï¼Œåœ¨å…±äº«å†…å­˜æ¢å¤
 
     CGameMsgTransceiver m_stZoneMsgTransceiver;
     CGameProtocolEngine m_stZoneProtocolEngine;
@@ -62,3 +62,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

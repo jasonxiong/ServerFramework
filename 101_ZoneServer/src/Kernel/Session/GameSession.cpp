@@ -1,4 +1,4 @@
-
+﻿
 #include "GameProtocol.hpp"
 #include "GameRole.hpp"
 #include "ModuleHelper.hpp"
@@ -48,3 +48,7 @@ void CGameSessionObj::SetSessionKey(const char* pszSessionKey)
 {
 	SAFE_STRCPY(m_szSessionKey, pszSessionKey, sizeof(m_szSessionKey));
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,9 +1,9 @@
-#ifndef __QM_GM_PRIV_CONFIG_MANAGER_HPP__
+ï»¿#ifndef __QM_GM_PRIV_CONFIG_MANAGER_HPP__
 #define __QM_GM_PRIV_CONFIG_MANAGER_HPP__
 
-//GMÈ¨ÏŞ¿ØÖÆÅäÖÃ¹ÜÀíÆ÷
+//GMæƒé™æ§åˆ¶é…ç½®ç®¡ç†å™¨
 
-//ÓµÓĞGMÈ¨ÏŞµÄIPºÅ¶Î
+//æ‹¥æœ‰GMæƒé™çš„IPå·æ®µ
 struct GMIPSection
 {
     unsigned uIPBegin;
@@ -15,10 +15,10 @@ struct GMIPSection
     }
 };
 
-//×î´óÖ§³ÖµÄGMÓĞĞ§IPºÅ¶ÎµÄÊıÁ¿
+//æœ€å¤§æ”¯æŒçš„GMæœ‰æ•ˆIPå·æ®µçš„æ•°é‡
 const int MAX_VALID_GM_IP_SECTION = 30;
 
-//ÓµÓĞGMÈ¨ÏŞµÄIPÁĞ±í
+//æ‹¥æœ‰GMæƒé™çš„IPåˆ—è¡¨
 struct GMValidIPList
 {
     int iIPSectionNum;
@@ -30,10 +30,10 @@ struct GMValidIPList
     };
 };
 
-//×î´óÖ§³ÖµÄGMÓĞĞ§uinµÄÊıÁ¿
+//æœ€å¤§æ”¯æŒçš„GMæœ‰æ•ˆuinçš„æ•°é‡
 const int MAX_VALID_GM_USER_NUM = 1000;
 
-//ÓµÓĞGMÈ¨ÏŞµÄÍæ¼ÒÁĞ±í
+//æ‹¥æœ‰GMæƒé™çš„ç©å®¶åˆ—è¡¨
 struct GMValidUserList
 {
     int iValidUserNum;
@@ -45,7 +45,7 @@ struct GMValidUserList
     };
 };
 
-//GMÍæ¼ÒÈ¨ÏŞÅäÖÃ
+//GMç©å®¶æƒé™é…ç½®
 struct QMGMUserPrivConfig
 {
     GMValidIPList stValidIpSection;
@@ -63,13 +63,13 @@ public:
     CQMGMPrivConfigManager();
     ~CQMGMPrivConfigManager();
 
-    //¼ÓÔØGMÈ¨ÏŞÅäÖÃÎÄ¼ş
+    //åŠ è½½GMæƒé™é…ç½®æ–‡ä»¶
     int LoadGMPrivConfig();
 
-    //ÅĞ¶ÏÊÇ·ñÊÇÓĞĞ§µÄGMÓÃ»§µÄIP
+    //åˆ¤æ–­æ˜¯å¦æ˜¯æœ‰æ•ˆçš„GMç”¨æˆ·çš„IP
     bool CheckIsGMIP(unsigned int uClientIP);
 
-    //ÅĞ¶ÏÊÇ·ñÊÇÓĞĞ§µÄGMÓÃ»§uin
+    //åˆ¤æ–­æ˜¯å¦æ˜¯æœ‰æ•ˆçš„GMç”¨æˆ·uin
     bool CheckIsGMUin(unsigned int uin);
     
 private:
@@ -77,3 +77,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

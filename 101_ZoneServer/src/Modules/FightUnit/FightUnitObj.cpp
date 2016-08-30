@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -57,7 +57,7 @@ unsigned CFightUnitObj::GetOwner()
     return m_uiUin;
 }
 
-//×°Ğ¶ÎïÆ·, bIsEquip = true ±íÊ¾×°ÎïÆ·£¬= false ±íÊ¾Ğ¶ÎïÆ·
+//è£…å¸ç‰©å“, bIsEquip = true è¡¨ç¤ºè£…ç‰©å“ï¼Œ= false è¡¨ç¤ºå¸ç‰©å“
 int CFightUnitObj::UnitEquipItem(int iSlot, RepItem& stItem, bool bIsEquip)
 {
     if(iSlot<0 || iSlot>= m_iSlotNum)
@@ -67,18 +67,18 @@ int CFightUnitObj::UnitEquipItem(int iSlot, RepItem& stItem, bool bIsEquip)
 
     if(bIsEquip)
     {
-        //´©×°±¸
+        //ç©¿è£…å¤‡
         memcpy(&m_astItems[iSlot], &stItem, sizeof(stItem));
     }
     else
     {
-        //Ã»ÓĞÎïÆ·£¬Ö±½Ó·µ»Ø
+        //æ²¡æœ‰ç‰©å“ï¼Œç›´æ¥è¿”å›
         if(m_astItems[iSlot].iItemID == 0)
         {
             return T_SERVER_SUCESS;
         }
 
-        //Ğ¶ÎïÆ·£¬²ÎÊı·µ»ØĞ¶ÏÂµÄÎïÆ·ĞÅÏ¢
+        //å¸ç‰©å“ï¼Œå‚æ•°è¿”å›å¸ä¸‹çš„ç‰©å“ä¿¡æ¯
         memcpy(&stItem, &m_astItems[iSlot], sizeof(m_astItems[iSlot]));
         m_astItems[iSlot].Reset();
     }
@@ -86,7 +86,7 @@ int CFightUnitObj::UnitEquipItem(int iSlot, RepItem& stItem, bool bIsEquip)
     return T_SERVER_SUCESS;
 }
 
-//¸ù¾İÎ»ÖÃ»ñÈ¡ÎïÆ·ĞÅÏ¢
+//æ ¹æ®ä½ç½®è·å–ç‰©å“ä¿¡æ¯
 RepItem* CFightUnitObj::GetItemInfo(int iSlot)
 {
     if(iSlot<0 || iSlot>=m_iSlotNum)
@@ -97,10 +97,10 @@ RepItem* CFightUnitObj::GetItemInfo(int iSlot)
     return &m_astItems[iSlot];
 }
 
-//¸ù¾İID³õÊ¼»¯Õ½¶·µ¥Î»ĞÅÏ¢
+//æ ¹æ®IDåˆå§‹åŒ–æˆ˜æ–—å•ä½ä¿¡æ¯
 int CFightUnitObj::InitFightUnitByID(int iFightUnitID)
 {
-    //¶ÁÈ¡ÅäÖÃµÄÕ½¶·µ¥Î»ĞÅÏ¢
+    //è¯»å–é…ç½®çš„æˆ˜æ–—å•ä½ä¿¡æ¯
     const SFightUnitConfig* pstFightUnitConfig = FightUnitCfgMgr().GetConfig(iFightUnitID);
     if(!pstFightUnitConfig)
     {
@@ -112,7 +112,7 @@ int CFightUnitObj::InitFightUnitByID(int iFightUnitID)
 
     m_iFightUnitAIID = pstFightUnitConfig->aiUnitAIID[0];
 
-    //³õÊ¼»¯»ù´¡Öµ
+    //åˆå§‹åŒ–åŸºç¡€å€¼
     for(int i=FIGHT_ATTR_HP; i<FIGHT_ATTR_MAX; ++i)
     {
         m_aiUnitAttribute[i] = pstFightUnitConfig->aiAttribute[i];
@@ -121,16 +121,16 @@ int CFightUnitObj::InitFightUnitByID(int iFightUnitID)
     m_iLevel = 0;
     m_iLevelExp = 0;
 
-    //³õÊ¼»¯¼¼ÄÜ
+    //åˆå§‹åŒ–æŠ€èƒ½
     m_iNormalSkill = pstFightUnitConfig->iNormalSkill;
 
-    //³õÊ¼»¯×°±¸²ÛÊı
+    //åˆå§‹åŒ–è£…å¤‡æ§½æ•°
     m_iSlotNum = pstFightUnitConfig->iInitSlot;
 
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯Õ½¶·¶ÔÏóµÄÊôĞÔ
+//åˆå§‹åŒ–æˆ˜æ–—å¯¹è±¡çš„å±æ€§
 int CFightUnitObj::InitFightAttr(int* aiAttribute, int iAttrMaxNum)
 {
     if(!aiAttribute || iAttrMaxNum!=FIGHT_ATTR_MAX)
@@ -144,8 +144,8 @@ int CFightUnitObj::InitFightAttr(int* aiAttribute, int iAttrMaxNum)
         aiAttribute[i] = m_aiUnitAttribute[i];
     }
 
-    //todo jasonxiong2 ×°±¸µÈºóÃæÊµÏÖ
-    //Ôö¼Ó×°±¸µÄÊôĞÔĞ§¹û
+    //todo jasonxiong2 è£…å¤‡ç­‰åé¢å®ç°
+    //å¢åŠ è£…å¤‡çš„å±æ€§æ•ˆæœ
     /*
     for(int i=0; i<EQUIP_SLOT_TYPE_MAX; ++i)
     {
@@ -171,7 +171,7 @@ int CFightUnitObj::InitFightAttr(int* aiAttribute, int iAttrMaxNum)
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯Õ½¶·¶ÔÏóµÄÎïÆ·
+//åˆå§‹åŒ–æˆ˜æ–—å¯¹è±¡çš„ç‰©å“
 void CFightUnitObj::InitFightUnitItem(RepItem* pstItems, int iItemMaxNum)
 {
     if(!pstItems || iItemMaxNum<0 || iItemMaxNum>=MAX_UNIT_ITEM_SLOT)
@@ -184,13 +184,13 @@ void CFightUnitObj::InitFightUnitItem(RepItem* pstItems, int iItemMaxNum)
     return;
 }
 
-//»ñÈ¡ÆÕ¹¥ID
+//è·å–æ™®æ”»ID
 int CFightUnitObj::GetNormalSkill()
 {
     return m_iNormalSkill;
 }
 
-//Õ½¶·µ¥Î»µÄAIĞÅÏ¢
+//æˆ˜æ–—å•ä½çš„AIä¿¡æ¯
 int CFightUnitObj::GetFightUnitAIID()
 {
     return m_iFightUnitAIID;
@@ -214,9 +214,9 @@ int CFightUnitObj::AddFightUnitAttr(int iAttr, int iAddAttrNum)
         return iRet;
     }
 
-    //todo jasonxiong4 ºóÃæÔÙÌí¼ÓÍ¨Öª
+    //todo jasonxiong4 åé¢å†æ·»åŠ é€šçŸ¥
     /*
-    //ÍÆËÍ¸ø¿Í»§¶ËµÄÍ¨Öª
+    //æ¨é€ç»™å®¢æˆ·ç«¯çš„é€šçŸ¥
     static GameProtocolMsg stFightAttrNotify;
     CZoneMsgHelper::GenerateMsgHead(stFightAttrNotify, MSGID_ZONE_FIGHTATTR_NOTIFY);
 
@@ -234,7 +234,7 @@ int CFightUnitObj::AddFightUnitAttr(int iAttr, int iAddAttrNum)
     return T_SERVER_SUCESS;
 }
 
-//²»»áÍÆËÍ¸üĞÂµÄÏûÏ¢
+//ä¸ä¼šæ¨é€æ›´æ–°çš„æ¶ˆæ¯
 int CFightUnitObj::AddUnitAttrWithoutNotify(int iAttr, int iAddAttrNum)
 {
     if(iAttr < 0 || iAttr >= MAX_FIGHT_UNIT_ATTRIBUTE_NUM)
@@ -253,7 +253,7 @@ int CFightUnitObj::AddUnitAttrWithoutNotify(int iAttr, int iAddAttrNum)
         m_aiUnitAttribute[iAttr] = 0;
     }
 
-    //ÑªÁ¿²»ÄÜ³¬¹ıÉÏÏŞ
+    //è¡€é‡ä¸èƒ½è¶…è¿‡ä¸Šé™
     if(iAttr==FIGHT_ATTR_HP && m_aiUnitAttribute[iAttr]>m_aiUnitAttribute[FIGHT_ATTR_HPMAX])
     {
         m_aiUnitAttribute[iAttr] = m_aiUnitAttribute[FIGHT_ATTR_HPMAX];
@@ -262,29 +262,29 @@ int CFightUnitObj::AddUnitAttrWithoutNotify(int iAttr, int iAddAttrNum)
     return T_SERVER_SUCESS;
 }
 
-//Êı¾İ¿â²Ù×÷º¯Êı
+//æ•°æ®åº“æ“ä½œå‡½æ•°
 void CFightUnitObj::InitFightUnitFromDB(const OneFightUnitInfo& stUnitInfo)
 {
-    //³õÊ¼»¯ID
+    //åˆå§‹åŒ–ID
     m_iConfigID = stUnitInfo.iunitid();
 
-    //³õÊ¼»¯AI
+    //åˆå§‹åŒ–AI
     m_iFightUnitAIID = stUnitInfo.iunitaiid();
 
-    //³õÊ¼»¯µÈ¼¶
+    //åˆå§‹åŒ–ç­‰çº§
     m_iLevel = stUnitInfo.ilevel();
     m_iLevelExp = stUnitInfo.ilevelexp();
 
-    //³õÊ¼»¯ÊôĞÔ
+    //åˆå§‹åŒ–å±æ€§
     for(int i=0; i<stUnitInfo.iattributes_size(); ++i)
     {
         m_aiUnitAttribute[i] = stUnitInfo.iattributes(i);
     }
 
-    //³õÊ¼»¯¼¼ÄÜ
+    //åˆå§‹åŒ–æŠ€èƒ½
     m_iNormalSkill = stUnitInfo.inormalskillid();
 
-    //³õÊ¼»¯ÎïÆ·ĞÅÏ¢
+    //åˆå§‹åŒ–ç‰©å“ä¿¡æ¯
     m_iSlotNum = stUnitInfo.stiteminfo().stitems_size();
     for(int i=0; i<m_iSlotNum; ++i)
     {
@@ -297,24 +297,24 @@ void CFightUnitObj::InitFightUnitFromDB(const OneFightUnitInfo& stUnitInfo)
 
 void CFightUnitObj::UpdateFightUnitToDB(OneFightUnitInfo& stUnitInfo)
 {
-    //¸üĞÂID
+    //æ›´æ–°ID
     stUnitInfo.set_iunitid(m_iConfigID);
     stUnitInfo.set_iunitaiid(m_iFightUnitAIID);
 
-    //¸üĞÂµÈ¼¶
+    //æ›´æ–°ç­‰çº§
     stUnitInfo.set_ilevel(m_iLevel);
     stUnitInfo.set_ilevelexp(m_iLevelExp);
 
-    //¸üĞÂ»ù´¡ÊôĞÔ
+    //æ›´æ–°åŸºç¡€å±æ€§
     for(int i=FIGHT_ATTR_HP; i<FIGHT_ATTR_MAX; ++i)
     {
         stUnitInfo.add_iattributes(m_aiUnitAttribute[i]);
     }
 
-    //¸üĞÂ¼¼ÄÜ
+    //æ›´æ–°æŠ€èƒ½
     stUnitInfo.set_inormalskillid(m_iNormalSkill);
 
-    //¸üĞÂÎïÆ·ĞÅÏ¢
+    //æ›´æ–°ç‰©å“ä¿¡æ¯
     UnitItemInfo* pstItemInfo = stUnitInfo.mutable_stiteminfo();
     for(int i=0; i<m_iSlotNum; ++i)
     {
@@ -326,3 +326,7 @@ void CFightUnitObj::UpdateFightUnitToDB(OneFightUnitInfo& stUnitInfo)
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

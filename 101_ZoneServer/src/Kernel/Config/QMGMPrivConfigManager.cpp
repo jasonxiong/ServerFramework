@@ -1,4 +1,4 @@
-#include <sys/socket.h>
+ï»¿#include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
@@ -36,7 +36,7 @@ int CQMGMPrivConfigManager::LoadGMPrivConfig()
         return -1;
     }
     
-    //ÏÈ¶ÁÈ¡ÓĞĞ§µÄIPºÅ¶ÎµÄÅäÖÃ
+    //å…ˆè¯»å–æœ‰æ•ˆçš„IPå·æ®µçš„é…ç½®
     xml_node oIpSectionNodes = oXmlDoc.child("GMPriv").child("IPList");
     GMValidIPList& stIPList = m_stGMPrivConfig.stValidIpSection;
     stIPList.iIPSectionNum = 0;
@@ -44,7 +44,7 @@ int CQMGMPrivConfigManager::LoadGMPrivConfig()
     {
         if(stIPList.iIPSectionNum >= MAX_VALID_GM_IP_SECTION)
         {
-            //³¬¹ıÔÊĞíµÄIP SectionÉÏÏŞ
+            //è¶…è¿‡å…è®¸çš„IP Sectionä¸Šé™
             TRACESVR("Failed to load GM IP section, number reach max %d\n", MAX_VALID_GM_IP_SECTION);
             return -2;
         }
@@ -57,7 +57,7 @@ int CQMGMPrivConfigManager::LoadGMPrivConfig()
         ++stIPList.iIPSectionNum;
     }
 
-    //¼ÓÔØÓĞĞ§µÄGMÓÃ»§uinµÄÅäÖÃ
+    //åŠ è½½æœ‰æ•ˆçš„GMç”¨æˆ·uinçš„é…ç½®
     xml_node oValidUinNodes = oXmlDoc.child("GMPriv").child("UinLists");
     GMValidUserList& stUserList = m_stGMPrivConfig.stValidUsers;
     stUserList.iValidUserNum = 0;
@@ -65,7 +65,7 @@ int CQMGMPrivConfigManager::LoadGMPrivConfig()
     {
         if(stUserList.iValidUserNum >= MAX_VALID_GM_USER_NUM)
         {
-            //³¬¹ıÔÊĞíµÄGMÓÃ»§µÄÉÏÏŞ
+            //è¶…è¿‡å…è®¸çš„GMç”¨æˆ·çš„ä¸Šé™
             TRACESVR("Failed to load GM Valid User List, number reach max %d\n", MAX_VALID_GM_USER_NUM);
             return -3;
         }
@@ -78,7 +78,7 @@ int CQMGMPrivConfigManager::LoadGMPrivConfig()
     return T_SERVER_SUCESS;
 }
 
-//¼ì²éÍæ¼ÒµÄIPÊÇ·ñÔÚGMÈ¨ÏŞµÄIPºÅ¶ÎÄÚ
+//æ£€æŸ¥ç©å®¶çš„IPæ˜¯å¦åœ¨GMæƒé™çš„IPå·æ®µå†…
 bool CQMGMPrivConfigManager::CheckIsGMIP(unsigned int uClientIP)
 {
     GMValidIPList& stValidIPList = m_stGMPrivConfig.stValidIpSection;
@@ -107,3 +107,7 @@ bool CQMGMPrivConfigManager::CheckIsGMUin(unsigned int uin)
     return false;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

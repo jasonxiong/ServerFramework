@@ -1,18 +1,18 @@
-#ifndef __APP_DEF_HPP__
+ï»¿#ifndef __APP_DEF_HPP__
 #define __APP_DEF_HPP__
 
 
-//ÔÚÕâÀïÌí¼ÓÒ»Ğ©ºê¶¨Òå
+//åœ¨è¿™é‡Œæ·»åŠ ä¸€äº›å®å®šä¹‰
 #ifdef _DEBUG_
-    const int MAX_SERVICEAPP_NUMBER = 2; //×î¶àÆô¶¯µÄ·şÎñ½ø³ÌµÄÊıÄ¿
+    const int MAX_SERVICEAPP_NUMBER = 2; //æœ€å¤šå¯åŠ¨çš„æœåŠ¡è¿›ç¨‹çš„æ•°ç›®
 #else
-    const int MAX_SERVICEAPP_NUMBER = 8; //×î¶àÆô¶¯µÄ·şÎñ½ø³ÌµÄÊıÄ¿
+    const int MAX_SERVICEAPP_NUMBER = 8; //æœ€å¤šå¯åŠ¨çš„æœåŠ¡è¿›ç¨‹çš„æ•°ç›®
 #endif
 
-//Í³¼ÆCache¶¨Òå
-const int STAT_CACHE_ID_TIMER      = 0;        //¶¨Ê±Æ÷
-const int STAT_CACHE_ID_TIMERINDEX = 1;        //¶¨Ê±Æ÷Ë÷Òı
-const int STAT_CHCHE_ID_TRANSFER   = 2;        //¿Í»§¶ËÏûÏ¢Í·
+//ç»Ÿè®¡Cacheå®šä¹‰
+const int STAT_CACHE_ID_TIMER      = 0;        //å®šæ—¶å™¨
+const int STAT_CACHE_ID_TIMERINDEX = 1;        //å®šæ—¶å™¨ç´¢å¼•
+const int STAT_CHCHE_ID_TRANSFER   = 2;        //å®¢æˆ·ç«¯æ¶ˆæ¯å¤´
 
 #define STAT_CACHE_NAME_TIMER       "TimerCache"
 #define STAT_CACHE_NAME_TIMERINDEX  "TimerIndexCache"
@@ -22,3 +22,7 @@ const int STAT_CHCHE_ID_TRANSFER   = 2;        //¿Í»§¶ËÏûÏ¢Í·
 #define GM_PRIV_CONFIG_FILE "../conf/GMPrivConfig.xml"
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

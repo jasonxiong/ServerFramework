@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+ï»¿#include "GameProtocol.hpp"
 #include "GameRole.hpp"
 #include "ModuleHelper.hpp"
 #include "ZoneMsgHelper.hpp"
@@ -23,7 +23,7 @@ int CFightUnitHandler::OnClientMsg()
 
 	switch(m_pRequestMsg->m_stmsghead().m_uimsgid()) 
 	{
-		//todo jasonxiong4 Ôö¼Ó½Ó¿Ú
+		//todo jasonxiong4 å¢åŠ æ¥å£
 
 	default:
 		{
@@ -54,7 +54,7 @@ void CFightUnitHandler::SendHandlerResponse(int iRespMsgID, int code)
 	CZoneMsgHelper::GenerateMsgHead(ms_stZoneMsg, iRespMsgID);
 	switch(iRespMsgID)
 	{
-		//todo jasonxiong4 Ôö¼ÓĞÂ½Ó¿Ú
+		//todo jasonxiong4 å¢åŠ æ–°æ¥å£
 
 	default:
 		{
@@ -69,3 +69,7 @@ void CFightUnitHandler::SendHandlerResponse(int iRespMsgID, int code)
 	return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

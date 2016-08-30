@@ -1,4 +1,4 @@
-#ifndef __APP_TICK_HPP__
+ï»¿#ifndef __APP_TICK_HPP__
 #define __APP_TICK_HPP__
 
 #include "TimeValue.hpp"
@@ -7,7 +7,7 @@
 
 using namespace ServerLib;
 
-// ÏµÍ³»ù´¡¶¨Ê±Æ÷
+// ç³»ç»ŸåŸºç¡€å®šæ—¶å™¨
 #define TICK_TIMEVAL_BASE        5
 
 class CAppTick
@@ -26,3 +26,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

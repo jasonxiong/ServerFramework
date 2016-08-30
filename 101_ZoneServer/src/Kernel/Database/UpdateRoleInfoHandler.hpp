@@ -1,4 +1,4 @@
-#ifndef __UPDATE_ROLEINFO_HANDLER__HPP__
+ï»¿#ifndef __UPDATE_ROLEINFO_HANDLER__HPP__
 #define __UPDATE_ROLEINFO_HANDLER__HPP__
 
 #include <assert.h>
@@ -22,10 +22,14 @@ public:
 	virtual int OnClientMsg();
 
 public:
-	// Í¬²½Íæ¼ÒÊı¾İµ½Êı¾İ¿â
+	// åŒæ­¥ç©å®¶æ•°æ®åˆ°æ•°æ®åº“
     static int UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned char ucNeedResponse);
 
 	int OnUpdateRoleInfoResponse();
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

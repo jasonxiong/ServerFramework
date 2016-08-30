@@ -1,4 +1,4 @@
-#ifndef __FIGHT_UNIT_UTILITY_HPP__
+ï»¿#ifndef __FIGHT_UNIT_UTILITY_HPP__
 #define __FIGHT_UNIT_UTILITY_HPP__
 
 class CGameRoleObj;
@@ -6,14 +6,18 @@ class CFightUnitUtility
 {
 public:
     
-    //»ñÈ¡Õ½¶·µ¥Î»ÊôĞÔ
+    //è·å–æˆ˜æ–—å•ä½å±æ€§
     static int GetFightUnitAttr(CGameRoleObj& rstRoleObj, int iFightUnitID, int iAttrType);
 
-    //Ôö¼ÓÕ½¶·µ¥Î»ÊôĞÔ
+    //å¢åŠ æˆ˜æ–—å•ä½å±æ€§
     static int AddFightUnitAttr(CGameRoleObj& rstRoleObj, int iFightUnitID, int iAttrType, int iAddAttrNum);
 
-    //±£´æÕ½¶·µ¥Î»µÄÊôĞÔ
+    //ä¿å­˜æˆ˜æ–—å•ä½çš„å±æ€§
     static int SaveCombatUnitAttr(CGameRoleObj& stRoleObj, int iFightUnitID, int iAttrType, int iSaveNum);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

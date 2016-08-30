@@ -1,10 +1,10 @@
-
+ï»¿
 #ifndef __COMBAT_EVENT_LISTENER_HPP__
 #define __COMBAT_EVENT_LISTENER_HPP__
 
 class CGameRoleObj;
 
-//Õ½¶·ÊÂ¼şµÄ¼àÌı´¦Àí
+//æˆ˜æ–—äº‹ä»¶çš„ç›‘å¬å¤„ç†
 class CCombatEventListener
 {
 public:
@@ -22,7 +22,11 @@ public:
     void OnCombatUnitActionEvent(CGameRoleObj& stRoleObj);
 
 private:
-    unsigned int m_uiUin;   //µ±Ç°Õ½¶·ÊÂ¼ş¹ØÁª½ÇÉ«µÄuin
+    unsigned int m_uiUin;   //å½“å‰æˆ˜æ–—äº‹ä»¶å…³è”è§’è‰²çš„uin
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,43 +1,47 @@
-#ifndef __ZONE_ERROR_NUM_DEF_HPP__
+ï»¿#ifndef __ZONE_ERROR_NUM_DEF_HPP__
 #define __ZONE_ERROR_NUM_DEF_HPP__
 
 #include "ErrorNumDef.hpp"
 
 enum EN_ZONE_MODULE_DEF
 {
-    EN_ZONE_MODULE_COMMON = 0x001,               //Í¨ÓÃÄ£¿é´íÎóÂë
+    EN_ZONE_MODULE_COMMON = 0x001,               //é€šç”¨æ¨¡å—é”™è¯¯ç 
 };
 
 #define TZONE_COMMON_BASE MAKE_ERRNO(EN_SERVER_ZONE, EN_ZONE_MODULE_COMMON, 0)
 enum ZONE_SYSTEM_ERR_DEF
 {
-    T_ZONE_SYSTEM_PARA_ERR         = TZONE_COMMON_BASE + 0x01,        //²ÎÊý´íÎó
-    T_ZONE_PROTOBUFF_ERR           = TZONE_COMMON_BASE + 0x02,        //protobuf ´íÎó
-    T_ZONE_LOGINSERVER_FAILED      = TZONE_COMMON_BASE + 0x03,        //µÇÂ¼Çø·þÎñÆ÷´íÎó
-    T_ZONE_LOGOUT_KICKOFF          = TZONE_COMMON_BASE + 0x04,        //ÌßÈËÏÂÏß´íÎó
-    T_ZONE_SESSION_EXISTS_ERR      = TZONE_COMMON_BASE + 0x05,        //Íæ¼ÒµÄSessionÒÑ¾­´æÔÚ
-    T_ZONE_LOGOUT_UNACTIVE         = TZONE_COMMON_BASE + 0x06,        //ÌßÒÑ¾­²»»îÔ¾µÄÍæ¼ÒÏÂÏß
-    T_ZONE_FIN_PVEFIGHT_FAILED     = TZONE_COMMON_BASE + 0x07,        //Íê³ÉPVE¹Ø¿¨Õ½¶·Ê§°Ü
-    T_ZONE_SYSTEM_INVALID_CFG      = TZONE_COMMON_BASE + 0x08,        //·Ç·¨µÄÅäÖÃ
+    T_ZONE_SYSTEM_PARA_ERR         = TZONE_COMMON_BASE + 0x01,        //å‚æ•°é”™è¯¯
+    T_ZONE_PROTOBUFF_ERR           = TZONE_COMMON_BASE + 0x02,        //protobuf é”™è¯¯
+    T_ZONE_LOGINSERVER_FAILED      = TZONE_COMMON_BASE + 0x03,        //ç™»å½•åŒºæœåŠ¡å™¨é”™è¯¯
+    T_ZONE_LOGOUT_KICKOFF          = TZONE_COMMON_BASE + 0x04,        //è¸¢äººä¸‹çº¿é”™è¯¯
+    T_ZONE_SESSION_EXISTS_ERR      = TZONE_COMMON_BASE + 0x05,        //çŽ©å®¶çš„Sessionå·²ç»å­˜åœ¨
+    T_ZONE_LOGOUT_UNACTIVE         = TZONE_COMMON_BASE + 0x06,        //è¸¢å·²ç»ä¸æ´»è·ƒçš„çŽ©å®¶ä¸‹çº¿
+    T_ZONE_FIN_PVEFIGHT_FAILED     = TZONE_COMMON_BASE + 0x07,        //å®ŒæˆPVEå…³å¡æˆ˜æ–—å¤±è´¥
+    T_ZONE_SYSTEM_INVALID_CFG      = TZONE_COMMON_BASE + 0x08,        //éžæ³•çš„é…ç½®
 
-    T_ZONE_GAMEROLE_NOT_EXIST      = TZONE_COMMON_BASE + 0x09,        //Íæ¼Ò½ÇÉ«ÐÅÏ¢²»´æÔÚ
-    T_ZONE_GAMEHERO_NOT_EXIST      = TZONE_COMMON_BASE + 0x0a,        //¿¨ÅÆÐÅÏ¢²»´æÔÚ
+    T_ZONE_GAMEROLE_NOT_EXIST      = TZONE_COMMON_BASE + 0x09,        //çŽ©å®¶è§’è‰²ä¿¡æ¯ä¸å­˜åœ¨
+    T_ZONE_GAMEHERO_NOT_EXIST      = TZONE_COMMON_BASE + 0x0a,        //å¡ç‰Œä¿¡æ¯ä¸å­˜åœ¨
                                                                       
-    T_ZONE_SECURITY_CHECK_FAILED   = TZONE_COMMON_BASE + 0x0b,        //´«Èë²ÎÊý°²È«Ð£Ñé´íÎó
-    T_ZONE_GM_COMMAND_FAILED       = TZONE_COMMON_BASE + 0x0c,        //´«Èë²ÎÊý°²È«Ð£Ñé´íÎó
+    T_ZONE_SECURITY_CHECK_FAILED   = TZONE_COMMON_BASE + 0x0b,        //ä¼ å…¥å‚æ•°å®‰å…¨æ ¡éªŒé”™è¯¯
+    T_ZONE_GM_COMMAND_FAILED       = TZONE_COMMON_BASE + 0x0c,        //ä¼ å…¥å‚æ•°å®‰å…¨æ ¡éªŒé”™è¯¯
 
-    T_ZONE_USER_REP_FULL           = TZONE_COMMON_BASE + 0x0d,        //Íæ¼Ò±³°ü²Ö¿âÂú
-    T_ZONE_INVALID_EQUIP_TYPE      = TZONE_COMMON_BASE + 0x0e,        //·Ç·¨µÄ×°±¸ÀàÐÍ
-    T_ZONE_REACH_LEVEL_MAX         = TZONE_COMMON_BASE + 0x0f,        //´ïµ½µÈ¼¶ÉÏÏÞ
+    T_ZONE_USER_REP_FULL           = TZONE_COMMON_BASE + 0x0d,        //çŽ©å®¶èƒŒåŒ…ä»“åº“æ»¡
+    T_ZONE_INVALID_EQUIP_TYPE      = TZONE_COMMON_BASE + 0x0e,        //éžæ³•çš„è£…å¤‡ç±»åž‹
+    T_ZONE_REACH_LEVEL_MAX         = TZONE_COMMON_BASE + 0x0f,        //è¾¾åˆ°ç­‰çº§ä¸Šé™
 
-    T_ZONE_PVE_KILLMONSTER_FAILED  = TZONE_COMMON_BASE + 0x10,        //PVE»÷É±¹ÖÎïÊ§°Ü
-    T_ZONE_INVALID_PVE_CROSS       = TZONE_COMMON_BASE + 0x11,        //·Ç·¨µÄPVEÕ½¶·¹Ø¿¨
+    T_ZONE_PVE_KILLMONSTER_FAILED  = TZONE_COMMON_BASE + 0x10,        //PVEå‡»æ€æ€ªç‰©å¤±è´¥
+    T_ZONE_INVALID_PVE_CROSS       = TZONE_COMMON_BASE + 0x11,        //éžæ³•çš„PVEæˆ˜æ–—å…³å¡
 
-    T_ZONE_INVALID_EQUIPMENT       = TZONE_COMMON_BASE + 0x12,        //·Ç·¨µÄ×°±¸
+    T_ZONE_INVALID_EQUIPMENT       = TZONE_COMMON_BASE + 0x12,        //éžæ³•çš„è£…å¤‡
 
-    T_ZONE_REVIVAL_HERO_FAILED     = TZONE_COMMON_BASE + 0x13,        //¹Ø¿¨Ó¢ÐÛ¸´»îÊ§°Ü
+    T_ZONE_REVIVAL_HERO_FAILED     = TZONE_COMMON_BASE + 0x13,        //å…³å¡è‹±é›„å¤æ´»å¤±è´¥
 
-    T_ZONE_INVALID_PROPS_NUM       = TZONE_COMMON_BASE + 0x14,        //ÓÎÏ·µÀ¾ß·Ç·¨µÄÊýÁ¿
+    T_ZONE_INVALID_PROPS_NUM       = TZONE_COMMON_BASE + 0x14,        //æ¸¸æˆé“å…·éžæ³•çš„æ•°é‡
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

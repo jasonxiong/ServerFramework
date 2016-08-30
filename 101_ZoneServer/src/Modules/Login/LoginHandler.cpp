@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "GameProtocol.hpp"
 #include "ModuleHelper.hpp"
@@ -63,7 +63,7 @@ int CLoginHandler::OnRequestLoginServer()
     return iRet;	
 }
 
-//Í¨Öª½ÇÉ«µÇÂ¼
+//é€šçŸ¥è§’è‰²ç™»å½•
 int CLoginHandler::NotifyRoleLogin(CGameRoleObj* pstRoleObj)
 {
     /*
@@ -74,7 +74,7 @@ int CLoginHandler::NotifyRoleLogin(CGameRoleObj* pstRoleObj)
     pstNotify->set_iunitid(pstRoleObj->GetRoleInfo().stUnitInfo.iUnitID);
     pstNotify->set_izoneid(CModuleHelper::GetZoneID());
 
-    //todo jasonxiong2 ºóÃæÈ·ÈÏÊÇ·ñÒªÌí¼ÓÍ¨Öª
+    //todo jasonxiong2 åé¢ç¡®è®¤æ˜¯å¦è¦æ·»åŠ é€šçŸ¥
     //CZoneMsgHelper::SendZoneMsgToSight(ms_stZoneMsg, &(pstRoleObj->GetRoleInfo().stUnitInfo));
     */ 
      
@@ -90,7 +90,7 @@ int CLoginHandler::SecurityCheck()
         return -1; //nolog
     }
 
-    //todo jasonxiong ºóÃæµÄ¿ª·¢ÖĞ¿ÉÄÜĞèÒªÌí¼ÓºÚ°×Ãûµ¥
+    //todo jasonxiong åé¢çš„å¼€å‘ä¸­å¯èƒ½éœ€è¦æ·»åŠ é»‘ç™½åå•
     /*
     CWhiteListConfig& rWhiteListConfig = 
         WhiteListCfgMgr();
@@ -113,7 +113,7 @@ int CLoginHandler::LoginRole(const RoleID& stRoleID, TNetHead_V2* pNetHead, cons
 
 	LOGDETAIL("Login Req: Uin = %u, Session = %d\n", stRoleID.uin(), iSessionID);
 
-	// ¸ÃSessionÒÑ¾­´æÔÚ
+	// è¯¥Sessionå·²ç»å­˜åœ¨
 	CSessionManager* pSessionManager = CModuleHelper::GetSessionManager();
 	CGameSessionObj* pSessionObj = pSessionManager->FindSessionByID(iSessionID);
 	if (pSessionObj)
@@ -122,7 +122,7 @@ int CLoginHandler::LoginRole(const RoleID& stRoleID, TNetHead_V2* pNetHead, cons
 		return -2;
 	}
 
-	// ¸ÃRoleIDµÄSessionÒÑ¾­´æÔÚ£¬ÇÒ´¦ÓÚÎ´µÇÂ¼×´Ì¬
+	// è¯¥RoleIDçš„Sessionå·²ç»å­˜åœ¨ï¼Œä¸”å¤„äºæœªç™»å½•çŠ¶æ€
 	pSessionObj = pSessionManager->FindSessionByRoleID(stRoleID);
 	if (pSessionObj && pSessionObj->GetBindingRole() == NULL)
 	{
@@ -130,7 +130,7 @@ int CLoginHandler::LoginRole(const RoleID& stRoleID, TNetHead_V2* pNetHead, cons
 		return -3;
 	}
 
-    // ´´½¨Ò»¸öĞÂµÄ»á»°
+    // åˆ›å»ºä¸€ä¸ªæ–°çš„ä¼šè¯
     pSessionObj = pSessionManager->CreateSession(pNetHead, stRoleID);
     if(!pSessionObj)
     {
@@ -138,13 +138,13 @@ int CLoginHandler::LoginRole(const RoleID& stRoleID, TNetHead_V2* pNetHead, cons
         return -2;
     }
 
-    // ±£´æ¿Í»§¶Ë°æ±¾ºÅ
+    // ä¿å­˜å®¢æˆ·ç«¯ç‰ˆæœ¬å·
     pSessionObj->SetClientVersion(rstRequest.uclientversion());
 
-	//±£´æµÇÂ¼Ô­Òò
+	//ä¿å­˜ç™»å½•åŸå› 
 	pSessionObj->SetLoginReason(rstRequest.uloginreason());
 
-    // ÏòWorld·¢ËÍÌßÈËÇëÇó,ÏàÍ¬uinµÄ¶¼ÌßÏÂÈ¥
+    // å‘Worldå‘é€è¸¢äººè¯·æ±‚,ç›¸åŒuinçš„éƒ½è¸¢ä¸‹å»
     int iRet = KickRoleFromWorldServer(stRoleID, iSessionID);
     if (iRet < 0)
     {
@@ -179,15 +179,15 @@ int CLoginHandler::SendSuccessfulResponse(CGameRoleObj* pLoginRoleObj)
 
     int iRet = T_SERVER_SUCESS;
 
-    //·µ»ØÍæ¼ÒÉíÉÏµÄ»ù±¾ĞÅÏ¢
+    //è¿”å›ç©å®¶èº«ä¸Šçš„åŸºæœ¬ä¿¡æ¯
     BASEDBINFO* pstBaseInfo = pstLoginResp->mutable_stlogininfo()->mutable_stbaseinfo();
     pLoginRoleObj->UpdateBaseInfoToDB(*pstBaseInfo);
 
-    //·µ»ØÍæ¼ÒµÄ±³°üĞÅÏ¢
+    //è¿”å›ç©å®¶çš„èƒŒåŒ…ä¿¡æ¯
     ITEMDBINFO* pstItemInfo = pstLoginResp->mutable_stlogininfo()->mutable_stiteminfo();
     pLoginRoleObj->UpdateRepThingsToDB(*pstItemInfo);
 
-    //·µ»ØÍæ¼ÒµÄÕ½¶·µ¥Î»ĞÅÏ¢
+    //è¿”å›ç©å®¶çš„æˆ˜æ–—å•ä½ä¿¡æ¯
     FIGHTDBINFO* pstFightUnitInfo = pstLoginResp->mutable_stlogininfo()->mutable_stfightinfo();
     iRet = pLoginRoleObj->UpdateFightUnitToDB(*pstFightUnitInfo);
     if(iRet)
@@ -201,7 +201,7 @@ int CLoginHandler::SendSuccessfulResponse(CGameRoleObj* pLoginRoleObj)
     return 0;
 }
 
-// µÇÂ¼³É¹¦´¦Àí
+// ç™»å½•æˆåŠŸå¤„ç†
 int CLoginHandler::LoginOK(unsigned int uiUin, bool bNeedResponse)
 {
     CGameRoleObj* pLoginRoleObj =  GameTypeK32<CGameRoleObj>::GetByKey(uiUin);
@@ -209,25 +209,25 @@ int CLoginHandler::LoginOK(unsigned int uiUin, bool bNeedResponse)
 
     if(bNeedResponse)
     {
-        // µÇÂ¼³É¹¦
+        // ç™»å½•æˆåŠŸ
         SendSuccessfulResponse(pLoginRoleObj);
     }
 
-    // ¼¤·¢µÇÂ¼ÊÂ¼ş
+    // æ¿€å‘ç™»å½•äº‹ä»¶
     CModuleHelper::GetUnitEventManager()->NotifyUnitLogin(&(pLoginRoleObj->GetRoleInfo().stUnitInfo));
 
-    // Í¨ÖªÆäËûÓÃ»§
+    // é€šçŸ¥å…¶ä»–ç”¨æˆ·
     NotifyRoleLogin(pLoginRoleObj);
 
     LOGDEBUG("Uin: %u\n", uiUin);
 
-    // ¼ÇÂ¼Á÷Ë®
+    // è®°å½•æµæ°´
     CZoneOssLog::TraceLogin(*pLoginRoleObj);
 
     return 0;
 }
 
-// µÇÂ¼Ê§°Ü´¦Àí
+// ç™»å½•å¤±è´¥å¤„ç†
 int CLoginHandler::LoginFailed(const TNetHead_V2& rstNetHead)
 { 
 	unsigned int uiResultID = CHandlerHelper::GetErrorCode();
@@ -236,7 +236,7 @@ int CLoginHandler::LoginFailed(const TNetHead_V2& rstNetHead)
     return 0;
 }
 
-//Í¨¹ıWorld½«ÏàÍ¬uinµÄÒÑ¾­µÇÂ¼µÄºÅÌßÏÂÏß
+//é€šè¿‡Worldå°†ç›¸åŒuinçš„å·²ç»ç™»å½•çš„å·è¸¢ä¸‹çº¿
 int CLoginHandler::KickRoleFromWorldServer(const RoleID& stRoleID, int iFromSessionID)
 {
     CZoneMsgHelper::GenerateMsgHead(ms_stZoneMsg, MSGID_WORLD_KICKROLE_REQUEST);
@@ -255,3 +255,7 @@ int CLoginHandler::KickRoleFromWorldServer(const RoleID& stRoleID, int iFromSess
 
     return iRet;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

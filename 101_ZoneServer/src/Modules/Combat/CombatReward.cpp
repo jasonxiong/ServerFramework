@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -8,10 +8,10 @@
 
 #include "CombatReward.hpp"
 
-//ÁìÈ¡Õ½¶·½±Àø
+//é¢†å–æˆ˜æ–—å¥–åŠ±
 int CCombatReward::GetCombatReward(int iLevelID, CGameRoleObj& stRoleObj, CombatReward& stReward)
 {
-    //¶ÁÈ¡¹Ø¿¨ÅäÖÃ
+    //è¯»å–å…³å¡é…ç½®
     const SBattleCrossConfig* pstCrossConfig = BattleCrossCfgMgr().GetConfig(iLevelID);
     if(!pstCrossConfig)
     {
@@ -19,7 +19,7 @@ int CCombatReward::GetCombatReward(int iLevelID, CGameRoleObj& stRoleObj, Combat
         return T_ZONE_SYSTEM_INVALID_CFG;
     }
 
-    //Ôö¼Ó½±Àø
+    //å¢žåŠ å¥–åŠ±
     int iRet = CDropRewardUtility::GetDropReward(pstCrossConfig->iDropRewardID, stRoleObj, stReward, 0);
     if(iRet)
     {
@@ -29,3 +29,7 @@ int CCombatReward::GetCombatReward(int iLevelID, CGameRoleObj& stRoleObj, Combat
 
     return T_SERVER_SUCESS;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

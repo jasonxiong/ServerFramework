@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __MATH_HELPER_HPP__
 #define __MATH_HELPER_HPP__
 
@@ -8,8 +8,12 @@
 #include <unistd.h>
 
 
-// Quake3Ê¹ÓÃµÄ¿ìËÙÆ½·½¸ùËã·¨
+// Quake3ä½¿ç”¨çš„å¿«é€Ÿå¹³æ–¹æ ¹ç®—æ³•
 float FastSqrtQ3(float x);
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

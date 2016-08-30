@@ -1,4 +1,4 @@
-
+ï»¿
 #include "ProtoDataUtility.hpp"
 #include "GameProtocol.hpp"
 #include "ModuleHelper.hpp"
@@ -63,10 +63,10 @@ int CUpdateRoleInfo_Handler::OnUpdateRoleInfoResponse()
     {
         LOGERROR("UpdateRole OK: Uin = %u\n", uiUin);
 
-        // ÉèÖÃÏÂÏß×´Ì¬
+        // è®¾ç½®ä¸‹çº¿çŠ¶æ€
         pRoleObj->SetOffline();
 
-        // µÇ³öÍ¨¸æºÍÊı¾İÉ¾³ı£¬Õâ¸ö²¿·ÖÔÚÊÕµ½ world³É¹¦ÏìÓ¦Ö®ºóÔÙÉ¾³ı
+        // ç™»å‡ºé€šå‘Šå’Œæ•°æ®åˆ é™¤ï¼Œè¿™ä¸ªéƒ¨åˆ†åœ¨æ”¶åˆ° worldæˆåŠŸå“åº”ä¹‹åå†åˆ é™¤
         int iRet = CLogoutHandler::LogoutAction(pRoleObj);
         if (iRet < 0)
         {
@@ -84,7 +84,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
     unsigned int uiUin = pRoleObj->GetRoleID().uin();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Ìî³äÒª¸üĞÂµÄÍæ¼ÒÊı¾İ
+    // å¡«å……è¦æ›´æ–°çš„ç©å®¶æ•°æ®
 
     CZoneMsgHelper::GenerateMsgHead(m_stZoneMsg, MSGID_WORLD_UPDATEROLE_REQUEST);
     m_stZoneMsg.mutable_m_stmsghead()->set_m_uin(uiUin);
@@ -98,7 +98,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
     pstUserInfo->set_uin(uiUin);
     pstUserInfo->set_uiseq(pRoleObj->GetRoleID().uiseq());
 
-    //¸üĞÂÍæ¼ÒµÄ»ù±¾ĞÅÏ¢
+    //æ›´æ–°ç©å®¶çš„åŸºæœ¬ä¿¡æ¯
     BASEDBINFO stBaseInfo;
     pRoleObj->UpdateBaseInfoToDB(stBaseInfo);
     if(!EncodeProtoData(stBaseInfo, *pstUserInfo->mutable_strbaseinfo()))
@@ -109,7 +109,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
 
     LOGDEBUG("Compress base proto data rate %d:%zu, uin %u\n", stBaseInfo.ByteSize(), pstUserInfo->strbaseinfo().size(), uiUin);
 
-    //¸üĞÂÍæ¼ÒµÄÈÎÎñÊı¾İ
+    //æ›´æ–°ç©å®¶çš„ä»»åŠ¡æ•°æ®
     QUESTDBINFO stQuestInfo;
     //pRoleObj->UpdateStoryToDB(stQuestInfo);
     if(!EncodeProtoData(stQuestInfo, *pstUserInfo->mutable_strquestinfo()))
@@ -120,7 +120,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
 
     LOGDEBUG("Compress quest proto data rate %d:%zu, uin %u\n", stQuestInfo.ByteSize(), pstUserInfo->strquestinfo().size(), uiUin);
 
-    //¸üĞÂÍæ¼ÒµÄÎïÆ·Êı¾İ
+    //æ›´æ–°ç©å®¶çš„ç‰©å“æ•°æ®
     ITEMDBINFO stItemInfo;
     pRoleObj->UpdateRepThingsToDB(stItemInfo);
     if(!EncodeProtoData(stItemInfo, *pstUserInfo->mutable_striteminfo()))
@@ -131,7 +131,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
 
     LOGDEBUG("Compress item proto data rate %d:%zu, uin %u\n", stItemInfo.ByteSize(), pstUserInfo->striteminfo().size(), uiUin);
 
-    //¸üĞÂÍæ¼ÒµÄÕ½¶·µ¥Î»ºÍÕóĞÍÏà¹ØĞÅÏ¢
+    //æ›´æ–°ç©å®¶çš„æˆ˜æ–—å•ä½å’Œé˜µå‹ç›¸å…³ä¿¡æ¯
     FIGHTDBINFO stFightInfo;
     pRoleObj->UpdateFightUnitToDB(stFightInfo);
     if(!EncodeProtoData(stFightInfo, *pstUserInfo->mutable_strfightinfo()))
@@ -142,7 +142,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
 
     LOGDEBUG("Compress fight proto data rate %d:%zu, uin %u\n", stFightInfo.ByteSize(), pstUserInfo->strfightinfo().size(), uiUin);
 
-    //¸üĞÂÍæ¼ÒµÄºÃÓÑĞÅÏ¢
+    //æ›´æ–°ç©å®¶çš„å¥½å‹ä¿¡æ¯
     FRIENDDBINFO stFriend;
     if(!EncodeProtoData(stFriend, *pstUserInfo->mutable_strfriendinfo()))
     {
@@ -152,7 +152,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
 
     LOGDEBUG("Compress friend proto data rate %d:%zu, uin %u\n", stFriend.ByteSize(), pstUserInfo->strfriendinfo().size(), uiUin);
 
-    //¸üĞÂReserve1×Ö¶Î
+    //æ›´æ–°Reserve1å­—æ®µ
     RESERVED1DBINFO stReserved1;
     if(!EncodeProtoData(stReserved1, *pstUserInfo->mutable_strreserved1()))
     {
@@ -162,7 +162,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
 
     LOGDEBUG("Compress reserve1 proto data rate %d:%zu, uin %u\n", stReserved1.ByteSize(), pstUserInfo->strreserved1().size(), uiUin);
 
-    //¸üĞÂReserve2×Ö¶Î
+    //æ›´æ–°Reserve2å­—æ®µ
     RESERVED2DBINFO stReserved2;
 
     if(!EncodeProtoData(stReserved2, *pstUserInfo->mutable_strreserved2()))
@@ -174,7 +174,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
     LOGDEBUG("Compress reserve2 proto data rate %d:%zu, uin %u\n", stReserved2.ByteSize(), pstUserInfo->strreserved2().size(), uiUin);
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    // ·¢ËÍµ½World·şÎñÆ÷
+    // å‘é€åˆ°WorldæœåŠ¡å™¨
     int iRet = CZoneMsgHelper::SendZoneMsgToWorld(m_stZoneMsg);
     if (iRet < 0)
     {
@@ -183,3 +183,7 @@ int CUpdateRoleInfo_Handler::UpdateRoleInfo(CGameRoleObj* pRoleObj, unsigned cha
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

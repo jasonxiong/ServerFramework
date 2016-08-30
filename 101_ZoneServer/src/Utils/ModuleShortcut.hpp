@@ -1,4 +1,4 @@
-#ifndef __EASY_USE_HPP
+ï»¿#ifndef __EASY_USE_HPP
 #define __EASY_USE_HPP
 
 #include "ConfigManager.hpp"
@@ -6,55 +6,59 @@
 
 using namespace ServerLib;
 
-//ÕâĞ©º¯Êı·µ»ØÖµÎñ±ØÓÃÒıÓÃ»òÕßÖ¸Õë »òÕßÆğconstÒıÓÃ£¬Ö¸Õë
-//·ñÔò»áÓĞºÜ´óĞÔÄÜÏûºÄ
+//è¿™äº›å‡½æ•°è¿”å›å€¼åŠ¡å¿…ç”¨å¼•ç”¨æˆ–è€…æŒ‡é’ˆ æˆ–è€…èµ·constå¼•ç”¨ï¼ŒæŒ‡é’ˆ
+//å¦åˆ™ä¼šæœ‰å¾ˆå¤§æ€§èƒ½æ¶ˆè€—
 
-//»ñÈ¡Õ½¶·µ¥Î»µÄÅäÖÃ
+//è·å–æˆ˜æ–—å•ä½çš„é…ç½®
 CSFightUnitConfigManager& FightUnitCfgMgr();
 
-//»ñÈ¡Õ½¶·¹Ø¿¨ÅäÖÃ
+//è·å–æˆ˜æ–—å…³å¡é…ç½®
 CSBattleCrossConfigManager& BattleCrossCfgMgr();
 
-//»ñÈ¡¹Ø¿¨¹ÖÎï×éÅäÖÃ
+//è·å–å…³å¡æ€ªç‰©ç»„é…ç½®
 CSCrossMonsterConfigManager& CrossMonterCfgMgr();
 
-//»ñÈ¡Õ½¶·µ¥Î»AIµÄÅäÖÃ
+//è·å–æˆ˜æ–—å•ä½AIçš„é…ç½®
 CSFightUnitAIConfigManager& FightUnitAICfgMgr();
 
-//»ñÈ¡Õ½¶·¹ÖÎïµÄÅäÖÃ
+//è·å–æˆ˜æ–—æ€ªç‰©çš„é…ç½®
 CSMonsterConfigManager& MonsterCfgMgr();
 
-//»ñÈ¡Õ½³¡×èµ²µÄÅäÖÃ
+//è·å–æˆ˜åœºé˜»æŒ¡çš„é…ç½®
 CBattlefieldPathConfigManager& BattlefieldPathCfgMgr();
 
-//»ñÈ¡Õ½¶·¼¼ÄÜµÄÅäÖÃ
+//è·å–æˆ˜æ–—æŠ€èƒ½çš„é…ç½®
 CFightSkillConfigManager& FightSkillCfgMgr();
 
-//»ñÈ¡¼¼ÄÜÊÍ·Å¾àÀëÅäÖÃ
+//è·å–æŠ€èƒ½é‡Šæ”¾è·ç¦»é…ç½®
 CSkillRangeConfigManager& SkillRangeCfgMgr();
 
-//»ñÈ¡¼¼ÄÜÊÍ·Å·¶Î§ÅäÖÃ
+//è·å–æŠ€èƒ½é‡Šæ”¾èŒƒå›´é…ç½®
 CSkillAreaConfigManager& SkillAreaCfgMgr();
 
-//»ñÈ¡¼¼ÄÜĞŞÕıÅäÖÃ
+//è·å–æŠ€èƒ½ä¿®æ­£é…ç½®
 CSkillScoreConfigManager& SkillScoreCfgMgr();
 
-//»ñÈ¡¼¼ÄÜÉËº¦ÅäÖÃ
+//è·å–æŠ€èƒ½ä¼¤å®³é…ç½®
 CSkillDamageConfigManager& SkillDamageCfgMgr();
 
-//»ñÈ¡Õ½¶·BuffÅäÖÃ
+//è·å–æˆ˜æ–—Buffé…ç½®
 CSFightBuffConfigManager& FightBuffCfgMgr();
 
-//»ñÈ¡Ëæ»úµôÂäµÄÅäÖÃ
+//è·å–éšæœºæ‰è½çš„é…ç½®
 CSDropRewardConfigManager& DropRewardCfgMgr();
 
-//¼¼ÄÜ»ï°éºÏ»÷µÄÅäÖÃ
+//æŠ€èƒ½ä¼™ä¼´åˆå‡»çš„é…ç½®
 CSJointAtkConfigManager& JointAtkCfgMgr();
 
-//Õ½³¡»ú¹ØµÄÅäÖÃ
+//æˆ˜åœºæœºå…³çš„é…ç½®
 CSTrapConfigManager& TrapCfgMgr();
 
-//ÓÎÏ·ÎïÆ·µÄÅäÖÃ
+//æ¸¸æˆç‰©å“çš„é…ç½®
 CSGameItemConfigManager& ItemCfgMgr();
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

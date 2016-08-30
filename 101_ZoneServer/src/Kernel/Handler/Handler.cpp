@@ -1,4 +1,4 @@
-#include <typeinfo>
+ï»¿#include <typeinfo>
 
 #include "Handler.hpp"
 #include "HandlerHelper.hpp"
@@ -21,7 +21,7 @@ IHandler::~IHandler()
 {
 }
 
-// ±£´æÇëÇó²ÎÊý
+// ä¿å­˜è¯·æ±‚å‚æ•°
 void IHandler::SetClientMsg(const GameProtocolMsg* pRequestMsg, 
 							const TNetHead_V2* pNetHead,
 							EGameServerID enMsgPeer)
@@ -37,13 +37,13 @@ void IHandler::SetClientMsg(const GameProtocolMsg* pRequestMsg,
 
 int IHandler::SecurityCheck()
 {
-	// ·Ç¿Í»§¶ËµÄÏûÏ¢²»ÓÃ¼ì²é
+	// éžå®¢æˆ·ç«¯çš„æ¶ˆæ¯ä¸ç”¨æ£€æŸ¥
 	if (!m_pNetHead)
 	{
 		return 0;
 	}
 
-    // ¼ì²éÏûÏ¢·¢ËÍÕß
+    // æ£€æŸ¥æ¶ˆæ¯å‘é€è€…
     m_pRoleObj = CHandlerHelper::GetMsgSender(m_pRequestMsg, m_pNetHead);
     if (!m_pRoleObj)
     { 
@@ -81,10 +81,10 @@ int IHandler::SecurityCheck()
 		return -10;
 	}
 
-	// ¼ì²éÏûÏ¢ÆµÂÊ
+	// æ£€æŸ¥æ¶ˆæ¯é¢‘çŽ‡
 	if (m_enMsgPeer == GAME_SERVER_LOTUSZONE)
 	{
-		//ÊÇ·ñ±»ÆµÂÊÏÞÖÆ
+		//æ˜¯å¦è¢«é¢‘çŽ‡é™åˆ¶
 		if (m_pRoleObj->IsMsgFreqLimit(iMsgID))
 		{
 			TRACESVR("in handler:%s uin:%u send msg ID:%d too frequently\n", 
@@ -97,3 +97,7 @@ int IHandler::SecurityCheck()
 	return 0;	
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -34,28 +34,28 @@ void CCombatEventListener::OnCombatBeginEvent(CGameRoleObj& stRoleObj)
 {
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefield obj, uin %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //Çå¿Õ»ØºÏÊı
+    //æ¸…ç©ºå›åˆæ•°
     pstBattlefieldObj->SetCombatRoundNum(0);
 
-    //todo jasonxiong4 ½Å±¾ÖØ×ö
-    //µ÷ÓÃÕ½¶·½Å±¾
+    //todo jasonxiong4 è„šæœ¬é‡åš
+    //è°ƒç”¨æˆ˜æ–—è„šæœ¬
     //CModuleHelper::GetStoryFramework()->DoCombatScript(m_uiUin, pstBattlefieldObj->GetCrossID(), 1);
 
-    //ÅĞ¶ÏÕ½¶·Ê¤¸º
+    //åˆ¤æ–­æˆ˜æ–—èƒœè´Ÿ
     if(pstBattlefieldObj->CanEndCombat())
     {
-        //ÄÜ¹»½áÊøÕ½¶·£¬Å×³öÕ½¶·½áÊøÊÂ¼ş
+        //èƒ½å¤Ÿç»“æŸæˆ˜æ–—ï¼ŒæŠ›å‡ºæˆ˜æ–—ç»“æŸäº‹ä»¶
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
 
         return;
@@ -63,14 +63,14 @@ void CCombatEventListener::OnCombatBeginEvent(CGameRoleObj& stRoleObj)
 
     if(pstBattlefieldObj->IsNeedSetForm())
     {
-        //ĞèÒªÉèÖÃÕóĞÍ,ÍÆËÍÉèÖÃÕóĞÍµÄÏûÏ¢
+        //éœ€è¦è®¾ç½®é˜µå‹,æ¨é€è®¾ç½®é˜µå‹çš„æ¶ˆæ¯
         pstBattlefieldObj->NotifyRoleUnitDirective(UNIT_DIRECTIVE_SETFORM);
 
         pstBattlefieldObj->SetActionUnitStatus(ROLE_COMBAT_UNIT_STAT_SETFORM);
     }
     else
     {
-        //Å×³ö»ØºÏ¿ªÊ¼ÊÂ¼ş
+        //æŠ›å‡ºå›åˆå¼€å§‹äº‹ä»¶
         CCombatEventManager::NotifyRoundBegin(stRoleObj);
     }
 
@@ -81,31 +81,31 @@ void CCombatEventListener::OnCombatEndEvent(CGameRoleObj& stRoleObj)
 {
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefield obj, uin %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         return;
     }
 
-    //´¦ÀíÕ½¶·½áÊøÏà¹ØĞÅÏ¢£¬Èç½±ÀøµÈ
+    //å¤„ç†æˆ˜æ–—ç»“æŸç›¸å…³ä¿¡æ¯ï¼Œå¦‚å¥–åŠ±ç­‰
     static GameProtocolMsg stFinCombatNotify;
     CZoneMsgHelper::GenerateMsgHead(stFinCombatNotify, MSGID_ZONE_FINCOMBAT_NOTIFY);
 
     Zone_FinCombat_Notify* pstNotify = stFinCombatNotify.mutable_m_stmsgbody()->mutable_m_stzone_fincombat_notify();
     pstNotify->set_bisactivewin(pstBattlefieldObj->GetIsActiveWin());
 
-    //ÉèÖÃÍæ¼ÒÉíÉÏµÄÕ½¶·Ê¤¸º½á¹û
+    //è®¾ç½®ç©å®¶èº«ä¸Šçš„æˆ˜æ–—èƒœè´Ÿç»“æœ
     unsigned uiWinUin = pstBattlefieldObj->GetIsActiveWin() ? pstBattlefieldObj->GetActiveUin() : pstBattlefieldObj->GetPassiveUin();
     unsigned uiLoseUin = pstBattlefieldObj->GetIsActiveWin() ? pstBattlefieldObj->GetPassiveUin() : pstBattlefieldObj->GetActiveUin();
 
     CGameRoleObj* pstWinRoleObj = CUnitUtility::GetRoleByUin(uiWinUin);
     CGameRoleObj* pstLoseRoleObj = CUnitUtility::GetRoleByUin(uiLoseUin);
 
-    //ÉèÖÃÍæ¼ÒÉíÉÏµÄÕ½¶·½á¹û
+    //è®¾ç½®ç©å®¶èº«ä¸Šçš„æˆ˜æ–—ç»“æœ
     if(pstWinRoleObj)
     {
         pstWinRoleObj->SetCombatResult(true);
@@ -116,7 +116,7 @@ void CCombatEventListener::OnCombatEndEvent(CGameRoleObj& stRoleObj)
         pstLoseRoleObj->SetCombatResult(false);
     }
 
-    //¸ø»ñÊ¤·½¼Ó½±Àø
+    //ç»™è·èƒœæ–¹åŠ å¥–åŠ±
     if(pstWinRoleObj)
     {
         CCombatReward::GetCombatReward(pstBattlefieldObj->GetCrossID(), *pstWinRoleObj, *pstNotify->mutable_streward());
@@ -124,17 +124,17 @@ void CCombatEventListener::OnCombatEndEvent(CGameRoleObj& stRoleObj)
 
     pstBattlefieldObj->SendNotifyToBattlefield(stFinCombatNotify);
 
-    //Èç¹ûÊÇPVEÕ½¶·
+    //å¦‚æœæ˜¯PVEæˆ˜æ–—
     if(pstBattlefieldObj->GetPassiveUin() == 0)
     {
-        //±£´æÑªÁ¿ºÍÀ¶Á¿
+        //ä¿å­˜è¡€é‡å’Œè“é‡
         pstBattlefieldObj->SaveCombatUnitInfo();
     }
 
-    //´òÓ¡Õ½¶·ÔËÓªÈÕÖ¾
+    //æ‰“å°æˆ˜æ–—è¿è¥æ—¥å¿—
     CZoneOssLog::TraceRoleCombat(m_uiUin, pstBattlefieldObj->GetCrossID(), pstBattlefieldObj->GetCombatStartTime(), pstBattlefieldObj->GetIsActiveWin());
 
-    //ÇåÀíÕ½³¡
+    //æ¸…ç†æˆ˜åœº
     CCombatUtility::ClearBattlefield(stRoleObj.GetBattlefieObjID());
 
     return;
@@ -142,47 +142,47 @@ void CCombatEventListener::OnCombatEndEvent(CGameRoleObj& stRoleObj)
 
 void CCombatEventListener::OnRoundBeginEvent(CGameRoleObj& stRoleObj)
 {
-    //ÉèÖÃuin
+    //è®¾ç½®uin
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefield obj, uin %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //Ôö¼ÓÕ½¶·µÄ»ØºÏÊı
+    //å¢åŠ æˆ˜æ–—çš„å›åˆæ•°
     pstBattlefieldObj->SetCombatRoundNum(pstBattlefieldObj->GetCombatRoundNum()+1);
 
-    //³õÊ¼»¯¿ÉĞĞ¶¯ÁĞ±í
+    //åˆå§‹åŒ–å¯è¡ŒåŠ¨åˆ—è¡¨
     pstBattlefieldObj->InitRoundActionUnits();
 
-    //´¦Àí»ØºÏ¿ªÊ¼Ç°ÉúĞ§µÄbuff
+    //å¤„ç†å›åˆå¼€å§‹å‰ç”Ÿæ•ˆçš„buff
     int iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_ROUNDBEGIN);
     if(iRet)
     {
         LOGERROR("Failed to do round begin buff effect, ret %d, uin %u\n", iRet, m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //ÅĞ¶ÏÕ½¶·Ê¤¸º
+    //åˆ¤æ–­æˆ˜æ–—èƒœè´Ÿ
     if(pstBattlefieldObj->CanEndCombat())
     {
-        //ÄÜ¹»½áÊøÕ½¶·£¬Å×³öÕ½¶·½áÊøÊÂ¼ş
+        //èƒ½å¤Ÿç»“æŸæˆ˜æ–—ï¼ŒæŠ›å‡ºæˆ˜æ–—ç»“æŸäº‹ä»¶
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
 
         return;
     }
 
-    //Å×³öÕ½¶·µ¥Î»¿ªÊ¼ĞĞ¶¯»ØºÏÊÂ¼ş
+    //æŠ›å‡ºæˆ˜æ–—å•ä½å¼€å§‹è¡ŒåŠ¨å›åˆäº‹ä»¶
     CCombatEventManager::NotifyActionRoundBegin(stRoleObj);
 
     return;
@@ -192,38 +192,38 @@ void CCombatEventListener::OnRoundEndEvent(CGameRoleObj& stRoleObj)
 {
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefiled obj, uin  %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //´¦Àí»ØºÏ½áÊøÉúĞ§µÄbuff
+    //å¤„ç†å›åˆç»“æŸç”Ÿæ•ˆçš„buff
     int iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_ROUNDEND);
     if(iRet)
     {
         LOGERROR("Failed to do round begin buff effect, ret %d, uin %u\n", iRet, m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //ÅĞ¶ÏÕ½¶·Ê¤¸º
+    //åˆ¤æ–­æˆ˜æ–—èƒœè´Ÿ
     if(pstBattlefieldObj->CanEndCombat())
     {
-        //ÄÜ¹»½áÊøÕ½¶·£¬Å×³öÕ½¶·½áÊøÊÂ¼ş
+        //èƒ½å¤Ÿç»“æŸæˆ˜æ–—ï¼ŒæŠ›å‡ºæˆ˜æ–—ç»“æŸäº‹ä»¶
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
 
         return;
     }
 
-    //Å×³ö»ØºÏ¿ªÊ¼ÊÂ¼ş£¬¿ªÊ¼ĞÂµÄÕ½¶·»ØºÏ
+    //æŠ›å‡ºå›åˆå¼€å§‹äº‹ä»¶ï¼Œå¼€å§‹æ–°çš„æˆ˜æ–—å›åˆ
     CCombatEventManager::NotifyRoundBegin(stRoleObj);
 
     return;
@@ -231,71 +231,71 @@ void CCombatEventListener::OnRoundEndEvent(CGameRoleObj& stRoleObj)
 
 void CCombatEventListener::OnActionRoundBeginEvent(CGameRoleObj& stRoleObj)
 {
-    //ÉèÖÃ½ÇÉ«uin
+    //è®¾ç½®è§’è‰²uin
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefiled obj, uin  %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //ÅĞ¶ÏÕ½¶·Ê¤¸º
+    //åˆ¤æ–­æˆ˜æ–—èƒœè´Ÿ
     if(pstBattlefieldObj->CanEndCombat())
     {
-        //ÄÜ¹»½áÊøÕ½¶·£¬Å×³öÕ½¶·½áÊøÊÂ¼ş
+        //èƒ½å¤Ÿç»“æŸæˆ˜æ–—ï¼ŒæŠ›å‡ºæˆ˜æ–—ç»“æŸäº‹ä»¶
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
 
         return;
     }
 
-    //ÅĞ¶Ïµ±Ç°ÊÇ·ñÓĞÎ´³öÊÖµ¥Î»£¬Èç¹ûÃ»ÓĞÔòÅ×³ö»ØºÏ½áÊøÊÂ¼ş
+    //åˆ¤æ–­å½“å‰æ˜¯å¦æœ‰æœªå‡ºæ‰‹å•ä½ï¼Œå¦‚æœæ²¡æœ‰åˆ™æŠ›å‡ºå›åˆç»“æŸäº‹ä»¶
     if(!pstBattlefieldObj->HasActionCombatUnit())
     {
-        //Ã»ÓĞÎ´³öÊÖµ¥Î»£¬Å×³öÕ½¶·»ØºÏ½áÊøÊÂ¼ş
+        //æ²¡æœ‰æœªå‡ºæ‰‹å•ä½ï¼ŒæŠ›å‡ºæˆ˜æ–—å›åˆç»“æŸäº‹ä»¶
         CCombatEventManager::NotifyRoundEnd(stRoleObj);
 
         return;
     }
 
-    //ÍÆËÍµ±Ç°Õ½³¡Õ½¶·µ¥Î»³öÊÖĞÅÏ¢
+    //æ¨é€å½“å‰æˆ˜åœºæˆ˜æ–—å•ä½å‡ºæ‰‹ä¿¡æ¯
     pstBattlefieldObj->SendActionUnitNotify();
 
-    //ÉèÖÃµ±Ç°³öÊÖµÄÕ½¶·µ¥Î»
+    //è®¾ç½®å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½
     pstBattlefieldObj->SetActionCombatUnit();
 
-    //¼õÉÙµ¥Î»¼¼ÄÜCD»ØºÏ
+    //å‡å°‘å•ä½æŠ€èƒ½CDå›åˆ
     pstBattlefieldObj->DecreaseActionSkillCDRound();
 
-    //ĞĞ¶¯»ØºÏ¿ªÊ¼Ê±£¬´¦ÀíĞĞ¶¯µ¥Î»µÄĞĞ¶¯»ØºÏ¿ªÊ¼¼¼ÄÜ
+    //è¡ŒåŠ¨å›åˆå¼€å§‹æ—¶ï¼Œå¤„ç†è¡ŒåŠ¨å•ä½çš„è¡ŒåŠ¨å›åˆå¼€å§‹æŠ€èƒ½
     int iRet = pstBattlefieldObj->DoRoundActionSkill();
     if(iRet)
     {
         LOGERROR("Failed to do round action begin skill, ret %d, uin %u\n", iRet, m_uiUin);
         
-        //³ö´í£¬½áÊøÕ½¶·
+        //å‡ºé”™ï¼Œç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //´¦ÀíÕ½¶·µ¥Î»ĞĞ¶¯Ç°ÉúĞ§µÄbuff
+    //å¤„ç†æˆ˜æ–—å•ä½è¡ŒåŠ¨å‰ç”Ÿæ•ˆçš„buff
     int iActionUnitID = pstBattlefieldObj->GetActionUnitID();
     iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_ACTIONROUNDBEGIN, iActionUnitID, iActionUnitID);
     if(iRet)
     {
         LOGERROR("Failed to do action round begin buff effect, ret %d, uin %u\n", iRet, m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //µ±Ç°³öÊÖµÄÈç¹ûÊÇ»ï°é£¬Í¨Öª¿Í»§¶Ë¸üĞÂ»ï°éAI
+    //å½“å‰å‡ºæ‰‹çš„å¦‚æœæ˜¯ä¼™ä¼´ï¼Œé€šçŸ¥å®¢æˆ·ç«¯æ›´æ–°ä¼™ä¼´AI
     /*
     if(pstBattlefieldObj->GetActionUnitType() == COMBAT_UNIT_TYPE_PARTNER)
     {
@@ -305,26 +305,26 @@ void CCombatEventListener::OnActionRoundBeginEvent(CGameRoleObj& stRoleObj)
     }
     */
 
-    //»ñÈ¡µ±Ç°ĞĞ¶¯µ¥Î»
+    //è·å–å½“å‰è¡ŒåŠ¨å•ä½
     CCombatUnitObj* pstActionUnitObj = CCombatUtility::GetCombatUnitObj(iActionUnitID);
     if(!pstActionUnitObj)
     {
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //Õ½¶·µ¥Î»ÊÇ·ñ¿ÉÒÔ¿ªÊ¼»ØºÏ
+    //æˆ˜æ–—å•ä½æ˜¯å¦å¯ä»¥å¼€å§‹å›åˆ
     if(pstActionUnitObj->GetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTROUND))
     {
         pstActionUnitObj->SetCombatUnitStatus(COMBAT_UNIT_STATUS_NOTROUND, false);
 
-        //²»ÄÜ¿ªÊ¼»ØºÏ£¬Ö±½Ó½áÊø»ØºÏ
+        //ä¸èƒ½å¼€å§‹å›åˆï¼Œç›´æ¥ç»“æŸå›åˆ
         CCombatEventManager::NotifyActionRoundEnd(stRoleObj);
         return;
     }
 
-    //Èç¹û³öÊÖÕ½¶·µ¥Î»·ÇÖ÷½Ç·Ç»ï°é£¬ÔòÔ¤ÏÈ¼ÆËãAI
+    //å¦‚æœå‡ºæ‰‹æˆ˜æ–—å•ä½éä¸»è§’éä¼™ä¼´ï¼Œåˆ™é¢„å…ˆè®¡ç®—AI
     if(pstBattlefieldObj->GetActionUnitType() != COMBAT_UNIT_TYPE_ROLE &&
        pstBattlefieldObj->GetActionUnitType() != COMBAT_UNIT_TYPE_PARTNER)
     {
@@ -333,7 +333,7 @@ void CCombatEventListener::OnActionRoundBeginEvent(CGameRoleObj& stRoleObj)
         {
             LOGERROR("Failed to do action unit AI, ret %d, uin %u\n", iRet, m_uiUin);
     
-            //³ö´í,½áÊøÕ½¶·
+            //å‡ºé”™,ç»“æŸæˆ˜æ–—
             CCombatEventManager::NotifyCombatEnd(stRoleObj);
             return;
         }
@@ -341,12 +341,12 @@ void CCombatEventListener::OnActionRoundBeginEvent(CGameRoleObj& stRoleObj)
 
     if(pstActionUnitObj->IsCombatUnitDead())
     {
-        //ĞĞ¶¯µÄÕ½¶·µ¥Î»ÒÑ¾­ËÀÍö£¬Ö±½ÓĞĞ¶¯»ØºÏ½áÊø
+        //è¡ŒåŠ¨çš„æˆ˜æ–—å•ä½å·²ç»æ­»äº¡ï¼Œç›´æ¥è¡ŒåŠ¨å›åˆç»“æŸ
         CCombatEventManager::NotifyActionRoundEnd(stRoleObj);
         return;
     }
 
-    //Å×³öÕ½¶·µ¥Î»ÒÆ¶¯ÊÂ¼ş
+    //æŠ›å‡ºæˆ˜æ–—å•ä½ç§»åŠ¨äº‹ä»¶
     CCombatEventManager::NotifyCombatUnitMove(stRoleObj);
 
     return;
@@ -356,45 +356,45 @@ void CCombatEventListener::OnActionRoundEndEvent(CGameRoleObj& stRoleObj)
 {
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefiled obj, uin  %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //´¦ÀíÕ½¶·µ¥Î»ĞĞ¶¯ºóÉúĞ§µÄbuff
+    //å¤„ç†æˆ˜æ–—å•ä½è¡ŒåŠ¨åç”Ÿæ•ˆçš„buff
     int iActionUnitID = pstBattlefieldObj->GetActionUnitID();
     int iRet = pstBattlefieldObj->DoBuffEffectByType(BUFF_TRIGGER_ACTIONROUNDEND, iActionUnitID, iActionUnitID);
     if(iRet)
     {
         LOGERROR("Failed to do action round end buff effect, ret %d, uin %u\n", iRet, m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //ÅĞ¶ÏÕ½¶·Ê¤¸º
+    //åˆ¤æ–­æˆ˜æ–—èƒœè´Ÿ
     if(pstBattlefieldObj->CanEndCombat())
     {
-        //ÄÜ¹»½áÊøÕ½¶·£¬Å×³öÕ½¶·½áÊøÊÂ¼ş
+        //èƒ½å¤Ÿç»“æŸæˆ˜æ–—ï¼ŒæŠ›å‡ºæˆ˜æ–—ç»“æŸäº‹ä»¶
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
 
         return;
     }
 
-    //´¦ÀíBUFFµÄ»ØºÏÊı
+    //å¤„ç†BUFFçš„å›åˆæ•°
     iRet = pstBattlefieldObj->DecreaseBuffRound();
     if(iRet)
     {
         LOGERROR("Failed to decrease buff round, ret %d, uin %u\n", iRet, m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
@@ -402,18 +402,18 @@ void CCombatEventListener::OnActionRoundEndEvent(CGameRoleObj& stRoleObj)
     if(pstBattlefieldObj->GetActionUnitType() == COMBAT_UNIT_TYPE_ROLE ||
        pstBattlefieldObj->GetActionUnitType() == COMBAT_UNIT_TYPE_PARTNER)
     {
-        //ÉèÖÃÖ÷½ÇÕ½¶·µ¥Î»µÄµ±Ç°×´Ì¬
+        //è®¾ç½®ä¸»è§’æˆ˜æ–—å•ä½çš„å½“å‰çŠ¶æ€
         pstBattlefieldObj->SetActionUnitStatus(ROLE_COMBAT_UNIT_STAT_IDLE);
     }
 
-    //Çå³ıµ±Ç°³öÊÖµÄÕ½¶·µ¥Î»
+    //æ¸…é™¤å½“å‰å‡ºæ‰‹çš„æˆ˜æ–—å•ä½
     pstBattlefieldObj->ClearActionCombatUnit();
 
-    //todo jasonxiong4 ½Å±¾ÖØ×ö
-    //µ÷ÓÃÕ½¶·½Å±¾
+    //todo jasonxiong4 è„šæœ¬é‡åš
+    //è°ƒç”¨æˆ˜æ–—è„šæœ¬
     //CModuleHelper::GetStoryFramework()->DoCombatScript(m_uiUin, pstBattlefieldObj->GetCrossID(), 2);
 
-    //Å×³öÕ½¶·µ¥Î»ĞĞ¶¯»ØºÏ¿ªÊ¼ÊÂ¼ş
+    //æŠ›å‡ºæˆ˜æ–—å•ä½è¡ŒåŠ¨å›åˆå¼€å§‹äº‹ä»¶
     CCombatEventManager::NotifyActionRoundBegin(stRoleObj);
 
     return;
@@ -423,52 +423,52 @@ void CCombatEventListener::OnCombatUnitMoveEvent(CGameRoleObj& stRoleObj)
 {
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡
+    //è·å–æˆ˜åœº
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefiled obj, uin %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //³¢ÊÔ´¥·¢Àë¿ªÎ»ÖÃµÄ»ú¹Ø
+    //å°è¯•è§¦å‘ç¦»å¼€ä½ç½®çš„æœºå…³
     int iRet = pstBattlefieldObj->TriggerPitfallTrap(TRAP_TRIGGER_LEAVE);
     if(iRet)
     {
         LOGERROR("Failed to trigger leave trap, ret %d, uin %u\n", iRet, m_uiUin);
         
-        //³ö´í£¬½áÊøÕ½¶·
+        //å‡ºé”™ï¼Œç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //´¦ÀíÒÆ¶¯
+    //å¤„ç†ç§»åŠ¨
     if(pstBattlefieldObj->GetActionUnitType() == COMBAT_UNIT_TYPE_ROLE ||
        pstBattlefieldObj->GetActionUnitType() == COMBAT_UNIT_TYPE_PARTNER)
     {
-        //ÍÆËÍ¿Í»§¶ËÖ÷½ÇÒÆ¶¯µÄÖ¸Áî
+        //æ¨é€å®¢æˆ·ç«¯ä¸»è§’ç§»åŠ¨çš„æŒ‡ä»¤
         pstBattlefieldObj->NotifyRoleUnitDirective(UNIT_DIRECTIVE_MOVE);
         
         pstBattlefieldObj->SetActionUnitStatus(ROLE_COMBAT_UNIT_STAT_MOVE);
     }
     else
     {
-        //Ö´ĞĞÒÆ¶¯AI
+        //æ‰§è¡Œç§»åŠ¨AI
         int iRet = pstBattlefieldObj->DoCombatUnitMove(CCombatUnitAI::GetMoveTargetPath());
         if(iRet)
         {
             LOGERROR("Failed to do comat unit move AI, ret %d, uin %u\n", iRet, m_uiUin);
 
-            //³ö´í,½áÊøÕ½¶·
+            //å‡ºé”™,ç»“æŸæˆ˜æ–—
             CCombatEventManager::NotifyCombatEnd(stRoleObj);
 
             return;
         }
 
-        //Å×³öÕ½¶·µ¥Î»ĞĞ¶¯ÊÂ¼ş
+        //æŠ›å‡ºæˆ˜æ–—å•ä½è¡ŒåŠ¨äº‹ä»¶
         CCombatEventManager::NotifyCombatUnitAction(stRoleObj);
     }
 
@@ -479,48 +479,48 @@ void CCombatEventListener::OnCombatUnitActionEvent(CGameRoleObj& stRoleObj)
 {
     m_uiUin = stRoleObj.GetUin();
 
-    //»ñÈ¡Õ½³¡ĞÅÏ¢
+    //è·å–æˆ˜åœºä¿¡æ¯
     CBattlefieldObj* pstBattlefieldObj = CCombatUtility::GetBattlefiledObj(stRoleObj);
     if(!pstBattlefieldObj)
     {
         LOGERROR("Failed to get battlefield obj, uin %u\n", m_uiUin);
 
-        //³ö´í,½áÊøÕ½¶·
+        //å‡ºé”™,ç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
     if(pstBattlefieldObj->IsCombatUnitDead(pstBattlefieldObj->GetActionUnitID()))
     {
-        //ĞĞ¶¯µÄµ¥Î»ÒÑ¾­ËÀÍö,Å×³öÕ½¶·µ¥Î»½áÊøĞĞ¶¯ÊÂ¼ş
+        //è¡ŒåŠ¨çš„å•ä½å·²ç»æ­»äº¡,æŠ›å‡ºæˆ˜æ–—å•ä½ç»“æŸè¡ŒåŠ¨äº‹ä»¶
         CCombatEventManager::NotifyActionRoundEnd(stRoleObj);
 
         return;
     }
 
-    //³¢ÊÔ´¥·¢Í£Ö¹ÔÚÎ»ÖÃµÄ»ú¹Ø
+    //å°è¯•è§¦å‘åœæ­¢åœ¨ä½ç½®çš„æœºå…³
     int iRet = pstBattlefieldObj->TriggerPitfallTrap(TRAP_TRIGGER_MOVEON);
     if(iRet)
     {
         LOGERROR("Failed to trigger moveon trap, ret %d, uin %u\n", iRet, m_uiUin);
         
-        //³ö´í£¬½áÊøÕ½¶·
+        //å‡ºé”™ï¼Œç»“æŸæˆ˜æ–—
         CCombatEventManager::NotifyCombatEnd(stRoleObj);
         return;
     }
 
-    //´¦ÀíÕ½¶·µ¥Î»ĞĞ¶¯
+    //å¤„ç†æˆ˜æ–—å•ä½è¡ŒåŠ¨
     if(pstBattlefieldObj->GetActionUnitType() == COMBAT_UNIT_TYPE_ROLE ||
        pstBattlefieldObj->GetActionUnitType() == COMBAT_UNIT_TYPE_PARTNER)
     {
-        //ÊÇÖ÷½ÇĞĞ¶¯£¬Í¨Öª¿Í»§¶Ë½øĞĞĞĞ¶¯
+        //æ˜¯ä¸»è§’è¡ŒåŠ¨ï¼Œé€šçŸ¥å®¢æˆ·ç«¯è¿›è¡Œè¡ŒåŠ¨
         pstBattlefieldObj->NotifyRoleUnitDirective(UNIT_DIRECTIVE_ACTION);
 
         pstBattlefieldObj->SetActionUnitStatus(ROLE_COMBAT_UNIT_STAT_ACTION);
     }
     else
     {
-        //Èç¹û¿ÉÒÔ¹¥»÷£¬Ö´ĞĞ¹¥»÷AI
+        //å¦‚æœå¯ä»¥æ”»å‡»ï¼Œæ‰§è¡Œæ”»å‡»AI
         if(CCombatUnitAI::CanDoAttack())
         {
             int iRet = pstBattlefieldObj->DoCombatCastSkill(CCombatUnitAI::GetUseSkill(), CCombatUnitAI::GetTargetUnitPos(), SKILL_USE_AI);
@@ -528,16 +528,20 @@ void CCombatEventListener::OnCombatUnitActionEvent(CGameRoleObj& stRoleObj)
             {
                 LOGERROR("Failed to do combat cast skill AI, ret %d, skill %d, uin %u\n", iRet, CCombatUnitAI::GetUseSkill(), m_uiUin);
 
-                //³ö´í,½áÊøÕ½¶·
+                //å‡ºé”™,ç»“æŸæˆ˜æ–—
                 CCombatEventManager::NotifyCombatEnd(stRoleObj);
                 return;
             }
         }
 
-        //Å×³öÕ½¶·µ¥Î»½áÊøĞĞ¶¯ÊÂ¼ş
+        //æŠ›å‡ºæˆ˜æ–—å•ä½ç»“æŸè¡ŒåŠ¨äº‹ä»¶
         CCombatEventManager::NotifyActionRoundEnd(stRoleObj);
     }
 
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

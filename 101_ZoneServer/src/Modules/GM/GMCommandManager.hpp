@@ -1,4 +1,4 @@
-#ifndef __GM_COMMAND_MANAGER_HPP__
+ï»¿#ifndef __GM_COMMAND_MANAGER_HPP__
 #define __GM_COMMAND_MANAGER_HPP__
 
 #include <string>
@@ -9,7 +9,7 @@
 #include "GMFightUnitHandler.hpp"
 #include "GMCombatHandler.hpp"
 
-//×î¶àÖ§³Ö100¸öGM Command
+//æœ€å¤šæ”¯æŒ100ä¸ªGM Command
 #define MAX_GM_COMMAND_HANDLER_NUM  500
 
 class CGMCommandManager
@@ -18,10 +18,10 @@ public:
 
     static CGMCommandManager* Instance();
 
-    //³õÊ¼»¯GMÃüÁî¹ÜÀíÆ÷
+    //åˆå§‹åŒ–GMå‘½ä»¤ç®¡ç†å™¨
     int Init();
 
-    //²éÕÒGMÃüÁî´¦ÀíµÄHandler
+    //æŸ¥æ‰¾GMå‘½ä»¤å¤„ç†çš„Handler
     IGMBaseCommand* GetCommandHandler(const std::string& strCommand);
 
     int GetHandlerType(const std::string& strCommand);
@@ -38,14 +38,18 @@ private:
 
     IGMBaseCommand* m_astGMCommandHandler[MAX_GM_COMMAND_HANDLER_NUM];
 
-    //±³°üÏà¹ØµÄGM¹¤¾ß
+    //èƒŒåŒ…ç›¸å…³çš„GMå·¥å…·
     CGMReposityHandler m_stReposityHandler;
 
-    //Õ½¶·µ¥Î»Ïà¹ØµÄGM¹¤¾ß
+    //æˆ˜æ–—å•ä½ç›¸å…³çš„GMå·¥å…·
     CGMFightUnitHandler m_stFightUnitHandler;
 
-    //Íæ¼ÒÕ½¶·Ïà¹Ø
+    //ç©å®¶æˆ˜æ–—ç›¸å…³
     CGMCombatHandler m_stCombatHandler;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

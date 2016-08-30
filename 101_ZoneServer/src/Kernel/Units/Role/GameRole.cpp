@@ -1,4 +1,4 @@
-#include <algorithm>
+ï»¿#include <algorithm>
 #include <string.h>
 
 #include "MathHelper.hpp"
@@ -35,7 +35,7 @@ int CGameRoleObj::Initialize()
     return 0;
 }
 
-// ³õÊ¼»¯Íæ¼ÒµÄËùÓĞÊıÖµÎªÄ¬ÈÏÊıÖµ
+// åˆå§‹åŒ–ç©å®¶çš„æ‰€æœ‰æ•°å€¼ä¸ºé»˜è®¤æ•°å€¼
 int CGameRoleObj::InitRole(const RoleID& stRoleID)
 {
     time_t tNow = time(NULL);
@@ -44,13 +44,13 @@ int CGameRoleObj::InitRole(const RoleID& stRoleID)
 
     memset(&m_stRoleInfo.stBaseInfo, 0, sizeof(m_stRoleInfo.stBaseInfo));
 
-    // µÇÂ¼ºÍÏÂÏßÊ±¼ä
+    // ç™»å½•å’Œä¸‹çº¿æ—¶é—´
     m_stRoleInfo.stBaseInfo.iLoginTime = tNow;
     m_stRoleInfo.stBaseInfo.iLogoutTime = tNow;
     m_stRoleInfo.stBaseInfo.iLastLogin = tNow;
 
  
-    //Íæ¼ÒµÄÕ½³¡ĞÅÏ¢
+    //ç©å®¶çš„æˆ˜åœºä¿¡æ¯
     m_stRoleInfo.stBaseInfo.iBattlefieldObjIndex = -1;
     m_stRoleInfo.stBaseInfo.bIsSelfWin = false;
 
@@ -68,11 +68,11 @@ int CGameRoleObj::InitRole(const RoleID& stRoleID)
 
     memset(m_abLock, 0, sizeof(m_abLock));
 
-    //³õÊ¼»¯±³°üµÀ¾ß¹ÜÀíÆ÷
+    //åˆå§‹åŒ–èƒŒåŒ…é“å…·ç®¡ç†å™¨
     m_stRepThingsManager.Initialize();
     m_stRepThingsManager.SetOwner(GetUin());
 
-    //³õÊ¼»¯Õ½¶·µ¥Î»¹ÜÀíÆ÷
+    //åˆå§‹åŒ–æˆ˜æ–—å•ä½ç®¡ç†å™¨
     m_stFightUnitManager.Initialize();
     m_stFightUnitManager.SetOwner(GetUin());
 
@@ -103,7 +103,7 @@ CGameSessionObj* CGameRoleObj::GetSession()
     return CModuleHelper::GetSessionManager()->FindSessionByID(m_iSessionID);
 }
 
-//todo jasonxiong ÔİÊ±×¢ÊÍµôÈÎÎñÏà¹Ø£¬ºóĞøÍ³Ò»¿ª·¢
+//todo jasonxiong æš‚æ—¶æ³¨é‡Šæ‰ä»»åŠ¡ç›¸å…³ï¼Œåç»­ç»Ÿä¸€å¼€å‘
 /*
 CQuestManager& CGameRoleObj::GetQuestManager()
 {
@@ -190,7 +190,7 @@ int CGameRoleObj::GetOnlineThisTime()const
 
 void CGameRoleObj::PrintMyself()
 {
-    //todo jasonxiong ¿ÉÒÔÔÚÕâ±ß´òÓ¡Êä³öGameRoleµÄÏêÏ¸ĞÅÏ¢
+    //todo jasonxiong å¯ä»¥åœ¨è¿™è¾¹æ‰“å°è¾“å‡ºGameRoleçš„è¯¦ç»†ä¿¡æ¯
 
     return;
 }
@@ -199,7 +199,7 @@ int CGameRoleObj::Resume()
 {
     TRACESVR("role obj resume\n");
 
-    //todo jasonxiong ÔİÊ±×¢ÊÍµô»î¶¯Ïà¹Ø£¬ºóĞøÍ³Ò»¿ª·¢
+    //todo jasonxiong æš‚æ—¶æ³¨é‡Šæ‰æ´»åŠ¨ç›¸å…³ï¼Œåç»­ç»Ÿä¸€å¼€å‘
     //m_stActivityManager.RegisterAllActivities();
 
     return 0;
@@ -213,7 +213,7 @@ const char* CGameRoleObj::GetNickName()
 void CGameRoleObj::UpdateBaseInfoToDB(BASEDBINFO& rstBaseInfo)
 {
     rstBaseInfo.set_sznickname(GetNickName());
-    rstBaseInfo.set_ustatus(GetRoleStatus()&(!EGUS_LOGOUT));    //Çå³ıµôLogout±êÖ¾
+    rstBaseInfo.set_ustatus(GetRoleStatus()&(!EGUS_LOGOUT));    //æ¸…é™¤æ‰Logoutæ ‡å¿—
     rstBaseInfo.set_ilastlogin(GetLastLoginTime());
     rstBaseInfo.set_ilastlogout(GetLastLogoutTime());
     rstBaseInfo.set_icreatetime(GetCreateTime());
@@ -228,7 +228,7 @@ void CGameRoleObj::UpdateBaseInfoToDB(BASEDBINFO& rstBaseInfo)
 
 void CGameRoleObj::InitBaseInfoFromDB(const BASEDBINFO& rstBaseInfo)
 {
-    //todo jasonxiong µ¥»ú°æ²»ĞèÒªÃû×Ö
+    //todo jasonxiong å•æœºç‰ˆä¸éœ€è¦åå­—
     SetNickName(rstBaseInfo.sznickname().c_str());
     SetRoleStatus(rstBaseInfo.ustatus());
     SetLastLoginTime(rstBaseInfo.ilastlogin());
@@ -243,7 +243,7 @@ void CGameRoleObj::InitBaseInfoFromDB(const BASEDBINFO& rstBaseInfo)
     return;
 }
 
-// Ë¢ĞÂ»î¶¯×´Ì¬
+// åˆ·æ–°æ´»åŠ¨çŠ¶æ€
 void CGameRoleObj::ActiveRefresh()
 {
     m_iLastActiveTime = time(NULL);
@@ -254,7 +254,7 @@ bool CGameRoleObj::IsUnactive()
     return time(NULL) > (m_iLastActiveTime + UNACTIVE_ROLE_TIMEOUT);
 }
 
-// ÊÀ½çÁÄÌì»¹Ê£ÓàÀäÈ´Ê±¼ä
+// ä¸–ç•ŒèŠå¤©è¿˜å‰©ä½™å†·å´æ—¶é—´
 int CGameRoleObj::GetWorldChatCD()
 {
     const int WORLD_CHAT_CD = 5;
@@ -274,7 +274,7 @@ int CGameRoleObj::GetWorldChatCD()
     return (WORLD_CHAT_CD - iPassTime);
 }
 
-//¸½½üÁÄÌìÀäÈ´Ê±¼ä
+//é™„è¿‘èŠå¤©å†·å´æ—¶é—´
 bool CGameRoleObj::CanChatNearbyNow()
 {
     const unsigned char NEARBYCHATCD = 3;
@@ -312,28 +312,28 @@ void CGameRoleObj::OnTick()
 
     m_iLastTickTime = tNow;
 
-    // ¼ì²éÊÇ·ñ³¤Ê±¼ä²»»îÔ¾µÄÍæ¼Ò
+    // æ£€æŸ¥æ˜¯å¦é•¿æ—¶é—´ä¸æ´»è·ƒçš„ç©å®¶
     if (IsUnactive())
     {
         CLogoutHandler::LogoutRole(this, LOGOUT_REASON_KICKOFF);
         
-        //Ë¢ĞÂÍæ¼Ò»îÔ¾µÄÊ±¼ä
+        //åˆ·æ–°ç©å®¶æ´»è·ƒçš„æ—¶é—´
         ActiveRefresh();
 
         return;
     }
 
-    // ¼ì²éÏÂÏßÍ¨Öª
+    // æ£€æŸ¥ä¸‹çº¿é€šçŸ¥
     if (!IsOnline())
     {
         CLogoutHandler::LogoutAction(this);
         return;
     }
 
-    //ËùÓĞ¶¨Ê±Æ÷·ÅÕâÀï£¬ÂıÂıÕû
-    OnTwoSecondTimerUp(tNow); //2Ãë¶¨Ê±Æ÷
+    //æ‰€æœ‰å®šæ—¶å™¨æ”¾è¿™é‡Œï¼Œæ…¢æ…¢æ•´
+    OnTwoSecondTimerUp(tNow); //2ç§’å®šæ—¶å™¨
 
-    // ¼ì²éÏÂÏß³¬Ê±ÖØ·¢
+    // æ£€æŸ¥ä¸‹çº¿è¶…æ—¶é‡å‘
     if (CUnitUtility::IsUnitStatusSet(&m_stRoleInfo.stUnitInfo, EGUS_LOGOUT))
     {
         if (tNow - m_stRoleInfo.stBaseInfo.iLogoutTime > ROLEDATA_REWRITE_SECONDS)
@@ -348,7 +348,7 @@ void CGameRoleObj::OnTick()
         return;
     }
 
-    // ¼ì²éÍ£»úÏÂÏß
+    // æ£€æŸ¥åœæœºä¸‹çº¿
     if (GAME_SERVER_STATUS_STOP == GetServerStatus())
     {
         if (!CUnitUtility::IsUnitStatusSet(&m_stRoleInfo.stUnitInfo, EGUS_LOGOUT))
@@ -362,7 +362,7 @@ void CGameRoleObj::OnTick()
         return;
     }
 
-    // ¸üĞÂDB
+    // æ›´æ–°DB
     if ((tNow - m_iLastUpdateDBTickTime) >= TICK_TIMEVAL_UPDATEDB
             && GetServerStatus() != GAME_SERVER_STATUS_STOP)
     {
@@ -370,13 +370,13 @@ void CGameRoleObj::OnTick()
         m_iLastUpdateDBTickTime = tNow; 
     }
 
-    //Ò»·ÖÖÓ¶¨Ê±Æ÷
+    //ä¸€åˆ†é’Ÿå®šæ—¶å™¨
     if ((tNow - m_iLastMinTime) >= ONE_MIN_TIMEOUT)
     {
         m_iLastMinTime = tNow;
     }
 
-    //10Ãë¶¨Ê±Æ÷
+    //10ç§’å®šæ—¶å™¨
     if ((tNow - m_iLastTenSecondTime) >= TEN_SECOND_TIMER)
     {
         m_iLastTenSecondTime = tNow;
@@ -450,23 +450,23 @@ bool CGameRoleObj::IsMsgFreqLimit(const int iMsgID) const
     while (iLastPushIdx != m_stMsgInfoQueue.m_iMsgQueueIndex)
     {
         const MsgInfo& rstMsgInfo = m_stMsgInfoQueue.m_astMsgInfo[iLastPushIdx];
-        //¿ÕµÄ¸ñ×Ó
+        //ç©ºçš„æ ¼å­
         if ((rstMsgInfo.m_stTimeval.tv_sec == 0)||(rstMsgInfo.m_wMsgID == 0))
         {
             return false;
         }
 
-        //³¬¹ı×î´ó¼ä¸ôÁË
+        //è¶…è¿‡æœ€å¤§é—´éš”äº†
         CTimeValue stTimeDiff = CTimeUtility::m_stTimeValueTick - CTimeValue(rstMsgInfo.m_stTimeval);
         if (stTimeDiff.GetMilliSec() >= MAX_MSG_INTERVAL_TIME)
         {
             return false;
         }
 
-        //ÕÒµ½ÁËÏàÍ¬µÄÏûÏ¢ID, ²¢ÇÒÒ²ÊÇlotusµÄ
+        //æ‰¾åˆ°äº†ç›¸åŒçš„æ¶ˆæ¯ID, å¹¶ä¸”ä¹Ÿæ˜¯lotusçš„
         if ((rstMsgInfo.m_wMsgID == iMsgID)&& (rstMsgInfo.m_ucSource == (unsigned char)GAME_SERVER_LOTUSZONE))
         {
-            //Ğ¡ÓÚ¼ä¸ôÖµ
+            //å°äºé—´éš”å€¼
             if (stTimeDiff.GetMilliSec() < CModuleHelper::GetConfigManager()->GetMsgInterval(iMsgID))
             {
                 return true;
@@ -491,7 +491,7 @@ void CGameRoleObj::PushMsgID(const int iMsgID, const unsigned char ucSource)
 
 void CGameRoleObj::OnTwoSecondTimerUp(time_t tNow)
 {
-    //2Ãë¶¨Ê±Æ÷
+    //2ç§’å®šæ—¶å™¨
     if ((tNow - m_iLastTwoSecondTime) < 2)
     {
         return;
@@ -500,3 +500,7 @@ void CGameRoleObj::OnTwoSecondTimerUp(time_t tNow)
     m_iLastTwoSecondTime = tNow;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

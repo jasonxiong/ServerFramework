@@ -1,4 +1,4 @@
-#ifndef __GAME_SESSION_HPP__
+ï»¿#ifndef __GAME_SESSION_HPP__
 #define __GAME_SESSION_HPP__
 
 #include "SessionDefine.hpp"
@@ -24,29 +24,29 @@ public:
 
 public:
     ////////////////////////////////////////////////////////////////////////////////
-    // »á»°ĞÅÏ¢
+    // ä¼šè¯ä¿¡æ¯
     void SetRoleID(const RoleID& stRoleID) { m_stRoleID.CopyFrom(stRoleID); };
     const RoleID& GetRoleID() { return m_stRoleID; };
 
-    // »á»°ID (Socket FD)
+    // ä¼šè¯ID (Socket FD)
     void SetID(int iID) {m_iID = iID;}
     int GetID() {return m_iID;}
 
-    // »á»°Á¬½Ó
+    // ä¼šè¯è¿æ¥
     void SetNetHead(const TNetHead_V2* pNetHead);
     const TNetHead_V2& GetNetHead(){return m_stNetHead;};
 
     const char* GetClientIP() {return &m_szClientIP[0];}
 
-    // »á»°¿Í»§¶Ë°æ±¾ºÅ
+    // ä¼šè¯å®¢æˆ·ç«¯ç‰ˆæœ¬å·
     void SetClientVersion(int iVersion) {m_iClientVersion = iVersion;};
     int GetClientVersion() {return m_iClientVersion;};
 
-    // µÇÂ¼ºó, °ó¶¨µÄ½ÇÉ«¶ÔÏó
+    // ç™»å½•å, ç»‘å®šçš„è§’è‰²å¯¹è±¡
     CGameRoleObj* GetBindingRole();
     void SetBindingRole(const CGameRoleObj* pZoneRoleObj);
 
-    // ´´½¨Ê±¼ä
+    // åˆ›å»ºæ—¶é—´
     int GetCreateTime() {return m_iCreateTime;};
 
 public:
@@ -78,3 +78,7 @@ private:
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

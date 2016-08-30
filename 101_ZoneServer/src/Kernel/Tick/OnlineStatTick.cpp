@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+ï»¿#include "GameProtocol.hpp"
 #include "ZoneObjectHelper.hpp"
 #include "ZoneMsgHelper.hpp"
 #include "ModuleHelper.hpp"
@@ -13,7 +13,7 @@ COnlineStatTick::COnlineStatTick()
 
 int COnlineStatTick::Initialize(bool bResume)
 {
-    // Æô¶¯ºóÁ¢¿ÌÏòWorld·¢ËÍÒ»ÌõÔÚÏßÏûÏ¢, WorldÀûÓÃ¸ÃÏûÏ¢×÷ÎªZoneµÄĞÄÌø°ü
+    // å¯åŠ¨åç«‹åˆ»å‘Worldå‘é€ä¸€æ¡åœ¨çº¿æ¶ˆæ¯, Worldåˆ©ç”¨è¯¥æ¶ˆæ¯ä½œä¸ºZoneçš„å¿ƒè·³åŒ…
     SendZoneOnlineStat(!bResume);
 
     if (bResume)
@@ -66,3 +66,7 @@ int COnlineStatTick::SendZoneOnlineStat(bool bInit)
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

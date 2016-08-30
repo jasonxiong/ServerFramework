@@ -1,4 +1,4 @@
-#include <time.h>
+ï»¿#include <time.h>
 
 #include "GameProtocol.hpp"
 #include "TimeUtility.hpp"
@@ -9,13 +9,13 @@
 #include "LogAdapter.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//ÔËÓªOSSÈÕÖ¾½Ó¿Ú
+//è¿è¥OSSæ—¥å¿—æ¥å£
 
 #define GAME_OSSLOG_CONFIG_FILE "../conf/OssLogConfig.xml"
 
 using namespace ServerLib;
 
-//Íæ¼ÒµÇÂ¼µÄÈÕÖ¾
+//ç©å®¶ç™»å½•çš„æ—¥å¿—
 void CZoneOssLog::TraceLogin(CGameRoleObj& stRoleObj)
 {
 	CGameSessionObj* pstSessionObj = CModuleHelper::GetSessionManager()->FindSessionByRoleID(stRoleObj.GetRoleID());
@@ -31,7 +31,7 @@ void CZoneOssLog::TraceLogin(CGameRoleObj& stRoleObj)
 	return;
 }
 
-//Íæ¼ÒµÇ³öµÄÈÕÖ¾
+//ç©å®¶ç™»å‡ºçš„æ—¥å¿—
 void CZoneOssLog::TraceLogout(CGameRoleObj& stRoleObj)
 {
 	CGameSessionObj* pstSessionObj = CModuleHelper::GetSessionManager()->FindSessionByRoleID(stRoleObj.GetRoleID());
@@ -47,7 +47,7 @@ void CZoneOssLog::TraceLogout(CGameRoleObj& stRoleObj)
 	return;
 }
 
-//¼ÇÂ¼Õ½¶·µÄÈÕÖ¾
+//è®°å½•æˆ˜æ–—çš„æ—¥å¿—
 void CZoneOssLog::TraceRoleCombat(unsigned uin, int iCrossID, int iStartTime, bool bIsSelfWin)
 {
 	//uin | OSS_LOG_TYPE_DOCOMBAT | time | cross | start_time | is_self_win
@@ -57,7 +57,7 @@ void CZoneOssLog::TraceRoleCombat(unsigned uin, int iCrossID, int iStartTime, bo
 	return;
 }
 
-//Íæ¼ÒNPC½»Ò×ÈÕÖ¾
+//ç©å®¶NPCäº¤æ˜“æ—¥å¿—
 void CZoneOssLog::TraceItemTrade(unsigned uin, int iOpType, int iResChange, int iItemID, int iItemNum)
 {
 	//uin | OSS_LOG_TYPE_ITEMTRADE | time | optype | res_change | itemid | itemnum
@@ -67,7 +67,7 @@ void CZoneOssLog::TraceItemTrade(unsigned uin, int iOpType, int iResChange, int 
 	return;
 }
 
-//Íæ¼ÒÑ§Ï°Éú»î¼¼ÄÜÅä·½µÄÈÕÖ¾
+//ç©å®¶å­¦ä¹ ç”Ÿæ´»æŠ€èƒ½é…æ–¹çš„æ—¥å¿—
 void CZoneOssLog::TraceAddLifeSkill(unsigned uin, int iSkillType, int iSkillID, int iAddTime)
 {
 	//uin | OSS_LOG_TYPE_ADDLIFESKILL | time | skill_type | skill_id | add_time
@@ -77,7 +77,7 @@ void CZoneOssLog::TraceAddLifeSkill(unsigned uin, int iSkillType, int iSkillID, 
 	return;
 }
 
-//Íæ¼Ò¿ªÊ¼Ğ¡ÓÎÏ·µÄÈÕÖ¾
+//ç©å®¶å¼€å§‹å°æ¸¸æˆçš„æ—¥å¿—
 void CZoneOssLog::TraceBeginMiniGame(unsigned uin, int iMiniGameType)
 {
 	//uin | OSS_LOG_TYPE_BEGINMINIGAME | time | minigame_type
@@ -86,7 +86,7 @@ void CZoneOssLog::TraceBeginMiniGame(unsigned uin, int iMiniGameType)
 	return;
 }
 
-//Íæ¼Ò½áÊøĞ¡ÓÎÏ·µÄÈÕÖ¾
+//ç©å®¶ç»“æŸå°æ¸¸æˆçš„æ—¥å¿—
 void CZoneOssLog::TraceEndMiniGame(unsigned uin, int iMiniGameType)
 {
 	//uin | OSS_LOG_TYPE_BEGINMINIGAME | time | minigame_type
@@ -95,7 +95,7 @@ void CZoneOssLog::TraceEndMiniGame(unsigned uin, int iMiniGameType)
 	return;
 }
 
-//Íæ¼ÒĞ¡»ï°é³å²ãµÄÈÕÖ¾
+//ç©å®¶å°ä¼™ä¼´å†²å±‚çš„æ—¥å¿—
 void CZoneOssLog::TraceUnitFeed(unsigned uin, int iUnitConfigID, int iNewLevel)
 {
 	//uin | OSS_LOG_TYPE_UNITFEED | time | configid | newlevel
@@ -109,7 +109,11 @@ void CZoneOssLog::TraceUnitFeed(unsigned uin, int iUnitConfigID, int iNewLevel)
 int CZoneOssLog::Initialize()
 {
 	//todo jasonxiong5
-	//³õÊ¼»¯Kingnet UdpLog
+	//åˆå§‹åŒ–Kingnet UdpLog
 	//return _analyzer.Init(GAME_OSSLOG_CONFIG_FILE);
 	return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

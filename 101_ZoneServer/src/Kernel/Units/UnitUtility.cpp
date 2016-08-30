@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "ZoneObjectHelper.hpp"
 #include "ModuleHelper.hpp"
@@ -23,8 +23,8 @@ void create_dump(void)
     int * invalid = NULL;
     if(!fork()) {
             // Crash the app in your favorite way here
-        abort();  //ºÍ kill(getpid(), SIGABRT);Ó¦¸ÃÒ»ÑùµÄ
-        *invalid = 42;    //Ó¦¸Ã²»»áµ½ÕâÀïÀ´ÁË°É¡£
+        abort();  //å’Œ kill(getpid(), SIGABRT);åº”è¯¥ä¸€æ ·çš„
+        *invalid = 42;    //åº”è¯¥ä¸ä¼šåˆ°è¿™é‡Œæ¥äº†å§ã€‚
     }
 //#endif
 }
@@ -78,17 +78,17 @@ bool CUnitUtility::IsEqualRole(const RoleID& rstRoleID1, const RoleID& rstRoleID
     return (rstRoleID1.uin()==rstRoleID2.uin() && rstRoleID1.uiseq()==rstRoleID2.uiseq());
 }
 
-// »ñÈ¡ÏÂÒ»¸ö½ÇÉ«Ë÷Òı
+// è·å–ä¸‹ä¸€ä¸ªè§’è‰²ç´¢å¼•
 int CUnitUtility::IterateRoleIdx()
 {
     if (m_iUpdateRoleIdx < 0)
     {
-        // ¶¨Î»ÆğÊ¼µ¥Î»
+        // å®šä½èµ·å§‹å•ä½
         m_iUpdateRoleIdx = GameTypeK32<CGameRoleObj>::GetUsedHead();
     }
     else
     {
-        // ¶¨Î»ÏÂÒ»¸öµ¥Î»
+        // å®šä½ä¸‹ä¸€ä¸ªå•ä½
         m_iUpdateRoleIdx = GameTypeK32<CGameRoleObj>::GetNextIdx(m_iUpdateRoleIdx);
     }
 
@@ -99,7 +99,7 @@ int CUnitUtility::AllocateUnitID()
 {
     int iUnitID = GameType<CGameUnitID>::Create();
 
-    // ²»Ê¹ÓÃ0ºÅUnitID
+    // ä¸ä½¿ç”¨0å·UnitID
     if (iUnitID == 0)
     {
         iUnitID = AllocateUnitID();
@@ -144,7 +144,7 @@ void CUnitUtility::FreeUnitID(const int iUnitID)
     TRACESVR("Free UnitID = %d\n", iUnitID);
 }
 
-// °ó¶¨Unitµ½Object
+// ç»‘å®šUnitåˆ°Object
 int CUnitUtility::BindUnitToObject(int iUnitID, int iObjectIdx, unsigned char ucObjectType)
 {
     CGameUnitID* pGameUnitID = GameType<CGameUnitID>::Get(iUnitID);
@@ -155,10 +155,10 @@ int CUnitUtility::BindUnitToObject(int iUnitID, int iObjectIdx, unsigned char uc
     return 0;
 }
 
-// ´´½¨Ò»¸öµ¥Î»
+// åˆ›å»ºä¸€ä¸ªå•ä½
 CObj* CUnitUtility::CreateUnit(unsigned char ucUnitType, unsigned int uiKey)
 {
-    // ´´½¨µ¥Î»ID
+    // åˆ›å»ºå•ä½ID
     int iUnitID = CUnitUtility::AllocateUnitID();
     if (iUnitID <= 0)
     {
@@ -166,7 +166,7 @@ CObj* CUnitUtility::CreateUnit(unsigned char ucUnitType, unsigned int uiKey)
         return NULL;
     }
 
-    // °´ÀàĞÍ´´½¨µ¥Î»
+    // æŒ‰ç±»å‹åˆ›å»ºå•ä½
     CObj* pObj = NULL;
     switch (ucUnitType)
     {
@@ -202,8 +202,8 @@ CObj* CUnitUtility::CreateUnit(unsigned char ucUnitType, unsigned int uiKey)
     return pObj;
 }
 
-// É¾³ıÒ»¸öµ¥Î», ÊÍ·ÅUnitID, Ïú»Ù¶ÔÏóID.
-// ¶ÔÏóÉ¾³ıÊÇÒ»¸ö·Ç³£Î£ÏÕµÄĞĞÎª, Òò´ËÒªÏÈ½«µ¥Î»ÖÃÎªEUS_DELETED×´Ì¬, ÔÚAppTickÖĞÉ¾³ı
+// åˆ é™¤ä¸€ä¸ªå•ä½, é‡Šæ”¾UnitID, é”€æ¯å¯¹è±¡ID.
+// å¯¹è±¡åˆ é™¤æ˜¯ä¸€ä¸ªéå¸¸å±é™©çš„è¡Œä¸º, å› æ­¤è¦å…ˆå°†å•ä½ç½®ä¸ºEUS_DELETEDçŠ¶æ€, åœ¨AppTickä¸­åˆ é™¤
 int CUnitUtility::DeleteUnit(TUNITINFO* pUnitInfo)
 {
     int iUnitID = pUnitInfo->iUnitID;
@@ -225,13 +225,13 @@ int CUnitUtility::DeleteUnit(TUNITINFO* pUnitInfo)
     }
 
 
-    // É¾³ıUnitID
+    // åˆ é™¤UnitID
     CUnitUtility::FreeUnitID(iUnitID);
 
     return 0;
 }
 
-// »ñÈ¡½ÇÉ«µ¥Î»
+// è·å–è§’è‰²å•ä½
 CGameRoleObj* CUnitUtility::GetRoleByUin(const int uiUin)
 {
     return GameTypeK32<CGameRoleObj>::GetByKey(uiUin);
@@ -248,7 +248,7 @@ CGameRoleObj* CUnitUtility::GetRoleByID(const RoleID& rstRoleID)
     return pRoleObj;
 }
 
-// ÉèÖÃµ¥Î»×´Ì¬
+// è®¾ç½®å•ä½çŠ¶æ€
 void CUnitUtility::SetUnitStatus(TUNITINFO* pstUnit, EUnitStatus enStatus)
 {
     ASSERT_AND_LOG_RTN_VOID(pstUnit);
@@ -256,7 +256,7 @@ void CUnitUtility::SetUnitStatus(TUNITINFO* pstUnit, EUnitStatus enStatus)
     pstUnit->uiUnitStatus |= enStatus;
 }
 
-// Çå³ıµ¥Î»×´Ì¬
+// æ¸…é™¤å•ä½çŠ¶æ€
 void CUnitUtility::ClearUnitStatus(TUNITINFO* pstUnit, EUnitStatus enStatus)
 {
     ASSERT_AND_LOG_RTN_VOID(pstUnit);
@@ -264,3 +264,7 @@ void CUnitUtility::ClearUnitStatus(TUNITINFO* pstUnit, EUnitStatus enStatus)
     pstUnit->uiUnitStatus &= ~(enStatus);
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

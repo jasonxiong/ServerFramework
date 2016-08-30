@@ -1,4 +1,4 @@
-#ifndef __REP_THINGS_MANAGER_HPP__
+ï»¿#ifndef __REP_THINGS_MANAGER_HPP__
 #define __REP_THINGS_MANAGER_HPP__
 
 #include <vector>
@@ -34,85 +34,89 @@ public:
 
 public:
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     int Initialize();
 
     void SetOwner(unsigned int uin);
     CGameRoleObj* GetOwner();
 
-    //±³°üÔö¼ÓÎïÆ·
+    //èƒŒåŒ…å¢åŠ ç‰©å“
     int AddRepItem(int iItemID, int iItemNum, int iItemChannel = 0);
 
-    //±³°üÔö¼ÓÎïÆ·, iItemSlot±íÊ¾·Åµ½Ö¸¶¨µÄÎ»ÖÃ, -1±íÊ¾²»Ö¸¶¨slotÎ»ÖÃ
+    //èƒŒåŒ…å¢åŠ ç‰©å“, iItemSlotè¡¨ç¤ºæ”¾åˆ°æŒ‡å®šçš„ä½ç½®, -1è¡¨ç¤ºä¸æŒ‡å®šslotä½ç½®
     int AddRepItem(const RepItem& stItem, int iItemSlot = -1, int iItemChannel = 0);
 
-    //±³°üÉ¾³ıÎïÆ·
+    //èƒŒåŒ…åˆ é™¤ç‰©å“
     int DeleteRepItem(int iItemSlot, int iItemNum, int iItemChannel = 0);
 
-    //±³°üÉ¾³ıÎïÆ·
+    //èƒŒåŒ…åˆ é™¤ç‰©å“
     int DeleteRepItem(int iItemSlot, RepItem& stDeleteItem, int iItemChannel = 0);
 
-    //±³°üÉ¾³ıÎïÆ·
+    //èƒŒåŒ…åˆ é™¤ç‰©å“
     int DeleteRepItemByID(int iItemID, int iItemChannel = 0);
     int DeleteRepItemByID(int iItemID, int iItemNum, int iItemChannel);
 
-    //±³°ü½»»»ÎïÆ·,Èç¹ûÊÇÏàÍ¬IDµÄÔòºÏ²¢ 2->1
+    //èƒŒåŒ…äº¤æ¢ç‰©å“,å¦‚æœæ˜¯ç›¸åŒIDçš„åˆ™åˆå¹¶ 2->1
     int ExchangeRepItem(int iItemSlot1, int iItemSlot2, bool bIsSortExchange=false);
 
-    //»ñÈ¡±³°üÖĞÎïÆ·µÄÊıÁ¿
+    //è·å–èƒŒåŒ…ä¸­ç‰©å“çš„æ•°é‡
     int GetRepItemNum(int iItemSlot);
 
     int GetRepItemNumByID(int iItemID);
 
-    //Ôö¼Ó±³°üÖĞÎïÆ·ÊıÁ¿£¬Îª¸º±íÊ¾É¾³ı
+    //å¢åŠ èƒŒåŒ…ä¸­ç‰©å“æ•°é‡ï¼Œä¸ºè´Ÿè¡¨ç¤ºåˆ é™¤
     int AddItemNumByID(int iItemID, int iItemNum, int iItemChannel = 0);
 
-    //»ñÈ¡±³°üÖĞÎïÆ·µÄID
+    //è·å–èƒŒåŒ…ä¸­ç‰©å“çš„ID
     int GetRepItemID(int iItemSlot);
 
-    //»ñÈ¡±³°ü¿Õ¸ñ×ÓµÄSlotIndex,Ğ¡ÓÚ0 ±íÊ¾±³°üÃ»ÓĞ¿Õ¸ñ×Ó
+    //è·å–èƒŒåŒ…ç©ºæ ¼å­çš„SlotIndex,å°äº0 è¡¨ç¤ºèƒŒåŒ…æ²¡æœ‰ç©ºæ ¼å­
     int GetEmptyItemSlotIndex();
 
-    //±³°üÕûÀíÎïÆ·
+    //èƒŒåŒ…æ•´ç†ç‰©å“
     int SortRepItem();
 
-    //¿ªÆô±³°ü¸ñ×Ó
+    //å¼€å¯èƒŒåŒ…æ ¼å­
     int OpenRepBlock();
 
-    //¿ªÆôËùÓĞµÄ±³°ü¸ñ×Ó
+    //å¼€å¯æ‰€æœ‰çš„èƒŒåŒ…æ ¼å­
     int OpenAllRepBlock();
 
-    //±³°üÎïÆ·Êı¾İ¿â²Ù×÷º¯Êı
+    //èƒŒåŒ…ç‰©å“æ•°æ®åº“æ“ä½œå‡½æ•°
     void UpdateRepItemToDB(ITEMDBINFO& rstItemInfo);
     void InitRepItemFromDB(const ITEMDBINFO& stItemInfo);
 
 private:
 
-    //»ñÈ¡¿Õ¸ñ×ÓµÄSlot£¬·µ»Ø-1±íÊ¾Ã»ÓĞÕÒµ½
+    //è·å–ç©ºæ ¼å­çš„Slotï¼Œè¿”å›-1è¡¨ç¤ºæ²¡æœ‰æ‰¾åˆ°
     int GetEmptyItemSlot();
 
-    //°´×°±¸×ÓÀàĞÍ½øĞĞÅÅĞò,µÚÒ»¸ö²ÎÊı»á¸üĞÂÆğÊ¼µÄÎ»ÖÃ
+    //æŒ‰è£…å¤‡å­ç±»å‹è¿›è¡Œæ’åº,ç¬¬ä¸€ä¸ªå‚æ•°ä¼šæ›´æ–°èµ·å§‹çš„ä½ç½®
     int SortEquipBySubType(int& iBeginIndex, int iMaxIndex, int iSubType);
 
-    //°´µÀ¾ß×ÓÀàĞÍ½øĞĞÅÅĞò£¬µÚÒ»¸ö²ÎÊı»á¸üĞÂÆğÊ¼µÄÎ»ÖÃ
+    //æŒ‰é“å…·å­ç±»å‹è¿›è¡Œæ’åºï¼Œç¬¬ä¸€ä¸ªå‚æ•°ä¼šæ›´æ–°èµ·å§‹çš„ä½ç½®
     int SortPropItemBySubType(int& iBeginIndex, int iMaxIndex, int iSubType);
 
-    //·¢ËÍ±³°üÎïÆ·±ä»¯µÄÍ¨Öª
+    //å‘é€èƒŒåŒ…ç‰©å“å˜åŒ–çš„é€šçŸ¥
     void SendRepChangeNotify(std::vector<int>& vItemSlot, int iItemChannel = 0);
 
 private:
 
-    //ÓµÓĞ¸Ã±³°üµÄ½ÇÉ«µÄuin
+    //æ‹¥æœ‰è¯¥èƒŒåŒ…çš„è§’è‰²çš„uin
     unsigned int m_uiUin;
 
-    //µ±Ç°±³°ü¿ªÆôµÄ¸ñ×ÓÊıÄ¿
+    //å½“å‰èƒŒåŒ…å¼€å¯çš„æ ¼å­æ•°ç›®
     int m_iRepBlockNum;
 
-    //±³°ü¸ñ×ÓÖĞµÄÎïÆ·ĞÅÏ¢
+    //èƒŒåŒ…æ ¼å­ä¸­çš„ç‰©å“ä¿¡æ¯
     RepItem m_astRepItem[MAX_REP_BLOCK_NUM]; 
 
-    //Íæ¼Ò±³°üÎïÆ··¢Éú±ä»¯µÄÍ¨Öª
+    //ç©å®¶èƒŒåŒ…ç‰©å“å‘ç”Ÿå˜åŒ–çš„é€šçŸ¥
     static GameProtocolMsg m_stRepChangeNotify;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

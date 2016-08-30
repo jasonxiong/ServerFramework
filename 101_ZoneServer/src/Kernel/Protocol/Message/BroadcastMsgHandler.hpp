@@ -1,4 +1,4 @@
-
+﻿
 #ifndef __BROADCASTMSG_HANDLER_HPP__
 #define __BROADCASTMSG_HANDLER_HPP__
 
@@ -16,3 +16,7 @@ public:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

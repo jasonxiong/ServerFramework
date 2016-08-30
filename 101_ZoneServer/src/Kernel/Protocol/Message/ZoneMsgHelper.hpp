@@ -1,4 +1,4 @@
-#ifndef __ZONE_MSG_HELPER_HPP__
+ï»¿#ifndef __ZONE_MSG_HELPER_HPP__
 #define __ZONE_MSG_HELPER_HPP__
 
 #include "GameProtocol.hpp"
@@ -7,8 +7,8 @@
 #include "LogAdapter.hpp"
 #include "GameObjCommDef.hpp"
 
-// ·â×°·şÎñÆ÷ÏÂ·¢¸ø¿Í»§¶ËµÄ¸÷ÖÖÏûÏ¢, ×÷ÓÃÊÇ:
-// 1. ·½±ãIHandlerÖ®ÍâµÄÄ£¿éÊ¹ÓÃ
+// å°è£…æœåŠ¡å™¨ä¸‹å‘ç»™å®¢æˆ·ç«¯çš„å„ç§æ¶ˆæ¯, ä½œç”¨æ˜¯:
+// 1. æ–¹ä¾¿IHandlerä¹‹å¤–çš„æ¨¡å—ä½¿ç”¨
 
 class CGameRoleObj;
 
@@ -21,27 +21,27 @@ typedef struct tagRoleObjList
 class CZoneMsgHelper
 {
 public:
-    // ³õÊ¼»¯ÏûÏ¢Í·²¿
+    // åˆå§‹åŒ–æ¶ˆæ¯å¤´éƒ¨
     static void GenerateMsgHead(GameProtocolMsg& rstGameMsg, const unsigned int uiMsgID);
 
 public:
-    // ·¢ËÍÏûÏ¢µ½¿Í»§¶Ë
+    // å‘é€æ¶ˆæ¯åˆ°å®¢æˆ·ç«¯
     static int SendZoneMsgToClient(GameProtocolMsg& rstZoneMsg, const TNetHead_V2& rstNetHead);
 
-    // ·¢ËÍÏûÏ¢µ½World
+    // å‘é€æ¶ˆæ¯åˆ°World
     static int SendZoneMsgToWorld(const GameProtocolMsg& rstZoneMsg);
 
 public:
-    // ·¢ËÍÏûÏ¢¸øpRoleObj
+    // å‘é€æ¶ˆæ¯ç»™pRoleObj
     static int SendZoneMsgToRole(GameProtocolMsg& rstGameMsg, CGameRoleObj *pRoleObj); 
 
-    // ·¢ËÍÏûÏ¢¸øºÜ¶àÈË
+    // å‘é€æ¶ˆæ¯ç»™å¾ˆå¤šäºº
     static int SendZoneMsgToRoleList(GameProtocolMsg& rstZoneMsg, const TRoleObjList& rstRoleList);
 
-    // ·¢ËÍÏûÏ¢¸ø±¾ÏßËùÓĞÓÃ»§
+    // å‘é€æ¶ˆæ¯ç»™æœ¬çº¿æ‰€æœ‰ç”¨æˆ·
     static int SendZoneMsgToZoneAll(GameProtocolMsg& rstZoneMsg);
 
-    // ·¢ËÍÏûÏ¢¸ø±¾ÏßËùÓĞÓÃ»§, ³ıÁËpMe
+    // å‘é€æ¶ˆæ¯ç»™æœ¬çº¿æ‰€æœ‰ç”¨æˆ·, é™¤äº†pMe
     static int SendZoneMsgToZoneAllExcludeMe(GameProtocolMsg& rstZoneMsg, CGameRoleObj* pRoleObj);  
 
 public:
@@ -56,7 +56,7 @@ public:
 	
 public:
 
-    // ÏµÍ³ÊÀ½çÆµµÀÏûÏ¢
+    // ç³»ç»Ÿä¸–ç•Œé¢‘é“æ¶ˆæ¯
     static void WorldChat(char* pszMessage);
 
 private:
@@ -65,3 +65,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

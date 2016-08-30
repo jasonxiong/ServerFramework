@@ -1,4 +1,4 @@
-#include <unistd.h>
+ï»¿#include <unistd.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -20,7 +20,7 @@ class CGameRoleObj;
 
 using namespace ServerLib;
 
-//³õÊ¼»¯AppCmd
+//åˆå§‹åŒ–AppCmd
 int CAppLoop::ms_iAppCmd = APPCMD_NOTHING_TODO;
 CTimeValue CAppLoop::m_stLotusMsgMaxProsessTime;
 CTimeValue CAppLoop::m_stWorldMsgMaxProcessTime;
@@ -89,14 +89,14 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
         SetServerStatus(GAME_SERVER_STATUS_INIT);
     }
 
-    //¶ÁÈ¡ÅäÖÃ
+    //è¯»å–é…ç½®
     LoadConfig();
 
     m_bResumeMode = bResume;
 
     int iRet = -1;
 
-    // Ä£¿é×¢²á
+    // æ¨¡å—æ³¨å†Œ
     CModuleHelper::RegisterServerID(iWorldID, iZoneID, iInstanceID);
     CModuleHelper::RegisterUnitEventManager(&m_stUnitEventManager);
     CModuleHelper::RegisterConfigManager(&m_stConfigManager);
@@ -109,7 +109,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
 
     CGMCommandManager::Instance()->Init();
 
-    // ÏûÏ¢ÊÕ·¢Æ÷
+    // æ¶ˆæ¯æ”¶å‘å™¨
     iRet = m_stZoneMsgTransceiver.Initialize(m_bResumeMode);
     if (iRet < 0)
     {
@@ -117,7 +117,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
         exit(3);
     }
 
-    // Ğ­Òé±à½âÂë
+    // åè®®ç¼–è§£ç 
     iRet = m_stZoneProtocolEngine.Initialize(m_bResumeMode);
     if (iRet < 0)
     {
@@ -125,7 +125,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
         exit(4);
     }
 
-    // Excel±í¸ñÅäÖÃ¼ÓÔØ
+    // Excelè¡¨æ ¼é…ç½®åŠ è½½
     iRet = m_stConfigManager.Initialize(m_bResumeMode);
     if (iRet < 0)
     {
@@ -133,7 +133,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
         exit(5);
     }
 
-    // ¶ÔÏó³Ø³õÊ¼»¯
+    // å¯¹è±¡æ± åˆå§‹åŒ–
     iRet = m_stAllocator.Initialize(m_bResumeMode);
     if(iRet < 0)
     {
@@ -141,7 +141,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
         exit(6);
     }
 
-    // µÇÂ¼Session
+    // ç™»å½•Session
     iRet = m_stSessionManager.Initialize(m_bResumeMode);
     if (iRet < 0)
     {
@@ -149,7 +149,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
         exit(7);
     }
 
-    // ½ÇÉ«ÈÕÖ¾
+    // è§’è‰²æ—¥å¿—
     TLogConfig& rstPlayerLogConfig = PlayerLogSingleton::Instance()->GetLogConfig();
     rstPlayerLogConfig.m_iLogLevel = LOG_LEVEL_ANY;
 
@@ -161,11 +161,11 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
     //stPlayerLogConfig.m_iMaxFileExistDays = 3;
     //PlayerLogSingleton::Instance()->ReloadLogConfig(stPlayerLogConfig);
 
-    // ÆµÂÊ¿ØÖÆÆ÷
+    // é¢‘ç‡æ§åˆ¶å™¨
     CFreqencyCtroller<0>::Instance()->SetParameters(1, 100, 100);
     CFreqencyCtroller<0>::Instance()->CheckFrequency(0);
 
-    // Tick»úÖÆ
+    // Tickæœºåˆ¶
     iRet = m_stAppTick.Initialize(bResume);
     if (iRet < 0)
     {
@@ -173,7 +173,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
         exit(18);
     }
 
-    //Lua½Å±¾ÏµÍ³¼ÓÔØ
+    //Luaè„šæœ¬ç³»ç»ŸåŠ è½½
     //LuaScriptFramework oLuaFramework;
     //iRet = oLuaFramework.Init();
     //if(iRet)
@@ -182,7 +182,7 @@ int CAppLoop::Initialize(bool bResume, int iWorldID, int iZoneID, int iInstanceI
     //    return iRet;
     //}
 
-    // ·ÅÔÚ×îºó
+    // æ”¾åœ¨æœ€å
     SetServerStatus(GAME_SERVER_STATUS_IDLE);
 
     return 0;
@@ -245,7 +245,7 @@ int CAppLoop::Run()
             break;
         }
 
-        // ´¦ÀíËùÓĞµÄÏûÏ¢
+        // å¤„ç†æ‰€æœ‰çš„æ¶ˆæ¯
 
         int iNewMsgCount = 0;
         int riMsgLength=0;
@@ -253,12 +253,12 @@ int CAppLoop::Run()
         CTimeValue astTimeVal[4];
         CTimeValue stDiff;
         astTimeVal[0].RefreshTime();
-        // Í£·şÆÚ¼ä, ²»´¦ÀíLotusÏûÏ¢
+        // åœæœæœŸé—´, ä¸å¤„ç†Lotusæ¶ˆæ¯
         if (GetServerStatus() != GAME_SERVER_STATUS_STOP)
         {
             for (int i = 0; i < m_stZoneMsgTransceiver.GetCodeQueueNum(); i++)
             {
-                // Lotus ÏûÏ¢
+                // Lotus æ¶ˆæ¯
                 iLength = sizeof(szBuffer);
 
                 while(iNewMsgCount < 1000)
@@ -267,7 +267,7 @@ int CAppLoop::Run()
                     iRet = m_stZoneMsgTransceiver.RecvOneMsg(szBuffer, iLength, riMsgLength, GAME_SERVER_LOTUSZONE, i);
                     if(iRet <0 || riMsgLength<=0)
                     {
-                        //½ÓÊÕ²»µ½¸ü¶àÏûÏ¢
+                        //æ¥æ”¶ä¸åˆ°æ›´å¤šæ¶ˆæ¯
                         break;
                     }
 
@@ -284,7 +284,7 @@ int CAppLoop::Run()
             m_stLotusMsgMaxProsessTime = stDiff;
         }
 
-        // World ÏûÏ¢
+        // World æ¶ˆæ¯
         iLength = sizeof(szBuffer);
         riMsgLength=0;
         iRet = m_stZoneMsgTransceiver.RecvOneMsg(szBuffer, iLength, riMsgLength, GAME_SERVER_WORLD);
@@ -303,7 +303,7 @@ int CAppLoop::Run()
 
         EGameServerStatus enServerStatus = GetServerStatus();
 
-        // ÉèÖÃ·şÎñÆ÷×´Ì¬
+        // è®¾ç½®æœåŠ¡å™¨çŠ¶æ€
         if (iNewMsgCount == 0)
         {
             if (enServerStatus != GAME_SERVER_STATUS_PRESTOP
@@ -350,18 +350,18 @@ int CAppLoop::Run()
     return 0;
 }
 
-// Í£·ş
+// åœæœ
 bool CAppLoop::Stop()
 {
     //m_stPinDrawLucky.WriteData();
-    // PRESTOP×´Ì¬
+    // PRESTOPçŠ¶æ€
     if ((GAME_SERVER_STATUS_PRESTOP != GetServerStatus())
         && (GAME_SERVER_STATUS_STOP != GetServerStatus()))
     {
         TRACESVR("Receive Command: APPCMD_STOP_SERVICE\n");
         SetServerStatus(GAME_SERVER_STATUS_PRESTOP);
 
-        // ÉèÖÃÍ£·ş³¬Ê±
+        // è®¾ç½®åœæœè¶…æ—¶
         m_stStopService.RefreshTime();
         timeval stTimeval = m_stStopService.GetTimeValue();
         stTimeval.tv_sec += SERVER_PRESTOP_TIME;
@@ -370,7 +370,7 @@ bool CAppLoop::Stop()
         return false;
     }
 
-    // ÔÚÏßÈËÊı£¬Èç¹ûÎªÁãÔòÍË³ö
+    // åœ¨çº¿äººæ•°ï¼Œå¦‚æœä¸ºé›¶åˆ™é€€å‡º
     static int iRoleOnline = 0;
     int iRoleOld = iRoleOnline;
     iRoleOnline = GameTypeK32<CGameRoleObj>::GetUsedObjNumber();
@@ -382,7 +382,7 @@ bool CAppLoop::Stop()
 
     CTimeValue stTimeVal;
     stTimeVal.RefreshTime();
-    // ³¬Ê±£ºÉèÖÃ·şÎñÆ÷×´Ì¬£¬²»ÔÙ´¦ÀíÄ³Ğ©ÃüÁî
+    // è¶…æ—¶ï¼šè®¾ç½®æœåŠ¡å™¨çŠ¶æ€ï¼Œä¸å†å¤„ç†æŸäº›å‘½ä»¤
     if (stTimeVal > m_stStopService)
     {
         SetServerStatus(GAME_SERVER_STATUS_STOP);
@@ -395,7 +395,7 @@ bool CAppLoop::Stop()
         return false;
     }
 
-    // ¿ØÖÆÌáÊ¾´ÎÊı£ºÃ¿ÃëÒ»´Î
+    // æ§åˆ¶æç¤ºæ¬¡æ•°ï¼šæ¯ç§’ä¸€æ¬¡
     static int siSeconds = 0;
     if (stTimeVal.GetTimeValue().tv_sec < (siSeconds + 1))
     {
@@ -403,17 +403,21 @@ bool CAppLoop::Stop()
     }
     siSeconds = stTimeVal.GetTimeValue().tv_sec;
 
-    // Ã¿10ÃëÌáÊ¾£¬Ğ¡ÓÚ10ÃëÔòÃ¿ÃëÌáÊ¾
+    // æ¯10ç§’æç¤ºï¼Œå°äº10ç§’åˆ™æ¯ç§’æç¤º
     int iDeltaTime = m_stStopService.GetTimeValue().tv_sec - stTimeVal.GetTimeValue().tv_sec;
     if ( (0 != (iDeltaTime % 10)) && (iDeltaTime > 10))
     {
         return false;
     }
 
-    // ÌáÊ¾ËùÓĞ¿Í»§¶Ë
-    //todo jasonxiong ºóĞø¿¼ÂÇĞŞ¸Ä -1 Îª×Ô¼ºµÄ´íÎóÂë EQEC_Server_Maintence
+    // æç¤ºæ‰€æœ‰å®¢æˆ·ç«¯
+    //todo jasonxiong åç»­è€ƒè™‘ä¿®æ”¹ -1 ä¸ºè‡ªå·±çš„é”™è¯¯ç  EQEC_Server_Maintence
     //CPromptMsgHelper::SendPromptMsgToZoneAll(-1, PROMPTMSG_TYPE_POPUP, iDeltaTime);
 
     return false;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

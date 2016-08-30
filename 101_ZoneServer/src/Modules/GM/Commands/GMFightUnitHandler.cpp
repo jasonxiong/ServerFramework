@@ -1,4 +1,4 @@
-
+ï»¿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "ZoneErrorNumDef.hpp"
@@ -15,7 +15,7 @@ CGMFightUnitHandler::CGMFightUnitHandler()
     m_pRoleObj = NULL;
 }
 
-//Ö´ÐÐÏàÓ¦GMÃüÁîµÄ¹¦ÄÜ
+//Ö´ï¿½ï¿½ï¿½ï¿½Ó¦GMï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½
 int CGMFightUnitHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<std::string> &vParams)
 {
     m_pRoleObj = pRoleObj;
@@ -25,7 +25,7 @@ int CGMFightUnitHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vect
         return -1;
     }
 
-    //Ê×ÏÈ½øÐÐ²ÎÊý¼ì²é
+    //ï¿½ï¿½ï¿½È½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     int iRet = SecurityCheck(iCommandType, vParams);
     if(iRet)
     {
@@ -35,12 +35,12 @@ int CGMFightUnitHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vect
 
     CFightUnitManager& stFightUnitManager = m_pRoleObj->GetFightUnitManager();
 
-    //Ö´ÐÐÏàÓ¦µÄGM²Ù×÷
+    //Ö´ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½GMï¿½ï¿½ï¿½ï¿½
     switch(iCommandType)
     {
         case GM_COMMAND_ADD_FIGHTUNIT:
             {
-                //Ôö¼ÓÕ½¶·µ¥Î»
+                //ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½Î»
                 int iFightUnitID = atoi(vParams[1].c_str());
 
                 iRet = stFightUnitManager.AddFightUnit(iFightUnitID);
@@ -78,7 +78,7 @@ int CGMFightUnitHandler::Run(CGameRoleObj *pRoleObj, int iCommandType, std::vect
     return T_SERVER_SUCESS;
 }
 
-//½øÐÐ²ÎÊý¼ì²é
+//ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int CGMFightUnitHandler::SecurityCheck(int iCommandType, std::vector<std::string>& vParams)
 {
     switch(iCommandType)
@@ -112,3 +112,7 @@ int CGMFightUnitHandler::SecurityCheck(int iCommandType, std::vector<std::string
     
     return T_SERVER_SUCESS;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------
