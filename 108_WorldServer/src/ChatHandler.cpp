@@ -1,4 +1,4 @@
-
+ï»¿
 #include "WorldObjectHelperW_K64.hpp"
 #include "WorldRoleStatus.hpp"
 #include "ModuleHelper.hpp"
@@ -43,10 +43,10 @@ int CChatHandler::OnRequestChatNotify()
 {
     const World_Chat_Notify& rstNotify = m_pMsg->m_stmsgbody().m_stworld_chat_notify();
 
-    //Ö±½Ó×ª·¢¸øZoneServer
+    //ç›´æ¥è½¬å‘ç»™ZoneServer
     for (int iZoneID = 1; iZoneID < MAX_ZONE_PER_WORLD; ++iZoneID)
     {
-        //²»ĞèÒª×ª·¢¸ø·¢ËÍµÄÈËËùÔÚµÄ·ÖÏß
+        //ä¸éœ€è¦è½¬å‘ç»™å‘é€çš„äººæ‰€åœ¨çš„åˆ†çº¿
         if(iZoneID != rstNotify.izoneid())
         {
             CWorldMsgHelper::SendWorldMsgToWGS(*m_pMsg, iZoneID);
@@ -55,3 +55,7 @@ int CChatHandler::OnRequestChatNotify()
 
     return T_SERVER_SUCESS;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

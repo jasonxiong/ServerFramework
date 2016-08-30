@@ -1,4 +1,4 @@
-#include "ModuleHelper.hpp"
+ï»¿#include "ModuleHelper.hpp"
 #include "WorldMsgHelper.hpp"
 #include "LogAdapter.hpp"
 #include "WorldRoleStatus.hpp"
@@ -40,19 +40,19 @@ int CKickRoleWorldHandler::OnClientMsg(const void* pMsg)
     return 0;
 }
 
-// ´¦ÀíÀ´×ÔZoneµÄÌßÈËÇëÇó
+// å¤„ç†æ¥è‡ªZoneçš„è¸¢äººè¯·æ±‚
 int CKickRoleWorldHandler::OnZoneRequestKickRole()
 {
     const World_KickRole_Request& rstReq = m_pRequestMsg->m_stmsgbody().m_stworld_kickrole_request();
 
     int iRet = 0;
 
-    // ÅĞ¶Ï±¾worldµÄµÇÂ¼Çé¿ö
+    // åˆ¤æ–­æœ¬worldçš„ç™»å½•æƒ…å†µ
     LOGDEBUG("Recv Zone KickRole Req: Uin = %u, From ZoneID = %d\n", rstReq.stkickedroleid().uin(), rstReq.ifromzoneid()); 
 
     CWorldRoleStatusWObj* pWorldRoleStatusWObj = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(rstReq.stkickedroleid());
 
-    //Èç¹û¾ÍÔÚ¸ÃworldµÇÂ¼, ÏòZone·¢ËÍÌßÈËÇëÇó
+    //å¦‚æœå°±åœ¨è¯¥worldç™»å½•, å‘Zoneå‘é€è¸¢äººè¯·æ±‚
     if (pWorldRoleStatusWObj != NULL)
     {
         int iZoneID = pWorldRoleStatusWObj->GetZoneID();
@@ -69,12 +69,12 @@ int CKickRoleWorldHandler::OnZoneRequestKickRole()
         }
         else
         {
-            // Ö±½ÓÉ¾³ı¸ÃuinµÄĞÅÏ¢£¬ÖØĞÂµÇÂ¼
+            // ç›´æ¥åˆ é™¤è¯¥uinçš„ä¿¡æ¯ï¼Œé‡æ–°ç™»å½•
             WorldTypeK32<CWorldRoleStatusWObj>::DeleteByUin(rstReq.stkickedroleid().uin());
         }
     }
 
-    // ÏòZone·¢ËÍ»Ø¸´
+    // å‘Zoneå‘é€å›å¤
     CWorldMsgHelper::GenerateMsgHead(ms_stGameMsg, 0, MSGID_WORLD_KICKROLE_RESPONSE, rstReq.stkickedroleid().uin());
     World_KickRole_Response* pstKickResp = ms_stGameMsg.mutable_m_stmsgbody()->mutable_m_stworld_kickrole_response();
     pstKickResp->set_ifromworldid(rstReq.ifromworldid());
@@ -92,7 +92,7 @@ int CKickRoleWorldHandler::OnZoneRequestKickRole()
     return 0;
 }
 
-// ´¦ÀíÀ´×ÔZoneµÄ±»Ìß»Ø¸´
+// å¤„ç†æ¥è‡ªZoneçš„è¢«è¸¢å›å¤
 int CKickRoleWorldHandler::OnZoneResponseKickRole()
 {
     const World_KickRole_Response& rstResp = m_pRequestMsg->m_stmsgbody().m_stworld_kickrole_response();
@@ -101,7 +101,7 @@ int CKickRoleWorldHandler::OnZoneResponseKickRole()
 
     LOGDEBUG("Recv Zone KickRole Resp: Uin = %u, result = %d\n", uin, rstResp.iresult());
 
-    // Èç¹ûÌßÈË³É¹¦, ÔòÔÙ´ÎÈ·ÈÏWorldÃ»ÓĞÊı¾İ. Èç¹ûÓĞ, ÔòÇ¿ÖÆÉ¾³ı»º´æÊı¾İ.
+    // å¦‚æœè¸¢äººæˆåŠŸ, åˆ™å†æ¬¡ç¡®è®¤Worldæ²¡æœ‰æ•°æ®. å¦‚æœæœ‰, åˆ™å¼ºåˆ¶åˆ é™¤ç¼“å­˜æ•°æ®.
     if (rstResp.iresult() == T_SERVER_SUCESS)
     {
         CWorldRoleStatusWObj* pWorldRoleStatusWObj = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(rstResp.stkickedroleid());
@@ -111,10 +111,10 @@ int CKickRoleWorldHandler::OnZoneResponseKickRole()
         }
     }
 
-    //µÇÂ¼µÄzoneºÍÌßÈËµÄzoneÊôÓÚÒ»¸öworld
+    //ç™»å½•çš„zoneå’Œè¸¢äººçš„zoneå±äºä¸€ä¸ªworld
     if (rstResp.ifromworldid() == CModuleHelper::GetWorldID())
     {
-        // ÏòZone·¢ËÍ»Ø¸´
+        // å‘Zoneå‘é€å›å¤
         CWorldMsgHelper::GenerateMsgHead(ms_stGameMsg, 0, MSGID_WORLD_KICKROLE_RESPONSE, uin);
         World_KickRole_Response* pstKickResp = ms_stGameMsg.mutable_m_stmsgbody()->mutable_m_stworld_kickrole_response();
         pstKickResp->CopyFrom(rstResp);
@@ -124,7 +124,7 @@ int CKickRoleWorldHandler::OnZoneResponseKickRole()
         LOGDEBUG("Send Zone KickRole Resp: Uin = %u, iRet = %d\n", uin, iRet);
 
     }
-    //»»worldµÇÂ¼£¬²»»Ø°üÁË
+    //æ¢worldç™»å½•ï¼Œä¸å›åŒ…äº†
     else
     {
 
@@ -133,3 +133,7 @@ int CKickRoleWorldHandler::OnZoneResponseKickRole()
     return iRet;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "StringUtility.hpp"
 
@@ -37,7 +37,7 @@ void CCreateRoleRequestObj::SetRequestInfo(const CreateRole_Account_Request& stR
     m_iRequestWorldID = stRequest.worldid();
     m_uRequestUin = stRequest.uin();
 
-    //todo jasonxiong2 µ¥»ú°æ²»ĞèÒªÃû×Ö
+    //todo jasonxiong2 å•æœºç‰ˆä¸éœ€è¦åå­—
     //SAFE_STRCPY(m_szRequestNickName, stRequest.sznickname().c_str(), sizeof(m_szRequestNickName)-1);
 
     return;
@@ -58,3 +58,7 @@ const char* CCreateRoleRequestObj::GetNickName() const
     return m_szRequestNickName;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

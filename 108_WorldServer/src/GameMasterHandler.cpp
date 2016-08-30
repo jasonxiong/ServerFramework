@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <string.h>
 
 #include "ModuleHelper.hpp"
@@ -20,7 +20,7 @@ int CGameMasterHandler::OnClientMsg(const void* pMsg)
 
     switch (m_pRequestMsg->m_stmsghead().m_uimsgid())
     {
-        //todo jasonxiong ÔİÊ±ÏÈ×¢ÊÍµô£¬ºóĞø¸ù¾İĞèÒªÔÙ¿ª·¢
+        //todo jasonxiong æš‚æ—¶å…ˆæ³¨é‡Šæ‰ï¼Œåç»­æ ¹æ®éœ€è¦å†å¼€å‘
         /*
     case MSGID_GAMEMASTERDB_GRANT_REQUEST:
         {
@@ -54,7 +54,7 @@ int CGameMasterHandler::OnRequestGameMaster()
 
 int CGameMasterHandler::OnResponseGameMaster()
 {
-    //todo jasonxiong Õâ±ßµÈºóĞøĞèÒªÌí¼ÓGM´¦ÀíÈ¨ÏŞÊ±ÔÙĞŞ¸ÄÌí¼Ó
+    //todo jasonxiong è¿™è¾¹ç­‰åç»­éœ€è¦æ·»åŠ GMå¤„ç†æƒé™æ—¶å†ä¿®æ”¹æ·»åŠ 
     /*
     LOGDEBUG("OnResponseGameMaster\n");
 
@@ -77,3 +77,7 @@ int CGameMasterHandler::OnResponseGameMaster()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

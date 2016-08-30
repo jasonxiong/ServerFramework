@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
@@ -20,7 +20,7 @@ CUpdateAccountHandler::CUpdateAccountHandler()
 
 int CUpdateAccountHandler::CheckParam()
 {
-    //todo jasonxiong Õâ¸öÀïÃæºóÃæĞèÒª¸ù¾İ²ß»®ĞèÇóÌí¼ÓÕÊºÅºÍÃÜÂëµÄ×Ö·ûºÏ·¨ĞÔ¼ì²é
+    //todo jasonxiong è¿™ä¸ªé‡Œé¢åé¢éœ€è¦æ ¹æ®ç­–åˆ’éœ€æ±‚æ·»åŠ å¸å·å’Œå¯†ç çš„å­—ç¬¦åˆæ³•æ€§æ£€æŸ¥
 
     return 0;
 }
@@ -28,7 +28,7 @@ int CUpdateAccountHandler::CheckParam()
 void CUpdateAccountHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃResult
+    // ä¸ä½¿ç”¨Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
@@ -39,7 +39,7 @@ void CUpdateAccountHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     {
         case MSGID_REGAUTH_UPDATE_REQUEST:
             {
-                //¸üĞÂÆ½Ì¨ÕÊºÅµÄÇëÇó
+                //æ›´æ–°å¹³å°å¸å·çš„è¯·æ±‚
                 OnRequestUpdateAccount();
                 return;
             }
@@ -47,7 +47,7 @@ void CUpdateAccountHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
         case MSGID_ACCOUNTDB_UPDATE_RESPONSE:
             {
-                //¸üĞÂÆ½Ì¨ÕÊºÅµÄ·µ»Ø
+                //æ›´æ–°å¹³å°å¸å·çš„è¿”å›
                 OnResponseUpdateAccount();
                 return;
             }
@@ -65,7 +65,7 @@ void CUpdateAccountHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
 int CUpdateAccountHandler::OnRequestUpdateAccount()
 {
-    // ¼ì²éÇëÇóÏûÏ¢ÖĞÊÇ·ñ´æÔÚ·Ç·¨×Ö¶Î
+    // æ£€æŸ¥è¯·æ±‚æ¶ˆæ¯ä¸­æ˜¯å¦å­˜åœ¨éæ³•å­—æ®µ
     if (CheckParam() != 0)
     {
         TRACESVR("Invalid parameter found in the request\n");
@@ -75,12 +75,12 @@ int CUpdateAccountHandler::OnRequestUpdateAccount()
 
     RegAuth_UpdateAccount_Request* pstReq = m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_stregauth_updateaccount_request();
 
-    //todo jasonxiong ºóÃæÈç¹û½ÓÈëµÚÈı·½Æ½Ì¨µÄ»°£¬Õâ±ßĞèÒªÌí¼ÓÏàÓ¦Æ½Ì¨µÄÈÏÖ¤
+    //todo jasonxiong åé¢å¦‚æœæ¥å…¥ç¬¬ä¸‰æ–¹å¹³å°çš„è¯ï¼Œè¿™è¾¹éœ€è¦æ·»åŠ ç›¸åº”å¹³å°çš„è®¤è¯
 
     TRACESVR("Handling RegAccountRequest from lotus server, account: %s, type: %d\n", 
              pstReq->staccountid().straccount().c_str(), pstReq->staccountid().iaccounttype());
 
-    // ¼ì²ésessionÊÇ·ñÒÑ¾­´æÔÚ£¬session¸öÊıÊÇ·ñµ½´ïÉÏÏŞ
+    // æ£€æŸ¥sessionæ˜¯å¦å·²ç»å­˜åœ¨ï¼Œsessionä¸ªæ•°æ˜¯å¦åˆ°è¾¾ä¸Šé™
     int iRes = SessionManager->CheckSession(*m_pstNetHead);
     if (iRes != T_SERVER_SUCESS)
     {
@@ -88,9 +88,9 @@ int CUpdateAccountHandler::OnRequestUpdateAccount()
         return -4;
     }
 
-    time_t tmNow = time(NULL); // ´´½¨»º´æ½áµãµÄÊ±¼ä
+    time_t tmNow = time(NULL); // åˆ›å»ºç¼“å­˜ç»“ç‚¹çš„æ—¶é—´
 
-    // »º´æNetHead£¬¼´session
+    // ç¼“å­˜NetHeadï¼Œå³session
     CSessionObj* pSessionObj = SessionManager->CreateSession(*m_pstNetHead);
     ASSERT_AND_LOG_RTN_INT(pSessionObj);
     pSessionObj->SetCreatedTime(&tmNow);
@@ -101,9 +101,9 @@ int CUpdateAccountHandler::OnRequestUpdateAccount()
 
     char szTime[32] = "";
     pSessionObj->GetCreatedTime(szTime, sizeof(szTime));
-    TRACESVR("session cache created time: %s", szTime); // ÀıÈç: Wed Sep 29 10:59:46 2010
+    TRACESVR("session cache created time: %s", szTime); // ä¾‹å¦‚: Wed Sep 29 10:59:46 2010
 
-    // ×ª·¢¸üĞÂµÄÇëÇó¸øACCOUNTDB
+    // è½¬å‘æ›´æ–°çš„è¯·æ±‚ç»™ACCOUNTDB
     SendUpdateRequestToAccountDB();
 
     return T_SERVER_SUCESS;
@@ -111,16 +111,16 @@ int CUpdateAccountHandler::OnRequestUpdateAccount()
 
 int CUpdateAccountHandler::OnResponseUpdateAccount()
 {
-    //×é×°ÏûÏ¢·µ»Ø¸ø¿Í»§¶Ë
+    //ç»„è£…æ¶ˆæ¯è¿”å›ç»™å®¢æˆ·ç«¯
     static GameProtocolMsg stResponseMsg;
 
-    //Éú³ÉÏûÏ¢Í·
+    //ç”Ÿæˆæ¶ˆæ¯å¤´
     GenerateMsgHead(&stResponseMsg, m_pstRequestMsg->m_stmsghead().m_uisessionfd(), MSGID_REGAUTH_UPDATE_RESPONSE, 0);
 
-    //»ñÈ¡AccountDBµÄÏìÓ¦ÏûÏ¢
+    //è·å–AccountDBçš„å“åº”æ¶ˆæ¯
     const AccountDB_UpdateAccount_Response& rstResp = m_pstRequestMsg->m_stmsgbody().m_staccountdb_update_response();
 
-    //Éú³ÉÏûÏ¢Ìå
+    //ç”Ÿæˆæ¶ˆæ¯ä½“
     RegAuth_UpdateAccount_Response* pstResp = stResponseMsg.mutable_m_stmsgbody()->mutable_m_stregauth_updateaccount_response();
     pstResp->set_iresult(rstResp.iresult());
 
@@ -130,7 +130,7 @@ int CUpdateAccountHandler::OnResponseUpdateAccount()
         return -3;
     }
 
-    //todo jasonxiong Õâ±ßºóĞøÊÇ·ñĞèÒªÔö¼ÓOSSÔËÓªÈÕÖ¾£¬µÈºóĞøÔÙÈ·¶¨
+    //todo jasonxiong è¿™è¾¹åç»­æ˜¯å¦éœ€è¦å¢åŠ OSSè¿è¥æ—¥å¿—ï¼Œç­‰åç»­å†ç¡®å®š
 
     return T_SERVER_SUCESS;
 }
@@ -141,10 +141,10 @@ void CUpdateAccountHandler::SendUpdateRequestToAccountDB()
 
     const RegAuth_UpdateAccount_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_stregauth_updateaccount_request();
 
-    //Éú³É¸üĞÂµÄÏûÏ¢Í·
+    //ç”Ÿæˆæ›´æ–°çš„æ¶ˆæ¯å¤´
     GenerateMsgHead(&stRequestMsg, m_uiSessionFD, MSGID_ACCOUNTDB_UPDATE_REQUEST, GetAccountHash(rstReq.staccountid().straccount()));
 
-    //¼ÓÃÜÔ­Ê¼µÄÃÜÂë
+    //åŠ å¯†åŸå§‹çš„å¯†ç 
     static char szEncryptPasswd[256] = {0};
     int iEncryptBuffLen = sizeof(szEncryptPasswd)-1;
     int iRet = CPasswordEncryptionUtility::DoPasswordEncryption(rstReq.strpassword().c_str(), rstReq.strpassword().size(), szEncryptPasswd, iEncryptBuffLen);
@@ -154,12 +154,12 @@ void CUpdateAccountHandler::SendUpdateRequestToAccountDB()
         return;
     }
 
-    //Éú³É¸üĞÂµÄÏûÏ¢Ìå
+    //ç”Ÿæˆæ›´æ–°çš„æ¶ˆæ¯ä½“
     AccountDB_UpdateAccount_Request* pstUpdateReq = stRequestMsg.mutable_m_stmsgbody()->mutable_m_staccountdb_update_request();
     pstUpdateReq->mutable_staccountid()->CopyFrom(rstReq.staccountid());
     pstUpdateReq->set_strpassword(szEncryptPasswd, iEncryptBuffLen);
 
-    //×ª·¢ÏûÏ¢¸øAccountDBServer
+    //è½¬å‘æ¶ˆæ¯ç»™AccountDBServer
     if (EncodeAndSendCode(SSProtocolEngine, NULL, &stRequestMsg, GAME_SERVER_ACCOUNTDB) != 0)
     {
         TRACESVR("Failed to send Update request to Account DB server\n");
@@ -191,3 +191,7 @@ void CUpdateAccountHandler::SendFailedResponseToLotus(const unsigned int uiResul
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file  CommonDef.hpp
 *@author jasonxiong
 *@date 2009-07-02
 *@version 1.0
-*@brief ¸ÃÎÄ¼ş°üÀ¨Ò»Ğ©»ù´¡µÄºê¶¨Òå
+*@brief è¯¥æ–‡ä»¶åŒ…æ‹¬ä¸€äº›åŸºç¡€çš„å®å®šä¹‰
 *
 *
 */
@@ -46,22 +46,22 @@
 
 namespace ServerLib
 {
-const unsigned int MAX_FILENAME_LENGTH = 256; //!<ÎÄ¼şÃû×î´ó³¤¶È
-const unsigned int MAX_DATETIME_LENGTH = 32; //!<YYYY-mm-dd HH:MM:SS¸ñÊ½µÄÊ±¼ä´®×î´ó³¤¶È
-const unsigned int MAX_DATE_LENGTH = 16; //!<YYYY-mm-dd¸ñÊ½µÄÊ±¼ä´®×î´ó³¤¶È
-const unsigned int MAX_IPV4_LENGTH = 16; //!<IPv4µÄ×Ö·û´®³¤¶È
-const unsigned int MAX_DEPRATED_CODEQUEUE_LENGTH = 20; //!<×î´óÖ§³ÖµÄCodeQueue¸öÊı
-const unsigned int MAX_TCP_CODE_LENGTH = 32 * 1024 - 1; //!<×î´óÖ§³ÖµÄTCPÏûÏ¢µÄ³¤¶È
-const int MIN_TIME_STRING_LENGTH = 19; //!<ÓÃÓÚ×ª»»Ê±´æ·ÅtmÊ±¼ä×Ö·û´®
-const int MAX_LINE_BUF_LENGTH = 1024; //!<Ò»ĞĞ×Ö·û´®µÄ×î´ó³¤¶È
+const unsigned int MAX_FILENAME_LENGTH = 256; //!<æ–‡ä»¶åæœ€å¤§é•¿åº¦
+const unsigned int MAX_DATETIME_LENGTH = 32; //!<YYYY-mm-dd HH:MM:SSæ ¼å¼çš„æ—¶é—´ä¸²æœ€å¤§é•¿åº¦
+const unsigned int MAX_DATE_LENGTH = 16; //!<YYYY-mm-ddæ ¼å¼çš„æ—¶é—´ä¸²æœ€å¤§é•¿åº¦
+const unsigned int MAX_IPV4_LENGTH = 16; //!<IPv4çš„å­—ç¬¦ä¸²é•¿åº¦
+const unsigned int MAX_DEPRATED_CODEQUEUE_LENGTH = 20; //!<æœ€å¤§æ”¯æŒçš„CodeQueueä¸ªæ•°
+const unsigned int MAX_TCP_CODE_LENGTH = 32 * 1024 - 1; //!<æœ€å¤§æ”¯æŒçš„TCPæ¶ˆæ¯çš„é•¿åº¦
+const int MIN_TIME_STRING_LENGTH = 19; //!<ç”¨äºè½¬æ¢æ—¶å­˜æ”¾tmæ—¶é—´å­—ç¬¦ä¸²
+const int MAX_LINE_BUF_LENGTH = 1024; //!<ä¸€è¡Œå­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
 
-const char MtGAME_STX = 0x82; //!<ÔÚMtGameĞÂĞ­ÒéÖĞ±êÖ¾ÏûÏ¢¿ªÊ¼
-const char MtGAME_ETX = 0x83; //!<ÔÚMtGameĞÂĞ­ÒéÖĞ±êÖ¾ÏûÏ¢½áÊø
+const char MtGAME_STX = 0x82; //!<åœ¨MtGameæ–°åè®®ä¸­æ ‡å¿—æ¶ˆæ¯å¼€å§‹
+const char MtGAME_ETX = 0x83; //!<åœ¨MtGameæ–°åè®®ä¸­æ ‡å¿—æ¶ˆæ¯ç»“æŸ
 const int MIN_MtGAME_NEW_MSG_LENGTH = 6; //!<STX(1)+Len(4)+ETX(1)
-const int MAX_UIN_STRING_LENGTH = 12; //!<MtºÅ±íÊ¾³öÀ´µÄ×Ö·û´®×î´ó³¤¶È
-const int MICROSECOND_PER_SECOND = 1000000; //!<Ã¿ÃëÓĞ¶àÉÙÎ¢Ãë
+const int MAX_UIN_STRING_LENGTH = 12; //!<Mtå·è¡¨ç¤ºå‡ºæ¥çš„å­—ç¬¦ä¸²æœ€å¤§é•¿åº¦
+const int MICROSECOND_PER_SECOND = 1000000; //!<æ¯ç§’æœ‰å¤šå°‘å¾®ç§’
 
-#ifndef ref //ÓÃÓÚ±êÖ¾ÒıÓÃ
+#ifndef ref //ç”¨äºæ ‡å¿—å¼•ç”¨
 #define ref
 #endif
 
@@ -72,32 +72,32 @@ typedef char TName[32];
 typedef char TFName[256];
 typedef char StrLine[1024];
 
-//!¼ÆËã|a-b|
+//!è®¡ç®—|a-b|
 #define ABS(a,b)  (((unsigned int) (a) > (unsigned int)(b)) ? ((a) - (b)) : ((b) - (a)))
 
-//!»ñÈ¡aºÍbµÄ½Ï´óÕß
+//!è·å–aå’Œbçš„è¾ƒå¤§è€…
 #ifndef MAX
 #define MAX(a,b)  (((a) > (b)) ? (a) : (b))
 #endif
 
-//!»ñÈ¡aºÍbµÄ½ÏĞ¡Õß
+//!è·å–aå’Œbçš„è¾ƒå°è€…
 #ifndef MIN
 #define MIN(a,b)  (((a) < (b)) ? (a) : (b))
 #endif
 
-//!°²È«ÊÍ·ÅÖ¸Õë
+//!å®‰å…¨é‡Šæ”¾æŒ‡é’ˆ
 #define DELETEOBJ(a)  {	if(a) { delete a; } a = NULL; }
 
-//!ÅĞ¶ÏAWORDÊÇ·ñÖÃÉÏÄ³Ò»¸öBIT
+//!åˆ¤æ–­AWORDæ˜¯å¦ç½®ä¸ŠæŸä¸€ä¸ªBIT
 #define BIT_ENABLED(AWORD, BIT) (((AWORD) & (BIT)) != 0)
 
-//!ÅĞ¶ÏAWORDÊÇ·ñÃ»ÖÃÉÏÄ³Ò»¸öBIT
+//!åˆ¤æ–­AWORDæ˜¯å¦æ²¡ç½®ä¸ŠæŸä¸€ä¸ªBIT
 #define BIT_DISABLED(AWORD, BIT) (((AWORD) & (BIT)) == 0)
 
-//!½«AWORDÖÃÉÏÄ³Ğ©BITS
+//!å°†AWORDç½®ä¸ŠæŸäº›BITS
 #define SET_BITS(AWORD, BITS) ((AWORD) |= (BITS))
 
-//!½«AWORDÇå³ıÄ³Ğ©BITS
+//!å°†AWORDæ¸…é™¤æŸäº›BITS
 #define CLR_BITS(AWORD, BITS) ((AWORD) &= ~(BITS))
 
 template <typename T, size_t N>
@@ -105,14 +105,14 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #define arraysize(array) (sizeof(ArraySizeHelper(array)))
 
 
-//°´Î»²Ù×÷¸¨Öúºê
+//æŒ‰ä½æ“ä½œè¾…åŠ©å®
 #define cast(t, exp)	((t)(exp))
 #define resetbits(x,m)	((x) &= (~(m)) )
 #define setbits(x,m)	((x) |= (m))
 #define testbits(x,m)	((x) & (m))
 #define bitmask(b)	(1<<(b))
 
-//ÉèÖÃ×Ö½ÚxµÄµÚbÎ»Îª1
+//è®¾ç½®å­—èŠ‚xçš„ç¬¬bä½ä¸º1
 #define setbitsbypos(x, b)		setbits(x, bitmask(b))
 #define resetbitsbypos(x, b)	resetbits(x, bitmask(b));
 
@@ -121,3 +121,7 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 
 #endif //__COMMON_DEF_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

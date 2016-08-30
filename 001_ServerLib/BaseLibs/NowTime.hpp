@@ -1,12 +1,12 @@
-/**
+ï»¿/**
 *@file NowTIme.hpp
 *@author jasonxiong
 *@date 2009-11-23
 *@version 1.0
-*@brief µ±Ç°Ê±¼äµÄ¶¨Òå
+*@brief å½“å‰æ—¶é—´çš„å®šä¹‰
 *
-*	Ä¬ÈÏÇé¿öÏÂ²»Ê¹ÓÃ¡°¼ÙÊ±¼ä¡±£¬µ÷ÓÃGetNowTime¼´µ÷ÓÃÁËtime(NULL)»ñÈ¡Ê±¼ä
-*	ÔÚÊ¹ÓÃ¡°¼ÙÊ±¼ä¡±ºó£¬ĞèÒªÓ¦ÓÃ×ÔĞĞµ÷ÓÃRefreshNowTimeË¢ĞÂÊ±¼ä£¬GetNowTime»ñÈ¡µÄÊÇÉÏÒ»´ÎË¢ĞÂÊ±µÄÊ±¼ä
+*	é»˜è®¤æƒ…å†µä¸‹ä¸ä½¿ç”¨â€œå‡æ—¶é—´â€ï¼Œè°ƒç”¨GetNowTimeå³è°ƒç”¨äº†time(NULL)è·å–æ—¶é—´
+*	åœ¨ä½¿ç”¨â€œå‡æ—¶é—´â€åï¼Œéœ€è¦åº”ç”¨è‡ªè¡Œè°ƒç”¨RefreshNowTimeåˆ·æ–°æ—¶é—´ï¼ŒGetNowTimeè·å–çš„æ˜¯ä¸Šä¸€æ¬¡åˆ·æ–°æ—¶çš„æ—¶é—´
 */
 
 #ifndef __NOW_TIME_HPP__
@@ -29,47 +29,47 @@ public:
     ~CNowTime() {}
 
 public:
-    //!»ñÈ¡µ±Ç°UnixTimeÊ±¼ä£¨Ãë¼¶£©
+    //!è·å–å½“å‰UnixTimeæ—¶é—´ï¼ˆç§’çº§ï¼‰
     time_t GetNowTime() const;
-    //!Ê¹ÓÃ¼ÙUnixTimeÊ±¼ä£¬µ±Ç°Ê±¼äË¢ĞÂÓÉÓ¦ÓÃµ÷ÓÃRefreshNowTime¿ØÖÆ
+    //!ä½¿ç”¨å‡UnixTimeæ—¶é—´ï¼Œå½“å‰æ—¶é—´åˆ·æ–°ç”±åº”ç”¨è°ƒç”¨RefreshNowTimeæ§åˆ¶
     void EnablePseudoTime()
     {
         m_bUsePseudoTime = true;
     }
-    //!²»Ê¹ÓÃ¼ÙUnixTimeÊ±¼ä£¬µ±Ç°Ê±¼äÓÉÏµÍ³µ÷ÓÃÉú³É
+    //!ä¸ä½¿ç”¨å‡UnixTimeæ—¶é—´ï¼Œå½“å‰æ—¶é—´ç”±ç³»ç»Ÿè°ƒç”¨ç”Ÿæˆ
     void DisablePseudoTime()
     {
         m_bUsePseudoTime = false;
     }
-    //!Ë¢ĞÂµ±Ç°UnixTimeÊ±¼ä
+    //!åˆ·æ–°å½“å‰UnixTimeæ—¶é—´
     void RefreshNowTime()
     {
         m_stPseudoTime.RefreshTime();
     }
 
 
-    //!»ñÈ¡µ±Ç°timevalÊ±¼ä£¨Î¢Ãë¼¶£©
+    //!è·å–å½“å‰timevalæ—¶é—´ï¼ˆå¾®ç§’çº§ï¼‰
     timeval GetNowTimeVal() const;
-    //!Ê¹ÓÃ¼ÙtimevalÊ±¼ä£¬µ±Ç°Ê±¼äË¢ĞÂÓÉÓ¦ÓÃµ÷ÓÃRefreshNowTimeVal¿ØÖÆ
+    //!ä½¿ç”¨å‡timevalæ—¶é—´ï¼Œå½“å‰æ—¶é—´åˆ·æ–°ç”±åº”ç”¨è°ƒç”¨RefreshNowTimeValæ§åˆ¶
     void EnablePseudoTimeVal()
     {
         m_bUsePseudoTime = true;
     }
-    //!²»Ê¹ÓÃ¼ÙtimevalÊ±¼ä£¬µ±Ç°Ê±¼äÓÉÏµÍ³µ÷ÓÃÉú³É
+    //!ä¸ä½¿ç”¨å‡timevalæ—¶é—´ï¼Œå½“å‰æ—¶é—´ç”±ç³»ç»Ÿè°ƒç”¨ç”Ÿæˆ
     void DisablePseudoTimeVal()
     {
         m_bUsePseudoTime = false;
     }
-    //!Ë¢ĞÂµ±Ç°µÄTimeVal
+    //!åˆ·æ–°å½“å‰çš„TimeVal
     void RefreshNowTimeVal()
     {
         m_stPseudoTimeValue.RefreshTime();
     }
 
 private:
-    bool m_bUsePseudoTime; //!<ÊÇ·ñÊ¹ÓÃ¼ÙÊ±¼ä£¬ÓÉÓ¦ÓÃ×ÔĞĞµ÷ÓÃRefreshNowTimeÀ´Ë¢ĞÂµ±Ç°Ê±¼ä
-    CUnixTime m_stPseudoTime; //!<¹ÜÀítime_tµÄÀà
-    CTimeValue m_stPseudoTimeValue; //!<¹ÜÀítimevalµÄÀà
+    bool m_bUsePseudoTime; //!<æ˜¯å¦ä½¿ç”¨å‡æ—¶é—´ï¼Œç”±åº”ç”¨è‡ªè¡Œè°ƒç”¨RefreshNowTimeæ¥åˆ·æ–°å½“å‰æ—¶é—´
+    CUnixTime m_stPseudoTime; //!<ç®¡ç†time_tçš„ç±»
+    CTimeValue m_stPseudoTimeValue; //!<ç®¡ç†timevalçš„ç±»
 };
 
 typedef CSingleton<CNowTime> NowTimeSingleton;
@@ -78,3 +78,7 @@ typedef CSingleton<CNowTime> NowTimeSingleton;
 
 #endif //__NOW_TIME_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

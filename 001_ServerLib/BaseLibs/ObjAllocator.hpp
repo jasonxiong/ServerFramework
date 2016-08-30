@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file ObjAllocator
 *@author jasonxiong
 *@date 2009-12-09
 *@version 1.0
-*@brief CObj¶ÔÏó·ÖÅäÀà£¬¼´ĞÂ°æ±¾µÄidxobj
+*@brief CObjå¯¹è±¡åˆ†é…ç±»ï¼Œå³æ–°ç‰ˆæœ¬çš„idxobj
 *
-*	£¨1£©Ò»°ãÓÃÓÚ´óĞÍ¶ÔÏóµÄÄÚ´æ·ÖÅä
+*	ï¼ˆ1ï¼‰ä¸€èˆ¬ç”¨äºå¤§å‹å¯¹è±¡çš„å†…å­˜åˆ†é…
 */
 
 #ifndef __OBJ_ALLOCATOR_HPP__
@@ -18,19 +18,19 @@ namespace ServerLib
 
 typedef enum enmObjAllocType
 {
-    EOAT_ALLOC_BY_SELF = 0, //!<¶ÔÏóÄÚ´æÓÉObjAllocator×ÔÒÑ¶¯Ì¬·ÖÅä
-    EOAT_ALLOC_BY_SHARED_MEMORY = 1, //!<¶ÔÏóÄÚ´æÓÉ¹²ÏíÄÚ´æ·ÖÅä
+    EOAT_ALLOC_BY_SELF = 0, //!<å¯¹è±¡å†…å­˜ç”±ObjAllocatorè‡ªå·²åŠ¨æ€åˆ†é…
+    EOAT_ALLOC_BY_SHARED_MEMORY = 1, //!<å¯¹è±¡å†…å­˜ç”±å…±äº«å†…å­˜åˆ†é…
 } ENMOBJALLOCTYPE;
 
 class CObj;
 
 typedef enum enmIdxUseFlag
 {
-    EIUF_FREE = 0, //!<¸Ã¶ÔÏóÎ´±»Ê¹ÓÃ
-    EIUF_USED = 1, //!<¸Ã¶ÔÏóÒÑ±»Ê¹ÓÃ
+    EIUF_FREE = 0, //!<è¯¥å¯¹è±¡æœªè¢«ä½¿ç”¨
+    EIUF_USED = 1, //!<è¯¥å¯¹è±¡å·²è¢«ä½¿ç”¨
 } ENMIDXUSEFLAG;
 
-//!Ë÷ÒıÀà£¬½öÔÚCObjAllocatorÖĞÊ¹ÓÃ£¬Íâ²ãÒ»°ã²»ÓÃ
+//!ç´¢å¼•ç±»ï¼Œä»…åœ¨CObjAllocatorä¸­ä½¿ç”¨ï¼Œå¤–å±‚ä¸€èˆ¬ä¸ç”¨
 class CIdx
 {
 public:
@@ -38,68 +38,68 @@ public:
     ~CIdx();
 
 public:
-    //!³õÊ¼»¯º¯Êı
+    //!åˆå§‹åŒ–å‡½æ•°
     int Initialize();
 
-    //!½«¶ÔÏóÉèÖÃÎªÎ´Ê¹ÓÃ
+    //!å°†å¯¹è±¡è®¾ç½®ä¸ºæœªä½¿ç”¨
     inline void SetFree()
     {
         m_iUseFlag = EIUF_FREE;
     }
 
-    //!½«¶ÔÏóÉèÖÃÎªÒÑÊ¹ÓÃ
+    //!å°†å¯¹è±¡è®¾ç½®ä¸ºå·²ä½¿ç”¨
     inline void SetUsed()
     {
         m_iUseFlag = EIUF_USED;
     }
 
-    //!ÅĞ¶Ï¶ÔÏóÊÇ·ñÒÑ±»Ê¹ÓÃ
+    //!åˆ¤æ–­å¯¹è±¡æ˜¯å¦å·²è¢«ä½¿ç”¨
     inline int	IsUsed() const
     {
         return m_iUseFlag == EIUF_USED;
     }
 
-    //!»ñÈ¡ËùÔÚÁ´±íÏÂÒ»¸öË÷Òı
+    //!è·å–æ‰€åœ¨é“¾è¡¨ä¸‹ä¸€ä¸ªç´¢å¼•
     inline int	GetNextIdx() const
     {
         return m_iNextIdx;
     }
 
-    //!ÉèÖÃËùÔÚÁ´±íÏÂÒ»¸öË÷Òı
+    //!è®¾ç½®æ‰€åœ¨é“¾è¡¨ä¸‹ä¸€ä¸ªç´¢å¼•
     inline void SetNextIdx(int iIdx)
     {
         m_iNextIdx = iIdx;
     }
 
-    //!»ñÈ¡ËùÔÚÁ´±íÉÏÒ»¸öË÷Òı
+    //!è·å–æ‰€åœ¨é“¾è¡¨ä¸Šä¸€ä¸ªç´¢å¼•
     inline int	GetPrevIdx() const
     {
         return m_iPrevIdx;
     }
 
-    //!ÉèÖÃËùÔÚÁ´±íÉÏÒ»¸öË÷Òı
+    //!è®¾ç½®æ‰€åœ¨é“¾è¡¨ä¸Šä¸€ä¸ªç´¢å¼•
     inline void SetPrevIdx(int iIdx)
     {
         m_iPrevIdx = iIdx;
     }
 
-    //!»ñÈ¡Ö¸ÏòµÄ¶ÔÏó
+    //!è·å–æŒ‡å‘çš„å¯¹è±¡
     inline CObj* GetAttachedObj() const
     {
         return m_pAttachedObj;
     }
 
-    //!ÉèÖÃÖ¸ÏòµÄ¶ÔÏó
+    //!è®¾ç½®æŒ‡å‘çš„å¯¹è±¡
     inline void SetAttachedObj(CObj *pObj)
     {
         m_pAttachedObj = pObj;
     }
 
 private:
-    int	m_iNextIdx;	//!<¶ÔÏóË÷Òı¿éÁ´±íÖ¸Õë£¬Ö¸ÏòºóÒ»¸öÏĞ/Ã¦Ë÷Òı
-    int	m_iPrevIdx;	//!<¶ÔÏóË÷Òı¿éÁ´±íÖ¸Õë£¬Ö¸ÏòÇ°Ò»¸öÏĞ/Ã¦Ë÷Òı
-    int	m_iUseFlag; //!<¸Ã¶ÔÏóÊÇ·ñÒÑ¾­±»Ê¹ÓÃ±êÖ¾
-    CObj *m_pAttachedObj; //!<ËùÖ¸ÏòµÄ¶ÔÏóÖ¸Õë
+    int	m_iNextIdx;	//!<å¯¹è±¡ç´¢å¼•å—é“¾è¡¨æŒ‡é’ˆï¼ŒæŒ‡å‘åä¸€ä¸ªé—²/å¿™ç´¢å¼•
+    int	m_iPrevIdx;	//!<å¯¹è±¡ç´¢å¼•å—é“¾è¡¨æŒ‡é’ˆï¼ŒæŒ‡å‘å‰ä¸€ä¸ªé—²/å¿™ç´¢å¼•
+    int	m_iUseFlag; //!<è¯¥å¯¹è±¡æ˜¯å¦å·²ç»è¢«ä½¿ç”¨æ ‡å¿—
+    CObj *m_pAttachedObj; //!<æ‰€æŒ‡å‘çš„å¯¹è±¡æŒ‡é’ˆ
 };
 
 typedef CObj* (*Function_CreateObj)(void *);
@@ -107,7 +107,7 @@ typedef CObj* (*Function_CreateObj)(void *);
 class CObjAllocator
 {
 private:
-    //Ä¬ÈÏ¹¹Ôìº¯Êı£¬²»ÔÊĞíÉÏ²ã×ÔĞĞµ÷ÓÃ
+    //é»˜è®¤æ„é€ å‡½æ•°ï¼Œä¸å…è®¸ä¸Šå±‚è‡ªè¡Œè°ƒç”¨
     CObjAllocator();
 
 public:
@@ -115,11 +115,11 @@ public:
     ~CObjAllocator();
 
     /**
-    *Ê¹ÓÃ¹²ÏíÄÚ´æ´´½¨ObjAllocator
-    *@param[in] pszKeyFileName ¹²ÏíÄÚ´æAttachµÄÎÄ¼şÃû
-    *@param[in] ucKeyPrjID ¹²ÏíÄÚ´æµÄ¹¤³ÌID
-    *@param[in] uiObjSize ¶ÔÏó´óĞ¡
-    *@param[in] iObjCount ¶ÔÏó¸öÊı
+    *ä½¿ç”¨å…±äº«å†…å­˜åˆ›å»ºObjAllocator
+    *@param[in] pszKeyFileName å…±äº«å†…å­˜Attachçš„æ–‡ä»¶å
+    *@param[in] ucKeyPrjID å…±äº«å†…å­˜çš„å·¥ç¨‹ID
+    *@param[in] uiObjSize å¯¹è±¡å¤§å°
+    *@param[in] iObjCount å¯¹è±¡ä¸ªæ•°
     *@param[in]
     *@return 0 success
     */
@@ -128,12 +128,12 @@ public:
             size_t uiObjSize, int iObjCount, Function_CreateObj pfCreateObj);
 
     /**
-    *Ö¸¶¨ÄÚ´æÖ¸ÕëÀ´´´½¨CObjAllocator
-    *@param[in] pszMemoryAddress Ö¸¶¨µÄÄÚ´æ
-    *@param[in] uiMemorySize ÄÚ´æ´óĞ¡
-    *@param[in] uiObjSize ¶ÔÏó´óĞ¡
-    *@param[in] iObjCount ¶ÔÏó¸öÊı
-    *@param[in] pfCreateObj ´´½¨CObj¶ÔÏóµÄº¯Êı£¬Ä¬ÈÏ¿ÉÒÔÓÃDECLARE_DYNÖĞµÄCreateObject
+    *æŒ‡å®šå†…å­˜æŒ‡é’ˆæ¥åˆ›å»ºCObjAllocator
+    *@param[in] pszMemoryAddress æŒ‡å®šçš„å†…å­˜
+    *@param[in] uiMemorySize å†…å­˜å¤§å°
+    *@param[in] uiObjSize å¯¹è±¡å¤§å°
+    *@param[in] iObjCount å¯¹è±¡ä¸ªæ•°
+    *@param[in] pfCreateObj åˆ›å»ºCObjå¯¹è±¡çš„å‡½æ•°ï¼Œé»˜è®¤å¯ä»¥ç”¨DECLARE_DYNä¸­çš„CreateObject
     *@return 0 success
     */
     static CObjAllocator* CreateByGivenMemory(char* pszMemoryAddress, size_t uiMemorySize,
@@ -145,94 +145,94 @@ public:
             size_t uiMemorySize, size_t uiObjSize, int iObjCount, Function_CreateObj pfCreateObj);
 
 public:
-    //!³õÊ¼»¯º¯Êı£¬½«Êı¾İÇå¿Õ
+    //!åˆå§‹åŒ–å‡½æ•°ï¼Œå°†æ•°æ®æ¸…ç©º
     int Initialize();
 
-    //!´´½¨Ò»¸ö¶ÔÏó£¬³É¹¦·µ»Ø¶ÔÏóID£¬Ê§°Ü·µ»ØĞ¡ÓÚ0µÄÖµ
+    //!åˆ›å»ºä¸€ä¸ªå¯¹è±¡ï¼ŒæˆåŠŸè¿”å›å¯¹è±¡IDï¼Œå¤±è´¥è¿”å›å°äº0çš„å€¼
     int	CreateObject();
 
-    //!´´½¨Ò»¸ö¶ÔÏó, ²¢Ö¸¶¨ÆäID£¬³É¹¦·µ»Ø¶ÔÏóID£¬Ê§°Ü·µ»ØĞ¡ÓÚ0µÄÖµ
+    //!åˆ›å»ºä¸€ä¸ªå¯¹è±¡, å¹¶æŒ‡å®šå…¶IDï¼ŒæˆåŠŸè¿”å›å¯¹è±¡IDï¼Œå¤±è´¥è¿”å›å°äº0çš„å€¼
     int	CreateObjectByID(int iID);
 
-    //!¸ù¾İ¶ÔÏóIDÏú»ÙÒ»¸ö¶ÔÏó£¬³É¹¦·µ»Ø0
+    //!æ ¹æ®å¯¹è±¡IDé”€æ¯ä¸€ä¸ªå¯¹è±¡ï¼ŒæˆåŠŸè¿”å›0
     int	DestroyObject(int iObjectID);
 
-    //!¸ù¾İObjectID·µ»Ø¶ÔÏó£¬±ØĞë±£Ö¤¸Ã¶ÔÏóÒÑ±»Ê¹ÓÃ
+    //!æ ¹æ®ObjectIDè¿”å›å¯¹è±¡ï¼Œå¿…é¡»ä¿è¯è¯¥å¯¹è±¡å·²è¢«ä½¿ç”¨
     CObj* GetObj(int iObjectID);
 
-    //!¸ù¾İObjectID·µ»ØË÷Òı
+    //!æ ¹æ®ObjectIDè¿”å›ç´¢å¼•
     CIdx* GetIdx(int iObjectID);
 
-    //!»ñÈ¡ÒÑÓÃ¶ÔÏóÁ´±íÍ·Ë÷Òı
+    //!è·å–å·²ç”¨å¯¹è±¡é“¾è¡¨å¤´ç´¢å¼•
     inline int	GetUsedHead() const
     {
         return m_iUsedHeadIdx;
     }
 
-    //!»ñÈ¡¿ÕÏĞ¶ÔÏóÁ´±íÍ·Ë÷Òı
+    //!è·å–ç©ºé—²å¯¹è±¡é“¾è¡¨å¤´ç´¢å¼•
     inline int	GetFreeHead() const
     {
         return m_iFreeHeadIdx;
     }
 
-    //»ñÈ¡ÒÑÓÃ¶ÔÏó¸öÊı
+    //è·å–å·²ç”¨å¯¹è±¡ä¸ªæ•°
     inline int	GetUsedCount() const
     {
         return m_iUsedCount;
     }
 
-    //»ñÈ¡¿ÕÏĞ¶ÔÏó¸öÊı
+    //è·å–ç©ºé—²å¯¹è±¡ä¸ªæ•°
     inline int	GetFreeCount() const
     {
         return m_iObjCount - m_iUsedCount;
     }
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     inline int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
-    //»ñÈ¡¶ÔÏó·ÖÅäÀàĞÍ
+    //è·å–å¯¹è±¡åˆ†é…ç±»å‹
     inline int GetObjAllocType() const
     {
         return m_shObjAllocType;
     }
 
-    //!»ñÈ¡ÏÂÒ»¸ö¶ÔÏó
+    //!è·å–ä¸‹ä¸€ä¸ªå¯¹è±¡
     CObj* GetNextObj(int iObjectID);
 
-    //!ÉèÖÃ¶ÔÏó³õÊ¼»¯Ö¸Õë
+    //!è®¾ç½®å¯¹è±¡åˆå§‹åŒ–æŒ‡é’ˆ
     inline void SetCreateObjFunc(Function_CreateObj pfCreateObjFunc)
     {
         m_pfCreateObjFunc = pfCreateObjFunc;
     }
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     inline void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
 private:
-    //Õâ¼¸¸ö¶ÔÏóÖ»ÓĞÔÚ¹¹Ôìº¯ÊıÊ±È·¶¨£¬ºóÃæ²»»á¸ü¸Ä
-    short m_shObjAllocType; //!<¶ÔÏó·ÖÅäÀàĞÍ
-    size_t m_uiObjSize; //!<µ¥¸ö¶ÔÏó
-    int m_iObjCount; //!<×î¶à·ÖÅäµÄ¶ÔÏó¸öÊı
-    CIdx* m_astIdxs; //!<Ë÷ÒıÊı×é£¬ÓÃÓÚ¹ÜÀí¶ÔÏóÁ´±í
-    CObj* m_pstObjBuffer; //!<·ÖÅäµÄ¶ÔÏóÄÚ´æ
-    Function_CreateObj m_pfCreateObjFunc; //!<ÔÚÄÚ´æÉÏ´´½¨CObj¶ÔÏóµÄº¯Êı£¬Ã¿¸ö×ÓÀàĞèÒª×Ô¼ºÊµÏÖ
+    //è¿™å‡ ä¸ªå¯¹è±¡åªæœ‰åœ¨æ„é€ å‡½æ•°æ—¶ç¡®å®šï¼Œåé¢ä¸ä¼šæ›´æ”¹
+    short m_shObjAllocType; //!<å¯¹è±¡åˆ†é…ç±»å‹
+    size_t m_uiObjSize; //!<å•ä¸ªå¯¹è±¡
+    int m_iObjCount; //!<æœ€å¤šåˆ†é…çš„å¯¹è±¡ä¸ªæ•°
+    CIdx* m_astIdxs; //!<ç´¢å¼•æ•°ç»„ï¼Œç”¨äºç®¡ç†å¯¹è±¡é“¾è¡¨
+    CObj* m_pstObjBuffer; //!<åˆ†é…çš„å¯¹è±¡å†…å­˜
+    Function_CreateObj m_pfCreateObjFunc; //!<åœ¨å†…å­˜ä¸Šåˆ›å»ºCObjå¯¹è±¡çš„å‡½æ•°ï¼Œæ¯ä¸ªå­ç±»éœ€è¦è‡ªå·±å®ç°
 
-    //ÒÔÏÂµÄ¶ÔÏó»á¸ü¸Ä£¬µ÷ÓÃInitialize³õÊ¼»¯
-    int m_iErrorNO; //!<´íÎóÂë
-    int	m_iFreeHeadIdx; //!<¿ÕÏĞ¶ÔÏóÁ´±íÍ·Ë÷Òı
-    int m_iFreeTailIdx; //!<¿ÕÏĞ¶ÔÏóÁ´±íÎ²Ë÷Òı
-    int	m_iUsedHeadIdx; //!<ÒÑÓÃ¶ÔÏóÁ´±íÍ·Ë÷Òı
-    int	m_iUsedCount; //!<ÒÑÓÃ¶ÔÏó¸öÊı
+    //ä»¥ä¸‹çš„å¯¹è±¡ä¼šæ›´æ”¹ï¼Œè°ƒç”¨Initializeåˆå§‹åŒ–
+    int m_iErrorNO; //!<é”™è¯¯ç 
+    int	m_iFreeHeadIdx; //!<ç©ºé—²å¯¹è±¡é“¾è¡¨å¤´ç´¢å¼•
+    int m_iFreeTailIdx; //!<ç©ºé—²å¯¹è±¡é“¾è¡¨å°¾ç´¢å¼•
+    int	m_iUsedHeadIdx; //!<å·²ç”¨å¯¹è±¡é“¾è¡¨å¤´ç´¢å¼•
+    int	m_iUsedCount; //!<å·²ç”¨å¯¹è±¡ä¸ªæ•°
 };
 
-//!»ù±¾¶ÔÏóÀà
+//!åŸºæœ¬å¯¹è±¡ç±»
 class CObj
 {
 public:
@@ -240,22 +240,22 @@ public:
     virtual ~CObj() {}
 
 public:
-    //!¶ÔÏóµÄ³õÊ¼»¯º¯Êı£¬ÔÚCObjAllocator´´½¨¶ÔÏóÊ±»áµ÷ÓÃ£¬ËùÒÔ×ÓÀàÒ»¶¨ÒªÊµÏÖ
+    //!å¯¹è±¡çš„åˆå§‹åŒ–å‡½æ•°ï¼Œåœ¨CObjAllocatoråˆ›å»ºå¯¹è±¡æ—¶ä¼šè°ƒç”¨ï¼Œæ‰€ä»¥å­ç±»ä¸€å®šè¦å®ç°
     virtual int Initialize() = 0;
 
-    //!ÏÔÊ¾¶ÔÏóº¯Êı£¬¿ÉÖØÔØ
+    //!æ˜¾ç¤ºå¯¹è±¡å‡½æ•°ï¼Œå¯é‡è½½
     virtual int Show() const
     {
         return 0;
     }
 
-    //!»ñÈ¡¶ÔÏóID
+    //!è·å–å¯¹è±¡ID
     inline int GetObjectID() const
     {
         return m_iObjectID;
     }
 
-    //!ÉèÖÃ¶ÔÏóID
+    //!è®¾ç½®å¯¹è±¡ID
     inline void SetObjectID(int iObjectID)
     {
         m_iObjectID = iObjectID;
@@ -267,9 +267,9 @@ public:
     }
 
 private:
-    int m_iObjectID; //!¶ÔÏóID£¬¼´ÔÚCObjAllocatorÖĞµÄÊı×éÏÂ±ê
+    int m_iObjectID; //!å¯¹è±¡IDï¼Œå³åœ¨CObjAllocatorä¸­çš„æ•°ç»„ä¸‹æ ‡
 
-    friend int CObjAllocator::Initialize(); //!<ÔÚÕâ¸öº¯ÊıÖĞĞèÒªÖ±½Ó¸³Öµm_iObjectID£¬ËùÒÔÉèÎªÓÑÔª
+    friend int CObjAllocator::Initialize(); //!<åœ¨è¿™ä¸ªå‡½æ•°ä¸­éœ€è¦ç›´æ¥èµ‹å€¼m_iObjectIDï¼Œæ‰€ä»¥è®¾ä¸ºå‹å…ƒ
 };
 
 #define DECLARE_DYN \
@@ -298,3 +298,7 @@ private:
 
 #endif //__OBJ_ALLOCATOR_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

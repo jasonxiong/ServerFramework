@@ -1,4 +1,4 @@
-#ifndef __KYLIN_MSG_TRANSCEIVER_HPP__
+ï»¿#ifndef __KYLIN_MSG_TRANSCEIVER_HPP__
 #define __KYLIN_MSG_TRANSCEIVER_HPP__
 
 #include "ZmqBus.hpp"
@@ -10,14 +10,14 @@ using namespace ServerLib;
 class CWorldMsgTransceiver
 {
 public:
-    // ³õÊ¼»¯Í¨ĞÅµÄZMQÍ¨µÀ
+    // åˆå§‹åŒ–é€šä¿¡çš„ZMQé€šé“
     int Initialize(bool bResumeMode);
 
 public:
-    // ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+    // å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
     int SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer, int iInstance = 1);
 
-    //¿ÉÒÔ´ÓÁ¬½ÓµÄËùÓĞÍ¨µÀÖĞÂÖÑ¯½ÓÊÕÏûÏ¢
+    //å¯ä»¥ä»è¿æ¥çš„æ‰€æœ‰é€šé“ä¸­è½®è¯¢æ¥æ”¶æ¶ˆæ¯
     int RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgLength, EGameServerID& enMsgPeer, int& iInstance);
 
 private:
@@ -25,23 +25,27 @@ private:
 
 private:
 
-    //Account Server µ½WorldÖ®¼äµÄÍ¨ĞÅĞÅµÀ
+    //Account Server åˆ°Worldä¹‹é—´çš„é€šä¿¡ä¿¡é“
     ZmqBus m_oAccount2WorldSvr;
 
-    //Zone Server µ½WorldÖ®¼äµÄÍ¨ĞÅĞÅµÀ
+    //Zone Server åˆ°Worldä¹‹é—´çš„é€šä¿¡ä¿¡é“
     int m_iZone2WorldBusNum;
-    //×¢Òâ£ºÊı×éÏÂ±êÓëZoneID¶ÔÓ¦£¬ÏÂ±íÎª0µÄÎ»ÖÃÎª¿Õ£¬²»Ê¹ÓÃ
+    //æ³¨æ„ï¼šæ•°ç»„ä¸‹æ ‡ä¸ZoneIDå¯¹åº”ï¼Œä¸‹è¡¨ä¸º0çš„ä½ç½®ä¸ºç©ºï¼Œä¸ä½¿ç”¨
     ZmqBus m_szZone2WorldSvrs[MAX_ZONE_PER_WORLD];
 
-    //World µ½ ROLEDBÖ®¼äµÄÍ¨ĞÅĞÅµÀ
+    //World åˆ° ROLEDBä¹‹é—´çš„é€šä¿¡ä¿¡é“
     ZmqBus m_oWorld2RoleDBClient;
 
-    //World µ½ ClusterÖ®¼äµÄÍ¨ĞÅĞÅµÀ
+    //World åˆ° Clusterä¹‹é—´çš„é€šä¿¡ä¿¡é“
     //ZmqBus m_oWorld2ClusterClient;
 
-    //World µ½ NameDBServer Ö®¼äµÄÍ¨ĞÅĞÅµÀ
+    //World åˆ° NameDBServer ä¹‹é—´çš„é€šä¿¡ä¿¡é“
     ZmqBus m_oWorld2NameDBClient;
 };
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

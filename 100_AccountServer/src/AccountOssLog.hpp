@@ -1,4 +1,4 @@
-#ifndef __ACCOUNT_OSS_LOG_HPP__
+ï»¿#ifndef __ACCOUNT_OSS_LOG_HPP__
 #define __ACCOUNT_OSS_LOG_HPP__
 
 ///////////////////////////////////////////////////////////////////////////////////// 
@@ -11,23 +11,27 @@ class CGameRoleObj;
 
 enum TAccountOssLogType
 {
-    OSS_LOG_TYPE_CREATE_ACCOUNT = 50001,    //´´½¨ÕÊºÅµÄÈÕÖ¾
+    OSS_LOG_TYPE_CREATE_ACCOUNT = 50001,    //åˆ›å»ºå¸å·çš„æ—¥å¿—
 };
 
-//OSSÔËÓªÏµÍ³ÈÕÖ¾¹¤¾ßÀà
+//OSSè¿è¥ç³»ç»Ÿæ—¥å¿—å·¥å…·ç±»
 
 class CAccountOssLog
 {
 public:
-    // ³õÊ¼»¯
+    // åˆå§‹åŒ–
     static int Initialize();
 
 public:
     ///////////////////////////////////////////////////////////////////////////////////////////////////
-    //AccountÈÕÖ¾´òÓ¡½Ó¿Ú
+    //Accountæ—¥å¿—æ‰“å°æ¥å£
 
-    //¼ÇÂ¼´´½¨½ÇÉ«Ïà¹ØÈÕÖ¾
+    //è®°å½•åˆ›å»ºè§’è‰²ç›¸å…³æ—¥å¿—
     static void TraceCreateAccount(unsigned int uin, unsigned int uiSessionFd);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __UPDATEROLE_WORLD_HANDLER_HPP__
+ï»¿#ifndef __UPDATEROLE_WORLD_HANDLER_HPP__
 #define __UPDATEROLE_WORLD_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -15,13 +15,13 @@ public:
 	virtual int OnClientMsg(const void* pMsg);
 
 private:
-    // ¸üĞÂÊı¾İ´¦ÀíÈë¿Ú
+    // æ›´æ–°æ•°æ®å¤„ç†å…¥å£
 	int OnRequestUpdateRoleWorld();
 
-    //¸üĞÂÊı¾İ·µ»ØµÄ´¦ÀíÈë¿Ú
+    //æ›´æ–°æ•°æ®è¿”å›çš„å¤„ç†å…¥å£
     int OnResponseUpdateRoleWorld();
 
-    // ·µ»ØÊ§°ÜĞÅÏ¢
+    // è¿”å›å¤±è´¥ä¿¡æ¯
 	int SendUpdateRoleResponseWGS(const RoleID& stRoleID, int iZoneID, unsigned int uiResultID);
 
 private:
@@ -33,3 +33,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

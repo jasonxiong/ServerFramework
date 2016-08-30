@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include <arpa/inet.h>
 
 #include "Handler.hpp"
@@ -15,7 +15,7 @@ int  IHandler::EncodeAndSendCode(IProtocolEngine* pProtocolEngine,
     int iBufLen = sizeof(szCodeBuf);
     int iCodeLen;
 
-    // ³õÊ¼»¯code bufferºÍcode length
+    // åˆå§‹åŒ–code bufferå’Œcode length
     memset(szCodeBuf, 0, sizeof(szCodeBuf));
     iCodeLen = 0;
 
@@ -23,7 +23,7 @@ int  IHandler::EncodeAndSendCode(IProtocolEngine* pProtocolEngine,
     if (GAME_SERVER_LOTUSACCOUNT == enMsgPeer)
     {
         TNetHead_V2 stTmpNetHead = *pstNetHead;
-        //socket id ×ö×ª»»
+        //socket id åšè½¬æ¢
         unsigned  int uiSessionID = ntohl(pstNetHead->m_uiSocketFD);
         iInstanceID = uiSessionID / MAX_FD_NUMBER;
         stTmpNetHead.m_uiSocketFD = htonl(uiSessionID % MAX_FD_NUMBER);
@@ -33,11 +33,11 @@ int  IHandler::EncodeAndSendCode(IProtocolEngine* pProtocolEngine,
     }
     else
     {
-        // ±àÂë±¾µØÊý¾ÝÎªÍøÂçÊý¾Ý
+        // ç¼–ç æœ¬åœ°æ•°æ®ä¸ºç½‘ç»œæ•°æ®
         pProtocolEngine->Encode(pstNetHead, pstMsg,
                 (unsigned char*)szCodeBuf, iBufLen, iCodeLen);
     }
-    // ·¢ËÍÍøÂçÊý¾Ý
+    // å‘é€ç½‘ç»œæ•°æ®
     int iRes = AccountMsgTransceiver->SendOneMsg((char*)szCodeBuf, iCodeLen, enMsgPeer, iInstanceID);
 
     if (iRes < 0)
@@ -61,3 +61,7 @@ void IHandler::GenerateMsgHead(GameProtocolMsg* pstAccountMsg,
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

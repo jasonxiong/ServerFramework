@@ -1,4 +1,4 @@
-#ifndef __SHM_HPP__
+ï»¿#ifndef __SHM_HPP__
 #define __SHM_HPP__
 
 #ifndef WIN32
@@ -77,9 +77,9 @@ private:
     key_t m_uiShmKey;
     size_t m_iShmSize;
 
-    int m_iShmID; //!<´´½¨¹²ÏíÄÚ´æµÄID,µ÷ÓÃshmgetµÃµ½
-    size_t m_iFreeOffset; //!<µ±Ç°»¹Î´·ÖÅäµÄ¹²ÏíÄÚ´æµÄÖ¸ÕëÆ«ÒÆ
-    char* m_pszInitialMemoryAddress; //!<´´½¨¹²ÏíÄÚ´æµÄÍ·Ö¸Õë
+    int m_iShmID; //!<åˆ›å»ºå…±äº«å†…å­˜çš„ID,è°ƒç”¨shmgetå¾—åˆ°
+    size_t m_iFreeOffset; //!<å½“å‰è¿˜æœªåˆ†é…çš„å…±äº«å†…å­˜çš„æŒ‡é’ˆåç§»
+    char* m_pszInitialMemoryAddress; //!<åˆ›å»ºå…±äº«å†…å­˜çš„å¤´æŒ‡é’ˆ
 
 
 };
@@ -89,3 +89,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

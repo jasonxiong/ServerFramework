@@ -1,27 +1,31 @@
-#ifndef __SESSION_KEY_UTILITY_HPP__
+ï»¿#ifndef __SESSION_KEY_UTILITY_HPP__
 #define __SESSION_KEY_UTILITY_HPP__
 
 #include "AESCbcEncryptor.hpp"
 #include "Base64.hpp"
 
-//Session Key Éú³ÉºÍĞ£Ñé¹¤¾ßÀà£¬ÓÃÓÚ±£Ö¤µÇÂ¼Íæ¼ÒµÄ session °²È«
+//Session Key ç”Ÿæˆå’Œæ ¡éªŒå·¥å…·ç±»ï¼Œç”¨äºä¿è¯ç™»å½•ç©å®¶çš„ session å®‰å…¨
 
-//ËµÃ÷£º Session Key µÄÉú³ÉËã·¨Îª£º
-//          1.¸ù¾İÂß¼­ÒªÇóÉú³É×Ö·û´®´«Èë;
-//          2.Ê¹ÓÃ AES Ëã·¨ ECBÄ£Ê½ ¶ÔÉú³ÉµÄ×Ö·û´®Ê¹ÓÃ Key ½øĞĞ¼ÓÃÜ;
-//          3.Ê¹ÓÃ Base64 ¶Ô¶ş½øÖÆ´®½øĞĞ Base64 ±àÂë£¬·½±ã´«Êä;
-//          4.SessionKeyµÄ½âÃÜËã·¨ÎªÉÏÊöËã·¨µÄÄæ¹ı³Ì; 
+//è¯´æ˜ï¼š Session Key çš„ç”Ÿæˆç®—æ³•ä¸ºï¼š
+//          1.æ ¹æ®é€»è¾‘è¦æ±‚ç”Ÿæˆå­—ç¬¦ä¸²ä¼ å…¥;
+//          2.ä½¿ç”¨ AES ç®—æ³• ECBæ¨¡å¼ å¯¹ç”Ÿæˆçš„å­—ç¬¦ä¸²ä½¿ç”¨ Key è¿›è¡ŒåŠ å¯†;
+//          3.ä½¿ç”¨ Base64 å¯¹äºŒè¿›åˆ¶ä¸²è¿›è¡Œ Base64 ç¼–ç ï¼Œæ–¹ä¾¿ä¼ è¾“;
+//          4.SessionKeyçš„è§£å¯†ç®—æ³•ä¸ºä¸Šè¿°ç®—æ³•çš„é€†è¿‡ç¨‹; 
 
 #define SESSION_ENCRYPT_KEY "FkuL9QD1IjWpbOh"
 
 class CSessionKeyUtility
 {
 public:
-    //¸ù¾İ´«Èë×Ö·û´®Éú³ÉµÇÂ¼Íæ¼ÒµÄSession Key
+    //æ ¹æ®ä¼ å…¥å­—ç¬¦ä¸²ç”Ÿæˆç™»å½•ç©å®¶çš„Session Key
     static int GenerateSessionKey(const char* pszInBuff, int iInBuffLen, char* pszOutBuff, int& iOutBuffLen);
 
-    //¸ù¾İSession Key½âÂë´«ÈëµÄ×Ö·û´®
+    //æ ¹æ®Session Keyè§£ç ä¼ å…¥çš„å­—ç¬¦ä¸²
     static int DecryptSessionKey(const char* pszInBuff, int iInBuffLen, char* pszOutBuff, int& iOutBuffLen);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

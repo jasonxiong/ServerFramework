@@ -1,4 +1,4 @@
-#ifndef _H_LIB_MD5_H
+﻿#ifndef _H_LIB_MD5_H
 #define _H_LIB_MD5_H
 
 #include <stdint.h>
@@ -25,3 +25,7 @@ extern void MD5HMAC2(const unsigned char *password,  unsigned pass_len,
                      const unsigned char *challenge2, unsigned chal_len2,
                      unsigned char response[16]);
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

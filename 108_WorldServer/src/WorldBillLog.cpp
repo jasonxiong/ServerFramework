@@ -1,4 +1,4 @@
-#include <time.h>
+ï»¿#include <time.h>
 
 #include "GameProtocol.hpp"
 #include "WorldBillLog.hpp"
@@ -12,29 +12,29 @@ const int CWorldBillLog::MAX_BILL_EVENT_PER_SECOND = 65535;
 int CWorldBillLog::m_iLastEventTime;
 unsigned short CWorldBillLog::m_usEventSequence;
 
-// ±¾µØBillÈÕÖ¾
+// æœ¬åœ°Billæ—¥å¿—
 CBillLogAdapter CWorldBillLog::m_stBillLog;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ÈÕÖ¾½Ó¿Ú
+// æ—¥å¿—æ¥å£
 void CWorldBillLog::TraceAddMoney(const unsigned uin, int iLoginType, int64_t iAmount)
 {
     /*
-    <!-- ¾§×ê¶Ò»»ÈÕÖ¾ -->
-    <struct name="AddMoney"           id="LOG_ADDMONEY"       desc="¾§×ê¶Ò»»ÈÕÖ¾" version="1" >
-    <entry name="iEventId"          type="biguint"          desc="ÊÂ¼şID, ÓÃÓÚ±êÊ¶Í¬ÀàÏûÏ¢µÄÎ¨Ò»ĞÔ" />
-    <entry name="iSrcUin"           type="uint"             desc="³äÖµµÄQQºÅ" />
-    <entry name="iDstUin"           type="uint"             desc="±»ÖØÖÃµÄQQºÅ" />
-    <entry name="dtEventTime"       type="datetime"         desc="ÊÂ¼şÊ±¼ä" />
-    <entry name="iClientIp"         type="uint"             desc="¹ºÂòÕßIP" />
-    <entry name="iSource"           type="int"              desc="³äÖµÇşµÀ" />
-    <entry name="iAmount"           type="bigint"           desc="½ğ¶î(¾§×ê)" />
-    <entry name="iRemark"           type="biguint"          desc="Á÷Ë®" />
-    <entry name="iDesc"             type="string "          size="64"   desc="±¸×¢ĞÅÏ¢"/>
+    <!-- æ™¶é’»å…‘æ¢æ—¥å¿— -->
+    <struct name="AddMoney"           id="LOG_ADDMONEY"       desc="æ™¶é’»å…‘æ¢æ—¥å¿—" version="1" >
+    <entry name="iEventId"          type="biguint"          desc="äº‹ä»¶ID, ç”¨äºæ ‡è¯†åŒç±»æ¶ˆæ¯çš„å”¯ä¸€æ€§" />
+    <entry name="iSrcUin"           type="uint"             desc="å……å€¼çš„QQå·" />
+    <entry name="iDstUin"           type="uint"             desc="è¢«é‡ç½®çš„QQå·" />
+    <entry name="dtEventTime"       type="datetime"         desc="äº‹ä»¶æ—¶é—´" />
+    <entry name="iClientIp"         type="uint"             desc="è´­ä¹°è€…IP" />
+    <entry name="iSource"           type="int"              desc="å……å€¼æ¸ é“" />
+    <entry name="iAmount"           type="bigint"           desc="é‡‘é¢(æ™¶é’»)" />
+    <entry name="iRemark"           type="biguint"          desc="æµæ°´" />
+    <entry name="iDesc"             type="string "          size="64"   desc="å¤‡æ³¨ä¿¡æ¯"/>
     </struct>
     */
 
-    //todo jasonxiong ËùÓĞµÄ¼ÇÕËÏµÍ³ºóĞøĞèÒªÖØĞÂ¿ª·¢
+    //todo jasonxiong æ‰€æœ‰çš„è®°è´¦ç³»ç»Ÿåç»­éœ€è¦é‡æ–°å¼€å‘
     /*
     TEventId stEventId;
     GenerateLogHead(LOG_ADDMONEY, stEventId, 0);
@@ -56,14 +56,14 @@ void CWorldBillLog::TraceAddMoney(const unsigned uin, int iLoginType, int64_t iA
 
 int CWorldBillLog::Initialize()
 {
-    //todo jasonxiong ºóÃæÖØĞÂ¿ª·¢¼ÇÕËÏµÍ³
+    //todo jasonxiong åé¢é‡æ–°å¼€å‘è®°è´¦ç³»ç»Ÿ
     /*
-    // ³õÊ¼»¯TDR¾ä±ú
+    // åˆå§‹åŒ–TDRå¥æŸ„
     char szProtocolPath[256];
 
     GetCommonResourcePath(szProtocolPath, sizeof(szProtocolPath), KYLINPROTOCOL_FILE);
 
-    ///¸ù¾İxmlÎÄ¼ş´´½¨ÔªÊı¾İ¿â
+    ///æ ¹æ®xmlæ–‡ä»¶åˆ›å»ºå…ƒæ•°æ®åº“
     int iRet = tdr_load_metalib(&m_pstWorldLib, szProtocolPath);
     if (TDR_ERR_IS_ERROR(iRet))
     {
@@ -77,7 +77,7 @@ int CWorldBillLog::Initialize()
         ASSERT_AND_LOG_RTN_INT(0);
     }
 
-    // ³õÊ¼»¯TLOGÉèÊ©
+    // åˆå§‹åŒ–TLOGè®¾æ–½
     m_pstTLogCtx = NULL;
     m_pstTLogCategory = NULL;
 
@@ -95,14 +95,14 @@ int CWorldBillLog::Initialize()
 
 void CWorldBillLog::GenerateLogHead(int iMsgID, TEventId& rstEventId, const unsigned char ucZoneID)
 {
-    //todo jasonxiong ÔİÊ±ÏÈ×¢ÊÍµô£¬ºóÃæÖØĞÂ¿ª·¢¼ÇÕËÏµÍ³
+    //todo jasonxiong æš‚æ—¶å…ˆæ³¨é‡Šæ‰ï¼Œåé¢é‡æ–°å¼€å‘è®°è´¦ç³»ç»Ÿ
     /*
     memset(&m_stLogPkg, 0, sizeof(m_stLogPkg));
     m_stLogPkg.cmd = iMsgID;
 
     if (rstEventId.m_iEventTime == 0)
     {
-        // ³õÊ¼»¯ÊÂ¼şÁ÷Ë®ºÅ
+        // åˆå§‹åŒ–äº‹ä»¶æµæ°´å·
 
         CTimeValue tvNow;
         tvNow.RefreshTime();
@@ -113,7 +113,7 @@ void CWorldBillLog::GenerateLogHead(int iMsgID, TEventId& rstEventId, const unsi
         {
             if (m_usEventSequence >= MAX_BILL_EVENT_PER_SECOND)
             {
-                // ÊÂ¼ş´´½¨Ì«Æµ·±!
+                // äº‹ä»¶åˆ›å»ºå¤ªé¢‘ç¹!
                 TRACESVR("Alert: Event Too Frequently!\n");
                 m_usEventSequence = 0;
             }
@@ -136,7 +136,7 @@ void CWorldBillLog::GenerateLogHead(int iMsgID, TEventId& rstEventId, const unsi
 
 int CWorldBillLog::WriteBillLog()
 {
-    //todo jasonxiong ÔİÊ±ÏÈ×¢ÊÍµô£¬ºóÃæÖØĞÂ¿ª·¢¼ÇÕËÏµÍ³
+    //todo jasonxiong æš‚æ—¶å…ˆæ³¨é‡Šæ‰ï¼Œåé¢é‡æ–°å¼€å‘è®°è´¦ç³»ç»Ÿ
 
     /*
     TDRDATA stHost;
@@ -160,13 +160,13 @@ int CWorldBillLog::WriteBillLog()
         return iRet;
     }
 
-    // Ğ´ÈëÔ¶TLogÈÕÖ¾
+    // å†™å…¥è¿œTLogæ—¥å¿—
     if (m_pstTLogCategory)
     {
         tlog_info(m_pstTLogCategory, 0, 0, m_szSendBuff);
     }
 
-    // Ğ´Èë±¾µØBillLogÈÕÖ¾ÎÄ¼ş
+    // å†™å…¥æœ¬åœ°BillLogæ—¥å¿—æ–‡ä»¶
     m_stBillLog.CheckBillPath();
     if (m_stBillLog.m_stLogFile.OpenLogFile())
     {
@@ -181,13 +181,13 @@ int CWorldBillLog::WriteBillLog()
         return -3;
     }
 
-    // Ğ´ÈëÈÕÖ¾
+    // å†™å…¥æ—¥å¿—
     fprintf(pBillLogFile, "%s", m_szSendBuff);
 
-    // Ë¢ĞÂÈÕÖ¾
+    // åˆ·æ–°æ—¥å¿—
     fflush(pBillLogFile);
 
-    // ¹Ø±ÕÈÕÖ¾ÎÄ¼ş
+    // å…³é—­æ—¥å¿—æ–‡ä»¶
     m_stBillLog.m_stLogFile.CloseFile();
     */
     
@@ -197,3 +197,7 @@ int CWorldBillLog::WriteBillLog()
 
 
 	
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

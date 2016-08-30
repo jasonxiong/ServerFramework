@@ -1,4 +1,4 @@
-#ifndef __WORLD_ONLINE_STAT_TICK_HPP__
+﻿#ifndef __WORLD_ONLINE_STAT_TICK_HPP__
 #define __WORLD_ONLINE_STAT_TICK_HPP__
 
 #include <time.h>
@@ -20,3 +20,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

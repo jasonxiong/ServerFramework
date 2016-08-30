@@ -1,4 +1,4 @@
-#ifndef __SESSION_OBJ_HPP__
+ï»¿#ifndef __SESSION_OBJ_HPP__
 #define __SESSION_OBJ_HPP__
 
 #include "ObjAllocator.hpp"
@@ -10,9 +10,9 @@ using namespace ServerLib;
 class CSessionObj : public CCacheTime
 {
 private:
-    TNetHead_V2 m_stNetHead; // À´×Ô¿Í»§¶ËµÄsocketÁ¬½ÓĞÅÏ¢£¬×¢ÒâÆäÖĞµÄÓĞĞ§×Ö¶Î¶¼ÊÇÍøÂç×Ö½ÚĞòµÄ
-    unsigned short m_unValue; // ¸¨ÖúÊı¾İ£¬ºÍNetHeadÖĞµÄsockfdÒ»Æğ±êÊ¶Õâ¸ösession
-    bool m_bActive; // ¸Ãsession½áµãÊÇ·ñ´¦ÓÚactive×´Ì¬£¬´´½¨½áµãÊ±ÖÃÎªactive×´Ì¬£¬ÊÍ·Å½áµãÊ±ÖÃÎª·Çactive×´Ì¬
+    TNetHead_V2 m_stNetHead; // æ¥è‡ªå®¢æˆ·ç«¯çš„socketè¿æ¥ä¿¡æ¯ï¼Œæ³¨æ„å…¶ä¸­çš„æœ‰æ•ˆå­—æ®µéƒ½æ˜¯ç½‘ç»œå­—èŠ‚åºçš„
+    unsigned short m_unValue; // è¾…åŠ©æ•°æ®ï¼Œå’ŒNetHeadä¸­çš„sockfdä¸€èµ·æ ‡è¯†è¿™ä¸ªsession
+    bool m_bActive; // è¯¥sessionç»“ç‚¹æ˜¯å¦å¤„äºactiveçŠ¶æ€ï¼Œåˆ›å»ºç»“ç‚¹æ—¶ç½®ä¸ºactiveçŠ¶æ€ï¼Œé‡Šæ”¾ç»“ç‚¹æ—¶ç½®ä¸ºéactiveçŠ¶æ€
     int m_uiUin;
 
 public:
@@ -40,3 +40,7 @@ public:
 
 #endif // __SESSION_OBJ_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

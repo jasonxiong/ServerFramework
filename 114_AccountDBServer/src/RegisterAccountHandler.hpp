@@ -1,4 +1,4 @@
-#ifndef __REGISTER_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __REGISTER_ACCOUNT_HANDLER_HPP__
 #define __REGISTER_ACCOUNT_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
@@ -7,19 +7,19 @@
 
 class CAccountDBHandlerSet;
 
-// MSGID_ACCOUNTDB_CREATEROLE_REQUESTÏûÏ¢´¦ÀíÕß
+// MSGID_ACCOUNTDB_CREATEROLE_REQUESTæ¶ˆæ¯å¤„ç†è€…
 class CRegisterAccountHandler : public CHandler
 {
 private:
     DBClientWrapper* m_pDatabase;
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
 	int m_iThreadIdx;
 public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountDBHandlerSet;
     CRegisterAccountHandler(DBClientWrapper* pDatabase);
 
@@ -28,13 +28,13 @@ public:
 
 private:
 
-    //ÏÈ¼ì²éÏàÍ¬µÄÕÊºÅÊÇ·ñÒÑ¾­´æÔÚ
+    //å…ˆæ£€æŸ¥ç›¸åŒçš„å¸å·æ˜¯å¦å·²ç»å­˜åœ¨
     int CheckAccountIsExist(bool& bIsAccountExist);
 
-    //»ñÈ¡µ±Ç°¿ÉÓÃ¿É×¢²áµÄUin
+    //è·å–å½“å‰å¯ç”¨å¯æ³¨å†Œçš„Uin
     int GetAccountUin(unsigned& uiUin);
 
-    //ÏòÊı¾İ¿âÖĞ²åÈëÒ»ÌõĞÂ×¢²áÕÊºÅµÄ¼ÇÂ¼
+    //å‘æ•°æ®åº“ä¸­æ’å…¥ä¸€æ¡æ–°æ³¨å†Œå¸å·çš„è®°å½•
     int InsertNewAccountRecord(const RegAuth_RegAccount_Request& rstReq, unsigned int uiUin);
 
     void FillFailedResponse(const unsigned int uiResultID, GameProtocolMsg* pstResponseMsg);
@@ -42,3 +42,7 @@ private:
 };
 
 #endif // __ROLE_DB_CREATE_ROLE_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

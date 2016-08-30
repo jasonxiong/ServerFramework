@@ -1,4 +1,4 @@
-#ifndef __WORLD_GLOBAL_DEF_HPP__
+﻿#ifndef __WORLD_GLOBAL_DEF_HPP__
 #define __WORLD_GLOBAL_DEF_HPP__
 
 #include "GameProtocol.hpp"
@@ -18,3 +18,7 @@ const int MAX_PATH_LEN=1024;
 const int MAX_MSGBUFFER_SIZE = 2048000;
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

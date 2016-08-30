@@ -1,4 +1,4 @@
-#ifndef __REGAUTH_PUBLIC_HPP__
+﻿#ifndef __REGAUTH_PUBLIC_HPP__
 #define __REGAUTH_PUBLIC_HPP__
 
 #include "Public.hpp"
@@ -16,3 +16,7 @@ inline unsigned int GetAccountHash(const std::string& strAccount)
 }
 
 #endif // __REGAUTH_PUBLIC_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

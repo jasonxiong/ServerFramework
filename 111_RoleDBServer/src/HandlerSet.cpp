@@ -1,4 +1,4 @@
-#include "HandlerSet.hpp"
+﻿#include "HandlerSet.hpp"
 
 CHandlerSet::CHandlerSet()
 {
@@ -28,6 +28,10 @@ int CHandlerSet::RegisterHandler(const unsigned int uiMsgID, CHandler* pHandler)
 
 int CHandlerSet::Initialize()
 {
-    return 0; // ȱʡʵ��
+    return 0; // 缺省实现
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

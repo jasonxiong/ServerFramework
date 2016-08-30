@@ -1,4 +1,4 @@
-#ifndef __ROLE_DB_APP_HPP__
+ï»¿#ifndef __ROLE_DB_APP_HPP__
 #define __ROLE_DB_APP_HPP__
 
 #include "SSProtocolEngine.hpp"
@@ -35,7 +35,7 @@ public:
 template<typename CApp>
 CApp* CAppType<CApp>::m_pApp = NULL;
 
-// AccountDBÓ¦ÓÃ³ÌĞò
+// AccountDBåº”ç”¨ç¨‹åº
 class CAccountDBApp
 {
 public:
@@ -59,7 +59,7 @@ private:
     int ReceiveAndDispatchMsg();
 
 private:
-    bool m_bResumeMode; // ¹²ÏíÄÚ´æ»Ö¸´Ä£Ê½£¬Èç¹û³ÌĞòÉÏ´ÎÔËĞĞËù´´½¨µÄ¹²ÏíÄÚ´æÎ´±»É¾³ıÔòÖ±½ÓattachÉÏÈ¥
+    bool m_bResumeMode; // å…±äº«å†…å­˜æ¢å¤æ¨¡å¼ï¼Œå¦‚æœç¨‹åºä¸Šæ¬¡è¿è¡Œæ‰€åˆ›å»ºçš„å…±äº«å†…å­˜æœªè¢«åˆ é™¤åˆ™ç›´æ¥attachä¸Šå»
     static int ms_iAppCmd;
 
 private:
@@ -72,10 +72,10 @@ public:
 
 public:
 
-    //ACCOUNTDBÏà¹ØµÄÊı¾İ¿âĞÅÏ¢µÄÅäÖÃ
+    //ACCOUNTDBç›¸å…³çš„æ•°æ®åº“ä¿¡æ¯çš„é…ç½®
     static CAccountDBInfoConfig m_stAccountDBConfigManager;
 
-    //UniqUinDBÏà¹ØµÄÊı¾İ¿âĞÅÏ¢µÄÅäÖÃ£¬ÓÃÓÚ×¢²áÕÊºÅÊ±·ÖÅäÎ¨Ò»ĞÔUIN
+    //UniqUinDBç›¸å…³çš„æ•°æ®åº“ä¿¡æ¯çš„é…ç½®ï¼Œç”¨äºæ³¨å†Œå¸å·æ—¶åˆ†é…å”¯ä¸€æ€§UIN
     static CAccountDBInfoConfig m_stUniqUinDBConfigManager;
 
 private:
@@ -90,3 +90,7 @@ private:
 };
 
 #endif // __ROLE_DB_APP_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

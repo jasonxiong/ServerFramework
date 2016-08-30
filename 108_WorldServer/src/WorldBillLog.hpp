@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __BILL_LOG_HPP__
 #define __BILL_LOG_HPP__
 
@@ -15,15 +15,15 @@ class CWorldRoleStatusWObj;
 class CWorldBillLog
 {
 public:
-    // ³õÊ¼»¯
+    // åˆå§‹åŒ–
     static int Initialize();
 
 public:
     ///////////////////////////////////////////////////////////////////////////////////////////////////
-    // ÈÕÖ¾½Ó¿Ú
+    // æ—¥å¿—æ¥å£
 
-    // ½Ó¿Ú±ØĞëÒª´«ÈëTEventId²ÎÊı
-    // µ±rstEventId.m_iEventTime·Ç0Ê±, ±íÊ¾ºóĞøµÄÈÕÖ¾¸úÉÏÒ»ÌõÈÕÖ¾ÊÇÍ¬Ò»¸öÊÂ¼ş, ¸´ÓÃÏàÍ¬µÄEventId		
+    // æ¥å£å¿…é¡»è¦ä¼ å…¥TEventIdå‚æ•°
+    // å½“rstEventId.m_iEventTimeé0æ—¶, è¡¨ç¤ºåç»­çš„æ—¥å¿—è·Ÿä¸Šä¸€æ¡æ—¥å¿—æ˜¯åŒä¸€ä¸ªäº‹ä»¶, å¤ç”¨ç›¸åŒçš„EventId		
     static void TraceAddMoney(const unsigned uin, int iLoginType, int64_t iAmount);
     	
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,14 +33,18 @@ private:
     static int WriteBillLog();
 
 private:
-    // ±¾µØBillÈÕÖ¾
+    // æœ¬åœ°Billæ—¥å¿—
     static CBillLogAdapter m_stBillLog;
 
 private:
-    // Ò»¸öZoneÄÚÊÂ¼ş·¢ÉúµÄÁ÷Ë®ºÅ
+    // ä¸€ä¸ªZoneå†…äº‹ä»¶å‘ç”Ÿçš„æµæ°´å·
     static const int MAX_BILL_EVENT_PER_SECOND;
     static int m_iLastEventTime;
     static unsigned short m_usEventSequence;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

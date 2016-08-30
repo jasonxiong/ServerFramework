@@ -1,18 +1,18 @@
-/**
+ï»¿/**
 *@file LogAdapter.hpp
 *@author jasonxiong
 *@date 2009-11-04
 *@version 1.0
-*@brief Îª·½±ãCLogFileÀàÊ¹ÓÃ£¬Ğ´¼¸¸öÆ«ÒµÎñµÄ´òÓ¡ÈÕÖ¾Àà
+*@brief ä¸ºæ–¹ä¾¿CLogFileç±»ä½¿ç”¨ï¼Œå†™å‡ ä¸ªåä¸šåŠ¡çš„æ‰“å°æ—¥å¿—ç±»
 *
-*   Ê¹ÓÃ·½·¨£º
-*   £¨1£©Ê¹ÓÃTRACESVR´òÓ¡ÖØÒªÖ÷¿ØÈÕÖ¾£¬±Ø´ò£¬Ïë¸Ä±äÈÕÖ¾ÎÄ¼şÃûµ÷ÓÃServerLogSingleton::Instance()->SetServerLogName
-*   £¨2£©Ê¹ÓÃTRACESVR_EX´òÓ¡ÓĞµÈ¼¶µÄÖ÷¿ØÈÕÖ¾
-*   £¨3£©TRACE_FUNC_BEG¡¢TRACE_FUNC_END(RET)ÓÃÓÚ´òÓ¡º¯Êı¿ªÊ¼ºÍ½áÊø
-*   £¨4£©Ê¹ÓÃERRORLOG´òÓ¡´íÎóÈÕÖ¾£¬±Ø´ò
-*   £¨5£©Ê¹ÓÃTRACEPLAYERÀ´¸ù¾İUin´òÓ¡ÈÕÖ¾
-*   £¨6£©Ê¹ÓÃPlayerLogSingleton::Instance()->ClearTraceUinSetÇå¿ÕUin°×Ãûµ¥
-*   £¨7£©Ê¹ÓÃPlayerLogSingleton::Instance()->AddTraceUinÌí¼ÓUinµ½°×Ãûµ¥ÖĞ
+*   ä½¿ç”¨æ–¹æ³•ï¼š
+*   ï¼ˆ1ï¼‰ä½¿ç”¨TRACESVRæ‰“å°é‡è¦ä¸»æ§æ—¥å¿—ï¼Œå¿…æ‰“ï¼Œæƒ³æ”¹å˜æ—¥å¿—æ–‡ä»¶åè°ƒç”¨ServerLogSingleton::Instance()->SetServerLogName
+*   ï¼ˆ2ï¼‰ä½¿ç”¨TRACESVR_EXæ‰“å°æœ‰ç­‰çº§çš„ä¸»æ§æ—¥å¿—
+*   ï¼ˆ3ï¼‰TRACE_FUNC_BEGã€TRACE_FUNC_END(RET)ç”¨äºæ‰“å°å‡½æ•°å¼€å§‹å’Œç»“æŸ
+*   ï¼ˆ4ï¼‰ä½¿ç”¨ERRORLOGæ‰“å°é”™è¯¯æ—¥å¿—ï¼Œå¿…æ‰“
+*   ï¼ˆ5ï¼‰ä½¿ç”¨TRACEPLAYERæ¥æ ¹æ®Uinæ‰“å°æ—¥å¿—
+*   ï¼ˆ6ï¼‰ä½¿ç”¨PlayerLogSingleton::Instance()->ClearTraceUinSetæ¸…ç©ºUinç™½åå•
+*   ï¼ˆ7ï¼‰ä½¿ç”¨PlayerLogSingleton::Instance()->AddTraceUinæ·»åŠ Uinåˆ°ç™½åå•ä¸­
 */
 
 #ifndef __LOG_ADAPTER_HPP__
@@ -28,12 +28,12 @@
 
 typedef struct tagEventId
 {
-    int m_iEventTime;                       // ÊÂ¼ş·¢ÉúµÄÊ±¼ä
-    unsigned short m_ucWorldID : 12;        // ÊÂ¼ş·¢ÉúµÄWorld
-    unsigned short m_ucZoneID  : 4;         // ÊÂ¼ş·¢ÉúµÄZone
-    unsigned short m_usEventSeq;            // ÊÂ¼ş·¢ÉúµÄĞòºÅ
+    int m_iEventTime;                       // äº‹ä»¶å‘ç”Ÿçš„æ—¶é—´
+    unsigned short m_ucWorldID : 12;        // äº‹ä»¶å‘ç”Ÿçš„World
+    unsigned short m_ucZoneID  : 4;         // äº‹ä»¶å‘ç”Ÿçš„Zone
+    unsigned short m_usEventSeq;            // äº‹ä»¶å‘ç”Ÿçš„åºå·
 
-    // Ä¬ÈÏ¹¹Ôìº¯Êı
+    // é»˜è®¤æ„é€ å‡½æ•°
     tagEventId()
     {
         m_iEventTime = 0;
@@ -73,7 +73,7 @@ public:
     int m_iTraceDepth;
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCServerLogAdapterÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCServerLogAdapterç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CServerLogAdapter> ServerLogSingleton;
 
 class CAutoCtrlTraceDepth
@@ -92,7 +92,7 @@ public:
 #ifdef _GAME_NO_LOG_
     #define TRACESVR(format, ...)
 #else
-    //!Ö÷¿ØÈÕÖ¾£¬ÎŞÈÕÖ¾µÈ¼¶£¬Ç¿ÖÆ´ò
+    //!ä¸»æ§æ—¥å¿—ï¼Œæ— æ—¥å¿—ç­‰çº§ï¼Œå¼ºåˆ¶æ‰“
     #define TRACESVR(format, ...) ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_ANY, \
         ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
@@ -103,12 +103,12 @@ public:
 #ifdef _GAME_NO_LOG_
     #define TRACESVR_EX(iLogLevel, format, ...)
 #else
-    //!Ö÷¿ØÈÕÖ¾£¬ÓĞÈÕÖ¾µÈ¼¶
+    //!ä¸»æ§æ—¥å¿—ï¼Œæœ‰æ—¥å¿—ç­‰çº§
     #define TRACESVR_EX(iLogLevel, format, ...) ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(iLogLevel, \
         ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
 
-//!¶¨Òå·½±ãÈÕÖ¾´òÓ¡µÄºê
+//!å®šä¹‰æ–¹ä¾¿æ—¥å¿—æ‰“å°çš„å®
 #ifdef _GAME_NO_LOG_
     #define LOGDEBUG(format, ...)
     #define LOGINFO(format, ...)
@@ -131,19 +131,19 @@ public:
 #ifdef _GAME_NO_LOG_
     #define DUMP_HEX(iLogLevel, szDesc, acBuf, iBufLen)
 #else
-//!½«BufferÓÃ16½øÖÆµÄ¸ñÊ½Ğ´µ½Ö÷¿ØÈÕÖ¾ÎÄ¼şÖĞ
+//!å°†Bufferç”¨16è¿›åˆ¶çš„æ ¼å¼å†™åˆ°ä¸»æ§æ—¥å¿—æ–‡ä»¶ä¸­
 #define DUMP_HEX(iLogLevel, szDesc, acBuf, iBufLen) \
         ServerLogSingleton::Instance()->m_stLogFile.WriteLog(iLogLevel, "%s\n", szDesc); \
         ServerLogSingleton::Instance()->m_stLogFile.DumpHex(acBuf, iBufLen);
 #endif
 
-//!ÉèÖÃÖ÷¿ØÈÕÖ¾µÄÈÕÖ¾µÈ¼¶
+//!è®¾ç½®ä¸»æ§æ—¥å¿—çš„æ—¥å¿—ç­‰çº§
 #define SETTRACELEVEL ServerLogSingleton::Instance()->SetLogLevel
 
-//!ÉèÖÃÖ÷¿ØÈÕÖ¾µÄÎÄ¼şÃû
+//!è®¾ç½®ä¸»æ§æ—¥å¿—çš„æ–‡ä»¶å
 #define SETLOGTAG ServerLogSingleton::Instance()->SetServerLogName
 
-//!ÉèÖÃÖ÷¿ØÈÕÖ¾µÄÎÄ¼şÃû¸ñÊ½
+//!è®¾ç½®ä¸»æ§æ—¥å¿—çš„æ–‡ä»¶åæ ¼å¼
 #define SETLOGSUFFIX ServerLogSingleton::Instance()->SetServerLogSuffix
 
 #ifdef _GAME_NO_LOG_
@@ -155,7 +155,7 @@ public:
 #ifdef _GAME_NO_LOG_
 #define TRACE_FUNC_BEG
 #else
-//!Ö÷¿ØÈÕÖ¾£¬´òÓ¡º¯Êı¿ªÊ¼£¬ÈÕÖ¾µÈ¼¶ÎªLOG_LEVEL_CALL
+//!ä¸»æ§æ—¥å¿—ï¼Œæ‰“å°å‡½æ•°å¼€å§‹ï¼Œæ—¥å¿—ç­‰çº§ä¸ºLOG_LEVEL_CALL
 #define TRACE_FUNC_BEG ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_CALL, \
             ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, "*******beg*******\n")
 #endif
@@ -163,7 +163,7 @@ public:
 #ifdef _GAME_NO_LOG_
 #define TRACE_FUNC_BEG_EX(iLogLevel)
 #else
-//!Ö÷¿ØÈÕÖ¾£¬´òÓ¡º¯Êı¿ªÊ¼£¬ÈÕÖ¾µÈ¼¶¿É¿Ø
+//!ä¸»æ§æ—¥å¿—ï¼Œæ‰“å°å‡½æ•°å¼€å§‹ï¼Œæ—¥å¿—ç­‰çº§å¯æ§
 #define TRACE_FUNC_BEG_EX(iLogLevel) ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(iLogLevel, \
         ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, "*******beg*******\n")
 #endif
@@ -171,7 +171,7 @@ public:
 #ifdef _GAME_NO_LOG_
 #define TRACE_FUNC_END
 #else
-//!Ö÷¿ØÈÕÖ¾£¬´òÓ¡º¯Êı½áÊø¼°·µ»ØÖµ£¬ÈÕÖ¾µÈ¼¶ÎªLOG_LEVEL_CALL
+//!ä¸»æ§æ—¥å¿—ï¼Œæ‰“å°å‡½æ•°ç»“æŸåŠè¿”å›å€¼ï¼Œæ—¥å¿—ç­‰çº§ä¸ºLOG_LEVEL_CALL
 #define TRACE_FUNC_END ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_CALL, \
         ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, "*******end*******\n");
 #endif //_GAME_NO_LOG_
@@ -179,7 +179,7 @@ public:
 #ifdef _GAME_NO_LOG_
 #define TRACE_FUNC_END_EX(iLogLvel)
 #else
-//!Ö÷¿ØÈÕÖ¾£¬´òÓ¡º¯Êı½áÊø¼°·µ»ØÖµ£¬ÈÕÖ¾µÈ¼¶ÎªLOG_LEVEL_CALL
+//!ä¸»æ§æ—¥å¿—ï¼Œæ‰“å°å‡½æ•°ç»“æŸåŠè¿”å›å€¼ï¼Œæ—¥å¿—ç­‰çº§ä¸ºLOG_LEVEL_CALL
 #define TRACE_FUNC_END_EX(iLogLvel) ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(iLogLvel, \
         ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, "*******end*******\n");
 #endif //_GAME_NO_LOG_
@@ -187,7 +187,7 @@ public:
 #ifdef _GAME_NO_LOG_
 #define TRACE_RETURN(RET) return RET
 #else
-//!Ö÷¿ØÈÕÖ¾£¬´òÓ¡º¯Êı½áÊø¼°·µ»ØÖµ£¬ÈÕÖ¾µÈ¼¶ÎªLOG_LEVEL_CALL
+//!ä¸»æ§æ—¥å¿—ï¼Œæ‰“å°å‡½æ•°ç»“æŸåŠè¿”å›å€¼ï¼Œæ—¥å¿—ç­‰çº§ä¸ºLOG_LEVEL_CALL
 #define TRACE_RETURN(RET) ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_CALL, \
             ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, "*******end*******\n"); \
         return RET
@@ -196,7 +196,7 @@ public:
 #ifdef _GAME_NO_LOG_
 #define TRACE_ERROR_RETURN(RET) return RET
 #else
-//!Ö÷¿ØÈÕÖ¾£¬´òÓ¡º¯Êı½áÊø¼°·µ»ØÖµ£¬ÈÕÖ¾µÈ¼¶ÎªLOG_LEVEL_CALL
+//!ä¸»æ§æ—¥å¿—ï¼Œæ‰“å°å‡½æ•°ç»“æŸåŠè¿”å›å€¼ï¼Œæ—¥å¿—ç­‰çº§ä¸ºLOG_LEVEL_CALL
 #define TRACE_ERROR_RETURN(RET) ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_CALL, \
             ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, "*******end*******, iRet = %d\n", RET); \
         return RET
@@ -205,7 +205,7 @@ public:
 #ifdef _GAME_NO_LOG_
 #define TRACE_AND_DO(X) X
 #else
-//!Ö÷¿ØÈÕÖ¾£¬´òÓ¡³ÌĞòÓï¾ä²¢Ö´ĞĞ£¬ÈÕÖ¾µÈ¼¶ÎªLOG_LEVEL_DETAIL
+//!ä¸»æ§æ—¥å¿—ï¼Œæ‰“å°ç¨‹åºè¯­å¥å¹¶æ‰§è¡Œï¼Œæ—¥å¿—ç­‰çº§ä¸ºLOG_LEVEL_DETAIL
 #define TRACE_AND_DO(X) ServerLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_DETAIL, \
         ServerLogSingleton::Instance()->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, "%s\n", #X); X
 #endif
@@ -231,14 +231,14 @@ public:
     CLogFile m_stLogFile;
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCErrorLogAdapterÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCErrorLogAdapterç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CErrorLogAdapter> ErrorLogSingleton;
 
 #ifdef _GAME_NO_LOG_
 #define ERRORLOG(format, ...)
 #else
 #ifndef _GAME_NO_BACKTRACE_
-//!´íÎóÈÕÖ¾£¬ÎŞÈÕÖ¾µÈ¼¶£¬Ç¿ÖÆ´ò£¬´ò¶ÑÕ»
+//!é”™è¯¯æ—¥å¿—ï¼Œæ— æ—¥å¿—ç­‰çº§ï¼Œå¼ºåˆ¶æ‰“ï¼Œæ‰“å †æ ˆ
 #define ERRORLOG(format, ...) \
     TRACESVR("[ERRORLOG]"format, ##__VA_ARGS__); \
     ErrorLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_ANY, -1, \
@@ -247,14 +247,14 @@ typedef CSingleton<CErrorLogAdapter> ErrorLogSingleton;
     ErrorLogSingleton::Instance()->m_stLogFile.WriteLog(LOG_LEVEL_ANY, "%s\n", \
     BacktraceSingleton::Instance()->GetAllBackTraceInfo())
 #else
-//!´íÎóÈÕÖ¾£¬ÎŞÈÕÖ¾µÈ¼¶£¬Ç¿ÖÆ´ò£¬²»´ò¶ÑÕ»
+//!é”™è¯¯æ—¥å¿—ï¼Œæ— æ—¥å¿—ç­‰çº§ï¼Œå¼ºåˆ¶æ‰“ï¼Œä¸æ‰“å †æ ˆ
 #define ERRORLOG(format, ...) \
     ErrorLogSingleton::Instance()->m_stLogFile.WriteLogEx(LOG_LEVEL_ANY, -1, \
     __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif //_GAME_NO_BACKTRACE_
 #endif
 
-// Ä¬ÈÏ¿ªÆôassert
+// é»˜è®¤å¼€å¯assert
 #ifdef _GAME_NO_LOG_
 #define __ASSERT_AND_LOG(X) __ASSERT_AND_LOG(X)
 #else
@@ -268,7 +268,7 @@ typedef CSingleton<CErrorLogAdapter> ErrorLogSingleton;
 
 #endif
 
-// assertÊ§°Üºó, ·µ»Ø´íÎóÖµ
+// assertå¤±è´¥å, è¿”å›é”™è¯¯å€¼
 #define ASSERT_AND_LOG_RTN_INT(X) \
             __ASSERT_AND_LOG(X); if (!(X)) return -1
 
@@ -316,14 +316,14 @@ private:
     CLogFile m_stProtoLogFile;
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCPlayerLogAdapterÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCPlayerLogAdapterç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CPlayerLogAdapter> PlayerLogSingleton;
 
 #ifdef _GAME_NO_LOG_
 #define TRACEPLAYER(uiUin, format, ...) PlayerLogSingleton::Instance()->WriteLog(uiUin, \
     __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #else
-//!´íÎóÈÕÖ¾£¬Ö»ÓĞÔÚTraceUinÁĞ±íÖĞµÄUin²Å»á´ò
+//!é”™è¯¯æ—¥å¿—ï¼Œåªæœ‰åœ¨TraceUinåˆ—è¡¨ä¸­çš„Uinæ‰ä¼šæ‰“
 #define TRACEPLAYER(uiUin, format, ...) PlayerLogSingleton::Instance()->WriteLog(uiUin, \
         __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
@@ -369,13 +369,13 @@ private:
     CLogFile m_stLogFile;
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCPlayerLogAdapterÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCPlayerLogAdapterç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CMsgLogAdapter> MsgLogSingleton;
 
 #ifdef _GAME_NO_LOG_
 #define TRACEMSG(iLogLevel, format, ...)
 #else
-//!´íÎóÈÕÖ¾£¬Ö»ÓĞÔÚTraceUinÁĞ±íÖĞµÄUin²Å»á´ò
+//!é”™è¯¯æ—¥å¿—ï¼Œåªæœ‰åœ¨TraceUinåˆ—è¡¨ä¸­çš„Uinæ‰ä¼šæ‰“
 #define TRACEMSG(iLogLevel, format, ...) MsgLogSingleton::Instance()->WriteLog(iLogLevel, \
         __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
@@ -383,7 +383,7 @@ typedef CSingleton<CMsgLogAdapter> MsgLogSingleton;
 #ifdef _GAME_NO_LOG_
 #define TRACEMSG_EX(iLogLevel, iMsgID, format, ...)
 #else
-//!´íÎóÈÕÖ¾£¬Ö»ÓĞÔÚTraceUinÁĞ±íÖĞµÄUin²Å»á´ò
+//!é”™è¯¯æ—¥å¿—ï¼Œåªæœ‰åœ¨TraceUinåˆ—è¡¨ä¸­çš„Uinæ‰ä¼šæ‰“
 #define TRACEMSG_EX(iLogLevel, iMsgID, format, ...) MsgLogSingleton::Instance()->WriteLog(iLogLevel, iMsgID, \
         __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
@@ -404,13 +404,13 @@ public:
     int m_iCurMonth;
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCServerLogAdapterÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCServerLogAdapterç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CBillLogAdapter> BillLogSingleton;
 
 #ifdef _GAME_NO_LOG_
 #define TRACEBILL(format, ...)
 #else
-//!Ö÷¿ØÈÕÖ¾£¬ÎŞÈÕÖ¾µÈ¼¶£¬Ç¿ÖÆ´ò
+//!ä¸»æ§æ—¥å¿—ï¼Œæ— æ—¥å¿—ç­‰çº§ï¼Œå¼ºåˆ¶æ‰“
 #define TRACEBILL(format, ...) BillLogSingleton::Instance()->CheckBillPath(); \
         BillLogSingleton::Instance()->m_stLogFile.WriteLog(LOG_LEVEL_ANY, format, ##__VA_ARGS__)
 #endif
@@ -438,13 +438,13 @@ private:
 
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCPlayerLogAdapterÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCPlayerLogAdapterç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CThreadLogAdapter> ThreadLogSingleton;
 
 #ifdef _GAME_NO_LOG_
 #define TRACETHREAD(uiUin, format, ...)
 #else
-//!´íÎóÈÕÖ¾£¬Ö»ÓĞÔÚTraceUinÁĞ±íÖĞµÄUin²Å»á´ò
+//!é”™è¯¯æ—¥å¿—ï¼Œåªæœ‰åœ¨TraceUinåˆ—è¡¨ä¸­çš„Uinæ‰ä¼šæ‰“
 #define TRACETHREAD(iThreadID, format, ...) ThreadLogSingleton::Instance()->WriteLog(iThreadID, \
     __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
@@ -474,13 +474,13 @@ private:
 
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCRoomLogAdapterÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCRoomLogAdapterç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CRoomLogAdapter> RoomLogSingleton;
 
 #ifdef _GAME_NO_LOG_
 #define TRACEROOM(iRoomID, format, ...)
 #else
-//!´íÎóÈÕÖ¾£¬Ö»ÓĞÔÚTraceUinÁĞ±íÖĞµÄUin²Å»á´ò
+//!é”™è¯¯æ—¥å¿—ï¼Œåªæœ‰åœ¨TraceUinåˆ—è¡¨ä¸­çš„Uinæ‰ä¼šæ‰“
 #define TRACEROOM(iRoomID, format, ...) RoomLogSingleton::Instance()->WriteLog(iRoomID, \
     __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
@@ -511,13 +511,13 @@ private:
 
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öClientLogSingletonÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªClientLogSingletonç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CClientLogAdapter> ClientLogSingleton;
 
 #ifdef _GAME_NO_LOG_
 #define TRACECLIENT(iUin, format, ...)
 #else
-//!´íÎóÈÕÖ¾£¬Ö»ÓĞÔÚTraceUinÁĞ±íÖĞµÄUin²Å»á´ò
+//!é”™è¯¯æ—¥å¿—ï¼Œåªæœ‰åœ¨TraceUinåˆ—è¡¨ä¸­çš„Uinæ‰ä¼šæ‰“
 #define TRACECLIENT(iUin, format, ...) ClientLogSingleton::Instance()->WriteLog(iUin, \
     __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
@@ -526,3 +526,7 @@ typedef CSingleton<CClientLogAdapter> ClientLogSingleton;
 }
 #endif //__LOG_ADAPTER_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

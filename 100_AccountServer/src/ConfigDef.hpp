@@ -1,4 +1,4 @@
-#ifndef __CONFIG_DEF_H__
+﻿#ifndef __CONFIG_DEF_H__
 #define __CONFIG_DEF_H__
 
 #include "AccountCommon.h"
@@ -18,3 +18,7 @@
 //} TZoneConfList;
 //
 #endif // __CONFIG_DEF_H__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

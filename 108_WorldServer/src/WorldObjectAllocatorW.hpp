@@ -1,4 +1,4 @@
-#ifndef __WORLD_OBJECT_ALLOCATOR_W_HPP__
+﻿#ifndef __WORLD_OBJECT_ALLOCATOR_W_HPP__
 #define __WORLD_OBJECT_ALLOCATOR_W_HPP__
 
 #include "ObjAllocator.hpp"
@@ -26,3 +26,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

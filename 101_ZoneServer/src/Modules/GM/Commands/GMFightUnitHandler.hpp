@@ -12,11 +12,11 @@ public:
     ~CGMFightUnitHandler() { };
 
 public:
-    //Ö´ĞĞÏàÓ¦GMÃüÁîµÄ¹¦ÄÜ
+    //æ‰§è¡Œç›¸åº”GMå‘½ä»¤çš„åŠŸèƒ½
     virtual int Run(CGameRoleObj *pRoleObj, int iCommandType, std::vector<std::string>& vParams);
 
 protected:
-    //½øĞĞ²ÎÊı¼ì²é
+    //è¿›è¡Œå‚æ•°æ£€æŸ¥
     virtual int SecurityCheck(int iCommandType, std::vector<std::string>& vParams);
 
 private:

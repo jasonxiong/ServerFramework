@@ -1,4 +1,4 @@
-#include "AppTick.hpp"
+ï»¿#include "AppTick.hpp"
 #include "LogAdapter.hpp"
 #include "TimeUtility.hpp"
 #include "ObjStatistic.hpp"
@@ -28,7 +28,7 @@ int CAppTick::CountObjStat()
     //int i = 0;
     //ObjectStatisticSingleton::Instance()->SetObjectStatName(aaanme, aaanme_num);
 
-    //todo jaosnxiong ÔİÊ±²»ĞèÒª¿¼ÂÇ¹«»áµÄÊµÏÖ
+    //todo jaosnxiong æš‚æ—¶ä¸éœ€è¦è€ƒè™‘å…¬ä¼šçš„å®ç°
     /*
     ObjectStatisticSingleton::Instance()->AddObjectStat(i++, WorldTypeK64<CGuildApplyRequest>::GetUsedObjNumber());
     ObjectStatisticSingleton::Instance()->AddObjectStat(i++, WorldTypeK64<CRoleGuildMapping>::GetUsedObjNumber());
@@ -40,7 +40,7 @@ int CAppTick::CountObjStat()
 
 int CAppTick::OnTick()
 {
-    //Ã¿¸ötick¶¼¸üĞÂÊ±¼ä£¬¸øtickÊ¹ÓÃ
+    //æ¯ä¸ªtickéƒ½æ›´æ–°æ—¶é—´ï¼Œç»™tickä½¿ç”¨
     CTimeUtility::m_uiTimeTick = time(NULL);
     CTimeUtility::m_stTimeValueTick.RefreshTime();
 
@@ -55,11 +55,11 @@ int CAppTick::OnTick()
 
         m_stUnitTick.OnTick();
 
-        // ÔİÊ±½ûµôÌßÏß¹¦ÄÜ, Ì«Î£ÏÕ
-        //ÔÚontickÀï·Ï³ı£¬ ÕâÀïĞèÒªÍ³¼Æ
+        // æš‚æ—¶ç¦æ‰è¸¢çº¿åŠŸèƒ½, å¤ªå±é™©
+        //åœ¨ontické‡ŒåºŸé™¤ï¼Œ è¿™é‡Œéœ€è¦ç»Ÿè®¡
         m_stZoneTick.OnTick();
 
-        //ÉÏ±¨world×´Ì¬µ½cluster
+        //ä¸ŠæŠ¥worldçŠ¶æ€åˆ°cluster
         m_stOnlineStatTick.OnTick();
 
         m_tvLastBaseTick.RefreshTime();
@@ -77,3 +77,7 @@ int CAppTick::OnTick()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

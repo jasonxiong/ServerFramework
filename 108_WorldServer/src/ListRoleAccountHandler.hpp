@@ -1,10 +1,10 @@
-#ifndef __LIST_ROLE_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __LIST_ROLE_ACCOUNT_HANDLER_HPP__
 #define __LIST_ROLE_ACCOUNT_HANDLER_HPP__
 
 #include "Handler.hpp"
 #include "WorldGlobalDefine.hpp"
 
-//´¦ÀíAccount Server¹ıÀ´µÄÀ­È¡Íæ¼ÒÕÊºÅ»ù´¡ĞÅÏ¢µÄĞ­Òé
+//å¤„ç†Account Serverè¿‡æ¥çš„æ‹‰å–ç©å®¶å¸å·åŸºç¡€ä¿¡æ¯çš„åè®®
 class CListRoleAccountHandler : public IHandler
 {
 protected:
@@ -24,3 +24,7 @@ private:
 };
 
 #endif // __LIST_ROLE_ACCOUNT_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

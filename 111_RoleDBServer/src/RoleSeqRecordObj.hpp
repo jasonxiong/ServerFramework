@@ -1,4 +1,4 @@
-#ifndef __ROLE_SEQ_RECORD_OBJ_HPP__
+ï»¿#ifndef __ROLE_SEQ_RECORD_OBJ_HPP__
 #define __ROLE_SEQ_RECORD_OBJ_HPP__
 
 #include "ObjAllocator.hpp"
@@ -9,7 +9,7 @@ using namespace ServerLib;
 class CRoleSeqRecordObj : public CObj
 {
 private:
-    //static const int MAX_ROLE_NUMBER_PER_USER = 100; // Ò»¸öÓÃ»§¿ÉÒÔ´´½¨µÄ½ÇÉ«µÄĞòºÅ·¶Î§£¬Îª[0,99]
+    //static const int MAX_ROLE_NUMBER_PER_USER = 100; // ä¸€ä¸ªç”¨æˆ·å¯ä»¥åˆ›å»ºçš„è§’è‰²çš„åºå·èŒƒå›´ï¼Œä¸º[0,99]
     static const int BITS_PER_BYTE = 8;
     static const unsigned char OR_MASK[BITS_PER_BYTE];
     static const unsigned char AND_MASK[BITS_PER_BYTE];
@@ -22,7 +22,7 @@ private:
 
 private:
     unsigned int m_uiUin;
-    // »º´æuin¶ÔÓ¦µÄseqµÄÊ¹ÓÃÇé¿ö£¬µÚi¸öbit¶ÔÓ¦seq i£¬Îª1±íÊ¾¸ÃseqÒÑ¾­Ê¹ÓÃ£¬Îª0±íÊ¾Î´Ê¹ÓÃ
+    // ç¼“å­˜uinå¯¹åº”çš„seqçš„ä½¿ç”¨æƒ…å†µï¼Œç¬¬iä¸ªbitå¯¹åº”seq iï¼Œä¸º1è¡¨ç¤ºè¯¥seqå·²ç»ä½¿ç”¨ï¼Œä¸º0è¡¨ç¤ºæœªä½¿ç”¨
     unsigned char m_ucaRoleSeqBits[1 / BITS_PER_BYTE + 1];
 
 public:
@@ -34,18 +34,22 @@ public:
     DECLARE_DYN
 
 private:
-    // ·µ»ØÊı×éucaRoleSeqBitsÖĞindexÎªnSeqµÄbitµÄÖµ£¬ÓĞĞ§ÖµÎª0»ò1,
-    // Îª0±íÊ¾Õâ¸öseqÃ»ÓĞ±»Ê¹ÓÃ£¬Îª1±íÊ¾Õâ¸öseqÒÑ¾­±»Ê¹ÓÃ£¬²ÎÊı·¶Î§Îª[0,99]
+    // è¿”å›æ•°ç»„ucaRoleSeqBitsä¸­indexä¸ºnSeqçš„bitçš„å€¼ï¼Œæœ‰æ•ˆå€¼ä¸º0æˆ–1,
+    // ä¸º0è¡¨ç¤ºè¿™ä¸ªseqæ²¡æœ‰è¢«ä½¿ç”¨ï¼Œä¸º1è¡¨ç¤ºè¿™ä¸ªseqå·²ç»è¢«ä½¿ç”¨ï¼Œå‚æ•°èŒƒå›´ä¸º[0,99]
     unsigned char GetBitValue(short nSeq);
 
 public:
     void SetUin(unsigned int uiUin);
     unsigned int GetUin();
 
-    void SetBitValue(short nSeq);   // ÉèÖÃÊı×éucaRoleSeqBitsÖĞindexÎªnSeqµÄbitµÄÖµÎª1
-    void ResetBitValue(short nSeq); // ÉèÖÃÊı×éucaRoleSeqBitsÖĞindexÎªnSeqµÄbitµÄÖµÎª0
-    short GenerateSeq(); // ¸ù¾İÄ³ÖÖËã·¨Éú³ÉÒ»¸öÔÚ[0,99]·¶Î§ÄÚµÄÎ´Ê¹ÓÃµÄseq£¬·µ»Ø-1±íÊ¾Ê§°Ü
+    void SetBitValue(short nSeq);   // è®¾ç½®æ•°ç»„ucaRoleSeqBitsä¸­indexä¸ºnSeqçš„bitçš„å€¼ä¸º1
+    void ResetBitValue(short nSeq); // è®¾ç½®æ•°ç»„ucaRoleSeqBitsä¸­indexä¸ºnSeqçš„bitçš„å€¼ä¸º0
+    short GenerateSeq(); // æ ¹æ®æŸç§ç®—æ³•ç”Ÿæˆä¸€ä¸ªåœ¨[0,99]èŒƒå›´å†…çš„æœªä½¿ç”¨çš„seqï¼Œè¿”å›-1è¡¨ç¤ºå¤±è´¥
 };
 
 #endif // __ROLE_SEQ_RECORD_OBJ_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

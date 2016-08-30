@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+ï»¿#include "GameProtocol.hpp"
 #include "ObjAllocator.hpp"
 #include "AppLoopW.hpp"
 #include "ConfigHelper.hpp"
@@ -37,7 +37,7 @@ CObjAllocator* AllocateShmObj(CSharedMemory& rstSharedMemory, const int iObjCoun
 
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -90,7 +90,7 @@ CObjAllocator* AllocateShmObjK32(CSharedMemory& rstSharedMemory, const int iObjC
 
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -102,7 +102,7 @@ CObjAllocator* AllocateShmObjK32(CSharedMemory& rstSharedMemory, const int iObjC
 
     rstSharedMemory.UseShmBlock(CObjAllocator::CountSize(sizeof(TYPE_Obj), iObjCount));
 
-    CHashMap_K32* pHashMap = NULL; //½ÚµãÊıÁ¿Îª¶ÔÏóÊıÁ¿Á½±¶
+    CHashMap_K32* pHashMap = NULL; //èŠ‚ç‚¹æ•°é‡ä¸ºå¯¹è±¡æ•°é‡ä¸¤å€
 
     if (!bResume)
     {
@@ -168,7 +168,7 @@ CObjAllocator* AllocateShmObjK64(CSharedMemory& rstSharedMemory, const int iObjC
 
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -180,7 +180,7 @@ CObjAllocator* AllocateShmObjK64(CSharedMemory& rstSharedMemory, const int iObjC
 
     rstSharedMemory.UseShmBlock(CObjAllocator::CountSize(sizeof(TYPE_Obj), iObjCount));
 
-    CHashMap_K64* pHashMap = NULL; //½ÚµãÊıÁ¿Îª¶ÔÏóÊıÁ¿Á½±¶
+    CHashMap_K64* pHashMap = NULL; //èŠ‚ç‚¹æ•°é‡ä¸ºå¯¹è±¡æ•°é‡ä¸¤å€
 
     if (!bResume)
     {
@@ -254,7 +254,7 @@ size_t CWorldObjectAllocatorW::GetObjTotalSize()
 		return m_iObjTotalSize;
 	}
 
-    // uin×÷ÎªË÷ÒıµÄÍæ¼Ò¶ÔÏó
+    // uinä½œä¸ºç´¢å¼•çš„ç©å®¶å¯¹è±¡
 	size_t iRoleSize = CObjAllocator::CountSize(sizeof(CWorldRoleStatusWObj), MAX_ROLE_OBJECT_NUMBER_IN_WORLD); 
     m_iObjTotalSize += iRoleSize;
 
@@ -264,3 +264,7 @@ size_t CWorldObjectAllocatorW::GetObjTotalSize()
 	return m_iObjTotalSize;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

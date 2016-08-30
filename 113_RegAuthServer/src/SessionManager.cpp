@@ -1,4 +1,4 @@
-#include <arpa/inet.h>
+ï»¿#include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -63,7 +63,7 @@ int CSessionManager::DeleteSession(const unsigned int uiSessionFD)
 unsigned short CSessionManager::GenerateValue()
 {
     unsigned short unValue = ++m_unSeed;
-    if (0xffff == unValue) // Ôö³¤µ½×î´óÖµÊ±ÖØÖÃÎª0£¬ÖØĞÂ¼ÆÊı
+    if (0xffff == unValue) // å¢é•¿åˆ°æœ€å¤§å€¼æ—¶é‡ç½®ä¸º0ï¼Œé‡æ–°è®¡æ•°
     {
         m_unSeed = 0;
     }
@@ -73,10 +73,10 @@ unsigned short CSessionManager::GenerateValue()
 
 int CSessionManager::CheckSession(TNetHead_V2& stNetHead)
 {
-    //// ¼ì²é¸ÃfdµÄsession»º´æÊÇ·ñ´æÔÚ£¬Èç¹û´æÔÚÔò¾Ü¾ø·şÎñ
+    //// æ£€æŸ¥è¯¥fdçš„sessionç¼“å­˜æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœå­˜åœ¨åˆ™æ‹’ç»æœåŠ¡
     unsigned int uiSessionFD = ntohl(stNetHead.m_uiSocketFD);
 
-    // ¼ì²ésession»º´æÖĞµÄ½áµã¸öÊıÊÇ·ñ´ïµ½ÉÏÏŞ£¬´ïµ½ÉÏÏŞÔò¾Ü¾ø·şÎñ
+    // æ£€æŸ¥sessionç¼“å­˜ä¸­çš„ç»“ç‚¹ä¸ªæ•°æ˜¯å¦è¾¾åˆ°ä¸Šé™ï¼Œè¾¾åˆ°ä¸Šé™åˆ™æ‹’ç»æœåŠ¡
     if (GetSessionByFd(uiSessionFD) == NULL)
     {
         return T_REGAUTH_SERVER_BUSY;
@@ -113,13 +113,17 @@ CSessionObj* CSessionManager::GetSession(const unsigned int uiSessionFD, const u
     CSessionObj* pSessionObj = GetSessionByFd(uiSessionFD);
     if (pSessionObj->IsActive())
     {
-        return pSessionObj; // ÎªÍ¬Ò»¸ösession
+        return pSessionObj; // ä¸ºåŒä¸€ä¸ªsession
     }
 
-    return NULL; // session²»´æÔÚ»òÕßvalueÖµ²»Í¬
+    return NULL; // sessionä¸å­˜åœ¨æˆ–è€…valueå€¼ä¸åŒ
 }
 
 void CSessionManager::ClearCache(time_t& stTime)
 {
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

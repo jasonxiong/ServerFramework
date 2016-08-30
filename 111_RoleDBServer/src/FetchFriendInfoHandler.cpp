@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 #include <string.h>
 
 #include "RoleDBApp.hpp"
@@ -10,7 +10,7 @@
 
 using namespace ServerLib;
 
-//todo jasonxiong2 Õâ¸öµÈµ½Êµ¼Ê¿ª·¢ºÃÓÑÊ±ÔÙÀ´¿ª·¢
+//todo jasonxiong2 è¿™ä¸ªç­‰åˆ°å®žé™…å¼€å‘å¥½å‹æ—¶å†æ¥å¼€å‘
 
 CFetchFriendInfoHandler::CFetchFriendInfoHandler(DBClientWrapper* pDatabase)
 {
@@ -25,7 +25,7 @@ void CFetchFriendInfoHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
         return;
     }
 
-    // fetch friend infoÇëÇóÏûÏ¢
+    // fetch friend infoè¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
 
     const Zone_GetFriendInfo_Request& stReq = m_pstRequestMsg->m_stmsgbody().m_stzone_getfriendinfo_request();;
@@ -35,16 +35,16 @@ void CFetchFriendInfoHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
     DEBUG_THREAD(m_iThreadIdx, "Handling FetchFriendInfoRequest, operator uin: %u, "
         "target uin: %u\n", uiUin, uiFriendUin);
 
-    // fetch friend infoÏìÓ¦ÏûÏ¢
+    // fetch friend infoå“åº”æ¶ˆæ¯
     GameProtocolMsg* pstRespMsg = &pstHandleResult->stResponseMsg;
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(pstRespMsg, 0, MSGID_ZONE_FRIENDINFO_RESPONSE, uiUin);
 
-    // ÏìÓ¦ÏûÏ¢Ìå
+    // å“åº”æ¶ˆæ¯ä½“
     Zone_GetFriendInfo_Response* pstResp = pstRespMsg->mutable_m_stmsgbody()->mutable_m_stzone_getfriendinfo_response();
 
-    // ¸ù¾Ýrole id²éÑ¯¸Ã½ÇÉ«µÄÐÅÏ¢
+    // æ ¹æ®role idæŸ¥è¯¢è¯¥è§’è‰²çš„ä¿¡æ¯
     int iRes = QueryFriendInfo(uiUin, pstResp);
     if (iRes != 0)
     {
@@ -52,7 +52,7 @@ void CFetchFriendInfoHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
         return;
     }
 
-    // Ìî³ä³É¹¦»Ø¸´
+    // å¡«å……æˆåŠŸå›žå¤
     FillSuccessfulResponse(pstRespMsg);
 }
 
@@ -63,7 +63,7 @@ int CFetchFriendInfoHandler::QueryFriendInfo(unsigned int uin, Zone_GetFriendInf
         return -3;
     }
 
-    //todo jasonxiong ºóÐøÊµ¼ÊÀ­È¡ºÃÓÑÏûÏ¢´¦ÀíÊ±£¬ÐèÒªÖØÐÂÊµÏÖÕâ¸öº¯Êý
+    //todo jasonxiong åŽç»­å®žé™…æ‹‰å–å¥½å‹æ¶ˆæ¯å¤„ç†æ—¶ï¼Œéœ€è¦é‡æ–°å®žçŽ°è¿™ä¸ªå‡½æ•°
 
     /*
 
@@ -76,8 +76,8 @@ int CFetchFriendInfoHandler::QueryFriendInfo(unsigned int uin, Zone_GetFriendInf
     char szWhere[1024] = "";
 
     memset(&stObj, 0, iObjSize);
-    stObj.fUin = pstRoleID->m_uiUin; // Ö÷¼ü
-    stObj.fSeq = pstRoleID->m_uiSeq; // Ö÷¼ü
+    stObj.fUin = pstRoleID->m_uiUin; // ä¸»é”®
+    stObj.fSeq = pstRoleID->m_uiSeq; // ä¸»é”®
 
     int iRet = m_pDatabase->Execute(&stObj, iObjSize, szObjMetaName, TDR_DBOP_SELECT, szWhere);
     if (iRet != 0)
@@ -128,3 +128,7 @@ void CFetchFriendInfoHandler::FillSuccessfulResponse(GameProtocolMsg* pstRespons
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

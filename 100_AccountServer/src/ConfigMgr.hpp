@@ -1,4 +1,4 @@
-#ifndef __CONFIG_MGR_H__
+ï»¿#ifndef __CONFIG_MGR_H__
 #define __CONFIG_MGR_H__
 
 //#include "ConfigDef.hpp"
@@ -20,11 +20,15 @@ public:
 
 public:
 
-    //¼ì²é°×Ãûµ¥
+    //æ£€æŸ¥ç™½åå•
     static int IsWhiteListEnabled();
 
-    //ÊÇ·ñÔÊĞí´´½¨½ÇÉ«
+    //æ˜¯å¦å…è®¸åˆ›å»ºè§’è‰²
     static bool IsCreateRoleEnabled();
 };
 
 #endif // __CONFIG_MGR_H__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <string.h>
+﻿#include <string.h>
 
 #include "AccountUinObj.hpp"
 #include "LogAdapter.hpp"
@@ -59,3 +59,7 @@ void CAccountUinObj::SetUin(unsigned int uiUin)
 }
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

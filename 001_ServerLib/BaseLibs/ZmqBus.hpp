@@ -1,10 +1,10 @@
-#ifndef __ZMQ_WRAPPER_HPP__
+ï»¿#ifndef __ZMQ_WRAPPER_HPP__
 #define __ZMQ_WRAPPER_HPP__
 
 #include "zmq.h"
 #include "zmq_utils.h"
 
-//¶ÔÓÚZMQµÄ·â×°£¬ÔÚÓÎÏ··şÎñÆ÷ÖĞ£¬ËùÓĞµÄ·şÎñÆ÷ÄÚ²¿Í¨ĞÅ¶¼Ê¹ÓÃZMQ
+//å¯¹äºZMQçš„å°è£…ï¼Œåœ¨æ¸¸æˆæœåŠ¡å™¨ä¸­ï¼Œæ‰€æœ‰çš„æœåŠ¡å™¨å†…éƒ¨é€šä¿¡éƒ½ä½¿ç”¨ZMQ
 
 enum enZmqSocketType
 {
@@ -17,15 +17,15 @@ enum enZmqSocketType
 
 enum enZmqProcType
 {
-    EN_ZMQ_PROC_INPROC = 1,             //½ø³ÌÄÚÍ¨ĞÅ
-    EN_ZMQ_PROC_IPC = 2,                //½ø³Ì¼äIPCÍ¨ĞÅ
-    EN_ZMQ_PROC_TCP = 3,                //TCPÍøÂçÍ¨ĞÅ
+    EN_ZMQ_PROC_INPROC = 1,             //è¿›ç¨‹å†…é€šä¿¡
+    EN_ZMQ_PROC_IPC = 2,                //è¿›ç¨‹é—´IPCé€šä¿¡
+    EN_ZMQ_PROC_TCP = 3,                //TCPç½‘ç»œé€šä¿¡
 };
 
 enum enZmqServiceType
 {
-    EN_ZMQ_SERVICE_SERVER = 1,          //·şÎñÆ÷¶Ë£¬µ÷ÓÃbind
-    EN_ZMQ_SERVICE_CLIENT = 2,          //¿Í»§¶Ë£¬µ÷ÓÃconnect
+    EN_ZMQ_SERVICE_SERVER = 1,          //æœåŠ¡å™¨ç«¯ï¼Œè°ƒç”¨bind
+    EN_ZMQ_SERVICE_CLIENT = 2,          //å®¢æˆ·ç«¯ï¼Œè°ƒç”¨connect
 };
 
 class ZmqBus
@@ -50,25 +50,29 @@ private:
     int GetRealSockAddr(enZmqProcType eProcType, const char* pszAddress);
 
 private:
-    //zmq contextÊÇÏß³Ì°²È«µÄ£¬ËùÓĞÏß³Ì¹«ÓÃÒ»¸ö
+    //zmq contextæ˜¯çº¿ç¨‹å®‰å…¨çš„ï¼Œæ‰€æœ‰çº¿ç¨‹å…¬ç”¨ä¸€ä¸ª
     static void* m_spZmqCtx;
 
     void* m_pZmqSocket;
 
-    //°ó¶¨µÄµØÖ·
+    //ç»‘å®šçš„åœ°å€
     char m_szSocketAddr[128];
 
-    //Êµ¼Ê°ó¶¨µÄµØÖ·£¬Ôö¼ÓÁËProcTypeµÄµØÖ·
+    //å®é™…ç»‘å®šçš„åœ°å€ï¼Œå¢åŠ äº†ProcTypeçš„åœ°å€
     char m_szRealSockAddr[256];
 
-    //Á¬½ÓµÄÀàĞÍ
+    //è¿æ¥çš„ç±»å‹
     int m_iSocketType;
 
-    //Í¨ĞÅµÄ½ø³ÌÄ£ĞÍÀàĞÍ
+    //é€šä¿¡çš„è¿›ç¨‹æ¨¡å‹ç±»å‹
     int m_iProcType;
 
-    //ÕâÌõÁ¬½ÓµÄÀàĞÍ£¬ÊÇ·şÎñÆ÷»¹ÊÇ¿Í»§¶Ë
+    //è¿™æ¡è¿æ¥çš„ç±»å‹ï¼Œæ˜¯æœåŠ¡å™¨è¿˜æ˜¯å®¢æˆ·ç«¯
     int m_iServiceType;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,17 +1,17 @@
-#ifndef __GAME_PROTOCOL_DEF_HPP__
+О╩©#ifndef __GAME_PROTOCOL_DEF_HPP__
 #define __GAME_PROTOCOL_DEF_HPP__
 
 #include "TdrKeywords.h"
 #include "S_GameConfig.h"
 
-//у╫╤╥╣╔н╩б╥╬╤иовН╤Ю©иртсп30╦Ж╣Ц
+//Ф┬≤Ф√≈Е█∙Д╫█Х╥╞Е╬└Д╦┼Ф°─Е╓ Е▐╞Д╩╔Ф°┴30Д╦╙Г┌╧
 const int MAX_POSITION_NUMBER_IN_PATH = 30;
 
-//у╫Ё║ио╣╔н╩╣дн╩жцвЬ╠Йпео╒
+//Ф┬≤Е°╨Д╦┼Е█∙Д╫█Г └Д╫█Г╫╝Е²░Ф═┤Д©║Ф│╞
 struct TUNITPOSITION
 {
-    int iPosX;          //у╫Ё║ио╣╔н╩╣дXвЬ╠Й
-    int iPosY;          //у╫Ё║ио╣╔н╩╣дYвЬ╠Й
+    int iPosX;          //Ф┬≤Е°╨Д╦┼Е█∙Д╫█Г └XЕ²░Ф═┤
+    int iPosY;          //Ф┬≤Е°╨Д╦┼Е█∙Д╫█Г └YЕ²░Ф═┤
 
     TUNITPOSITION()
     {
@@ -31,11 +31,11 @@ struct TUNITPOSITION
     };
 };
 
-//у╫Ё║ио╣╔н╩╣дб╥╬╤пео╒
+//Ф┬≤Е°╨Д╦┼Е█∙Д╫█Г └Х╥╞Е╬└Д©║Ф│╞
 struct TUNITPATH
 {
-    int iPosNum;                                        //б╥╬╤ио╣д╣Ц╣дйЩд©
-    TUNITPOSITION astPos[MAX_POSITION_NUMBER_IN_PATH];  //╣╔н╩б╥╬╤ио╣д╣Цпео╒
+    int iPosNum;                                        //Х╥╞Е╬└Д╦┼Г └Г┌╧Г └Ф∙╟Г⌡╝
+    TUNITPOSITION astPos[MAX_POSITION_NUMBER_IN_PATH];  //Е█∙Д╫█Х╥╞Е╬└Д╦┼Г └Г┌╧Д©║Ф│╞
 
     TUNITPATH()
     {
@@ -45,3 +45,7 @@ struct TUNITPATH
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,23 +1,23 @@
-#ifndef __CREATE_ROLE_REQUEST_HANDLER_HPP__
+ï»¿#ifndef __CREATE_ROLE_REQUEST_HANDLER_HPP__
 #define __CREATE_ROLE_REQUEST_HANDLER_HPP__
 
 #include "Handler.hpp"
 
 class CAccountHandlerSet;
 
-// ´¦ÀíÀ´×ÔLotusServerµÄMSGID_ACCOUNT_CREATEROLE_REQUESTÏûÏ¢
+// å¤„ç†æ¥è‡ªLotusServerçš„MSGID_ACCOUNT_CREATEROLE_REQUESTæ¶ˆæ¯
 class CCreateRoleRequestHandler : public IHandler
 {
 private:
-    TNetHead_V2* m_pstNetHead;  // ¿Í»§Á¬½Ó
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    TNetHead_V2* m_pstNetHead;  // å®¢æˆ·è¿æ¥
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountHandlerSet;
     CCreateRoleRequestHandler();
 
@@ -33,3 +33,7 @@ private:
 
 #endif // __CREATE_ROLE_REQUEST_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

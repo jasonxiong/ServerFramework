@@ -1,4 +1,4 @@
-#include <assert.h>
+Ôªø#include <assert.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -14,15 +14,15 @@ int S2SProtocolEngine::Initialize()
 int S2SProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen,
                               TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg)
 {
-    // ≤ª π”√NetHead
+    // ‰∏ç‰ΩøÁî®NetHead
     ASSERT_AND_LOG_RTN_INT(pszCodeBuf);
     ASSERT_AND_LOG_RTN_INT(pstMsg);
 
-    // Õ¯¬Á ˝æ›
+    // ÁΩëÁªúÊï∞ÊçÆ
     int iBuffLen = iCodeLen - sizeof(unsigned short);
     char* pszBuff = (char*)pszCodeBuf + sizeof(unsigned short);
 
-    // Ω‚¬Î
+    // Ëß£Á†Å
     bool bRet = pstMsg->ParseFromArray(pszBuff, iBuffLen);
     if(!bRet)
     {
@@ -36,7 +36,7 @@ int S2SProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen,
 int S2SProtocolEngine::Encode(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg,
                               unsigned char* pszCodeBuf, int iBufLen, int& iCodeLen)
 {
-    // ≤ª π”√NetHead
+    // ‰∏ç‰ΩøÁî®NetHead
     ASSERT_AND_LOG_RTN_INT(pstMsg);
     ASSERT_AND_LOG_RTN_INT(pszCodeBuf);
 
@@ -54,3 +54,7 @@ int S2SProtocolEngine::Encode(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg,
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

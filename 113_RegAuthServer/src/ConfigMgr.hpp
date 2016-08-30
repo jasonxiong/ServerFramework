@@ -1,4 +1,4 @@
-#ifndef __CONFIG_MGR_H__
+ï»¿#ifndef __CONFIG_MGR_H__
 #define __CONFIG_MGR_H__
 
 //#include "ConfigDef.hpp"
@@ -26,7 +26,7 @@ public:
 
 public:
 
-    //¼ì²é°×Ãûµ¥
+    //æ£€æŸ¥ç™½åå•
     static int IsWhiteListEnabled();
 
     const WulinServerConfig* GetServerInfo(int iServerID);
@@ -36,9 +36,13 @@ private:
     CUinPrivManager m_stUinPrivManager;
     static int m_iWhiteListEnabled;
 
-    //ÓÎÏ··şÎñÆ÷ÁĞ±í
+    //æ¸¸æˆæœåŠ¡å™¨åˆ—è¡¨
     int m_iWulinServerNum;
     WulinServerConfig m_astServerList[32];
 };
 
 #endif // __CONFIG_MGR_H__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

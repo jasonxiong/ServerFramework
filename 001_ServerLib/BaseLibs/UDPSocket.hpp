@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file UDPSocket.hpp
 *@author jasonxiong
 *@date 2010-01-26
 *@version 1.0
-*@brief ÊµÏÖUDPÌ×½Ó×Ö
+*@brief å®žçŽ°UDPå¥—æŽ¥å­—
 *
 *
 */
@@ -21,38 +21,38 @@ namespace ServerLib
 
 typedef struct tagUDPSocketConfig
 {
-    char m_szServerIP[MAX_IPV4_LENGTH]; //!<Ô¶¶ËIP
-    unsigned short m_ushServerPort; //!<Ô¶¶ËPort
-    char m_szBindIP[MAX_IPV4_LENGTH]; //!<±¾µØIP£¬²»°ó¶¨ÐèÒª½«m_szBindIP[0]='\0'
-    unsigned short m_ushBindPort; //!<±¾µØ¶Ë¿Ú
-    int m_iSysRecvBufSize; //!<ÏµÍ³½ÓÊÕ»º´æ´óÐ¡
-    int m_iSysSendBufSize; //!<ÏµÍ³·¢ËÍ»º´æ´óÐ¡
+    char m_szServerIP[MAX_IPV4_LENGTH]; //!<è¿œç«¯IP
+    unsigned short m_ushServerPort; //!<è¿œç«¯Port
+    char m_szBindIP[MAX_IPV4_LENGTH]; //!<æœ¬åœ°IPï¼Œä¸ç»‘å®šéœ€è¦å°†m_szBindIP[0]='\0'
+    unsigned short m_ushBindPort; //!<æœ¬åœ°ç«¯å£
+    int m_iSysRecvBufSize; //!<ç³»ç»ŸæŽ¥æ”¶ç¼“å­˜å¤§å°
+    int m_iSysSendBufSize; //!<ç³»ç»Ÿå‘é€ç¼“å­˜å¤§å°
 } TUDPSocketConfig;
 
-//!ÓÃ»§»º³åÇø·ÖÅä·½Ê½
+//!ç”¨æˆ·ç¼“å†²åŒºåˆ†é…æ–¹å¼
 typedef enum enmUDPRecvBufAllocType
 {
-    EURT_ALLOC_BY_UDP_DEFAULT = 0, //!<Ä¬ÈÏÄÚÖÃ»º´æÇø
-    EURT_ALLOC_BY_UDP_SOCKET = 1, //!<ÓÉCUDPSocket×ÔÐÐ·ÖÅä
-    EURT_ALLOC_BY_SHARED_MEMORY = 2, //!<ÓÉ¹²ÏíÄÚ´æ·ÖÅä
+    EURT_ALLOC_BY_UDP_DEFAULT = 0, //!<é»˜è®¤å†…ç½®ç¼“å­˜åŒº
+    EURT_ALLOC_BY_UDP_SOCKET = 1, //!<ç”±CUDPSocketè‡ªè¡Œåˆ†é…
+    EURT_ALLOC_BY_SHARED_MEMORY = 2, //!<ç”±å…±äº«å†…å­˜åˆ†é…
 } ENMUDPUSRBUFALLOCTYPE;
 
 /**
-*@brief UDPÁ¬½Ó×´Ì¬
+*@brief UDPè¿žæŽ¥çŠ¶æ€
 *
 *
 */
 typedef enum enmUDPSocketStates
 {
-    EUSS_CLOSED = 0, //!<Á¬½ÓÒÑ¹Ø±Õ
-    EUSS_OPENED = 1, //!<Á¬½Ó´ò¿ª£¨´´½¨£©
-    EUSS_ERROR = 2,  //!<Á¬½Ó³öÏÖ´íÎó
+    EUSS_CLOSED = 0, //!<è¿žæŽ¥å·²å…³é—­
+    EUSS_OPENED = 1, //!<è¿žæŽ¥æ‰“å¼€ï¼ˆåˆ›å»ºï¼‰
+    EUSS_ERROR = 2,  //!<è¿žæŽ¥å‡ºçŽ°é”™è¯¯
 } ENMUDPSOKCETSTATES;
 
-const int MIN_UDP_SYS_RECV_BUFFER_SIZE = 16 * 1024; //!<ÉèÖÃµÄUDPÏµÍ³½ÓÊÕ»º³åÇøµÄ×îÐ¡´óÐ¡
-const int DEFAULT_UDP_SYS_RECV_BUFFER_SIZE = 2 * 1024 * 1024; //!<Ä¬ÈÏµÄUDPÏµÍ³½ÓÊÜ»º³åÇø´óÐ¡
-const int MIN_UDP_SYS_SEND_BUFFER_SIZE = 16 * 1024; //!<ÉèÖÃµÄUDPÏµÍ³·¢ËÍ»º³åÇøµÄ×îÐ¡´óÐ¡
-const int DEFAULT_UDP_SYS_SEND_BUFFER_SIZE = 2 * 1024 * 1024; //!<Ä¬ÈÏµÄUDPÏµÍ³·¢ËÍ»º³åÇø´óÐ¡
+const int MIN_UDP_SYS_RECV_BUFFER_SIZE = 16 * 1024; //!<è®¾ç½®çš„UDPç³»ç»ŸæŽ¥æ”¶ç¼“å†²åŒºçš„æœ€å°å¤§å°
+const int DEFAULT_UDP_SYS_RECV_BUFFER_SIZE = 2 * 1024 * 1024; //!<é»˜è®¤çš„UDPç³»ç»ŸæŽ¥å—ç¼“å†²åŒºå¤§å°
+const int MIN_UDP_SYS_SEND_BUFFER_SIZE = 16 * 1024; //!<è®¾ç½®çš„UDPç³»ç»Ÿå‘é€ç¼“å†²åŒºçš„æœ€å°å¤§å°
+const int DEFAULT_UDP_SYS_SEND_BUFFER_SIZE = 2 * 1024 * 1024; //!<é»˜è®¤çš„UDPç³»ç»Ÿå‘é€ç¼“å†²åŒºå¤§å°
 
 class CUDPSocket
 {
@@ -61,22 +61,22 @@ public:
 
 public:
     /**
-    * ²ÉÓÃÄ¬ÈÏÄÚÖÃÊý¾Ý»º³åÇø
+    * é‡‡ç”¨é»˜è®¤å†…ç½®æ•°æ®ç¼“å†²åŒº
     */
     CUDPSocket();
 
     /**
-    *¶¯Ì¬ÄÚ´æ·½Ê½´´½¨CUDPSocketµÄÓÃ»§»º³åÇø
-    *@param[in] iUsrRecvBufSize ÓÃ»§½ÓÊÕ»º³åÇø´óÐ¡
+    *åŠ¨æ€å†…å­˜æ–¹å¼åˆ›å»ºCUDPSocketçš„ç”¨æˆ·ç¼“å†²åŒº
+    *@param[in] iUsrRecvBufSize ç”¨æˆ·æŽ¥æ”¶ç¼“å†²åŒºå¤§å°
     *@return 0 success
     */
     CUDPSocket(int iUsrRecvBufSize);
 
     /**
-    *Í¨¹ý¹²ÏíÄÚ´æÀ´´´½¨CUDPSocket£¨×¢ÒâÕâÑù´´½¨µÄCUDPSocket²»»á³õÊ¼»¯£¬²»»á¸Ä±äËùÔÚ¹²ÏíÄÚ´æµÄÖµ£©
-    *@param[in] pszKeyFileName ¹²ÏíÄÚ´æAttachµÄÎÄ¼þÃû
-    *@param[in] ucKeyPrjID ¹²ÏíÄÚ´æµÄProjectID
-    *@param[in] iUsrRecvBufSize ÓÃ»§½ÓÊÕ»º³åÇø´óÐ¡
+    *é€šè¿‡å…±äº«å†…å­˜æ¥åˆ›å»ºCUDPSocketï¼ˆæ³¨æ„è¿™æ ·åˆ›å»ºçš„CUDPSocketä¸ä¼šåˆå§‹åŒ–ï¼Œä¸ä¼šæ”¹å˜æ‰€åœ¨å…±äº«å†…å­˜çš„å€¼ï¼‰
+    *@param[in] pszKeyFileName å…±äº«å†…å­˜Attachçš„æ–‡ä»¶å
+    *@param[in] ucKeyPrjID å…±äº«å†…å­˜çš„ProjectID
+    *@param[in] iUsrRecvBufSize ç”¨æˆ·æŽ¥æ”¶ç¼“å†²åŒºå¤§å°
     *@return 0 success
     */
     static CUDPSocket* CreateBySharedMemory(const char* pszKeyFileName,
@@ -84,141 +84,141 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯UDPÌ×½Ó×Ö
-    *@param[in] pszServerIP ÒªÁ¬½ÓµÄ·þÎñÆ÷IP
-    *@param[in] ushServerPort ÒªÁ¬½ÓµÄ·þÎñÆ÷¶Ë¿Ú
-    *@param[in] pszBindIP Òª°ó¶¨µÄ±¾µØIP£¬¿ÉÒÔÎªNULL£¬±íÊ¾²»°ó¶¨
-    *@param[in] ushBindPort Òª°ó¶¨µÄ±¾µØ¶Ë¿Ú
+    *åˆå§‹åŒ–UDPå¥—æŽ¥å­—
+    *@param[in] pszServerIP è¦è¿žæŽ¥çš„æœåŠ¡å™¨IP
+    *@param[in] ushServerPort è¦è¿žæŽ¥çš„æœåŠ¡å™¨ç«¯å£
+    *@param[in] pszBindIP è¦ç»‘å®šçš„æœ¬åœ°IPï¼Œå¯ä»¥ä¸ºNULLï¼Œè¡¨ç¤ºä¸ç»‘å®š
+    *@param[in] ushBindPort è¦ç»‘å®šçš„æœ¬åœ°ç«¯å£
     *@return 0 success
     */
     int Initialize(const char* pszServerIP, unsigned short ushServerPort,
                    const char* pszBindIP, unsigned short ushBindPort);
 
     /**
-    *³õÊ¼»¯UDPÌ×½Ó×Ö£¨ÍêÈ«ÅäÖÃ£©
-    *@param[in] rstUDPConfig UDPÁ¬½ÓÅäÖÃ
+    *åˆå§‹åŒ–UDPå¥—æŽ¥å­—ï¼ˆå®Œå…¨é…ç½®ï¼‰
+    *@param[in] rstUDPConfig UDPè¿žæŽ¥é…ç½®
     *@return 0 success
     */
     int Initialize(const TUDPSocketConfig& rstUDPConfig);
 
-    //!¹Ø±ÕÌ×½Ó×Ö
+    //!å…³é—­å¥—æŽ¥å­—
     int CloseSocket();
 
     /**
-    *ÔÚÁ¬½ÓÌ×½Ó×ÖÓÐÍø¿¨Êý¾ÝÎ´½ÓÊÕÊ±£¬µ÷ÓÃRecvDataº¯ÊýÀ´½ÓÊÕÊý¾Ýµ½ÓÃ»§½ÓÊÕ»º³åÇø
-    *@param[out] pszSrcIP Êý¾ÝµÄ·¢ËÍ·½IP
-    *@param[out] pushSrcPort Êý¾ÝµÄ·¢ËÍ·½Port
+    *åœ¨è¿žæŽ¥å¥—æŽ¥å­—æœ‰ç½‘å¡æ•°æ®æœªæŽ¥æ”¶æ—¶ï¼Œè°ƒç”¨RecvDataå‡½æ•°æ¥æŽ¥æ”¶æ•°æ®åˆ°ç”¨æˆ·æŽ¥æ”¶ç¼“å†²åŒº
+    *@param[out] pszSrcIP æ•°æ®çš„å‘é€æ–¹IP
+    *@param[out] pushSrcPort æ•°æ®çš„å‘é€æ–¹Port
     *@return 0 success
     */
     int RecvData(char* pszSrcIP = NULL, unsigned short* pushSrcPort = NULL);
 
     /**
-    *¶ÔÖ®Ç°³õÊ¼»¯Ê±µÄServerIP·¢ËÍÊý¾Ý
-    *@param[in] pszCodeBuf ·¢ËÍµÄÊý¾ÝBuf
-    *@param[in] iCodeLength ·¢ËÍµÄÊý¾Ý³¤¶È
+    *å¯¹ä¹‹å‰åˆå§‹åŒ–æ—¶çš„ServerIPå‘é€æ•°æ®
+    *@param[in] pszCodeBuf å‘é€çš„æ•°æ®Buf
+    *@param[in] iCodeLength å‘é€çš„æ•°æ®é•¿åº¦
     *@return 0 success
     */
     int SendData(const unsigned char* pszCodeBuf, int iCodeLength);
 
     /**
-    *Ö¸¶¨Ä¿µÄµØµ÷ÓÃÕâ¸öº¯Êý·¢ËÍÊý¾Ýµ½Ô¶¶ËFD
-    *@param[in] pszCodeBuf ·¢ËÍµÄÊý¾ÝBuf
-    *@param[in] iCodeLength ·¢ËÍµÄÊý¾Ý³¤¶È
-    *@param[in] pszDstIP Ä¿µÄIP
-    *@param[in] ushDstPort Ä¿µÄ¶Ë¿Ú
+    *æŒ‡å®šç›®çš„åœ°è°ƒç”¨è¿™ä¸ªå‡½æ•°å‘é€æ•°æ®åˆ°è¿œç«¯FD
+    *@param[in] pszCodeBuf å‘é€çš„æ•°æ®Buf
+    *@param[in] iCodeLength å‘é€çš„æ•°æ®é•¿åº¦
+    *@param[in] pszDstIP ç›®çš„IP
+    *@param[in] ushDstPort ç›®çš„ç«¯å£
     *@return 0 success
     */
     int SendDataTo(const unsigned char* pszCodeBuf, int iCodeLength, const char* pszDstIP, unsigned short ushDstPort);
 
     /**
-    *»ñÈ¡Êý¾ÝÖ¸ÕëºÍÊý¾Ý³¤¶È
-    *@param[out] rpcDataBeg »ñÈ¡Êý¾Ý¿ªÊ¼Î»ÖÃ
-    *@param[out] riDataLenth ½ÓÊÕµ½µÄÊý¾Ý³¤¶È£¬Îª0±íÊ¾Ã»ÓÐÊý¾Ý
+    *èŽ·å–æ•°æ®æŒ‡é’ˆå’Œæ•°æ®é•¿åº¦
+    *@param[out] rpcDataBeg èŽ·å–æ•°æ®å¼€å§‹ä½ç½®
+    *@param[out] riDataLenth æŽ¥æ”¶åˆ°çš„æ•°æ®é•¿åº¦ï¼Œä¸º0è¡¨ç¤ºæ²¡æœ‰æ•°æ®
     *@return 0 success
     */
     int GetData(unsigned char*& rpcDataBeg, int& riDataLenth);
 
     /**
-    *Çå¿Õ½ÓÊÕ»º³åÇø£¬´ÓÍ·¿ªÊ¼Çå¿ÕÖ¸¶¨´óÐ¡
-    *@param[in] iFlushLength ÐèÒªÇå¿ÕµÄ»º³åÇø´óÐ¡£¬Îª-1Ê±±íÊ¾È«²¿Çå¿Õ
+    *æ¸…ç©ºæŽ¥æ”¶ç¼“å†²åŒºï¼Œä»Žå¤´å¼€å§‹æ¸…ç©ºæŒ‡å®šå¤§å°
+    *@param[in] iFlushLength éœ€è¦æ¸…ç©ºçš„ç¼“å†²åŒºå¤§å°ï¼Œä¸º-1æ—¶è¡¨ç¤ºå…¨éƒ¨æ¸…ç©º
     *@return 0 success
     */
     int FlushRecvBuf(int iFlushLength);
 
-    //!»ñÈ¡SocketFD
+    //!èŽ·å–SocketFD
     int GetSocketFD() const
     {
         return m_iSocketFD;
     }
 
-    //!»ñÈ¡µ±Ç°Á¬½Ó×´Ì¬
+    //!èŽ·å–å½“å‰è¿žæŽ¥çŠ¶æ€
     int GetStatus() const
     {
         return m_iStatus;
     }
 
-    //!»ñÈ¡ÏµÍ³½ÓÊÕ»º³åÇø´óÐ¡
+    //!èŽ·å–ç³»ç»ŸæŽ¥æ”¶ç¼“å†²åŒºå¤§å°
     int GetSysRecvBufSize() const
     {
         return m_iSysRecvBufSize;
     }
 
-    //!»ñÈ¡ÏµÍ³·¢ËÍ»º³åÇø´óÐ¡
+    //!èŽ·å–ç³»ç»Ÿå‘é€ç¼“å†²åŒºå¤§å°
     int GetSysSendBufSize() const
     {
         return m_iSysSendBufSize;
     }
 
-    //!»ñÈ¡ÓÃ»§½ÓÊÕ»º³åÇø´óÐ¡
+    //!èŽ·å–ç”¨æˆ·æŽ¥æ”¶ç¼“å†²åŒºå¤§å°
     int GetUsrRecvBufSize() const
     {
         return m_iUsrRecvBufSize;
     }
 
-    //!»ñÈ¡ÅäÖÃ
+    //!èŽ·å–é…ç½®
     const TUDPSocketConfig& GetConnectConfig() const
     {
         return m_stUDPSocketCfg;
     }
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!´´½¨Socket
+    //!åˆ›å»ºSocket
     int CreateSocket();
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
-    //!»ØÊÕÓÃ»§»º³åÇø
+    //!å›žæ”¶ç”¨æˆ·ç¼“å†²åŒº
     int FreeUsrBuffer();
 
 private:
-    int m_iSocketFD; //!<Á¬½ÓµÄSocketFD
-    int m_iStatus; //!<Á¬½Ó×´Ì¬
-    int m_iErrorNO; //!´íÎóÂë
+    int m_iSocketFD; //!<è¿žæŽ¥çš„SocketFD
+    int m_iStatus; //!<è¿žæŽ¥çŠ¶æ€
+    int m_iErrorNO; //!é”™è¯¯ç 
 
 #ifdef _POSIX_MT_
-    pthread_mutex_t m_stMutex;			//²Ù×÷µÄ»¥³â±äÁ¿
+    pthread_mutex_t m_stMutex;			//æ“ä½œçš„äº’æ–¥å˜é‡
 #endif
 
-    TUDPSocketConfig m_stUDPSocketCfg; //Á¬½ÓÅäÖÃ
+    TUDPSocketConfig m_stUDPSocketCfg; //è¿žæŽ¥é…ç½®
 
-    int m_iSysRecvBufSize; //!<ÏµÍ³½ÓÊÕ»º´æ´óÐ¡
-    int m_iSysSendBufSize; //!<ÏµÍ³·¢ËÍ»º´æ´óÐ¡
+    int m_iSysRecvBufSize; //!<ç³»ç»ŸæŽ¥æ”¶ç¼“å­˜å¤§å°
+    int m_iSysSendBufSize; //!<ç³»ç»Ÿå‘é€ç¼“å­˜å¤§å°
 
-    int m_iUsrBufAllocType; //!<ÓÃ»§»º³åÇø·ÖÅä·½Ê½
-    int m_iUsrRecvBufSize; //!<ÓÃ»§½ø³Ì½ÓÊÕ»º´æ´óÐ¡
-    int m_iReadBegin; //!<ÓÃ»§½ø³Ì½ÓÊÕ»º´æÍ·Ö¸Õë
-    int m_iReadEnd; //!<ÓÃ»§½ø³Ì½ÓÊÕ»º´æÄ©Î²Ö¸Õë
-    unsigned char* m_abyRecvBuffer; //!<ÓÃ»§½ÓÊÕ»º³åÇø
+    int m_iUsrBufAllocType; //!<ç”¨æˆ·ç¼“å†²åŒºåˆ†é…æ–¹å¼
+    int m_iUsrRecvBufSize; //!<ç”¨æˆ·è¿›ç¨‹æŽ¥æ”¶ç¼“å­˜å¤§å°
+    int m_iReadBegin; //!<ç”¨æˆ·è¿›ç¨‹æŽ¥æ”¶ç¼“å­˜å¤´æŒ‡é’ˆ
+    int m_iReadEnd; //!<ç”¨æˆ·è¿›ç¨‹æŽ¥æ”¶ç¼“å­˜æœ«å°¾æŒ‡é’ˆ
+    unsigned char* m_abyRecvBuffer; //!<ç”¨æˆ·æŽ¥æ”¶ç¼“å†²åŒº
 
     static const int MAX_BUFFER_LENGTH = 40960;
     unsigned char m_szBufferContent[MAX_BUFFER_LENGTH];
@@ -229,3 +229,7 @@ private:
 
 #endif //__UDP_SOCKET_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

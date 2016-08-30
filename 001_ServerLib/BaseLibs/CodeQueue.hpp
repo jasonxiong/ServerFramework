@@ -1,4 +1,4 @@
-#ifndef __CODEQUEUE_HPP__
+ï»¿#ifndef __CODEQUEUE_HPP__
 #define __CODEQUEUE_HPP__
 
 #include <stdio.h>
@@ -7,18 +7,18 @@ namespace ServerLib
 {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const int QUEUE_RESERVE_LENGTH = 8; //ÏûÏ¢¶ÓÁĞÔ¤Áô²¿·ÖµÄ³¤¶È£¬·ÀÖ¹Ê×Î²Ïà½Ó
+const int QUEUE_RESERVE_LENGTH = 8; //æ¶ˆæ¯é˜Ÿåˆ—é¢„ç•™éƒ¨åˆ†çš„é•¿åº¦ï¼Œé˜²æ­¢é¦–å°¾ç›¸æ¥
 
 typedef enum enmStatusFlag
 {
-    ESF_NORMAL_STATUS = 0, //!<Õı³£×´Ì¬
-    ESF_DISORDER_STATUS = 1, //!<»ìÂÒ×´Ì¬£¬ÔÚÕâ¸ö×´Ì¬µÄÊ±ºò¶ÓÁĞ¿ÉÄÜÒÑ¾­ÂÒĞò£¬ÉÏ²ã½¨Òé²»Ó¦¸ÃÔÙPop»òPush£¬Pop·½ÉèÖÃÕâ¸ö×´Ì¬£¬PushÇå³ıÕâ¸ö×´Ì¬
+    ESF_NORMAL_STATUS = 0, //!<æ­£å¸¸çŠ¶æ€
+    ESF_DISORDER_STATUS = 1, //!<æ··ä¹±çŠ¶æ€ï¼Œåœ¨è¿™ä¸ªçŠ¶æ€çš„æ—¶å€™é˜Ÿåˆ—å¯èƒ½å·²ç»ä¹±åºï¼Œä¸Šå±‚å»ºè®®ä¸åº”è¯¥å†Popæˆ–Pushï¼ŒPopæ–¹è®¾ç½®è¿™ä¸ªçŠ¶æ€ï¼ŒPushæ¸…é™¤è¿™ä¸ªçŠ¶æ€
 } ENMRESETFLAG;
 
 typedef enum enmQueueAllocType
 {
-    EQT_NEW_BY_SELF = 0, //!<Í¨¹ıNew¶¯Ì¬´´½¨µÄ
-    EQT_ALLOC_BY_SHARED_MEMEORY = 1, //!<Í¨¹ı¹²ÏíÄÚ´æ´´½¨µÄ
+    EQT_NEW_BY_SELF = 0, //!<é€šè¿‡NewåŠ¨æ€åˆ›å»ºçš„
+    EQT_ALLOC_BY_SHARED_MEMEORY = 1, //!<é€šè¿‡å…±äº«å†…å­˜åˆ›å»ºçš„
 } ENMQUEUEALLOCTYPE;
 
 class CCodeQueue
@@ -28,18 +28,18 @@ private:
 
 public:
     /**
-    *ÓÃ¶¯Ì¬·ÖÅäÀ´´´½¨´úÂë¶ÓÁĞ£¬ĞèÒªÖ¸¶¨¶ÓÁĞ³¤¶È
-    *@param[in] uiMaxQueueLength ´´½¨µÄ¶ÓÁĞ³¤¶È
+    *ç”¨åŠ¨æ€åˆ†é…æ¥åˆ›å»ºä»£ç é˜Ÿåˆ—ï¼Œéœ€è¦æŒ‡å®šé˜Ÿåˆ—é•¿åº¦
+    *@param[in] uiMaxQueueLength åˆ›å»ºçš„é˜Ÿåˆ—é•¿åº¦
     *@return 0 success
     */
     CCodeQueue(unsigned int uiMaxQueueLength);
     ~CCodeQueue();
 
     /**
-    *Í¨¹ı¹²ÏíÄÚ´æÀ´´´½¨CodeQueue£¨×¢ÒâÕâÑù´´½¨µÄCodeQueue²»»á³õÊ¼»¯£¬²»»á¸Ä±äËùÔÚ¹²ÏíÄÚ´æµÄÖµ£©
-    *@param[in] pszKeyFileName ¹²ÏíÄÚ´æAttachµÄÎÄ¼şÃû
-    *@param[in] ucKeyPrjID ¹²ÏíÄÚ´æµÄProjectID
-    *@param[in] uiMaxQueueLength ×î´óµÄ¶ÓÁĞ³¤¶È
+    *é€šè¿‡å…±äº«å†…å­˜æ¥åˆ›å»ºCodeQueueï¼ˆæ³¨æ„è¿™æ ·åˆ›å»ºçš„CodeQueueä¸ä¼šåˆå§‹åŒ–ï¼Œä¸ä¼šæ”¹å˜æ‰€åœ¨å…±äº«å†…å­˜çš„å€¼ï¼‰
+    *@param[in] pszKeyFileName å…±äº«å†…å­˜Attachçš„æ–‡ä»¶å
+    *@param[in] ucKeyPrjID å…±äº«å†…å­˜çš„ProjectID
+    *@param[in] uiMaxQueueLength æœ€å¤§çš„é˜Ÿåˆ—é•¿åº¦
     *@return 0 success
     */
     static CCodeQueue* CreateBySharedMemory(const char* pszKeyFileName,
@@ -48,139 +48,143 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯±àÂë¶ÓÁĞ
+    *åˆå§‹åŒ–ç¼–ç é˜Ÿåˆ—
     *@return 0 success
     */
     int Initialize(bool bResume = false);
 
     /**
-    *²åÈëÒ»¸ö±àÂë
-    *@param[in] pucInCode ²åÈëµÄ±àÂëÖ¸Õë
-    *@param[in] iCodeLength ²åÈëµÄ±àÂë³¤¶È
+    *æ’å…¥ä¸€ä¸ªç¼–ç 
+    *@param[in] pucInCode æ’å…¥çš„ç¼–ç æŒ‡é’ˆ
+    *@param[in] iCodeLength æ’å…¥çš„ç¼–ç é•¿åº¦
     *@return 0 success
     */
     int PushOneCode(const unsigned char* pucInCode, int iCodeLength);
 
     /**
-    *È¡³öÒ»¸ö±àÂë¿½±´µ½pucOutCode£¬ÏòºóÒÆ¶¯±àÂë¶ÓÁĞÍ·Ö¸Õë
-    *@param[in] pucOutCode ½«È¡³öµÄ±àÂë¿½±´µ½Õâ¸ö»º³åÇø
-    *@param[in] iMaxOutCodeLen ´æ·Å±àÂëµÄ»º³åÇø×î´ó³¤¶È
-    *#param[out] riCodeLength È¡³öµÄ±àÂëÊµ¼Ê³¤¶È
+    *å–å‡ºä¸€ä¸ªç¼–ç æ‹·è´åˆ°pucOutCodeï¼Œå‘åç§»åŠ¨ç¼–ç é˜Ÿåˆ—å¤´æŒ‡é’ˆ
+    *@param[in] pucOutCode å°†å–å‡ºçš„ç¼–ç æ‹·è´åˆ°è¿™ä¸ªç¼“å†²åŒº
+    *@param[in] iMaxOutCodeLen å­˜æ”¾ç¼–ç çš„ç¼“å†²åŒºæœ€å¤§é•¿åº¦
+    *#param[out] riCodeLength å–å‡ºçš„ç¼–ç å®é™…é•¿åº¦
     *@return 0 success
     */
     int PopOneCode(unsigned char* pucOutCode, int iMaxOutCodeLen, int& riCodeLength);
 
     /**
-    *È¡³öÒ»¸ö±àÂë£¬ÏòºóÒÆ¶¯±àÂë¶ÓÁĞÍ·Ö¸Õë
+    *å–å‡ºä¸€ä¸ªç¼–ç ï¼Œå‘åç§»åŠ¨ç¼–ç é˜Ÿåˆ—å¤´æŒ‡é’ˆ
     *@return 0 success
     */
     int PopOneCode();
 
     /**
-    *»ñÈ¡Ò»¸ö±àÂëµÄÍ·Ö¸Õë
-    *@param[out] rpucOutCode »ñÈ¡µÄ±àÂëÍ·Ö¸Õë
-    *@param[out] riCodeLength È¡³öµÄ±àÂëÊµ¼Ê³¤¶È
+    *è·å–ä¸€ä¸ªç¼–ç çš„å¤´æŒ‡é’ˆ
+    *@param[out] rpucOutCode è·å–çš„ç¼–ç å¤´æŒ‡é’ˆ
+    *@param[out] riCodeLength å–å‡ºçš„ç¼–ç å®é™…é•¿åº¦
     *@return 0 success
     */
     int GetOneCode(unsigned char*& rpucOutCode, int& riCodeLength);
 
-    //!»ñÈ¡Õû¸ö±àÂë¶ÓÁĞÍ·Ö¸Õë
+    //!è·å–æ•´ä¸ªç¼–ç é˜Ÿåˆ—å¤´æŒ‡é’ˆ
     unsigned char* GetHeadCodeQueue() const;
 
-    //!»ñÈ¡Õû¸ö±àÂë¶ÓÁĞÎ²Ö¸Õë
+    //!è·å–æ•´ä¸ªç¼–ç é˜Ÿåˆ—å°¾æŒ‡é’ˆ
     unsigned char* GetTailCodeQueue() const;
 
     /**
-    *ÅĞ¶Ï±àÂë¶ÓÁĞÊÇ·ñÒÑ¾­Âú
-    *@return true ÒÑÂú
+    *åˆ¤æ–­ç¼–ç é˜Ÿåˆ—æ˜¯å¦å·²ç»æ»¡
+    *@return true å·²æ»¡
     */
     bool IsQueueFull();
 
-    // ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ
+    // åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
     bool IsQueueEmpty();
 
-    //!ÖØÖÃ¶ÓÁĞ£ºÇå¿Õµ±Ç°¶ÓÁĞµÄÍ·Ö¸ÕëºÍÎ²Ö¸Õë£¬ÉèÖÃÎª³õÊ¼×´Ì¬
+    //!é‡ç½®é˜Ÿåˆ—ï¼šæ¸…ç©ºå½“å‰é˜Ÿåˆ—çš„å¤´æŒ‡é’ˆå’Œå°¾æŒ‡é’ˆï¼Œè®¾ç½®ä¸ºåˆå§‹çŠ¶æ€
     void Reset();
 
-    //!ÉèÖÃ×´Ì¬
+    //!è®¾ç½®çŠ¶æ€
     void SetStatus(int iStatus);
 
-    //!»ñÈ¡¶ÓÁĞ×´Ì¬
+    //!è·å–é˜Ÿåˆ—çŠ¶æ€
     int GetStatus() const
     {
         return m_iCodeStatus;
     }
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
     /**
-    *»ñÈ¡±àÂë¶ÓÁĞµ±Ç°¿ÕÓà³¤¶È
-    *@return ¿ÕÓà³¤¶È
+    *è·å–ç¼–ç é˜Ÿåˆ—å½“å‰ç©ºä½™é•¿åº¦
+    *@return ç©ºä½™é•¿åº¦
     */
     unsigned int GetFreeLength();
 
     /**
-    *»ñÈ¡±àÂë¶ÓÁĞµ±Ç°ÒÑÓÃ³¤¶È
-    *@return ÒÑÓÃ³¤¶È
+    *è·å–ç¼–ç é˜Ÿåˆ—å½“å‰å·²ç”¨é•¿åº¦
+    *@return å·²ç”¨é•¿åº¦
     */
     unsigned int GetUsedLength();
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
-    //!ÅĞ¶ÏOffsetÊÇ·ñºÏ·¨
+    //!åˆ¤æ–­Offsetæ˜¯å¦åˆæ³•
     bool IsDataOffsetValid(unsigned int uiDataOffset);
 
-    //!»ñÈ¡µ±Ç°µÄÊı¾İÆ«ÒÆ
+    //!è·å–å½“å‰çš„æ•°æ®åç§»
     int GetDataOffset(unsigned int& ruiBegOffset, unsigned int& ruiEndOffset);
 
-    //!»ñÈ¡CodeQueueµÄBufferÖ¸Õë
+    //!è·å–CodeQueueçš„BufferæŒ‡é’ˆ
     int GetQueueBuf(unsigned char*& rucQueue) const;
 
-    //!ÉèÖÃ±àÂë¶ÓÁĞ¿ªÊ¼Æ«ÒÆÁ¿
+    //!è®¾ç½®ç¼–ç é˜Ÿåˆ—å¼€å§‹åç§»é‡
     int SetBeginOffset(unsigned int uiBegOffset);
 
-    //!ÉèÖÃ±àÂë¶ÓÁĞ½áÊøÆ«ÒÆÁ¿
+    //!è®¾ç½®ç¼–ç é˜Ÿåˆ—ç»“æŸåç§»é‡
     int SetEndOffset(unsigned int uiEndOffset);
 
-    //!ÔÚPopºÍPushµÄÊ±ºò¶¼µ÷ÓÃÕâ¸öº¯Êı¼ÆËã³¤¶È£¬ÕâÑù×öÖ÷ÊÇÒòÎª¸ÃÀàÃ»ÓĞËø£¬ÔÚ¶à½ø³Ìµ÷ÓÃÊ±£¬m_uiBegOffsetºÍm_uiEndOffsetËæÊ±¿ÉÄÜ±ä»¯
+    //!åœ¨Popå’ŒPushçš„æ—¶å€™éƒ½è°ƒç”¨è¿™ä¸ªå‡½æ•°è®¡ç®—é•¿åº¦ï¼Œè¿™æ ·åšä¸»æ˜¯å› ä¸ºè¯¥ç±»æ²¡æœ‰é”ï¼Œåœ¨å¤šè¿›ç¨‹è°ƒç”¨æ—¶ï¼Œm_uiBegOffsetå’Œm_uiEndOffsetéšæ—¶å¯èƒ½å˜åŒ–
     unsigned int GetUsedLength(unsigned int uiBegOffset, unsigned int uiEndOffset,
                                bool bMidOffsetValid, unsigned int uiMidOffset);
 
-    //!ÔÚPopºÍPushµÄÊ±ºò¶¼µ÷ÓÃÕâ¸öº¯Êı¼ÆËã³¤¶È£¬ÕâÑù×öÖ÷ÊÇÒòÎª¸ÃÀàÃ»ÓĞËø£¬ÔÚ¶à½ø³Ìµ÷ÓÃÊ±£¬m_uiBegOffsetºÍm_uiEndOffsetËæÊ±¿ÉÄÜ±ä»¯
+    //!åœ¨Popå’ŒPushçš„æ—¶å€™éƒ½è°ƒç”¨è¿™ä¸ªå‡½æ•°è®¡ç®—é•¿åº¦ï¼Œè¿™æ ·åšä¸»æ˜¯å› ä¸ºè¯¥ç±»æ²¡æœ‰é”ï¼Œåœ¨å¤šè¿›ç¨‹è°ƒç”¨æ—¶ï¼Œm_uiBegOffsetå’Œm_uiEndOffsetéšæ—¶å¯èƒ½å˜åŒ–
     unsigned int GetFreeLength(unsigned int uiBegOffset, unsigned int uiEndOffset);
 
-    //!Ê¹ÓÃMidOffset
+    //!ä½¿ç”¨MidOffset
     int EnableMidOffset(unsigned int uiMidOffset);
 
-    //!²»Ê¹ÓÃMidOffset
+    //!ä¸ä½¿ç”¨MidOffset
     int DisableMidOffset();
 
-    //!»ñÈ¡MidOffset
+    //!è·å–MidOffset
     int GetMidOffset(bool& rbMidOffsetValid, unsigned int& ruiMidOffset);
 
 private:
-    int m_iErrorNO; //!<´íÎóÂë
-    int m_iCodeStatus; //!<±àÂë¶ÓÁĞ×´Ì¬
-    short m_shQueueAllocType; //!<±àÂëÇø·ÖÅäÀàĞÍ
-    unsigned char* m_aucQueue; //!<±àÂë¶ÓÁĞ»º³åÇø£¬½öÔÚÊ¹ÓÃ¶¯Ì¬·ÖÅäÊ±Ê¹ÓÃ
-    size_t m_uiQueueOffset; //!<±àÂë¶ÓÁĞ»º³åÇøÆ«ÒÆ£¨Ïà¶ÔÓÚthisÖ¸Õë£©£¬ÔÚÊ¹ÓÃ¹²ÏíÄÚ´æÊ±Ê¹ÓÃ
-    unsigned int m_uiMaxQueueLength; //!<±àÂë¶ÓÁĞ×î´ó³¤¶È
-    unsigned int m_uiBegOffset; //!<µ±Ç°±àÂë¶ÓÁĞÊ×Ö¸ÕëÆ«ÒÆ£¬PopÒ»¸ö±àÂëµÄÊ±ºò£¬Ôö¼ÓÕâ¸öÖµ
-    unsigned int m_uiEndOffset; //!<µ±Ç°±àÂë¶ÓÁĞÎ²Ö¸ÕëÆ«ÒÆ£¬PushÒ»¸ö±àÂëµÄÊ±ºò£¬Ôö¼ÓÕâ¸öÖµ
-    bool m_bMidOffsetValid; //!<ÖĞ¶ÎÆ«ÒÆÊÇ·ñÓĞĞ§
-    unsigned int m_uiMidOffset; //!<µ±m_uiEndOffset½Ó½ü»º³åÇøÎ²²¿Ê±£¬Èç¹û²»¹»´æ·ÅÒ»¸ö±àÂë£¬ÔòÓÃm_uiMidOffset¼ÇÏÂÕâÊ±µÄm_uiEndOffset£¬m_uiEndOffset´Ó0¿ªÊ¼
+    int m_iErrorNO; //!<é”™è¯¯ç 
+    int m_iCodeStatus; //!<ç¼–ç é˜Ÿåˆ—çŠ¶æ€
+    short m_shQueueAllocType; //!<ç¼–ç åŒºåˆ†é…ç±»å‹
+    unsigned char* m_aucQueue; //!<ç¼–ç é˜Ÿåˆ—ç¼“å†²åŒºï¼Œä»…åœ¨ä½¿ç”¨åŠ¨æ€åˆ†é…æ—¶ä½¿ç”¨
+    size_t m_uiQueueOffset; //!<ç¼–ç é˜Ÿåˆ—ç¼“å†²åŒºåç§»ï¼ˆç›¸å¯¹äºthisæŒ‡é’ˆï¼‰ï¼Œåœ¨ä½¿ç”¨å…±äº«å†…å­˜æ—¶ä½¿ç”¨
+    unsigned int m_uiMaxQueueLength; //!<ç¼–ç é˜Ÿåˆ—æœ€å¤§é•¿åº¦
+    unsigned int m_uiBegOffset; //!<å½“å‰ç¼–ç é˜Ÿåˆ—é¦–æŒ‡é’ˆåç§»ï¼ŒPopä¸€ä¸ªç¼–ç çš„æ—¶å€™ï¼Œå¢åŠ è¿™ä¸ªå€¼
+    unsigned int m_uiEndOffset; //!<å½“å‰ç¼–ç é˜Ÿåˆ—å°¾æŒ‡é’ˆåç§»ï¼ŒPushä¸€ä¸ªç¼–ç çš„æ—¶å€™ï¼Œå¢åŠ è¿™ä¸ªå€¼
+    bool m_bMidOffsetValid; //!<ä¸­æ®µåç§»æ˜¯å¦æœ‰æ•ˆ
+    unsigned int m_uiMidOffset; //!<å½“m_uiEndOffsetæ¥è¿‘ç¼“å†²åŒºå°¾éƒ¨æ—¶ï¼Œå¦‚æœä¸å¤Ÿå­˜æ”¾ä¸€ä¸ªç¼–ç ï¼Œåˆ™ç”¨m_uiMidOffsetè®°ä¸‹è¿™æ—¶çš„m_uiEndOffsetï¼Œm_uiEndOffsetä»0å¼€å§‹
 };
 }
 
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

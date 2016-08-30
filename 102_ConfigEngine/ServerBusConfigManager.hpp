@@ -1,4 +1,4 @@
-#ifndef __SERVER_BUS_CONFIG_MANAGER_HPP__
+ï»¿#ifndef __SERVER_BUS_CONFIG_MANAGER_HPP__
 #define __SERVER_BUS_CONFIG_MANAGER_HPP__
 
 #include <stdint.h>
@@ -7,13 +7,13 @@
 
 using namespace GameConfig;
 
-//´Ó conf/GameServer.tcm ÎÄ¼şÖĞ¶ÁÈ¡·şÎñÆ÷Í¨ĞÅBUSµÄÅäÖÃ
+//ä» conf/GameServer.tcm æ–‡ä»¶ä¸­è¯»å–æœåŠ¡å™¨é€šä¿¡BUSçš„é…ç½®
 
 struct ServerBusConfig
 {
-    uint64_t ullBusClientID;                    //ZMQ Í¨ĞÅÍ¨µÀClientµÄID
-    uint64_t ullBusServerID;                    //ZMQÍ¨ĞÅÍ¨µÀServerµÄID
-    char szBusAddr[MAX_SERVER_BUS_ADDR_LEN];    //ZMQÍ¨ĞÅÍ¨µÀµÄÊµ¼ÊµØÖ·£¬¸ñÊ½Îª ip:port
+    uint64_t ullBusClientID;                    //ZMQ é€šä¿¡é€šé“Clientçš„ID
+    uint64_t ullBusServerID;                    //ZMQé€šä¿¡é€šé“Serverçš„ID
+    char szBusAddr[MAX_SERVER_BUS_ADDR_LEN];    //ZMQé€šä¿¡é€šé“çš„å®é™…åœ°å€ï¼Œæ ¼å¼ä¸º ip:port
 
     ServerBusConfig()
     {
@@ -34,11 +34,15 @@ public:
 
 private:
 
-    //ÄÚÍø·şÎñÆ÷×Ü¹²ĞèÒªÖ§³ÖµÄÍ¨ĞÅBusÊıÁ¿
+    //å†…ç½‘æœåŠ¡å™¨æ€»å…±éœ€è¦æ”¯æŒçš„é€šä¿¡Busæ•°é‡
     int m_iTotalBusNumber;
 
-    //ÄÚÍø·şÎñÆ÷Ö§³ÖµÄÍ¨ĞÅBusµÄÅäÖÃ
+    //å†…ç½‘æœåŠ¡å™¨æ”¯æŒçš„é€šä¿¡Busçš„é…ç½®
     ServerBusConfig m_astServerBusConfig[MAX_SERVER_BUS_NUMBER];
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

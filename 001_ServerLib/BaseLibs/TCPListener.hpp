@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file TCPListener.hpp
 *@author jasonxiong
 *@date 2009-11-19
 *@version 1.0
-*@brief TCPÁ¬½Ó¼àÌıÀà
+*@brief TCPè¿æ¥ç›‘å¬ç±»
 *
 *
 */
@@ -19,20 +19,20 @@ namespace ServerLib
 
 typedef struct tagTCPListenerConfig
 {
-    char m_szBindIP[MAX_IPV4_LENGTH]; //!<±¾µØIP
-    unsigned short m_ushBindPort; //!<±¾µØ¶Ë¿Ú
-    int m_iBacklogFDNum; //!<ÔÚ¼àÌı¶ÓÁĞÖĞ»ıÀÛµÄFD¸öÊı
+    char m_szBindIP[MAX_IPV4_LENGTH]; //!<æœ¬åœ°IP
+    unsigned short m_ushBindPort; //!<æœ¬åœ°ç«¯å£
+    int m_iBacklogFDNum; //!<åœ¨ç›‘å¬é˜Ÿåˆ—ä¸­ç§¯ç´¯çš„FDä¸ªæ•°
 } TTCPListenerCfg;
 
-const int MIN_BACKLOG_FD_NUMBER = 1; //!<ÔÚ¼àÌıÊ±ÔÊĞí»ıÀÛµÄFD×îĞ¡ÊıÄ¿
-const int DEFAULT_BACKLOG_FD_NUMBER = 10; //!<Ä¬ÈÏ¼àÌıÊ±ÔÊĞí»ıÀÛµÄFDÊıÄ¿
-const int MAX_BACKLOG_FD_NUMBER = 1024; //!<ÔÚ¼àÌıÊ±ÔÊĞí»ıÀÛµÄFD×î´óÊıÄ¿
+const int MIN_BACKLOG_FD_NUMBER = 1; //!<åœ¨ç›‘å¬æ—¶å…è®¸ç§¯ç´¯çš„FDæœ€å°æ•°ç›®
+const int DEFAULT_BACKLOG_FD_NUMBER = 10; //!<é»˜è®¤ç›‘å¬æ—¶å…è®¸ç§¯ç´¯çš„FDæ•°ç›®
+const int MAX_BACKLOG_FD_NUMBER = 1024; //!<åœ¨ç›‘å¬æ—¶å…è®¸ç§¯ç´¯çš„FDæœ€å¤§æ•°ç›®
 
 typedef enum eTCPListenerStates
 {
-    tls_closed = 0, //!<ÒÑ¹Ø±Õ
-    tls_opened = 1, //!<´ò¿ª¼àÌı
-    tls_error = 2,  //!<³öÏÖ´íÎó
+    tls_closed = 0, //!<å·²å…³é—­
+    tls_opened = 1, //!<æ‰“å¼€ç›‘å¬
+    tls_error = 2,  //!<å‡ºç°é”™è¯¯
 } ETCPLISTENSTATES;
 
 class CTCPListener
@@ -43,53 +43,53 @@ public:
 
 public:
     /**
-    *¼òµ¥³õÊ¼»¯
-    *@param[in] pszBindIP ¼àÌıÒª°ó¶¨µÄIP£¬¿ÉÒÔ´«NULL
-    *@param[in] ushBindPort ¼àÌıÒª°ó¶¨µÄ¶Ë¿Ú
+    *ç®€å•åˆå§‹åŒ–
+    *@param[in] pszBindIP ç›‘å¬è¦ç»‘å®šçš„IPï¼Œå¯ä»¥ä¼ NULL
+    *@param[in] ushBindPort ç›‘å¬è¦ç»‘å®šçš„ç«¯å£
     *@return 0 success
     */
     int Initialize(const char* pszBindIP, const unsigned short ushBindPort);
 
     ///**
-    //*¼òµ¥³õÊ¼»¯
-    //*@param[in] uiBindIP ¼àÌıÒª°ó¶¨µÄIP
-    //*@param[in] ushBindPort ¼àÌıÒª°ó¶¨µÄ¶Ë¿Ú
+    //*ç®€å•åˆå§‹åŒ–
+    //*@param[in] uiBindIP ç›‘å¬è¦ç»‘å®šçš„IP
+    //*@param[in] ushBindPort ç›‘å¬è¦ç»‘å®šçš„ç«¯å£
     //*@return 0 success
     //*/
     //int Initialize(const unsigned int uiBindIP, const unsigned short ushBindPort);
 
-    //!³õÊ¼»¯¼àÌıÅäÖÃ
+    //!åˆå§‹åŒ–ç›‘å¬é…ç½®
     int Initialize(const TTCPListenerCfg& rstListenerConfig);
 
-    //!¹Ø±ÕÁ¬½Ó
+    //!å…³é—­è¿æ¥
     int CloseSocket();
 
-    //!»ñÈ¡¼àÌıÌ×½Ó×Ö
+    //!è·å–ç›‘å¬å¥—æ¥å­—
     int GetSocketFD() const
     {
         return m_iSocketFD;
     }
 
     /**
-    *½ÓÊÜÒ»¸öÁ¬½Ó
-    *@param[out] riAcceptFD ½ÓÊÜµÄÁ¬½ÓFD
-    *@param[out] ruiIP ½ÓÊÜµÄÁ¬½ÓIP
-    *@param[out] rushPort ½ÓÊÜµÄÁ¬½Ó¶Ë¿Ú
+    *æ¥å—ä¸€ä¸ªè¿æ¥
+    *@param[out] riAcceptFD æ¥å—çš„è¿æ¥FD
+    *@param[out] ruiIP æ¥å—çš„è¿æ¥IP
+    *@param[out] rushPort æ¥å—çš„è¿æ¥ç«¯å£
     *@return 0 success
     */
     int Accept(int& riAcceptFD, unsigned int& ruiIP, unsigned short& rushPort);
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!´´½¨Socket
+    //!åˆ›å»ºSocket
     int CreateSocket();
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
@@ -97,9 +97,9 @@ private:
 
 private:
     int m_iSocketFD;
-    int m_iStatus; //!<Á¬½Ó×´Ì¬
+    int m_iStatus; //!<è¿æ¥çŠ¶æ€
     TTCPListenerCfg m_stTCPListenConfig;
-    int m_iErrorNO; //!´íÎóÂë
+    int m_iErrorNO; //!é”™è¯¯ç 
 
 };
 
@@ -107,3 +107,7 @@ private:
 
 #endif //__TCP_LISTENER_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

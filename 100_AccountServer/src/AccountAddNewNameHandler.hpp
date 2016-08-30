@@ -1,15 +1,15 @@
-#ifndef __ACCOUNT_ADD_NEW_NAME_HANDLER_HPP__
+ï»¿#ifndef __ACCOUNT_ADD_NEW_NAME_HANDLER_HPP__
 #define __ACCOUNT_ADD_NEW_NAME_HANDLER_HPP__
 
 #include "Handler.hpp"
 
 class CAccountHandlerSet;
 
-// ´¦ÀíÀ´×ÔWorldµÄ MSGID_ADDNEWNAME_RESPONSE ÏûÏ¢
+// å¤„ç†æ¥è‡ªWorldçš„ MSGID_ADDNEWNAME_RESPONSE æ¶ˆæ¯
 class CAccountAddNewNameHandler : public IHandler
 {
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountHandlerSet;
     CAccountAddNewNameHandler();
 
@@ -18,13 +18,13 @@ public:
 
 private:
 
-    //·¢ËÍ´´½¨½ÇÉ«µÄÇëÇó
+    //å‘é€åˆ›å»ºè§’è‰²çš„è¯·æ±‚
     int SendCreateRoleRequestToWorld(const std::string& strName, unsigned int uin);
 
-    //·¢ËÍ´´½¨½ÇÉ«Ê§°ÜµÄÇëÇóµ½Lotus
+    //å‘é€åˆ›å»ºè§’è‰²å¤±è´¥çš„è¯·æ±‚åˆ°Lotus
     void SendCreateRoleFailedToLotus(unsigned int uin, int iResult);
 
-    //É¾³ıNameDBÖĞµÄÃû×Ö
+    //åˆ é™¤NameDBä¸­çš„åå­—
     int SendDeleteNameRequestToWorld(const std::string& strName, int iType, unsigned uin);
 
 private:
@@ -32,3 +32,7 @@ private:
 };
 
 #endif // __ACCOUNT_ADD_NEW_NAME_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

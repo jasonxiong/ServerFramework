@@ -1,4 +1,4 @@
-#include <unistd.h>
+Ôªø#include <unistd.h>
 #include <string.h>
 #include <assert.h>
 #include <arpa/inet.h>
@@ -33,7 +33,7 @@ int CAccountApp::Initialize(bool bResume, int iWorldID)
 {
     g_pAccountApp = this;
 
-    // ∂¡»°≈‰÷√
+    // ËØªÂèñÈÖçÁΩÆ
     LoadConfig();
 
     m_bResumeMode = bResume;
@@ -74,9 +74,9 @@ int CAccountApp::Initialize(bool bResume, int iWorldID)
         return -1;
     }
 
-    //todo jasonxiong ∫Û–¯∏˘æ›–Ë“™ø…ƒ‹–Ë“™ÃÌº”‘‡◊÷ºÏ≤Èπ¶ƒ‹
+    //todo jasonxiong ÂêéÁª≠Ê†πÊçÆÈúÄË¶ÅÂèØËÉΩÈúÄË¶ÅÊ∑ªÂä†ËÑèÂ≠óÊ£ÄÊü•ÂäüËÉΩ
 
-    // ∂¡»°Account Serverµƒ≈‰÷√
+    // ËØªÂèñAccount ServerÁöÑÈÖçÁΩÆ
     iRes = ConfigMgr->LoadAllConf();
     if (iRes != 0)
     {
@@ -142,7 +142,7 @@ void CAccountApp::Run()
                 iNewMsgCount++;
             }
 
-            // √ª”– ˝æ›, ªÚ’ﬂ ˝æ›≥¨≥ˆ¥¶¿Ìœﬁ÷∆, ‘›Õ£¥¶¿Ì ˝æ›
+            // Ê≤°ÊúâÊï∞ÊçÆ, ÊàñËÄÖÊï∞ÊçÆË∂ÖÂá∫Â§ÑÁêÜÈôêÂà∂, ÊöÇÂÅúÂ§ÑÁêÜÊï∞ÊçÆ
             iRecvMsgCount += iNewMsgCount;
             if (iNewMsgCount == 0 || iRecvMsgCount >= MAX_MSG_COUNT_PER_COUNT)
             {
@@ -153,11 +153,11 @@ void CAccountApp::Run()
         usleep(MAIN_LOOP_SLEEP);
         m_uiLoopTimes++;
 
-        // «Â¿Ì≥¨ ±µƒcacheΩ·µ„£¨÷˜—≠ª∑1ÕÚ¥Œ«Â¿Ì“ª¥Œ
+        // Ê∏ÖÁêÜË∂ÖÊó∂ÁöÑcacheÁªìÁÇπÔºå‰∏ªÂæ™ÁéØ1‰∏áÊ¨°Ê∏ÖÁêÜ‰∏ÄÊ¨°
         if (TIMES_TO_CLEAR_CACHE == m_uiLoopTimes)
         {
             ClearCache();
-            m_uiLoopTimes = 0; // ÷ÿ–¬º∆ ˝
+            m_uiLoopTimes = 0; // ÈáçÊñ∞ËÆ°Êï∞
         }
     }
 }
@@ -179,7 +179,7 @@ int CAccountApp::ReloadConfig()
     // zone_conf.txt
     ConfigMgr->LoadAllConf();
 
-    //todo jasonxiong ∫Û–¯ø…ƒ‹–Ë“™ÃÌº”∂‘‘‡◊÷ø‚µƒ÷ÿ–¬load
+    //todo jasonxiong ÂêéÁª≠ÂèØËÉΩÈúÄË¶ÅÊ∑ªÂä†ÂØπËÑèÂ≠óÂ∫ìÁöÑÈáçÊñ∞load
     //CStringUtility::ForceUpdateDirtyWorld();
 
     return 0;
@@ -205,11 +205,11 @@ int CAccountApp::HandleMsgIn(IProtocolEngine* pProtocolEngine, EGameServerID enM
     int iCodeLen;
     static GameProtocolMsg stRequestMsg;
 
-    // ≥ı ºªØcode buffer∫Õcode length
+    // ÂàùÂßãÂåñcode bufferÂíåcode length
     memset(szCodeBuf, 0, sizeof(szCodeBuf));
     iCodeLen = 0;
 
-    // Ω” ‹Õ¯¬Á ˝æ›
+    // Êé•ÂèóÁΩëÁªúÊï∞ÊçÆ
     int iRet = AccountMsgTransceiver->RecvOneMsg((char*)szCodeBuf, iBufLen, iCodeLen, enMsgPeer, iInstance);
     if ((iRet < 0) || (0 == iCodeLen))
     {
@@ -218,18 +218,18 @@ int CAccountApp::HandleMsgIn(IProtocolEngine* pProtocolEngine, EGameServerID enM
 
     TRACESVR("Receive code OK, len: %d\n", iCodeLen);
 
-    // ≥ı ºªØŒ™0£¨±ÿ–Îµƒ£°
+    // ÂàùÂßãÂåñ‰∏∫0ÔºåÂøÖÈ°ªÁöÑÔºÅ
     memset(&m_stNetHead, 0, sizeof(TNetHead_V2));
     stRequestMsg.Clear();
 
-    // Ω‚¬ÎÕ¯¬Á ˝æ›Œ™±æµÿ ˝æ›
+    // Ëß£Á†ÅÁΩëÁªúÊï∞ÊçÆ‰∏∫Êú¨Âú∞Êï∞ÊçÆ
     iRet = pProtocolEngine->Decode((unsigned char*)szCodeBuf, iCodeLen, &m_stNetHead, &stRequestMsg);
     if (iRet != 0)
     {
         return -1;
     }
 
-    // ¥¶¿Ì±æµÿ ˝æ›
+    // Â§ÑÁêÜÊú¨Âú∞Êï∞ÊçÆ
     IHandler* pHandler = NULL;
     if (enMsgPeer == GAME_SERVER_LOTUSACCOUNT)
     {
@@ -260,10 +260,10 @@ void CAccountApp::ClearCache()
 
     time_t stClearTime = time(NULL) - MAX_LIVE_TIME_OF_CACHE;
 
-    // «Â¿Ìsessionª∫¥Ê
+    // Ê∏ÖÁêÜsessionÁºìÂ≠ò
     SessionManager->ClearCache(stClearTime);
 
-    // «Â¿ÌCreateRoleRequestObjª∫¥Ê
+    // Ê∏ÖÁêÜCreateRoleRequestObjÁºìÂ≠ò
     CFixedHashCache<CCreateRoleRequestObj>::ClearCache(stClearTime);
 }
 
@@ -276,7 +276,7 @@ void CAccountApp::TestClearCache()
 
     for (int i = 0; i < 10; i++)
     {
-        tmNow = time(NULL); // ¥¥Ω®ª∫¥ÊΩ·µ„µƒ ±º‰
+        tmNow = time(NULL); // ÂàõÂª∫ÁºìÂ≠òÁªìÁÇπÁöÑÊó∂Èó¥
 
         stNetHead.m_uiSocketFD = htonl(i);
         CSessionObj* pSessionObj = SessionManager->CreateSession(stNetHead);
@@ -284,7 +284,7 @@ void CAccountApp::TestClearCache()
         pSessionObj->SetCreatedTime(&tmNow);
 
         pSessionObj->GetCreatedTime(szTime, sizeof(szTime));
-        TRACESVR("session cache created time: %s", szTime); // ¿˝»Á: Wed Sep 29 10:59:46 2010
+        TRACESVR("session cache created time: %s", szTime); // ‰æãÂ¶Ç: Wed Sep 29 10:59:46 2010
 
         stRequest.set_uin(i+100);
         CCreateRoleRequestObj* pRequestObj = CFixedHashCache<CCreateRoleRequestObj>::CreateByUin(stRequest.uin());
@@ -299,3 +299,7 @@ void CAccountApp::TestClearCache()
         sleep(1);
     }
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

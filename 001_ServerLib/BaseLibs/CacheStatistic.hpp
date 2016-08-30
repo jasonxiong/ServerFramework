@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file CachStatistic.hpp
 *@author jasonxiong
 *@date 2009-11-21
 *@version 1.0
-*@brief »º³åÇø×´Ì¬Í³¼ÆÀà
+*@brief ç¼“å†²åŒºçŠ¶æ€ç»Ÿè®¡ç±»
 *
-*	Ê¹ÓÃÕâ¸öÀàÀ´Í³¼Æ»º³åÇøµÄ×´Ì¬ĞÅÏ¢£¬°üÀ¨¿ÉÓÃ»º´æ¡¢ÒÑÓÃ»º´æ£¬ÃüÖĞÂÊµÈ
+*	ä½¿ç”¨è¿™ä¸ªç±»æ¥ç»Ÿè®¡ç¼“å†²åŒºçš„çŠ¶æ€ä¿¡æ¯ï¼ŒåŒ…æ‹¬å¯ç”¨ç¼“å­˜ã€å·²ç”¨ç¼“å­˜ï¼Œå‘½ä¸­ç‡ç­‰
 */
 
 #ifndef __CACHE_STATISTIC_HPP__
@@ -17,49 +17,49 @@
 namespace ServerLib
 {
 
-const int MAX_CACHE_TYPE_NUMBER = 32; //!<×î´óÖ§³ÖµÄCacheID¸öÊı£¬¾ÍÊÇÄÜÍ³¼ÆµÄCacheÖÖÀà¸öÊı
+const int MAX_CACHE_TYPE_NUMBER = 32; //!<æœ€å¤§æ”¯æŒçš„CacheIDä¸ªæ•°ï¼Œå°±æ˜¯èƒ½ç»Ÿè®¡çš„Cacheç§ç±»ä¸ªæ•°
 
-extern const char* DEFAULT_CACHE_STAT_DIRECTORY_PATH; //!<CacheÍ³¼ÆÎÄ¼şËù´æ·ÅÎÄ¼ş¼Ğ
-extern const char* DEFAULT_CACHE_STAT_FILE_NAME; //!<CacheÍ³¼ÆÎÄ¼şÃû
+extern const char* DEFAULT_CACHE_STAT_DIRECTORY_PATH; //!<Cacheç»Ÿè®¡æ–‡ä»¶æ‰€å­˜æ”¾æ–‡ä»¶å¤¹
+extern const char* DEFAULT_CACHE_STAT_FILE_NAME; //!<Cacheç»Ÿè®¡æ–‡ä»¶å
 
 typedef enum enmCacheStatusItemIndex
 {
-    ECSI_USED_COUNT = 0, //!<CacheÊ¹ÓÃÊı
-    ECSI_FREE_COUNT, //!<Cache¿ÕÏĞÊı
-    ECSI_RECYCLE_COUNT, //!<CacheÔÚ»ØÊÕ¶ÓÁĞÖĞµÄ¸öÊı
-    ECSI_SWAP_TIMES, //!<Cache±»½»»»µÄ´ÎÊı
-    ECSI_MAX_ITEM_NUMBER //!<×Ü¹²ĞèÒªÍ³¼ÆµÄÍ³¼ÆÏî¸öÊı£¬±£Ö¤Õâ¸öÖµ²»»á³¬¹ıSectionÄÜÈİÄÉµÄItem×î´óÖµ
+    ECSI_USED_COUNT = 0, //!<Cacheä½¿ç”¨æ•°
+    ECSI_FREE_COUNT, //!<Cacheç©ºé—²æ•°
+    ECSI_RECYCLE_COUNT, //!<Cacheåœ¨å›æ”¶é˜Ÿåˆ—ä¸­çš„ä¸ªæ•°
+    ECSI_SWAP_TIMES, //!<Cacheè¢«äº¤æ¢çš„æ¬¡æ•°
+    ECSI_MAX_ITEM_NUMBER //!<æ€»å…±éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ä¸ªæ•°ï¼Œä¿è¯è¿™ä¸ªå€¼ä¸ä¼šè¶…è¿‡Sectionèƒ½å®¹çº³çš„Itemæœ€å¤§å€¼
 } ENMCACHESTATUSITEMINDEX;
 
 extern const char* g_apszCacheStatusItemName[ECSI_MAX_ITEM_NUMBER];
 
 typedef enum enmReadCacheItemIndex
 {
-    ERCI_HIT_CACHE_COUNT = 0, //!<¶ÁCacheÃüÖĞ´ÎÊı
-    ERCI_MISS_CACHE_COUNT, //!<¶ÁCacheÎ´ÃüÖĞ´ÎÊı
-    ERCI_HIT_RATE, //!<¶ÁCacheÃüÖĞÂÊ
-    ERCI_MAX_ITEM_NUMBER //!<×Ü¹²ĞèÒªÍ³¼ÆµÄÍ³¼ÆÏî¸öÊı£¬±£Ö¤Õâ¸öÖµ²»»á³¬¹ıSectionÄÜÈİÄÉµÄItem×î´óÖµ
+    ERCI_HIT_CACHE_COUNT = 0, //!<è¯»Cacheå‘½ä¸­æ¬¡æ•°
+    ERCI_MISS_CACHE_COUNT, //!<è¯»Cacheæœªå‘½ä¸­æ¬¡æ•°
+    ERCI_HIT_RATE, //!<è¯»Cacheå‘½ä¸­ç‡
+    ERCI_MAX_ITEM_NUMBER //!<æ€»å…±éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ä¸ªæ•°ï¼Œä¿è¯è¿™ä¸ªå€¼ä¸ä¼šè¶…è¿‡Sectionèƒ½å®¹çº³çš„Itemæœ€å¤§å€¼
 } ENMREADCACHEITEMINDEX;
 
 extern const char* g_apszReadCacheItemName[ERCI_MAX_ITEM_NUMBER];
 
 typedef enum enmWriteCacheItemIndex
 {
-    EWCI_HIT_CACHE_COUNT = 0, //!<Ğ´CacheÃüÖĞ´ÎÊı
-    EWCI_MISS_CACHE_COUNT, //!<Ğ´CacheÎ´ÃüÖĞ´ÎÊı
-    EWCI_HIT_RATE, //!<Ğ´CacheÃüÖĞÂÊ
-    EWCI_MAX_ITEM_NUMBER //!<×Ü¹²ĞèÒªÍ³¼ÆµÄÍ³¼ÆÏî¸öÊı£¬±£Ö¤Õâ¸öÖµ²»»á³¬¹ıSectionÄÜÈİÄÉµÄItem×î´óÖµ
+    EWCI_HIT_CACHE_COUNT = 0, //!<å†™Cacheå‘½ä¸­æ¬¡æ•°
+    EWCI_MISS_CACHE_COUNT, //!<å†™Cacheæœªå‘½ä¸­æ¬¡æ•°
+    EWCI_HIT_RATE, //!<å†™Cacheå‘½ä¸­ç‡
+    EWCI_MAX_ITEM_NUMBER //!<æ€»å…±éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ä¸ªæ•°ï¼Œä¿è¯è¿™ä¸ªå€¼ä¸ä¼šè¶…è¿‡Sectionèƒ½å®¹çº³çš„Itemæœ€å¤§å€¼
 } ENMWRITECACHEITEMINDEX;
 
 extern const char* g_apszWriteCacheItemName[EWCI_MAX_ITEM_NUMBER];
 
-//!ÓÃÓÚÍ¨¹ıCacheID·½±ã¶¨Î»µ½ÔÚCStatisticÖĞµÄSectionË÷Òı
+//!ç”¨äºé€šè¿‡CacheIDæ–¹ä¾¿å®šä½åˆ°åœ¨CStatisticä¸­çš„Sectionç´¢å¼•
 typedef struct tagStatCacheInfo
 {
-    int m_iCacheType; //!<CacheÀàĞÍ£¬Ã¿Ò»ÖÖCache±ØĞë±£Ö¤Õâ¸öÖµÎ¨Ò»
-    int m_iCacheStatusIndex; //!<CacheStatusÔÚCStaitisticÖĞµÄSectionË÷Òı
-    int m_iReadCacheIndex; //!<ReadCacheÔÚCStatisticÖĞµÄSectionË÷Òı
-    int m_iWriteCacheIndex; //!<WriteCacheÔÚCStatisticÖĞµÄSectionË÷Òı
+    int m_iCacheType; //!<Cacheç±»å‹ï¼Œæ¯ä¸€ç§Cacheå¿…é¡»ä¿è¯è¿™ä¸ªå€¼å”¯ä¸€
+    int m_iCacheStatusIndex; //!<CacheStatusåœ¨CStaitisticä¸­çš„Sectionç´¢å¼•
+    int m_iReadCacheIndex; //!<ReadCacheåœ¨CStatisticä¸­çš„Sectionç´¢å¼•
+    int m_iWriteCacheIndex; //!<WriteCacheåœ¨CStatisticä¸­çš„Sectionç´¢å¼•
 } TStatCacheInfo;
 
 class CCacheStatistic
@@ -70,95 +70,99 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯£¬ÔÚ³õÊ¼»¯Ê±»á·ÖÅäÄÚ´æ¸øCStatisticÀàÖĞµÄSection
-    *@param[in] pszStatPath Í³¼ÆÎÄ¼şÂ·¾¶£¬Ä¬ÈÏÊÇ../stat/
-    *@param[in] pszStatFileName Í³¼ÆÎÄ¼şÃû£¬Ä¬ÈÏÊÇs
+    *åˆå§‹åŒ–ï¼Œåœ¨åˆå§‹åŒ–æ—¶ä¼šåˆ†é…å†…å­˜ç»™CStatisticç±»ä¸­çš„Section
+    *@param[in] pszStatPath ç»Ÿè®¡æ–‡ä»¶è·¯å¾„ï¼Œé»˜è®¤æ˜¯../stat/
+    *@param[in] pszStatFileName ç»Ÿè®¡æ–‡ä»¶åï¼Œé»˜è®¤æ˜¯s
     *@return 0 success
     */
     int Initialize(const char* pszStatPath = NULL, const char* pszStatFileName = NULL);
 
     /**
-    *Ôö¼ÓCacheÀàĞÍ×öÍ³¼Æ£¬ÔÚĞèÒªÄ³Ò»¸öCacheÇ°Òªµ÷ÓÃÕâ¸öº¯Êı½«Õâ¸öCacheµÄÀàĞÍÌí¼ÓÉÏÈ¥
-    *@param[in] iCacheType CacheÀàĞÍ£¬Ã¿Ò»ÖÖCache±ØĞë±£Ö¤Õâ¸öÖµÎ¨Ò»£¬ºóÃæËùÓĞ¶ÔCacheµÄÍ³¼ÆĞèÒªÖ¸¶¨Õâ¸öID
-    *@param[in] pszCacheName CacheÃû
+    *å¢åŠ Cacheç±»å‹åšç»Ÿè®¡ï¼Œåœ¨éœ€è¦æŸä¸€ä¸ªCacheå‰è¦è°ƒç”¨è¿™ä¸ªå‡½æ•°å°†è¿™ä¸ªCacheçš„ç±»å‹æ·»åŠ ä¸Šå»
+    *@param[in] iCacheType Cacheç±»å‹ï¼Œæ¯ä¸€ç§Cacheå¿…é¡»ä¿è¯è¿™ä¸ªå€¼å”¯ä¸€ï¼Œåé¢æ‰€æœ‰å¯¹Cacheçš„ç»Ÿè®¡éœ€è¦æŒ‡å®šè¿™ä¸ªID
+    *@param[in] pszCacheName Cacheå
     *@return 0 success
     */
     int AddCacheType(int iCacheType, const char* pszCacheName);
 
     /**
-    *Ôö¼ÓCacheÍ³¼ÆĞÅÏ¢
-    *@param[in] iCacheType CacheÀàĞÍ£¬Í¨¹ıÕâ¸öÖµ¶¨Î»µ½SectionË÷Òı
-    *@param[in] iUsedCount CacheÒÑÓÃ¸öÊı
-    *@param[in] iFreeCount Cache¿ÕÏĞ¸öÊı
-    *@param[in] iRecycleCount CacheÔÚ»ØÊÕ¶ÓÁĞÖĞµÄ¸öÊı
-    *@param[in] iSwapTimes Cache±»½»»»µÄ´ÎÊı
+    *å¢åŠ Cacheç»Ÿè®¡ä¿¡æ¯
+    *@param[in] iCacheType Cacheç±»å‹ï¼Œé€šè¿‡è¿™ä¸ªå€¼å®šä½åˆ°Sectionç´¢å¼•
+    *@param[in] iUsedCount Cacheå·²ç”¨ä¸ªæ•°
+    *@param[in] iFreeCount Cacheç©ºé—²ä¸ªæ•°
+    *@param[in] iRecycleCount Cacheåœ¨å›æ”¶é˜Ÿåˆ—ä¸­çš„ä¸ªæ•°
+    *@param[in] iSwapTimes Cacheè¢«äº¤æ¢çš„æ¬¡æ•°
     *@return 0 success
     */
     int UpdateCacheStatus(int iCacheType, int iUsedCount, int iFreeCount,
                           int iRecycleCount, int iSwapTimes);
 
     /**
-    *Ôö¼Ó¶ÁCacheÊ±µÄÍ³¼ÆĞÅÏ¢
-    *@param[in] iCacheType CacheÀàĞÍ£¬Í¨¹ıÕâ¸öÖµ¶¨Î»µ½SectionË÷Òı
-    *@param[in] iAddHitCount ĞèÒªÔö¼ÓµÄ¶ÁÃüÖĞ´ÎÊı
-    *@param[in] iAddMissCount ĞèÒªÔö¼ÓµÄ¶Á¶ªÊ§´ÎÊı
+    *å¢åŠ è¯»Cacheæ—¶çš„ç»Ÿè®¡ä¿¡æ¯
+    *@param[in] iCacheType Cacheç±»å‹ï¼Œé€šè¿‡è¿™ä¸ªå€¼å®šä½åˆ°Sectionç´¢å¼•
+    *@param[in] iAddHitCount éœ€è¦å¢åŠ çš„è¯»å‘½ä¸­æ¬¡æ•°
+    *@param[in] iAddMissCount éœ€è¦å¢åŠ çš„è¯»ä¸¢å¤±æ¬¡æ•°
     *@return 0 success
     */
     int AddReadCacheStat(int iCacheType, int iAddHitCount, int iAddMissCount);
 
     /**
-    *Ôö¼ÓĞ´CacheÊ±µÄÍ³¼ÆĞÅÏ¢
-    *@param[in] iCacheType CacheÀàĞÍ£¬Í¨¹ıÕâ¸öÖµ¶¨Î»µ½SectionË÷Òı
-    *@param[in] iAddHitCount ĞèÒªÔö¼ÓµÄĞ´ÃüÖĞ´ÎÊı
-    *@param[in] iAddMissCount ĞèÒªÔö¼ÓµÄĞ´¶ªÊ§´ÎÊı
+    *å¢åŠ å†™Cacheæ—¶çš„ç»Ÿè®¡ä¿¡æ¯
+    *@param[in] iCacheType Cacheç±»å‹ï¼Œé€šè¿‡è¿™ä¸ªå€¼å®šä½åˆ°Sectionç´¢å¼•
+    *@param[in] iAddHitCount éœ€è¦å¢åŠ çš„å†™å‘½ä¸­æ¬¡æ•°
+    *@param[in] iAddMissCount éœ€è¦å¢åŠ çš„å†™ä¸¢å¤±æ¬¡æ•°
     *@return 0 success
     */
     int AddWriteCacheStat(int iCacheType, int iAddHitCount, int iAddMissCount);
 
-    //!´òÓ¡Í³¼ÆĞÅÏ¢
+    //!æ‰“å°ç»Ÿè®¡ä¿¡æ¯
     void Print();
 
-    //!Çå¿ÕÍ³¼ÆĞÅÏ¢
+    //!æ¸…ç©ºç»Ÿè®¡ä¿¡æ¯
     void Reset();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
-    //!Ôö¼ÓCacheStatusÍ³¼Æ¶Î
+    //!å¢åŠ CacheStatusç»Ÿè®¡æ®µ
     int AddCacheStatusSection(const char* pszCacheName, int& riSectionIdx);
 
-    //!Ôö¼ÓReadCacheÍ³¼Æ¶Î
+    //!å¢åŠ ReadCacheç»Ÿè®¡æ®µ
     int AddReachCacheSection(const char* pszCacheName, int& riSectionIdx);
 
-    //!Ôö¼ÓWriteCacheÍ³¼Æ¶Î
+    //!å¢åŠ WriteCacheç»Ÿè®¡æ®µ
     int AddWriteCacheSection(const char* pszCacheName, int& riSectionIdx);
 
-    //!¸ù¾İCacheÀàĞÍ»ñÈ¡Ö¸¶¨µÄCacheĞÅÏ¢½á¹¹
+    //!æ ¹æ®Cacheç±»å‹è·å–æŒ‡å®šçš„Cacheä¿¡æ¯ç»“æ„
     TStatCacheInfo* GetCacheInfo(int iCacheType);
 
 private:
     CStatistic m_stStatistic;
-    int m_iErrorNO; //!´íÎóÂë
+    int m_iErrorNO; //!é”™è¯¯ç 
 
     short m_shCacheTypeNum;
     TStatCacheInfo m_astCacheInfo[MAX_CACHE_TYPE_NUMBER];
 
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCMsgStatisticÀà£¬ËùÒÔÊµÏÖÒ»¸öµ¥¼ş·½±ãÊ¹ÓÃ
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCMsgStatisticç±»ï¼Œæ‰€ä»¥å®ç°ä¸€ä¸ªå•ä»¶æ–¹ä¾¿ä½¿ç”¨
 typedef CSingleton<CCacheStatistic> CacheStatisticSingleton;
 
 }
 
 #endif //__CACHE_STATISTIC_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

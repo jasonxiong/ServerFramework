@@ -1,4 +1,4 @@
-#include <string.h>
+﻿#include <string.h>
 
 #include "ModuleHelper.hpp"
 #include "WorldMsgHelper.hpp"
@@ -60,3 +60,7 @@ int COnlineStatHandler::OnWorldOnlineStatResp()
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

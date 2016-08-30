@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -18,10 +18,10 @@ int C2SProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen,
     ASSERT_AND_LOG_RTN_INT(pstNetHead);
     ASSERT_AND_LOG_RTN_INT(pstMsg);
 
-    // Ìî³äNetHead
+    // å¡«å……NetHead
     memcpy(pstNetHead, pszCodeBuf, NETHEAD_V2_SIZE);
 
-    // ¿Õ°ü£¬¿Í»§¶ËÁ¬½Ó¶Ï¿ª
+    // ç©ºåŒ…ï¼Œå®¢æˆ·ç«¯è¿žæŽ¥æ–­å¼€
     if (NETHEAD_V2_SIZE == iCodeLen)
     {
         pstMsg->mutable_m_stmsghead()->set_m_uimsgid(MSGID_LOGOUTSERVER_REQUEST);
@@ -32,11 +32,11 @@ int C2SProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen,
 
     int iRealCodeOffset = NETHEAD_V2_SIZE + sizeof(unsigned short);
 
-    // ÍøÂçÊý¾Ý
+    // ç½‘ç»œæ•°æ®
     int iBuffLen = iCodeLen - iRealCodeOffset;
     char* pszBuff = (char*)pszCodeBuf + iRealCodeOffset;
 
-    // ½âÂë
+    // è§£ç 
     if(!pstMsg->ParseFromArray(pszBuff, iBuffLen))
     {
         TRACESVR("fail to parse proto msg from msgbuff!\n");
@@ -53,14 +53,14 @@ int C2SProtocolEngine::Encode(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg,
     ASSERT_AND_LOG_RTN_INT(pstMsg);
     ASSERT_AND_LOG_RTN_INT(pszCodeBuf);
 
-    // ±àÂëNetHead
+    // ç¼–ç NetHead
     memcpy(pszCodeBuf, pstNetHead, NETHEAD_V2_SIZE);
 
-    //»º³åÇøÐÅÏ¢
+    //ç¼“å†²åŒºä¿¡æ¯
     int iRealCodeOffset = NETHEAD_V2_SIZE + sizeof(unsigned short);
     char* pszRealBuff = (char*)pszCodeBuf + iRealCodeOffset;
 
-    //±àÂëÊý¾Ý
+    //ç¼–ç æ•°æ®
     iCodeLen = pstMsg->ByteSize();
     if(!pstMsg->SerializeToArray(pszRealBuff, iBufLen))
     {
@@ -76,3 +76,7 @@ int C2SProtocolEngine::Encode(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg,
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

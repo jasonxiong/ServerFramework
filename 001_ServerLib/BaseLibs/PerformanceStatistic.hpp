@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file PerformanceStatistic.hpp
 *@author jasonxiong
 *@date 2009-12-21
 *@version 1.0
-*@brief ÐÔÄÜÍ³¼ÆÀà
+*@brief æ€§èƒ½ç»Ÿè®¡ç±»
 *
 *
 */
@@ -17,20 +17,20 @@
 namespace ServerLib
 {
 
-const int MAX_PERFORMANCE_STAT_OP_NUMBER = 128; //!<×î¶àÍ³¼ÆµÄOP²Ù×÷¸öÊý
+const int MAX_PERFORMANCE_STAT_OP_NUMBER = 128; //!<æœ€å¤šç»Ÿè®¡çš„OPæ“ä½œä¸ªæ•°
 
 /**
-*@brief OP²Ù×÷ÐèÒªÍ³¼ÆµÄÍ³¼ÆÏîË÷Òý
+*@brief OPæ“ä½œéœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ç´¢å¼•
 *
 *
 */
 typedef enum enmStatOPItemIndex
 {
-    ESOI_OP_CALL_TIMES = 0, //!<OPµ÷ÓÃ´ÎÊý
-    ESOI_SUM_PROCESS_TIME = 1, //!<OP×Ü´¦ÀíÊ±³¤
-    ESOI_AVA_PROCESS_TIME = 2, //!<OPÆ½¾ù´¦ÀíÊ±³¤
-    ESOI_MAX_PROCESS_TIME = 3, //!<OP×î³¤´¦ÀíÊ±³¤
-    ESOI_MAX_ITEM_NUMBER //!<×Ü¹²ÐèÒªÍ³¼ÆµÄÍ³¼ÆÏî¸öÊý£¬±£Ö¤Õâ¸öÖµ²»»á³¬¹ýSectionÄÜÈÝÄÉµÄItem×î´óÖµ
+    ESOI_OP_CALL_TIMES = 0, //!<OPè°ƒç”¨æ¬¡æ•°
+    ESOI_SUM_PROCESS_TIME = 1, //!<OPæ€»å¤„ç†æ—¶é•¿
+    ESOI_AVA_PROCESS_TIME = 2, //!<OPå¹³å‡å¤„ç†æ—¶é•¿
+    ESOI_MAX_PROCESS_TIME = 3, //!<OPæœ€é•¿å¤„ç†æ—¶é•¿
+    ESOI_MAX_ITEM_NUMBER //!<æ€»å…±éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ä¸ªæ•°ï¼Œä¿è¯è¿™ä¸ªå€¼ä¸ä¼šè¶…è¿‡Sectionèƒ½å®¹çº³çš„Itemæœ€å¤§å€¼
 } ENMSTATOPITEMINDEX;
 
 extern const char* g_apszOPItemName[ESOI_MAX_ITEM_NUMBER];
@@ -43,22 +43,22 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯£¬ÔÚ³õÊ¼»¯Ê±»á·ÖÅäÄÚ´æ¸øCStatisticÀàÖÐµÄSection
-    *@param[in] pszStatPath Í³¼ÆÎÄ¼þÂ·¾¶£¬Ä¬ÈÏÊÇ../stat/
-    *@param[in] pszStatFileName Í³¼ÆÎÄ¼þÃû£¬Ä¬ÈÏÊÇs
+    *åˆå§‹åŒ–ï¼Œåœ¨åˆå§‹åŒ–æ—¶ä¼šåˆ†é…å†…å­˜ç»™CStatisticç±»ä¸­çš„Section
+    *@param[in] pszStatPath ç»Ÿè®¡æ–‡ä»¶è·¯å¾„ï¼Œé»˜è®¤æ˜¯../stat/
+    *@param[in] pszStatFileName ç»Ÿè®¡æ–‡ä»¶åï¼Œé»˜è®¤æ˜¯s
     *@return 0 success
     */
     int Initialize(const char* pszStatPath = NULL, const char* pszStatFileName = NULL);
 
     /**
-    *Ìí¼Ó²Ù×÷Í³¼ÆÐÅÏ¢
-    *@param[in] pszOPName ²Ù×÷Ãû×Ö£¨Ò»°ãÊÇº¯ÊýÃû£©
-    *@param[in] tvProcessTime µ÷ÓÃºÄÊ±
+    *æ·»åŠ æ“ä½œç»Ÿè®¡ä¿¡æ¯
+    *@param[in] pszOPName æ“ä½œåå­—ï¼ˆä¸€èˆ¬æ˜¯å‡½æ•°åï¼‰
+    *@param[in] tvProcessTime è°ƒç”¨è€—æ—¶
     *@return 0 success
     */
     int AddOPStat(const char* pszOPName, timeval tvProcessTime);
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
@@ -68,7 +68,7 @@ public:
     void Reset();
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
@@ -76,13 +76,17 @@ private:
 
 private:
     CStatistic m_stStatistic;
-    int m_iErrorNO; //!´íÎóÂë
+    int m_iErrorNO; //!é”™è¯¯ç 
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCPerformanceStatisticÀà£¬ËùÒÔÊµÏÖÒ»¸öµ¥¼þ·½±ãÊ¹ÓÃ
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCPerformanceStatisticç±»ï¼Œæ‰€ä»¥å®žçŽ°ä¸€ä¸ªå•ä»¶æ–¹ä¾¿ä½¿ç”¨
 typedef CSingleton<CPerformanceStatistic> PerformanceStatisticSingleton;
 
 }
 
 #endif //__PERFORMANCE_STATISTIC_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __KICKROLE_WORLD_HANDLER_HPP__
+ï»¿#ifndef __KICKROLE_WORLD_HANDLER_HPP__
 #define __KICKROLE_WORLD_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -6,7 +6,7 @@
 #include "WorldObjectHelperW_K64.hpp"
 #include "WorldRoleStatus.hpp"
 
-//´¦ÀíÌßÈËµÄÏûÏ¢´¦Àí
+//å¤„ç†è¸¢äººçš„æ¶ˆæ¯å¤„ç†
 class CKickRoleWorldHandler : public IHandler
 {
 protected:
@@ -18,11 +18,11 @@ public:
     virtual int OnClientMsg(const void* pstMsg);
 
 private:
-    // A1. ´¦ÀíÀ´×ÔZoneµÄÌßÈËÇëÇó
+    // A1. å¤„ç†æ¥è‡ªZoneçš„è¸¢äººè¯·æ±‚
     int OnZoneRequestKickRole();
 
 private:
-    // B2: ´¦ÀíÀ´×ÔZoneµÄÌßÈË»Ø¸´
+    // B2: å¤„ç†æ¥è‡ªZoneçš„è¸¢äººå›å¤
     int OnZoneResponseKickRole();
 
 private:
@@ -30,3 +30,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

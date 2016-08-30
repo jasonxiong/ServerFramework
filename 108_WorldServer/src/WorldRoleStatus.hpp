@@ -1,4 +1,4 @@
-#ifndef __WORLD_ROLE_STATUS_HPP__
+ï»¿#ifndef __WORLD_ROLE_STATUS_HPP__
 #define __WORLD_ROLE_STATUS_HPP__
 
 #include "ObjAllocator.hpp"
@@ -6,7 +6,7 @@
 
 using namespace ServerLib;
 
-//ÊÀ½çÖĞ±£³ÖµÄÍæ¼Ò×´Ì¬ĞÅÏ¢
+//ä¸–ç•Œä¸­ä¿æŒçš„ç©å®¶çŠ¶æ€ä¿¡æ¯
 class CWorldRoleStatusWObj : public CObj
 {
 public:
@@ -62,3 +62,7 @@ private:
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

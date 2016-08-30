@@ -1,4 +1,4 @@
-#ifndef __APP_ALLOCATOR_K64_HPP__
+ï»¿#ifndef __APP_ALLOCATOR_K64_HPP__
 #define __APP_ALLOCATOR_K64_HPP__
 
 #include "ObjAllocator.hpp"
@@ -9,13 +9,13 @@
 
 using namespace ServerLib;
 
-//64Î»Hash¶ÔÏó²Ù×÷Æ÷
+//64ä½Hashå¯¹è±¡æ“ä½œå™¨
 template <class TYPE_Object>
 class WorldTypeK64
 {
 public:
 
-    //todo jasonxiong ºóĞøÔö¼ÓteamºÍ°ïÅÉÊ±ÔÙÔö¼Ó
+    //todo jasonxiong åç»­å¢åŠ teamå’Œå¸®æ´¾æ—¶å†å¢åŠ 
     /*
     static TYPE_Object* CreateByTeamID(const TEAMID& rstTeamID)
     {
@@ -117,7 +117,7 @@ public:
         return (TYPE_Object*)m_pAllocator->GetObj(iID);
     }
 
-    //É¾³ı¶ÔÏó»¹±ØĞëÉ¾³ıHash
+    //åˆ é™¤å¯¹è±¡è¿˜å¿…é¡»åˆ é™¤Hash
     static int DeleteByHashKey(const TData64& rstHashKey)
     {
         int iID = 0;
@@ -193,3 +193,7 @@ CHashMap_K64* WorldTypeK64<TYPE_Object>::m_pHashMap = 0;
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

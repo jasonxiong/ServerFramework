@@ -1,4 +1,4 @@
-#include "CreateRoleRequestObj.hpp"
+ï»¿#include "CreateRoleRequestObj.hpp"
 #include "SessionObj.hpp"
 #include "FixedHashCache.hpp"
 #include "LRUHashCache.hpp"
@@ -14,14 +14,14 @@ int CAccountObjectAllocator::Initialize(bool bResume)
 {
     int iShmSize = CaculateTotalSize();
 
-    // ËùÓĞĞèÒª»º´æµÄ¶ÔÏó¹²ÓÃÒ»¿é¹²ÏíÄÚ´æÇø
+    // æ‰€æœ‰éœ€è¦ç¼“å­˜çš„å¯¹è±¡å…±ç”¨ä¸€å—å…±äº«å†…å­˜åŒº
     int iRet = m_stShm.CreateShmSegmentByKey(GenerateServerShmKey(GAME_SERVER_ACCOUNT,1), iShmSize);
     if (iRet < 0)
     {
         return -1;
     }
 
-    // ´´½¨½ÇÉ«ÏûÏ¢»º´æÇø
+    // åˆ›å»ºè§’è‰²æ¶ˆæ¯ç¼“å­˜åŒº
     CFixedHashCache<CCreateRoleRequestObj>::AllocateFromShm(m_stShm, bResume);
 
     return 0;
@@ -34,9 +34,13 @@ size_t CAccountObjectAllocator::CaculateTotalSize()
         return m_iTotalSize;
     }
 
-    // ´´½¨½ÇÉ«ÏûÏ¢»º´æÇø£¬ÒÔuin×÷Îªhash key
+    // åˆ›å»ºè§’è‰²æ¶ˆæ¯ç¼“å­˜åŒºï¼Œä»¥uinä½œä¸ºhash key
     size_t iCreateRoleRequestCacheSize = CFixedHashCache<CCreateRoleRequestObj>::CaculateSize(MAX_ROLE_OBJECT_NUMBER_IN_WORLD);
     m_iTotalSize += iCreateRoleRequestCacheSize;
 
     return m_iTotalSize;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

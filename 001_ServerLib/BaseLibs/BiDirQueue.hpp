@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file BiDirQueue.hpp
 *@author jasonxiong
 *@date 2009-12-14
 *@version 1.0
-*@brief Ë«Ïò¶ÓÁĞ
+*@brief åŒå‘é˜Ÿåˆ—
 *
 *
 */
@@ -16,21 +16,21 @@ namespace ServerLib
 
 typedef enum enmItemUseFlag
 {
-    EINF_NOT_USED = 0, //!<Item½ÚµãÎ´Ê¹ÓÃ
-    EINF_USED = 1, //!<Item½ÚµãÒÑÊ¹ÓÃ
+    EINF_NOT_USED = 0, //!<ItemèŠ‚ç‚¹æœªä½¿ç”¨
+    EINF_USED = 1, //!<ItemèŠ‚ç‚¹å·²ä½¿ç”¨
 } ENMITEMUSEFLAG;
 
 typedef struct tagBiDirQueueItem
 {
-    int m_iNextItem; //!<ÏÂÒ»¸öItemµÄË÷Òı
-    int m_iPreItem; //!<ÉÏÒ»¸öItemµÄË÷Òı
-    char m_cUseFlag; //!<½ÚµãÊÇ·ñÊ¹ÓÃ
+    int m_iNextItem; //!<ä¸‹ä¸€ä¸ªItemçš„ç´¢å¼•
+    int m_iPreItem; //!<ä¸Šä¸€ä¸ªItemçš„ç´¢å¼•
+    char m_cUseFlag; //!<èŠ‚ç‚¹æ˜¯å¦ä½¿ç”¨
 } TBiDirQueueItem;
 
 typedef enum enmBiDirQueueAllocType
 {
-    EBDT_ALLOC_BY_SELF = 0, //!<Í¨¹ı×Ô¼º¶¯Ì¬·ÖÅäÄÚ´æ
-    EBDT_ALLOC_BY_SHARED_MEMORY = 1, //!<Í¨¹ı¹²ÏíÄÚ´æ·ÖÅäÄÚ´æ
+    EBDT_ALLOC_BY_SELF = 0, //!<é€šè¿‡è‡ªå·±åŠ¨æ€åˆ†é…å†…å­˜
+    EBDT_ALLOC_BY_SHARED_MEMORY = 1, //!<é€šè¿‡å…±äº«å†…å­˜åˆ†é…å†…å­˜
 } ENMBIDIRQUEUEALLOCTYPE;
 
 class CBiDirQueue
@@ -50,10 +50,10 @@ public:
     ~CBiDirQueue();
 
     /**
-    *Í¨¹ı¹²ÏíÄÚ´æÀ´´´½¨CBiDirQueue£¨×¢ÒâÕâÑù´´½¨µÄCBiDirQueue²»»á³õÊ¼»¯ÒÔÖ§³Ö»Ö¸´Ä£Ê½£¬²»»á¸Ä±äËùÔÚ¹²ÏíÄÚ´æµÄÖµ£©
-    *@param[in] pszKeyFileName ¹²ÏíÄÚ´æAttachµÄÎÄ¼şÃû
-    *@param[in] ucKeyPrjID ¹²ÏíÄÚ´æµÄProjectID
-    *@param[in] iMaxItemCount ¶ÓÁĞÖĞ×î´óµÄItem¸öÊı
+    *é€šè¿‡å…±äº«å†…å­˜æ¥åˆ›å»ºCBiDirQueueï¼ˆæ³¨æ„è¿™æ ·åˆ›å»ºçš„CBiDirQueueä¸ä¼šåˆå§‹åŒ–ä»¥æ”¯æŒæ¢å¤æ¨¡å¼ï¼Œä¸ä¼šæ”¹å˜æ‰€åœ¨å…±äº«å†…å­˜çš„å€¼ï¼‰
+    *@param[in] pszKeyFileName å…±äº«å†…å­˜Attachçš„æ–‡ä»¶å
+    *@param[in] ucKeyPrjID å…±äº«å†…å­˜çš„ProjectID
+    *@param[in] iMaxItemCount é˜Ÿåˆ—ä¸­æœ€å¤§çš„Itemä¸ªæ•°
     *@return 0 success
     */
     static CBiDirQueue* CreateBySharedMemory(const char* pszKeyFileName,
@@ -65,56 +65,56 @@ public:
                                             const int iNodeNumber);
 
 public:
-    //!³õÊ¼»¯£¬Çå¿Õ¶ÓÁĞ
+    //!åˆå§‹åŒ–ï¼Œæ¸…ç©ºé˜Ÿåˆ—
     int Initialize();
 
-    //!»ñÈ¡¶ÓÁĞ³¤¶È
+    //!è·å–é˜Ÿåˆ—é•¿åº¦
     int GetQueueItemCount() const
     {
         return m_iCurItemCount;
     }
 
-    //!»ñÈ¡¶ÓÁĞÍ·²¿Ë÷Òı
+    //!è·å–é˜Ÿåˆ—å¤´éƒ¨ç´¢å¼•
     int	GetHeadItem() const
     {
         return m_iHeadIdx;
     }
 
-    //!»ñÈ¡¶ÓÁĞÎ²²¿Ë÷Òı
+    //!è·å–é˜Ÿåˆ—å°¾éƒ¨ç´¢å¼•
     int GetTailItem() const
     {
         return m_iTailIdx;
     }
 
-    //!É¾³ıÖ¸¶¨Item
+    //!åˆ é™¤æŒ‡å®šItem
     int	DeleteItem(int iItemIdx);
 
-    //!½«Ò»¸öItemÌí¼Óµ½Ä©Î²
+    //!å°†ä¸€ä¸ªItemæ·»åŠ åˆ°æœ«å°¾
     int	AppendItemToTail(int iItemIdx);
 
-    //!½«Ò»¸öItemÌí¼Óµ½¶ÓÊ×
+    //!å°†ä¸€ä¸ªItemæ·»åŠ åˆ°é˜Ÿé¦–
     int	InsertItemToHead(int iItemIdx);
 
-    //!»ñÈ¡¶ÓÁĞÍ·²¿Ë÷Òı£¬²¢½«ÆäÍÆ³ö¶ÓÁĞ
+    //!è·å–é˜Ÿåˆ—å¤´éƒ¨ç´¢å¼•ï¼Œå¹¶å°†å…¶æ¨å‡ºé˜Ÿåˆ—
     int	PopHeadItem();
 
-    //!»ñÈ¡¶ÓÁĞÎ²²¿Ë÷Òı£¬²¢½«ÆäÍÆ³ö¶ÓÁĞ
+    //!è·å–é˜Ÿåˆ—å°¾éƒ¨ç´¢å¼•ï¼Œå¹¶å°†å…¶æ¨å‡ºé˜Ÿåˆ—
     int PopTailItem();
 
-    //!»ñÈ¡Ö¸¶¨ItemµÄÏÂÒ»¸öItemË÷Òı£¬³É¹¦·µ»Ø0
+    //!è·å–æŒ‡å®šItemçš„ä¸‹ä¸€ä¸ªItemç´¢å¼•ï¼ŒæˆåŠŸè¿”å›0
     int	GetNextItem(int iItemIdx, int& iNextItemIdx);
 
-    //!»ñÈ¡Ö¸¶¨ItemµÄÉÏÒ»¸öItemË÷Òı£¬³É¹¦·µ»Ø0
+    //!è·å–æŒ‡å®šItemçš„ä¸Šä¸€ä¸ªItemç´¢å¼•ï¼ŒæˆåŠŸè¿”å›0
     int	GetPrevItem(int iItemIdx, int& iPrevItemIdx);
 
-    //!½«Ò»¸öItemÌí¼ÓÁíÒ»¸öItemºóÃæ
+    //!å°†ä¸€ä¸ªItemæ·»åŠ å¦ä¸€ä¸ªItemåé¢
     int	InsertItemAfter( int iItemIdx, int iPrevItemIdx);
 
-    //!½«Ò»¸öItemÌí¼ÓÁíÒ»¸öItemÇ°Ãæ
+    //!å°†ä¸€ä¸ªItemæ·»åŠ å¦ä¸€ä¸ªItemå‰é¢
     int	InsertItemBefore(int iItemIdx, int iNextItemIdx);
 
 public:
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
@@ -124,23 +124,27 @@ private:
     int	SetNextItem(int iItemIdx, int iNextItemIdx);
     int	SetPrevItem(int iItemIdx, int iPrevItemIdx);
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
 private:
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iCurItemCount; //!<¶ÓÁĞÖĞµ±Ç°µÄItem¸öÊı
-    int	m_iHeadIdx; //!<¶ÓÁĞÍ·²¿Ë÷Òı
-    int	m_iTailIdx; //!<¶ÓÁĞÎ²²¿Ë÷Òı
-    short m_shQueueAllocType; //!<¶ÓÁĞ·ÖÅäÀàĞÍ
-    int m_iMaxItemCount; //!<¶ÓÁĞÖĞ×î´óµÄItem¸öÊı
-    TBiDirQueueItem* m_astQueueItems; //!<Item¶ÓÁĞ
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iCurItemCount; //!<é˜Ÿåˆ—ä¸­å½“å‰çš„Itemä¸ªæ•°
+    int	m_iHeadIdx; //!<é˜Ÿåˆ—å¤´éƒ¨ç´¢å¼•
+    int	m_iTailIdx; //!<é˜Ÿåˆ—å°¾éƒ¨ç´¢å¼•
+    short m_shQueueAllocType; //!<é˜Ÿåˆ—åˆ†é…ç±»å‹
+    int m_iMaxItemCount; //!<é˜Ÿåˆ—ä¸­æœ€å¤§çš„Itemä¸ªæ•°
+    TBiDirQueueItem* m_astQueueItems; //!<Itemé˜Ÿåˆ—
 };
 
 }
 
 #endif //__BI_DIR_QUEUE_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

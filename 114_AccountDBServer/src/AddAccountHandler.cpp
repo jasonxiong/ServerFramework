@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 #include <string.h>
 
 #include "AppDef.hpp"
@@ -12,7 +12,7 @@
 
 using namespace ServerLib;
 
-//Éú³ÉµÄSQLÓï¾ä
+//ç”Ÿæˆçš„SQLè¯­å¥
 char CAddAccountHandler::m_szQueryString[GameConfig::ACCOUNT_TABLE_SPLIT_FACTOR][1024];
 
 CAddAccountHandler::CAddAccountHandler(DBClientWrapper* pDatabase)
@@ -28,7 +28,7 @@ void CAddAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    // Ôö¼ÓĞÂÕÊºÅ¼ÇÂ¼µÄÇëÇó
+    // å¢åŠ æ–°å¸å·è®°å½•çš„è¯·æ±‚
     m_pstRequestMsg = pstRequestMsg;
 
     switch (m_pstRequestMsg->m_stmsghead().m_uimsgid())
@@ -48,10 +48,10 @@ void CAddAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
     return;
 }
 
-//½øĞĞ±ØÒªµÄ²ÎÊı¼ì²é
+//è¿›è¡Œå¿…è¦çš„å‚æ•°æ£€æŸ¥
 int CAddAccountHandler::CheckParams()
 {
-    //¼ì²éÇëÇóµÄ²ÎÊı
+    //æ£€æŸ¥è¯·æ±‚çš„å‚æ•°
     const AccountDB_AddAccount_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_staccountdb_addaccount_request();
 
     if(rstReq.staccountid().straccount().size() == 0)
@@ -70,7 +70,7 @@ void CAddAccountHandler::OnAddAccountRequest(SHandleResult* pstHandleResult)
 		return;
 	}
 
-    pstHandleResult->iNeedResponse = true;  //ĞèÒª»Ø¸´
+    pstHandleResult->iNeedResponse = true;  //éœ€è¦å›å¤
 
     int iRet = CheckParams();
     if(iRet)
@@ -81,14 +81,14 @@ void CAddAccountHandler::OnAddAccountRequest(SHandleResult* pstHandleResult)
         return;
     }
     
-    //ÇëÇóµÄÏûÏ¢
+    //è¯·æ±‚çš„æ¶ˆæ¯
     const AccountDB_AddAccount_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_staccountdb_addaccount_request();
 
-    //Éú³ÉÏìÓ¦µÄÏûÏ¢Í·
+    //ç”Ÿæˆå“åº”çš„æ¶ˆæ¯å¤´
     const GameCSMsgHead& rstHead = m_pstRequestMsg->m_stmsghead();
     GenerateResponseMsgHead(&pstHandleResult->stResponseMsg, rstHead.m_uisessionfd(), MSGID_ACCOUNTDB_ADDACCOUNT_RESPONSE, 0);
 
-    //¼ì²éÕÊºÅÊÇ·ñ´æÔÚ
+    //æ£€æŸ¥å¸å·æ˜¯å¦å­˜åœ¨
     bool bIsExist = false;
     iRet = CheckAccountExist(rstReq.staccountid(), bIsExist);
     if(iRet)
@@ -101,14 +101,14 @@ void CAddAccountHandler::OnAddAccountRequest(SHandleResult* pstHandleResult)
 
     if(bIsExist)
     {
-        //ÕÊºÅÒÑ¾­´æÔÚ
+        //å¸å·å·²ç»å­˜åœ¨
         TRACE_THREAD(m_iThreadIdx, "Failed to add new account, already exist, ret 0x%0x\n", T_ACCOUNTDB_ACCOUNT_EXISTS);
         FillFailedResponse(T_ACCOUNTDB_ACCOUNT_EXISTS, &pstHandleResult->stResponseMsg);
 
         return;
     }
 
-    //Èç¹û²»ÊÇ°ó¶¨ÕÊºÅµÄÇëÇó£¬ÔòÉú³ÉÎ¨Ò»uin
+    //å¦‚æœä¸æ˜¯ç»‘å®šå¸å·çš„è¯·æ±‚ï¼Œåˆ™ç”Ÿæˆå”¯ä¸€uin
     unsigned int uin = rstReq.uin();
     iRet = GetAvaliableUin(uin);
     if(iRet)
@@ -119,7 +119,7 @@ void CAddAccountHandler::OnAddAccountRequest(SHandleResult* pstHandleResult)
         return;
     }
 
-    //²åÈëĞÂµÄ¼ÇÂ¼
+    //æ’å…¥æ–°çš„è®°å½•
     iRet = AddNewRecord(rstReq.staccountid(), uin, rstReq.iworldid(), rstReq.strpassword());
     if(iRet)
     {
@@ -134,10 +134,10 @@ void CAddAccountHandler::OnAddAccountRequest(SHandleResult* pstHandleResult)
     return;
 }
 
-//¼ì²éÕÊºÅÊÇ·ñ´æÔÚ
+//æ£€æŸ¥å¸å·æ˜¯å¦å­˜åœ¨
 int CAddAccountHandler::CheckAccountExist(const AccountID& stAccountID, bool& bIsExist)
 {
-    //ÉèÖÃÁ¬½ÓµÄDB
+    //è®¾ç½®è¿æ¥çš„DB
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -165,7 +165,7 @@ int CAddAccountHandler::CheckAccountExist(const AccountID& stAccountID, bool& bI
 
     if(m_pDatabase->GetNumberRows() != 0)
     {
-        //ÒÑ¾­´æÔÚ¸ÃÕÊºÅ
+        //å·²ç»å­˜åœ¨è¯¥å¸å·
         bIsExist = true;
     }
     else
@@ -176,10 +176,10 @@ int CAddAccountHandler::CheckAccountExist(const AccountID& stAccountID, bool& bI
     return T_SERVER_SUCESS;
 }
 
-//À­È¡¿ÉÓÃµÄÕÊºÅUIN
+//æ‹‰å–å¯ç”¨çš„å¸å·UIN
 int CAddAccountHandler::GetAvaliableUin(unsigned int& uin)
 {
-    //À­È¡ÕÊºÅÊı¾İ¿âµÄÅäÖÃ
+    //æ‹‰å–å¸å·æ•°æ®åº“çš„é…ç½®
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stUniqUinDBConfigManager).GetOneAccountDBInfoByIndex(0);
     if(!pstDBConfig)
     {
@@ -194,7 +194,7 @@ int CAddAccountHandler::GetAvaliableUin(unsigned int& uin)
         return iRet;
     }
 
-    //Éú³ÉSQLÓï¾ä
+    //ç”ŸæˆSQLè¯­å¥
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
     int iLength = SAFE_SPRINTF(pszQueryString, sizeof(m_szQueryString[m_iThreadIdx])-1, "insert into %s set uin=NULL", MYSQL_UNIQUININFO_TABLE);
 
@@ -217,10 +217,10 @@ int CAddAccountHandler::GetAvaliableUin(unsigned int& uin)
     return T_SERVER_SUCESS;
 }
 
-//²åÈëĞÂµÄÕÊºÅ¼ÇÂ¼
+//æ’å…¥æ–°çš„å¸å·è®°å½•
 int CAddAccountHandler::AddNewRecord(const AccountID& stAccountID, unsigned int uin, int iWorldID, const std::string& strPassword)
 {
-    //ÉèÖÃÁ¬½ÓµÄDB
+    //è®¾ç½®è¿æ¥çš„DB
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -281,3 +281,7 @@ void CAddAccountHandler::FillSuccessfulResponse(GameProtocolMsg& stResponseMsg)
 }
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

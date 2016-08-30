@@ -1,19 +1,19 @@
-#ifndef __UINPRV_MANAGER_HPP__
+ï»¿#ifndef __UINPRV_MANAGER_HPP__
 #define __UINPRV_MANAGER_HPP__
 
-// UinÈ¨ÏŞ¹ÜÀí³Ø
+// Uinæƒé™ç®¡ç†æ± 
 
 #include "SharedMemory.hpp"
 
-// È¨ÏŞĞÅÏ¢
+// æƒé™ä¿¡æ¯
 typedef struct tagUinPrivInfo
 {
-    unsigned int m_uiUin;                                    	/*   MtºÅÂë */
-    unsigned int m_uiPriv;                                   	/*   È¨ÏŞ */
+    unsigned int m_uiUin;                                    	/*   Mtå·ç  */
+    unsigned int m_uiPriv;                                   	/*   æƒé™ */
 } TUinPrivInfo;
 
-// È¨ÏŞ¹ÜÀíÀà, ¹ÜÀí¹²ÏíÄÚ´æÖĞµÄÈ¨ÏŞ¶ÔÏó
-// Í¬Ê±±»Ó¦ÓÃ³ÌĞòºÍ¸üĞÂ½ø³ÌÊ¹ÓÃ
+// æƒé™ç®¡ç†ç±», ç®¡ç†å…±äº«å†…å­˜ä¸­çš„æƒé™å¯¹è±¡
+// åŒæ—¶è¢«åº”ç”¨ç¨‹åºå’Œæ›´æ–°è¿›ç¨‹ä½¿ç”¨
 
 typedef struct tagUinPrivController
 {
@@ -25,65 +25,69 @@ class CUinPrivManager
 {
 public:
 
-    // ³õÊ¼»¯¹ÜÀí³Ø
-    //   ²ÎÊı: pszShmName ¹²ÏíÄÚ´æKey
+    // åˆå§‹åŒ–ç®¡ç†æ± 
+    //   å‚æ•°: pszShmName å…±äº«å†…å­˜Key
     int Initialize(int iUinNumber, const char* pszShmName, bool bIsUinPrivServer = false);
 
-    // ²éÑ¯Ö¸¶¨UinµÄÈ¨ÏŞĞÅÏ¢
-    //   uiUin:  ²éÑ¯Uin
-    //   bActiveCache: ²éÑ¯Ö÷±¸»º³åÇø (Ä¬ÈÏÖ÷)
-    //   ·µ»ØÖµ: 0 - ³É¹¦, ¸ºÖµÊ§°Ü
+    // æŸ¥è¯¢æŒ‡å®šUinçš„æƒé™ä¿¡æ¯
+    //   uiUin:  æŸ¥è¯¢Uin
+    //   bActiveCache: æŸ¥è¯¢ä¸»å¤‡ç¼“å†²åŒº (é»˜è®¤ä¸»)
+    //   è¿”å›å€¼: 0 - æˆåŠŸ, è´Ÿå€¼å¤±è´¥
     TUinPrivInfo* GetUinPrivInfo(unsigned int uiUin, bool bActiveCache = true);
 
-    // ´òÓ¡
+    // æ‰“å°
     void Trace();
 public:
     //////////////////////////////////////////////////////////////////////////
-    // ÒÔÏÂ½Ó¿Ú¸øServerUinPrivServerÊ¹ÓÃ
+    // ä»¥ä¸‹æ¥å£ç»™ServerUinPrivServerä½¿ç”¨
 
-    // ÇĞ»»Ö÷±¸»º³åÇø
+    // åˆ‡æ¢ä¸»å¤‡ç¼“å†²åŒº
     void SwitchActiveCache();
 
-    // Çå¿Õ±¸·İ»º³åÇø
+    // æ¸…ç©ºå¤‡ä»½ç¼“å†²åŒº
     int CleanBackupCache();
 
-    // ´´½¨¶ÔÏó
-    // bActiveCache: ÊÇ·ñÔÚÖ÷»º³åÇø´´½¨
+    // åˆ›å»ºå¯¹è±¡
+    // bActiveCache: æ˜¯å¦åœ¨ä¸»ç¼“å†²åŒºåˆ›å»º
     int InsertUinPrivInfo(const TUinPrivInfo& rstUinPrivInfo, bool bActiveCache);
 
-    // É¾³ı¶ÔÏó
-    // bActiveCache: ÊÇ·ñÔÚÖ÷»º³åÇøÉ¾³ı
+    // åˆ é™¤å¯¹è±¡
+    // bActiveCache: æ˜¯å¦åœ¨ä¸»ç¼“å†²åŒºåˆ é™¤
     int DeleteUinPrivInfo(const unsigned int uiUin, bool bActiveCache);
 
-    // Ìí¼Ó¶ÔÏó£¬ ²»ÅÅĞò
-    // bActiveCache: ÊÇ·ñÔÚÖ÷»º³åÇø´´½¨
+    // æ·»åŠ å¯¹è±¡ï¼Œ ä¸æ’åº
+    // bActiveCache: æ˜¯å¦åœ¨ä¸»ç¼“å†²åŒºåˆ›å»º
     int InsertUinPrivInfoWithoutSort(const TUinPrivInfo& rstUinPrivInfo, bool bActiveCache);
 
-    // ÅÅĞò¶ÔÏó
+    // æ’åºå¯¹è±¡
     void SortUinPrivInfo(bool bActiveCache);
 
-    // »ñÈ¡ÊıÁ¿
+    // è·å–æ•°é‡
     int GetUinPrivNumber(bool bActiveCache);
 
-    // »ñÈ¡È¨ÏŞ
+    // è·å–æƒé™
     const TUinPrivInfo* GetUinPrivInfoByIndex(int iIndex, bool bActiveCache);
 
 private:
     //////////////////////////////////////////////////////////////////////////
-    // ÄÚ²¿½Ó¿Ú
+    // å†…éƒ¨æ¥å£
     size_t GetObjTotalSize();
 
 private:
-    // ¹²ÏíÄÚ´æ
+    // å…±äº«å†…å­˜
     CSharedMemory m_stSharedMemory;
     int m_iMaxUinNumber;
     size_t m_iObjTotalSize;
 
-    // Ö÷±¸»º³åÇø¿ØÖÆÆ÷
+    // ä¸»å¤‡ç¼“å†²åŒºæ§åˆ¶å™¨
     TUinPrivController m_astUinPrivControllers[2];
 
-    // Ö÷±¸±êÊ¶
+    // ä¸»å¤‡æ ‡è¯†
     int* m_piActiveController;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

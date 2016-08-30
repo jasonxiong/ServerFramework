@@ -1,4 +1,4 @@
-#ifndef __WORLD_NAME_HANDLER_HPP__
+ï»¿#ifndef __WORLD_NAME_HANDLER_HPP__
 #define __WORLD_NAME_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -16,15 +16,15 @@ public:
 
 private:
 
-    //²åÈëĞÂÃû×ÖµÄÇëÇó
+    //æ’å…¥æ–°åå­—çš„è¯·æ±‚
 	int OnRequestAddNewName();
 
-    //²åÈëĞÂÃû×ÖµÄ·µ»Ø
+    //æ’å…¥æ–°åå­—çš„è¿”å›
     int OnResponseAddNewName();
 
     int SendAddNewNameResponseToAccount(const std::string& strName, unsigned int uiUin, int iResult, int iType);
 
-    //É¾³ıÃû×ÖµÄÇëÇó´¦Àí
+    //åˆ é™¤åå­—çš„è¯·æ±‚å¤„ç†
     int OnRequestDeleteName();
 
 private:
@@ -36,3 +36,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

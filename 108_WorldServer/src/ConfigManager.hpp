@@ -1,4 +1,4 @@
-#ifndef __CONIFG_MANAGER_HPP__
+ï»¿#ifndef __CONIFG_MANAGER_HPP__
 #define __CONIFG_MANAGER_HPP__
 
 #include "TemplateConfigManager.hpp"
@@ -15,15 +15,15 @@ typedef struct
 {
     unsigned short m_ushLen;
 
-    // ±£´æÍøÍ¨ºÍµçĞÅ2¸öIPĞÅÏ¢
+    // ä¿å­˜ç½‘é€šå’Œç”µä¿¡2ä¸ªIPä¿¡æ¯
     TZoneConf m_astZoneConf[MAX_ZONE_PER_WORLD*2];
 } TZoneConfList;
 
-//½ÇÉ«³öÉú±íµÄÅäÖÃ
+//è§’è‰²å‡ºç”Ÿè¡¨çš„é…ç½®
 extern const char GAME_ROLE_BIRTH_CONFIG_FILE[];
 typedef CTemplateConfigManager<SRoleBirthConfig, MAX_ROLE_BIRTH_NUM, GAME_ROLE_BIRTH_CONFIG_FILE> CSRoleBirthConfigManager;
 
-//Õ½¶·µ¥Î»ÅäÖÃ¹ÜÀíÆ÷
+//æˆ˜æ–—å•ä½é…ç½®ç®¡ç†å™¨
 extern const char GAME_FIGHT_UNIT_CONFIG_FILE[];
 typedef CTemplateConfigManager<SFightUnitConfig, MAX_FIGHT_UNIT_NUM, GAME_FIGHT_UNIT_CONFIG_FILE> CSFightUnitConfigManager;
 
@@ -32,10 +32,10 @@ class CConfigManager
 public:
     int Initialize(bool bResume);
 
-    //½ÇÉ«³öÉú±íÅäÖÃ
+    //è§’è‰²å‡ºç”Ÿè¡¨é…ç½®
     CSRoleBirthConfigManager& GetBirthConfigManager() { return m_stBirthConfigManager; };
 
-    //Íæ¼ÒÕ½¶·µ¥Î»±íÅäÖÃ
+    //ç©å®¶æˆ˜æ–—å•ä½è¡¨é…ç½®
     CSFightUnitConfigManager& GetFightUnitConfigManager() { return m_stFightUnitConfigManager; };
 
     int LoadZoneConf(const char* pszConfFile);
@@ -47,11 +47,15 @@ public:
 private:
     TZoneConfList m_stZoneConfList;
 
-    //½ÇÉ«³öÉú±íÅäÖÃ
+    //è§’è‰²å‡ºç”Ÿè¡¨é…ç½®
     CSRoleBirthConfigManager m_stBirthConfigManager;
 
-    //Íæ¼ÒÕ½¶·µ¥Î»±íÅäÖÃ
+    //ç©å®¶æˆ˜æ–—å•ä½è¡¨é…ç½®
     CSFightUnitConfigManager m_stFightUnitConfigManager;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

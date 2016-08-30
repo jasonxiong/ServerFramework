@@ -1,4 +1,4 @@
-#ifndef __HANDLER_HPP__
+ï»¿#ifndef __HANDLER_HPP__
 #define __HANDLER_HPP__
 
 #include "CodeQueue.hpp"
@@ -9,7 +9,7 @@
 
 using namespace ServerLib;
 
-// ÏûÏ¢´¦ÀíÕß³éÏóÀà
+// æ¶ˆæ¯å¤„ç†è€…æŠ½è±¡ç±»
 class IHandler
 {
 protected:
@@ -18,9 +18,9 @@ protected:
 public:
     virtual ~IHandler() {}
 
-    // ÏûÏ¢´¦Àí½Ó¿Ú¡£
-    // ³ıÁË¸úLotusServer½»»¥Ö®Íâ£¬ÆäËûµÄServer½»»¥²»ĞèÒªpstNetHead²ÎÊı
-    // Èç¹ûÔÚÏûÏ¢´¦ÀíÖĞ×ª·¢ÏûÏ¢£¬Ôò²»Ê¹ÓÃpstHandleResult²ÎÊı£¬ÖÃÎªNULL¼´¿É
+    // æ¶ˆæ¯å¤„ç†æ¥å£ã€‚
+    // é™¤äº†è·ŸLotusServeräº¤äº’ä¹‹å¤–ï¼Œå…¶ä»–çš„Serveräº¤äº’ä¸éœ€è¦pstNetHeadå‚æ•°
+    // å¦‚æœåœ¨æ¶ˆæ¯å¤„ç†ä¸­è½¬å‘æ¶ˆæ¯ï¼Œåˆ™ä¸ä½¿ç”¨pstHandleResultå‚æ•°ï¼Œç½®ä¸ºNULLå³å¯
     virtual void OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg,
                              SHandleResult* pstResult) = 0;
 protected:
@@ -36,3 +36,7 @@ protected:
 
 #endif // __HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

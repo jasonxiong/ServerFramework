@@ -1,23 +1,23 @@
-#ifndef __REGISTER_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __REGISTER_ACCOUNT_HANDLER_HPP__
 #define __REGISTER_ACCOUNT_HANDLER_HPP__
 
 #include "Handler.hpp"
 
 class CRegAuthHandlerSet;
 
-// ´¦ÀíÀ´×ÔLotusServerµÄ MSGID_REGAUTH_REGACCOUNT_REQUEST ÏûÏ¢
+// å¤„ç†æ¥è‡ªLotusServerçš„ MSGID_REGAUTH_REGACCOUNT_REQUEST æ¶ˆæ¯
 class CRegisterAccountHandler : public IHandler
 {
 private:
-    TNetHead_V2* m_pstNetHead;  // ¿Í»§Á¬½Ó
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    TNetHead_V2* m_pstNetHead;  // å®¢æˆ·è¿æ¥
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRegAuthHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRegAuthHandlerSetç±»ä¸­åˆ›å»º
     friend class CRegAuthHandlerSet;
     CRegisterAccountHandler();
 
@@ -37,3 +37,7 @@ private:
 
 #endif // __CREATE_ROLE_REQUEST_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

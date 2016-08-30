@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include <assert.h>
 
 #include "WorldObjectHelperW_K64.hpp"
@@ -26,7 +26,7 @@ int CWorldRoleStatusWObj::Initialize()
 
 void CWorldRoleStatusWObj::SetRoleInfo(const GameUserInfo& rstRoleInfo)
 {
-	//ÉèÖÃÍæ¼ÒµÄ½ÇÉ«Êı¾İĞÅÏ¢
+	//è®¾ç½®ç©å®¶çš„è§’è‰²æ•°æ®ä¿¡æ¯
 	m_stUserInfo.CopyFrom(rstRoleInfo);
 }
 
@@ -54,3 +54,7 @@ const RoleID& CWorldRoleStatusWObj::GetRoleID()
 {
     return m_stRoleID;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

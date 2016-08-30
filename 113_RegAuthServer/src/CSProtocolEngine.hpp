@@ -1,4 +1,4 @@
-#ifndef __CS_PROTOCOL_ENGINE_HPP__
+ï»¿#ifndef __CS_PROTOCOL_ENGINE_HPP__
 #define __CS_PROTOCOL_ENGINE_HPP__
 
 #include "SingletonTemplate.hpp"
@@ -6,11 +6,11 @@
 
 using namespace ServerLib;
 
-// LotusServerÓëÆäËûµÄºóÌ¨ServerÖ®¼äµÄĞ­Òé½âÎö£¬°üº¬TNetHead_V2½á¹¹µÄ½âÎö
+// LotusServerä¸å…¶ä»–çš„åå°Serverä¹‹é—´çš„åè®®è§£æï¼ŒåŒ…å«TNetHead_V2ç»“æ„çš„è§£æ
 class C2SProtocolEngine : public IProtocolEngine
 {
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCSingleton<C2SProtocolEngine>ÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CSingleton<C2SProtocolEngine>ç±»ä¸­åˆ›å»º
     friend class CSingleton<C2SProtocolEngine>;
     C2SProtocolEngine() {}
 
@@ -24,3 +24,7 @@ public:
 
 #endif // __CS_PROTOCOL_ENGINE_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

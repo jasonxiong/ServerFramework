@@ -1,4 +1,4 @@
-#ifndef __CONFIG_HELPER_HPP__
+ï»¿#ifndef __CONFIG_HELPER_HPP__
 #define __CONFIG_HELPER_HPP__
 
 #include <typeinfo>
@@ -16,7 +16,7 @@ extern int GAME_GET_ZONE_ID(uint64_t busid);
 extern int GAME_GET_FUNC_ID(uint64_t busid);
 extern int GAME_GET_INST_ID(uint64_t busid);
 
-// Server·şÎñÆ÷ID, µÈÍ¬ÓÚTCMµÄFuncitionID
+// ServeræœåŠ¡å™¨ID, ç­‰åŒäºTCMçš„FuncitionID
 typedef enum enGameServerID
 {
     GAME_SERVER_UNDEFINE        = -1,
@@ -47,31 +47,31 @@ typedef enum enGameServerID
 
 typedef enum enServerStatus
 {
-    // Õı³£Æô¶¯ÖĞ
-    // 1) ZoneÏòWorld·¢ËÍÆô¶¯ÏûÏ¢
-    // 2) WorldÏòCluster·¢ËÍÆô¶¯ÏûÏ¢
+    // æ­£å¸¸å¯åŠ¨ä¸­
+    // 1) Zoneå‘Worldå‘é€å¯åŠ¨æ¶ˆæ¯
+    // 2) Worldå‘Clusterå‘é€å¯åŠ¨æ¶ˆæ¯
     GAME_SERVER_STATUS_INIT    = 1,
 
-    // »Ö¸´Æô¶¯ÖĞ
+    // æ¢å¤å¯åŠ¨ä¸­
     GAME_SERVER_STATUS_RESUME  = 2,
 
-    // ¿ÕÏĞÔËĞĞÖĞ
+    // ç©ºé—²è¿è¡Œä¸­
     GAME_SERVER_STATUS_IDLE    = 3,
 
-    // Ã¦ÔËĞĞÖĞ
+    // å¿™è¿è¡Œä¸­
     GAME_SERVER_STATUS_BUSY    = 4,
 
-    // ×¼±¸Í£Ö¹
-    // 1) Í¨Öª¿Í»§¶Ë×¼±¸Í£·şÏÂÏß
-    // 2) ¿ªÊ¼½øÈëSTOP×´Ì¬µ¹¼ÆÊ±
+    // å‡†å¤‡åœæ­¢
+    // 1) é€šçŸ¥å®¢æˆ·ç«¯å‡†å¤‡åœæœä¸‹çº¿
+    // 2) å¼€å§‹è¿›å…¥STOPçŠ¶æ€å€’è®¡æ—¶
     GAME_SERVER_STATUS_PRESTOP = 5,
 
-    // Í£Ö¹ÖĞ
-    // 1) Í¨ÖªLotusÍ£Ö¹ËùÓĞµÄÊäÈë½ÓÊÕ
-    // 2) ´¦ÀíËùÓĞµÄLotusÊı¾İ
-    // 3) ´¦ÀíËùÓĞµÄTBusÊı¾İ
-    // 4) ½«ËùÓĞÔÚÏßÍæ¼ÒÌßÏÂÏß, ²¢Í¨ÖªLotus¶Ï¿ªÁ¬½Ó
-    // 5) Í£Ö¹LotusºÍZone·şÎñÆ÷
+    // åœæ­¢ä¸­
+    // 1) é€šçŸ¥Lotusåœæ­¢æ‰€æœ‰çš„è¾“å…¥æ¥æ”¶
+    // 2) å¤„ç†æ‰€æœ‰çš„Lotusæ•°æ®
+    // 3) å¤„ç†æ‰€æœ‰çš„TBusæ•°æ®
+    // 4) å°†æ‰€æœ‰åœ¨çº¿ç©å®¶è¸¢ä¸‹çº¿, å¹¶é€šçŸ¥Lotusæ–­å¼€è¿æ¥
+    // 5) åœæ­¢Lotuså’ŒZoneæœåŠ¡å™¨
     GAME_SERVER_STATUS_STOP    = 6,
 
 } EGameServerStatus;
@@ -89,9 +89,9 @@ inline EGameServerStatus GetServerStatus()
     return g_enServerStatus;
 }
 
-// Éú³ÉµÄServerID: world:16.zone:16.function:16.instance:16
-// °´ÕÕTCM¹æ·¶, Ä¬ÈÏinstance´Ó1¿ªÊ¼
-// ZoneIDÎª0, ±íÊ¾ÊôÓÚÕû¸öworldµÄ·şÎñÆ÷
+// ç”Ÿæˆçš„ServerID: world:16.zone:16.function:16.instance:16
+// æŒ‰ç…§TCMè§„èŒƒ, é»˜è®¤instanceä»1å¼€å§‹
+// ZoneIDä¸º0, è¡¨ç¤ºå±äºæ•´ä¸ªworldçš„æœåŠ¡å™¨
 inline uint64_t GetServerBusID(short iWorldID, EGameServerID enServerID, short iInstance = 1, short iZoneID = 0)
 {
     uint64_t ullBusID = ((uint64_t)iWorldID) << 48;
@@ -103,17 +103,17 @@ inline uint64_t GetServerBusID(short iWorldID, EGameServerID enServerID, short i
     return ullBusID;
 };
 
-//todo jasonxiong Õâ¸öº¯ÊıÔÚÃ¿¸ö·şÎñÆ÷ÀïÃæ¶¼ÒªÖØĞÂ¶¨ÒåµÄ,ĞèÒªÊ¹ÓÃÅäÖÃ
+//todo jasonxiong è¿™ä¸ªå‡½æ•°åœ¨æ¯ä¸ªæœåŠ¡å™¨é‡Œé¢éƒ½è¦é‡æ–°å®šä¹‰çš„,éœ€è¦ä½¿ç”¨é…ç½®
 const char* GetZmqBusAddress(uint64_t ullClientBusID, uint64_t ullServerBusID);
 
-// »ñÈ¡×ÊÔ´Â·¾¶
+// è·å–èµ„æºè·¯å¾„
 extern int GetCommonResourcePath(char* pszPathBuffer, const int iPathLen, const char* pszResName);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ¾²Ì¬ÄÚ´æ¶ÔÏóÊ¹ÓÃÅäÖÃ
+// é™æ€å†…å­˜å¯¹è±¡ä½¿ç”¨é…ç½®
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ¶¯Ì¬ÄÚ´æ¶ÔÏóÊ¹ÓÃÅäÖÃ
+// åŠ¨æ€å†…å­˜å¯¹è±¡ä½¿ç”¨é…ç½®
 
 #ifdef _DEBUG_
 
@@ -121,22 +121,22 @@ extern int GetCommonResourcePath(char* pszPathBuffer, const int iPathLen, const 
 // Zone
 /////////////////////////////////////////
 
-// µ¥Î»ID
+// å•ä½ID
 const int MAX_UNIT_NUMBER_IN_ZONE = 10000;
 
-// ½ÇÉ«¶ÔÏó
+// è§’è‰²å¯¹è±¡
 const int MAX_ROLE_OBJECT_NUMBER_IN_ZONE = 100;
 
-//ÓÎÏ·ÄÚÕ½¶·µ¥Î»¶ÔÏó
+//æ¸¸æˆå†…æˆ˜æ–—å•ä½å¯¹è±¡
 const int MAX_FIGHT_UNIT_NUMBER_IN_ZONE = 100 * MAX_UNIT_NUMBER_IN_ZONE;
 
-//ÓÎÏ·Õ½¶·Õ½³¡¶ÔÏó
+//æ¸¸æˆæˆ˜æ–—æˆ˜åœºå¯¹è±¡
 const int MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE = MAX_ROLE_OBJECT_NUMBER_IN_ZONE;
 
-//ÓÎÏ·Õ½¶·Ê±¶¯Ì¬Õ½¶·µ¥Î»¶ÔÏó
+//æ¸¸æˆæˆ˜æ–—æ—¶åŠ¨æ€æˆ˜æ–—å•ä½å¯¹è±¡
 const int MAX_COMBAT_UNIT_OBJECT_NUMBER_IN_ZONE = MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE * 10;
 
-//ÓÎÏ·Õ½¶·Ê±Buff¶ÔÏó
+//æ¸¸æˆæˆ˜æ–—æ—¶Buffå¯¹è±¡
 const int MAX_COMBAT_BUFF_OBJECT_NUMBER_IN_ZONE = MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE * 15;
 
 const int MAX_COMBAT_TRAP_OBJECT_NUMBER_IN_ZONE = MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE * 8;
@@ -147,15 +147,15 @@ const int MAX_COMBAT_TRAP_OBJECT_NUMBER_IN_ZONE = MAX_BATTLEFIELD_OBJECT_NUMBER_
 const int MAX_REGISTER_ROLE_NUMBER_PER_WORLD = 10000;
 
 /////////////////////////////////////////
-//Ö÷HashMap½Úµã´óĞ¡
+//ä¸»HashMapèŠ‚ç‚¹å¤§å°
 const int MAX_ROLE_NAME_NUMBER = 10000;
 const int MAX_GUILD_NAME_NUMBER = 10000;
-//Ô¤»º³å½Úµã´óĞ¡
+//é¢„ç¼“å†²èŠ‚ç‚¹å¤§å°
 const int MAX_PRE_CACHE_SIZE = 10000;
-//±¸·İ»º³å½Úµã´óĞ¡
+//å¤‡ä»½ç¼“å†²èŠ‚ç‚¹å¤§å°
 const int MAX_ROLE_BACKUP_CACHE_SIZE = 10000;
 const int MAX_GUILD_BACKUP_CACHE_SIZE = 100;
-//É¾³ı»º³å½Úµã´óĞ¡
+//åˆ é™¤ç¼“å†²èŠ‚ç‚¹å¤§å°
 const int MAX_ROLE_DELETE_CACHE_SIZE = 10000;
 const int MAX_GUILD_DELETE_CACHE_SIZE = 100;
 
@@ -177,22 +177,22 @@ const int MAX_ACCOUNT_OBJ_CACHE_NUMBER = 1000;
 // Zone
 /////////////////////////////////////////
 
-// ½ÇÉ«¶ÔÏó
+// è§’è‰²å¯¹è±¡
 const int MAX_ROLE_OBJECT_NUMBER_IN_ZONE = 4000;
 
-// µ¥Î»ID
+// å•ä½ID
 const int MAX_UNIT_NUMBER_IN_ZONE = (MAX_ROLE_OBJECT_NUMBER_IN_ZONE) * 2;
 
-//ÓÎÏ·ÄÚÕ½¶·µ¥Î»¶ÔÏó
+//æ¸¸æˆå†…æˆ˜æ–—å•ä½å¯¹è±¡
 const int MAX_FIGHT_UNIT_NUMBER_IN_ZONE = 100 * MAX_UNIT_NUMBER_IN_ZONE;
 
-//ÓÎÏ·Õ½¶·Õ½³¡¶ÔÏó
+//æ¸¸æˆæˆ˜æ–—æˆ˜åœºå¯¹è±¡
 const int MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE = MAX_ROLE_OBJECT_NUMBER_IN_ZONE;
 
-//ÓÎÏ·Õ½¶·Ê±¶¯Ì¬Õ½¶·µ¥Î»¶ÔÏó
+//æ¸¸æˆæˆ˜æ–—æ—¶åŠ¨æ€æˆ˜æ–—å•ä½å¯¹è±¡
 const int MAX_COMBAT_UNIT_OBJECT_NUMBER_IN_ZONE = MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE * 10;
 
-//ÓÎÏ·Õ½¶·Ê±Buff¶ÔÏó
+//æ¸¸æˆæˆ˜æ–—æ—¶Buffå¯¹è±¡
 const int MAX_COMBAT_BUFF_OBJECT_NUMBER_IN_ZONE = MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE * 15;
 
 const int MAX_COMBAT_TRAP_OBJECT_NUMBER_IN_ZONE = MAX_BATTLEFIELD_OBJECT_NUMBER_IN_ZONE * 8;
@@ -213,18 +213,18 @@ const int MAX_ROLE_GUILD_MAPPING_NUMBER = 250000;
 //////////////////////////////////////////
 // Name
 ///////////////////////////////////////
-//Ö÷HashMap½Úµã´óĞ¡
+//ä¸»HashMapèŠ‚ç‚¹å¤§å°
 const int MAX_ROLE_NAME_NUMBER = 100000;
 const int MAX_GUILD_NAME_NUMBER = 5000;
 
-//Ô¤»º³å½Úµã´óĞ¡
+//é¢„ç¼“å†²èŠ‚ç‚¹å¤§å°
 const int MAX_PRE_CACHE_SIZE = 10000;
 
-//±¸·İ»º³å½Úµã´óĞ¡
+//å¤‡ä»½ç¼“å†²èŠ‚ç‚¹å¤§å°
 const int MAX_ROLE_BACKUP_CACHE_SIZE = 10000;
 const int MAX_GUILD_BACKUP_CACHE_SIZE = 5000;
 
-//É¾³ı»º³å½Úµã´óĞ¡
+//åˆ é™¤ç¼“å†²èŠ‚ç‚¹å¤§å°
 const int MAX_ROLE_DELETE_CACHE_SIZE = 10000;
 const int MAX_GUILD_DELETE_CACHE_SIZE = 5000;
 
@@ -244,10 +244,10 @@ const int MAX_ACCOUNT_OBJ_CACHE_NUMBER = 1000000;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// ÄÚ²¿ÕÊºÅ
+// å†…éƒ¨å¸å·
 const unsigned int MAX_TEST_UIN = 10000;
 
-// ZoneÎ¬»¤ £º½ÇÉ«Êı¾İÖØÊÔĞ´Êı¾İ¿âÊ±¼ä¼ä¸ô£¨Ãë£©
+// Zoneç»´æŠ¤ ï¼šè§’è‰²æ•°æ®é‡è¯•å†™æ•°æ®åº“æ—¶é—´é—´éš”ï¼ˆç§’ï¼‰
 const int ROLEDATA_REWRITE_SECONDS = 10;
 
 #ifdef _DEBUG_
@@ -275,10 +275,10 @@ int LoadTemplateCfg(const char * pCfgFilePath, T (&astTArrar)[N], int *piNum, bo
     *piNum = 0;
     memset(astTArrar, 0, sizeof(astTArrar));
 
-    // ¼ÓÔØÅäÖÃĞÅÏ¢
+    // åŠ è½½é…ç½®ä¿¡æ¯
     GetCommonResourcePath(szResPath, sizeof(szResPath), pCfgFilePath);
 
-    //´ò¿ªÅäÖÃÎÄ¼ş
+    //æ‰“å¼€é…ç½®æ–‡ä»¶
     FILE* pFile = fopen(szResPath, "rb");
     if(!pFile)
     {
@@ -286,15 +286,15 @@ int LoadTemplateCfg(const char * pCfgFilePath, T (&astTArrar)[N], int *piNum, bo
         return -1;
     }
 
-    fseek(pFile, 0L, SEEK_END);     //¶¨Î»µ½ÎÄ¼şÄ©Î²
-    int iFileLen = ftell(pFile);    //»ñÈ¡ÎÄ¼ş´óĞ¡
-    fseek(pFile, 0L, SEEK_SET);     //¶¨Î»µ½ÎÄ¼şÍ·
+    fseek(pFile, 0L, SEEK_END);     //å®šä½åˆ°æ–‡ä»¶æœ«å°¾
+    int iFileLen = ftell(pFile);    //è·å–æ–‡ä»¶å¤§å°
+    fseek(pFile, 0L, SEEK_SET);     //å®šä½åˆ°æ–‡ä»¶å¤´
 
     char* pBuffer = (char*)malloc(iFileLen+1);
     fread(pBuffer, iFileLen, 1, pFile);
     pBuffer[iFileLen] = '\0';
 
-    //ÏÈ½âÎöÍ·
+    //å…ˆè§£æå¤´
     TRESHEAD* pstHead = (TRESHEAD*)pBuffer;
     if(pstHead->iUnit > (int)sizeof(T))
     {
@@ -304,7 +304,7 @@ int LoadTemplateCfg(const char * pCfgFilePath, T (&astTArrar)[N], int *piNum, bo
         return -2;
     }
 
-    //ÅĞ¶ÏÅäÖÃµ¥ÔªµÄ¸öÊıÊÇ·ñÒÑ¾­³¬³ö³ÌĞòÉèÖÃµÄ¸öÊı
+    //åˆ¤æ–­é…ç½®å•å…ƒçš„ä¸ªæ•°æ˜¯å¦å·²ç»è¶…å‡ºç¨‹åºè®¾ç½®çš„ä¸ªæ•°
     if (pstHead->iCount > N)
     {
         TRACESVR("Too many Configs: %d:%d\n", pstHead->iCount, N);
@@ -314,7 +314,7 @@ int LoadTemplateCfg(const char * pCfgFilePath, T (&astTArrar)[N], int *piNum, bo
         return -5;
     }
     
-    char* pszResUnit = pBuffer + 136;   //Í·µÄ³¤¶È¹Ì¶¨Îª136¸ö×Ö½Ú
+    char* pszResUnit = pBuffer + 136;   //å¤´çš„é•¿åº¦å›ºå®šä¸º136ä¸ªå­—èŠ‚
 
     memcpy((void*)astTArrar, (void*)pszResUnit, pstHead->iCount*sizeof(T));
 
@@ -336,3 +336,7 @@ int LoadTemplateCfg(const char * pCfgFilePath, T (&astTArrar)[N], int *piNum, bo
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

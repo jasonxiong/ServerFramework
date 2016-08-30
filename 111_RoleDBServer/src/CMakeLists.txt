@@ -1,4 +1,4 @@
-
+﻿
 file(GLOB SRC_FILES *.hpp *.h *.cpp *.cxx *.c )
 
 add_executable(${ROLEDB_SVR_EXE} ${SRC_FILES})
@@ -8,3 +8,7 @@ target_link_libraries(${ROLEDB_SVR_EXE} ${ALL_LAS} ${MYSQLCLIENT_LIB}
 	${PUGIXML_LIB})
 
 install(TARGETS ${ROLEDB_SVR_EXE} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

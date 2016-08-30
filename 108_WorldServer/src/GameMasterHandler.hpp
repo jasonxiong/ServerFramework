@@ -1,4 +1,4 @@
-
+﻿
 #ifndef __GAMEMASTER_HANDLER_HPP__
 #define __GAMEMASTER_HANDLER_HPP__
 
@@ -29,3 +29,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

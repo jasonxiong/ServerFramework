@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file SymmetryEncryption.hpp
 *@author jasonxiong
 *@date 2009-12-04
 *@version 1.0
-*@brief ¶Ô³Æ¼ÓÃÜ
+*@brief å¯¹ç§°åŠ å¯†
 *
 *
 */
@@ -16,8 +16,8 @@ namespace ServerLib
 
 typedef enum enmSymmetryEncryptionAlgorithm
 {
-    ESEA_NO_ENCRYPT = 0, //!<Ö±½Ó¿½±´£¬²»¼ÓÃÜ
-    ESEA_OI_SYMMETRY_ENCRYPT = 1, //!<Ê¹ÓÃOI¿âµÄ¶Ô³Æ¼ÓÃÜ
+    ESEA_NO_ENCRYPT = 0, //!<ç›´æŽ¥æ‹·è´ï¼Œä¸åŠ å¯†
+    ESEA_OI_SYMMETRY_ENCRYPT = 1, //!<ä½¿ç”¨OIåº“çš„å¯¹ç§°åŠ å¯†
 } ENMSYMMETRYENCRYPTIONALGORITHM;
 
 class CSymmetryEncryption
@@ -28,14 +28,14 @@ public:
 
 public:
     /**
-    *¶Ô³Æ¼ÓÃÜµÄ¼ÓÃÜº¯Êý
-    *@param[in] nAlgorithm ¼ÓÃÜËã·¨
-    *@param[in] pbyKey ¶Ô³ÆÃÜÔ¿
-    *@param[in] pbyIn Ã÷ÎÄ
-    *@param[in] nInLength Ã÷ÎÄ³¤¶È
-    *@param[in] pnOutLength ÃÜÎÄ×î´ó³¤¶È
-    *@param[out] pbyOut ÃÜÎÄ
-    *@param[out] pnOutLength ÃÜÎÄÊµ¼Ê³¤¶È
+    *å¯¹ç§°åŠ å¯†çš„åŠ å¯†å‡½æ•°
+    *@param[in] nAlgorithm åŠ å¯†ç®—æ³•
+    *@param[in] pbyKey å¯¹ç§°å¯†é’¥
+    *@param[in] pbyIn æ˜Žæ–‡
+    *@param[in] nInLength æ˜Žæ–‡é•¿åº¦
+    *@param[in] pnOutLength å¯†æ–‡æœ€å¤§é•¿åº¦
+    *@param[out] pbyOut å¯†æ–‡
+    *@param[out] pnOutLength å¯†æ–‡å®žé™…é•¿åº¦
     *@return 0 success
     */
     static int EncryptData(short nAlgorithm, const unsigned char *pbyKey,
@@ -43,14 +43,14 @@ public:
                            unsigned char *pbyOut, short *pnOutLength);
 
     /**
-    *¶Ô³Æ¼ÓÃÜµÄ½âÃÜº¯Êý
-    *@param[in] nAlgorithm ¼ÓÃÜËã·¨
-    *@param[in] pbyKey ¶Ô³ÆÃÜÔ¿
-    *@param[in] pbyIn ÃÜÎÄ
-    *@param[in] nInLength ÃÜÎÄ³¤¶È
-    *@param[in] pnOutLength Ã÷ÎÄ×î´ó³¤¶È
-    *@param[out] pbyOut Ã÷ÎÄ
-    *@param[out] pnOutLength Ã÷ÎÄÊµ¼Ê³¤¶È
+    *å¯¹ç§°åŠ å¯†çš„è§£å¯†å‡½æ•°
+    *@param[in] nAlgorithm åŠ å¯†ç®—æ³•
+    *@param[in] pbyKey å¯¹ç§°å¯†é’¥
+    *@param[in] pbyIn å¯†æ–‡
+    *@param[in] nInLength å¯†æ–‡é•¿åº¦
+    *@param[in] pnOutLength æ˜Žæ–‡æœ€å¤§é•¿åº¦
+    *@param[out] pbyOut æ˜Žæ–‡
+    *@param[out] pnOutLength æ˜Žæ–‡å®žé™…é•¿åº¦
     *@return 0 success
     */
     static int DecryptData(short nAlgorithm, const unsigned char *pbyKey,
@@ -62,3 +62,7 @@ public:
 
 #endif //__SYMMETRY_ENCRYPTION_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

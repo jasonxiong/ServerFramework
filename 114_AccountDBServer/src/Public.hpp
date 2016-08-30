@@ -1,4 +1,4 @@
-#ifndef __PUBLIC_HPP__
+ï»¿#ifndef __PUBLIC_HPP__
 #define __PUBLIC_HPP__
 
 #include "GameProtocol.hpp"
@@ -6,26 +6,30 @@
 
 typedef struct
 {
-    GameProtocolMsg stResponseMsg; // ÏìÓ¦ÏûÏ¢
-    int iNeedResponse;       // ÊÇ·ñĞèÒª»Ø¸´£º1±íÊ¾ĞèÒª»Ø¸´£¬0±íÊ¾²»ĞèÒª»Ø¸´
+    GameProtocolMsg stResponseMsg; // å“åº”æ¶ˆæ¯
+    int iNeedResponse;       // æ˜¯å¦éœ€è¦å›å¤ï¼š1è¡¨ç¤ºéœ€è¦å›å¤ï¼Œ0è¡¨ç¤ºä¸éœ€è¦å›å¤
 } SHandleResult;
 
 const int NETHEAD_V2_SIZE = 24;
 
 typedef struct tagNetHead_V2
 {
-    unsigned int    m_uiSocketFD; //!<Ì×½Ó×Ö
-    unsigned int    m_uiSocketTime;    //!<Ì×½Ó×Ö´´½¨Ê±¿Ì
-    unsigned int    m_uiSrcIP; //!<Ô´µØÖ·
-    unsigned short  m_ushSrcPort; //!<Ô´¶Ë¿Ú
-    unsigned short  m_ushReservedValue01; //!<×Ö½Ú¶ÔÆë£¬Î´ÓÃ
-    unsigned int    m_uiCodeTime; //!<ÏûÏ¢Ê±¿Ì
-    unsigned int    m_uiCodeFlag; //!<ÏûÏ¢±êÖ¾£¬ÓÃÓÚÊµÏÖÌ×½Ó×Ö¿ØÖÆ
+    unsigned int    m_uiSocketFD; //!<å¥—æ¥å­—
+    unsigned int    m_uiSocketTime;    //!<å¥—æ¥å­—åˆ›å»ºæ—¶åˆ»
+    unsigned int    m_uiSrcIP; //!<æºåœ°å€
+    unsigned short  m_ushSrcPort; //!<æºç«¯å£
+    unsigned short  m_ushReservedValue01; //!<å­—èŠ‚å¯¹é½ï¼Œæœªç”¨
+    unsigned int    m_uiCodeTime; //!<æ¶ˆæ¯æ—¶åˆ»
+    unsigned int    m_uiCodeFlag; //!<æ¶ˆæ¯æ ‡å¿—ï¼Œç”¨äºå®ç°å¥—æ¥å­—æ§åˆ¶
 } TNetHead_V2;
 
 const int MAX_MSGBUFFER_SIZE = 204800;
 
-const int MAX_PATH_LEN = 256;      // ¾ø¶ÔÂ·¾¶µÄ×î´ó³¤¶È
-const int MAX_SHELL_CMD_LEN = 512; // shellÃüÁîµÄ×î´ó³¤¶È
+const int MAX_PATH_LEN = 256;      // ç»å¯¹è·¯å¾„çš„æœ€å¤§é•¿åº¦
+const int MAX_SHELL_CMD_LEN = 512; // shellå‘½ä»¤çš„æœ€å¤§é•¿åº¦
 
 #endif // __PUBLIC_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

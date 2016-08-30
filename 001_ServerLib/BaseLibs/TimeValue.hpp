@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file TimeValue.hpp
 *@author jasonxiong
 *@date 2009-11-24
 *@version 1.0
-*@brief ÓÃÓÚ·½±ã¼ÆËãtimevalÖµµÄÀà
+*@brief ç”¨äºæ–¹ä¾¿è®¡ç®—timevalå€¼çš„ç±»
 *
-*	Ö±½ÓÊ¹ÓÃÊıÑ§ÔËËã·ûÀ´¶ÔÊ±¼ä½øĞĞ¼ÆËã
+*	ç›´æ¥ä½¿ç”¨æ•°å­¦è¿ç®—ç¬¦æ¥å¯¹æ—¶é—´è¿›è¡Œè®¡ç®—
 */
 
 #ifndef __TIME_VALUE_HPP__
@@ -26,7 +26,7 @@ public:
     ~CTimeValue();
 
 public:
-    //!ÒÔÏÂÖØÔØµÄÔËËã·ûÓÃÓÚtimevalµÄ¼ÆËã
+    //!ä»¥ä¸‹é‡è½½çš„è¿ç®—ç¬¦ç”¨äºtimevalçš„è®¡ç®—
     CTimeValue& operator=(const CTimeValue& rstTime);
     CTimeValue operator+(const CTimeValue& rstTime);
     CTimeValue operator-(const CTimeValue& rstTime);
@@ -54,7 +54,7 @@ public:
 
 
 private:
-    timeval m_stTimeval; //!<¾«È·Ê±¿Ì£¬Ö÷ÒªÓÃÓÚ¼ÆËãÊ±¼ä²î
+    timeval m_stTimeval; //!<ç²¾ç¡®æ—¶åˆ»ï¼Œä¸»è¦ç”¨äºè®¡ç®—æ—¶é—´å·®
 
 };
 
@@ -63,3 +63,7 @@ private:
 
 #endif //__TIME_VALUE_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

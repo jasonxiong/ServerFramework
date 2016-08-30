@@ -1,4 +1,4 @@
-#include "NameDBThread.hpp"
+ï»¿#include "NameDBThread.hpp"
 #include "StringUtility.hpp"
 #include "NameDBLogManager.hpp"
 #include "NameDBApp.hpp"
@@ -23,7 +23,7 @@ int CNameDBThread::Initialize(bool bResume, const int iThreadIdx)
 {
 	int iRt = 0;
 
-	//³õÊ¼»¯Ïß³Ìid
+	//åˆå§‹åŒ–çº¿ç¨‹id
 	m_iThreadIdx = iThreadIdx;	
 
 	iRt = InitBase();
@@ -170,7 +170,7 @@ int CNameDBThread::Run()
 					iRet = ProcessMsg(stMsgHandleResult);
 					if (0 == iRet)
 					{					
-						// ²»ÐèÒª»Ø¸´
+						// ä¸éœ€è¦å›žå¤
 						if (!stMsgHandleResult.iNeedResponse)
 						{
 							continue;
@@ -224,7 +224,7 @@ int CNameDBThread::ProcessMsg(SHandleResult& stMsgHandleResult)
 		return -1;
 	}
 
-	stMsgHandleResult.iNeedResponse = 1; // Ä¬ÈÏÐèÒª»Ø¸´
+	stMsgHandleResult.iNeedResponse = 1; // é»˜è®¤éœ€è¦å›žå¤
 	//m_stMsgHandleResult.stResponseMsg.mutable_m_stmsghead()->set_m_uimsgid(0);
 	pHandler->OnClientMsg(&m_stGameMsg, &stMsgHandleResult);
 	
@@ -237,7 +237,7 @@ int CNameDBThread::EncodeAndSendMsg(SHandleResult& stHandleResult)
 	int iCodeLen = 0;
 	int iRet = 0;
 
-	// ±àÂë±¾µØÊý¾ÝÎªÍøÂçÊý¾Ý
+	// ç¼–ç æœ¬åœ°æ•°æ®ä¸ºç½‘ç»œæ•°æ®
 	iRet = m_stProtocolEngine.Encode(&stHandleResult.stResponseMsg, (unsigned char*)m_szCodeBuf, iBufLen, iCodeLen);
 	if (iRet != 0)
 	{
@@ -246,7 +246,7 @@ int CNameDBThread::EncodeAndSendMsg(SHandleResult& stHandleResult)
 	}
 
 
-	// Ñ¹Èë¶ÓÁÐ¸øÖ÷Ïß³Ì
+	// åŽ‹å…¥é˜Ÿåˆ—ç»™ä¸»çº¿ç¨‹
 	iRet = m_pOutputQueue->PushOneCode((const unsigned char*)m_szCodeBuf, iCodeLen);
 	if (iRet != 0)
 	{
@@ -282,3 +282,7 @@ int CNameDBThread::PopCode(unsigned char* pMsg, int iMaxLength, int& riLength)
 	
 	return m_pOutputQueue->PopOneCode(pMsg, iMaxLength, riLength);
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

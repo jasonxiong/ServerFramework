@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file DecodeStream.hpp
 *@author jasonxiong
 *@date 2009-12-01
 *@version 1.0
-*@brief ½âÂëÁ÷
+*@brief è§£ç æµ
 *
-*	´ÓÒ»¶ÎBufferÖĞÒÔÍøÂç×Ö½ÚĞò½âÂë³öÊı¾İ
+*	ä»ä¸€æ®µBufferä¸­ä»¥ç½‘ç»œå­—èŠ‚åºè§£ç å‡ºæ•°æ®
 */
 
 #ifndef __DECODE_STREAM_HPP__
@@ -25,80 +25,80 @@ public:
 public:
 public:
     /**
-    *³õÊ¼»¯½âÂëÁ÷
-    *@param[in] pucCodeBuf ´æ·Å±àÂëµÄÂëÁ÷»º³åÇø
-    *@param[in] iCodeLen ±àÂë³¤¶È
+    *åˆå§‹åŒ–è§£ç æµ
+    *@param[in] pucCodeBuf å­˜æ”¾ç¼–ç çš„ç æµç¼“å†²åŒº
+    *@param[in] iCodeLen ç¼–ç é•¿åº¦
     *@return 0 success
     */
     int Initialize(unsigned char* pucCodeBuf, int iCodeLen);
 
-    //!»ñÈ¡ÂëÁ÷»º³åÇø
+    //!è·å–ç æµç¼“å†²åŒº
     unsigned char* GetCodeBuf() const
     {
         return m_aucCodeBuf;
     }
 
-    //!»ñÈ¡µ±Ç°ÂëÁ÷Æ«ÒÆ
+    //!è·å–å½“å‰ç æµåç§»
     int GetCurOffset() const
     {
         return m_pCurCodePos - m_aucCodeBuf;
     }
 
-    //!ÉèÖÃµ±Ç°ÂëÁ÷Æ«ÒÆ
+    //!è®¾ç½®å½“å‰ç æµåç§»
     void SetCurOffset(int iOffset)
     {
         m_pCurCodePos = m_aucCodeBuf + iOffset;
     }
 
-    //!·µ»Ø±àÂëÊ£Óà³¤¶È
+    //!è¿”å›ç¼–ç å‰©ä½™é•¿åº¦
     int GetLeftLength() const
     {
         return m_iCodeLen - (int)(m_pCurCodePos - m_aucCodeBuf);
     }
 
-    //½âÂëchar
+    //è§£ç char
     CDecodeStream& operator >>(char& rcChar);
     CDecodeStream& operator >>(unsigned char& rucChar);
 
-    //½âÂëshort16
+    //è§£ç short16
     CDecodeStream& operator >>(short& rshShort16);
     CDecodeStream& operator >>(unsigned short& rushShort16);
 
-    //½âÂëInt32
+    //è§£ç Int32
     CDecodeStream& operator >>(int& riInt32);
     CDecodeStream& operator >>(unsigned int& ruiInt32);
 
-    //½âÂëInt64
+    //è§£ç Int64
     CDecodeStream& operator >>(uint64_t& ruiInt64);
 
-    ////½âÂëlong
+    ////è§£ç long
     //CDecodeStream& operator >>(long& rlLong);
     //CDecodeStream& operator >>(unsigned long& rulLong);
 
-    //½âÂëString
+    //è§£ç String
     int DecodeString(char *strDest, short shMaxStrLength);
 
-    //½âÂëMem
+    //è§£ç Mem
     int DecodeMem(char *pcDest, int iMemorySize);
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
 private:
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iCodeLen; //!<±àÂë³¤¶È
-    unsigned char* m_aucCodeBuf; //!<ĞèÒª½âÂëµÄÂëÁ÷»º³åÇø
-    unsigned char* m_pCurCodePos; //!<µ±Ç°ÂëÁ÷Î»ÖÃ
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iCodeLen; //!<ç¼–ç é•¿åº¦
+    unsigned char* m_aucCodeBuf; //!<éœ€è¦è§£ç çš„ç æµç¼“å†²åŒº
+    unsigned char* m_pCurCodePos; //!<å½“å‰ç æµä½ç½®
 };
 
 
@@ -106,3 +106,7 @@ private:
 
 #endif //__DECODE_STREAM_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

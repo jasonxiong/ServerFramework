@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "WorldObjectHelperW_K64.hpp"
 #include "WorldRoleStatus.hpp"
@@ -55,7 +55,7 @@ int CDeleteRoleAccountHandler::OnRequestDeleteRoleAccount()
 
 	LOGDEBUG("Correct Uin DeleteRoleAccount Request, Uin %d\n", uiUin);
 
-    // ²»ÄÜÉ¾³ıÔÚÏßµÄ½ÇÉ«
+    // ä¸èƒ½åˆ é™¤åœ¨çº¿çš„è§’è‰²
     CWorldRoleStatusWObj* pRoleObj = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(rstReq.stroleid());
     if (pRoleObj)
     {
@@ -92,3 +92,7 @@ int CDeleteRoleAccountHandler::OnResponseDeleteRoleAccount()
 	return iRet;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

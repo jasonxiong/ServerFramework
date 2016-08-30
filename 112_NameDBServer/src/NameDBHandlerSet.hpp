@@ -1,15 +1,15 @@
-#ifndef __NAME_DB_HANDLER_SET_HPP__
+ï»¿#ifndef __NAME_DB_HANDLER_SET_HPP__
 #define __NAME_DB_HANDLER_SET_HPP__
 
 #include "HandlerSet.hpp"
 #include "AddNameHandler.hpp"
 #include "DeleteNameHandler.hpp"
 
-// NameDBÓ¦ÓÃÖĞµÄÏûÏ¢´¦ÀíÕß¹ÜÀíÆ÷
+// NameDBåº”ç”¨ä¸­çš„æ¶ˆæ¯å¤„ç†è€…ç®¡ç†å™¨
 class CNameDBHandlerSet : public CHandlerSet
 {
 private:
-    // ¸Ã¼¯ºÏ¹ÜÀíµÄËùÓĞÏûÏ¢´¦ÀíÕß
+    // è¯¥é›†åˆç®¡ç†çš„æ‰€æœ‰æ¶ˆæ¯å¤„ç†è€…
     CAddNameHandler m_stAddNameHandler;
     CDeleteNameHandler m_stDeleteNameHandler;
 
@@ -18,7 +18,7 @@ private:
     int OpenNameDB();
 
 private:
-    // ÏûÏ¢´¦ÀíÕß´¦ÀíÏûÏ¢Ê±ĞèÒª·ÃÎÊÊı¾İ¿â
+    // æ¶ˆæ¯å¤„ç†è€…å¤„ç†æ¶ˆæ¯æ—¶éœ€è¦è®¿é—®æ•°æ®åº“
     DBClientWrapper m_oDBClient;
 
 	int m_iThreadIdx;
@@ -27,8 +27,12 @@ public:
     CNameDBHandlerSet();
     ~CNameDBHandlerSet();
 
-    // ³õÊ¼»¯¸Ã¼¯ºÏÖĞµÄÏûÏ¢´¦ÀíÕßºÍÊı¾İ¿âÅäÖÃ²¢Á¬½ÓÊı¾İ¿â
+    // åˆå§‹åŒ–è¯¥é›†åˆä¸­çš„æ¶ˆæ¯å¤„ç†è€…å’Œæ•°æ®åº“é…ç½®å¹¶è¿æ¥æ•°æ®åº“
     int Initialize(const int iThreadIdx);
 };
 
 #endif // __NAME_DB_HANDLER_SET_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

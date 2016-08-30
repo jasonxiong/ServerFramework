@@ -1,4 +1,4 @@
-
+﻿
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
 #include "HashUtility.hpp"
@@ -72,3 +72,7 @@ int CAccountDBThreadManager::PopCode(const int iThreadIdx, unsigned char* pMsg, 
 }
 	
 		
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

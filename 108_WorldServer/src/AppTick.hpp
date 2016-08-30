@@ -1,4 +1,4 @@
-#ifndef __APP_TICK_HPP__
+Ôªø#ifndef __APP_TICK_HPP__
 #define __APP_TICK_HPP__
 
 #include "UnitTick.hpp"
@@ -8,7 +8,7 @@
 
 using namespace ServerLib;
 
-// ∞Î√Î∂® ±∆˜
+// ÂçäÁßíÂÆöÊó∂Âô®
 #define TICK_TIMEVAL_BASE        500
 #define STATISTIC_TIME 60
 class CAppTick
@@ -33,3 +33,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,25 +1,25 @@
-#ifndef __PROTO_DATA_UTILITY_HPP__
+ï»¿#ifndef __PROTO_DATA_UTILITY_HPP__
 #define __PROTO_DATA_UTILITY_HPP__
 
-//ÓÃÓÚ¶ÔDBÖĞ´æ´¢µÄprotobufÊı¾İµÄ´¦Àí
+//ç”¨äºå¯¹DBä¸­å­˜å‚¨çš„protobufæ•°æ®çš„å¤„ç†
 
 #include <string>
 
 #include "lz4.hpp"
 #include "google/protobuf/message.h"
 
-//Ñ¹Ëõ´¦Àí²½ÖèÎª£º
-//      1.ÏÈ½«protobuf½á¹¹½øĞĞĞòÁĞ»¯£»
-//      2.½«ĞòÁĞ»¯ºóµÄ¶ş½øÖÆÊı¾İÍ¨¹ılz4½øĞĞÑ¹Ëõ;
+//å‹ç¼©å¤„ç†æ­¥éª¤ä¸ºï¼š
+//      1.å…ˆå°†protobufç»“æ„è¿›è¡Œåºåˆ—åŒ–ï¼›
+//      2.å°†åºåˆ—åŒ–åçš„äºŒè¿›åˆ¶æ•°æ®é€šè¿‡lz4è¿›è¡Œå‹ç¼©;
 
-//½âÑ¹´¦Àí²½ÖèÎª£º
-//      1.ÏÈÍ¨¹ılz4½âÑ¹£¬»ñÈ¡¶ş½øÖÆÊı¾İ£»
-//      2.½«¶ş½øÖÆÊı¾İ·´ĞòÁĞ»¯µ½protobuf½á¹¹ÖĞ
+//è§£å‹å¤„ç†æ­¥éª¤ä¸ºï¼š
+//      1.å…ˆé€šè¿‡lz4è§£å‹ï¼Œè·å–äºŒè¿›åˆ¶æ•°æ®ï¼›
+//      2.å°†äºŒè¿›åˆ¶æ•°æ®ååºåˆ—åŒ–åˆ°protobufç»“æ„ä¸­
 
 namespace ServerLib
 {
 
-#define LZ4_COMPRESS_BUFF_LEN 50*1024     //Ñ¹ËõÊı¾İµÄ»º³åÇø´óĞ¡Îª50K
+#define LZ4_COMPRESS_BUFF_LEN 50*1024     //å‹ç¼©æ•°æ®çš„ç¼“å†²åŒºå¤§å°ä¸º50K
 
 extern inline bool CompressData(const std::string& strSource, std::string& strDest)
 {
@@ -28,7 +28,7 @@ extern inline bool CompressData(const std::string& strSource, std::string& strDe
 		return false;
 	}
 
-    //Ñ¹ËõÊı¾İ
+    //å‹ç¼©æ•°æ®
     static char szCompressedBuff[LZ4_COMPRESS_BUFF_LEN];
     int iCompressedLen = LZ4_compress(strSource.c_str(), szCompressedBuff, strSource.size());
     if(iCompressedLen == 0)
@@ -43,7 +43,7 @@ extern inline bool CompressData(const std::string& strSource, std::string& strDe
 
 extern inline bool UnCompressData(const std::string& strSource, std::string& strDest)
 {
-    //½âÑ¹ËõÊı¾İ
+    //è§£å‹ç¼©æ•°æ®
     static char szUnCompressedBuff[LZ4_COMPRESS_BUFF_LEN];
     int iUnCompressedLen = LZ4_decompress_safe(strSource.c_str(), szUnCompressedBuff, strSource.size(), sizeof(szUnCompressedBuff)-1);
     if(iUnCompressedLen < 0)
@@ -56,11 +56,11 @@ extern inline bool UnCompressData(const std::string& strSource, std::string& str
     return true;
 }
 
-//ĞòÁĞ»¯protobufÊı¾İ²¢Ñ¹Ëõ
+//åºåˆ—åŒ–protobufæ•°æ®å¹¶å‹ç¼©
 template <class ProtoType>
 bool EncodeProtoData(const ProtoType& stProtoMsg, std::string& strCompressedData)
 {		
-    //ÏÈĞòÁĞ»¯Êı¾İ
+    //å…ˆåºåˆ—åŒ–æ•°æ®
     std::string strSerialized;
     if(!stProtoMsg.SerializeToString(&strSerialized))
     {
@@ -70,7 +70,7 @@ bool EncodeProtoData(const ProtoType& stProtoMsg, std::string& strCompressedData
 	return CompressData(strSerialized, strCompressedData);
 };
 
-//½âÑ¹Êı¾İ²¢·´ĞòÁĞ»¯µ½protobufÖĞ
+//è§£å‹æ•°æ®å¹¶ååºåˆ—åŒ–åˆ°protobufä¸­
 template <class ProtoType>
 bool DecodeProtoData(const std::string& strCompressData, ProtoType& stProtoMsg)
 {
@@ -80,7 +80,7 @@ bool DecodeProtoData(const std::string& strCompressData, ProtoType& stProtoMsg)
         return false;
     }
 
-    //·´ĞòÁĞ»¯protobuf
+    //ååºåˆ—åŒ–protobuf
     stProtoMsg.Clear();
     if(!stProtoMsg.ParseFromString(strUnCompressData))
     {
@@ -93,3 +93,7 @@ bool DecodeProtoData(const std::string& strCompressData, ProtoType& stProtoMsg)
 }
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

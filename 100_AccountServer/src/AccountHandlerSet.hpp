@@ -1,4 +1,4 @@
-#ifndef __ACCOUNT_HANDLER_SET_HPP__
+ï»¿#ifndef __ACCOUNT_HANDLER_SET_HPP__
 #define __ACCOUNT_HANDLER_SET_HPP__
 
 #include "HandlerSet.hpp"
@@ -15,11 +15,11 @@
 
 using namespace ServerLib;
 
-// AccountÓ¦ÓÃÖĞµÄÏûÏ¢´¦ÀíÕß¹ÜÀíÆ÷
+// Accountåº”ç”¨ä¸­çš„æ¶ˆæ¯å¤„ç†è€…ç®¡ç†å™¨
 class CAccountHandlerSet : public CHandlerSet
 {
 private:
-    // ¸Ã¼¯ºÏ¹ÜÀíµÄËùÓĞÏûÏ¢´¦ÀíÕß
+    // è¯¥é›†åˆç®¡ç†çš„æ‰€æœ‰æ¶ˆæ¯å¤„ç†è€…
     CCreateRoleRequestHandler*  m_pCreateRoleRequestHandler;
     CCreateRoleResponseHandler* m_pCreateRoleResponseHandler;
     CDeleteRoleRequestHandler* m_pDeleteRoleRequestHandler;
@@ -31,12 +31,12 @@ private:
     CListZoneHandler* m_pListZoneHandler;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCSingleton<CRoleDBHandlerSet>ÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CSingleton<CRoleDBHandlerSet>ç±»ä¸­åˆ›å»º
     friend class CSingleton<CAccountHandlerSet>;
     CAccountHandlerSet();
 
 private:
-    // ¶ÔÓÚĞÂÔöµÄhandler£¬×¢ÒâÒªÔÚÒÔÏÂËÄ¸öº¯ÊıÖĞ×öÏàÓ¦ĞŞ¸Ä
+    // å¯¹äºæ–°å¢çš„handlerï¼Œæ³¨æ„è¦åœ¨ä»¥ä¸‹å››ä¸ªå‡½æ•°ä¸­åšç›¸åº”ä¿®æ”¹
     void InitAllHandlers();
     void FreeAllHandlers();
     int AllocAllHandlers();
@@ -45,9 +45,13 @@ private:
 public:
     virtual ~CAccountHandlerSet();
 
-    // ³õÊ¼»¯¸Ã¼¯ºÏÖĞµÄÏûÏ¢´¦ÀíÕß
+    // åˆå§‹åŒ–è¯¥é›†åˆä¸­çš„æ¶ˆæ¯å¤„ç†è€…
     virtual int Initialize();
 };
 
 #endif // __ACCOUNT_HANDLER_SET_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

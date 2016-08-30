@@ -1,7 +1,7 @@
-#ifndef __SCENE_PATH_MANAGER_HPP__
+ï»¿#ifndef __SCENE_PATH_MANAGER_HPP__
 #define __SCENE_PATH_MANAGER_HPP__
 
-//Õ½³¡Â·¾¶¹ÜÀíÆ÷£¬Ö÷Òª°üº¬µØÍ¼µÄ´óĞ¡¡¢Íø¸ñºÍ×èµ²µÈĞÅÏ¢
+//æˆ˜åœºè·¯å¾„ç®¡ç†å™¨ï¼Œä¸»è¦åŒ…å«åœ°å›¾çš„å¤§å°ã€ç½‘æ ¼å’Œé˜»æŒ¡ç­‰ä¿¡æ¯
 
 #include <bitset>
 
@@ -9,10 +9,10 @@
 
 #include "GameConfigDefine.hpp"
 
-//·şÎñÆ÷Ö§³ÖµÄ×î´ó¸ñ×Ó¿í¶ÈÊıÄ¿
+//æœåŠ¡å™¨æ”¯æŒçš„æœ€å¤§æ ¼å­å®½åº¦æ•°ç›®
 const unsigned int MAX_MAP_BLOCK_WIDTH_NUM = 64;
 
-//·şÎñÆ÷Ö§³ÖµÄ×î´ó¸ñ×Ó¸ß¶ÈÊıÄ¿
+//æœåŠ¡å™¨æ”¯æŒçš„æœ€å¤§æ ¼å­é«˜åº¦æ•°ç›®
 const unsigned int MAX_MAP_BLOCK_HEIGHT_NUM = 18;
 
 class CScenePathManager
@@ -24,42 +24,46 @@ public:
 
 public:
 
-    //³õÊ¼»¯Õ½¶·µØÍ¼×èµ²ĞÅÏ¢,ÊÇXML¸ñÊ½µÄÎÄ¼ş
+    //åˆå§‹åŒ–æˆ˜æ–—åœ°å›¾é˜»æŒ¡ä¿¡æ¯,æ˜¯XMLæ ¼å¼çš„æ–‡ä»¶
     int Initialize(int iMapID, int iBlockWidthNum, int iBlockHeightNum, pugi::xml_node& stBlockLayer);
 
-    //»ñÈ¡Õ½³¡µÄ¿í¶È
+    //è·å–æˆ˜åœºçš„å®½åº¦
     int GetBattlefieldWidth() const;
 
-    //»ñÈ¡Õ½³¡µÄ¸ß¶È
+    //è·å–æˆ˜åœºçš„é«˜åº¦
     int GetBattlefieldHeight() const;
 
-    //»ñÈ¡µØÍ¼±àºÅµÄID
+    //è·å–åœ°å›¾ç¼–å·çš„ID
     int GetMapID();
 
 public:
 
-    //ÊÇ·ñÂ·¾¶¿ÉÒÔÁ¬ĞøĞĞ×ß
+    //æ˜¯å¦è·¯å¾„å¯ä»¥è¿ç»­è¡Œèµ°
     bool CanContinueWalk(const TUNITPOSITION& stStartPos, const TUNITPATH& stPath) const;
 
-    //Õ½³¡ÉÏÁ½µãÖ®¼äÊÇ·ñ¿ÉÒÔÁ¬ĞøĞĞ×ß
+    //æˆ˜åœºä¸Šä¸¤ç‚¹ä¹‹é—´æ˜¯å¦å¯ä»¥è¿ç»­è¡Œèµ°
     bool CanContinueWalk(const TUNITPOSITION& stStartPos, const TUNITPOSITION& stEndPos) const;
 
-    //Õ½³¡ÉÏµÄÄ³µãÊÇ·ñ¿ÉÒÔĞĞ×ß
+    //æˆ˜åœºä¸Šçš„æŸç‚¹æ˜¯å¦å¯ä»¥è¡Œèµ°
     bool BattlefieldPosCanWalk(const TUNITPOSITION& stPos) const;
 
 private:
 
-    //µØÍ¼×èµ²ĞÅÏ¢µÄ±àºÅID
+    //åœ°å›¾é˜»æŒ¡ä¿¡æ¯çš„ç¼–å·ID
     int m_iMapID;
 
-    //µØÍ¼µÄ¸ñ×Ó¿í¶ÈÊıÄ¿
+    //åœ°å›¾çš„æ ¼å­å®½åº¦æ•°ç›®
     int m_iMapBlockWidthNum;
 
-    //µØÍ¼µÄ¸ñ×Ó¸ß¶ÈÊıÄ¿
+    //åœ°å›¾çš„æ ¼å­é«˜åº¦æ•°ç›®
     int m_iMapBlockHeigthNum;
 
-    //Õı³£µÄ×èµ²ĞÅÏ¢
+    //æ­£å¸¸çš„é˜»æŒ¡ä¿¡æ¯
     std::bitset<MAX_MAP_BLOCK_WIDTH_NUM * MAX_MAP_BLOCK_HEIGHT_NUM> m_aBlockInfo;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __LIST_ZONE_HANDLER_HPP__
 #define __LIST_ZONE_HANDLER_HPP__
 
@@ -7,7 +7,7 @@
 #include "WorldObjectHelperW_K64.hpp"
 #include "WorldRoleStatus.hpp"
 
-//À­È¡µ±Ç°ËùÓĞ¿ÉÓÃµÄ·ÖÇøĞÅÏ¢
+//æ‹‰å–å½“å‰æ‰€æœ‰å¯ç”¨çš„åˆ†åŒºä¿¡æ¯
 
 class CListZoneHandler : public IHandler
 {
@@ -27,3 +27,7 @@ private:
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

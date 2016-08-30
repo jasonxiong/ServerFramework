@@ -1,4 +1,4 @@
-#ifndef __NAMEDBLOGMANAGER_HPP
+ï»¿#ifndef __NAMEDBLOGMANAGER_HPP
 #define __NAMEDBLOGMANAGER_HPP
 
 #include "NameDBThreadManager.hpp"
@@ -8,14 +8,14 @@
 #ifdef _QQGAME_NO_LOG_
 #define TRACE_THREAD(iThreadIdx, format, ...)
 #else
-//!Ö÷¿ØÈÕÖ¾£¬ÎÞÈÕÖ¾µÈ¼¶£¬Ç¿ÖÆ´ò
+//!ä¸»æŽ§æ—¥å¿—ï¼Œæ— æ—¥å¿—ç­‰çº§ï¼Œå¼ºåˆ¶æ‰“
 #define TRACE_THREAD(iThreadIdx, format, ...) ((CNameDBApp*)CAppType<CNameDBApp>::GetApp())->GetLogAdapter(iThreadIdx)->m_stLogFile.WriteLogEx(LOG_LEVEL_ANY, ((CNameDBApp*)CAppType<CNameDBApp>::GetApp())->GetLogAdapter(iThreadIdx)->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)	
 #endif																
 
 #ifdef _QQGAME_NO_LOG_													
 #define DEBUG_THREAD(iThreadIdx, format, ...)								
 #else															
-//!Ö÷¿ØÈÕÖ¾£¬DEBUGÈÕÖ¾£¬LOG_LEVEL_DETAILµÈ¼¶
+//!ä¸»æŽ§æ—¥å¿—ï¼ŒDEBUGæ—¥å¿—ï¼ŒLOG_LEVEL_DETAILç­‰çº§
 #define DEBUG_THREAD(iThreadIdx, format, ...) ((CNameDBApp*)CAppType<CNameDBApp>::GetApp())->GetLogAdapter(iThreadIdx)->m_stLogFile.WriteLogEx(LOG_LEVEL_DETAIL, ((CNameDBApp*)CAppType<CNameDBApp>::GetApp())->GetLogAdapter(iThreadIdx)->m_iTraceDepth, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__)
 #endif
 
@@ -32,3 +32,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

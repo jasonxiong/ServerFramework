@@ -1,4 +1,4 @@
-#ifndef __FIXED_CACHE_HPP__
+ï»¿#ifndef __FIXED_CACHE_HPP__
 #define __FIXED_CACHE_HPP__
 
 #include "SharedMemory.hpp"
@@ -7,19 +7,19 @@
 
 using namespace ServerLib;
 
-// ½áµã¸öÊı¹Ì¶¨µÄcache¶ÔÏó¹ÜÀíÆ÷¡£
-// ÕâÖÖcache½öÓÉÒ»¸ö¶ÔÏó¶Î£¨°üÀ¨idxÊı×éºÍobjÊı×é£©×é³É¡£
+// ç»“ç‚¹ä¸ªæ•°å›ºå®šçš„cacheå¯¹è±¡ç®¡ç†å™¨ã€‚
+// è¿™ç§cacheä»…ç”±ä¸€ä¸ªå¯¹è±¡æ®µï¼ˆåŒ…æ‹¬idxæ•°ç»„å’Œobjæ•°ç»„ï¼‰ç»„æˆã€‚
 template <typename TConcreteObj>
 class CFixedCache
 {
 private:
-    static CObjAllocator* m_pAllocator; // ¶ÔÏó¶Î£¬°üÀ¨idxºÍobj£¬idxÓÃÓÚobj½áµãµÄ·ÖÅä¡¢»ØÊÕ¹ÜÀí
+    static CObjAllocator* m_pAllocator; // å¯¹è±¡æ®µï¼ŒåŒ…æ‹¬idxå’Œobjï¼Œidxç”¨äºobjç»“ç‚¹çš„åˆ†é…ã€å›æ”¶ç®¡ç†
 
 private:
-    static int m_iObjNodeNumber;   // ¶ÔÏó½áµã×Ü¸öÊı£¬·ÖÅä¿Õ¼äÊ±Ê¹ÓÃ
-    static int m_iSingleObjSize;   // µ¥¸ö¶ÔÏóµÄ´óĞ¡
+    static int m_iObjNodeNumber;   // å¯¹è±¡ç»“ç‚¹æ€»ä¸ªæ•°ï¼Œåˆ†é…ç©ºé—´æ—¶ä½¿ç”¨
+    static int m_iSingleObjSize;   // å•ä¸ªå¯¹è±¡çš„å¤§å°
 
-    // Ë½ÓĞµÄ¸¨Öúº¯Êı
+    // ç§æœ‰çš„è¾…åŠ©å‡½æ•°
 private:
     static void SetSingleObjSize();
     static int GetSingleObjSize();
@@ -27,32 +27,32 @@ private:
     static void SetObjNodeNumber(const int iNodeNumber);
     static int GetObjNodeNumber();
 
-    // ÉèÖÃ½áµã¸öÊı
+    // è®¾ç½®ç»“ç‚¹ä¸ªæ•°
     static void SetNodeNumber(const int iNodeNumber);
 
     static int CaculateObjSegSize();
 
-    // ·ÖÅä»º´æÊ±ÏÈµ÷ÓÃCaculateSize¼ÆËãĞèÒª·ÖÅäµÄ´óĞ¡£¬È»ºóµ÷ÓÃAllocateFromShmÊµÊ©·ÖÅä
+    // åˆ†é…ç¼“å­˜æ—¶å…ˆè°ƒç”¨CaculateSizeè®¡ç®—éœ€è¦åˆ†é…çš„å¤§å°ï¼Œç„¶åè°ƒç”¨AllocateFromShmå®æ–½åˆ†é…
 public:
     static int CaculateSize(const int iNodeNumber);
     static void AllocateFromShm(CSharedMemory& shm, bool bResume);
 
-    // ´´½¨¡¢É¾³ı¡¢·ÃÎÊµ¥¸ö¶ÔÏó½áµãµÄ½Ó¿Ú
+    // åˆ›å»ºã€åˆ é™¤ã€è®¿é—®å•ä¸ªå¯¹è±¡ç»“ç‚¹çš„æ¥å£
 public:
-    // ´Ó¶ÔÏó¶ÎÖĞÕ÷ÓÃÒ»¸öÎ´Ê¹ÓÃµÄ½áµã£¬Èç¹ûÃ»ÓĞ¿ÉÓÃ½áµãÁË£¬Ôò·µ»ØÒ»¸ö¸ºÖµ
-    // ³É¹¦Ê±·µ»ØĞÂ½¨µÄ¶ÔÏó½áµãµÄID
+    // ä»å¯¹è±¡æ®µä¸­å¾ç”¨ä¸€ä¸ªæœªä½¿ç”¨çš„ç»“ç‚¹ï¼Œå¦‚æœæ²¡æœ‰å¯ç”¨ç»“ç‚¹äº†ï¼Œåˆ™è¿”å›ä¸€ä¸ªè´Ÿå€¼
+    // æˆåŠŸæ—¶è¿”å›æ–°å»ºçš„å¯¹è±¡ç»“ç‚¹çš„ID
     static int Create();
 
     static int Delete(const int iObjID);
 
-    // ¸ù¾İ¶ÔÏó½áµãµÄID»ñÈ¡¸Ã¶ÔÏó½áµã£¬·µ»ØÖµÎªNULL±íÊ¾Ê§°Ü
+    // æ ¹æ®å¯¹è±¡ç»“ç‚¹çš„IDè·å–è¯¥å¯¹è±¡ç»“ç‚¹ï¼Œè¿”å›å€¼ä¸ºNULLè¡¨ç¤ºå¤±è´¥
     static TConcreteObj* GetByID(const int iObjID);
 
     static int GetUsedNodeNumber();
     static int GetFreeNodeNumber();
 };
 
-// ¾²Ì¬Êı¾İ³ÉÔ±µÄ³õÊ¼»¯
+// é™æ€æ•°æ®æˆå‘˜çš„åˆå§‹åŒ–
 template <typename TConcreteObj>
 CObjAllocator* CFixedCache<TConcreteObj>::m_pAllocator = NULL;
 
@@ -62,7 +62,7 @@ int CFixedCache<TConcreteObj>::m_iObjNodeNumber = 0;
 template <typename TConcreteObj>
 int CFixedCache<TConcreteObj>::m_iSingleObjSize = 0;
 
-// ³ÉÔ±º¯Êı
+// æˆå‘˜å‡½æ•°
 template <typename TConcreteObj>
 void CFixedCache<TConcreteObj>::SetSingleObjSize()
 {
@@ -132,7 +132,7 @@ void CFixedCache<TConcreteObj>::AllocateFromShm(CSharedMemory& shm, bool bResume
 
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = m_pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -162,7 +162,7 @@ int CFixedCache<TConcreteObj>::Create()
 template <typename TConcreteObj>
 int CFixedCache<TConcreteObj>::Delete(const int iObjID)
 {
-    // ½«½áµã¹é»¹µ½¶ÔÏó¶ÎÖĞ³ÉÎªÎ´Ê¹ÓÃ½áµã
+    // å°†ç»“ç‚¹å½’è¿˜åˆ°å¯¹è±¡æ®µä¸­æˆä¸ºæœªä½¿ç”¨ç»“ç‚¹
     int iRes = m_pAllocator->DestroyObject(iObjID);
     if (iRes < 0)
     {
@@ -196,3 +196,7 @@ int CFixedCache<TConcreteObj>::GetFreeNodeNumber()
 }
 
 #endif // __FIXED_CACHE_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

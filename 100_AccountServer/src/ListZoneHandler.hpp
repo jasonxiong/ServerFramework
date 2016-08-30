@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __LIST_ZONE_HANDLER_HPP__
 #define __LIST_ZONE_HANDLER_HPP__
 
@@ -6,15 +6,15 @@
 
 class CAccountHandlerSet;
 
-// À­È¡±¾·şµÄËùÓĞZoneServerµÄÏêÏ¸ĞÅÏ¢
+// æ‹‰å–æœ¬æœçš„æ‰€æœ‰ZoneServerçš„è¯¦ç»†ä¿¡æ¯
 class CListZoneHandler : public IHandler
 {
 private:
     TNetHead_V2* m_pstNetHead;
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountHandlerSet;
     CListZoneHandler();
 
@@ -23,12 +23,16 @@ public:
                              SHandleResult* pstResult);
 private:
 
-    //½«ListZoneµÄÇëÇó×ª·¢¸øWorldServer
+    //å°†ListZoneçš„è¯·æ±‚è½¬å‘ç»™WorldServer
     void SendListZoneRequestToWorld();
 
-    //½«ListZoneµÄ·µ»Ø×ª·¢¸øClient
+    //å°†ListZoneçš„è¿”å›è½¬å‘ç»™Client
     void SendListZoneResponseToLotus();
 };
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __WORLD_PROTOCOL_ENGINE_W_HPP__
+ï»¿#ifndef __WORLD_PROTOCOL_ENGINE_W_HPP__
 #define __WORLD_PROTOCOL_ENGINE_W_HPP__
 
 #include "UnixTime.hpp"
@@ -27,10 +27,10 @@ public:
     void SetService(CAppLoopW* pAppLoop);
 
 public:
-    // ½«Êı¾İ½â°ü, ²¢½»¸øHandler´¦Àí
+    // å°†æ•°æ®è§£åŒ…, å¹¶äº¤ç»™Handlerå¤„ç†
     int OnRecvCode(char* pszMsgBuffer, const int iMsgLength, EGameServerID enMsgPeer, int iInstance = 1);
 
-    // ½«Êı¾İ´ò°ü, ²¢·¢ËÍµ½¶Ô¶Ë
+    // å°†æ•°æ®æ‰“åŒ…, å¹¶å‘é€åˆ°å¯¹ç«¯
     int SendWorldMsg(const GameProtocolMsg& rstWorldMsg, EGameServerID enMsgPeer, int iInstance = 1);
 
 private:
@@ -66,3 +66,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

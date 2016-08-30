@@ -1,4 +1,4 @@
-#include "RoleDBThreadManager.hpp"
+﻿#include "RoleDBThreadManager.hpp"
 #include "LogAdapter.hpp"
 
 
@@ -68,3 +68,7 @@ int CRoleDBThreadManager::PopCode(const int iThreadIdx, unsigned char* pMsg, int
 }
 	
 		
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

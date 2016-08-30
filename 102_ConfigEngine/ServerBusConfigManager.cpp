@@ -1,4 +1,4 @@
-
+ï»¿
 #include "ErrorNumDef.hpp"
 #include "LogAdapter.hpp"
 #include "StringUtility.hpp"
@@ -9,7 +9,7 @@
 
 using namespace ServerLib;
 
-//Ä¬ÈÏ¶¼´Ó conf/GameServer.tcm ÖĞ¶ÁÈ¡
+//é»˜è®¤éƒ½ä» conf/GameServer.tcm ä¸­è¯»å–
 
 #define SERVER_BUS_CONFIG_FILE  "../conf/GameServer.tcm"
 
@@ -23,16 +23,16 @@ int CServerBusConfigManager::LoadServerBusConfig()
         return iRet;
     }
 
-    //¼ÓÔØServerBusµÄ×ÜÊıÁ¿
+    //åŠ è½½ServerBusçš„æ€»æ•°é‡
     stConfigFile.GetItemValue("ServerBus", "ServerBusNum", m_iTotalBusNumber);
 
-    //¼ÓÔØ¾ßÌåServerBusµÄÅäÖÃ
+    //åŠ è½½å…·ä½“ServerBusçš„é…ç½®
     char szBusClientID[SERVER_BUSID_LEN] = {0};
     char szBusServerID[SERVER_BUSID_LEN] = {0};
     char szBusIPAddr[SERVER_BUSID_LEN] = {0};
     int iBusPort = 0;
 
-    //BusÏà¹ØÅäÖÃÏîµÄKey
+    //Busç›¸å…³é…ç½®é¡¹çš„Key
     char szBusClientKey[SERVER_BUSID_LEN] = {0};
     char szBusServerKey[SERVER_BUSID_LEN] = {0};
     char szBusIPAddrKey[SERVER_BUSID_LEN] = {0};
@@ -45,27 +45,27 @@ int CServerBusConfigManager::LoadServerBusConfig()
 
     for(int i=0; i<m_iTotalBusNumber; ++i)
     {
-        //·â×°BusµÄKey
+        //å°è£…Busçš„Key
         SAFE_SPRINTF(szBusClientKey, SERVER_BUSID_LEN-1, "ServerBusClientID_%d", i);
         SAFE_SPRINTF(szBusServerKey, SERVER_BUSID_LEN-1, "ServerBusServerID_%d", i);
         SAFE_SPRINTF(szBusIPAddrKey, SERVER_BUSID_LEN-1, "ServerBusIP_%d", i);
         SAFE_SPRINTF(szBusPortKey, SERVER_BUSID_LEN-1, "ServerBusPort_%d", i);
 
-        //¶ÁÈ¡ÅäÖÃÖĞµÄÖµ
+        //è¯»å–é…ç½®ä¸­çš„å€¼
         stConfigFile.GetItemValue("ServerBus", szBusClientKey, szBusClientID, sizeof(szBusClientID)-1, "0.0.0.0");
         stConfigFile.GetItemValue("ServerBus", szBusServerKey, szBusServerID, sizeof(szBusServerID)-1, "0.0.0.0");
         stConfigFile.GetItemValue("ServerBus", szBusIPAddrKey, szBusIPAddr, sizeof(szBusIPAddr)-1, "0.0.0.0");
         stConfigFile.GetItemValue("ServerBus", szBusPortKey, iBusPort, 0);
 
-        //¼ÆËãÍ¨ĞÅBusµÄClientID
+        //è®¡ç®—é€šä¿¡Busçš„ClientID
         sscanf(szBusClientID, "%hu.%hu.%hu.%hu", &usWorldID, &usServerID, &usInstanceID, &usZoneID);
         m_astServerBusConfig[i].ullBusClientID = GetServerBusID(usWorldID, (EGameServerID)usServerID, usInstanceID, usZoneID);
 
-        //¼ÆËãÍ¨ĞÅBusµÄServerID
+        //è®¡ç®—é€šä¿¡Busçš„ServerID
         sscanf(szBusServerID, "%hu.%hu.%hu.%hu", &usWorldID, &usServerID, &usInstanceID, &usZoneID);
         m_astServerBusConfig[i].ullBusServerID = GetServerBusID(usWorldID, (EGameServerID)usServerID, usInstanceID, usZoneID);
 
-        //×é×°Êµ¼ÊÍ¨ĞÅBusµÄµØÖ·,¸ñÊ½Îª IP:PORT
+        //ç»„è£…å®é™…é€šä¿¡Busçš„åœ°å€,æ ¼å¼ä¸º IP:PORT
         sprintf(m_astServerBusConfig[i].szBusAddr, "%s:%d", szBusIPAddr, iBusPort);
     }
 
@@ -85,3 +85,7 @@ const ServerBusConfig* CServerBusConfigManager::GetServerBusConfig(uint64_t ullC
 
     return NULL;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include "AccountDBLogManager.hpp"
 #include "NowTime.hpp"
 #include "UnixTime.hpp"
@@ -11,7 +11,7 @@
 
 using namespace ServerLib;
 
-//Éú³ÉµÄSQLÓï¾ä
+//ç”Ÿæˆçš„SQLè¯­å¥
 char CFetchAccountHandler::m_szQueryString[GameConfig::ACCOUNT_TABLE_SPLIT_FACTOR][512];
 
 CFetchAccountHandler::CFetchAccountHandler(DBClientWrapper* pDatabase)
@@ -26,16 +26,16 @@ void CFetchAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandleRe
         return;
     }
 
-    pstHandleResult->iNeedResponse = true;  //ÐèÒª»Ø¸´
+    pstHandleResult->iNeedResponse = true;  //éœ€è¦å›žå¤
 
-    //À­È¡ÕÊºÅÏêÏ¸ÐÅÏ¢µÄÇëÇó
+    //æ‹‰å–å¸å·è¯¦ç»†ä¿¡æ¯çš„è¯·æ±‚
     m_pstRequestMsg = pstRequestMsg;
     const AccountDB_FetchAccount_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_staccountdb_fetch_request();
 
-    //À­È¡ÕÊºÅÏêÏ¸ÐÅÏ¢µÄÏìÓ¦
+    //æ‹‰å–å¸å·è¯¦ç»†ä¿¡æ¯çš„å“åº”
     AccountDB_FetchAccount_Response* pstResp = pstHandleResult->stResponseMsg.mutable_m_stmsgbody()->mutable_m_staccountdb_fetch_response();
 
-    //Éú³ÉÏìÓ¦ÏûÏ¢Í·
+    //ç”Ÿæˆå“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(&pstHandleResult->stResponseMsg, m_pstRequestMsg->m_stmsghead().m_uisessionfd(), MSGID_ACCOUNTDB_FETCH_RESPONSE, 0);
 
     const AccountID& stAccountID = rstReq.staccountid();
@@ -55,10 +55,10 @@ void CFetchAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandleRe
     return;
 }
 
-//À­È¡·µ»ØÕÊºÅÏêÏ¸ÐÅÏ¢
+//æ‹‰å–è¿”å›žå¸å·è¯¦ç»†ä¿¡æ¯
 int CFetchAccountHandler::FetchAccountInfo(const AccountID& stAccountID, const std::string& strPassword, AccountDB_FetchAccount_Response& rstResp)
 {
-    //ÉèÖÃÁ¬½ÓµÄDB
+    //è®¾ç½®è¿žæŽ¥çš„DB
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -84,7 +84,7 @@ int CFetchAccountHandler::FetchAccountInfo(const AccountID& stAccountID, const s
         return iRet;
     }
 
-     //·ÖÎö½á¹û
+     //åˆ†æžç»“æžœ
     int iRowNum = m_pDatabase->GetNumberRows();
     if(iRowNum != 1)
     {
@@ -103,34 +103,34 @@ int CFetchAccountHandler::FetchAccountInfo(const AccountID& stAccountID, const s
         return iRet;
     }
 
-    //ÅÐ¶ÏuFieldsÊÇ·ñÏà·û
+    //åˆ¤æ–­uFieldsæ˜¯å¦ç›¸ç¬¦
     if(uFields != MYSQL_ACCOUNTINFO_FIELDS)
     {
         TRACE_THREAD(m_iThreadIdx, "Wrong result, real fields %u, needed %u\n", uFields, MYSQL_ACCOUNTINFO_FIELDS);
         return T_ACCOUNTDB_INVALID_RECORD;
     }
 
-    //×Ö¶Î3ÊÇpassword
+    //å­—æ®µ3æ˜¯password
     std::string strDBPassword(pstResult[3], pLengths[3]);
 
-    //¼ì²éÃÜÂëÊÇ·ñÒ»ÖÂ
+    //æ£€æŸ¥å¯†ç æ˜¯å¦ä¸€è‡´
     if(strDBPassword.compare(strPassword) != 0)
     {
         return T_ACCOUNTDB_INVALID_RECORD;
     }
 
-    //´Ó½á¹ûÖÐ½âÎöÐèÒªµÄ×Ö¶Î
+    //ä»Žç»“æžœä¸­è§£æžéœ€è¦çš„å­—æ®µ
     rstResp.mutable_staccountid()->CopyFrom(stAccountID);
 
-    //×Ö¶Î0ÊÇaccountID, ×Ö¶Î1ÊÇaccountType, Ìø¹ý
+    //å­—æ®µ0æ˜¯accountID, å­—æ®µ1æ˜¯accountType, è·³è¿‡
 
-    //×Ö¶Î2ÊÇuin
+    //å­—æ®µ2æ˜¯uin
     rstResp.set_uin(strtoul(pstResult[2],NULL,10));
 
-    //×Ö¶Î4ÊÇlastWorldID
+    //å­—æ®µ4æ˜¯lastWorldID
     rstResp.set_iworldid(atoi(pstResult[4]));
 
-    //×Ö¶Î5ÊÇactiveState
+    //å­—æ®µ5æ˜¯activeState
     rstResp.set_bisbinded(atoi(pstResult[5]));
 
     return T_SERVER_SUCESS;
@@ -154,3 +154,7 @@ void CFetchAccountHandler::FillSuccessfulResponse(GameProtocolMsg& stResponseMsg
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

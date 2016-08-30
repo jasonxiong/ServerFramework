@@ -1,11 +1,15 @@
-#ifndef __APP_DEF_W_HPP__
+ï»¿#ifndef __APP_DEF_W_HPP__
 #define __APP_DEF_W_HPP__
 
 
-//ÔÚÕâÀïÌí¼ÓÒ»Ğ©ºê¶¨Òå
+//åœ¨è¿™é‡Œæ·»åŠ ä¸€äº›å®å®šä¹‰
 
 const int MASTER_INSTNACE = 1;
 
 #define APP_CONFIG_FILE     "../conf/GameServer.tcm"
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,25 +1,25 @@
-#ifndef __UPDATE_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __UPDATE_ACCOUNT_HANDLER_HPP__
 #define __UPDATE_ACCOUNT_HANDLER_HPP__
 
 #include "Handler.hpp"
 
 class CRegAuthHandlerSet;
 
-//¸üĞÂÍæ¼ÒÆ½Ì¨ÕË»§Ïà¹ØĞÅÏ¢
+//æ›´æ–°ç©å®¶å¹³å°è´¦æˆ·ç›¸å…³ä¿¡æ¯
 
-// ´¦ÀíÀ´×ÔLotusServerµÄ MSGID_REGAUTH_UPDATE_REQUEST ÏûÏ¢
+// å¤„ç†æ¥è‡ªLotusServerçš„ MSGID_REGAUTH_UPDATE_REQUEST æ¶ˆæ¯
 class CUpdateAccountHandler : public IHandler
 {
 private:
-    TNetHead_V2* m_pstNetHead;  // ¿Í»§Á¬½Ó
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    TNetHead_V2* m_pstNetHead;  // å®¢æˆ·è¿æ¥
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRegAuthHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRegAuthHandlerSetç±»ä¸­åˆ›å»º
     friend class CRegAuthHandlerSet;
     CUpdateAccountHandler();
 
@@ -39,3 +39,7 @@ private:
 
 #endif // __UPDATE_ACCOUNT_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

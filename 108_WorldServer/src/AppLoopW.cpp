@@ -1,4 +1,4 @@
-#include <unistd.h>
+ï»¿#include <unistd.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -15,7 +15,7 @@
 
 using namespace ServerLib;
 
-//³õÊ¼»¯AppCmd
+//åˆå§‹åŒ–AppCmd
 int CAppLoopW::ms_iAppCmd = APPCMD_NOTHING_TODO;
 
 CAppLoopW::CAppLoopW()
@@ -32,7 +32,7 @@ int CAppLoopW::ReloadConfig()
     // StarWorldServer.tcm
     CAppUtility::LoadLogConfig(APP_CONFIG_FILE, "GameWorldServer");
 
-    //¼ÓÔØÓÎÏ·ÅäÖÃ
+    //åŠ è½½æ¸¸æˆé…ç½®
     CModuleHelper::LoadConfig();
 
     CWorldBillLog::Initialize();
@@ -56,10 +56,10 @@ int CAppLoopW::LoadConfig()
     // StarWorldServer.tcm
     CAppUtility::LoadLogConfig(APP_CONFIG_FILE, "GameWorldServer");
 
-    //Load ÓÎÏ·ÅäÖÃ
+    //Load æ¸¸æˆé…ç½®
     CModuleHelper::LoadConfig();
 
-    //LoadÈÕÖ¾µÄÅäÖÃ
+    //Loadæ—¥å¿—çš„é…ç½®
     CWorldBillLog::Initialize();
 
     return 0;
@@ -67,7 +67,7 @@ int CAppLoopW::LoadConfig()
 
 int CAppLoopW::Initialize(bool bResumeMode, int iWorlID)
 {
-    // ¶ÁÈ¡ÅäÖÃ
+    // è¯»å–é…ç½®
     LoadConfig();
 
     m_bResumeMode = bResumeMode;
@@ -114,9 +114,9 @@ int CAppLoopW::Initialize(bool bResumeMode, int iWorlID)
         exit(6);
     }
 
-    //todo jasonxiong ÔÝÊ±²»ÐèÒªÕâ²¿·ÖÂß¼­£¬ºóÐøÐèÒªÊ±ÔÙÌí¼Ó
+    //todo jasonxiong æš‚æ—¶ä¸éœ€è¦è¿™éƒ¨åˆ†é€»è¾‘ï¼ŒåŽç»­éœ€è¦æ—¶å†æ·»åŠ 
     /*
-    // ´ÓROLEDBÖÐÔ¤¼ÓÔØÍæ¼ÒÕªÒªÐÅÏ¢
+    // ä»ŽROLEDBä¸­é¢„åŠ è½½çŽ©å®¶æ‘˜è¦ä¿¡æ¯
     if (!bResumeMode)
     {
         CWorldRoleSnapUtility::FetchRoleSnapInfo(0, 0);
@@ -170,7 +170,7 @@ int CAppLoopW::Run()
             ms_iAppCmd = APPCMD_NOTHING_TODO;
         }
 
-        // ½ÓÊÕÏûÏ¢´¦Àí
+        // æŽ¥æ”¶æ¶ˆæ¯å¤„ç†
         int iRecvMsgCount = 0;
         while(1)
         {
@@ -194,9 +194,9 @@ int CAppLoopW::Run()
 
         m_stAppTick.OnTick();
 
-        //Í³¼Æ
+        //ç»Ÿè®¡
         uiNowTime = time(NULL);
-        if(uiNowTime - uiStatTime >= 5 * 60) // 5·ÖÖÓ
+        if(uiNowTime - uiStatTime >= 5 * 60) // 5åˆ†é’Ÿ
         {
             MsgStatisticSingleton::Instance()->Print();
             MsgStatisticSingleton::Instance()->Reset();
@@ -227,3 +227,7 @@ void CAppLoopW::SetAppCmd(int iAppCmd)
 
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

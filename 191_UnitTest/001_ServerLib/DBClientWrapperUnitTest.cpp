@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 
 #include "google/protobuf/text_format.h"
 #include "ErrorNumDef.hpp"
@@ -23,14 +23,14 @@ void DBClientWrapperUnitTest::TearDown()
 
 TEST_F(DBClientWrapperUnitTest, DBClientTest)
 {
-    //²âÊÔÁ¬½Ó
+    //æµ‹è¯•è¿æ¥
     int iRet = m_oDBClient.SetMysqlDBInfo("192.168.78.144", "qmonster", "kingnetdevelop", "1_RoleDB");
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
     iRet = m_oDBClient.SetMysqlDBInfo("192.168.78.144", "qmonster", "kingnetdevelop", "1_RoleDB");
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
-    //²âÊÔÖ´ĞĞSQLÓï¾ä
+    //æµ‹è¯•æ‰§è¡ŒSQLè¯­å¥
     iRet = m_oDBClient.SetMysqlDBInfo("192.168.78.144", "qmonster", "kingnetdevelop", "1_RoleDB");
    
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
@@ -38,15 +38,15 @@ TEST_F(DBClientWrapperUnitTest, DBClientTest)
 
 TEST_F(DBClientWrapperUnitTest, DBClientSelectTest)
 {
-    //½¨Á¢µ½MYSQLÊı¾İ¿âµÄÁ´½Ó
+    //å»ºç«‹åˆ°MYSQLæ•°æ®åº“çš„é“¾æ¥
     int iRet = m_oDBClient.SetMysqlDBInfo("192.168.78.144", "qmonster", "kingnetdevelop", "1_RoleDB");
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
-    //²âÊÔÀ­È¡Íæ¼ÒÊı¾İ
+    //æµ‹è¯•æ‹‰å–ç©å®¶æ•°æ®
     static char szQueryString[4096] = {0};
     int iLength = SAFE_SPRINTF(szQueryString, sizeof(szQueryString)-1, "select %s from t_qmonster_userdata where uin = %d and worldID=%d", "base_info", 10001, 1);
 
-    //Íæ¼Ò»ù±¾ĞÅÏ¢ base_info
+    //ç©å®¶åŸºæœ¬ä¿¡æ¯ base_info
     iRet = m_oDBClient.ExecuteRealQuery(szQueryString, iLength, true);
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
@@ -64,10 +64,14 @@ TEST_F(DBClientWrapperUnitTest, DBClientSelectTest)
 
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
-    //´òÓ¡protobufÊı¾İ£¬È·ÈÏÊı¾İÍêÕûĞÔ
+    //æ‰“å°protobufæ•°æ®ï¼Œç¡®è®¤æ•°æ®å®Œæ•´æ€§
     std::string strTmp;
     ::google::protobuf::TextFormat::PrintToString(stBaseInfo, &strTmp);
 
     printf("\n\n%s\n\n\n", strTmp.c_str());
 
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

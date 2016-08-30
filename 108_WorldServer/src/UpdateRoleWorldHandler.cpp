@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "ProtoDataUtility.hpp"
 #include "ModuleHelper.hpp"
@@ -50,7 +50,7 @@ int CUpdateRoleWorldHandler::OnRequestUpdateRoleWorld()
     CWorldRoleStatusWObj* pWorldRoleStatusObj = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(pstReq->stroleid());
 	if (!pWorldRoleStatusObj)
 	{
-		// WorldÃ»ÓĞcache£¬ÖØ½¨½ÇÉ«ĞÅÏ¢
+		// Worldæ²¡æœ‰cacheï¼Œé‡å»ºè§’è‰²ä¿¡æ¯
 		pWorldRoleStatusObj = WorldTypeK32<CWorldRoleStatusWObj>::CreateByUin(uiUin);
 		if (!pWorldRoleStatusObj)
 		{
@@ -86,13 +86,13 @@ int CUpdateRoleWorldHandler::OnRequestUpdateRoleWorld()
 			return -5;
 		}
 
-		//¸üĞÂ»º´æĞÅÏ¢
+		//æ›´æ–°ç¼“å­˜ä¿¡æ¯
 		pWorldRoleStatusObj->SetRoleInfo(pstReq->stuserinfo());
 	}
 
     LOGDEBUG("UpdateRole: Uin = %u\n", uiUin);
 
-    // ·¢ËÍ¸üĞÂÇëÇóµ½RoleDB
+    // å‘é€æ›´æ–°è¯·æ±‚åˆ°RoleDB
     int iRet = CWorldMsgHelper::SendWorldMsgToRoleDB(*m_pMsg);
     if(iRet < 0)
     {
@@ -110,10 +110,10 @@ int CUpdateRoleWorldHandler::OnRequestUpdateRoleWorld()
     return 0;
 }
 
-//¸üĞÂÊı¾İ·µ»ØµÄ´¦ÀíÈë¿Ú
+//æ›´æ–°æ•°æ®è¿”å›çš„å¤„ç†å…¥å£
 int CUpdateRoleWorldHandler::OnResponseUpdateRoleWorld()
 {
-	//Ö±½Ó×ª·¢¸øGame Server
+	//ç›´æ¥è½¬å‘ç»™Game Server
 	const World_UpdateRole_Response& rstResp = m_pMsg->m_stmsgbody().m_stworld_updaterole_response();
 	CWorldRoleStatusWObj* pstUserStatus = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(rstResp.stroleid());
 	if(!pstUserStatus)
@@ -142,3 +142,7 @@ int CUpdateRoleWorldHandler::SendUpdateRoleResponseWGS(const RoleID& stRoleID, i
 
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

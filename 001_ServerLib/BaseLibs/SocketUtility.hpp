@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file SocketUtility.hpp
 *@author jasonxiong
 *@date 2009-11-05
 *@version 1.0
-*@brief ´¦ÀíÌ×½Ó×ÖÏà¹Ø²Ù×÷
+*@brief å¤„ç†å¥—æ¥å­—ç›¸å…³æ“ä½œ
 *
 *
 */
@@ -11,7 +11,7 @@
 #ifndef __SOCKET_UTIL_HPP__
 #define __SOCKET_UTIL_HPP__
 
-//ÔÚÕâÌí¼Ó±ê×¼¿âÍ·ÎÄ¼ş
+//åœ¨è¿™æ·»åŠ æ ‡å‡†åº“å¤´æ–‡ä»¶
 #include <netinet/in.h>
 
 namespace ServerLib
@@ -24,88 +24,88 @@ private:
 
 public:
     /**
-    *ÉèÖÃÌ×½Ó×ÖÎª·Ç×èÈû
-    *@param[in] iSocketFD ĞèÒªÉèÖÃµÄÌ×½Ó×Ö
+    *è®¾ç½®å¥—æ¥å­—ä¸ºéé˜»å¡
+    *@param[in] iSocketFD éœ€è¦è®¾ç½®çš„å¥—æ¥å­—
     *@return 0 success
     */
     static int SetNBlock(int iSocketFD);
 
     /**
-    *ÉèÖÃÌ×½Ó×ÖNagleËã·¨¹Ø±Õ
-    *@param[in] iSocketFD ĞèÒªÉèÖÃµÄÌ×½Ó×Ö
+    *è®¾ç½®å¥—æ¥å­—Nagleç®—æ³•å…³é—­
+    *@param[in] iSocketFD éœ€è¦è®¾ç½®çš„å¥—æ¥å­—
     *@return 0 success
     */
     static int SetNagleOff(int iSocketFD);
 
     /**
-    *ÉèÖÃµØÖ·ÖØÓÃ
-    *@param[in] iSocketFD ĞèÒªÉèÖÃµØÖ·ÖØÓÃµÄFD
+    *è®¾ç½®åœ°å€é‡ç”¨
+    *@param[in] iSocketFD éœ€è¦è®¾ç½®åœ°å€é‡ç”¨çš„FD
     *@return 0 success
     */
     static int SetReuseAddr(int iSocketFD);
 
     /**
-    *ÉèÖÃTCP±£»î
-    *@param[in] iSocketFD ĞèÒªÉèÖÃ±£»îµÄFD
+    *è®¾ç½®TCPä¿æ´»
+    *@param[in] iSocketFD éœ€è¦è®¾ç½®ä¿æ´»çš„FD
     *@return 0 success
     */
     static int SetKeepalive(int iSocketFD);
 
     /**
-    *½ûÖ¹ÑÓ³Ù¹Ø±Õ
-    *@param[in] iSocketFD ĞèÒªÉèÖÃ±£»îµÄFD
+    *ç¦æ­¢å»¶è¿Ÿå…³é—­
+    *@param[in] iSocketFD éœ€è¦è®¾ç½®ä¿æ´»çš„FD
     *@return 0 success
     */
     static int SetLingerOff(int iSocketFD);
 
     /**
-    *½«Socket°ó¶¨IP
+    *å°†Socketç»‘å®šIP
     *@param[in] iSocketFD
-    *@param[in] pszBindIP Òª°ó¶¨µÄIPµØÖ·
-    *@param[in] ushBindPort Òª°ó¶¨µÄ¶Ë¿ÚµØÖ·
+    *@param[in] pszBindIP è¦ç»‘å®šçš„IPåœ°å€
+    *@param[in] ushBindPort è¦ç»‘å®šçš„ç«¯å£åœ°å€
     *@return 0 success
     */
     static int BindSocket(int iSocketFD, const char* pszBindIP, unsigned short ushBindPort);
 
     /**
-    *Á¬½Óµ½Ô¶¶ËIP
+    *è¿æ¥åˆ°è¿œç«¯IP
     *@param[in] iSocketFD
-    *@param[in] pszBindIP ÒªÁ¬½ÓµÄIPµØÖ·
-    *@param[in] ushBindPort ÒªÁ¬½ÓµÄ¶Ë¿ÚµØÖ·
+    *@param[in] pszBindIP è¦è¿æ¥çš„IPåœ°å€
+    *@param[in] ushBindPort è¦è¿æ¥çš„ç«¯å£åœ°å€
     *@return 0 success
     */
     static int Connect(int iSocketFD, const char* pszServerIP, unsigned short ushServerPort);
 
     /**
-    *ÉèÖÃÌ×½Ó×ÖËùÕ¼µÄÏµÍ³½ÓÊÕ»º³åÇø´óĞ¡
-    *@param[in] iSocketFD ĞèÒªÉèÖÃµÄÌ×½Ó×Ö
-    *@param[in] riRecvBufLen ÒªÉèÖÃµÄÏµÍ³½ÓÊÕ»º³åÇø´óĞ¡
-    *@param[out] riRecvBufLen ÉèÖÃºóµÄÏµÍ³½ÓÊÕ»º³åÇø´óĞ¡
+    *è®¾ç½®å¥—æ¥å­—æ‰€å çš„ç³»ç»Ÿæ¥æ”¶ç¼“å†²åŒºå¤§å°
+    *@param[in] iSocketFD éœ€è¦è®¾ç½®çš„å¥—æ¥å­—
+    *@param[in] riRecvBufLen è¦è®¾ç½®çš„ç³»ç»Ÿæ¥æ”¶ç¼“å†²åŒºå¤§å°
+    *@param[out] riRecvBufLen è®¾ç½®åçš„ç³»ç»Ÿæ¥æ”¶ç¼“å†²åŒºå¤§å°
     *@return 0 success
     */
     static int SetSockRecvBufLen(int iSocketFD, int& riRecvBufLen);
 
     /**
-    *ÉèÖÃÌ×½Ó×ÖËùÕ¼µÄÏµÍ³·¢ËÍ»º³åÇø´óĞ¡
-    *@param[in] iSocketFD ĞèÒªÉèÖÃµÄÌ×½Ó×Ö
-    *@param[in] riSendBufLen ÒªÉèÖÃµÄÏµÍ³·¢ËÍ»º³åÇø´óĞ¡
-    *@param[out] riSendBufLen ÉèÖÃºóµÄÏµÍ³·¢ËÍ»º³åÇø´óĞ¡
+    *è®¾ç½®å¥—æ¥å­—æ‰€å çš„ç³»ç»Ÿå‘é€ç¼“å†²åŒºå¤§å°
+    *@param[in] iSocketFD éœ€è¦è®¾ç½®çš„å¥—æ¥å­—
+    *@param[in] riSendBufLen è¦è®¾ç½®çš„ç³»ç»Ÿå‘é€ç¼“å†²åŒºå¤§å°
+    *@param[out] riSendBufLen è®¾ç½®åçš„ç³»ç»Ÿå‘é€ç¼“å†²åŒºå¤§å°
     *@return 0 success
     */
     static int SetSockSendBufLen(int iSocketFD, int& riSendBufLen);
 
     /**
-    *½«ÓÃsockaddr_in±íÊ¾µÄIPµØÖ·×ª»»Îª×Ö·û´®
-    *@param[in] pstSockAddr Òª×ª»»µÄµØÖ·
-    *@param[out] szAddr ÓÃ×Ö·û´®±íÊ¾µÄIPv4:portµØÖ·
+    *å°†ç”¨sockaddr_inè¡¨ç¤ºçš„IPåœ°å€è½¬æ¢ä¸ºå­—ç¬¦ä¸²
+    *@param[in] pstSockAddr è¦è½¬æ¢çš„åœ°å€
+    *@param[out] szAddr ç”¨å­—ç¬¦ä¸²è¡¨ç¤ºçš„IPv4:portåœ°å€
     *@return 0 success
     */
     static int SockAddrToString(sockaddr_in *pstSockAddr, char *szAddr);
 
     /**
-    *½«ÓÃint32±íÊ¾µÄIPµØÖ·×ª»»Îª×Ö·û´®
-    *@param[in] iIPAddr int32±íÊ¾µÄIPµØÖ·
-    *@param[in] szAddr µã·ÖÊ®½øÖÆ±íÊ¾µÄIPµØÖ·
+    *å°†ç”¨int32è¡¨ç¤ºçš„IPåœ°å€è½¬æ¢ä¸ºå­—ç¬¦ä¸²
+    *@param[in] iIPAddr int32è¡¨ç¤ºçš„IPåœ°å€
+    *@param[in] szAddr ç‚¹åˆ†åè¿›åˆ¶è¡¨ç¤ºçš„IPåœ°å€
     *@return 0 success
     */
     static int IPInt32ToString(int iIPAddr, char* szAddr);
@@ -114,3 +114,7 @@ public:
 
 #endif //__SOCKET_UTIL_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

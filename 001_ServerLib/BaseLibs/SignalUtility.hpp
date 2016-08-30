@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file SignalUtility.hpp
 *@author jasonxiong
 *@date 2009-12-09
 *@version 1.0
-*@brief ĞÅºÅ²Ù×÷Àà
+*@brief ä¿¡å·æ“ä½œç±»
 *
 *
 */
@@ -115,10 +115,10 @@ private:
     ~CSignalUtility() {}
 
 public:
-    //!ºöÂÔÄ³¸öĞÅºÅ
+    //!å¿½ç•¥æŸä¸ªä¿¡å·
     static void IgnoreSignal(int iSignalValue);
 
-    //!ÉèÖÃÄ³¸öĞÅºÅµÄ²¶×½º¯Êı
+    //!è®¾ç½®æŸä¸ªä¿¡å·çš„æ•æ‰å‡½æ•°
     static void SetSignalHandler(int iSignalValue, Function_SignalHandler pfHandler);
 
 public:
@@ -132,13 +132,13 @@ public:
 
 private:
 
-    //×¢²á
+    //æ³¨å†Œ
     static void RegisterSignal_USR1();
 
-    //×¢²á
+    //æ³¨å†Œ
     static void RegisterSignal_USR2();
 
-    //×¢²á
+    //æ³¨å†Œ
     static void RegisterSignal_Quit();
 
     static void NotifySignal_USR1(int iSignalValue);
@@ -162,3 +162,7 @@ private:
 
 #endif //__SIGNAL_UTIL_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

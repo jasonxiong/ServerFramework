@@ -1,4 +1,4 @@
-#ifndef __FETCH_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __FETCH_ACCOUNT_HANDLER_HPP__
 #define __FETCH_ACCOUNT_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
@@ -7,23 +7,23 @@
 
 class CAccountDBHandlerSet;
 
-//MSGID_ACCOUNTDB_FETCH_REQUEST ÏûÏ¢´¦ÀíÕß
+//MSGID_ACCOUNTDB_FETCH_REQUEST æ¶ˆæ¯å¤„ç†è€…
 class CFetchAccountHandler : public CHandler
 {
 private:
     DBClientWrapper* m_pDatabase;
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
 	int m_iThreadIdx;
 
-    //Éú³ÉµÄSQLÓï¾ä
+    //ç”Ÿæˆçš„SQLè¯­å¥
     static char m_szQueryString[GameConfig::ACCOUNT_TABLE_SPLIT_FACTOR][512];
 
 public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountDBHandlerSet;
     CFetchAccountHandler(DBClientWrapper* pDatabase);
 
@@ -32,7 +32,7 @@ public:
 
 private:
 
-    //À­È¡·µ»ØÕÊºÅÏêÏ¸ĞÅÏ¢
+    //æ‹‰å–è¿”å›å¸å·è¯¦ç»†ä¿¡æ¯
     int FetchAccountInfo(const AccountID& stAccountID, const std::string& strPassword, AccountDB_FetchAccount_Response& rstResp);
 
     void FillFailedResponse(const unsigned int uiResultID, GameProtocolMsg& stResponseMsg);
@@ -40,3 +40,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

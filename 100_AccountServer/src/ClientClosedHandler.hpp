@@ -1,15 +1,15 @@
-#ifndef __CLIENT_CLOSED_HANDLER_HPP__
+ï»¿#ifndef __CLIENT_CLOSED_HANDLER_HPP__
 #define __CLIENT_CLOSED_HANDLER_HPP__
 
 #include "Handler.hpp"
 
 class CAccountHandlerSet;
 
-// ´¦ÀíÀ´×ÔLotusServerµÄMSGID_LOGOUTSERVER_REQUESTÏûÏ¢
+// å¤„ç†æ¥è‡ªLotusServerçš„MSGID_LOGOUTSERVER_REQUESTæ¶ˆæ¯
 class CClientClosedHandler : public IHandler
 {
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountHandlerSet;
     CClientClosedHandler();
 
@@ -19,3 +19,7 @@ public:
 };
 
 #endif // __CLIENT_CLOSED_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

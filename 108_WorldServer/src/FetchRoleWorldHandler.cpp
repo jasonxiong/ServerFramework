@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "ProtoDataUtility.hpp"
 #include "GameProtocol.hpp"
@@ -54,7 +54,7 @@ int CFetchRoleWorldHandler::OnRequestFetchRoleWorld()
     LOGDEBUG("FetchRoleWorld: Uin = %d\n", uiUin);
 
     CWorldRoleStatusWObj* pWorldRoleStatusObj = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(rstRequest.stroleid());
-    // Èç¹û½ÇÉ«¶ÔÏóÒÑ¾­´æÔÚ, ²¢ÇÒÊÇµÇÂ¼ÇëÇó, Ôò·µ»ØÊ§°Ü
+    // å¦‚æœè§’è‰²å¯¹è±¡å·²ç»å­˜åœ¨, å¹¶ä¸”æ˜¯ç™»å½•è¯·æ±‚, åˆ™è¿”å›å¤±è´¥
     if (pWorldRoleStatusObj && rstRequest.bislogin())
     {
         LOGERROR("Role Already Login: Uin = %d.\n", uiUin);
@@ -62,7 +62,7 @@ int CFetchRoleWorldHandler::OnRequestFetchRoleWorld()
         return -2;
     }
 
-    // Èç¹û²»ÊÇµÇÂ¼ÇëÇó£¬²¢ÇÒÒª²éÑ¯µÄ½ÇÉ«²»´æÔÚ£¬Ôò·µ»ØÊ§°Ü
+    // å¦‚æœä¸æ˜¯ç™»å½•è¯·æ±‚ï¼Œå¹¶ä¸”è¦æŸ¥è¯¢çš„è§’è‰²ä¸å­˜åœ¨ï¼Œåˆ™è¿”å›å¤±è´¥
     if (!pWorldRoleStatusObj && !rstRequest.bislogin())
     {
         LOGERROR("Role Non-Exists: Uin = %u.\n", uiUin);
@@ -70,10 +70,10 @@ int CFetchRoleWorldHandler::OnRequestFetchRoleWorld()
         return -3;
     }
     
-    // Èç¹ûÊÇµÇÂ¼»òÕß¶ÁÈ¡´æµµÇëÇó, ´´½¨½ÇÉ«¶ÔÏó²¢²éÑ¯½ÇÉ«ĞÅÏ¢
+    // å¦‚æœæ˜¯ç™»å½•æˆ–è€…è¯»å–å­˜æ¡£è¯·æ±‚, åˆ›å»ºè§’è‰²å¯¹è±¡å¹¶æŸ¥è¯¢è§’è‰²ä¿¡æ¯
     if (rstRequest.bislogin())
     {
-        //µÇÂ¼ÇëÇóĞèÒªÖØĞÂ´´½¨»º´æObj
+        //ç™»å½•è¯·æ±‚éœ€è¦é‡æ–°åˆ›å»ºç¼“å­˜Obj
         pWorldRoleStatusObj = WorldTypeK32<CWorldRoleStatusWObj>::CreateByUin(uiUin);
         if (!pWorldRoleStatusObj)
         {
@@ -85,10 +85,10 @@ int CFetchRoleWorldHandler::OnRequestFetchRoleWorld()
         pWorldRoleStatusObj->SetZoneID(rstRequest.ireqid());
         pWorldRoleStatusObj->SetRoleID(rstRequest.stroleid());
 
-        //todo jasonxiong2 ÔİÊ±²»ĞèÒªEnterType£¬µÈºóĞøĞèÒªÊ±ÔÙÌí¼Ó
+        //todo jasonxiong2 æš‚æ—¶ä¸éœ€è¦EnterTypeï¼Œç­‰åç»­éœ€è¦æ—¶å†æ·»åŠ 
         pWorldRoleStatusObj->SetEnterType(0);
 
-        // ´ÓÊı¾İ¿âÖĞÀ­È¡Êı¾İ
+        // ä»æ•°æ®åº“ä¸­æ‹‰å–æ•°æ®
         int iRet = CWorldMsgHelper::SendWorldMsgToRoleDB(*m_pMsg);
         if (iRet < 0)
         {
@@ -102,19 +102,19 @@ int CFetchRoleWorldHandler::OnRequestFetchRoleWorld()
         return 0;
     }
     
-    // ·ñÔòÖ±½Ó·µ»Ø½ÇÉ«Êı¾İ
+    // å¦åˆ™ç›´æ¥è¿”å›è§’è‰²æ•°æ®
     SendFetchRoleResponse(rstRequest.stroleid(), rstRequest.ireqid());
 
 	return 0;
 }
 
-//²éÑ¯ÇëÇó·µ»Øµ½WorldµÄ´¦ÀíÈë¿Ú
+//æŸ¥è¯¢è¯·æ±‚è¿”å›åˆ°Worldçš„å¤„ç†å…¥å£
 int CFetchRoleWorldHandler::OnResponseFetchRoleWorld()
 {
     World_FetchRole_Response* pstResp = m_pMsg->mutable_m_stmsgbody()->mutable_m_stworld_fetchrole_response();
     unsigned uiUin = pstResp->stroleid().uin();
 
-    //²éÕÒWorld»º´æµÄ±¾µØÍæ¼ÒÊı¾İ
+    //æŸ¥æ‰¾Worldç¼“å­˜çš„æœ¬åœ°ç©å®¶æ•°æ®
     CWorldRoleStatusWObj* pUserStatusObj = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(pstResp->stroleid());
     if(!pUserStatusObj)
     {
@@ -124,7 +124,7 @@ int CFetchRoleWorldHandler::OnResponseFetchRoleWorld()
 
     int iZoneID = pUserStatusObj->GetZoneID();
 
-    //Èç¹ûÊÇµÇÂ¼£¬ÑéÖ¤Íæ¼ÒµÄ²»ÔÚÏß×´Ì¬
+    //å¦‚æœæ˜¯ç™»å½•ï¼ŒéªŒè¯ç©å®¶çš„ä¸åœ¨çº¿çŠ¶æ€
     if(pstResp->bislogin() && (pUserStatusObj->GetRoleStatus() & EGUS_ONLINE))
     {
         LOGERROR("Fail to fetch role from DB, already online, uin %u\n", uiUin);
@@ -134,7 +134,7 @@ int CFetchRoleWorldHandler::OnResponseFetchRoleWorld()
         return -2;
     }
 
-    //Èç¹û´ÓDBÏÂÀ­Êı¾İÊ§°Ü
+    //å¦‚æœä»DBä¸‹æ‹‰æ•°æ®å¤±è´¥
     if(pstResp->iresult())
     {
         LOGERROR("Fail to fetch role from DB, uin %u, ret 0x%0x\n", uiUin, pstResp->iresult());
@@ -146,7 +146,7 @@ int CFetchRoleWorldHandler::OnResponseFetchRoleWorld()
 
     LOGDEBUG("Fetch ROLEDB OK, uin %u, from zone id %d\n", uiUin, iZoneID);
 
-    //¸üĞÂWorldµÄÍæ¼Ò»º´æÊı¾İĞÅÏ¢
+    //æ›´æ–°Worldçš„ç©å®¶ç¼“å­˜æ•°æ®ä¿¡æ¯
     BASEDBINFO stBaseInfo;
     if(!DecodeProtoData(pstResp->stuserinfo().strbaseinfo(), stBaseInfo))
     {
@@ -167,7 +167,7 @@ int CFetchRoleWorldHandler::OnResponseFetchRoleWorld()
     pUserStatusObj->SetRoleInfo(pstResp->stuserinfo());
     pUserStatusObj->SetRoleStatus(uStatus);
 
-    //·µ»Ø²éÑ¯½á¹û
+    //è¿”å›æŸ¥è¯¢ç»“æœ
     int iRet = CWorldMsgHelper::SendWorldMsgToWGS(*m_pMsg, iZoneID);
     if(iRet)
     {
@@ -180,7 +180,7 @@ int CFetchRoleWorldHandler::OnResponseFetchRoleWorld()
     return iRet;
 }
 
-// ·µ»ØÊ§°ÜĞÅÏ¢
+// è¿”å›å¤±è´¥ä¿¡æ¯
 int CFetchRoleWorldHandler::SendFailedFetchRoleResponse(const RoleID& stRoleID, int iReqID)
 {
     CWorldMsgHelper::GenerateMsgHead(m_stWorldMsg, 0, MSGID_WORLD_FETCHROLE_RESPONSE, stRoleID.uin());
@@ -194,7 +194,7 @@ int CFetchRoleWorldHandler::SendFailedFetchRoleResponse(const RoleID& stRoleID, 
 	return iRet;
 }
 
-// ·µ»Ø½ÇÉ«Êı¾İ
+// è¿”å›è§’è‰²æ•°æ®
 int CFetchRoleWorldHandler::SendFetchRoleResponse(const RoleID& stRoleID, int iReqID)
 {
     CWorldRoleStatusWObj* pWorldRoleStatusObj = WorldTypeK32<CWorldRoleStatusWObj>::GetByRoleID(stRoleID);
@@ -216,3 +216,7 @@ int CFetchRoleWorldHandler::SendFetchRoleResponse(const RoleID& stRoleID, int iR
     return iRet;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

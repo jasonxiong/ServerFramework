@@ -1,13 +1,13 @@
-
+ï»¿
 #ifndef __BATTLEFIELD_PATH_CONFIG_MANAGER_HPP__
 #define __BATTLEFIELD_PATH_CONFIG_MANAGER_HPP__
 
 #include "ConfigHelper.hpp"
 #include "ScenePathManager.hpp"
 
-//Õ½³¡µØÍ¼ÅäÖÃ¹ÜÀíÆ÷,¼ÓÔØtmx¸ñÊ½µÄµØÍ¼ÎÄ¼ş
+//æˆ˜åœºåœ°å›¾é…ç½®ç®¡ç†å™¨,åŠ è½½tmxæ ¼å¼çš„åœ°å›¾æ–‡ä»¶
 
-const int MAX_BATTLEFIELD_PATH_CONFIG_NUMBER      = 100;  //×î¶àÖ§³Ö100ÕÅµØÍ¼×èµ²ĞÅÏ¢
+const int MAX_BATTLEFIELD_PATH_CONFIG_NUMBER      = 100;  //æœ€å¤šæ”¯æŒ100å¼ åœ°å›¾é˜»æŒ¡ä¿¡æ¯
 
 class CBattlefieldPathConfigManager
 {
@@ -17,21 +17,25 @@ public:
 
 public:
 
-    //¼ÓÔØÕ½³¡ÅäÖÃ
+    //åŠ è½½æˆ˜åœºé…ç½®
     int LoadAllBattlefield(); 
 
-    //»ñÈ¡Õ½³¡µÄ×èµ²ĞÅÏ¢
+    //è·å–æˆ˜åœºçš„é˜»æŒ¡ä¿¡æ¯
     static const CScenePathManager* GetBattlefieldPathConfigManager(int iMapID);
 
 private:
 
-    //¼ÓÔØµ¥¸ö×èµ²ĞÅÏ¢ÅäÖÃ
+    //åŠ è½½å•ä¸ªé˜»æŒ¡ä¿¡æ¯é…ç½®
     int LoadOneBattlefieldPath(const std::string& strConfigFile);
 
 private:
 
     static int m_iBattlefieldPathNum;
-    static CScenePathManager m_astBattlefiledPath[MAX_BATTLEFIELD_PATH_CONFIG_NUMBER];     //×èµ²ÅäÖÃĞÅÏ¢
+    static CScenePathManager m_astBattlefiledPath[MAX_BATTLEFIELD_PATH_CONFIG_NUMBER];     //é˜»æŒ¡é…ç½®ä¿¡æ¯
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,9 +1,9 @@
-#ifndef __HANDLER_HPP__
+ï»¿#ifndef __HANDLER_HPP__
 #define __HANDLER_HPP__
 
 #include "Public.hpp"
 
-// ÏûÏ¢´¦ÀíÕß³éÏóÀà
+// æ¶ˆæ¯å¤„ç†è€…æŠ½è±¡ç±»
 class CHandler
 {
 protected:
@@ -12,7 +12,7 @@ protected:
 public:
     virtual ~CHandler() {};
 
-    // ÏûÏ¢´¦Àí
+    // æ¶ˆæ¯å¤„ç†
     virtual void OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandleResult* pstHandleResult) = 0;
 
 protected:
@@ -22,3 +22,7 @@ protected:
 
 #endif // __HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

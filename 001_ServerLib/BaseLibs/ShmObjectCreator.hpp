@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file ShmObjectCreator.hpp
 *@author jasonxiong
 *@date 2009-11-03
 *@version 1.0
-*@brief CShmObjectCreatorÄ£°åÀàµÄ¶¨Òå
+*@brief CShmObjectCreatoræ¨¡æ¿ç±»çš„å®šä¹‰
 *
-*	¶Ô¹²ÏíÄÚ´æCSharedMemoryµÄÊ¹ÓÃ¼òµ¥·â×°£¬¶ÔÒ»¸ö´óĞ¡¹Ì¶¨µÄÀàÓÃ¹²ÏíÄÚ´æ·ÖÅä
+*	å¯¹å…±äº«å†…å­˜CSharedMemoryçš„ä½¿ç”¨ç®€å•å°è£…ï¼Œå¯¹ä¸€ä¸ªå¤§å°å›ºå®šçš„ç±»ç”¨å…±äº«å†…å­˜åˆ†é…
 */
 
 #ifndef __SHM_OBJECT_CREATOR_HPP__
@@ -26,10 +26,10 @@ class CShmObjectCreator
 public:
 
     /**
-    *ÓÃ¹²ÏíÄÚ´æ´´½¨¶ÔÏó
-    *@param[in] pstSharedMemory Ê¹ÓÃµÄ¹²ÏíÄÚ´æÀà£¬×îºóÒ»¿éÄÚ´æÓÃÒ»¸öÀà£¬·ÀÖ¹³öÏÖÄÚ´æĞ¹Â©
-    *@param[in] pszKeyFileName ¹²ÏíÄÚ´æ¹ØÁªµÄÎÄ¼şÃû
-    *@param[in] ucKeyPrjID ¹²ÏíÄÚ´æ¹ØÁªµÄID
+    *ç”¨å…±äº«å†…å­˜åˆ›å»ºå¯¹è±¡
+    *@param[in] pstSharedMemory ä½¿ç”¨çš„å…±äº«å†…å­˜ç±»ï¼Œæœ€åä¸€å—å†…å­˜ç”¨ä¸€ä¸ªç±»ï¼Œé˜²æ­¢å‡ºç°å†…å­˜æ³„æ¼
+    *@param[in] pszKeyFileName å…±äº«å†…å­˜å…³è”çš„æ–‡ä»¶å
+    *@param[in] ucKeyPrjID å…±äº«å†…å­˜å…³è”çš„ID
     *@return 0 success
     */
     static TYPE_ShmObject* CreateObject(
@@ -84,11 +84,11 @@ public:
     }
 
     /**
-    *ÓÃ¹²ÏíÄÚ´æ´´½¨¶ÔÏó£¬²¢¶îÍâ·ÖÅäÒ»¶¨´óĞ¡
-    *@param[in] pstSharedMemory Ê¹ÓÃµÄ¹²ÏíÄÚ´æÀà£¬×îºóÒ»¿éÄÚ´æÓÃÒ»¸öÀà£¬·ÀÖ¹³öÏÖÄÚ´æĞ¹Â©
-    *@param[in] pszKeyFileName ¹²ÏíÄÚ´æ¹ØÁªµÄÎÄ¼şÃû
-    *@param[in] ucKeyPrjID ¹²ÏíÄÚ´æ¹ØÁªµÄID
-    *@param[in] iAddistionalSize ¶îÍâ·ÖÅäµÄÄÚ´æ´óĞ¡
+    *ç”¨å…±äº«å†…å­˜åˆ›å»ºå¯¹è±¡ï¼Œå¹¶é¢å¤–åˆ†é…ä¸€å®šå¤§å°
+    *@param[in] pstSharedMemory ä½¿ç”¨çš„å…±äº«å†…å­˜ç±»ï¼Œæœ€åä¸€å—å†…å­˜ç”¨ä¸€ä¸ªç±»ï¼Œé˜²æ­¢å‡ºç°å†…å­˜æ³„æ¼
+    *@param[in] pszKeyFileName å…±äº«å†…å­˜å…³è”çš„æ–‡ä»¶å
+    *@param[in] ucKeyPrjID å…±äº«å†…å­˜å…³è”çš„ID
+    *@param[in] iAddistionalSize é¢å¤–åˆ†é…çš„å†…å­˜å¤§å°
     *@return 0 success
     */
     static TYPE_ShmObject* CreateObject(
@@ -202,3 +202,7 @@ char* CShmSingleton<TYPE>::m_pszMemory = NULL;
 }
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

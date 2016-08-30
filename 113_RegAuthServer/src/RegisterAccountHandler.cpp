@@ -1,4 +1,4 @@
-#include <assert.h>
+Ôªø#include <assert.h>
 #include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
@@ -23,7 +23,7 @@ CRegisterAccountHandler::CRegisterAccountHandler()
 
 int CRegisterAccountHandler::CheckParam()
 {
-    //todo jasonxiong ’‚∏ˆ¿Ô√Ê∫Û√Ê–Ë“™∏˘æ›≤ﬂªÆ–Ë«ÛÃÌº”’ ∫≈∫Õ√‹¬Îµƒ◊÷∑˚∫œ∑®–‘ºÏ≤È
+    //todo jasonxiong Ëøô‰∏™ÈáåÈù¢ÂêéÈù¢ÈúÄË¶ÅÊ†πÊçÆÁ≠ñÂàíÈúÄÊ±ÇÊ∑ªÂä†Â∏êÂè∑ÂíåÂØÜÁ†ÅÁöÑÂ≠óÁ¨¶ÂêàÊ≥ïÊÄßÊ£ÄÊü•
 
     return 0;
 }
@@ -31,7 +31,7 @@ int CRegisterAccountHandler::CheckParam()
 void CRegisterAccountHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ≤ª π”√Result
+    // ‰∏ç‰ΩøÁî®Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
@@ -42,7 +42,7 @@ void CRegisterAccountHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     {
         case MSGID_REGAUTH_REGACCOUNT_REQUEST:
             {
-                //◊¢≤·∆ΩÃ®’ ∫≈µƒ«Î«Û
+                //Ê≥®ÂÜåÂπ≥Âè∞Â∏êÂè∑ÁöÑËØ∑Ê±Ç
                 OnRequestRegAccount();
                 return;
             }
@@ -60,7 +60,7 @@ void CRegisterAccountHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
 int CRegisterAccountHandler::OnRequestRegAccount()
 {
-    // ºÏ≤È«Î«Ûœ˚œ¢÷– «∑Ò¥Ê‘⁄∑«∑®◊÷∂Œ
+    // Ê£ÄÊü•ËØ∑Ê±ÇÊ∂àÊÅØ‰∏≠ÊòØÂê¶Â≠òÂú®ÈùûÊ≥ïÂ≠óÊÆµ
     if (CheckParam() != 0)
     {
         TRACESVR("Invalid parameter found in the request\n");
@@ -72,7 +72,7 @@ int CRegisterAccountHandler::OnRequestRegAccount()
     TRACESVR("Handling RegAccountRequest from lotus server, account: %s, type: %d\n",
              rstReq.staccountid().straccount().c_str(), rstReq.staccountid().iaccounttype());
 
-    // ºÏ≤Èsession «∑Ò“—æ≠¥Ê‘⁄£¨session∏ˆ ˝ «∑ÒµΩ¥Ô…œœﬁ
+    // Ê£ÄÊü•sessionÊòØÂê¶Â∑≤ÁªèÂ≠òÂú®Ôºåsession‰∏™Êï∞ÊòØÂê¶Âà∞Ëææ‰∏äÈôê
     int iRes = SessionManager->CheckSession(*m_pstNetHead);
     if (iRes != T_SERVER_SUCESS)
     {
@@ -80,9 +80,9 @@ int CRegisterAccountHandler::OnRequestRegAccount()
         return -4;
     }
 
-    time_t tmNow = time(NULL); // ¥¥Ω®ª∫¥ÊΩ·µ„µƒ ±º‰
+    time_t tmNow = time(NULL); // ÂàõÂª∫ÁºìÂ≠òÁªìÁÇπÁöÑÊó∂Èó¥
 
-    // ª∫¥ÊNetHead£¨º¥session
+    // ÁºìÂ≠òNetHeadÔºåÂç≥session
     CSessionObj* pSessionObj = SessionManager->CreateSession(*m_pstNetHead);
     ASSERT_AND_LOG_RTN_INT(pSessionObj);
     pSessionObj->SetCreatedTime(&tmNow);
@@ -93,11 +93,11 @@ int CRegisterAccountHandler::OnRequestRegAccount()
 
     char szTime[32] = "";
     pSessionObj->GetCreatedTime(szTime, sizeof(szTime));
-    TRACESVR("session cache created time: %s", szTime); // ¿˝»Á: Wed Sep 29 10:59:46 2010
+    TRACESVR("session cache created time: %s", szTime); // ‰æãÂ¶Ç: Wed Sep 29 10:59:46 2010
 
     unsigned int uiSessionFd = GenerateTimeStamp(m_uiSessionFD, m_unValue);
 
-    //÷±Ω”◊™∑¢◊¢≤·«Î«Û∏¯AccountDB
+    //Áõ¥Êé•ËΩ¨ÂèëÊ≥®ÂÜåËØ∑Ê±ÇÁªôAccountDB
     CAccountDBAddHandler::AddAccount(uiSessionFd, rstReq.staccountid(), 1, rstReq.strpassword());
 
     return T_SERVER_SUCESS;
@@ -109,7 +109,7 @@ void CRegisterAccountHandler::SendFailedResponseToLotus(const unsigned int uiRes
     GenerateMsgHead(&stFailedResponse, m_pstRequestMsg->m_stmsghead().m_uisessionfd(), MSGID_REGAUTH_REGACCOUNT_RESPONSE, 0);
 
     RegAuth_RegAccount_Response* pstResp = stFailedResponse.mutable_m_stmsgbody()->mutable_m_stregauth_regaccount_response();
-    pstResp->set_iresult(uiResultID); // ¥ÌŒÛ¬Î
+    pstResp->set_iresult(uiResultID); // ÈîôËØØÁ†Å
 
     if (EncodeAndSendCode(CSProtocolEngine, m_pstNetHead, &stFailedResponse, GAME_SERVER_LOTUSREGAUTH) != 0)
     {
@@ -123,3 +123,7 @@ void CRegisterAccountHandler::SendFailedResponseToLotus(const unsigned int uiRes
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

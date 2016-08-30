@@ -1,4 +1,4 @@
-#ifndef __DBCLIENT_WRAPPER_UNITTEST_HPP__
+﻿#ifndef __DBCLIENT_WRAPPER_UNITTEST_HPP__
 #define __DBCLIENT_WRAPPER_UNITTEST_HPP__
 
 #include "gtest/gtest.h"
@@ -18,3 +18,7 @@ protected:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

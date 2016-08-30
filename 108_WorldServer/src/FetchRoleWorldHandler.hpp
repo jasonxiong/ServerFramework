@@ -1,4 +1,4 @@
-#ifndef __FETCHROLE_WORLD_HANDLER_HPP__
+ï»¿#ifndef __FETCHROLE_WORLD_HANDLER_HPP__
 #define __FETCHROLE_WORLD_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -15,17 +15,17 @@ public:
 	virtual int OnClientMsg(const void* pMsg);
 
 public:
-    // ·µ»Ø½ÇÉ«²éÑ¯Êı¾İ
+    // è¿”å›è§’è‰²æŸ¥è¯¢æ•°æ®
     int SendFetchRoleResponse(const RoleID& stRoleID, int iReqID);
 
-    // ·µ»ØÊ§°Ü²éÑ¯
+    // è¿”å›å¤±è´¥æŸ¥è¯¢
     int SendFailedFetchRoleResponse(const RoleID& stRoleID, int iReqID);
 
 private:
-    // ²éÑ¯ÇëÇó´¦ÀíÈë¿Ú
+    // æŸ¥è¯¢è¯·æ±‚å¤„ç†å…¥å£
 	int OnRequestFetchRoleWorld();
 
-    //²éÑ¯ÇëÇó·µ»Øµ½WorldµÄ´¦ÀíÈë¿Ú
+    //æŸ¥è¯¢è¯·æ±‚è¿”å›åˆ°Worldçš„å¤„ç†å…¥å£
     int OnResponseFetchRoleWorld();
 
 private:
@@ -37,3 +37,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

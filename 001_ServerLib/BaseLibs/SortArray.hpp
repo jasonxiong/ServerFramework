@@ -1,13 +1,13 @@
-
+ï»¿
 #ifndef __ARRAY_SORT_HPP__
 #define __ARRAY_SORT_HPP__
 
 #include <stdlib.h>
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ÅÅĞòÊı×éËã·¨, ²Î¿¼×Ô»ÃÏë´úÂë
-// ÅÅĞòµÄË³ĞòÎª°´ compar ·µ»ØÖµ½øĞĞÅÅĞò. ¼´:
-// compar(1, 2): ·µ»Ø-1, Ôò´ÓĞ¡µ½´óÅÅĞò
-// compar(1, 2): ·µ»Ø1, Ôò´Ó´óµ½Ğ¡ÅÅĞò
+// æ’åºæ•°ç»„ç®—æ³•, å‚è€ƒè‡ªå¹»æƒ³ä»£ç 
+// æ’åºçš„é¡ºåºä¸ºæŒ‰ compar è¿”å›å€¼è¿›è¡Œæ’åº. å³:
+// compar(1, 2): è¿”å›-1, åˆ™ä»å°åˆ°å¤§æ’åº
+// compar(1, 2): è¿”å›1, åˆ™ä»å¤§åˆ°å°æ’åº
 
 template <int offset, typename T>
 bool CheckZero(const void *p1)
@@ -63,7 +63,7 @@ int CmpOneKey(const void *p1, const void *p2)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ±È½Ï¶ÔÏóµÄÄ³¸ö³ÉÔ±,¿ÉÓÃÓÚMyDeleteArrayElementµÄº¯ÊıÖ¸Õë
+// æ¯”è¾ƒå¯¹è±¡çš„æŸä¸ªæˆå‘˜,å¯ç”¨äºMyDeleteArrayElementçš„å‡½æ•°æŒ‡é’ˆ
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template <int offset, typename T>
 int CmpOneMem(const void *pObj, const void *pMem)
@@ -118,42 +118,46 @@ int DescCmpTwoKey(const void *p1, const void *p2)
 
 typedef int (*MYBCOMPAREFPTR) (const void *, const void *);
 
-// ²éÕÒÒ»¸öÖµÎªkeyµÄÔªËØ
-// ·µ»ØÖµ: piEqualÎª1Ê±, ·µ»ØÕÒµ½µÈÓÚkeyµÄË÷Òı, piEqualÎª0Ê±, ÕÒµ½µÚÒ»¸öĞ¡ÓÚkeyµÄÖµ
+// æŸ¥æ‰¾ä¸€ä¸ªå€¼ä¸ºkeyçš„å…ƒç´ 
+// è¿”å›å€¼: piEqualä¸º1æ—¶, è¿”å›æ‰¾åˆ°ç­‰äºkeyçš„ç´¢å¼•, piEqualä¸º0æ—¶, æ‰¾åˆ°ç¬¬ä¸€ä¸ªå°äºkeyçš„å€¼
 int MyBSearch (const void *key, const void *base, int nmemb, int size, int *piEqual, MYBCOMPAREFPTR compar);
 
-// ²åÈëÒ»¸öÖµÎªkeyµÄÔªËØ
-// iUnique: 1Îª²»ÔÊĞíÖØ¸´, 0 - ÎªÔÊĞíÖØ¸´
-// ·µ»ØÖµ: -1 Ê§°Ü, >=0 ³É¹¦
+// æ’å…¥ä¸€ä¸ªå€¼ä¸ºkeyçš„å…ƒç´ 
+// iUnique: 1ä¸ºä¸å…è®¸é‡å¤, 0 - ä¸ºå…è®¸é‡å¤
+// è¿”å›å€¼: -1 å¤±è´¥, >=0 æˆåŠŸ
 int MyBInsert (const void *key, const void *base, int *pnmemb, int size, int iUnique, MYBCOMPAREFPTR compar);
 
-// É¾³ıË÷ÒıÎªindexµÄÔªËØ
-// ·µ»ØÖµ: -1 Ê§°Ü, 0 ³É¹¦
+// åˆ é™¤ç´¢å¼•ä¸ºindexçš„å…ƒç´ 
+// è¿”å›å€¼: -1 å¤±è´¥, 0 æˆåŠŸ
 int MyIDelete (const void *base, int *pnmemb, int size, int index);
 
-// É¾³ıÖµÎªkeyµÄÔªËØ
-// ·µ»ØÖµ: -1 Ê§°Ü, 0 ³É¹¦
+// åˆ é™¤å€¼ä¸ºkeyçš„å…ƒç´ 
+// è¿”å›å€¼: -1 å¤±è´¥, 0 æˆåŠŸ
 int MyBDelete (const void *key, const void *base, int *pnmemb, int size, MYBCOMPAREFPTR compar);
 
 
-// ²åÈëÒ»¸öÖµÎªkeyµÄÔªËØ
-// iUnique: 1Îª²»ÔÊĞíÖØ¸´, 0 - ÎªÔÊĞíÖØ¸´
-// ·µ»ØÖµ: -1 Ê§°Ü, >=0 ³É¹¦
+// æ’å…¥ä¸€ä¸ªå€¼ä¸ºkeyçš„å…ƒç´ 
+// iUnique: 1ä¸ºä¸å…è®¸é‡å¤, 0 - ä¸ºå…è®¸é‡å¤
+// è¿”å›å€¼: -1 å¤±è´¥, >=0 æˆåŠŸ
 int MyBInsert2 (const void *key, const void *base, int *pnmemb, int size, int iUnique, MYBCOMPAREFPTR compar);
 
 int MyBDelete2 (const void *key, const void *base, int *pnmemb, int size, int (*compar) (const void *, const void *));
 
 
-// ÒÔÏÂ²Ù×÷ÊÊºÏÇé¿ö£º
-// ÔªËØË÷ÒıÎªkey¡£µ«ÔªËØ²éÕÒºÍÉ¾³ıÊ±µÄÏàµÈÊÇÒÔobjcmpµÄ±È½Ï½á¹ûÀ´ÅĞ¶Ï¡£Ò»¸ökey¿ÉÄÜ¶ÔÓ¦¶à¸öÔªËØ¡£ÕâĞ©ÔªËØÃ»ÓĞÅÅĞò±È½Ï£¬¶øÊÇÒÔÏÈºóË³ĞòÀ´²åÈë
+// ä»¥ä¸‹æ“ä½œé€‚åˆæƒ…å†µï¼š
+// å…ƒç´ ç´¢å¼•ä¸ºkeyã€‚ä½†å…ƒç´ æŸ¥æ‰¾å’Œåˆ é™¤æ—¶çš„ç›¸ç­‰æ˜¯ä»¥objcmpçš„æ¯”è¾ƒç»“æœæ¥åˆ¤æ–­ã€‚ä¸€ä¸ªkeyå¯èƒ½å¯¹åº”å¤šä¸ªå…ƒç´ ã€‚è¿™äº›å…ƒç´ æ²¡æœ‰æ’åºæ¯”è¾ƒï¼Œè€Œæ˜¯ä»¥å…ˆåé¡ºåºæ¥æ’å…¥
 int MyBSearchDup (const void *key, const void *base, int nmemb, int size, int *piEqual,  MYBCOMPAREFPTR compar, MYBCOMPAREFPTR objcmp);
 int MyBInsertDup (const void *key, const void *base, int *pnmemb, int size, int iUnique, bool bTail, MYBCOMPAREFPTR compar, MYBCOMPAREFPTR objcmp);
 int MyBDeleteDup (const void *key, const void *base, int *pnmemb, int size,  MYBCOMPAREFPTR compar, MYBCOMPAREFPTR objcmp);
 
 
-// ·µ»ØÉ¾³ıÖ¸¶¨³ÉÔ±ÖµºóÊ£ÏÂµÄÊı×é£¨ÎŞĞò£©ÔªËØ¸öÊı
+// è¿”å›åˆ é™¤æŒ‡å®šæˆå‘˜å€¼åå‰©ä¸‹çš„æ•°ç»„ï¼ˆæ— åºï¼‰å…ƒç´ ä¸ªæ•°
 int MyDeleteArrayElement (const void *key, const void *base, int *pnmemb, int size, int (*compar) (const void *, const void *));
 
 int MyDeleteArray_If(const void *base, int *pnmemb, int iSize, bool (*IfPred)(const void *));
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

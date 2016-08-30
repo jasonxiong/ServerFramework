@@ -1,22 +1,22 @@
-#ifndef __ZONE_TICK_HPP__
+ï»¿#ifndef __ZONE_TICK_HPP__
 #define __ZONE_TICK_HPP__
 
 #include "GameConfigDefine.hpp"
 #include "GameProtocol.hpp"
 
-// ZoneÔÚÏß³¬Ê±Ê±¼ä (10·ÖÖÓ)
+// Zoneåœ¨çº¿è¶…æ—¶æ—¶é—´ (10åˆ†é’Ÿ)
 const int UNACTIVE_ZONE_TIMEOUT     = 10 * 60;
 
-// ¼ì²é¼ä¸ô (5Ãë)
+// æ£€æŸ¥é—´éš” (5ç§’)
 const int ZONE_TICK_INTERVAL        = 5;
 
 typedef struct tagZoneStatus
 {
 	int m_iZoneID;              // ZoneID
-	int m_iLastActiveTime;      // ÉÏ´Î»î¶¯Ê±¼ä
-	int m_iOnlineNumber;        // ÔÚÏßÈËÊı
-	unsigned char m_ucActive;   // ÊÇ·ñ»îÔ¾
-	unsigned char m_ucState;	// ·±Ã¦×´Ì¬
+	int m_iLastActiveTime;      // ä¸Šæ¬¡æ´»åŠ¨æ—¶é—´
+	int m_iOnlineNumber;        // åœ¨çº¿äººæ•°
+	unsigned char m_ucActive;   // æ˜¯å¦æ´»è·ƒ
+	unsigned char m_ucState;	// ç¹å¿™çŠ¶æ€
 }TZoneStatus;
 
 using namespace GameConfig;
@@ -42,7 +42,7 @@ public:
 		return m_iWorldOnlineNum;
 	}
 
-	// »ñµÃÈËÊı×îÉÙµÄZoneID
+	// è·å¾—äººæ•°æœ€å°‘çš„ZoneID
 	int GetLowestZoneID(bool bHomeZone = false);
 
 public:
@@ -60,3 +60,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

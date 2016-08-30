@@ -1,4 +1,4 @@
-#ifndef __KYLIN_MSG_TRANSCEIVER_HPP__
+ï»¿#ifndef __KYLIN_MSG_TRANSCEIVER_HPP__
 #define __KYLIN_MSG_TRANSCEIVER_HPP__
 
 #include "ZmqBus.hpp"
@@ -19,11 +19,11 @@ private:
 public:
     virtual ~CAccountMsgTransceiver();
 
-   // ³õÊ¼»¯CodeQueueºÍZMQÍ¨ĞÅÍ¨µÀ
+   // åˆå§‹åŒ–CodeQueueå’ŒZMQé€šä¿¡é€šé“
     int Initialize(bool bResumeMode, int iWorldID);
 
 public:
-    // ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+    // å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
     int SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer, int iInstance = 0);
     int RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgLength, EGameServerID enMsgPeer, int iInstance = 0);
 
@@ -34,12 +34,16 @@ public:
 
 private:
 
-    //ÄÚÍøÍ¨ĞÅ²¿·Ö£¬Ê¹ÓÃZMQ½øĞĞÍ¨ĞÅ£¬Õâ¸öÊÇAccountµ½WorldµÄÍ¨µÀ
+    //å†…ç½‘é€šä¿¡éƒ¨åˆ†ï¼Œä½¿ç”¨ZMQè¿›è¡Œé€šä¿¡ï¼Œè¿™ä¸ªæ˜¯Accountåˆ°Worldçš„é€šé“
     ZmqBus m_oZmqAccount2WorldClient;
 
-    // ÓëLotusÖ®¼ä»¹ÓÃCodeQueueÍ¨ĞÅ
+    // ä¸Lotusä¹‹é—´è¿˜ç”¨CodeQueueé€šä¿¡
     CCodeQueueManager m_stCodeQueueManager;
 };
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

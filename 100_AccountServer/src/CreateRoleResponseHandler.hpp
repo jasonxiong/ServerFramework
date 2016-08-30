@@ -1,4 +1,4 @@
-#ifndef __CREATE_ROLE_RESPONSE_HANDLER_HPP__
+ï»¿#ifndef __CREATE_ROLE_RESPONSE_HANDLER_HPP__
 #define __CREATE_ROLE_RESPONSE_HANDLER_HPP__
 
 #include <string>
@@ -7,18 +7,18 @@
 
 class CAccountHandlerSet;
 
-// ´¦ÀíÀ´×ÔWorldServerµÄMSGID_ACCOUNT_CREATEROLE_RESPONSEÏûÏ¢
+// å¤„ç†æ¥è‡ªWorldServerçš„MSGID_ACCOUNT_CREATEROLE_RESPONSEæ¶ˆæ¯
 class CCreateRoleResponseHandler : public IHandler
 {
 private:
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountHandlerSet;
     CCreateRoleResponseHandler();
 
@@ -27,7 +27,7 @@ public:
                              SHandleResult* pstResult);
 private:
 
-    //·¢ËÍÉ¾³ıÃû×ÖµÄÇëÇó¸øNameDB
+    //å‘é€åˆ é™¤åå­—çš„è¯·æ±‚ç»™NameDB
     void SendDeleteNameRequestToWorld(const std::string& strName);
 
     void SendCreateRoleResponseToLotus();
@@ -35,3 +35,7 @@ private:
 
 #endif // __CREATE_ROLE_RESPONSE_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

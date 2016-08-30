@@ -1,4 +1,4 @@
-#ifndef __ROLE_DB_CREATE_ROLE_HANDLER_HPP__
+ï»¿#ifndef __ROLE_DB_CREATE_ROLE_HANDLER_HPP__
 #define __ROLE_DB_CREATE_ROLE_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
@@ -7,12 +7,12 @@
 
 class CRoleDBHandlerSet;
 
-// MSGID_ACCOUNT_CREATEROLE_REQUESTÏûÏ¢´¦ÀíÕß
+// MSGID_ACCOUNT_CREATEROLE_REQUESTæ¶ˆæ¯å¤„ç†è€…
 class CRoleDBCreateRoleHandler : public CHandler
 {
 private:
     DBClientWrapper* m_pDatabase;
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
 	int m_iThreadIdx;
 
@@ -22,7 +22,7 @@ public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRoleDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRoleDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CRoleDBHandlerSet;
     CRoleDBCreateRoleHandler(DBClientWrapper* pDatabase);
 
@@ -32,10 +32,10 @@ public:
 private:
     int InsertNewRoleRecord(const World_CreateRole_Request& rstCreateRoleRequest, unsigned int uiSeq);
 
-    //»ñÈ¡Íæ¼Ò½ÇÉ«´´½¨µÄÊ±¼ä
+    //è·å–ç©å®¶è§’è‰²åˆ›å»ºçš„æ—¶é—´
     void GetRoleCreateTime(unsigned short& usCreateTime);
 
-    //Éú³É²åÈëµÄSQL QueryÓï¾ä
+    //ç”Ÿæˆæ’å…¥çš„SQL Queryè¯­å¥
     int GenerateQueryString(const World_CreateRole_Request& rstCreateRoleRequest, unsigned int uiSeq, char* pszBuff, int iBuffLen, int& iLength);
 
     void FillFailedResponse(const unsigned int uiResultID, GameProtocolMsg* pstResponseMsg);
@@ -43,3 +43,7 @@ private:
 };
 
 #endif // __ROLE_DB_CREATE_ROLE_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

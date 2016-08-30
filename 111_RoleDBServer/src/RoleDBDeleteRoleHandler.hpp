@@ -1,4 +1,4 @@
-#ifndef __ROLE_DB_DELETE_ROLE_HANDLER_HPP__
+ï»¿#ifndef __ROLE_DB_DELETE_ROLE_HANDLER_HPP__
 #define __ROLE_DB_DELETE_ROLE_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
@@ -7,12 +7,12 @@
 
 class CRoleDBHandlerSet;
 
-// MSGID_ACCOUNT_DELETEROLE_REQUESTÏûÏ¢´¦ÀíÕß
+// MSGID_ACCOUNT_DELETEROLE_REQUESTæ¶ˆæ¯å¤„ç†è€…
 class CRoleDBDeleteRoleHandler : public CHandler
 {
 private:
-    DBClientWrapper* m_pDatabase;   // ·ÃÎÊÊı¾İ¿âµÄÖ¸Õë
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    DBClientWrapper* m_pDatabase;   // è®¿é—®æ•°æ®åº“çš„æŒ‡é’ˆ
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
 	int m_iThreadIdx;
 
@@ -22,7 +22,7 @@ public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRoleDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRoleDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CRoleDBHandlerSet;
     CRoleDBDeleteRoleHandler(DBClientWrapper* pDatabase);
 
@@ -37,3 +37,7 @@ private:
 };
 
 #endif // __ROLE_DB_DELETE_ROLE_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

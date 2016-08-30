@@ -1,4 +1,4 @@
-#include "RoleDBLogManager.hpp"
+ï»¿#include "RoleDBLogManager.hpp"
 #include "RoleDBApp.hpp"
 #include "SSProtocolEngine.hpp"
 #include "StringUtility.hpp"
@@ -13,19 +13,19 @@ int CSSProtocolEngine::Initialize(const int iThreadIdx)
 
 int CSSProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen, GameProtocolMsg* pstMsg)
 {
-    // ²»Ê¹ÓÃNetHead
+    // ä¸ä½¿ç”¨NetHead
     if (!pszCodeBuf || !pstMsg)
 	{
 		return -1;
 	}
 
-	// ÍøÂçÊý¾Ý,Ìø¹ý2×Ö½Úlen + 4×Ö½Ú uin
+	// ç½‘ç»œæ•°æ®,è·³è¿‡2å­—èŠ‚len + 4å­—èŠ‚ uin
 	int iBuffLen = iCodeLen - sizeof(unsigned short) - sizeof(unsigned int);
 	char* pszBuff = (char*)pszCodeBuf + sizeof(unsigned short) + sizeof(unsigned int);   
 
     DEBUG_THREAD(m_iThreadIdx, "Decode Buff len: %d\n", iBuffLen);
 
-	//½âÂë
+	//è§£ç 
 	bool bRet = pstMsg->ParseFromArray(pszBuff, iBuffLen);
 	if(!bRet)
 	{
@@ -40,7 +40,7 @@ int CSSProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen, Gam
 
 int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf, int iBufLen, int& iCodeLen)
 {
-    // ²»Ê¹ÓÃNetHead
+    // ä¸ä½¿ç”¨NetHead
     if (!pstMsg)
 	{
 		return -1;
@@ -51,7 +51,7 @@ int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf
 		return -3;
 	}
 
-	//¶Ôprotobuf½øÐÐ±àÂë
+	//å¯¹protobufè¿›è¡Œç¼–ç 
 	int iProtoMsgLen = pstMsg->ByteSize();
 	if(iProtoMsgLen >= iBufLen)
 	{
@@ -59,7 +59,7 @@ int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf
 		return -4;
 	}
 
-    // ±àÂëÊý¾Ý
+    // ç¼–ç æ•°æ®
 	bool bRet = pstMsg->SerializeToArray(pszCodeBuf+sizeof(unsigned short), iBufLen);
 	if(!bRet)
 	{
@@ -75,3 +75,7 @@ int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
@@ -19,10 +19,10 @@ CListRoleRequestHandler::CListRoleRequestHandler()
 int CListRoleRequestHandler::CheckParam(unsigned int& rushResultID)
 {
     rushResultID = T_ACCOUNT_SYSTEM_PARA_ERR;
-    // ¶Ôm_pstRequestMsgÖÐµÄ×Ö¶Î×ö¼ì²é
+    // å¯¹m_pstRequestMsgä¸­çš„å­—æ®µåšæ£€æŸ¥
     Account_ListRole_Request* pstListRoleRequest = m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountlistrolerequest();
 
-    // ¼ì²éUin
+    // æ£€æŸ¥Uin
     if (m_pstRequestMsg->m_stmsghead().m_uin() != pstListRoleRequest->uin())
     {
         LOGERROR("Invalid Uin: %u\n", pstListRoleRequest->uin());
@@ -37,14 +37,14 @@ int CListRoleRequestHandler::CheckParam(unsigned int& rushResultID)
 void CListRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃResult
+    // ä¸ä½¿ç”¨Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
     m_pstNetHead = pstNetHead;
     m_pstRequestMsg = pstMsg;
 
-    // ¼ì²éÇëÇóÏûÏ¢ÖÐÊÇ·ñ´æÔÚ·Ç·¨×Ö¶Î
+    // æ£€æŸ¥è¯·æ±‚æ¶ˆæ¯ä¸­æ˜¯å¦å­˜åœ¨éžæ³•å­—æ®µ
     unsigned ushResultID = T_SERVER_SUCESS;
     if (CheckParam(ushResultID) != 0)
     {
@@ -59,7 +59,7 @@ void CListRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
     LOGDETAIL("Handling ListRoleRequest from lotus server, uin: %u, world: %u\n", uiUin, nWorldID);
 
-    // ¼ì²ésessionÊÇ·ñÒÑ¾­´æÔÚ£¬session¸öÊýÊÇ·ñµ½´ïÉÏÏÞ
+    // æ£€æŸ¥sessionæ˜¯å¦å·²ç»å­˜åœ¨ï¼Œsessionä¸ªæ•°æ˜¯å¦åˆ°è¾¾ä¸Šé™
     int iRes = SessionManager->CheckSession(*m_pstNetHead);
     if (iRes != T_SERVER_SUCESS)
     {
@@ -67,20 +67,20 @@ void CListRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         return;
     }
 
-    time_t tmNow = time(NULL); // ´´½¨»º´æ½áµãµÄÊ±¼ä
+    time_t tmNow = time(NULL); // åˆ›å»ºç¼“å­˜ç»“ç‚¹çš„æ—¶é—´
 
-    // »º´æNetHead£¬¼´session
+    // ç¼“å­˜NetHeadï¼Œå³session
     CSessionObj* pSessionObj = SessionManager->CreateSession(*m_pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pSessionObj);
     pSessionObj->SetCreatedTime(&tmNow);
 
-    // ±£´æSessionµÄUin
+    // ä¿å­˜Sessionçš„Uin
     if (pSessionObj->GetUin() == 0)
     {
         pSessionObj->SetUin(m_pstRequestMsg->m_stmsghead().m_uin());
     }
 
-    // ÑéÖ¤SessionµÄUin
+    // éªŒè¯Sessionçš„Uin
     if (pSessionObj->GetUin() != m_pstRequestMsg->m_stmsgbody().m_staccountlistrolerequest().uin())
     {
         return;
@@ -92,14 +92,14 @@ void CListRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
     char szTime[32] = "";
     pSessionObj->GetCreatedTime(szTime, sizeof(szTime));
-    LOGDETAIL("session cache created time: %s", szTime); // ÀýÈç: Wed Sep 29 10:59:46 2010
+    LOGDETAIL("session cache created time: %s", szTime); // ä¾‹å¦‚: Wed Sep 29 10:59:46 2010
 
-    SendListRoleRequestToWorld(); // ×ª·¢²éÑ¯½ÇÉ«ÁÐ±íÏûÏ¢¸øworld server
+    SendListRoleRequestToWorld(); // è½¬å‘æŸ¥è¯¢è§’è‰²åˆ—è¡¨æ¶ˆæ¯ç»™world server
 }
 
 void CListRoleRequestHandler::SendListRoleRequestToWorld()
 {
-    // ÐÞ¸ÄÏûÏ¢Í·ÖÐµÄTimeStamp
+    // ä¿®æ”¹æ¶ˆæ¯å¤´ä¸­çš„TimeStamp
     m_pstRequestMsg->mutable_m_stmsghead()->set_m_uisessionfd(GenerateTimeStamp(m_uiSessionFD, m_unValue));
 
     if (EncodeAndSendCode(SSProtocolEngine, NULL, m_pstRequestMsg, GAME_SERVER_WORLD) != 0)
@@ -122,7 +122,7 @@ void CListRoleRequestHandler::SendResponseToLotus(const unsigned int uiResultID)
 
     Account_ListRole_Response* pstListRoleResponse = stFailedResponse.mutable_m_stmsgbody()->mutable_m_staccountlistroleresponse();
 
-    pstListRoleResponse->set_iresult(uiResultID);   //´íÎóÂë
+    pstListRoleResponse->set_iresult(uiResultID);   //é”™è¯¯ç 
     pstListRoleResponse->set_uin(m_pstRequestMsg->m_stmsgbody().m_staccountlistrolerequest().uin());
     pstListRoleResponse->set_world(m_pstRequestMsg->m_stmsgbody().m_staccountlistrolerequest().world());
 
@@ -137,3 +137,7 @@ void CListRoleRequestHandler::SendResponseToLotus(const unsigned int uiResultID)
              pstListRoleResponse->uin(), pstListRoleResponse->world(), pstListRoleResponse->roles_size());
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

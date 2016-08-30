@@ -1,4 +1,4 @@
-#ifndef __REGAUTH_APP_HPP__
+ï»¿#ifndef __REGAUTH_APP_HPP__
 #define __REGAUTH_APP_HPP__
 
 #include "App.hpp"
@@ -9,16 +9,16 @@
 
 using namespace ServerLib;
 
-// RegAuthÓ¦ÓÃ³ÌĞò
+// RegAuthåº”ç”¨ç¨‹åº
 class CRegAuthApp : public CApp
 {
 private:
     TNetHead_V2 m_stNetHead;
 
 private:
-    static const unsigned int MAIN_LOOP_SLEEP = 10; // Ö÷Ñ­»·ÖĞÃ¿´ÎÑ­»·ºó»áË¯Ãß10Î¢Ãî
-    static const unsigned int TIMES_TO_CLEAR_CACHE = 10000; // Ö÷Ñ­»·1Íò´ÎÇåÀíÒ»´Î³¬Ê±µÄ»º´æ½áµã
-    unsigned int m_uiLoopTimes; // Ö÷Ñ­»·´ÎÊı
+    static const unsigned int MAIN_LOOP_SLEEP = 10; // ä¸»å¾ªç¯ä¸­æ¯æ¬¡å¾ªç¯åä¼šç¡çœ 10å¾®å¦™
+    static const unsigned int TIMES_TO_CLEAR_CACHE = 10000; // ä¸»å¾ªç¯1ä¸‡æ¬¡æ¸…ç†ä¸€æ¬¡è¶…æ—¶çš„ç¼“å­˜ç»“ç‚¹
+    unsigned int m_uiLoopTimes; // ä¸»å¾ªç¯æ¬¡æ•°
 
     CSessionManager m_stSessionManager;
 
@@ -36,7 +36,7 @@ private:
     virtual int HandleMsgIn(IProtocolEngine* pProtocolEngine, EGameServerID enMsgPeer, int iInstance = 0);
 
 private:
-    bool m_bResumeMode; // ¹²ÏíÄÚ´æ»Ö¸´Ä£Ê½£¬Èç¹û³ÌĞòÉÏ´ÎÔËĞĞËù´´½¨µÄ¹²ÏíÄÚ´æÎ´±»É¾³ıÔòÖ±½ÓattachÉÏÈ¥
+    bool m_bResumeMode; // å…±äº«å†…å­˜æ¢å¤æ¨¡å¼ï¼Œå¦‚æœç¨‹åºä¸Šæ¬¡è¿è¡Œæ‰€åˆ›å»ºçš„å…±äº«å†…å­˜æœªè¢«åˆ é™¤åˆ™ç›´æ¥attachä¸Šå»
     static int ms_iAppCmd;
     static int m_iWorldID;
 
@@ -49,8 +49,12 @@ private:
     virtual int LoadConfig();
 
 public:
-    void ClearCache(); // ÇåÀí³¬Ê±µÄcache½áµã
+    void ClearCache(); // æ¸…ç†è¶…æ—¶çš„cacheç»“ç‚¹
 };
 
 #endif // __REGAUTH_APP_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

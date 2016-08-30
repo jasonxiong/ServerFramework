@@ -1,4 +1,4 @@
-#include <fstream>
+ï»¿#include <fstream>
 #include <sstream>
 
 #include "GameProtocol.hpp"
@@ -46,9 +46,13 @@ TUinPrivInfo* CConfigMgr::GetUinPrivInfo(unsigned int uiUin)
     return m_stUinPrivManager.GetUinPrivInfo(uiUin);
 }
 
-//ÊÇ·ñÔÊĞí´´½¨½ÇÉ«
+//æ˜¯å¦å…è®¸åˆ›å»ºè§’è‰²
 bool CConfigMgr::IsCreateRoleEnabled()
 {
     return m_iCreateRoleEnabled != 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

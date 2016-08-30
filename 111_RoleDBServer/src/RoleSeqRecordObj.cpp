@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include "RoleSeqRecordObj.hpp"
 
 IMPLEMENT_DYN(CRoleSeqRecordObj)
@@ -39,11 +39,11 @@ int CRoleSeqRecordObj::Initialize()
     return 0;
 }
 
-// ÄÚ²¿º¯Êı
+// å†…éƒ¨å‡½æ•°
 unsigned char CRoleSeqRecordObj::GetBitValue(short nSeq)
 {
-    int iByteIndex = nSeq / BITS_PER_BYTE; // ÕÒµ½Êı×ébyteµÄÏÂ±ê
-    int iBitIndex = nSeq % BITS_PER_BYTE;  // ÕÒµ½byteÖĞµÄbitÏÂ±ê
+    int iByteIndex = nSeq / BITS_PER_BYTE; // æ‰¾åˆ°æ•°ç»„byteçš„ä¸‹æ ‡
+    int iBitIndex = nSeq % BITS_PER_BYTE;  // æ‰¾åˆ°byteä¸­çš„bitä¸‹æ ‡
 
     unsigned char ucTmp = m_ucaRoleSeqBits[iByteIndex] >> (BITS_PER_BYTE - 1 - iBitIndex);
     ucTmp &= 0x1;
@@ -53,34 +53,34 @@ unsigned char CRoleSeqRecordObj::GetBitValue(short nSeq)
 
 void CRoleSeqRecordObj::SetBitValue(short nSeq)
 {
-    int iByteIndex = nSeq / BITS_PER_BYTE; // ÕÒµ½Êı×ébyteµÄÏÂ±ê
-    int iBitIndex = nSeq % BITS_PER_BYTE;  // ÕÒµ½byteÖĞµÄbitÏÂ±ê
+    int iByteIndex = nSeq / BITS_PER_BYTE; // æ‰¾åˆ°æ•°ç»„byteçš„ä¸‹æ ‡
+    int iBitIndex = nSeq % BITS_PER_BYTE;  // æ‰¾åˆ°byteä¸­çš„bitä¸‹æ ‡
 
     m_ucaRoleSeqBits[iByteIndex] |= OR_MASK[iBitIndex];
 }
 
 void CRoleSeqRecordObj::ResetBitValue(short nSeq)
 {
-    int iByteIndex = nSeq / BITS_PER_BYTE; // ÕÒµ½Êı×ébyteµÄÏÂ±ê
-    int iBitIndex = nSeq % BITS_PER_BYTE;  // ÕÒµ½byteÖĞµÄbitÏÂ±ê
+    int iByteIndex = nSeq / BITS_PER_BYTE; // æ‰¾åˆ°æ•°ç»„byteçš„ä¸‹æ ‡
+    int iBitIndex = nSeq % BITS_PER_BYTE;  // æ‰¾åˆ°byteä¸­çš„bitä¸‹æ ‡
 
     m_ucaRoleSeqBits[iByteIndex] &= AND_MASK[iBitIndex];
 }
 
-// Éú³ÉËã·¨£º¼ÙÉèseqµÄ·¶Î§ÊÇ[0,99]¹²100¸ö£¬²¢ÇÒ¼ÇÒÑ¾­´æÔÚµÄ×î´óµÄseqÎªA£¬¼Ç±¾´ÎÉú³ÉµÄseqÎªB¡£
-// Èç¹ûAĞ¡ÓÚ99£¬ÔòBµÈÓÚA+1£»Èç¹ûAµÈÓÚ99£¬ÔòBµÈÓÚ[0,98]·¶Î§ÄÚµÄ×îĞ¡µÄÎ´Ê¹ÓÃµÄÄÇ¸öÖµ¡£
+// ç”Ÿæˆç®—æ³•ï¼šå‡è®¾seqçš„èŒƒå›´æ˜¯[0,99]å…±100ä¸ªï¼Œå¹¶ä¸”è®°å·²ç»å­˜åœ¨çš„æœ€å¤§çš„seqä¸ºAï¼Œè®°æœ¬æ¬¡ç”Ÿæˆçš„seqä¸ºBã€‚
+// å¦‚æœAå°äº99ï¼Œåˆ™Bç­‰äºA+1ï¼›å¦‚æœAç­‰äº99ï¼Œåˆ™Bç­‰äº[0,98]èŒƒå›´å†…çš„æœ€å°çš„æœªä½¿ç”¨çš„é‚£ä¸ªå€¼ã€‚
 short CRoleSeqRecordObj::GenerateSeq()
 {
     short i = 0;
     short nSeq = -1;
 
-    // ÏÈÅĞ¶Ïmax seqÊÇ·ñÒÑ¾­Ê¹ÓÃ
+    // å…ˆåˆ¤æ–­max seqæ˜¯å¦å·²ç»ä½¿ç”¨
     short nMaxSeqIndex = 0;
     unsigned char ucMaxSeqValue = GetBitValue(nMaxSeqIndex);
 
-    if (BS_UNUSED == ucMaxSeqValue) // max seqÎ´Ê¹ÓÃ
+    if (BS_UNUSED == ucMaxSeqValue) // max seqæœªä½¿ç”¨
     {
-        // ÕÒµ½ÒÑÊ¹ÓÃµÄ×î´óµÄseq
+        // æ‰¾åˆ°å·²ä½¿ç”¨çš„æœ€å¤§çš„seq
         for (i = nMaxSeqIndex - 1; i >= 0; i--)
         {
             if (BS_USED == GetBitValue(i))
@@ -90,11 +90,11 @@ short CRoleSeqRecordObj::GenerateSeq()
             }
         }
 
-        // Èç¹û[0,99]¶¼Î´Ê¹ÓÃ£¬ÔòiµÈÓÚ-1
+        // å¦‚æœ[0,99]éƒ½æœªä½¿ç”¨ï¼Œåˆ™iç­‰äº-1
     }
-    else // max seqÒÑÊ¹ÓÃ
+    else // max seqå·²ä½¿ç”¨
     {
-        // ÕÒµ½Î´Ê¹ÓÃµÄ×îĞ¡µÄseq
+        // æ‰¾åˆ°æœªä½¿ç”¨çš„æœ€å°çš„seq
         for (i = 0; i < nMaxSeqIndex; i++)
         {
             if (BS_UNUSED == GetBitValue(i))
@@ -104,10 +104,10 @@ short CRoleSeqRecordObj::GenerateSeq()
             }
         }
 
-        // Èç¹ûÎ´ÕÒµ½¿ÉÓÃµÄseq£¬ÔòiµÈÓÚnMaxSeqIndex£¬nSeqÈÔÈ»µÈÓÚ-1
+        // å¦‚æœæœªæ‰¾åˆ°å¯ç”¨çš„seqï¼Œåˆ™iç­‰äºnMaxSeqIndexï¼ŒnSeqä»ç„¶ç­‰äº-1
     }
 
-    // [0,99]¶¼Î´Ê¹ÓÃ
+    // [0,99]éƒ½æœªä½¿ç”¨
     if (-1 == i)
     {
         nSeq = 0;
@@ -115,3 +115,7 @@ short CRoleSeqRecordObj::GenerateSeq()
 
     return nSeq;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

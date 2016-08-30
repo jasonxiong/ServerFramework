@@ -1,4 +1,4 @@
-#include <unistd.h>
+ï»¿#include <unistd.h>
 #include <string.h>
 #include <assert.h>
 
@@ -38,7 +38,7 @@ int CRoleDBApp::Initialize(bool bResume, int iWorldID)
 {
     int iRes = 0;
 
-    // ¶ÁÈ¡ÅäÖÃ
+    // è¯»å–é…ç½®
     iRes = LoadConfig();
     if (iRes < 0)
     {
@@ -107,10 +107,10 @@ void CRoleDBApp::Run()
             //iRes = HandleThreadMsg(iSendNewMsgCount);
             HandleThreadMsg(iSendNewMsgCount);
 
-            // Ã»ÓĞÊı¾İ, »òÕßÊı¾İ³¬³ö´¦ÀíÏŞÖÆ, ÔİÍ£´¦ÀíÊı¾İ
+            // æ²¡æœ‰æ•°æ®, æˆ–è€…æ•°æ®è¶…å‡ºå¤„ç†é™åˆ¶, æš‚åœå¤„ç†æ•°æ®
             iRecvMsgCount += iRecvNewMsgCount;
 
-            // Èç¹ûÃ»ÓĞÏûÏ¢ÊäÈë¶øÇÒÃ»ÓĞÏûÏ¢Êä³ö£¬ »òÕß×Ü½ÓÊÜÏûÏ¢³¬³öÉÏÏŞ
+            // å¦‚æœæ²¡æœ‰æ¶ˆæ¯è¾“å…¥è€Œä¸”æ²¡æœ‰æ¶ˆæ¯è¾“å‡ºï¼Œ æˆ–è€…æ€»æ¥å—æ¶ˆæ¯è¶…å‡ºä¸Šé™
             if ((iRecvNewMsgCount <= 0 && iSendNewMsgCount <= 0) || iRecvMsgCount >= MAX_MSG_COUNT_PER_COUNT)
             {
                 break;
@@ -143,17 +143,17 @@ int CRoleDBApp::ReceiveAndDispatchMsg()
     int iBufLen = sizeof(m_szCodeBuf);
     int iCodeLen;
 
-    // ³õÊ¼»¯code bufferºÍcode length
+    // åˆå§‹åŒ–code bufferå’Œcode length
     iCodeLen = 0;
 
-    // ½ÓÊÜÍøÂçÊı¾İ
+    // æ¥å—ç½‘ç»œæ•°æ®
     int iRet = m_stMsgTransceiver.RecvOneMsg(m_szCodeBuf, iBufLen, iCodeLen, GAME_SERVER_WORLD);
     if ((iRet < 0) || (0 == iCodeLen))
     {
         return -1;
     }
 
-	//4×Ö½ÚµÄuin
+	//4å­—èŠ‚çš„uin
     unsigned uiUin = *((unsigned int*)(m_szCodeBuf+sizeof(unsigned short)));
 
     TRACESVR("Receive code OK, len: %d, Uin = %u\n", iCodeLen, uiUin);
@@ -181,14 +181,14 @@ int CRoleDBApp::LoadLogConfig(const char* pszConfigFile, const char* pszLogName)
 
     if (!pszConfigFile)
     {
-        // Ê¹ÓÃÄ¬ÈÏÅäÖÃ
+        // ä½¿ç”¨é»˜è®¤é…ç½®
         SAFE_STRCPY(szLogPath, "../log/", sizeof(szLogPath));
         SAFE_STRCPY(szLogName, pszLogName, sizeof(szLogName));
         iLogLevel = LOG_LEVEL_ANY;
     }
     else
     {
-        // ¶ÁÈ¡ÅäÖÃÎÄ¼ş
+        // è¯»å–é…ç½®æ–‡ä»¶
         CSectionConfig stConfigFile;
         int iRet = stConfigFile.OpenFile(pszConfigFile);
         if (iRet == 0)
@@ -200,7 +200,7 @@ int CRoleDBApp::LoadLogConfig(const char* pszConfigFile, const char* pszLogName)
         }
         else
         {
-            // ¶ÁÈ¡Ê§°Ü, Ê¹ÓÃÄ¬ÈÏÅäÖÃ
+            // è¯»å–å¤±è´¥, ä½¿ç”¨é»˜è®¤é…ç½®
             SAFE_STRCPY(szLogPath, "../log/", sizeof(szLogPath));
             SAFE_STRCPY(szLogName, pszLogName, sizeof(szLogName));
             iLogLevel = LOG_LEVEL_ANY;
@@ -224,7 +224,7 @@ int CRoleDBApp::LoadLogConfig(const char* pszConfigFile, const char* pszLogName)
     stServerLogConfig.m_iMaxFileSize = DEFAULT_MAX_FILE_SIZE;
     stServerLogConfig.m_iMaxFileCount = DEFAULT_MAX_FILE_COUNT * 2;
 
-    //³õÊ¼»¯log
+    //åˆå§‹åŒ–log
     int iRt = m_stLogManager.Initialize(CRoleDBThreadManager::THREAD_NUMER, stServerLogConfig);
     if (iRt != 0)
     {
@@ -233,7 +233,7 @@ int CRoleDBApp::LoadLogConfig(const char* pszConfigFile, const char* pszLogName)
 
     ServerLogSingleton::Instance()->ReloadLogConfig(stServerLogConfig);
 
-    // ÅäÖÃÍ³¼ÆÈÕÖ¾
+    // é…ç½®ç»Ÿè®¡æ—¥å¿—
     TLogConfig stStatLogConfig;
     char szStatPath[MAX_FILENAME_LENGTH];
     memset(szStatPath, 0, sizeof(szStatPath));
@@ -249,17 +249,17 @@ int CRoleDBApp::LoadLogConfig(const char* pszConfigFile, const char* pszLogName)
     stStatLogConfig.m_iMaxFileSize = DEFAULT_MAX_FILE_SIZE;
     stStatLogConfig.m_iMaxFileCount = DEFAULT_MAX_FILE_COUNT;
 
-    // ÏûÏ¢Í³¼Æ
+    // æ¶ˆæ¯ç»Ÿè®¡
     sprintf(stStatLogConfig.m_szBaseName, "%s%s", "m_", pszLogName);
     MsgStatisticSingleton::Instance()->ReloadLogConfig(stStatLogConfig);
     MsgStatisticSingleton::Instance()->Reset();
 
-    // ¶ÔÏóÍ³¼Æ
+    // å¯¹è±¡ç»Ÿè®¡
     sprintf(stStatLogConfig.m_szBaseName, "%s%s", "o_", pszLogName);
     ObjectStatisticSingleton::Instance()->ReloadLogConfig(stStatLogConfig);
     ObjectStatisticSingleton::Instance()->Reset();
 
-    // ĞÔÄÜÍ³¼Æ
+    // æ€§èƒ½ç»Ÿè®¡
     sprintf(stStatLogConfig.m_szBaseName, "%s%s", "p_", pszLogName);
     PerformanceStatisticSingleton::Instance()->Initialize(stStatLogConfig.m_szPath, stStatLogConfig.m_szBaseName);
     PerformanceStatisticSingleton::Instance()->Reset();
@@ -313,7 +313,7 @@ int CRoleDBApp::HandleThreadMsg(int& riSendMsgCount)
         iRet = m_stThreadManager.PopCode(i, (unsigned char*)m_szCodeBuf, iMaxLength, riMsgLength);
         if ((iRet >= 0) && (riMsgLength > 0))
         {
-            // ·¢ËÍÍøÂçÊı¾İ
+            // å‘é€ç½‘ç»œæ•°æ®
             int iRet = m_stMsgTransceiver.SendOneMsg(m_szCodeBuf, riMsgLength, GAME_SERVER_WORLD);
             if (iRet < 0)
             {
@@ -329,3 +329,7 @@ int CRoleDBApp::HandleThreadMsg(int& riSendMsgCount)
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

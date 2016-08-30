@@ -1,4 +1,4 @@
-
+ï»¿
 #include "Int64Utility.hpp"
 #include "LogAdapter.hpp"
 #include "AppDef.hpp"
@@ -18,7 +18,7 @@ CAccountMsgTransceiver::~CAccountMsgTransceiver()
 
 int CAccountMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
 {
-    // ³õÊ¼»¯ Lotus µÄCodeQueue
+    // åˆå§‹åŒ– Lotus çš„CodeQueue
     int iRet;
     iRet = m_stCodeQueueManager.LoadCodeQueueConfig(APP_CONFIG_FILE, "Account");
     if (iRet < 0)
@@ -34,7 +34,7 @@ int CAccountMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
         return -2;
     }
 
-    //³õÊ¼»¯Accountµ½WorldµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–Accountåˆ°Worldçš„ZMQé€šä¿¡é€šé“
     uint64_t ullAccountServerID = GetServerBusID(iWorldID, GAME_SERVER_ACCOUNT);
     uint64_t ullWorldServerID = GetServerBusID(iWorldID, GAME_SERVER_WORLD);
 
@@ -57,7 +57,7 @@ int CAccountMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
     return T_SERVER_SUCESS;
 }
 
-// ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+// å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
 int CAccountMsgTransceiver::SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer, int iInstance)
 {
     ASSERT_AND_LOG_RTN_INT(pszMsg);
@@ -117,3 +117,7 @@ int CAccountMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riM
 
     return iRet;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

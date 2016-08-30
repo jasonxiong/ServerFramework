@@ -1,4 +1,4 @@
-#ifndef __NAMEDB_THREAD_MANAGER_HPP__
+﻿#ifndef __NAMEDB_THREAD_MANAGER_HPP__
 #define __NAMEDB_THREAD_MANAGER_HPP__
 
 #include <string>
@@ -32,3 +32,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

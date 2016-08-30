@@ -1,4 +1,4 @@
-#ifndef __CREATEROLE_ACCOUNT_HANDLER_HPP__
+Ôªø#ifndef __CREATEROLE_ACCOUNT_HANDLER_HPP__
 #define __CREATEROLE_ACCOUNT_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -25,7 +25,7 @@ private:
 private:
     int InitFightUnitInfo(const SRoleBirthConfig& stConfig, World_CreateRole_Request& rstRequest);
 
-    //≥ı ºªØ“ª∏ˆ’Ω∂∑µ•Œª
+    //ÂàùÂßãÂåñ‰∏Ä‰∏™ÊàòÊñóÂçï‰Ωç
     int InitOneFightUnitInfo(int iConfigID, OneFightUnitInfo& stOneFightUnit);
 
 private:
@@ -36,3 +36,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

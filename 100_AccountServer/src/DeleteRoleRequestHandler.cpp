@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
@@ -16,11 +16,11 @@ CDeleteRoleRequestHandler::CDeleteRoleRequestHandler()
 
 int CDeleteRoleRequestHandler::CheckParam()
 {
-    // ¶Ôm_pstRequestMsgÖÐµÄ×Ö¶Î×ö¼ì²é
+    // å¯¹m_pstRequestMsgä¸­çš„å­—æ®µåšæ£€æŸ¥
     DeleteRole_Account_Request* pstDeleteRoleRequest =
         m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountdeleterolerequest();
 
-    // ¼ì²éUin
+    // æ£€æŸ¥Uin
     CSessionObj* pSessionObj = SessionManager->GetSession(ntohl(m_pstNetHead->m_uiSocketFD), 0);
     if (!pSessionObj || pSessionObj->GetUin() != m_pstRequestMsg->m_stmsghead().m_uin())
     {
@@ -45,14 +45,14 @@ int CDeleteRoleRequestHandler::CheckParam()
 void CDeleteRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃResult
+    // ä¸ä½¿ç”¨Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
     m_pstNetHead = pstNetHead;
     m_pstRequestMsg = pstMsg;
 
-    // ¼ì²éÇëÇóÏûÏ¢ÖÐÊÇ·ñ´æÔÚ·Ç·¨×Ö¶Î
+    // æ£€æŸ¥è¯·æ±‚æ¶ˆæ¯ä¸­æ˜¯å¦å­˜åœ¨éžæ³•å­—æ®µ
     if (CheckParam() != 0)
     {
         LOGERROR("Invalid parameter found in the request\n");
@@ -67,7 +67,7 @@ void CDeleteRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     LOGDEBUG("Handling DeleteRoleRequest from lotus server, "
              "uin: %u\n", uiUin);
 
-    // ¼ì²ésessionÊÇ·ñÒÑ¾­´æÔÚ£¬session¸öÊýÊÇ·ñµ½´ïÉÏÏÞ
+    // æ£€æŸ¥sessionæ˜¯å¦å·²ç»å­˜åœ¨ï¼Œsessionä¸ªæ•°æ˜¯å¦åˆ°è¾¾ä¸Šé™
     int iRes = SessionManager->CheckSession(*m_pstNetHead);
     if (iRes != T_SERVER_SUCESS)
     {
@@ -75,9 +75,9 @@ void CDeleteRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         return;
     }
 
-    time_t tmNow = time(NULL); // ´´½¨»º´æ½áµãµÄÊ±¼ä
+    time_t tmNow = time(NULL); // åˆ›å»ºç¼“å­˜ç»“ç‚¹çš„æ—¶é—´
 
-    // »º´æNetHead£¬¼´session
+    // ç¼“å­˜NetHeadï¼Œå³session
     CSessionObj* pSessionObj = SessionManager->CreateSession(*m_pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pSessionObj);
     pSessionObj->SetCreatedTime(&tmNow);
@@ -90,15 +90,15 @@ void CDeleteRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     char szTime[32] = "";
     pSessionObj->GetCreatedTime(szTime, sizeof(szTime));
 
-    LOGDEBUG("session cache created time: %s", szTime); // ÀýÈç: Wed Sep 29 10:59:46 2010
+    LOGDEBUG("session cache created time: %s", szTime); // ä¾‹å¦‚: Wed Sep 29 10:59:46 2010
 
-    // ½«ÏûÏ¢×ª·¢¸øworld server
+    // å°†æ¶ˆæ¯è½¬å‘ç»™world server
     SendDeleteRoleRequestToWorld();
 }
 
 void CDeleteRoleRequestHandler::SendDeleteRoleRequestToWorld()
 {
-    // ÐÞ¸ÄÏûÏ¢Í·ÖÐµÄTimeStamp
+    // ä¿®æ”¹æ¶ˆæ¯å¤´ä¸­çš„TimeStamp
     m_pstRequestMsg->mutable_m_stmsghead()->set_m_uisessionfd(GenerateTimeStamp(m_uiSessionFD, m_unValue));
 
     if (EncodeAndSendCode(SSProtocolEngine,
@@ -130,3 +130,7 @@ void CDeleteRoleRequestHandler::SendFailedResponseToLotus(const unsigned int uiR
     LOGDEBUG("Send failed DeleteRoleResponse to lotus server, uin: %u, result: %d\n", stFailedResponse.m_stmsghead().m_uin(), uiResultID);
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

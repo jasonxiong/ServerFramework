@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
@@ -22,11 +22,11 @@ CCreateRoleRequestHandler::CCreateRoleRequestHandler()
 
 int CCreateRoleRequestHandler::CheckParam()
 {
-    // ¶Ôm_pstRequestMsgÖĞµÄ×Ö¶Î×ö¼ì²é
+    // å¯¹m_pstRequestMsgä¸­çš„å­—æ®µåšæ£€æŸ¥
     CreateRole_Account_Request* pstCreateRoleRequest =
         m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountcreaterolerequest();
 
-    // ¼ì²éUin
+    // æ£€æŸ¥Uin
     CSessionObj* pSessionObj = SessionManager->GetSession(ntohl(m_pstNetHead->m_uiSocketFD), 0);
     if (!pSessionObj || pSessionObj->GetUin() != m_pstRequestMsg->m_stmsghead().m_uin())
     {
@@ -45,14 +45,14 @@ int CCreateRoleRequestHandler::CheckParam()
 void CCreateRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃResult
+    // ä¸ä½¿ç”¨Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
     m_pstNetHead = pstNetHead;
     m_pstRequestMsg = pstMsg;
 
-    // ¼ì²éÇëÇóÏûÏ¢ÖĞÊÇ·ñ´æÔÚ·Ç·¨×Ö¶Î
+    // æ£€æŸ¥è¯·æ±‚æ¶ˆæ¯ä¸­æ˜¯å¦å­˜åœ¨éæ³•å­—æ®µ
     if (CheckParam() != 0)
     {
         LOGERROR("Invalid parameter found in the request\n");
@@ -71,14 +71,14 @@ void CCreateRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         return;
     }
 
-    // ÊÇ·ñ½ûÖ¹´´½¨½ÇÉ«
+    // æ˜¯å¦ç¦æ­¢åˆ›å»ºè§’è‰²
     if (!ConfigMgr->IsCreateRoleEnabled())
     {
         SendFailedResponseToLotus(T_ACCOUNT_CANNOT_CREATE_ROLE);
         return;
     }
 
-    // ÒÔÇ°µÄÏàÍ¬uinµÄ´´½¨½ÇÉ«ÇëÇóÏûÏ¢»º´æ½áµã»¹Ã»ÓĞÉ¾³ı£¬¾Ü¾ø·şÎñ
+    // ä»¥å‰çš„ç›¸åŒuinçš„åˆ›å»ºè§’è‰²è¯·æ±‚æ¶ˆæ¯ç¼“å­˜ç»“ç‚¹è¿˜æ²¡æœ‰åˆ é™¤ï¼Œæ‹’ç»æœåŠ¡
     if (CFixedHashCache<CCreateRoleRequestObj>::GetByUin(uiUin) != NULL)
     {
         LOGERROR("Previous CreateRoleRequestObj cache node has not been deleted, uin: %u\n", uiUin);
@@ -87,7 +87,7 @@ void CCreateRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
     LOGERROR("Handling CreateRoleRequest from lotus server, uin: %u, world: %u, nickname: %s\n", uiUin, nWorldID, pszNickName);
 
-    // ¼ì²ésessionÊÇ·ñÒÑ¾­´æÔÚ£¬session¸öÊıÊÇ·ñµ½´ïÉÏÏŞ
+    // æ£€æŸ¥sessionæ˜¯å¦å·²ç»å­˜åœ¨ï¼Œsessionä¸ªæ•°æ˜¯å¦åˆ°è¾¾ä¸Šé™
     int iRes = SessionManager->CheckSession(*m_pstNetHead);
     if (iRes != T_SERVER_SUCESS)
     {
@@ -95,16 +95,16 @@ void CCreateRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         return;
     }
 
-    // ¼ì²écacheÖĞµÄ´´½¨½ÇÉ«ÏûÏ¢¸öÊıÊÇ·ñ´ïµ½ÉÏÏŞ£¬´ïµ½ÉÏÏŞÔò¾Ü¾ø·şÎñ
+    // æ£€æŸ¥cacheä¸­çš„åˆ›å»ºè§’è‰²æ¶ˆæ¯ä¸ªæ•°æ˜¯å¦è¾¾åˆ°ä¸Šé™ï¼Œè¾¾åˆ°ä¸Šé™åˆ™æ‹’ç»æœåŠ¡
     if (CFixedHashCache<CCreateRoleRequestObj>::GetFreeNodeNumber() < 1)
     {
         LOGERROR("CreateRoleRequestObj cache is full, uin: %u\n", uiUin);
         return;
     }
 
-    time_t tmNow = time(NULL); // ´´½¨»º´æ½áµãµÄÊ±¼ä
+    time_t tmNow = time(NULL); // åˆ›å»ºç¼“å­˜ç»“ç‚¹çš„æ—¶é—´
 
-    // »º´æNetHead£¬¼´session
+    // ç¼“å­˜NetHeadï¼Œå³session
     CSessionObj* pSessionObj = SessionManager->CreateSession(*m_pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pSessionObj);
     pSessionObj->SetCreatedTime(&tmNow);
@@ -116,9 +116,9 @@ void CCreateRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
     char szTime[32] = "";
     pSessionObj->GetCreatedTime(szTime, sizeof(szTime));
-    LOGERROR("session cache created time: %s", szTime); // ÀıÈç: Wed Sep 29 10:59:46 2010
+    LOGERROR("session cache created time: %s", szTime); // ä¾‹å¦‚: Wed Sep 29 10:59:46 2010
 
-    // »º´æ¸Ã´´½¨½ÇÉ«ÏûÏ¢
+    // ç¼“å­˜è¯¥åˆ›å»ºè§’è‰²æ¶ˆæ¯
     CCreateRoleRequestObj* pRequestObj = CFixedHashCache<CCreateRoleRequestObj>::CreateByUin(uiUin);
     ASSERT_AND_LOG_RTN_VOID(pRequestObj);
     pRequestObj->Initialize();
@@ -128,7 +128,7 @@ void CCreateRoleRequestHandler::OnClientMsg(TNetHead_V2* pstNetHead,
     pRequestObj->GetCreatedTime(szTime, sizeof(szTime));
     LOGERROR("CreateRoleRequest cache created time: %s", szTime);
 
-    // ·¢ËÍÔö¼ÓĞÂÃû×ÖÇëÇó¸øWorldServer
+    // å‘é€å¢åŠ æ–°åå­—è¯·æ±‚ç»™WorldServer
     SendAddNewNameRequestToWorld(rstReq);
 
     return;
@@ -140,7 +140,7 @@ void CCreateRoleRequestHandler::SendAddNewNameRequestToWorld(const CreateRole_Ac
 
     GenerateMsgHead(&stNameMsg, m_uiSessionFD, MSGID_ADDNEWNAME_REQUEST, rstReq.uin());
 
-    //Ìî³äÏûÏ¢Ìå
+    //å¡«å……æ¶ˆæ¯ä½“
     AddNewName_Request* pstReq = stNameMsg.mutable_m_stmsgbody()->mutable_m_staddnewname_request();
     pstReq->set_strname(rstReq.sznickname());
     pstReq->set_itype(EN_NAME_TYPE_ROLE);
@@ -165,8 +165,8 @@ void CCreateRoleRequestHandler::SendFailedResponseToLotus(const unsigned int uiR
     CreateRole_Account_Response* pstCreateRoleResponse =
         stFailedResponse.mutable_m_stmsgbody()->mutable_m_staccountcreateroleresponse();
 
-    pstCreateRoleResponse->set_iresult(uiResultID); // ´íÎóÂë
-    //todo jasonxiong2 µ¥»ú°æ²»ĞèÒªÃû×Ö
+    pstCreateRoleResponse->set_iresult(uiResultID); // é”™è¯¯ç 
+    //todo jasonxiong2 å•æœºç‰ˆä¸éœ€è¦åå­—
     //pstCreateRoleResponse->set_sznickname(m_pstRequestMsg->m_stmsgbody().m_staccountcreaterolerequest().sznickname());
 
     if (EncodeAndSendCode(CSProtocolEngine,
@@ -181,3 +181,7 @@ void CCreateRoleRequestHandler::SendFailedResponseToLotus(const unsigned int uiR
              stFailedResponse.m_stmsgbody().m_staccountcreateroleresponse().iresult());
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

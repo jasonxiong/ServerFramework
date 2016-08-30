@@ -1,4 +1,4 @@
-#include <string.h>
+﻿#include <string.h>
 #include <time.h>
 #include <arpa/inet.h>
 #include "SessionObj.hpp"
@@ -68,3 +68,7 @@ void CSessionObj::GetMsgCreatedTime(char* pszTime, unsigned int uiBufLen)
     strncpy(pszTime, ctime((time_t*)&uiTime), uiBufLen - 1);
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

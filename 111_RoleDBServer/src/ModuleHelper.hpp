@@ -1,10 +1,10 @@
-#ifndef __MODULE_HELPER_HPP__
+Ôªø#ifndef __MODULE_HELPER_HPP__
 #define __MODULE_HELPER_HPP__
 
 class CModuleHelper
 {
 public:
-    // ∑˛ŒÒ∆˜ID
+    // ÊúçÂä°Âô®ID
 	static void RegisterWorldID(int iWorldID) { m_iWorldID = iWorldID; }
     static int GetWorldID() { return m_iWorldID; };
 
@@ -13,3 +13,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __CACHE_TIME_HPP__
+ï»¿#ifndef __CACHE_TIME_HPP__
 #define __CACHE_TIME_HPP__
 
 #include <time.h>
@@ -6,7 +6,7 @@
 class CCacheTime
 {
 private:
-    time_t m_stCreatedTime; // »º´æ½áµã´´½¨µÄÊ±¼ä
+    time_t m_stCreatedTime; // ç¼“å­˜ç»“ç‚¹åˆ›å»ºçš„æ—¶é—´
 
 protected:
     CCacheTime();
@@ -18,3 +18,7 @@ public:
 };
 
 #endif // __CACHE_TIME_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

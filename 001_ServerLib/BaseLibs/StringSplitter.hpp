@@ -1,16 +1,16 @@
-/**
+ï»¿/**
 *@file StringSplitter.hpp
 *@author jasonxiong
 *@date 2009-11-18
 *@version 1.0
-*@brief ×Ö·û´®·ÖÀëÀà
+*@brief å­—ç¬¦ä¸²åˆ†ç¦»ç±»
 *
-*	½«Ò»¸ö×Ö·û´®¸ù¾İÒ»¸ö·Ö¸ô·û£¨separtor£©·Ö¸ô¿ªÀ´£¬¸ÃÀàÌáÈ¡·Ö¸ô¿ªÀ´µÄ´®
-*	Èç "derek yu"Õâ¸ö×Ö·û´®£¬¿ÉÒÔÉèÖÃ·Ö¸ô·û" "·ÖÎªderekºÍyu
-*	ÔÙÈç "hello&every oneÕâ¸ö×Ö·û´®£¬¿ÉÒÔ¸ù¾İ·Ö¸ô·û"&"·ÖÎªhelloºÍevery one
-*	Ê¹ÓÃ·½·¨£º
-*	£¨1£©µ÷ÓÃSetString()½«ĞèÒª·Ö¸ôµÄ×Ö·û´®´«ÈëSplitter£¬×¢ÒâÕâÀï´«µÄÖ¸Õë£¬ÔÚSplitterÄÚ²¿Ê¹ÓÃÊ±Ò²ÊÇÖ±½ÓÊ¹ÓÃ¸ÃÖ¸Õë
-*	£¨2£©µ÷ÓÃGetNextToken()Ö¸¶¨·Ö¸ô·ûÀ´»ñÈ¡ÏÂÒ»¸ö·Ö¸ô´®£¬²¢½«µ±Ç°Ñ°ÕÒµÄÆ«ÒÆÎ»ÖÃÏòºóÒÆ£¬ÕÒ²»µ½Ê±·µ»Ø-1
+*	å°†ä¸€ä¸ªå­—ç¬¦ä¸²æ ¹æ®ä¸€ä¸ªåˆ†éš”ç¬¦ï¼ˆsepartorï¼‰åˆ†éš”å¼€æ¥ï¼Œè¯¥ç±»æå–åˆ†éš”å¼€æ¥çš„ä¸²
+*	å¦‚ "derek yu"è¿™ä¸ªå­—ç¬¦ä¸²ï¼Œå¯ä»¥è®¾ç½®åˆ†éš”ç¬¦" "åˆ†ä¸ºderekå’Œyu
+*	å†å¦‚ "hello&every oneè¿™ä¸ªå­—ç¬¦ä¸²ï¼Œå¯ä»¥æ ¹æ®åˆ†éš”ç¬¦"&"åˆ†ä¸ºhelloå’Œevery one
+*	ä½¿ç”¨æ–¹æ³•ï¼š
+*	ï¼ˆ1ï¼‰è°ƒç”¨SetString()å°†éœ€è¦åˆ†éš”çš„å­—ç¬¦ä¸²ä¼ å…¥Splitterï¼Œæ³¨æ„è¿™é‡Œä¼ çš„æŒ‡é’ˆï¼Œåœ¨Splitterå†…éƒ¨ä½¿ç”¨æ—¶ä¹Ÿæ˜¯ç›´æ¥ä½¿ç”¨è¯¥æŒ‡é’ˆ
+*	ï¼ˆ2ï¼‰è°ƒç”¨GetNextToken()æŒ‡å®šåˆ†éš”ç¬¦æ¥è·å–ä¸‹ä¸€ä¸ªåˆ†éš”ä¸²ï¼Œå¹¶å°†å½“å‰å¯»æ‰¾çš„åç§»ä½ç½®å‘åç§»ï¼Œæ‰¾ä¸åˆ°æ—¶è¿”å›-1
 */
 
 #ifndef __STRING_SPLITTER_HPP__
@@ -27,32 +27,32 @@ public:
     ~CStringSplitter();
 
 public:
-    //!Ö¸¶¨Òª±»·Ö¸ô·û½âÎöµÄ×Ö·û´®£¬ÕâÀï½ö½öÊÇÖ¸Õë¿½±´
+    //!æŒ‡å®šè¦è¢«åˆ†éš”ç¬¦è§£æçš„å­—ç¬¦ä¸²ï¼Œè¿™é‡Œä»…ä»…æ˜¯æŒ‡é’ˆæ‹·è´
     int SetString(const char* pszString);
 
-    //!ÖØÖÃTokenÖ¸Õë¿ªÊ¼Î»ÖÃ
+    //!é‡ç½®TokenæŒ‡é’ˆå¼€å§‹ä½ç½®
     void ResetTokenBegPos()
     {
         m_iCurTokenBeg = 0;
     }
 
     /**
-    *»ñÈ¡±»·Ö¸ô·û·Ö¸ôµÄ×Ö·û´®£¬²¢½«µ±Ç°Ñ°ÕÒµÄÆ«ÒÆÎ»ÖÃÏòºóÒÆ
-    *@param[in] pszSepartor ·Ö¸ô·û
-    *@param[out] szToken ÓÃÓÚ´æ·ÅÕÒµ½µÄToken´®
-    *@param[in] iMaxTokenLength szToken´®×î´óÄÜ´æ·ÅµÄ´óĞ¡
-    *@return 0 success, ·Ç0±íÊ¾ÕÒ²»µ½
+    *è·å–è¢«åˆ†éš”ç¬¦åˆ†éš”çš„å­—ç¬¦ä¸²ï¼Œå¹¶å°†å½“å‰å¯»æ‰¾çš„åç§»ä½ç½®å‘åç§»
+    *@param[in] pszSepartor åˆ†éš”ç¬¦
+    *@param[out] szToken ç”¨äºå­˜æ”¾æ‰¾åˆ°çš„Tokenä¸²
+    *@param[in] iMaxTokenLength szTokenä¸²æœ€å¤§èƒ½å­˜æ”¾çš„å¤§å°
+    *@return 0 success, é0è¡¨ç¤ºæ‰¾ä¸åˆ°
     */
     int GetNextToken(const char* pszSepartor, char* szToken, int iMaxTokenLength);
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
@@ -60,11 +60,15 @@ private:
 
 private:
     const char* m_pszString;
-    int m_iCurTokenBeg; //µ±Ç°TokenÖ¸Õë¿ªÊ¼Î»ÖÃ
-    int m_iErrorNO; //!´íÎóÂë
+    int m_iCurTokenBeg; //å½“å‰TokenæŒ‡é’ˆå¼€å§‹ä½ç½®
+    int m_iErrorNO; //!é”™è¯¯ç 
 
 };
 }
 
 #endif //__STRING_SPLITTER_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

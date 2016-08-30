@@ -1,4 +1,4 @@
-#include "SessionObj.hpp"
+ï»¿#include "SessionObj.hpp"
 #include "RegAuthObjectAllocator.hpp"
 #include "ConfigHelper.hpp"
 #include "LogAdapter.hpp"
@@ -17,7 +17,7 @@ int CRegAuthObjectAllocator::Initialize(bool bResume)
     }
 
 
-    // ËùÓĞĞèÒª»º´æµÄ¶ÔÏó¹²ÓÃÒ»¿é¹²ÏíÄÚ´æÇø
+    // æ‰€æœ‰éœ€è¦ç¼“å­˜çš„å¯¹è±¡å…±ç”¨ä¸€å—å…±äº«å†…å­˜åŒº
     int iRet = m_stShm.CreateShmSegmentByKey(GenerateServerShmKey(GAME_SERVER_REGAUTH,1), iShmSize);
     if (iRet < 0)
     {
@@ -34,15 +34,15 @@ size_t CRegAuthObjectAllocator::CaculateTotalSize()
         return m_iTotalSize;
     }
 
-    //todo jasonxiong ºóÃæ×öÓÅ»¯Ê±ÔÙ¿´ÊÇ·ñĞèÒªÏÂÃæµÄ¶ÔÏó
+    //todo jasonxiong åé¢åšä¼˜åŒ–æ—¶å†çœ‹æ˜¯å¦éœ€è¦ä¸‹é¢çš„å¯¹è±¡
     /*
-    // ´´½¨½ÇÉ«ÏûÏ¢»º´æÇø£¬ÒÔuin×÷Îªhash key
+    // åˆ›å»ºè§’è‰²æ¶ˆæ¯ç¼“å­˜åŒºï¼Œä»¥uinä½œä¸ºhash key
     size_t iRegisterAccountRequestCacheSize =
         CFixedHashCache<CRegisterAccountRequestObj>::CaculateSize(
             MAX_REGISTER_ACCOUNT_REQUEST_NUMBER);
     m_iTotalSize += iRegisterAccountRequestCacheSize;
 
-    // Íæ¼ÒÕÊºÅ->uin,passwdµÄÓ³ÉäµÄ»º´æ£¬²»ĞèÒªÃ¿´ÎÈÏÖ¤¶¼ÏòÊı¾İ¿â²éÑ¯
+    // ç©å®¶å¸å·->uin,passwdçš„æ˜ å°„çš„ç¼“å­˜ï¼Œä¸éœ€è¦æ¯æ¬¡è®¤è¯éƒ½å‘æ•°æ®åº“æŸ¥è¯¢
     size_t iAccountCacheSize =
         CLRUHashCache<CAccountUinObj>::CaculateSize(MAX_ACCOUNT_OBJ_CACHE_NUMBER);
     m_iTotalSize += iAccountCacheSize;
@@ -52,3 +52,7 @@ size_t CRegAuthObjectAllocator::CaculateTotalSize()
 
     return m_iTotalSize;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include "LogAdapter.hpp"
+﻿#include "LogAdapter.hpp"
 #include "TimeStampConverter.hpp"
 
 using namespace ServerLib;
@@ -25,3 +25,7 @@ unsigned short TimeStampToValue(const unsigned int uiTimeStamp)
     return 0;
     //return (unsigned short)(uiTimeStamp & 0xffff);
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

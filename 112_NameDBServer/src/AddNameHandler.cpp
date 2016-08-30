@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 #include <string.h>
 
 #include "AppDef.hpp"
@@ -12,7 +12,7 @@
 
 using namespace ServerLib;
 
-//Éú³ÉµÄSQLÓï¾ä
+//ç”Ÿæˆçš„SQLè¯­å¥
 char CAddNameHandler::m_szQueryString[GameConfig::NAME_TABLE_SPLIT_FACTOR][1024];
 
 CAddNameHandler::CAddNameHandler(DBClientWrapper* pDatabase)
@@ -28,7 +28,7 @@ void CAddNameHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    // Ôö¼ÓÃû×Ö¼ÇÂ¼µÄÇëÇó
+    // å¢åŠ åå­—è®°å½•çš„è¯·æ±‚
     m_pstRequestMsg = pstRequestMsg;
 
     switch (m_pstRequestMsg->m_stmsghead().m_uimsgid())
@@ -48,10 +48,10 @@ void CAddNameHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
     return;
 }
 
-//½øĞĞ±ØÒªµÄ²ÎÊı¼ì²é
+//è¿›è¡Œå¿…è¦çš„å‚æ•°æ£€æŸ¥
 int CAddNameHandler::CheckParams()
 {
-    //¼ì²éÇëÇóµÄ²ÎÊı
+    //æ£€æŸ¥è¯·æ±‚çš„å‚æ•°
     const AddNewName_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_staddnewname_request();
 
     if(rstReq.itype()<=EN_NAME_TYPE_INVALID || rstReq.itype()>=EN_NAME_TYPE_MAX)
@@ -76,12 +76,12 @@ void CAddNameHandler::OnAddNameRequest(SHandleResult* pstHandleResult)
 		return;
 	}
 
-    pstHandleResult->iNeedResponse = true;  //ĞèÒª»Ø¸´
+    pstHandleResult->iNeedResponse = true;  //éœ€è¦å›å¤
 
-    //ÇëÇóµÄÏûÏ¢
+    //è¯·æ±‚çš„æ¶ˆæ¯
     const AddNewName_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_staddnewname_request();
 
-    //Éú³ÉÏìÓ¦µÄÏûÏ¢Í·
+    //ç”Ÿæˆå“åº”çš„æ¶ˆæ¯å¤´
     const GameCSMsgHead& rstHead = m_pstRequestMsg->m_stmsghead();
     GenerateResponseMsgHead(&pstHandleResult->stResponseMsg, rstHead.m_uisessionfd(), MSGID_ADDNEWNAME_RESPONSE, 0);
 
@@ -94,7 +94,7 @@ void CAddNameHandler::OnAddNameRequest(SHandleResult* pstHandleResult)
         return;
     }
 
-    //¼ì²éÕÊºÅÊÇ·ñ´æÔÚ
+    //æ£€æŸ¥å¸å·æ˜¯å¦å­˜åœ¨
     bool bIsExist = false;
     iRet = CheckNameExist(rstReq.strname(), rstReq.itype(), bIsExist);
     if(iRet)
@@ -107,7 +107,7 @@ void CAddNameHandler::OnAddNameRequest(SHandleResult* pstHandleResult)
 
     if(bIsExist)
     {
-        //ÕÊºÅÒÑ¾­´æÔÚ
+        //å¸å·å·²ç»å­˜åœ¨
         TRACE_THREAD(m_iThreadIdx, "Failed to add new name, already exist, ret 0x%0x\n", T_NAMEDB_NAME_EXISTS);
         FillFailedResponse(T_NAMEDB_NAME_EXISTS, rstReq.itype(), rstReq.name_id(), &pstHandleResult->stResponseMsg);
 
@@ -115,7 +115,7 @@ void CAddNameHandler::OnAddNameRequest(SHandleResult* pstHandleResult)
     }
 
 
-    //²åÈëĞÂµÄ¼ÇÂ¼
+    //æ’å…¥æ–°çš„è®°å½•
     iRet = AddNewRecord(rstReq.strname(), rstReq.itype(), rstReq.name_id());
     if(iRet)
     {
@@ -130,10 +130,10 @@ void CAddNameHandler::OnAddNameRequest(SHandleResult* pstHandleResult)
     return;
 }
 
-//¼ì²éÕÊºÅÊÇ·ñ´æÔÚ
+//æ£€æŸ¥å¸å·æ˜¯å¦å­˜åœ¨
 int CAddNameHandler::CheckNameExist(const std::string& strName, int iType, bool& bIsExist)
 {
-    //ÉèÖÃÁ¬½ÓµÄDB
+    //è®¾ç½®è¿æ¥çš„DB
     const ONENAMEDBINFO* pstDBConfig = (CNameDBApp::m_stNameDBConfigManager).GetOneNameDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -161,7 +161,7 @@ int CAddNameHandler::CheckNameExist(const std::string& strName, int iType, bool&
 
     if(m_pDatabase->GetNumberRows() != 0)
     {
-        //ÒÑ¾­´æÔÚ¸ÃÃû×Ö
+        //å·²ç»å­˜åœ¨è¯¥åå­—
         bIsExist = true;
     }
     else
@@ -172,10 +172,10 @@ int CAddNameHandler::CheckNameExist(const std::string& strName, int iType, bool&
     return T_SERVER_SUCESS;
 }
 
-//²åÈëĞÂµÄ¼ÇÂ¼
+//æ’å…¥æ–°çš„è®°å½•
 int CAddNameHandler::AddNewRecord(const std::string& strName, int iNameType, unsigned uNameID)                                 
 {
-    //ÉèÖÃÁ¬½ÓµÄDB
+    //è®¾ç½®è¿æ¥çš„DB
     const ONENAMEDBINFO* pstDBConfig = (CNameDBApp::m_stNameDBConfigManager).GetOneNameDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -243,3 +243,7 @@ void CAddNameHandler::FillSuccessfulResponse(const std::string& strName, int iNa
 }
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

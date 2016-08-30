@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __SECTION_CONFIG_HPP__
 #define __SECTION_CONFIG_HPP__
 
@@ -12,22 +12,22 @@ namespace ServerLib
 class CSectionConfig
 {
 public:
-    char    *m_pszFilename;     //!<´æ·ÅÐèÒª¶ÁÈ¡µÄÅäÖÃÎÄ¼þÃû
+    char    *m_pszFilename;     //!<å­˜æ”¾éœ€è¦è¯»å–çš„é…ç½®æ–‡ä»¶å
 
-    //!¹¹Ôìº¯Êý£¬³õÊ¼»¯ÀàµÄ³ÉÔ±£¬¶ÁÈ¡ÅäÖÃÎÄ¼þ
+    //!æž„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–ç±»çš„æˆå‘˜ï¼Œè¯»å–é…ç½®æ–‡ä»¶
     CSectionConfig();
     ~CSectionConfig();
 
-    //!·µ»ØÅäÖÃÎÄ¼þ¶ÁÈ¡×´Ì¬
+    //!è¿”å›žé…ç½®æ–‡ä»¶è¯»å–çŠ¶æ€
     unsigned int IsOpen();
 
-    //!È¡Ö¸¶¨µÄ¼üÖµ
+    //!å–æŒ‡å®šçš„é”®å€¼
     unsigned int GetItemValue( const char *pszSectionName,
                                const char *pszKeyName,
                                char *pszReturnedString,
                                unsigned int nSize );
 
-    //!´ÓÄÚ´æ»º³åÇøÖÐÕÒµ½KeyName£¬½«Öµ¿½±´µ½Ö¸¶¨µÄ¿Õ¼ä
+    //!ä»Žå†…å­˜ç¼“å†²åŒºä¸­æ‰¾åˆ°KeyNameï¼Œå°†å€¼æ‹·è´åˆ°æŒ‡å®šçš„ç©ºé—´
     unsigned int SetItemValue( const char *pszSectionName,
                                const char *pszKeyName,
                                const char *pszKeyValue );
@@ -58,13 +58,13 @@ public:
                                unsigned int nSize,
                                const char *pszDefaultValue );
 
-    //!¼ÓÔØÅäÖÃÎÄ¼þµ½ÄÚ´æ
+    //!åŠ è½½é…ç½®æ–‡ä»¶åˆ°å†…å­˜
     int  OpenFile(const char *pszFilename);
 
-    //!ÊÍ·ÅÅäÖÃÎÄ¼þ¼ÓÔØµ½ÄÚ´æºóÕ¼ÓÃµÄ×ÊÔ´
+    //!é‡Šæ”¾é…ç½®æ–‡ä»¶åŠ è½½åˆ°å†…å­˜åŽå ç”¨çš„èµ„æº
     void CloseFile();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
@@ -72,54 +72,58 @@ public:
 
 private:
 
-    //!¶¨Î»sectionµÄ¿ªÊ¼µØÖ·ºÍ½áÊøµØÖ·
+    //!å®šä½sectionçš„å¼€å§‹åœ°å€å’Œç»“æŸåœ°å€
     unsigned int LocateSection(const char *pszSectionName,
                                char * &pszSectionBegin,
                                char * &pszSectionEnd);
 
-    //!ÔÚÖ¸¶¨µÄ»º³åÇø·¶Î§ÖÐËÑË÷Key£¬·µ»ØÓëKeyÆ¥ÅäµÄÖµµÄ¿ªÊ¼µØÖ·ºÍ½áÊøµØÖ·
+    //!åœ¨æŒ‡å®šçš„ç¼“å†²åŒºèŒƒå›´ä¸­æœç´¢Keyï¼Œè¿”å›žä¸ŽKeyåŒ¹é…çš„å€¼çš„å¼€å§‹åœ°å€å’Œç»“æŸåœ°å€
     unsigned int LocateKeyRange(const char *pszKeyName,
                                 const char *pszSectionBegin,
                                 const char *pszSectionEnd,
                                 char * &pszKeyBegin,
                                 char * &pszKeyEnd);
 
-    //!ÔÚÖ¸¶¨µÄ»º³åÇø·¶Î§ÖÐËÑË÷Key£¬·µ»ØÓëKeyÆ¥ÅäµÄÖµµÄ¿ªÊ¼µØÖ·ºÍ½áÊøµØÖ·
+    //!åœ¨æŒ‡å®šçš„ç¼“å†²åŒºèŒƒå›´ä¸­æœç´¢Keyï¼Œè¿”å›žä¸ŽKeyåŒ¹é…çš„å€¼çš„å¼€å§‹åœ°å€å’Œç»“æŸåœ°å€
     unsigned int LocateKeyValue(const char *pszKeyName,
                                 const char *pszSectionBegin,
                                 const char *pszSectionEnd,
                                 char * &pszValueBegin,
                                 char * &pszValueEnd);
 
-    //!ÔÚÒ»¸ö×Ö·û´®ÖÐËÑË÷ÁíÒ»¸ö×Ö·û´®
+    //!åœ¨ä¸€ä¸ªå­—ç¬¦ä¸²ä¸­æœç´¢å¦ä¸€ä¸ªå­—ç¬¦ä¸²
     const char *LocateStr(    const char *pszCharSet,
                               const char *pszBegin,
                               const char *pszEnd );
 
     const char *SearchMarchStr(const char *pszBegin, const char *pszCharSet);
 
-    //!½«ShadowÖÐµÄµØÖ·Ó³Éäµ½ContentÖÐ
+    //!å°†Shadowä¸­çš„åœ°å€æ˜ å°„åˆ°Contentä¸­
     char *MapToContent(const char *p);
 
-    //!½«ContentÖÐµÄµØÖ·Ó³Éäµ½ShadowÖÐ
+    //!å°†Contentä¸­çš„åœ°å€æ˜ å°„åˆ°Shadowä¸­
     char *MapToShadow(const char *p);
 
-    //!½«×Ö·û´®ÖÐµÄ´óÐ´×ÖÄ¸×ª»»³ÉÐ¡Ð´×ÖÄ¸
+    //!å°†å­—ç¬¦ä¸²ä¸­çš„å¤§å†™å­—æ¯è½¬æ¢æˆå°å†™å­—æ¯
     void ToLower( char * pszSrc, size_t len);
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
 private:
-    char    *m_pszContent;      //!<ÅäÖÃÎÄ¼þµÄÔ­Ê¼ÄÚÈÝ
-    char    *m_pszShadow;       //!<ÅäÖÃÎÄ¼þµÄÄÚÈÝÈ«²¿×ª»»³ÉÐ¡Ð´
-    size_t  m_nSize;            //!<ÅäÖÃÎÄ¼þÄÚÈÝµÄ³¤¶È£¬²»°üÀ¨×îºóµÄNULL
-    short   m_bIsOpen;         //!<ÅäÖÃÎÄ¼þÊÇ·ñ´ò¿ª³É¹¦µÄ±êÖ¾
-    int m_iErrorNO; //!´íÎóÂë
+    char    *m_pszContent;      //!<é…ç½®æ–‡ä»¶çš„åŽŸå§‹å†…å®¹
+    char    *m_pszShadow;       //!<é…ç½®æ–‡ä»¶çš„å†…å®¹å…¨éƒ¨è½¬æ¢æˆå°å†™
+    size_t  m_nSize;            //!<é…ç½®æ–‡ä»¶å†…å®¹çš„é•¿åº¦ï¼Œä¸åŒ…æ‹¬æœ€åŽçš„NULL
+    short   m_bIsOpen;         //!<é…ç½®æ–‡ä»¶æ˜¯å¦æ‰“å¼€æˆåŠŸçš„æ ‡å¿—
+    int m_iErrorNO; //!é”™è¯¯ç 
 };
 }
 
 #endif //__SECTION_CONFIG_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

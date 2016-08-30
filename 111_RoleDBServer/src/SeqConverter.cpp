@@ -1,4 +1,4 @@
-#include "UnixTime.hpp"
+ï»¿#include "UnixTime.hpp"
 #include "NowTime.hpp"
 #include "Public.hpp"
 #include "SeqConverter.hpp"
@@ -50,7 +50,7 @@ int CheckDBSeq(const unsigned int uiDBSeq)
         return -1;
     }
 
-    //todo jasonxiong ÔİÊ±²»ĞèÒª£¬µÈºóÃæÔÙÈ·ÈÏÊÇ·ñĞèÒªĞŞ¸Ä
+    //todo jasonxiong æš‚æ—¶ä¸éœ€è¦ï¼Œç­‰åé¢å†ç¡®è®¤æ˜¯å¦éœ€è¦ä¿®æ”¹
     /* 
     CUnixTime now(time(NULL));
     unsigned short unNow;
@@ -65,3 +65,7 @@ int CheckDBSeq(const unsigned int uiDBSeq)
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

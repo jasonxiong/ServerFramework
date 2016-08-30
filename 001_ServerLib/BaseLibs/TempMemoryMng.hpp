@@ -1,13 +1,13 @@
-/**
+ï»¿/**
 *@file TempMemoryMng.hpp
 *@author jasonxiong
 *@date 2009-11-28
 *@version 1.0
-*@brief ÁÙÊ±ÄÚ´æ¶ÔÏó¹ÜÀíÀà
+*@brief ä¸´æ—¶å†…å­˜å¯¹è±¡ç®¡ç†ç±»
 *
-*	×¢Òâ£º
-*	£¨1£©²»Ö§³Ö¶à½ø³Ì»ò¶àÏß³Ì
-*	£¨2£©´´½¨ÄÚ´æºó£¬ÔÚ²»ÓÃµÄÊ±ºòÐèÒªµ÷ÓÃDestroyTempMemÀ´»ØÊÕÄÚ´æ
+*	æ³¨æ„ï¼š
+*	ï¼ˆ1ï¼‰ä¸æ”¯æŒå¤šè¿›ç¨‹æˆ–å¤šçº¿ç¨‹
+*	ï¼ˆ2ï¼‰åˆ›å»ºå†…å­˜åŽï¼Œåœ¨ä¸ç”¨çš„æ—¶å€™éœ€è¦è°ƒç”¨DestroyTempMemæ¥å›žæ”¶å†…å­˜
 */
 
 #ifndef __TEMP_MEMORY_MNG_HPP__
@@ -20,14 +20,14 @@ namespace ServerLib
 
 typedef enum enmTempMemAllocType
 {
-    ETMT_ALLOC_BY_MEMORY_MNG = 0, //!<ÓÉCTempMemoryMng×ÔÐÐ·ÖÅä
-    ETMT_ALLOC_BY_SHARED_MEMEORY = 1, //!<ÓÉ¹²ÏíÄÚ´æ´´½¨
+    ETMT_ALLOC_BY_MEMORY_MNG = 0, //!<ç”±CTempMemoryMngè‡ªè¡Œåˆ†é…
+    ETMT_ALLOC_BY_SHARED_MEMEORY = 1, //!<ç”±å…±äº«å†…å­˜åˆ›å»º
 } ENMTEMPMEMALLOCTYPE;
 
 typedef struct tagTempMemoryObj
 {
-    int m_iNexIndex; //!<ÏÂÒ»¿éÁÙÊ±ÄÚ´æµÄÊý×éË÷Òý
-    unsigned int m_uiMemOffset; //!<ÔÚÕû¿éÁÙÊ±ÄÚ´æÖÐµÄÆ«ÒÆÁ¿
+    int m_iNexIndex; //!<ä¸‹ä¸€å—ä¸´æ—¶å†…å­˜çš„æ•°ç»„ç´¢å¼•
+    unsigned int m_uiMemOffset; //!<åœ¨æ•´å—ä¸´æ—¶å†…å­˜ä¸­çš„åç§»é‡
 } TTempMemoryObj;
 
 class CTempMemoryMng
@@ -38,20 +38,20 @@ private:
 
 public:
     /**
-    *´´½¨ÁÙÊ±ÄÚ´æ¹ÜÀíÆ÷
-    *@param[in] iObjSize Ã¿¸öÁÙÊ±¶ÔÏó¿é´óÐ¡
-    *@param[in] iMaxObjCount ×î´óµÄÁÙÊ±¶ÔÏó¿é¸öÊý
+    *åˆ›å»ºä¸´æ—¶å†…å­˜ç®¡ç†å™¨
+    *@param[in] iObjSize æ¯ä¸ªä¸´æ—¶å¯¹è±¡å—å¤§å°
+    *@param[in] iMaxObjCount æœ€å¤§çš„ä¸´æ—¶å¯¹è±¡å—ä¸ªæ•°
     *@return 0 success
     */
     CTempMemoryMng(int iObjSize, int iMaxObjCount);
     ~CTempMemoryMng();
 
     /**
-    *Í¨¹ý¹²ÏíÄÚ´æÀ´´´½¨CTempMemoryMng£¨×¢ÒâÕâÑù´´½¨µÄCTempMemoryMng²»»á³õÊ¼»¯£¬²»»á¸Ä±äËùÔÚ¹²ÏíÄÚ´æµÄÖµ£©
-    *@param[in] pszKeyFileName ¹²ÏíÄÚ´æAttachµÄÎÄ¼þÃû
-    *@param[in] ucKeyPrjID ¹²ÏíÄÚ´æµÄProjectID
-    *@param[in] iObjSize Ã¿¸öÁÙÊ±¶ÔÏó¿é´óÐ¡
-    *@param[in] iMaxObjCount ×î´óµÄÁÙÊ±¶ÔÏó¿é¸öÊý
+    *é€šè¿‡å…±äº«å†…å­˜æ¥åˆ›å»ºCTempMemoryMngï¼ˆæ³¨æ„è¿™æ ·åˆ›å»ºçš„CTempMemoryMngä¸ä¼šåˆå§‹åŒ–ï¼Œä¸ä¼šæ”¹å˜æ‰€åœ¨å…±äº«å†…å­˜çš„å€¼ï¼‰
+    *@param[in] pszKeyFileName å…±äº«å†…å­˜Attachçš„æ–‡ä»¶å
+    *@param[in] ucKeyPrjID å…±äº«å†…å­˜çš„ProjectID
+    *@param[in] iObjSize æ¯ä¸ªä¸´æ—¶å¯¹è±¡å—å¤§å°
+    *@param[in] iMaxObjCount æœ€å¤§çš„ä¸´æ—¶å¯¹è±¡å—ä¸ªæ•°
     *@return 0 success
     */
     static CTempMemoryMng* CreateBySharedMemory(const char* pszKeyFileName,
@@ -60,48 +60,52 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯ÁÙÊ±ÄÚ´æ¹ÜÀíÆ÷
+    *åˆå§‹åŒ–ä¸´æ—¶å†…å­˜ç®¡ç†å™¨
     *@return 0 success
     */
     int Initialize();
 
-    //!´´½¨ÁÙÊ±ÄÚ´æ
+    //!åˆ›å»ºä¸´æ—¶å†…å­˜
     void* CreateTempMem();
 
-    //!Ïú»ÙÁÙÊ±ÄÚ´æ
+    //!é”€æ¯ä¸´æ—¶å†…å­˜
     int DestroyTempMem(void *pTempMem);
 
-    //!»ñÈ¡ÒÑÓÃ¶ÔÏó¸öÊý
+    //!èŽ·å–å·²ç”¨å¯¹è±¡ä¸ªæ•°
     int	GetUsedCount() const;
 
-    //!»ñÈ¡¿ÕÏÐ¶ÔÏó¸öÊý
+    //!èŽ·å–ç©ºé—²å¯¹è±¡ä¸ªæ•°
     int	GetFreeCount() const;
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
 private:
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iMemAllocType; //!<ÄÚ´æ·ÖÅäÀàÐÍ£¬0ÓÉCTempMemoryMng·ÖÅä£¬1ÓÉÊ¹ÓÃÕßÖ¸¶¨
-    unsigned char* m_aucObjMem; //!<·ÖÅäµÄ¶ÔÏóÄÚ´æ
-    int m_iObjSize; //!<Ã¿¸ö¶ÔÏó¿éµÄÄÚ´æ´óÐ¡
-    int m_iMaxObjCount; //!<·ÖÅä¶àÉÙ¸ö¶ÔÏó¿é
-    int m_iUsedCount; //!<ÒÑ¾­Ê¹ÓÃµÄÄÚ´æ¿é¸öÊý
-    int m_iFirstFreeObjIdx; //!<¿ÕÏÐÁÙÊ±ÄÚ´æ¶ÓÊ×¶ÔÏóË÷Òý
-    TTempMemoryObj* m_astTmpMemObj; //!<ÁÙÊ±ÄÚ´æ¶ÔÏóÊý×é
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iMemAllocType; //!<å†…å­˜åˆ†é…ç±»åž‹ï¼Œ0ç”±CTempMemoryMngåˆ†é…ï¼Œ1ç”±ä½¿ç”¨è€…æŒ‡å®š
+    unsigned char* m_aucObjMem; //!<åˆ†é…çš„å¯¹è±¡å†…å­˜
+    int m_iObjSize; //!<æ¯ä¸ªå¯¹è±¡å—çš„å†…å­˜å¤§å°
+    int m_iMaxObjCount; //!<åˆ†é…å¤šå°‘ä¸ªå¯¹è±¡å—
+    int m_iUsedCount; //!<å·²ç»ä½¿ç”¨çš„å†…å­˜å—ä¸ªæ•°
+    int m_iFirstFreeObjIdx; //!<ç©ºé—²ä¸´æ—¶å†…å­˜é˜Ÿé¦–å¯¹è±¡ç´¢å¼•
+    TTempMemoryObj* m_astTmpMemObj; //!<ä¸´æ—¶å†…å­˜å¯¹è±¡æ•°ç»„
 };
 
 }
 
 #endif //__TEMP_MEMORY_MNG_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

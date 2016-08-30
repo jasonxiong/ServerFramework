@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "AppDef.hpp"
 #include "NameDBLogManager.hpp"
@@ -9,7 +9,7 @@
 
 using namespace ServerLib;
 
-//Ö´ĞĞµÄSQLÓï¾ä
+//æ‰§è¡Œçš„SQLè¯­å¥
 char CDeleteNameHandler::m_szQueryString[GameConfig::NAME_TABLE_SPLIT_FACTOR][256];
 
 CDeleteNameHandler::CDeleteNameHandler(DBClientWrapper* pDatabase)
@@ -25,22 +25,22 @@ void CDeleteNameHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    //DeleteÇëÇó²»ĞèÒª»Ø°ü
+    //Deleteè¯·æ±‚ä¸éœ€è¦å›åŒ…
     pstHandleResult->iNeedResponse = false;
 
-    //Delete Name µÄÇëÇóÏûÏ¢
+    //Delete Name çš„è¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
     const DeleteName_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_stdeletename_request();
 
     TRACE_THREAD(m_iThreadIdx, "Handling DeleteNameRequest, name: %s, type %d\n", rstReq.strname().c_str(), rstReq.itype());
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(&pstHandleResult->stResponseMsg, 
                             m_pstRequestMsg->m_stmsghead().m_uisessionfd(),
                             MSGID_DELETENAME_RESPONSE, 
                             0);
 
-    //¸ù¾İNameIDºÍNameTypeÉ¾³ı¼ÇÂ¼
+    //æ ¹æ®NameIDå’ŒNameTypeåˆ é™¤è®°å½•
     int iRet = DeleteName(rstReq.strname(), rstReq.itype());
     if (iRet)
     {
@@ -53,10 +53,10 @@ void CDeleteNameHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
     return;
 }
 
-//É¾³ıName
+//åˆ é™¤Name
 int CDeleteNameHandler::DeleteName(const std::string& strName, int iType)
 {
-    //À­È¡NAMEDBÊı¾İ¿âÏà¹ØÅäÖÃ
+    //æ‹‰å–NAMEDBæ•°æ®åº“ç›¸å…³é…ç½®
     const ONENAMEDBINFO* pstDBConfig = (CNameDBApp::m_stNameDBConfigManager).GetOneNameDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -64,12 +64,12 @@ int CDeleteNameHandler::DeleteName(const std::string& strName, int iType)
         return -1;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊı¾İ¿âÏà¹ØĞÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
 
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
 
-    //Éú³ÉÉ¾³ıµÄSQLÓï¾ä
+    //ç”Ÿæˆåˆ é™¤çš„SQLè¯­å¥
     int iLength = SAFE_SPRINTF(pszQueryString, sizeof(m_szQueryString[m_iThreadIdx])-1, "delete from %s where nickname= '%s' and nametype=%d", 
                  MYSQL_NAMEINFO_TABLE, strName.c_str(), iType);
 
@@ -113,3 +113,7 @@ void CDeleteNameHandler::FillSuccessfulResponse(GameProtocolMsg* pstResponseMsg)
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include "pugixml.hpp"
+﻿#include "pugixml.hpp"
 
 #include "StringUtility.hpp"
 #include "LogAdapter.hpp"
@@ -77,3 +77,7 @@ const ONEACCOUNTDBINFO* CAccountDBInfoConfig::GetOneAccountDBInfoByIndex(int iDB
 
     return &m_astAccountDBInfo[iDBIndex];
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

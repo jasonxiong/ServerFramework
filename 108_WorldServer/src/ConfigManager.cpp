@@ -1,4 +1,4 @@
-#include <fstream>
+ï»¿#include <fstream>
 #include <sstream>
 
 #include "GameProtocol.hpp"
@@ -15,7 +15,7 @@ int CConfigManager::Initialize(bool bResume)
 {
     int iRet = 0;
 
-    //¼ÓÔØ½ÇÉ«³öÉú±íÅäÖÃ
+    //åŠ è½½è§’è‰²å‡ºç”Ÿè¡¨é…ç½®
     iRet = m_stBirthConfigManager.LoadConfig();
     if(iRet)
     {
@@ -23,7 +23,7 @@ int CConfigManager::Initialize(bool bResume)
         return -1;
     }
 
-    //¼ÓÔØÍæ¼ÒÕ½¶·µ¥Î»±íÅäÖÃ
+    //åŠ è½½ç©å®¶æˆ˜æ–—å•ä½è¡¨é…ç½®
     iRet = m_stFightUnitConfigManager.LoadConfig();
     if(iRet)
     {
@@ -31,7 +31,7 @@ int CConfigManager::Initialize(bool bResume)
         return -2;
     }
 
-    //¼ÓÔØÊÀ½çÇøµÄÅäÖÃ
+    //åŠ è½½ä¸–ç•ŒåŒºçš„é…ç½®
     iRet = LoadZoneConf("../conf/zone_conf.txt");
     if (iRet != 0)
     {
@@ -63,7 +63,7 @@ int CConfigManager::LoadZoneConf(const char* pszConfFile)
 
     while (inFile.getline(szLine, sizeof(szLine)))
     {
-        if (('\r' == szLine[0]) || (0 == strlen(szLine))) // ¿ÕĞĞ£¬viÔö¼ÓÒ»ĞĞÊ±¶Á³öµÄÊÇ\r
+        if (('\r' == szLine[0]) || (0 == strlen(szLine))) // ç©ºè¡Œï¼Œviå¢åŠ ä¸€è¡Œæ—¶è¯»å‡ºçš„æ˜¯\r
         {
             break;
         }
@@ -91,3 +91,7 @@ int CConfigManager::LoadZoneConf(const char* pszConfFile)
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

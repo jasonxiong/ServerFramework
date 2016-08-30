@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __ACCOUNTDB_MSG_TRANSCEIVER_HPP__
 #define __ACCOUNTDB_MSG_TRANSCEIVER_HPP__
 
@@ -8,19 +8,23 @@
 class CAccountDBMsgTransceiver
 {
 public:
-    // ³õÊ¼»¯ZMQ BusÏµÍ³
+    // åˆå§‹åŒ–ZMQ Busç³»ç»Ÿ
     int Initialize(bool bResumeMode, int iWorldID);
 
 public:
-    // ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+    // å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
     int SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer);
     int RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgLength, EGameServerID enMsgPeer);
 
 private:
 
-    //RegAuthServer µ½ AccountDBµÄZMQÍ¨ĞÅÍ¨µÀ
+    //RegAuthServer åˆ° AccountDBçš„ZMQé€šä¿¡é€šé“
     ZmqBus m_oRegauth2AccountDBSvr;
 };
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

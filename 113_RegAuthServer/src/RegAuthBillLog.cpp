@@ -1,4 +1,4 @@
-#include "RegAuthApp.hpp"
+ï»¿#include "RegAuthApp.hpp"
 #include "TimeValue.hpp"
 #include "TimeUtility.hpp"
 #include "RegAuthBillLog.hpp"
@@ -8,16 +8,16 @@ const int CRegAuthBillLog::MAX_BILL_EVENT_PER_SECOND = 65535;
 int CRegAuthBillLog::m_iLastEventTime;
 unsigned short CRegAuthBillLog::m_usEventSequence;
 
-// ±¾µØBillÈÕÖ¾
+// æœ¬åœ°Billæ—¥å¿—
 CBillLogAdapter CRegAuthBillLog::m_stBillLog;
 
-//µ¥½ø³ÌĞ´ÈÕÖ¾ÄÚÈİµÄ»º³åÇø
+//å•è¿›ç¨‹å†™æ—¥å¿—å†…å®¹çš„ç¼“å†²åŒº
 char CRegAuthBillLog::m_szSendBuff[1024*5];
 
 using namespace ServerLib;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//Íæ¼Ò×¢²áÕÊºÅ
+//ç©å®¶æ³¨å†Œå¸å·
 void CRegAuthBillLog::TraceRegAccount(const char* szAccountID, int iAccountType, unsigned uin, int iGender, const char* szPhone, 
                      unsigned uClientIP, TEventId& rstEventID)
 {
@@ -27,7 +27,7 @@ void CRegAuthBillLog::TraceRegAccount(const char* szAccountID, int iAccountType,
 
     CTimeUtility::ConvertUnixTimeToTimeString((int)time(NULL), szDateTime);
 
-    //´òÓ¡´´½¨½ÇÉ«ÈÕÖ¾£¬¸ñÊ½: LOG_TYPE|uin|accountID|eventID|iAccountType|iGender|szPhone|uClientIP
+    //æ‰“å°åˆ›å»ºè§’è‰²æ—¥å¿—ï¼Œæ ¼å¼: LOG_TYPE|uin|accountID|eventID|iAccountType|iGender|szPhone|uClientIP
     //OSSLogWrapper::Instance()->LOGBinDebugEx(OSS_LOG_UID, "Register", m_szSendBuff, sizeof(m_szSendBuff)-1, 
     //                                         "LOG_REGACCOUNT|%u|%s|%lld|%d|%d|%s|%u|", uin, szAccountID, *(long long*)&rstEventID, iAccountType,
     //                                         iGender, szPhone, uClientIP);
@@ -35,7 +35,7 @@ void CRegAuthBillLog::TraceRegAccount(const char* szAccountID, int iAccountType,
     WriteBillLog();
 }
 
-//Íæ¼ÒµÇÂ¼ÈÏÖ¤ÕÊºÅ
+//ç©å®¶ç™»å½•è®¤è¯å¸å·
 void CRegAuthBillLog::TraceAuthAccount(const char* szAccountID, int iAccountType, unsigned uin, TEventId& rstEventID)
 {
     GenerateLogHead(rstEventID);
@@ -44,14 +44,14 @@ void CRegAuthBillLog::TraceAuthAccount(const char* szAccountID, int iAccountType
 
     CTimeUtility::ConvertUnixTimeToTimeString((int)time(NULL), szDateTime);
 
-    //´òÓ¡´´½¨½ÇÉ«ÈÕÖ¾£¬¸ñÊ½: LOG_TYPE|uin|accountID|eventID|iAccountType|iGender|szPhone|uClientIP
+    //æ‰“å°åˆ›å»ºè§’è‰²æ—¥å¿—ï¼Œæ ¼å¼: LOG_TYPE|uin|accountID|eventID|iAccountType|iGender|szPhone|uClientIP
     //OSSLogWrapper::Instance()->LOGBinDebugEx(OSS_LOG_UID, "Auth", m_szSendBuff, sizeof(m_szSendBuff)-1, 
     //                                         "LOG_AUTHACCOUNT|%u|%s|%lld|%d", uin, szAccountID, *(long long*)&rstEventID, iAccountType);
 
     WriteBillLog();
 }
 
-//Íæ¼ÒĞŞ¸ÄÕÊºÅĞÅÏ¢
+//ç©å®¶ä¿®æ”¹å¸å·ä¿¡æ¯
 void CRegAuthBillLog::TraceUpdateAccount(const char* szAccountID, int iAccountType, unsigned int uin, TEventId& rstEventID)
 {
     GenerateLogHead(rstEventID);
@@ -60,7 +60,7 @@ void CRegAuthBillLog::TraceUpdateAccount(const char* szAccountID, int iAccountTy
 
     CTimeUtility::ConvertUnixTimeToTimeString((int)time(NULL), szDateTime);
 
-    //´òÓ¡´´½¨½ÇÉ«ÈÕÖ¾£¬¸ñÊ½: LOG_TYPE|uin|accountID|eventID|iAccountType|iGender|szPhone|uClientIP
+    //æ‰“å°åˆ›å»ºè§’è‰²æ—¥å¿—ï¼Œæ ¼å¼: LOG_TYPE|uin|accountID|eventID|iAccountType|iGender|szPhone|uClientIP
     //OSSLogWrapper::Instance()->LOGBinDebugEx(OSS_LOG_UID, "Update", m_szSendBuff, sizeof(m_szSendBuff)-1, 
     //                                         "LOG_UPDATEACOUNT|%u|%s|%lld|%d", uin, szAccountID, *(long long*)&rstEventID, iAccountType);
 
@@ -74,7 +74,7 @@ int CRegAuthBillLog::Initialize()
     m_usEventSequence = 0;
     m_iLastEventTime = 0;
 
-    //³õÊ¼»¯OSSLog
+    //åˆå§‹åŒ–OSSLog
     /*
     int iRet = OSSLogWrapper::Instance()->OSSInit("../conf/OSSLog.xml");
     if(iRet)
@@ -91,7 +91,7 @@ void CRegAuthBillLog::GenerateLogHead(TEventId& rstEventId)
 {
     if (rstEventId.m_iEventTime == 0)
     {
-        // ³õÊ¼»¯ÊÂ¼şÁ÷Ë®ºÅ
+        // åˆå§‹åŒ–äº‹ä»¶æµæ°´å·
 
         CTimeValue tvNow;
         tvNow.RefreshTime();
@@ -102,7 +102,7 @@ void CRegAuthBillLog::GenerateLogHead(TEventId& rstEventId)
         {
             if (m_usEventSequence >= MAX_BILL_EVENT_PER_SECOND)
             {
-                // ÊÂ¼ş´´½¨Ì«Æµ·±!
+                // äº‹ä»¶åˆ›å»ºå¤ªé¢‘ç¹!
                 TRACESVR("Alert: Event Too Frequently!\n");
                 m_usEventSequence = 0;
             }
@@ -122,7 +122,7 @@ void CRegAuthBillLog::GenerateLogHead(TEventId& rstEventId)
 
 int CRegAuthBillLog::WriteBillLog()
 {
-    // Ğ´Èë±¾µØBillLogÈÕÖ¾ÎÄ¼ş
+    // å†™å…¥æœ¬åœ°BillLogæ—¥å¿—æ–‡ä»¶
     m_stBillLog.CheckBillPath();
     if (m_stBillLog.m_stLogFile.OpenLogFile())
     {
@@ -137,14 +137,18 @@ int CRegAuthBillLog::WriteBillLog()
         return -3;
     }
 
-    // Ğ´ÈëÈÕÖ¾
+    // å†™å…¥æ—¥å¿—
     fprintf(pBillLogFile, "%s", m_szSendBuff);
 
-    // Ë¢ĞÂÈÕÖ¾
+    // åˆ·æ–°æ—¥å¿—
     fflush(pBillLogFile);
 
-    // ¹Ø±ÕÈÕÖ¾ÎÄ¼ş
+    // å…³é—­æ—¥å¿—æ–‡ä»¶
     m_stBillLog.m_stLogFile.CloseFile();
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

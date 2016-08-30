@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file LinearQueue.hpp
 *@author jasonxiong
 *@date 2009-12-21
 *@version 1.0
-*@brief ÏßĞÔ¶ÓÁĞÀà
+*@brief çº¿æ€§é˜Ÿåˆ—ç±»
 *
 *
 */
@@ -24,25 +24,25 @@ public:
     ~CLinearQueue();
 
 public:
-    //!»ñÈ¡¶ÓÁĞÊ×²¿Êı¾İ
+    //!è·å–é˜Ÿåˆ—é¦–éƒ¨æ•°æ®
     const DATA_TYPE* GetHeadData() const;
 
-    //!»ñÈ¡¶ÓÁĞÎ²²¿Êı¾İ
+    //!è·å–é˜Ÿåˆ—å°¾éƒ¨æ•°æ®
     const DATA_TYPE* GetTailData() const;
 
-    //!»ñÈ¡¶ÓÁĞ³¤¶È
+    //!è·å–é˜Ÿåˆ—é•¿åº¦
     int GetQueueLength() const;
 
-    //!»ñÈ¡¶ÓÁĞÊ×²¿Êı¾İ£¬²¢½«ÆäPop³ö¶ÓÁĞ
+    //!è·å–é˜Ÿåˆ—é¦–éƒ¨æ•°æ®ï¼Œå¹¶å°†å…¶Popå‡ºé˜Ÿåˆ—
     DATA_TYPE* PopHeadData();
 
-    //!Çå¿Õ¶ÓÁĞ
+    //!æ¸…ç©ºé˜Ÿåˆ—
     int Clear();
 
-    //!Ïò¶ÓÁĞÖĞPushÊı¾İ
+    //!å‘é˜Ÿåˆ—ä¸­Pushæ•°æ®
     int PushData(const DATA_TYPE& rstData);
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
@@ -55,10 +55,10 @@ private:
     }
 
 private:
-    int m_iErrorNO; //!´íÎóÂë
-    DATA_TYPE m_astData[MAX_NODE_NUMBER]; //!<Êı¾İÊı×é
-    int m_iHeadIdx; //!<¶ÓÁĞÊ×²¿Ë÷Òı
-    int m_iTailIdx; //!<¶ÓÁĞÎ²²¿Ë÷Òı
+    int m_iErrorNO; //!é”™è¯¯ç 
+    DATA_TYPE m_astData[MAX_NODE_NUMBER]; //!<æ•°æ®æ•°ç»„
+    int m_iHeadIdx; //!<é˜Ÿåˆ—é¦–éƒ¨ç´¢å¼•
+    int m_iTailIdx; //!<é˜Ÿåˆ—å°¾éƒ¨ç´¢å¼•
 };
 
 template <typename DATA_TYPE, int MAX_NODE_NUMBER>
@@ -88,7 +88,7 @@ int CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::Clear()
 template <typename DATA_TYPE, int MAX_NODE_NUMBER>
 const DATA_TYPE* CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::GetHeadData() const
 {
-    //²»´æÔÚÍ·½Úµã
+    //ä¸å­˜åœ¨å¤´èŠ‚ç‚¹
     if(m_iHeadIdx < 0 || m_iHeadIdx >= MAX_NODE_NUMBER)
     {
         return NULL;
@@ -100,7 +100,7 @@ const DATA_TYPE* CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::GetHeadData() const
 template <typename DATA_TYPE, int MAX_NODE_NUMBER>
 const DATA_TYPE* CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::GetTailData() const
 {
-    //²»´æÔÚÎ²½Úµã
+    //ä¸å­˜åœ¨å°¾èŠ‚ç‚¹
     if(m_iTailIdx < 0 || m_iTailIdx >= MAX_NODE_NUMBER)
     {
         return NULL;
@@ -131,7 +131,7 @@ int CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::GetQueueLength() const
 template <typename DATA_TYPE, int MAX_NODE_NUMBER>
 DATA_TYPE* CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::PopHeadData()
 {
-    //²»´æÔÚÍ·½Úµã
+    //ä¸å­˜åœ¨å¤´èŠ‚ç‚¹
     if(m_iHeadIdx < 0 || m_iHeadIdx >= MAX_NODE_NUMBER)
     {
         return NULL;
@@ -139,7 +139,7 @@ DATA_TYPE* CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::PopHeadData()
 
     DATA_TYPE* pstHeadData = &m_astData[m_iHeadIdx];
 
-    //¶ÓÁĞÖ»ÓĞÒ»¸ö½ÚµãÁË
+    //é˜Ÿåˆ—åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹äº†
     if(m_iHeadIdx == m_iTailIdx)
     {
         m_iHeadIdx = -1;
@@ -163,7 +163,7 @@ int CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::PushData(const DATA_TYPE& rstData)
         return -1;
     }
 
-    //¶ÓÁĞÖĞÃ»ÓĞÊı¾İ
+    //é˜Ÿåˆ—ä¸­æ²¡æœ‰æ•°æ®
     if(m_iTailIdx == -1)
     {
         m_iHeadIdx = m_iTailIdx = 0;
@@ -182,3 +182,7 @@ int CLinearQueue<DATA_TYPE, MAX_NODE_NUMBER>::PushData(const DATA_TYPE& rstData)
 
 #endif //__LINEAR_QUEUE_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

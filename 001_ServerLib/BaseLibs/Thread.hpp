@@ -1,4 +1,4 @@
-#ifndef _THREAD_HPP_
+﻿#ifndef _THREAD_HPP_
 #define _THREAD_HPP_
 
 #include <pthread.h>
@@ -42,3 +42,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

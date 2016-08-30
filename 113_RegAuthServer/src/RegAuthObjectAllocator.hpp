@@ -1,4 +1,4 @@
-#ifndef __KYLIN_OBJECT_ALLOCATOR_HPP__
+ï»¿#ifndef __KYLIN_OBJECT_ALLOCATOR_HPP__
 #define __KYLIN_OBJECT_ALLOCATOR_HPP__
 
 #include "SharedMemory.hpp"
@@ -10,10 +10,10 @@ class CRegAuthObjectAllocator
 {
 private:
     CSharedMemory m_stShm;
-    size_t m_iTotalSize; // ±¾applicationÖĞ¸÷ÖÖÀàĞÍµÄ¶ÔÏó»º´æÇøµÄ´óĞ¡Ö®ºÍ
+    size_t m_iTotalSize; // æœ¬applicationä¸­å„ç§ç±»å‹çš„å¯¹è±¡ç¼“å­˜åŒºçš„å¤§å°ä¹‹å’Œ
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCSingleton<CRegAuthObjectAllocator>ÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CSingleton<CRegAuthObjectAllocator>ç±»ä¸­åˆ›å»º
     friend class CSingleton<CRegAuthObjectAllocator>;
     CRegAuthObjectAllocator();
 
@@ -22,8 +22,12 @@ public:
 
 private:
 
-    // ĞÂÔöcacheÊ±ĞèÒªÔÚÏÂÃæÁ½¸öº¯ÊıÖĞ×öÏìÓ¦ĞŞ¸Ä
+    // æ–°å¢cacheæ—¶éœ€è¦åœ¨ä¸‹é¢ä¸¤ä¸ªå‡½æ•°ä¸­åšå“åº”ä¿®æ”¹
     size_t CaculateTotalSize();
 };
 
 #endif // __KYLIN_OBJECT_ALLOCATOR_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

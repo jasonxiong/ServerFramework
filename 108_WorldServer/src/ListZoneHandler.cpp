@@ -1,4 +1,4 @@
-
+ï»¿
 #include "ModuleHelper.hpp"
 #include "WorldMsgHelper.hpp"
 #include "LogAdapter.hpp"
@@ -25,7 +25,7 @@ int CListZoneHandler::OnClientMsg(const void* pMsg)
         return -1;
     }
 
-    //³õÊ¼»¯·µ»ØÏûÏ¢Í·
+    //åˆå§‹åŒ–è¿”å›žæ¶ˆæ¯å¤´
     CWorldMsgHelper::GenerateMsgHead(m_stWorldMsg,
                                      m_pRequestMsg->m_stmsghead().m_uisessionfd(),
                                      MSGID_ACCOUNT_LISTZONE_RESPONSE,
@@ -35,7 +35,7 @@ int CListZoneHandler::OnClientMsg(const void* pMsg)
     pstResp->set_iresult(T_SERVER_SUCESS);
     pstResp->set_uworldid(CModuleHelper::GetWorldID());
 
-    //·â×°ËùÓÐ»îÔ¾µÄZone·ÖÇø
+    //å°è£…æ‰€æœ‰æ´»è·ƒçš„Zoneåˆ†åŒº
     const TZoneConfList& stZoneList = CModuleHelper::GetConfigManager()->GetZoneConfList();
     for(int i=0; i<stZoneList.m_ushLen; ++i)
     {
@@ -61,3 +61,7 @@ int CListZoneHandler::OnClientMsg(const void* pMsg)
 
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

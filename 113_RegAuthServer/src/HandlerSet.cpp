@@ -1,4 +1,4 @@
-#include "HandlerSet.hpp"
+ï»¿#include "HandlerSet.hpp"
 
 CHandlerSet::CHandlerSet()
 {
@@ -13,7 +13,7 @@ IHandler* CHandlerSet::GetHandler(const unsigned int uiMsgID, ERegAuthMsgType en
         return NULL;
     }
 
-    // ¿Í»§¶ËÏûÏ¢Ö»ÄÜµ÷ÓÃ¿Í»§¶ËHandler, ·şÎñÆ÷ÏûÏ¢¿ÉÒÔÖ±½Óµ÷ÓÃ¿Í»§¶ËHandler
+    // å®¢æˆ·ç«¯æ¶ˆæ¯åªèƒ½è°ƒç”¨å®¢æˆ·ç«¯Handler, æœåŠ¡å™¨æ¶ˆæ¯å¯ä»¥ç›´æ¥è°ƒç”¨å®¢æˆ·ç«¯Handler
     if(enMsgType == m_apHandler[uiMsgID].m_enMsgType || EKMT_SERVER == enMsgType)
     {
         return m_apHandler[uiMsgID].m_pHandler;
@@ -33,7 +33,7 @@ int CHandlerSet::RegisterHandler(const unsigned int uiMsgID, IHandler* pHandler,
         return -1;
     }
 
-    // ·ÀÖ¹ÖØ¸´×¢²á
+    // é˜²æ­¢é‡å¤æ³¨å†Œ
     if (m_apHandler[uiMsgID].m_pHandler)
     {
         TRACESVR("Duplicated Handler Registered: uiMsgID = %d, Handler = %p\n", uiMsgID, pHandler);
@@ -52,3 +52,7 @@ int CHandlerSet::Initialize()
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

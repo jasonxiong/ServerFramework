@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "RoleDBLogManager.hpp"
 #include "NowTime.hpp"
@@ -28,15 +28,15 @@ void CRoleDBCreateRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
         return;
     }
 
-    // create roleÇëÇóÏûÏ¢
+    // create roleè¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
     const World_CreateRole_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_stworld_createrole_request();
 
-    // create roleÏìÓ¦ÏûÏ¢
+    // create roleå“åº”æ¶ˆæ¯
     GameProtocolMsg* pstMsgResp = &(pstHandleResult->stResponseMsg);
     World_CreateRole_Response* pstResp = pstMsgResp->mutable_m_stmsgbody()->mutable_m_stworld_createrole_response();
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(pstMsgResp, 
                             m_pstRequestMsg->m_stmsghead().m_uisessionfd(), 
                             MSGID_WORLD_CREATEROLE_RESPONSE, 
@@ -44,18 +44,18 @@ void CRoleDBCreateRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 
     short shCacheSeq = 1;
 
-    //»ñÈ¡½ÇÉ«´´½¨µÄÊ±¼ä
+    //è·å–è§’è‰²åˆ›å»ºçš„æ—¶é—´
     unsigned short usCreateTime = 0;
     GetRoleCreateTime(usCreateTime);
 
-    //½«CacheSeq×ª»»³ÉDBSeq
+    //å°†CacheSeqè½¬æ¢æˆDBSeq
     unsigned int uiDBSeq = GenerateDBSeq(usCreateTime, rstReq.world(), shCacheSeq);
 
-    // ÏìÓ¦ÏûÏ¢Ìå
+    // å“åº”æ¶ˆæ¯ä½“
     pstResp->mutable_stroleid()->set_uin(rstReq.uin());
     pstResp->mutable_stroleid()->set_uiseq(uiDBSeq);
 
-    // ½«ËùÓĞµÄÓÃ»§Êı¾İĞ´ÈëÊı¾İ±íDBRoleInfo
+    // å°†æ‰€æœ‰çš„ç”¨æˆ·æ•°æ®å†™å…¥æ•°æ®è¡¨DBRoleInfo
     int iRet = InsertNewRoleRecord(rstReq, uiDBSeq);
     unsigned int uiResultID = T_SERVER_SUCESS;
     if (iRet != 0)
@@ -77,7 +77,7 @@ void CRoleDBCreateRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 int CRoleDBCreateRoleHandler::InsertNewRoleRecord(
     const World_CreateRole_Request& rstCreateRoleRequest, unsigned int uiSeq)
 {
-    //´ÓXMLÎÄ¼şÖĞ¶ÁÈ¡ÅäÖÃ
+    //ä»XMLæ–‡ä»¶ä¸­è¯»å–é…ç½®
     const ONEROLEDBINFO* pstDBInfoConfig = (CRoleDBApp::m_stRoleDBConfigManager).GetOneRoleDBInfoByIndex(m_iThreadIdx);
     if(!pstDBInfoConfig)
     {
@@ -85,10 +85,10 @@ int CRoleDBCreateRoleHandler::InsertNewRoleRecord(
         return -1;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊı¾İ¿âÏà¹ØĞÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     m_pDatabase->SetMysqlDBInfo(pstDBInfoConfig->szDBHost, pstDBInfoConfig->szUserName, pstDBInfoConfig->szUserPasswd, pstDBInfoConfig->szDBName);
 
-    //³õÊ¼»¯SQLÓï¾ä
+    //åˆå§‹åŒ–SQLè¯­å¥
     int iLength = 0;
     int iRet = GenerateQueryString(rstCreateRoleRequest, uiSeq, m_szQueryString[m_iThreadIdx], sizeof(m_szQueryString[m_iThreadIdx])-1, iLength);
     if(iRet)
@@ -97,7 +97,7 @@ int CRoleDBCreateRoleHandler::InsertNewRoleRecord(
         return iRet;
     }
 
-    //Ö´ĞĞSQLÓï¾ä
+    //æ‰§è¡ŒSQLè¯­å¥
     iRet = m_pDatabase->ExecuteRealQuery(m_szQueryString[m_iThreadIdx], iLength, false);
     if(iRet)
     {
@@ -110,14 +110,14 @@ int CRoleDBCreateRoleHandler::InsertNewRoleRecord(
     return 0;
 }
 
-//»ñÈ¡Íæ¼Ò½ÇÉ«´´½¨µÄÊ±¼ä,ÊÇ´Ó2014-01-01¿ªÊ¼ÆğµÄÌìÊı
+//è·å–ç©å®¶è§’è‰²åˆ›å»ºçš„æ—¶é—´,æ˜¯ä»2014-01-01å¼€å§‹èµ·çš„å¤©æ•°
 void CRoleDBCreateRoleHandler::GetRoleCreateTime(unsigned short& usCreateTime)
 {
     CUnixTime stNow(time(NULL));
     stNow.GetDaysAfterYear(GAME_START_YEAR, usCreateTime);
 }
 
-//Éú³É²åÈëµÄSQL QueryÓï¾ä
+//ç”Ÿæˆæ’å…¥çš„SQL Queryè¯­å¥
 int CRoleDBCreateRoleHandler::GenerateQueryString(const World_CreateRole_Request& rstCreateRoleRequest, unsigned int uiSeq, char* pszBuff, int iBuffLen, int& iLength)
 {
     if(!pszBuff)
@@ -135,43 +135,43 @@ int CRoleDBCreateRoleHandler::GenerateQueryString(const World_CreateRole_Request
 
     const GameUserInfo& rstUserInfo = rstCreateRoleRequest.stbirthdata();
 
-    //1.Íæ¼Ò»ù±¾ĞÅÏ¢ base_info
+    //1.ç©å®¶åŸºæœ¬ä¿¡æ¯ base_info
     *pEnd++ = '\'';
     pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strbaseinfo().c_str(), rstUserInfo.strbaseinfo().size());
     *pEnd++ = '\'';
     *pEnd++ = ',';
 
-    //2.Íæ¼ÒµÄÈÎÎñĞÅÏ¢ quest_info
+    //2.ç©å®¶çš„ä»»åŠ¡ä¿¡æ¯ quest_info
     *pEnd++ = '\'';
     pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strquestinfo().c_str(), rstUserInfo.strquestinfo().size());
     *pEnd++ = '\'';
     *pEnd++ = ',';
 
-    //3.Íæ¼ÒµÄÎïÆ·ĞÅÏ¢ item_info
+    //3.ç©å®¶çš„ç‰©å“ä¿¡æ¯ item_info
     *pEnd++ = '\'';
     pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.striteminfo().c_str(), rstUserInfo.striteminfo().size());
     *pEnd++ = '\'';
     *pEnd++ = ',';
 
-    //4.Íæ¼ÒµÄÕ½¶·ĞÅÏ¢
+    //4.ç©å®¶çš„æˆ˜æ–—ä¿¡æ¯
     *pEnd++ = '\'';
     pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strfightinfo().c_str(), rstUserInfo.strfightinfo().size());
     *pEnd++ = '\'';
     *pEnd++ = ',';
 
-    //5.Íæ¼ÒµÄºÃÓÑĞÅÏ¢
+    //5.ç©å®¶çš„å¥½å‹ä¿¡æ¯
     *pEnd++ = '\'';
     pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strfriendinfo().c_str(), rstUserInfo.strfriendinfo().size());
     *pEnd++ = '\'';
     *pEnd++ = ',';
 
-    //6.Íæ¼ÒµÄ±£Áô×Ö¶Î1
+    //6.ç©å®¶çš„ä¿ç•™å­—æ®µ1
     *pEnd++ = '\'';
     pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strreserved1().c_str(), rstUserInfo.strreserved1().size());
     *pEnd++ = '\'';
     *pEnd++ = ',';
 
-    //7.Íæ¼ÒµÄ±£Áô×Ö¶Î2
+    //7.ç©å®¶çš„ä¿ç•™å­—æ®µ2
     *pEnd++ = '\'';
     pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strreserved2().c_str(), rstUserInfo.strreserved2().size());
     *pEnd++ = '\'';
@@ -209,3 +209,7 @@ void CRoleDBCreateRoleHandler::FillSuccessfulResponse(unsigned int uiSeq,
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

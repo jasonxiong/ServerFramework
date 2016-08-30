@@ -1,4 +1,4 @@
-/**
+ï»¿/**
 *@file HashMap_KStringV32.hpp
 *@author
 *@date
@@ -27,8 +27,8 @@ namespace ServerLib
 
 typedef enum enmHashNodeStatus
 {
-    EHNS_KSTRINGV32_FREE = 0, //!<Hash½ÚµãÎ´Ê¹ÓÃ
-    EHNS_KSTRINGV32_USED = 1, //!<Hash½ÚµãÒÑÊ¹ÓÃ
+    EHNS_KSTRINGV32_FREE = 0, //!<HashèŠ‚ç‚¹æœªä½¿ç”¨
+    EHNS_KSTRINGV32_USED = 1, //!<HashèŠ‚ç‚¹å·²ä½¿ç”¨
 } ENMHASHNODESTATUS;
 
 typedef struct tagDataStringV32
@@ -53,10 +53,10 @@ class CHashMap_KStringV32
 {
     typedef struct tagHashMapNode_KSTRINGV32
     {
-        TDataStringV32 m_stPriKey; //!<char[]ÀàÐÍµÄ½ÚµãÖ÷¼üÖµ£¬¸ù¾ÝÕâ¸öKey¼ÆËã³öHashÖµÀ´ÕÒµ½½Úµã
-        int m_iValue; //!<´æ·ÅÊý¾Ý
-        int m_iIsNodeUsed; //!<½ÚµãÊÇ·ñÊ¹ÓÃ 1-Ê¹ÓÃ 0-Î´Ê¹ÓÃ
-        int m_iHashNext; //!<µ±HashÖµ³åÍ»Öµ£¬½«ÐÂ¼Ó½Úµã·ÅÔÚ½ÚµãºóÃæ£¬ÐÎ³É³åÍ»Á´
+        TDataStringV32 m_stPriKey; //!<char[]ç±»åž‹çš„èŠ‚ç‚¹ä¸»é”®å€¼ï¼Œæ ¹æ®è¿™ä¸ªKeyè®¡ç®—å‡ºHashå€¼æ¥æ‰¾åˆ°èŠ‚ç‚¹
+        int m_iValue; //!<å­˜æ”¾æ•°æ®
+        int m_iIsNodeUsed; //!<èŠ‚ç‚¹æ˜¯å¦ä½¿ç”¨ 1-ä½¿ç”¨ 0-æœªä½¿ç”¨
+        int m_iHashNext; //!<å½“Hashå€¼å†²çªå€¼ï¼Œå°†æ–°åŠ èŠ‚ç‚¹æ”¾åœ¨èŠ‚ç‚¹åŽé¢ï¼Œå½¢æˆå†²çªé“¾
     } THashMapNode_KSTRINGV32;
 
 public:
@@ -82,88 +82,88 @@ public:
 
 public:
 
-    //ÉèÖÃÏàÓ¦µÄÖ¸Õë
+    //è®¾ç½®ç›¸åº”çš„æŒ‡é’ˆ
     int AttachHashMap(char* pszMemoryAddress);
 
-    ////ÉèÖÃm_iUseFlag1
+    ////è®¾ç½®m_iUseFlag1
     //int SetUseFlagNW(const int iUseFlag);
 
-    ////»ñÈ¡m_iUseFlag1
+    ////èŽ·å–m_iUseFlag1
     //int& GetUseFlagNW();
 
-    ////ÉèÖÃm_iUseFlag2
+    ////è®¾ç½®m_iUseFlag2
     //int SetUseFlagNR(const int iUseFlag);
 
-    ////»ñÈ¡m_iUseFlag2
+    ////èŽ·å–m_iUseFlag2
     //int& GetUseFlagNR();
 
-    //!Ö¸¶¨Ë÷ÒýÖµÀ´»ñÈ¡Êý¾Ý£¬Ò»°ãÓÃÓÚ±éÀúÖÐ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥èŽ·å–æ•°æ®ï¼Œä¸€èˆ¬ç”¨äºŽéåŽ†ä¸­ï¼Œè¿”å›žå€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByIndex(const int iNodeIndex, int& riValue);
 
-    //!Ö¸¶¨Ë÷ÒýÖµÀ´»ñÈ¡key£¬Ò»°ãÓÃÓÚ±éÀúÖÐ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥èŽ·å–keyï¼Œä¸€èˆ¬ç”¨äºŽéåŽ†ä¸­ï¼Œè¿”å›žå€¼0è¡¨ç¤ºæˆåŠŸ
     int GetKeyByIndex(const int iNodeIndex, TDataStringV32& riHashMapKey);
 
-    //Á½¸öÓÃÓÚAssist¹¤¾ßµÄ¸¨Öúº¯Êý
-    //!Ö¸¶¨Ë÷ÒýÖµÀ´»ñÈ¡Êý¾Ý£¬Ò»°ãÓÃÓÚ±éÀúÖÐ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //ä¸¤ä¸ªç”¨äºŽAssistå·¥å…·çš„è¾…åŠ©å‡½æ•°
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥èŽ·å–æ•°æ®ï¼Œä¸€èˆ¬ç”¨äºŽéåŽ†ä¸­ï¼Œè¿”å›žå€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByIndexAssist(const int iNodeIndex, int& riValue);
 
-    //!Ö¸¶¨Ë÷ÒýÖµÀ´»ñÈ¡key£¬Ò»°ãÓÃÓÚ±éÀúÖÐ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥èŽ·å–keyï¼Œä¸€èˆ¬ç”¨äºŽéåŽ†ä¸­ï¼Œè¿”å›žå€¼0è¡¨ç¤ºæˆåŠŸ
     int GetKeyByIndexAssist(const int iNodeIndex, TDataStringV32& riHashMapKey);
 
 
 
 
-    //!Ö¸¶¨KeyÖµÀ´»ñÈ¡Êý¾Ý£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šKeyå€¼æ¥èŽ·å–æ•°æ®ï¼Œè¿”å›žå€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByKey(const TDataStringV32 stPriKey, int& riValue);
 
     int* GetValuePtrByKey(const TDataStringV32 stPriKey);
 
-    //!Çå³ý¶ÔÓ¦KeyµÄ½Úµã
+    //!æ¸…é™¤å¯¹åº”Keyçš„èŠ‚ç‚¹
     int DeleteByKey(const TDataStringV32 stPriKey, int& riValue);
 
-    //!Ö¸¶¨KeyÖµÀ´²åÈëÒ»¸öÊý¾Ý£¨Èç¹ûÓÐÏàÍ¬KeyÖµµÄ½Úµã´æÔÚ£¬ÔòÊ§°Ü£©
+    //!æŒ‡å®šKeyå€¼æ¥æ’å…¥ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æžœæœ‰ç›¸åŒKeyå€¼çš„èŠ‚ç‚¹å­˜åœ¨ï¼Œåˆ™å¤±è´¥ï¼‰
     int InsertValueByKey(const TDataStringV32 stPriKey, const int iValue);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üÐÂÒ»¸öÊý¾Ý£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊý¾ÝÔò²»×öÈÎºÎÊÂ£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æžœæœªå‘çŽ°è¯¥Keyå€¼çš„æ•°æ®åˆ™ä¸åšä»»ä½•äº‹ï¼‰
     int UpdateValueByKey(const TDataStringV32 stPriKey, const int iValue);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üÐÂÒ»¸öÊý¾Ý£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊý¾ÝÔò²åÈëÒ»¸öÊý¾Ý£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æžœæœªå‘çŽ°è¯¥Keyå€¼çš„æ•°æ®åˆ™æ’å…¥ä¸€ä¸ªæ•°æ®ï¼‰
     int ReplaceValueByKey(const TDataStringV32 stPriKey, const int iValue);
 
-    //!»ñÈ¡ÒÑÓÃ½Úµã¸öÊý
+    //!èŽ·å–å·²ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetUsedNodeNumber() const
     {
         return m_iUsedNodeNumber;
     }
 
-    //!»ñÈ¡¿ÉÓÃ½Úµã¸öÊý
+    //!èŽ·å–å¯ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetFreeNodeNumber() const
     {
         return m_iNodeNumber - m_iUsedNodeNumber;
     }
 
-    //!»ñÈ¡×Ü¹²µÄ½Úµã¸öÊý
+    //!èŽ·å–æ€»å…±çš„èŠ‚ç‚¹ä¸ªæ•°
     int GetNodeSize() const
     {
         return m_iNodeNumber;
     }
 
-    //!Çå³ýËùÓÐ½Úµã
+    //!æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
     int EraseAll();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!½«Êý¾ÝKeyÖµÍ¨¹ýHash×ª»»³ÉË÷Òý
+    //!å°†æ•°æ®Keyå€¼é€šè¿‡Hashè½¬æ¢æˆç´¢å¼•
     int HashKeyToIndex(const TDataStringV32 stPriKey) const;
 
     int BKDRHash(const char* szStr,int iStrLength) const;
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
@@ -172,20 +172,24 @@ private:
 private:
     int m_iNodeNumber;
 
-    //int m_iUseFlagNW;//±ê¼Ç¸ÃHashMapÊÇ·ñ±»±¸·Ý¹¤¾ßÕ¼ÓÃÖÐ£¬ÆäÖµ²Î¼ûENMHASHUSEFLAG£¬¸Ã±ê¼ÇNameServerÖ»ÄÜÐ´
-    //int m_iUseFlagNR;//±ê¼Ç¸ÃHashMapÊÇ·ñ±»±¸·Ý¹¤¾ßÕ¼ÓÃÖÐ£¬ÆäÖµ²Î¼ûENMHASHUSEFLAG£¬¸Ã±ê¼ÇNameServerÖ»ÄÜ¶Á
+    //int m_iUseFlagNW;//æ ‡è®°è¯¥HashMapæ˜¯å¦è¢«å¤‡ä»½å·¥å…·å ç”¨ä¸­ï¼Œå…¶å€¼å‚è§ENMHASHUSEFLAGï¼Œè¯¥æ ‡è®°NameServeråªèƒ½å†™
+    //int m_iUseFlagNR;//æ ‡è®°è¯¥HashMapæ˜¯å¦è¢«å¤‡ä»½å·¥å…·å ç”¨ä¸­ï¼Œå…¶å€¼å‚è§ENMHASHUSEFLAGï¼Œè¯¥æ ‡è®°NameServeråªèƒ½è¯»
 
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iUsedNodeNumber; //!<ÒÑ¾­Ê¹ÓÃµÄ½Úµã¸öÊý
-    int m_iFirstFreeIndex; //!<¿ÕÏÐÁ´±íÍ·½Úµã
-    THashMapNode_KSTRINGV32* m_pastHashNode; //!<ËùÓÐ´æ·ÅµÄÊý¾Ý½Úµã
-    int* m_paiHashFirstIndex; //!<Í¨¹ýKeyÀ´Hash¼ÆËã³öµÄ³åÍ»Á´±íµÄÍ·½ÚµãË÷Òý
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iUsedNodeNumber; //!<å·²ç»ä½¿ç”¨çš„èŠ‚ç‚¹ä¸ªæ•°
+    int m_iFirstFreeIndex; //!<ç©ºé—²é“¾è¡¨å¤´èŠ‚ç‚¹
+    THashMapNode_KSTRINGV32* m_pastHashNode; //!<æ‰€æœ‰å­˜æ”¾çš„æ•°æ®èŠ‚ç‚¹
+    int* m_paiHashFirstIndex; //!<é€šè¿‡Keyæ¥Hashè®¡ç®—å‡ºçš„å†²çªé“¾è¡¨çš„å¤´èŠ‚ç‚¹ç´¢å¼•
 
-    //¶ÁHashMapµÄ¸¨ÖúÖ¸Õë
-    THashMapNode_KSTRINGV32* m_pastHashNodeAssist; //!<ËùÓÐ´æ·ÅµÄÊý¾Ý½Úµã
-    int* m_paiHashFirstIndexAssist; //!<Í¨¹ýKeyÀ´Hash¼ÆËã³öµÄ³åÍ»Á´±íµÄÍ·½ÚµãË÷Òý
+    //è¯»HashMapçš„è¾…åŠ©æŒ‡é’ˆ
+    THashMapNode_KSTRINGV32* m_pastHashNodeAssist; //!<æ‰€æœ‰å­˜æ”¾çš„æ•°æ®èŠ‚ç‚¹
+    int* m_paiHashFirstIndexAssist; //!<é€šè¿‡Keyæ¥Hashè®¡ç®—å‡ºçš„å†²çªé“¾è¡¨çš„å¤´èŠ‚ç‚¹ç´¢å¼•
 
 };
 }
 
 #endif //__HASH_MAP_KSTRINGV32_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

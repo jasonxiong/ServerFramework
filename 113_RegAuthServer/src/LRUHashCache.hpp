@@ -1,4 +1,4 @@
-#ifndef __LRU_HASH_CACHE_HPP__
+ï»¿#ifndef __LRU_HASH_CACHE_HPP__
 #define __LRU_HASH_CACHE_HPP__
 
 #include "SharedMemory.hpp"
@@ -7,30 +7,30 @@
 #include "BiDirQueue.hpp"
 //#include "LogAdapter.hpp"
 
-#define HASH_NODE_MULTIPLE    2 // hash½áµã¸öÊıÎª¶ÔÏó½áµã¸öÊıµÄ2±¶
+#define HASH_NODE_MULTIPLE    2 // hashç»“ç‚¹ä¸ªæ•°ä¸ºå¯¹è±¡ç»“ç‚¹ä¸ªæ•°çš„2å€
 
 using namespace ServerLib;
 
-// ĞèÒª×Ô¶¯»ØÊÕµÄcache¶ÔÏó¹ÜÀíÆ÷£¬ÒÔhash·½Ê½ºÍË«Ïò¾²Ì¬Á´±í·½Ê½¹ÜÀí¡£
-// ÕâÖÖcacheÓÉÈı²¿·Ö×é³É£º¶ÔÏó¶Î£¨°üÀ¨idxÊı×éºÍobjÊı×é£©£¬¸¨ÖúhashÊı×é¶Î£¬¸¨Öúqueue¶Î¡£
-// ×î½üÊ¹ÓÃµÄ¶ÔÏó½áµã¹ÒÔÚqueueµÄÎ²²¿£¬ÕâÑùÔÚ´´½¨ºÍ·ÃÎÊÄ³¸ö¶ÔÏó½áµãÊ±¾ùĞèÒª½«ÆäÒÆ¶¯
-// µ½queueµÄÎ²²¿£¬Ê¹µÃqueueµÄÍ·²¿ÊÇ×î½ü×î¾ÃÎ´Ê¹ÓÃµÄ½áµã¡£
-// hash½áµãÊıÒ»°ãÎª¶ÔÏó½áµãÊıµÄÈô¸É±¶£¬queue½áµãÊıµÈÓÚ¶ÔÏó½áµãÊı
+// éœ€è¦è‡ªåŠ¨å›æ”¶çš„cacheå¯¹è±¡ç®¡ç†å™¨ï¼Œä»¥hashæ–¹å¼å’ŒåŒå‘é™æ€é“¾è¡¨æ–¹å¼ç®¡ç†ã€‚
+// è¿™ç§cacheç”±ä¸‰éƒ¨åˆ†ç»„æˆï¼šå¯¹è±¡æ®µï¼ˆåŒ…æ‹¬idxæ•°ç»„å’Œobjæ•°ç»„ï¼‰ï¼Œè¾…åŠ©hashæ•°ç»„æ®µï¼Œè¾…åŠ©queueæ®µã€‚
+// æœ€è¿‘ä½¿ç”¨çš„å¯¹è±¡ç»“ç‚¹æŒ‚åœ¨queueçš„å°¾éƒ¨ï¼Œè¿™æ ·åœ¨åˆ›å»ºå’Œè®¿é—®æŸä¸ªå¯¹è±¡ç»“ç‚¹æ—¶å‡éœ€è¦å°†å…¶ç§»åŠ¨
+// åˆ°queueçš„å°¾éƒ¨ï¼Œä½¿å¾—queueçš„å¤´éƒ¨æ˜¯æœ€è¿‘æœ€ä¹…æœªä½¿ç”¨çš„ç»“ç‚¹ã€‚
+// hashç»“ç‚¹æ•°ä¸€èˆ¬ä¸ºå¯¹è±¡ç»“ç‚¹æ•°çš„è‹¥å¹²å€ï¼Œqueueç»“ç‚¹æ•°ç­‰äºå¯¹è±¡ç»“ç‚¹æ•°
 template <typename TConcreteObj>
 class CLRUHashCache
 {
 private:
-    static CObjAllocator* m_pAllocator; // ¶ÔÏó¶Î£¬°üÀ¨idxºÍobj£¬idxÓÃÓÚobj½áµãµÄ·ÖÅä¡¢»ØÊÕ¹ÜÀí
-    static CHashMap_KString<unsigned>* m_pHashMap;    // ¹ÜÀí¶ÔÏó¶ÎµÄhash±í£¬ÓÃÓÚ¿ìËÙ·ÃÎÊ
-    static CBiDirQueue* m_pBiDirQueue;  // ¹ÜÀí¶ÔÏó¶ÎµÄË«Ïò¶ÓÁĞ£¬ÓÃÓÚ»ØÊÕÎ»ÓÚ¶ÓÁĞÍ·²¿µÄ×î½ü×î¾ÃÎ´Ê¹ÓÃµÄ¶ÔÏó½áµã
+    static CObjAllocator* m_pAllocator; // å¯¹è±¡æ®µï¼ŒåŒ…æ‹¬idxå’Œobjï¼Œidxç”¨äºobjç»“ç‚¹çš„åˆ†é…ã€å›æ”¶ç®¡ç†
+    static CHashMap_KString<unsigned>* m_pHashMap;    // ç®¡ç†å¯¹è±¡æ®µçš„hashè¡¨ï¼Œç”¨äºå¿«é€Ÿè®¿é—®
+    static CBiDirQueue* m_pBiDirQueue;  // ç®¡ç†å¯¹è±¡æ®µçš„åŒå‘é˜Ÿåˆ—ï¼Œç”¨äºå›æ”¶ä½äºé˜Ÿåˆ—å¤´éƒ¨çš„æœ€è¿‘æœ€ä¹…æœªä½¿ç”¨çš„å¯¹è±¡ç»“ç‚¹
 
 private:
-    static int m_iObjNodeNumber;   // ¶ÔÏó½áµã×Ü¸öÊı£¬·ÖÅä¿Õ¼äÊ±Ê¹ÓÃ
-    static int m_iHashNodeNumber;  // hash½áµã×Ü¸öÊı£¬·ÖÅä¿Õ¼äÊ±Ê¹ÓÃ
-    static int m_iQueueNodeNumber; // queue½áµã×Ü¸öÊı£¬·ÖÅä¿Õ¼äÊ±Ê¹ÓÃ
-    static int m_iSingleObjSize;   // µ¥¸ö¶ÔÏóµÄ´óĞ¡
+    static int m_iObjNodeNumber;   // å¯¹è±¡ç»“ç‚¹æ€»ä¸ªæ•°ï¼Œåˆ†é…ç©ºé—´æ—¶ä½¿ç”¨
+    static int m_iHashNodeNumber;  // hashç»“ç‚¹æ€»ä¸ªæ•°ï¼Œåˆ†é…ç©ºé—´æ—¶ä½¿ç”¨
+    static int m_iQueueNodeNumber; // queueç»“ç‚¹æ€»ä¸ªæ•°ï¼Œåˆ†é…ç©ºé—´æ—¶ä½¿ç”¨
+    static int m_iSingleObjSize;   // å•ä¸ªå¯¹è±¡çš„å¤§å°
 
-    // Ë½ÓĞµÄ¸¨Öúº¯Êı
+    // ç§æœ‰çš„è¾…åŠ©å‡½æ•°
 private:
     static void SetSingleObjSize();
     static int GetSingleObjSize();
@@ -38,31 +38,31 @@ private:
     static void SetObjNodeNumber(const int iNodeNumber);
     static int GetObjNodeNumber();
 
-    // Îª¼õÉÙ³åÍ»£¬hash½áµã¿Õ¼äÒ»°ãÎª¶ÔÏó½áµã¿Õ¼äµÄÈô¸É±¶£¬iNodeNumberÊÇ
-    // ¶ÔÏó½áµã¸öÊı£¬iMultipleÊÇ±¶Êı£¬È¡ÖµÎª1,2,3...
+    // ä¸ºå‡å°‘å†²çªï¼Œhashç»“ç‚¹ç©ºé—´ä¸€èˆ¬ä¸ºå¯¹è±¡ç»“ç‚¹ç©ºé—´çš„è‹¥å¹²å€ï¼ŒiNodeNumberæ˜¯
+    // å¯¹è±¡ç»“ç‚¹ä¸ªæ•°ï¼ŒiMultipleæ˜¯å€æ•°ï¼Œå–å€¼ä¸º1,2,3...
     static void SetHashNodeNumber(const int iNodeNumber, const int iMultiple);
     static int GetHashNodeNumber();
 
     static void SetQueueNodeNumber(const int iNodeNumber);
     static int GetQueueNodeNumber();
 
-    // ÉèÖÃ½áµã¸öÊı
+    // è®¾ç½®ç»“ç‚¹ä¸ªæ•°
     static void SetNodeNumber(const int iNodeNumber);
 
     static int CaculateObjSegSize();
     static int CaculateHashSegSize();
     static int CaculateQueueSegSize();
 
-    // ·ÖÅä»º´æÊ±ÏÈµ÷ÓÃCaculateSize¼ÆËãĞèÒª·ÖÅäµÄ´óĞ¡£¬È»ºóµ÷ÓÃAllocateFromShmÊµÊ©·ÖÅä
+    // åˆ†é…ç¼“å­˜æ—¶å…ˆè°ƒç”¨CaculateSizeè®¡ç®—éœ€è¦åˆ†é…çš„å¤§å°ï¼Œç„¶åè°ƒç”¨AllocateFromShmå®æ–½åˆ†é…
 public:
     static int CaculateSize(const int iNodeNumber);
     static void AllocateFromShm(CSharedMemory& shm, bool bResume);
 
 private:
-    // ÊÍ·ÅË«Ïò¶ÓÁĞÍ·²¿µÄiNodeNumber¸ö½áµã
+    // é‡Šæ”¾åŒå‘é˜Ÿåˆ—å¤´éƒ¨çš„iNodeNumberä¸ªç»“ç‚¹
     static void SwapOut(const int iNodeNumber);
 
-    // ´´½¨¡¢É¾³ı¡¢·ÃÎÊµ¥¸ö¶ÔÏó½áµãµÄ½Ó¿Ú
+    // åˆ›å»ºã€åˆ é™¤ã€è®¿é—®å•ä¸ªå¯¹è±¡ç»“ç‚¹çš„æ¥å£
 public:
     static TConcreteObj* CreateByKey(const TDataString& stKey);
     static TConcreteObj* CreateByKey(const char* pszKey);
@@ -73,7 +73,7 @@ public:
     static int GetFreeNodeNumber();
 };
 
-// ¾²Ì¬Êı¾İ³ÉÔ±µÄ³õÊ¼»¯
+// é™æ€æ•°æ®æˆå‘˜çš„åˆå§‹åŒ–
 template <typename TConcreteObj>
 CObjAllocator* CLRUHashCache<TConcreteObj>::m_pAllocator = NULL;
 
@@ -95,7 +95,7 @@ int CLRUHashCache<TConcreteObj>::m_iQueueNodeNumber = 0;
 template <typename TConcreteObj>
 int CLRUHashCache<TConcreteObj>::m_iSingleObjSize = 0;
 
-// ³ÉÔ±º¯Êı
+// æˆå‘˜å‡½æ•°
 template <typename TConcreteObj>
 void CLRUHashCache<TConcreteObj>::SetSingleObjSize()
 {
@@ -202,7 +202,7 @@ void CLRUHashCache<TConcreteObj>::AllocateFromShm(CSharedMemory& shm, bool bResu
         ASSERT_AND_LOG_RTN_VOID(m_pHashMap);
         shm.UseShmBlock(CaculateHashSegSize());
 
-        // ¹ÜÀícache·ÃÎÊÊ±¼äµÄË«Ïò¶ÓÁĞ
+        // ç®¡ç†cacheè®¿é—®æ—¶é—´çš„åŒå‘é˜Ÿåˆ—
         m_pBiDirQueue = CBiDirQueue::CreateByGivenMemory(
             (char*)shm.GetFreeMemoryAddress(), shm.GetFreeMemorySize(),
             GetQueueNodeNumber());
@@ -213,7 +213,7 @@ void CLRUHashCache<TConcreteObj>::AllocateFromShm(CSharedMemory& shm, bool bResu
     {
         return;
 
-        //todo jasonxiong Ä¿Ç°²»ĞèÒªÖ§³Ö´Ó¹²ÏíÄÚ´æÖĞ»Ö¸´
+        //todo jasonxiong ç›®å‰ä¸éœ€è¦æ”¯æŒä»å…±äº«å†…å­˜ä¸­æ¢å¤
         /*
         m_pAllocator = CObjAllocator::ResumeByGivenMemory(
             (char*)shm.GetFreeMemoryAddress(), shm.GetFreeMemorySize(),
@@ -228,7 +228,7 @@ void CLRUHashCache<TConcreteObj>::AllocateFromShm(CSharedMemory& shm, bool bResu
         ASSERT_AND_LOG_RTN_VOID(m_pHashMap);
         shm.UseShmBlock(CaculateHashSegSize());
 
-        // ¹ÜÀícache·ÃÎÊÊ±¼äµÄË«Ïò¶ÓÁĞ
+        // ç®¡ç†cacheè®¿é—®æ—¶é—´çš„åŒå‘é˜Ÿåˆ—
         m_pBiDirQueue = CBiDirQueue::ResumeByGivenMemory(
             (char*)shm.GetFreeMemoryAddress(), shm.GetFreeMemorySize(),
             GetQueueNodeNumber());
@@ -237,11 +237,11 @@ void CLRUHashCache<TConcreteObj>::AllocateFromShm(CSharedMemory& shm, bool bResu
         */
     }
 
-    //todo jasonxiong Ä¿Ç°²»Ö§³Ö´Ó¹²ÏíÄÚ´æÖĞ»Ö¸´µÄÄ£Ê½
+    //todo jasonxiong ç›®å‰ä¸æ”¯æŒä»å…±äº«å†…å­˜ä¸­æ¢å¤çš„æ¨¡å¼
     /*
     if (bResume)
     {
-        // »Ö¸´Ê¹ÓÃÖĞµÄobj
+        // æ¢å¤ä½¿ç”¨ä¸­çš„obj
         int iUsedIdx = m_pAllocator->GetUsedHead();
         while (iUsedIdx != -1)
         {
@@ -276,13 +276,13 @@ void CLRUHashCache<TConcreteObj>::SwapOut(const int iNodeNumber)
 template <typename TConcreteObj>
 TConcreteObj* CLRUHashCache<TConcreteObj>::CreateByKey(const TDataString& stKey)
 {
-    // Èç¹ûÃ»ÓĞ¿ÉÓÃ½áµãÁË£¬ÔòÊÍ·Å×î½ü×î¾ÃÎ´Ê¹ÓÃµÄ10¸ö½áµã
+    // å¦‚æœæ²¡æœ‰å¯ç”¨ç»“ç‚¹äº†ï¼Œåˆ™é‡Šæ”¾æœ€è¿‘æœ€ä¹…æœªä½¿ç”¨çš„10ä¸ªç»“ç‚¹
     if (GetFreeNodeNumber() < 1)
     {
         SwapOut(10);
     }
 
-    // ´Ó¶ÔÏó¶ÎÖĞÕ÷ÓÃÒ»¸öÎ´Ê¹ÓÃµÄ½áµã
+    // ä»å¯¹è±¡æ®µä¸­å¾ç”¨ä¸€ä¸ªæœªä½¿ç”¨çš„ç»“ç‚¹
     int iObjID = m_pAllocator->CreateObject();
     if (iObjID < 0)
     {
@@ -290,7 +290,7 @@ TConcreteObj* CLRUHashCache<TConcreteObj>::CreateByKey(const TDataString& stKey)
         return NULL;
     }
 
-    // ÄÉÈë¸¨Öúhash±íµÄ¹ÜÀí
+    // çº³å…¥è¾…åŠ©hashè¡¨çš„ç®¡ç†
     int iRet = m_pHashMap->InsertValueByKey(stKey, iObjID);
     if (iRet < 0)
     {
@@ -298,7 +298,7 @@ TConcreteObj* CLRUHashCache<TConcreteObj>::CreateByKey(const TDataString& stKey)
         return NULL;
     }
 
-    // ½«×îĞÂµÄ½áµã¹Òµ½queueµÄÎ²²¿£¬ÄÉÈë¸¨ÖúqueueµÄ¹ÜÀí
+    // å°†æœ€æ–°çš„ç»“ç‚¹æŒ‚åˆ°queueçš„å°¾éƒ¨ï¼Œçº³å…¥è¾…åŠ©queueçš„ç®¡ç†
     iRet = m_pBiDirQueue->AppendItemToTail(iObjID);
     if (iRet != 0)
     {
@@ -328,7 +328,7 @@ int CLRUHashCache<TConcreteObj>::DeleteByKey(const TDataString& stKey)
 {
     unsigned iObjID = 0;
 
-    // ÍÑÀë¸¨Öúhash±íµÄ¹ÜÀí
+    // è„±ç¦»è¾…åŠ©hashè¡¨çš„ç®¡ç†
     int iRet = m_pHashMap->DeleteByKey(stKey, iObjID);
     if (iRet < 0)
     {
@@ -336,7 +336,7 @@ int CLRUHashCache<TConcreteObj>::DeleteByKey(const TDataString& stKey)
         return -1;
     }
 
-    // ÍÑÀë¸¨ÖúqueueµÄ¹ÜÀí
+    // è„±ç¦»è¾…åŠ©queueçš„ç®¡ç†
     iRet = m_pBiDirQueue->DeleteItem(iObjID);
     if (iRet < 0)
     {
@@ -344,7 +344,7 @@ int CLRUHashCache<TConcreteObj>::DeleteByKey(const TDataString& stKey)
         return -2;
     }
 
-    // ½«½áµã¹é»¹µ½¶ÔÏó¶ÎÖĞ³ÉÎªÎ´Ê¹ÓÃ½áµã
+    // å°†ç»“ç‚¹å½’è¿˜åˆ°å¯¹è±¡æ®µä¸­æˆä¸ºæœªä½¿ç”¨ç»“ç‚¹
     iRet = m_pAllocator->DestroyObject(iObjID);
     if (iRet < 0)
     {
@@ -362,7 +362,7 @@ TConcreteObj* CLRUHashCache<TConcreteObj>::GetByKey(const TDataString& stKey)
 {
     unsigned iObjID = 0;
 
-    // Í¨¹ı¸¨Öúhash±íÊµÏÖ¿ìËÙ·ÃÎÊ
+    // é€šè¿‡è¾…åŠ©hashè¡¨å®ç°å¿«é€Ÿè®¿é—®
     int iRet = m_pHashMap->GetValueByKey(stKey, iObjID);
     if (iRet < 0)
     {
@@ -370,7 +370,7 @@ TConcreteObj* CLRUHashCache<TConcreteObj>::GetByKey(const TDataString& stKey)
         return NULL;
     }
 
-    // ½«¸Ã½áµãÒÆ¶¯µ½queueµÄÎ²²¿
+    // å°†è¯¥ç»“ç‚¹ç§»åŠ¨åˆ°queueçš„å°¾éƒ¨
     iRet = m_pBiDirQueue->AppendItemToTail(iObjID);
     if (iRet != 0)
     {
@@ -410,3 +410,7 @@ int CLRUHashCache<TConcreteObj>::GetFreeNodeNumber()
 }
 
 #endif // __LRU_HASH_CACHE_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

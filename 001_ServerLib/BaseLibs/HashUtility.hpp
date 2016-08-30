@@ -1,7 +1,7 @@
-#ifndef __HASH_UTILITY_HPP__
+ï»¿#ifndef __HASH_UTILITY_HPP__
 #define __HASH_UTILITY_HPP__
 
-//¶Ô¸÷ÖÖ³£ÓÃµÄHashËã·¨µÄ·â×°
+//å¯¹å„ç§å¸¸ç”¨çš„Hashç®—æ³•çš„å°è£…
 
 class CHashUtility
 {
@@ -25,7 +25,7 @@ public:
     //SDBM hash
     static long SDBMHash(const char* pszStr, int iLen);
 
-    //DJB hash, Ä¿Ç°¹«ÈÏµÄ×îÓĞĞ§µÄhashËã·¨
+    //DJB hash, ç›®å‰å…¬è®¤çš„æœ€æœ‰æ•ˆçš„hashç®—æ³•
     static long DJBHash(const char* pszStr, int iLen);
 
     //DEK hash
@@ -33,3 +33,7 @@ public:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

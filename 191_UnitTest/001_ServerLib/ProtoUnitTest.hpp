@@ -1,4 +1,4 @@
-#ifndef __ZMQ_UNIT_TEST_HPP__
+﻿#ifndef __ZMQ_UNIT_TEST_HPP__
 #define __ZMQ_UNIT_TEST_HPP__
 
 #include "gtest/gtest.h"
@@ -15,3 +15,7 @@ public:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

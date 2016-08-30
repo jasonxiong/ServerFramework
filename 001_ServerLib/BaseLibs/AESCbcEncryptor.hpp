@@ -1,12 +1,12 @@
-#ifndef __AES_CBC_ENCRYPTOR_HPP__
+ï»¿#ifndef __AES_CBC_ENCRYPTOR_HPP__
 #define __AES_CBC_ENCRYPTOR_HPP__
 
 #include <string>
 
 #include "botan/botan.h"
 
-//Õâ¸öÎÄ¼şÊÇ¶ÔAESËã·¨µÄ·â×°£¬Ê¹ÓÃµÄÊÇbotanÖĞµÄÊµÏÖ
-//Ê¹ÓÃµÄÊÇECB¼ÓÃÜ£¬Ö»Ê¹ÓÃ¼ÓÃÜKey
+//è¿™ä¸ªæ–‡ä»¶æ˜¯å¯¹AESç®—æ³•çš„å°è£…ï¼Œä½¿ç”¨çš„æ˜¯botanä¸­çš„å®ç°
+//ä½¿ç”¨çš„æ˜¯ECBåŠ å¯†ï¼Œåªä½¿ç”¨åŠ å¯†Key
 
 using namespace Botan;
 
@@ -16,22 +16,26 @@ public:
     CAESCbcEncryptor();
     ~CAESCbcEncryptor();
 
-    //ÉèÖÃAES¼ÓÃÜÊ¹ÓÃµÄ Key
+    //è®¾ç½®AESåŠ å¯†ä½¿ç”¨çš„ Key
     int SetAESKey(const char* pszAESKey, int iAESKeyLen);
 
-    //Ê¹ÓÃAES CBCÄ£Ê½¶ÔÃ÷ÎÄ´®½øĞĞ¼ÓÃÜ
+    //ä½¿ç”¨AES CBCæ¨¡å¼å¯¹æ˜æ–‡ä¸²è¿›è¡ŒåŠ å¯†
     std::string DoAESCbcEncryption(const std::string& strInput);
 
-    //Ê¹ÓÃAES CBCÄ£Ê½¶Ô¼ÓÃÜ´®½øĞĞ½âÃÜ
+    //ä½¿ç”¨AES CBCæ¨¡å¼å¯¹åŠ å¯†ä¸²è¿›è¡Œè§£å¯†
     std::string DoAESCbcDecryption(const std::string& strInput);
 
 private:
 
-    //¼ÓÃÜÆ÷
+    //åŠ å¯†å™¨
     Pipe* m_pstEncryptor;
 
-    //½âÃÜÆ÷
+    //è§£å¯†å™¨
     Pipe* m_pstDecryptor;
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

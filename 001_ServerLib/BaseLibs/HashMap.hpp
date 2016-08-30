@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file HashMap.hpp
 *@author jasonxiong
 *@date 2009-12-08
 *@version 1.0
-*@brief ÀûÓÃHashË÷ÒıÀ´ÊµÏÖµÄ¼òµ¥Map
+*@brief åˆ©ç”¨Hashç´¢å¼•æ¥å®ç°çš„ç®€å•Map
 *
-*	½Úµã¸öÊıĞèÒªÔ¤ÏÈÖ¸¶¨´óĞ¡£¬Ôİ²»Ö§³ÖÔÚ½ÚµãÓÃÍêÊ±¶¯Ì¬À©Õ¹µÄÄÜÁ¦
+*	èŠ‚ç‚¹ä¸ªæ•°éœ€è¦é¢„å…ˆæŒ‡å®šå¤§å°ï¼Œæš‚ä¸æ”¯æŒåœ¨èŠ‚ç‚¹ç”¨å®Œæ—¶åŠ¨æ€æ‰©å±•çš„èƒ½åŠ›
 */
 
 #ifndef __HASH_MAP_HPP__
@@ -16,13 +16,13 @@
 namespace ServerLib
 {
 
-const int DEFAULT_HASH_MAP_NODE_SIZE = 1024; //!<Ä¬ÈÏHashMap¿ÉÈİÄÉ½Úµã¸öÊı
-const int DEFAULT_HASH_MAP_SIZE = 1024; //!<Ä¬ÈÏHash±í´óĞ¡£¬Õâ¸öÖµÔ½´ó³åÍ»Ô½Ğ¡
+const int DEFAULT_HASH_MAP_NODE_SIZE = 1024; //!<é»˜è®¤HashMapå¯å®¹çº³èŠ‚ç‚¹ä¸ªæ•°
+const int DEFAULT_HASH_MAP_SIZE = 1024; //!<é»˜è®¤Hashè¡¨å¤§å°ï¼Œè¿™ä¸ªå€¼è¶Šå¤§å†²çªè¶Šå°
 
 typedef enum enmHashNodeUseFlag
 {
-    EHNF_NOT_USED = 0, //!<Hash½ÚµãÎ´Ê¹ÓÃ
-    EHNF_USED = 1, //!<Hash½ÚµãÒÑÊ¹ÓÃ
+    EHNF_NOT_USED = 0, //!<HashèŠ‚ç‚¹æœªä½¿ç”¨
+    EHNF_USED = 1, //!<HashèŠ‚ç‚¹å·²ä½¿ç”¨
 } ENMHASHNODEUSEFLAG;
 
 template <typename KEY_TYPE>
@@ -49,17 +49,17 @@ bool CDefaultHashKeyCmp<KEY_TYPE>::operator() (const KEY_TYPE& rstKey1, const KE
     }
 }
 
-//!Èı¸öÄ£°åÖµ£¬KeyÊÇÖ÷¼üÀàĞÍ£¬TÊÇÊı¾İÀàĞÍ£¬NODE_SIZEÊÇÊı¾İ×î´óµÄ´óĞ¡£¬ĞèÒªÔ¤ÏÈ·ÖÅä£¬HASH_SIZEÊÇHash±í´óĞ¡
+//!ä¸‰ä¸ªæ¨¡æ¿å€¼ï¼ŒKeyæ˜¯ä¸»é”®ç±»å‹ï¼ŒTæ˜¯æ•°æ®ç±»å‹ï¼ŒNODE_SIZEæ˜¯æ•°æ®æœ€å¤§çš„å¤§å°ï¼Œéœ€è¦é¢„å…ˆåˆ†é…ï¼ŒHASH_SIZEæ˜¯Hashè¡¨å¤§å°
 template <typename KEY_TYPE, typename DATA_TYPE, int NODE_SIZE = DEFAULT_HASH_MAP_NODE_SIZE,
          typename CMP_FUNC = CDefaultHashKeyCmp<KEY_TYPE>, int HASH_SIZE = NODE_SIZE>
 class CHashMap
 {
     typedef struct tagHashMapNode
     {
-        KEY_TYPE m_stKey; //!<½ÚµãÖ÷¼üÖµ£¬¸ù¾İÕâ¸öKey¼ÆËã³öHashÖµÀ´ÕÒµ½½Úµã
-        DATA_TYPE m_stData; //!<´æ·ÅÊı¾İ
-        char m_cUseFlag; //!<½ÚµãÊÇ·ñÊ¹ÓÃ
-        int m_iHashNext; //!<µ±HashÖµ³åÍ»Öµ£¬½«ĞÂ¼Ó½Úµã·ÅÔÚ½ÚµãºóÃæ£¬ĞÎ³É³åÍ»Á´
+        KEY_TYPE m_stKey; //!<èŠ‚ç‚¹ä¸»é”®å€¼ï¼Œæ ¹æ®è¿™ä¸ªKeyè®¡ç®—å‡ºHashå€¼æ¥æ‰¾åˆ°èŠ‚ç‚¹
+        DATA_TYPE m_stData; //!<å­˜æ”¾æ•°æ®
+        char m_cUseFlag; //!<èŠ‚ç‚¹æ˜¯å¦ä½¿ç”¨
+        int m_iHashNext; //!<å½“Hashå€¼å†²çªå€¼ï¼Œå°†æ–°åŠ èŠ‚ç‚¹æ”¾åœ¨èŠ‚ç‚¹åé¢ï¼Œå½¢æˆå†²çªé“¾
     } THashMapNode;
 
 public:
@@ -67,74 +67,74 @@ public:
     ~CHashMap();
 
 public:
-    ////!Í¨¹ıÊı×éÏÂ±êµÄ·½Ê½»ñÈ¡Öµ£¨ÕâÀïÀàËÆSTLµÄMapÈç¹û·¢ÏÖ¸ÃKeyÖµµÄ½Úµã²»´æÔÚ»á²åÈë£©
-    ////TBD ÓÉÓÚ²»×öÒì³£»úÖÆ£¬ÔİÊ±²»ÊµÏÖ
+    ////!é€šè¿‡æ•°ç»„ä¸‹æ ‡çš„æ–¹å¼è·å–å€¼ï¼ˆè¿™é‡Œç±»ä¼¼STLçš„Mapå¦‚æœå‘ç°è¯¥Keyå€¼çš„èŠ‚ç‚¹ä¸å­˜åœ¨ä¼šæ’å…¥ï¼‰
+    ////TBD ç”±äºä¸åšå¼‚å¸¸æœºåˆ¶ï¼Œæš‚æ—¶ä¸å®ç°
     //DATA_TYPE& operator[](const KEY_TYPE& rstKeyval);
 
-    //!Ö¸¶¨KeyÖµÀ´»ñÈ¡Êı¾İÖ¸Õë£¬Èç¹û²»´æÔÚÔò·µ»ØNULL£¬·ñÔòÖ±½Ó·µ»ØÊı¾İµÄÖ¸Õë
+    //!æŒ‡å®šKeyå€¼æ¥è·å–æ•°æ®æŒ‡é’ˆï¼Œå¦‚æœä¸å­˜åœ¨åˆ™è¿”å›NULLï¼Œå¦åˆ™ç›´æ¥è¿”å›æ•°æ®çš„æŒ‡é’ˆ
     DATA_TYPE* Find(const KEY_TYPE& rstKeyval);
 
-    //!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡Êı¾İÖ¸Õë£¬Ò»°ãÓÃÓÚ±éÀúÖĞ
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–æ•°æ®æŒ‡é’ˆï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­
     DATA_TYPE* GetByIndex(int iDataIdx);
 
-    //!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡¹Ø¼ü×ÖÖ¸Õë£¬Ò»°ãÓÃÓÚ±éÀúÖĞ
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–å…³é”®å­—æŒ‡é’ˆï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­
     KEY_TYPE* GetKeyByIndex(int iDataIdx);
 
-    //!Ö¸¶¨KeyÖµÀ´²åÈëÒ»¸öÊı¾İ£¨Èç¹ûÓĞÏàÍ¬KeyÖµµÄ½Úµã´æÔÚ£¬ÔòÊ§°Ü£©
+    //!æŒ‡å®šKeyå€¼æ¥æ’å…¥ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æœæœ‰ç›¸åŒKeyå€¼çš„èŠ‚ç‚¹å­˜åœ¨ï¼Œåˆ™å¤±è´¥ï¼‰
     int Insert(const KEY_TYPE& rstKeyval, const DATA_TYPE& rstData);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üĞÂÒ»¸öÊı¾İ£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊı¾İÔò²»×öÈÎºÎÊÂ£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æœæœªå‘ç°è¯¥Keyå€¼çš„æ•°æ®åˆ™ä¸åšä»»ä½•äº‹ï¼‰
     int Update(const KEY_TYPE& rstKeyval, const DATA_TYPE& rstData);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üĞÂÒ»¸öÊı¾İ£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊı¾İÔò²åÈëÒ»¸öÊı¾İ£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æœæœªå‘ç°è¯¥Keyå€¼çš„æ•°æ®åˆ™æ’å…¥ä¸€ä¸ªæ•°æ®ï¼‰
     int Replace(const KEY_TYPE& rstKeyval, const DATA_TYPE& rstData);
 
-    //!»ñÈ¡ÒÑÓÃ½Úµã¸öÊı
+    //!è·å–å·²ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetUsedNum() const
     {
         return m_iUsedNodeNum;
     }
 
-    //!»ñÈ¡¿ÉÓÃ½Úµã¸öÊı
+    //!è·å–å¯ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetFreeNum() const
     {
         return NODE_SIZE - m_iUsedNodeNum;
     }
 
-    //!»ñÈ¡×Ü¹²µÄ½Úµã¸öÊı
+    //!è·å–æ€»å…±çš„èŠ‚ç‚¹ä¸ªæ•°
     int GetSize() const
     {
         return NODE_SIZE;
     }
 
-    //!Çå³ıËùÓĞ½Úµã
+    //!æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
     int Erase();
 
-    //!Çå³ı¶ÔÓ¦KeyµÄ½Úµã
+    //!æ¸…é™¤å¯¹åº”Keyçš„èŠ‚ç‚¹
     int Erase(const KEY_TYPE& rstKey);
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!½«Êı¾İKeyÖµÍ¨¹ıHash×ª»»³ÉË÷Òı
+    //!å°†æ•°æ®Keyå€¼é€šè¿‡Hashè½¬æ¢æˆç´¢å¼•
     int HashKeyToIndex(const KEY_TYPE& rstKey, int& riIndex) const;
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
 private:
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iUsedNodeNum; //!<ÒÑ¾­Ê¹ÓÃµÄ½Úµã¸öÊı
-    int m_iFirstFreeIdx; //!<¿ÕÏĞÁ´±íÍ·½Úµã
-    THashMapNode m_astHashMap[NODE_SIZE]; //!<ËùÓĞ´æ·ÅµÄÊı¾İ½Úµã
-    int m_aiHashFirstIdx[HASH_SIZE]; //!<Í¨¹ıKeyÀ´Hash¼ÆËã³öµÄ³åÍ»Á´±íµÄÍ·½ÚµãË÷Òı
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iUsedNodeNum; //!<å·²ç»ä½¿ç”¨çš„èŠ‚ç‚¹ä¸ªæ•°
+    int m_iFirstFreeIdx; //!<ç©ºé—²é“¾è¡¨å¤´èŠ‚ç‚¹
+    THashMapNode m_astHashMap[NODE_SIZE]; //!<æ‰€æœ‰å­˜æ”¾çš„æ•°æ®èŠ‚ç‚¹
+    int m_aiHashFirstIdx[HASH_SIZE]; //!<é€šè¿‡Keyæ¥Hashè®¡ç®—å‡ºçš„å†²çªé“¾è¡¨çš„å¤´èŠ‚ç‚¹ç´¢å¼•
 };
 
 template <typename KEY_TYPE, typename DATA_TYPE, int NODE_SIZE, typename CMP_FUNC, int HASH_SIZE>
@@ -247,7 +247,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Erase(const K
 
     while(iCurIndex != -1)
     {
-        //ÒÑ¾­´æÔÚ¸ÃKeyÔò·µ»ØÊ§°Ü
+        //å·²ç»å­˜åœ¨è¯¥Keyåˆ™è¿”å›å¤±è´¥
         if(stCmpFunc(rstKeyval, m_astHashMap[iCurIndex].m_stKey))
         {
             break;
@@ -257,15 +257,15 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Erase(const K
         iCurIndex = m_astHashMap[iCurIndex].m_iHashNext;
     }
 
-    //ÕÒµ½ĞèÒªÉ¾³ıµÄ½Úµã
+    //æ‰¾åˆ°éœ€è¦åˆ é™¤çš„èŠ‚ç‚¹
     if(iCurIndex != -1)
     {
-        //ÊÇ³åÍ»Á´±íÍ·½Úµã
+        //æ˜¯å†²çªé“¾è¡¨å¤´èŠ‚ç‚¹
         if(m_aiHashFirstIdx[iHashIdx] == iCurIndex)
         {
             m_aiHashFirstIdx[iHashIdx] = m_astHashMap[iCurIndex].m_iHashNext;
         }
-        //½«ÉÏÒ»¸ö½ÚµãµÄNextË÷ÒıµÈÓÚµ±Ç°ÒªÉ¾³ı½ÚµãµÄNextË÷Òı
+        //å°†ä¸Šä¸€ä¸ªèŠ‚ç‚¹çš„Nextç´¢å¼•ç­‰äºå½“å‰è¦åˆ é™¤èŠ‚ç‚¹çš„Nextç´¢å¼•
         else
         {
             m_astHashMap[iPreIndex].m_iHashNext = m_astHashMap[iCurIndex].m_iHashNext;
@@ -293,7 +293,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Insert(const 
         return -1;
     }
 
-    //ÒÑ¾­Ã»ÓĞ¿ÉÓÃµÄ½ÚµãÁË
+    //å·²ç»æ²¡æœ‰å¯ç”¨çš„èŠ‚ç‚¹äº†
     if(m_iFirstFreeIdx < 0)
     {
         SetErrorNO(EEN_HASH_MAP__NODE_IS_FULL);
@@ -307,7 +307,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Insert(const 
 
     while(iCurIndex != -1)
     {
-        //ÒÑ¾­´æÔÚ¸ÃKeyÔò·µ»ØÊ§°Ü
+        //å·²ç»å­˜åœ¨è¯¥Keyåˆ™è¿”å›å¤±è´¥
         if(stCmpFunc(rstKeyval, m_astHashMap[iCurIndex].m_stKey))
         {
             SetErrorNO(EEN_HASH_MAP__INSERT_FAILED_FOR_KEY_DUPLICATE);
@@ -327,7 +327,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Insert(const 
     m_astHashMap[iNowAssignIdx].m_cUseFlag = EHNF_USED;
     m_astHashMap[iNowAssignIdx].m_iHashNext = -1;
 
-    //ÊÇ³åÍ»Á´±íµÄµÚÒ»¸ö½Úµã
+    //æ˜¯å†²çªé“¾è¡¨çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
     if(m_aiHashFirstIdx[iHashIdx] == -1)
     {
         m_aiHashFirstIdx[iHashIdx] = iNowAssignIdx;
@@ -376,7 +376,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Replace(const
 
     while(iCurIndex != -1)
     {
-        //ÒÑ¾­´æÔÚ¸ÃKeyÔòÖ±½Ó¸üĞÂ
+        //å·²ç»å­˜åœ¨è¯¥Keyåˆ™ç›´æ¥æ›´æ–°
         if(stCmpFunc(rstKeyval, m_astHashMap[iCurIndex].m_stKey))
         {
             memcpy(&m_astHashMap[iCurIndex].m_stKey, &rstKeyval, sizeof(rstKeyval));
@@ -389,7 +389,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Replace(const
         iCurIndex = m_astHashMap[iCurIndex].m_iHashNext;
     }
 
-    //ÒÑ¾­Ã»ÓĞ¿ÉÓÃµÄ½ÚµãÁË
+    //å·²ç»æ²¡æœ‰å¯ç”¨çš„èŠ‚ç‚¹äº†
     if(m_iFirstFreeIdx < 0)
     {
         SetErrorNO(EEN_HASH_MAP__NODE_IS_FULL);
@@ -405,7 +405,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::Replace(const
     m_astHashMap[iNowAssignIdx].m_cUseFlag = EHNF_USED;
     m_astHashMap[iNowAssignIdx].m_iHashNext = -1;
 
-    //ÊÇ³åÍ»Á´±íµÄµÚÒ»¸ö½Úµã
+    //æ˜¯å†²çªé“¾è¡¨çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
     if(m_aiHashFirstIdx[iHashIdx] == -1)
     {
         m_aiHashFirstIdx[iHashIdx] = iNowAssignIdx;
@@ -454,7 +454,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::HashKeyToInde
     unsigned int uiHashSum = 0;
     unsigned int *piTemp = (unsigned int*)&rstKey;
 
-    //Ä¿Ç°HashËã·¨ÊµÏÖ±È½Ï¼òµ¥Ö»ÊÇ½«KeyÖµµÄÃ¿¸ö×Ö½ÚµÄÖµ¼ÓÆğÀ´²¢¶ÔSIZEÈ¡Ä£
+    //ç›®å‰Hashç®—æ³•å®ç°æ¯”è¾ƒç®€å•åªæ˜¯å°†Keyå€¼çš„æ¯ä¸ªå­—èŠ‚çš„å€¼åŠ èµ·æ¥å¹¶å¯¹SIZEå–æ¨¡
     unsigned int i;
     for( i = 0; i < uiKeyLength / sizeof(unsigned int); ++i)
     {
@@ -481,3 +481,7 @@ int CHashMap<KEY_TYPE, DATA_TYPE, NODE_SIZE, CMP_FUNC, HASH_SIZE>::HashKeyToInde
 
 #endif //__HASH_MAP_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,12 +1,16 @@
-#include "UnitTick.hpp"
+ï»¿#include "UnitTick.hpp"
 #include "ModuleHelper.hpp"
 #include "LogAdapter.hpp"
 
 int CUnitTick::OnTick()
 {
-    //todo jasonxiong ºóÐøÔÚÕâÀïÊµÏÖÃ¿¸öÍæ¼ÒµÄtick
+    //todo jasonxiong åŽç»­åœ¨è¿™é‡Œå®žçŽ°æ¯ä¸ªçŽ©å®¶çš„tick
     //CModuleHelper::GetTeamOperator()->TransactionTick();
 
     //CGuildTransaction::OnTick();
 	return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

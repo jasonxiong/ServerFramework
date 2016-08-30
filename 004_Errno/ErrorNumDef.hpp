@@ -1,47 +1,51 @@
-#ifndef __ERROR_NUM_DEF_HPP__
+ï»¿#ifndef __ERROR_NUM_DEF_HPP__
 #define __ERROR_NUM_DEF_HPP__
 
 #define T_SERVER_SUCESS   0x0
 
-//ËµÃ÷£º ´òÓ¡´íÎóÂëÇëÊ¹ÓÃ "0x%"
-//´íÎóÂëµÄ×é³ÉÎª app(·þÎñÆ÷ÀàÐÍ, 8Î») + module(Ä£¿éÀàÐÍ£¬12Î») + error(´íÎóÂë£¬12Î»)
+//è¯´æ˜Žï¼š æ‰“å°é”™è¯¯ç è¯·ä½¿ç”¨ "0x%"
+//é”™è¯¯ç çš„ç»„æˆä¸º app(æœåŠ¡å™¨ç±»åž‹, 8ä½) + module(æ¨¡å—ç±»åž‹ï¼Œ12ä½) + error(é”™è¯¯ç ï¼Œ12ä½)
 
 #define MAKE_ERRNO(app, module, error) (((app&0xFF)<<24) | ((module&0xFFF)<<12)| (error&0xFFF))
 
 enum EN_SERVER_DEF
 {
-    EN_SERVER_COMMON    = 0x01,                //Í¨ÓÃÀàÐÍµÄ´íÎóÂë
+    EN_SERVER_COMMON    = 0x01,                //é€šç”¨ç±»åž‹çš„é”™è¯¯ç 
 
-    EN_SERVER_ACCOUNT   = 0x02,                //µÇÂ¼·þÎñÆ÷
-    EN_SERVER_GATEWAY   = 0x03,                //½ÓÈë·þÎñÆ÷
-    EN_SERVER_DATABASE  = 0x04,                //Êý¾Ý¿â·þÎñÆ÷
-    EN_SERVER_ZONE      = 0x05,                 //Çø·þÎñÆ÷
-    EN_SERVER_WORLD     = 0x06,                 //ÊÀ½ç·þÎñÆ÷
-    EN_SERVER_ROLEDB    = 0x07,                 //½ÇÉ«Êý¾Ý¿â¸üÐÂ·þÎñÆ÷
-    EN_SERVER_REGAUTH   = 0x08,                 //×¢²áºÍÈÏÖ¤·þÎñÆ÷
-    EN_SERVER_ACCOUNTDB = 0x09,                 //ÕÊºÅÊý¾Ý¿â·þÎñÆ÷
-    EN_SERVER_NAMEDB    = 0x0a,                 //Ãû×ÖÊý¾Ý¿â·þÎñÆ÷
+    EN_SERVER_ACCOUNT   = 0x02,                //ç™»å½•æœåŠ¡å™¨
+    EN_SERVER_GATEWAY   = 0x03,                //æŽ¥å…¥æœåŠ¡å™¨
+    EN_SERVER_DATABASE  = 0x04,                //æ•°æ®åº“æœåŠ¡å™¨
+    EN_SERVER_ZONE      = 0x05,                 //åŒºæœåŠ¡å™¨
+    EN_SERVER_WORLD     = 0x06,                 //ä¸–ç•ŒæœåŠ¡å™¨
+    EN_SERVER_ROLEDB    = 0x07,                 //è§’è‰²æ•°æ®åº“æ›´æ–°æœåŠ¡å™¨
+    EN_SERVER_REGAUTH   = 0x08,                 //æ³¨å†Œå’Œè®¤è¯æœåŠ¡å™¨
+    EN_SERVER_ACCOUNTDB = 0x09,                 //å¸å·æ•°æ®åº“æœåŠ¡å™¨
+    EN_SERVER_NAMEDB    = 0x0a,                 //åå­—æ•°æ®åº“æœåŠ¡å™¨
 };
 
 enum EN_COMMON_MODULE_DEF
 {
-    EN_COMMON_MODULE_SYS = 0x001,               //ÏµÍ³´íÎóÂë
+    EN_COMMON_MODULE_SYS = 0x001,               //ç³»ç»Ÿé”™è¯¯ç 
 };
 
 #define TSVR_SYSTEM_BASE MAKE_ERRNO(EN_SERVER_COMMON, EN_COMMON_MODULE_SYS, 0)
 enum COMMON_SYSTEM_ERR_DEF
 {
-    T_COMMON_SYSTEM_PARA_ERR        = TSVR_SYSTEM_BASE + 0x01,      //²ÎÊý´íÎó
-    T_COMMON_SYSTEM_FUNC_ERR        = TSVR_SYSTEM_BASE + 0x02,      //ÏµÍ³Ö´ÐÐ´íÎó
+    T_COMMON_SYSTEM_PARA_ERR        = TSVR_SYSTEM_BASE + 0x01,      //å‚æ•°é”™è¯¯
+    T_COMMON_SYSTEM_FUNC_ERR        = TSVR_SYSTEM_BASE + 0x02,      //ç³»ç»Ÿæ‰§è¡Œé”™è¯¯
 
-    T_COMMON_LOG_CHKLEVEL_ERR       = TSVR_SYSTEM_BASE + 0x03,      //´òÓ¡ÈÕÖ¾µÈ¼¶´íÎó
-    T_COMMON_LOG_OPENFILE_ERR       = TSVR_SYSTEM_BASE + 0x04,      //´ò¿ªÈÕÖ¾ÎÄ¼þ´íÎó
+    T_COMMON_LOG_CHKLEVEL_ERR       = TSVR_SYSTEM_BASE + 0x03,      //æ‰“å°æ—¥å¿—ç­‰çº§é”™è¯¯
+    T_COMMON_LOG_OPENFILE_ERR       = TSVR_SYSTEM_BASE + 0x04,      //æ‰“å¼€æ—¥å¿—æ–‡ä»¶é”™è¯¯
 
-    T_COMMON_FILE_GETSTAT_ERR       = TSVR_SYSTEM_BASE + 0x05,      //»ñÈ¡ÎÄ¼þµÄ×´Ì¬´íÎó
-    T_COMMON_FILE_REMOVE_ERR        = TSVR_SYSTEM_BASE + 0x06,      //É¾³ýÎÄ¼þ´íÎó
-    T_COMMON_FILE_RENAME_ERR        = TSVR_SYSTEM_BASE + 0x07,      //ÖØÃüÃûÎÄ¼þ´íÎó
+    T_COMMON_FILE_GETSTAT_ERR       = TSVR_SYSTEM_BASE + 0x05,      //èŽ·å–æ–‡ä»¶çš„çŠ¶æ€é”™è¯¯
+    T_COMMON_FILE_REMOVE_ERR        = TSVR_SYSTEM_BASE + 0x06,      //åˆ é™¤æ–‡ä»¶é”™è¯¯
+    T_COMMON_FILE_RENAME_ERR        = TSVR_SYSTEM_BASE + 0x07,      //é‡å‘½åæ–‡ä»¶é”™è¯¯
 
-    T_COMMON_ZMQBUS_CONNECT_ERR     = TSVR_SYSTEM_BASE + 0x08,      //Zmq bugÁ¬½Ó´íÎó
+    T_COMMON_ZMQBUS_CONNECT_ERR     = TSVR_SYSTEM_BASE + 0x08,      //Zmq bugè¿žæŽ¥é”™è¯¯
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

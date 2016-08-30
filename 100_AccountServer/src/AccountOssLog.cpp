@@ -1,4 +1,4 @@
-#include <time.h>
+ï»¿#include <time.h>
 
 #include "GameProtocol.hpp"
 #include "TimeUtility.hpp"
@@ -10,7 +10,7 @@
 #include "AccountOssLog.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//ÔËÓªOSSÈÕÖ¾½Ó¿Ú
+//è¿è¥OSSæ—¥å¿—æ¥å£
 
 void CAccountOssLog::TraceCreateAccount(unsigned int uin, unsigned int uiSessionFd)
 {
@@ -33,3 +33,7 @@ int CAccountOssLog::Initialize()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

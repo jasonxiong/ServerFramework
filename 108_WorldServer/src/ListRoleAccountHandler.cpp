@@ -1,4 +1,4 @@
-#include "ModuleHelper.hpp"
+﻿#include "ModuleHelper.hpp"
 #include "LogAdapter.hpp"
 #include "WorldMsgHelper.hpp"
 
@@ -49,3 +49,7 @@ int CListRoleAccountHandler::OnAccountListRoleResponse()
     return iRet;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

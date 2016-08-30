@@ -1,4 +1,4 @@
-#include <fstream>
+Ôªø#include <fstream>
 #include <sstream>
 
 #include "GameProtocol.hpp"
@@ -24,7 +24,7 @@ int CConfigMgr::LoadAllConf()
         return -1;
     }
 
-    //ªÒ»° ˝¡ø
+    //Ëé∑ÂèñÊï∞Èáè
     stConfigFile.GetItemValue("ServerList", "ServerNum", m_iWulinServerNum, 0);
 
     static char szConfigKey[64] = {0};
@@ -75,3 +75,7 @@ TUinPrivInfo* CConfigMgr::GetUinPrivInfo(unsigned int uiUin)
     return m_stUinPrivManager.GetUinPrivInfo(uiUin);
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include "NameDBLogManager.hpp"
+﻿#include "NameDBLogManager.hpp"
 #include "StringUtility.hpp"
 #include "ConfigHelper.hpp"
 #include "NameDBApp.hpp"
@@ -66,3 +66,7 @@ int CNameDBHandlerSet::OpenNameDB()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

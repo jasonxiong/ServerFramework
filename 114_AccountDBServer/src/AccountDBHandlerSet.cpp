@@ -1,4 +1,4 @@
-#include "AccountDBLogManager.hpp"
+﻿#include "AccountDBLogManager.hpp"
 #include "StringUtility.hpp"
 #include "ConfigHelper.hpp"
 #include "AccountDBApp.hpp"
@@ -82,3 +82,7 @@ int CAccountDBHandlerSet::OpenAccountDB()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

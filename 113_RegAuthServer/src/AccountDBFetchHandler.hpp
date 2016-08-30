@@ -1,4 +1,4 @@
-#ifndef __ACCOUNT_DB_FETCH_HANDLER_HPP__
+ï»¿#ifndef __ACCOUNT_DB_FETCH_HANDLER_HPP__
 #define __ACCOUNT_DB_FETCH_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -6,26 +6,26 @@
 class CRegAuthHandlerSet;
 struct WulinServerConfig;
 
-// ´¦ÀíÀ´×ÔAccountDB ServerµÄ MSGID_ACCOUNTDB_FETCH_REQUEST ÏûÏ¢
+// å¤„ç†æ¥è‡ªAccountDB Serverçš„ MSGID_ACCOUNTDB_FETCH_REQUEST æ¶ˆæ¯
 class CAccountDBFetchHandler : public IHandler
 {
 private:
-    TNetHead_V2* m_pstNetHead;  // ¿Í»§Á¬½Ó
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    TNetHead_V2* m_pstNetHead;  // å®¢æˆ·è¿æ¥
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRegAuthHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRegAuthHandlerSetç±»ä¸­åˆ›å»º
     friend class CRegAuthHandlerSet;
     CAccountDBFetchHandler();
 
 public:
     virtual void OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg, SHandleResult* pstResult);
 
-    //À­È¡ÕÊºÅÏêÏ¸ĞÅÏ¢
+    //æ‹‰å–å¸å·è¯¦ç»†ä¿¡æ¯
     static void FetchAccount(unsigned uiSessionFd, const AccountID& stAccountID, const std::string& strPassword);
 
 private:
@@ -33,12 +33,16 @@ private:
 
 private:
     
-    //·¢ËÍÈÏÖ¤Ê§°Ü»Ø¸´¸øLotusServer
+    //å‘é€è®¤è¯å¤±è´¥å›å¤ç»™LotusServer
     void SendAuthFailedResponseToLotus(unsigned int uiSessionFd, const unsigned int uiResultID);
 
-    //·¢ËÍÈÏÖ¤³É¹¦»Ø¸´¸øLotusServer
+    //å‘é€è®¤è¯æˆåŠŸå›å¤ç»™LotusServer
     void SendAuthSuccessResponseToLotus(unsigned int uiSessionFd, const WulinServerConfig& stServerConfig, unsigned int uin, bool bIsBinded);
 };
 
 #endif // __ACCOUNT_DB_FETCH_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "ModuleHelper.hpp"
 
@@ -94,7 +94,7 @@ int CWorldMsgHelper::SendWorldMsgToNameDB(const GameProtocolMsg& rstWorldMsg)
 
 int CWorldMsgHelper::SendWorldMsgToCluster(const GameProtocolMsg& rstWorldMsg)
 {
-    //È¥µôCluster
+    //åŽ»æŽ‰Cluster
     /*
     int iRet = CModuleHelper::GetWorldProtocolEngine()->SendWorldMsg(rstWorldMsg, GAME_SERVER_CLUSTER);
     if (iRet < 0)
@@ -110,7 +110,7 @@ int CWorldMsgHelper::SendWorldMsgToCluster(const GameProtocolMsg& rstWorldMsg)
 
 int CWorldMsgHelper::BroadcastNewZoneConf()
 {
-    //todo jasonxiong Õâ¸öº¯ÊýºóÐøÐèÒª¿¼ÂÇÏêÏ¸µÄÊµÏÖ
+    //todo jasonxiong è¿™ä¸ªå‡½æ•°åŽç»­éœ€è¦è€ƒè™‘è¯¦ç»†çš„å®žçŽ°
     static GameProtocolMsg stMsg;
     GenerateMsgHead(stMsg, 0, MSGID_WORLD_ZONECHANGED_NOTIFY, 0);
 
@@ -126,3 +126,7 @@ int CWorldMsgHelper::BroadcastNewZoneConf()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

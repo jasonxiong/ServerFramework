@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 
 #include "lz4.hpp"
 #include "ErrorNumDef.hpp"
@@ -34,7 +34,7 @@ TEST_F(ProtoUnitTest, GameProtoTest)
     char szBuff[10240] = {0};
     EXPECT_EQ(true, stMsg.SerializeToArray(szBuff, sizeof(szBuff)));
 
-    //²âÊÔprotobuf repeated½á¹¹Îª¿ÕÊ±sizeµÄÇé¿ö
+    //æµ‹è¯•protobuf repeatedç»“æž„ä¸ºç©ºæ—¶sizeçš„æƒ…å†µ
     stMsg.Clear();
     EXPECT_EQ(0, stMsg.m_stmsgbody().m_staccountlistroleresponse().roles_size());
 }
@@ -55,3 +55,7 @@ TEST_F(ProtoUnitTest, LZ4ProtoTest)
     char szTmpBuff[10240] = {0};
     EXPECT_EQ(true, stMsg.SerializeToArray(szTmpBuff, sizeof(szTmpBuff)));
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

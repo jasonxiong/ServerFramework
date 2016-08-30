@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -16,7 +16,7 @@ CDeleteRoleResponseHandler::CDeleteRoleResponseHandler()
 void CDeleteRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃNetHeadºÍResult
+    // ä¸ä½¿ç”¨NetHeadå’ŒResult
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
     m_pstRequestMsg = pstMsg;
@@ -33,7 +33,7 @@ void CDeleteRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
     CSessionObj* pSession = SessionManager->GetSession(m_uiSessionFD, m_unValue);
 
-    // ¼ÇÂ¼³É¹¦ÈÕÖ¾
+    // è®°å½•æˆåŠŸæ—¥å¿—
     if (T_SERVER_SUCESS == pstDeleteRoleResponse->iresult())
     {
         /*
@@ -49,12 +49,12 @@ void CDeleteRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
             */
     }
 
-    if (pSession != NULL) // Ô­Ê¼sessionÈÔÈ»´æÔÚ
+    if (pSession != NULL) // åŽŸå§‹sessionä»ç„¶å­˜åœ¨
     {
-        // ½«¸ÃÏìÓ¦ÏûÏ¢¼ÓÉÏNetHeadºó×ª·¢¸øLotusServer
+        // å°†è¯¥å“åº”æ¶ˆæ¯åŠ ä¸ŠNetHeadåŽè½¬å‘ç»™LotusServer
         SendDeleteRoleResponseToLotus();
 
-        // Çå³ýcacheÖÐµÄsession½áµã
+        // æ¸…é™¤cacheä¸­çš„sessionç»“ç‚¹
         //SessionManager->DeleteSession(m_uiSessionFD);
     }
 }
@@ -72,7 +72,7 @@ void CDeleteRoleResponseHandler::SendDeleteRoleResponseToLotus()
     LOGDEBUG("Send DeleteRoleResponse to lotus server\n");
 }
 
-//jasonxiong ÔÝÊ±ÏÈ×¢ÊÍµô£¬ºóÃæ¿´ÊÇ·ñÐèÒªÆôÓÃNameSvr
+//jasonxiong æš‚æ—¶å…ˆæ³¨é‡ŠæŽ‰ï¼ŒåŽé¢çœ‹æ˜¯å¦éœ€è¦å¯ç”¨NameSvr
 /*
 void CDeleteRoleResponseHandler::SendUpdateNicknameRequestToName()
 {
@@ -90,7 +90,7 @@ void CDeleteRoleResponseHandler::SendUpdateNicknameRequestToName()
     strncpy(pstRequest->m_szName,
             m_pstRequestMsg->m_stMsgBody.m_stAccountDeleteRoleResponse.m_szNickName,
             sizeof(pstRequest->m_szName) - 1);
-    pstRequest->m_ucUpdateType = NAMEUPDATETYPE_REMOVE; // É¾³ýnickname»º´æ
+    pstRequest->m_ucUpdateType = NAMEUPDATETYPE_REMOVE; // åˆ é™¤nicknameç¼“å­˜
     pstRequest->m_stPrimaryKey.m_stRoleID =
         m_pstRequestMsg->m_stMsgBody.m_stAccountDeleteRoleResponse.m_stRoleID;
 
@@ -107,3 +107,7 @@ void CDeleteRoleResponseHandler::SendUpdateNicknameRequestToName()
              pstRequest->m_szName, pstRequest->m_ucUpdateType);
 }
 */
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

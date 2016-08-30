@@ -1,4 +1,4 @@
-#include "RoleSeqRecordObj.hpp"
+ï»¿#include "RoleSeqRecordObj.hpp"
 #include "LRUHashCache.hpp"
 #include "RoleDBObjectAllocator.hpp"
 #include "StringUtility.hpp"
@@ -11,7 +11,7 @@ CServerObjectAllocator::CServerObjectAllocator()
 
 int CServerObjectAllocator::Initialize(bool bResumeMode)
 {
-    // ËùÓĞĞèÒª»º´æµÄ¶ÔÏó¹²ÓÃÒ»¿é¹²ÏíÄÚ´æÇø
+    // æ‰€æœ‰éœ€è¦ç¼“å­˜çš„å¯¹è±¡å…±ç”¨ä¸€å—å…±äº«å†…å­˜åŒº
     size_t iShmSize = CaculateTotalSize();
     int iRet = m_stShm.CreateShmSegmentByKey(GenerateServerShmKey(GAME_SERVER_ROLEDB,1), iShmSize);
     if (iRet < 0)
@@ -19,8 +19,8 @@ int CServerObjectAllocator::Initialize(bool bResumeMode)
         return -1;
     }
     
-    // ´Ó¹²ÏíÄÚ´æÖĞ·ÖÅä¸÷ÖÖ¶ÔÏó»º´æÇø
-    //todo jasonxiong2 Õâ±ß²»ĞèÒª·ÖÅä»º´æ
+    // ä»å…±äº«å†…å­˜ä¸­åˆ†é…å„ç§å¯¹è±¡ç¼“å­˜åŒº
+    //todo jasonxiong2 è¿™è¾¹ä¸éœ€è¦åˆ†é…ç¼“å­˜
     //CLRUHashCache<CRoleSeqRecordObj>::AllocateFromShm(m_stShm);
 
     return 0;
@@ -33,11 +33,15 @@ size_t CServerObjectAllocator::CaculateTotalSize()
         return m_iTotalSize;
     }
 
-    // ½ÇÉ«ĞòºÅ¼ÇÂ¼¶ÔÏó»º´æÇø
-    //todo jasonxiong2 Õâ±ß²»ĞèÒª·ÖÅä»º´æ
+    // è§’è‰²åºå·è®°å½•å¯¹è±¡ç¼“å­˜åŒº
+    //todo jasonxiong2 è¿™è¾¹ä¸éœ€è¦åˆ†é…ç¼“å­˜
     //size_t iRoleSeqRecordCacheSize = CLRUHashCache<CRoleSeqRecordObj>::CaculateSize(
     //                                  MAX_ROLE_SEQ_RECORD_OBJ_NUMBER);
     //m_iTotalSize += iRoleSeqRecordCacheSize;
 
     return m_iTotalSize;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

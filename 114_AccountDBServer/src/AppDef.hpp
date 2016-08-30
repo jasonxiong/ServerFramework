@@ -1,20 +1,20 @@
-#ifndef __APP_DEF_HPP__
+ï»¿#ifndef __APP_DEF_HPP__
 #define __APP_DEF_HPP__
 
 
-//ÔÚÕâÀïÌí¼ÓÒ»Ğ©ºê¶¨Òå
+//åœ¨è¿™é‡Œæ·»åŠ ä¸€äº›å®å®šä¹‰
 #ifdef _DEBUG_
-const int MAX_SERVICEAPP_NUMBER = 2;                //×î¶àÆô¶¯µÄ·şÎñ½ø³ÌµÄÊıÄ¿
-const int APP_ACCOUNTDB_MAX_SLEEP_USEC = 10 * 1000;    //Ïß³ÌsleepÊ±¼ä
+const int MAX_SERVICEAPP_NUMBER = 2;                //æœ€å¤šå¯åŠ¨çš„æœåŠ¡è¿›ç¨‹çš„æ•°ç›®
+const int APP_ACCOUNTDB_MAX_SLEEP_USEC = 10 * 1000;    //çº¿ç¨‹sleepæ—¶é—´
 #else
-const int MAX_SERVICEAPP_NUMBER = 8;                //×î¶àÆô¶¯µÄ·şÎñ½ø³ÌµÄÊıÄ¿
-const int APP_ACCOUNTDB_MAX_SLEEP_USEC = 10;           //Ïß³ÌsleepÊ±¼ä
+const int MAX_SERVICEAPP_NUMBER = 8;                //æœ€å¤šå¯åŠ¨çš„æœåŠ¡è¿›ç¨‹çš„æ•°ç›®
+const int APP_ACCOUNTDB_MAX_SLEEP_USEC = 10;           //çº¿ç¨‹sleepæ—¶é—´
 #endif
 
-//Í³¼ÆCache¶¨Òå
-const int STAT_CACHE_ID_TIMER      = 0;        //¶¨Ê±Æ÷
-const int STAT_CACHE_ID_TIMERINDEX = 1;        //¶¨Ê±Æ÷Ë÷Òı
-const int STAT_CHCHE_ID_TRANSFER   = 2;        //¿Í»§¶ËÏûÏ¢Í·
+//ç»Ÿè®¡Cacheå®šä¹‰
+const int STAT_CACHE_ID_TIMER      = 0;        //å®šæ—¶å™¨
+const int STAT_CACHE_ID_TIMERINDEX = 1;        //å®šæ—¶å™¨ç´¢å¼•
+const int STAT_CHCHE_ID_TRANSFER   = 2;        //å®¢æˆ·ç«¯æ¶ˆæ¯å¤´
 
 #define STAT_CACHE_NAME_TIMER       "TimerCache"
 #define STAT_CACHE_NAME_TIMERINDEX  "TimerIndexCache"
@@ -27,29 +27,33 @@ typedef enum enIOIndex
     EII_QueryProxy  = 3,
     EII_AvatarProxy = 4,
 
-    //100 ÒÔÄÚÎªProxyID
+    //100 ä»¥å†…ä¸ºProxyID
     EII_CodeQueue = 100,
 
 } EIOIndex;
 
 #define APP_CONFIG_FILE     "../conf/GameServer.tcm"
 
-//Á¬½ÓµÄMYSQLÊı¾İ¿âÏà¹ØµÄÅäÖÃÎÄ¼ş
+//è¿æ¥çš„MYSQLæ•°æ®åº“ç›¸å…³çš„é…ç½®æ–‡ä»¶
 #define ACCOUNTDBINFO_CONFIG_FILE "../conf/DBMSConf.xml"
 
-//Á¬½ÓµÄUniqUinDBÊı¾İ¿âÏà¹ØµÄÅäÖÃÎÄ¼ş
+//è¿æ¥çš„UniqUinDBæ•°æ®åº“ç›¸å…³çš„é…ç½®æ–‡ä»¶
 #define UNIQUINDBINFO_CONFIG_FILE "../conf/DBMSConf_UniqUin.xml"
 
-//¶¨ÒåMYSQLµÄ±íÃû
+//å®šä¹‰MYSQLçš„è¡¨å
 
-//Íæ¼ÒÕÊºÅÊı¾İ¿âµÄ±íÃû
+//ç©å®¶å¸å·æ•°æ®åº“çš„è¡¨å
 #define MYSQL_ACCOUNTINFO_TABLE "t_rps_accountdata"
 
-//Íæ¼ÒÕÊºÅÊı¾İ±íµÄÁĞÊı£¬Îª: accountID, accountType, uin, password, lastWorldID, activeState
+//ç©å®¶å¸å·æ•°æ®è¡¨çš„åˆ—æ•°ï¼Œä¸º: accountID, accountType, uin, password, lastWorldID, activeState
 #define MYSQL_ACCOUNTINFO_FIELDS   6
 
-//Éú³ÉÍæ¼ÒÎ¨Ò»UINµÄÊı¾İ¿â±íÃû
+//ç”Ÿæˆç©å®¶å”¯ä¸€UINçš„æ•°æ®åº“è¡¨å
 #define MYSQL_UNIQUININFO_TABLE "t_rps_uniquindata"
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <unistd.h>
+﻿#include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
 #include <sys/file.h>
@@ -44,3 +44,7 @@ int main(int argc, char* *argv)
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

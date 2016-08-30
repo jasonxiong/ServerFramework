@@ -1,4 +1,4 @@
-#include "RoleDBThread.hpp"
+ï»¿#include "RoleDBThread.hpp"
 #include "StringUtility.hpp"
 #include "RoleDBLogManager.hpp"
 #include "RoleDBApp.hpp"
@@ -23,7 +23,7 @@ int CRoleDBThread::Initialize(bool bResume, const int iThreadIdx)
 {
 	int iRt = 0;
 
-	//³õÊ¼»¯Ïß³Ìid
+	//åˆå§‹åŒ–çº¿ç¨‹id
 	m_iThreadIdx = iThreadIdx;	
 
 	iRt = InitBase();
@@ -170,7 +170,7 @@ int CRoleDBThread::Run()
 					iRet = ProcessMsg(stMsgHandleResult);
 					if (0 == iRet)
 					{					
-						// ²»ÐèÒª»Ø¸´
+						// ä¸éœ€è¦å›žå¤
 						if (!stMsgHandleResult.iNeedResponse)
 						{
 							continue;
@@ -216,9 +216,9 @@ int CRoleDBThread::ReceiveMsg(int& riCodeLength)
 
 int CRoleDBThread::ProcessMsg(SHandleResult& stMsgHandleResult)
 {
-	//todo jasonxiong Ô­ÓÐµÄ´úÂëÖÐµÄÊý¾Ý±¸·Ý¹¦ÄÜÔÝÊ±²»ÐèÒª£¬×¢ÊÍµô
+	//todo jasonxiong åŽŸæœ‰çš„ä»£ç ä¸­çš„æ•°æ®å¤‡ä»½åŠŸèƒ½æš‚æ—¶ä¸éœ€è¦ï¼Œæ³¨é‡ŠæŽ‰
 	/*
-	// Íæ¼ÒÊý¾Ý±¸·ÝÏûÏ¢
+	// çŽ©å®¶æ•°æ®å¤‡ä»½æ¶ˆæ¯
 	if (m_iThreadIdx == CRoleDBThreadManager::LOG_THREAD_IDX
 		&& m_stServerMsg.m_stMsgHead.m_uiMsgID ==  MSGID_WORLD_UPDATEROLE_REQUEST)
 	{
@@ -235,7 +235,7 @@ int CRoleDBThread::ProcessMsg(SHandleResult& stMsgHandleResult)
 		return -1;
 	}
 
-	stMsgHandleResult.iNeedResponse = 1; // Ä¬ÈÏÐèÒª»Ø¸´
+	stMsgHandleResult.iNeedResponse = 1; // é»˜è®¤éœ€è¦å›žå¤
 	//m_stMsgHandleResult.stResponseMsg.mutable_m_stmsghead()->set_m_uimsgid(0);
 	pHandler->OnClientMsg(&m_stGameMsg, &stMsgHandleResult);
 	
@@ -244,7 +244,7 @@ int CRoleDBThread::ProcessMsg(SHandleResult& stMsgHandleResult)
 
 int CRoleDBThread::EncodeAndSendMsg(SHandleResult& stHandleResult)
 {
-	//todo jasonxiong ÔÝÊ±È¥µôÈÕÖ¾±¸·Ý¹¦ÄÜ£¬ºóÐøÈç¹ûÓÐÐèÒªÔÙÌí¼Ó
+	//todo jasonxiong æš‚æ—¶åŽ»æŽ‰æ—¥å¿—å¤‡ä»½åŠŸèƒ½ï¼ŒåŽç»­å¦‚æžœæœ‰éœ€è¦å†æ·»åŠ 
 	/*
 	if (m_iThreadIdx == CRoleDBThreadManager::LOG_THREAD_IDX)
 	{
@@ -256,7 +256,7 @@ int CRoleDBThread::EncodeAndSendMsg(SHandleResult& stHandleResult)
 	int iCodeLen = 0;
 	int iRet = 0;
 
-	// ±àÂë±¾µØÊý¾ÝÎªÍøÂçÊý¾Ý
+	// ç¼–ç æœ¬åœ°æ•°æ®ä¸ºç½‘ç»œæ•°æ®
 	iRet = m_stProtocolEngine.Encode(&stHandleResult.stResponseMsg, (unsigned char*)m_szCodeBuf, iBufLen, iCodeLen);
 	if (iRet != 0)
 	{
@@ -264,7 +264,7 @@ int CRoleDBThread::EncodeAndSendMsg(SHandleResult& stHandleResult)
 		return -1;
 	}
 
-	// Ñ¹Èë¶ÓÁÐ¸øÖ÷Ïß³Ì
+	// åŽ‹å…¥é˜Ÿåˆ—ç»™ä¸»çº¿ç¨‹
 	iRet = m_pOutputQueue->PushOneCode((const unsigned char*)m_szCodeBuf, iCodeLen);
 	if (iRet != 0)
 	{
@@ -300,3 +300,7 @@ int CRoleDBThread::PopCode(unsigned char* pMsg, int iMaxLength, int& riLength)
 	
 	return m_pOutputQueue->PopOneCode(pMsg, iMaxLength, riLength);
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

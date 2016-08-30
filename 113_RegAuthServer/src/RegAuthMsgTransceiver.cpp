@@ -1,4 +1,4 @@
-
+ï»¿
 #include "Int64Utility.hpp"
 #include "LogAdapter.hpp"
 #include "AppDef.hpp"
@@ -18,7 +18,7 @@ CRegAuthMsgTransceiver::~CRegAuthMsgTransceiver()
 
 int CRegAuthMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
 {
-    // ³õÊ¼»¯ Lotus µÄCodeQueue
+    // åˆå§‹åŒ– Lotus çš„CodeQueue
     int iRet;
     iRet = m_stCodeQueueManager.LoadCodeQueueConfig(APP_CONFIG_FILE, "RegAuth");
     if (iRet < 0)
@@ -34,7 +34,7 @@ int CRegAuthMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
         return -2;
     }
 
-    //³õÊ¼»¯RegAuthµ½WorldµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–RegAuthåˆ°Worldçš„ZMQé€šä¿¡é€šé“
     uint64_t ullRegAuthServerID = GetServerBusID(0, GAME_SERVER_REGAUTH);
     uint64_t ullAccountDBServerID = GetServerBusID(0, GAME_SERVER_ACCOUNTDB);
 
@@ -57,7 +57,7 @@ int CRegAuthMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
     return T_SERVER_SUCESS;
 }
 
-// ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+// å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
 int CRegAuthMsgTransceiver::SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer, int iInstance)
 {
     ASSERT_AND_LOG_RTN_INT(pszMsg);
@@ -117,3 +117,7 @@ int CRegAuthMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riM
 
     return iRet;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

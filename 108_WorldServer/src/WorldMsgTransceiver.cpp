@@ -1,4 +1,4 @@
-
+ï»¿
 #include "Int64Utility.hpp"
 #include "GameProtocol.hpp"
 #include "ModuleHelper.hpp"
@@ -12,10 +12,10 @@ int CWorldMsgTransceiver::Initialize(bool bResumeMode)
 {
     int iWorldID = CModuleHelper::GetWorldID();
 
-    //³õÊ¼»¯WorldµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–Worldçš„ZMQé€šä¿¡é€šé“
     uint64_t ullWorldServerID = GetServerBusID(iWorldID, GAME_SERVER_WORLD);
 
-    //³õÊ¼»¯Accountµ½WorldµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–Accountåˆ°Worldçš„ZMQé€šä¿¡é€šé“
     uint64_t ullAccountServerID = GetServerBusID(iWorldID, GAME_SERVER_ACCOUNT);
     const char* pszAccount2WorldAddr = GetZmqBusAddress(ullAccountServerID, ullWorldServerID);
     if(!pszAccount2WorldAddr)
@@ -31,7 +31,7 @@ int CWorldMsgTransceiver::Initialize(bool bResumeMode)
         return iRet;
     }
 
-    //³õÊ¼»¯Worldµ½NameDBµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–Worldåˆ°NameDBçš„ZMQé€šä¿¡é€šé“
     uint64_t ullNameDBServerID = GetServerBusID(iWorldID, GAME_SERVER_NAMEDB);
     const char* pszWorld2NameDBAddr = GetZmqBusAddress(ullWorldServerID, ullNameDBServerID);
     if(!pszWorld2NameDBAddr)
@@ -47,7 +47,7 @@ int CWorldMsgTransceiver::Initialize(bool bResumeMode)
         return iRet;
     }
 
-    //³õÊ¼»¯Zoneµ½WorldµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–Zoneåˆ°Worldçš„ZMQé€šä¿¡é€šé“
     m_iZone2WorldBusNum = 0;
     for(int i=1; i<MAX_ZONE_PER_WORLD; ++i)
     {
@@ -59,7 +59,7 @@ int CWorldMsgTransceiver::Initialize(bool bResumeMode)
             continue;
         }
 
-        //ÊÇÒ»¸öÓĞĞ§ÅäÖÃµÄZMQ BUS
+        //æ˜¯ä¸€ä¸ªæœ‰æ•ˆé…ç½®çš„ZMQ BUS
         ++m_iZone2WorldBusNum;
 
         int iRet = m_szZone2WorldSvrs[i].ZmqInit(pszZone2WorldAddr, EN_ZMQ_SOCKET_PAIR, EN_ZMQ_PROC_TCP, EN_ZMQ_SERVICE_SERVER);
@@ -70,7 +70,7 @@ int CWorldMsgTransceiver::Initialize(bool bResumeMode)
         }
     }
 
-    //³õÊ¼»¯Worldµ½RoleDBµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–Worldåˆ°RoleDBçš„ZMQé€šä¿¡é€šé“
     uint64_t ullRoleDBServerID = GetServerBusID(iWorldID, GAME_SERVER_ROLEDB);
     const char* pszWorld2RoleDBAddr = GetZmqBusAddress(ullWorldServerID, ullRoleDBServerID);
     if(!pszWorld2RoleDBAddr)
@@ -86,9 +86,9 @@ int CWorldMsgTransceiver::Initialize(bool bResumeMode)
         return iRet;
     }
 
-    //È¥µôCluster
+    //å»æ‰Cluster
     /*
-    //³õÊ¼»¯Worldµ½ClusterµÄZMQÍ¨ĞÅÍ¨µÀ
+    //åˆå§‹åŒ–Worldåˆ°Clusterçš„ZMQé€šä¿¡é€šé“
     uint64_t ullClusterServerID = GetServerBusID(0, GAME_SERVER_CLUSTER);
     const char* pszWorld2ClusterAddr = GetZmqBusAddress(ullWorldServerID, ullClusterServerID);
     if(!pszWorld2ClusterAddr)
@@ -148,7 +148,7 @@ ZmqBus* CWorldMsgTransceiver::GetZmqBus(EGameServerID enMsgPeer, int iInstance)
     return NULL;
 }
 
-// ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+// å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
 int CWorldMsgTransceiver::SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer, int iInstance)
 {
     ZmqBus* pMsgBus = GetZmqBus(enMsgPeer, iInstance);
@@ -169,7 +169,7 @@ int CWorldMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsg
 
     if(enMsgPeer == GAME_SERVER_UNDEFINE)
     {
-        //todo jasonxiong ºóĞøÈ·ÈÏºó¸ù¾İÊµ¼ÊĞèÒªÁ¬½ÓµÄ¶Ô¶Ë×ö³öĞŞ¸Ä
+        //todo jasonxiong åç»­ç¡®è®¤åæ ¹æ®å®é™…éœ€è¦è¿æ¥çš„å¯¹ç«¯åšå‡ºä¿®æ”¹
         static EGameServerID szGameServerType[GAME_SERVER_MAX] = {GAME_SERVER_ACCOUNT, GAME_SERVER_ZONE, GAME_SERVER_CLUSTER, GAME_SERVER_ROLEDB, GAME_SERVER_NAMEDB}; 
         static int iRoundIndex = 0;
         iRoundIndex = (iRoundIndex+1) % GAME_SERVER_MAX;
@@ -178,7 +178,7 @@ int CWorldMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsg
         {
         case GAME_SERVER_ACCOUNT:
             {
-                //´ÓAccount ServerÊÕ°ü
+                //ä»Account Serveræ”¶åŒ…
                 enMsgPeer = GAME_SERVER_ACCOUNT;
                 iInstance = 1;
             }
@@ -186,7 +186,7 @@ int CWorldMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsg
 
         case GAME_SERVER_ZONE:
             {
-                //´ÓZone ServerÊÕ°ü
+                //ä»Zone Serveræ”¶åŒ…
                 enMsgPeer = GAME_SERVER_ZONE;
                 
                 static int iZoneIDIndex = 0;
@@ -206,7 +206,7 @@ int CWorldMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsg
 
         case GAME_SERVER_ROLEDB:
             {
-                //´ÓRoleDBÊÕ°ü
+                //ä»RoleDBæ”¶åŒ…
                 enMsgPeer = GAME_SERVER_ROLEDB;
                 iInstance = 1;
             }
@@ -215,7 +215,7 @@ int CWorldMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsg
             /*
         case GAME_SERVER_CLUSTER:
             {
-                //´ÓCluster ServerÊÕ°ü
+                //ä»Cluster Serveræ”¶åŒ…
                 enMsgPeer = GAME_SERVER_CLUSTER;
                 iInstance = 1;
             }
@@ -224,7 +224,7 @@ int CWorldMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsg
 
         case GAME_SERVER_NAMEDB:
             {
-                //´ÓNameDB ServerÊÕ°ü
+                //ä»NameDB Serveræ”¶åŒ…
                 enMsgPeer = GAME_SERVER_NAMEDB;
                 iInstance = 1;
             }
@@ -247,3 +247,7 @@ int CWorldMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsg
 
     return iRet;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __FETCH_FRIEND_INFO_HANDLER_HPP__
+ï»¿#ifndef __FETCH_FRIEND_INFO_HANDLER_HPP__
 #define __FETCH_FRIEND_INFO_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
@@ -10,18 +10,18 @@ class CRoleDBHandlerSet;
 class CFetchFriendInfoHandler : public CHandler
 {
 private:
-    DBClientWrapper* m_pDatabase;   // ·ÃÎÊÊı¾İ¿âµÄÖ¸Õë
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    DBClientWrapper* m_pDatabase;   // è®¿é—®æ•°æ®åº“çš„æŒ‡é’ˆ
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
 	int m_iThreadIdx;
 public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRoleDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRoleDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CRoleDBHandlerSet;
 
-    //Ã¿¸ö¹¤×÷Ïß³Ì°ó¶¨Ò»¸ömysql¿Í»§¶ËÁ¬½Ó
+    //æ¯ä¸ªå·¥ä½œçº¿ç¨‹ç»‘å®šä¸€ä¸ªmysqlå®¢æˆ·ç«¯è¿æ¥
     CFetchFriendInfoHandler(DBClientWrapper* pDatabase);
 
 public:
@@ -34,3 +34,7 @@ private:
 };
 
 #endif // __FETCH_FRIEND_INFO_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

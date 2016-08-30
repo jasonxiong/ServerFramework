@@ -1,16 +1,16 @@
-#ifndef __PROTOCOL_ENGINE_HPP__
+ï»¿#ifndef __PROTOCOL_ENGINE_HPP__
 #define __PROTOCOL_ENGINE_HPP__
 
 #include "Public.hpp"
 
 typedef enum
 {
-    PT_CS = 0, // ĞèÒª½âÎöNetHead
-    PT_SS,     // ²»ĞèÒª½âÎöNetHead
+    PT_CS = 0, // éœ€è¦è§£æNetHead
+    PT_SS,     // ä¸éœ€è¦è§£æNetHead
     PT_MAX
 } EProtocolType;
 
-// Ğ­Òé½âÎö³éÏóÀà
+// åè®®è§£ææŠ½è±¡ç±»
 class IProtocolEngine
 {
 protected:
@@ -32,17 +32,21 @@ public:
     virtual ~IProtocolEngine() {}
 
 public:
-    // Ïà¹Ø³õÊ¼»¯
+    // ç›¸å…³åˆå§‹åŒ–
     virtual int Initialize() = 0;
 
-    // ½«code½âÂëÎªTNetHead_V2½á¹¹ºÍGameProtocolMsg½á¹¹£¬×¢Òâ¿ÉÄÜÃ»ÓĞTNetHead_V2½á¹¹£¬´«ÈëNULL¼´¿É
+    // å°†codeè§£ç ä¸ºTNetHead_V2ç»“æ„å’ŒGameProtocolMsgç»“æ„ï¼Œæ³¨æ„å¯èƒ½æ²¡æœ‰TNetHead_V2ç»“æ„ï¼Œä¼ å…¥NULLå³å¯
     virtual int Decode(unsigned char* pszCodeBuf, const int iCodeLen,
                        TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg) = 0;
 
-    // ½«TNetHead_V2½á¹¹ºÍGameProtocolMsg½á¹¹±àÂëÎªcode£¬×¢Òâ¿ÉÄÜÃ»ÓĞTNetHead_V2½á¹¹£¬´«ÈëNULL¼´¿É
+    // å°†TNetHead_V2ç»“æ„å’ŒGameProtocolMsgç»“æ„ç¼–ç ä¸ºcodeï¼Œæ³¨æ„å¯èƒ½æ²¡æœ‰TNetHead_V2ç»“æ„ï¼Œä¼ å…¥NULLå³å¯
     virtual int Encode(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg,
                        unsigned char* pszCodeBuf, int iBufLen, int& iCodeLen) = 0;
 };
 
 #endif // __PROTOCOL_ENGINE_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

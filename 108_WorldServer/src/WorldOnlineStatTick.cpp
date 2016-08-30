@@ -1,4 +1,4 @@
-#include "WorldMsgHelper.hpp"
+Ôªø#include "WorldMsgHelper.hpp"
 #include "ModuleHelper.hpp"
 #include "UnixTime.hpp"
 #include "WorldOnlineStatTick.hpp"
@@ -10,7 +10,7 @@ const int ONLINE_STAT_INTERVAL = 60; // 60s
 
 int CWorldOnlineStatTick::Initialize()
 {
-    // ∆Ù∂Ø∫Û¡¢øÃœÚcluster∑¢ÀÕ“ªÃı‘⁄œﬂœ˚œ¢, World¿˚”√∏√œ˚œ¢◊˜Œ™clusterµƒ–ƒÃ¯∞¸
+    // ÂêØÂä®ÂêéÁ´ãÂàªÂêëclusterÂèëÈÄÅ‰∏ÄÊù°Âú®Á∫øÊ∂àÊÅØ, WorldÂà©Áî®ËØ•Ê∂àÊÅØ‰Ωú‰∏∫clusterÁöÑÂøÉË∑≥ÂåÖ
     SendWorldOnlineStat();
     m_stLastTickTime = time(NULL);
 
@@ -50,13 +50,13 @@ int CWorldOnlineStatTick::SendWorldOnlineStat()
         pstWorldInfo->set_imaxonlinenum(MAX_ONLINE_ZONE_NUM);
     }
 
-    //todo jasonxiong »•RoleDB÷–¿≠»°◊¢≤·ÕÊº“µƒ ˝¡ø
+    //todo jasonxiong ÂéªRoleDB‰∏≠ÊãâÂèñÊ≥®ÂÜåÁé©ÂÆ∂ÁöÑÊï∞Èáè
     pstWorldInfo->set_iregisternum(0);
     pstWorldInfo->set_imaxregisternum(MAX_REGISTER_WORLD_NUM);
 
     pstReqMsg->set_urecordtime(time(NULL));
 
-    // ∑÷œﬂ–≈œ¢
+    // ÂàÜÁ∫ø‰ø°ÊÅØ
     for (int i = 1; i < MAX_ZONE_PER_WORLD; i++)
     {
         if (CModuleHelper::GetZoneTick()->IsZoneActive(i))
@@ -71,3 +71,7 @@ int CWorldOnlineStatTick::SendWorldOnlineStat()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

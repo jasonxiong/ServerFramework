@@ -1,4 +1,4 @@
-#ifndef __MODULE_HELPER_HPP__
+ï»¿#ifndef __MODULE_HELPER_HPP__
 #define __MODULE_HELPER_HPP__
 
 #include "WorldProtocolEngineW.hpp"
@@ -20,7 +20,7 @@ public:
     static CConfigManager* GetConfigManager(){return m_pConfigManager;};
     static void RegisterConfigManager(CConfigManager* pConfigManager);
 
-    // ·şÎñÆ÷ID
+    // æœåŠ¡å™¨ID
     static void RegisterServerID(int iWorldID) {m_iWorldID = iWorldID;};
     static int GetWorldID() {return m_iWorldID;};
     
@@ -31,7 +31,7 @@ public:
     // realname/aas
     static void LoadConfig();
 
-	//·şÎñÆ÷¸ºÔØÈËÊı
+	//æœåŠ¡å™¨è´Ÿè½½äººæ•°
 	static int GetFullWorldNum();
 	static int GetBusyWorldNum();
 	static bool IsZoneBalanceEnabled() {return m_iIsZoneBalanceEnabled == 1;}
@@ -58,3 +58,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

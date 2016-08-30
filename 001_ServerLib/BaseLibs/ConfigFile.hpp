@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __CONFIGFILE_HPP__
 #define __CONFIGFILE_HPP__
 
@@ -11,14 +11,14 @@
 class ConfigFile
 {
 private:
-    char    *m_pszContent;        // ÅäÖÃÎÄ¼şµÄÔ­Ê¼ÄÚÈİ
-    char    *m_pszShadow;         // ÅäÖÃÎÄ¼şµÄÄÚÈİÈ«²¿×ª»»³ÉĞ¡Ğ´
-    size_t  m_nSize;              // ÅäÖÃÎÄ¼şÄÚÈİµÄ³¤¶È£¬²»°üÀ¨×îºóµÄNULL
+    char    *m_pszContent;        // é…ç½®æ–‡ä»¶çš„åŸå§‹å†…å®¹
+    char    *m_pszShadow;         // é…ç½®æ–‡ä»¶çš„å†…å®¹å…¨éƒ¨è½¬æ¢æˆå°å†™
+    size_t  m_nSize;              // é…ç½®æ–‡ä»¶å†…å®¹çš„é•¿åº¦ï¼Œä¸åŒ…æ‹¬æœ€åçš„NULL
 
-    unsigned int   m_bIsOpened;   // ÅäÖÃÎÄ¼şÊÇ·ñ´ò¿ª³É¹¦µÄ±êÖ¾
+    unsigned int   m_bIsOpened;   // é…ç½®æ–‡ä»¶æ˜¯å¦æ‰“å¼€æˆåŠŸçš„æ ‡å¿—
 
 public:
-    char    *m_pszFilename;       // ´æ·ÅĞèÒª¶ÁÈ¡µÄÅäÖÃÎÄ¼şÃû
+    char    *m_pszFilename;       // å­˜æ”¾éœ€è¦è¯»å–çš„é…ç½®æ–‡ä»¶å
 
     ConfigFile();
     ~ConfigFile();
@@ -86,3 +86,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

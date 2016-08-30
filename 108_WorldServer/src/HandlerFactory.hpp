@@ -1,4 +1,4 @@
-
+﻿
 #ifndef __HANDLER_FACTORY_HPP__
 #define __HANDLER_FACTORY_HPP__
 
@@ -22,3 +22,7 @@ protected:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

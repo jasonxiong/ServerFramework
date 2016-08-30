@@ -1,8 +1,8 @@
-/*
-  ÊµÏÖÏÂÁĞËã·¨:
-  HashËã·¨: MD5,ÒÑÊµÏÖ
-  ¶Ô³ÆËã·¨: DES,Î´ÊµÏÖ
-  ·Ç¶Ô³ÆËã·¨: RSA,Î´ÊµÏÖ
+ï»¿/*
+  å®ç°ä¸‹åˆ—ç®—æ³•:
+  Hashç®—æ³•: MD5,å·²å®ç°
+  å¯¹ç§°ç®—æ³•: DES,æœªå®ç°
+  éå¯¹ç§°ç®—æ³•: RSA,æœªå®ç°
 */
 
 #ifndef WIN32
@@ -40,12 +40,12 @@ typedef char BOOL;
 #define	CRYPT_KEY_SIZE		16
 
 #ifdef _DEBUG
-BOOL Md5Test(); /*²âÊÔMD5º¯ÊıÊÇ·ñ°´ÕÕrfc1321¹¤×÷*/
+BOOL Md5Test(); /*æµ‹è¯•MD5å‡½æ•°æ˜¯å¦æŒ‰ç…§rfc1321å·¥ä½œ*/
 #endif
 
 
 /************************************************************************************************
-	MD5Êı¾İ½á¹¹
+	MD5æ•°æ®ç»“æ„
 ************************************************************************************************/
 
 #define MD5_LBLOCK	16
@@ -63,21 +63,21 @@ void MD5_Final(unsigned char *md, MD5_CTX *c);
 
 
 /************************************************************************************************
-	Hashº¯Êı
+	Hashå‡½æ•°
 ************************************************************************************************/
 /*
-	ÊäÈëconst BYTE *inBuffer¡¢int length
-	Êä³öBYTE *outBuffer
-	ÆäÖĞlength¿ÉÎª0,outBufferµÄ³¤¶ÈÎªMD5_DIGEST_LENGTH(16byte)
+	è¾“å…¥const BYTE *inBufferã€int length
+	è¾“å‡ºBYTE *outBuffer
+	å…¶ä¸­lengthå¯ä¸º0,outBufferçš„é•¿åº¦ä¸ºMD5_DIGEST_LENGTH(16byte)
 */
 //void Md5HashBuffer( BYTE *outBuffer, const BYTE *inBuffer, int length);
 
 
 
 /************************************************************************************************
-	¶Ô³Æ¼ÓÃÜµ×²ãº¯Êı
+	å¯¹ç§°åŠ å¯†åº•å±‚å‡½æ•°
 ************************************************************************************************/
-//pOutBuffer¡¢pInBuffer¾ùÎª8byte, pKeyÎª16byte
+//pOutBufferã€pInBufferå‡ä¸º8byte, pKeyä¸º16byte
 void TeaEncryptECB(const BYTE *pInBuf, const BYTE *pKey, BYTE *pOutBuf);
 void TeaDecryptECB(const BYTE *pInBuf, const BYTE *pKey, BYTE *pOutBuf);
 void TeaEncryptECB3(const BYTE *pInBuf, const BYTE *pKey, BYTE *pOutBuf);
@@ -86,27 +86,27 @@ void TeaDecryptECB3(const BYTE *pInBuf, const BYTE *pKey, BYTE *pOutBuf);
 
 
 /************************************************************************************************
-	¶Ô³Æ¼ÓÃÜµÚÒ»´úº¯Êı
+	å¯¹ç§°åŠ å¯†ç¬¬ä¸€ä»£å‡½æ•°
 ************************************************************************************************/
 
-/*pKeyÎª16byte*/
+/*pKeyä¸º16byte*/
 /*
-	ÊäÈë:pInBufÎªĞè¼ÓÃÜµÄÃ÷ÎÄ²¿·Ö(Body),nInBufLenÎªpInBuf³¤¶È;
-	Êä³ö:pOutBufÎªÃÜÎÄ¸ñÊ½,pOutBufLenÎªpOutBufµÄ³¤¶ÈÊÇ8byteµÄ±¶Êı,ÖÁÉÙÓ¦Ô¤ÁônInBufLen+17;
+	è¾“å…¥:pInBufä¸ºéœ€åŠ å¯†çš„æ˜æ–‡éƒ¨åˆ†(Body),nInBufLenä¸ºpInBufé•¿åº¦;
+	è¾“å‡º:pOutBufä¸ºå¯†æ–‡æ ¼å¼,pOutBufLenä¸ºpOutBufçš„é•¿åº¦æ˜¯8byteçš„å€æ•°,è‡³å°‘åº”é¢„ç•™nInBufLen+17;
 */
-/*TEA¼ÓÃÜËã·¨,CBCÄ£Ê½*/
-/*ÃÜÎÄ¸ñÊ½:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
+/*TEAåŠ å¯†ç®—æ³•,CBCæ¨¡å¼*/
+/*å¯†æ–‡æ ¼å¼:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
 void oi_symmetry_encrypt(const BYTE* pInBuf, int nInBufLen, const BYTE* pKey, BYTE* pOutBuf, int *pOutBufLen);
 
-/*pKeyÎª16byte*/
+/*pKeyä¸º16byte*/
 /*
-	ÊäÈë:pInBufÎªÃÜÎÄ¸ñÊ½,nInBufLenÎªpInBufµÄ³¤¶ÈÊÇ8byteµÄ±¶Êı; *pOutBufLenÎª½ÓÊÕ»º³åÇøµÄ³¤¶È
-		ÌØ±ğ×¢Òâ*pOutBufLenÓ¦Ô¤ÖÃ½ÓÊÕ»º³åÇøµÄ³¤¶È!
-	Êä³ö:pOutBufÎªÃ÷ÎÄ(Body),pOutBufLenÎªpOutBufµÄ³¤¶È,ÖÁÉÙÓ¦Ô¤ÁônInBufLen-10;
-	·µ»ØÖµ:Èç¹û¸ñÊ½ÕıÈ··µ»ØTRUE;
+	è¾“å…¥:pInBufä¸ºå¯†æ–‡æ ¼å¼,nInBufLenä¸ºpInBufçš„é•¿åº¦æ˜¯8byteçš„å€æ•°; *pOutBufLenä¸ºæ¥æ”¶ç¼“å†²åŒºçš„é•¿åº¦
+		ç‰¹åˆ«æ³¨æ„*pOutBufLenåº”é¢„ç½®æ¥æ”¶ç¼“å†²åŒºçš„é•¿åº¦!
+	è¾“å‡º:pOutBufä¸ºæ˜æ–‡(Body),pOutBufLenä¸ºpOutBufçš„é•¿åº¦,è‡³å°‘åº”é¢„ç•™nInBufLen-10;
+	è¿”å›å€¼:å¦‚æœæ ¼å¼æ­£ç¡®è¿”å›TRUE;
 */
-/*TEA½âÃÜËã·¨,CBCÄ£Ê½*/
-/*ÃÜÎÄ¸ñÊ½:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
+/*TEAè§£å¯†ç®—æ³•,CBCæ¨¡å¼*/
+/*å¯†æ–‡æ ¼å¼:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
 BOOL oi_symmetry_decrypt(const BYTE* pInBuf, int nInBufLen, const BYTE* pKey, BYTE* pOutBuf, int *pOutBufLen);
 
 
@@ -116,39 +116,43 @@ BOOL oi_symmetry_decrypt(const BYTE* pInBuf, int nInBufLen, const BYTE* pKey, BY
 
 
 /************************************************************************************************
-	¶Ô³Æ¼ÓÃÜµÚ¶ş´úº¯Êı
+	å¯¹ç§°åŠ å¯†ç¬¬äºŒä»£å‡½æ•°
 ************************************************************************************************/
 
-/*pKeyÎª16byte*/
+/*pKeyä¸º16byte*/
 /*
-	ÊäÈë:nInBufLenÎªĞè¼ÓÃÜµÄÃ÷ÎÄ²¿·Ö(Body)³¤¶È;
-	Êä³ö:·µ»ØÎª¼ÓÃÜºóµÄ³¤¶È(ÊÇ8byteµÄ±¶Êı);
+	è¾“å…¥:nInBufLenä¸ºéœ€åŠ å¯†çš„æ˜æ–‡éƒ¨åˆ†(Body)é•¿åº¦;
+	è¾“å‡º:è¿”å›ä¸ºåŠ å¯†åçš„é•¿åº¦(æ˜¯8byteçš„å€æ•°);
 */
-/*TEA¼ÓÃÜËã·¨,CBCÄ£Ê½*/
-/*ÃÜÎÄ¸ñÊ½:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
+/*TEAåŠ å¯†ç®—æ³•,CBCæ¨¡å¼*/
+/*å¯†æ–‡æ ¼å¼:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
 int oi_symmetry_encrypt2_len(int nInBufLen);
 
 
-/*pKeyÎª16byte*/
+/*pKeyä¸º16byte*/
 /*
-	ÊäÈë:pInBufÎªĞè¼ÓÃÜµÄÃ÷ÎÄ²¿·Ö(Body),nInBufLenÎªpInBuf³¤¶È;
-	Êä³ö:pOutBufÎªÃÜÎÄ¸ñÊ½,pOutBufLenÎªpOutBufµÄ³¤¶ÈÊÇ8byteµÄ±¶Êı,ÖÁÉÙÓ¦Ô¤ÁônInBufLen+17;
+	è¾“å…¥:pInBufä¸ºéœ€åŠ å¯†çš„æ˜æ–‡éƒ¨åˆ†(Body),nInBufLenä¸ºpInBufé•¿åº¦;
+	è¾“å‡º:pOutBufä¸ºå¯†æ–‡æ ¼å¼,pOutBufLenä¸ºpOutBufçš„é•¿åº¦æ˜¯8byteçš„å€æ•°,è‡³å°‘åº”é¢„ç•™nInBufLen+17;
 */
-/*TEA¼ÓÃÜËã·¨,CBCÄ£Ê½*/
-/*ÃÜÎÄ¸ñÊ½:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
+/*TEAåŠ å¯†ç®—æ³•,CBCæ¨¡å¼*/
+/*å¯†æ–‡æ ¼å¼:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
 void oi_symmetry_encrypt2(const BYTE* pInBuf, int nInBufLen, const BYTE* pKey, BYTE* pOutBuf, int *pOutBufLen);
 
 
 
-/*pKeyÎª16byte*/
+/*pKeyä¸º16byte*/
 /*
-	ÊäÈë:pInBufÎªÃÜÎÄ¸ñÊ½,nInBufLenÎªpInBufµÄ³¤¶ÈÊÇ8byteµÄ±¶Êı; *pOutBufLenÎª½ÓÊÕ»º³åÇøµÄ³¤¶È
-		ÌØ±ğ×¢Òâ*pOutBufLenÓ¦Ô¤ÖÃ½ÓÊÕ»º³åÇøµÄ³¤¶È!
-	Êä³ö:pOutBufÎªÃ÷ÎÄ(Body),pOutBufLenÎªpOutBufµÄ³¤¶È,ÖÁÉÙÓ¦Ô¤ÁônInBufLen-10;
-	·µ»ØÖµ:Èç¹û¸ñÊ½ÕıÈ··µ»ØTRUE;
+	è¾“å…¥:pInBufä¸ºå¯†æ–‡æ ¼å¼,nInBufLenä¸ºpInBufçš„é•¿åº¦æ˜¯8byteçš„å€æ•°; *pOutBufLenä¸ºæ¥æ”¶ç¼“å†²åŒºçš„é•¿åº¦
+		ç‰¹åˆ«æ³¨æ„*pOutBufLenåº”é¢„ç½®æ¥æ”¶ç¼“å†²åŒºçš„é•¿åº¦!
+	è¾“å‡º:pOutBufä¸ºæ˜æ–‡(Body),pOutBufLenä¸ºpOutBufçš„é•¿åº¦,è‡³å°‘åº”é¢„ç•™nInBufLen-10;
+	è¿”å›å€¼:å¦‚æœæ ¼å¼æ­£ç¡®è¿”å›TRUE;
 */
-/*TEA½âÃÜËã·¨,CBCÄ£Ê½*/
-/*ÃÜÎÄ¸ñÊ½:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
+/*TEAè§£å¯†ç®—æ³•,CBCæ¨¡å¼*/
+/*å¯†æ–‡æ ¼å¼:PadLen(1byte)+Padding(var,0-7byte)+Salt(2byte)+Body(var byte)+Zero(7byte)*/
 BOOL oi_symmetry_decrypt2(const BYTE* pInBuf, int nInBufLen, const BYTE* pKey, BYTE* pOutBuf, int *pOutBufLen);
 
 #endif // #ifndef _INCLUDED_OICQCRYPT_H_
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

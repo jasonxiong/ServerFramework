@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file TimeUtility.hpp
 *@author jasonxiong
 *@date 2009-11-23
 *@version 1.0
-*@brief TimeÏà¹Øº¯Êı·â×°Àà
+*@brief Timeç›¸å…³å‡½æ•°å°è£…ç±»
 *
 *
 */
@@ -11,13 +11,13 @@
 #ifndef __TIME_UTIL_HPP__
 #define __TIME_UTIL_HPP__
 
-//ÔÚÕâÌí¼Ó±ê×¼¿âÍ·ÎÄ¼ş
+//åœ¨è¿™æ·»åŠ æ ‡å‡†åº“å¤´æ–‡ä»¶
 #include <time.h>
 #include <sys/time.h>
 #include "TimeValue.hpp"
 
 const int SECOND_IN_ONE_MIN = 60;
-const int SECONDS_IN_ONE_HOUR = 60 *60;// Ò»ÌìµÄÃëÊı
+const int SECONDS_IN_ONE_HOUR = 60 *60;// ä¸€å¤©çš„ç§’æ•°
 const int HOURS_IN_ONE_DAY = 24;
 
 const int SECONDS_IN_ONE_DAY = 24 * 60 * 60;
@@ -39,80 +39,80 @@ public:
     ~CTimeUtility() {}
 
 public:
-    //!»ñÈ¡µ±Ç°Ê±¼ä
+    //!è·å–å½“å‰æ—¶é—´
     static time_t GetNowTime()
     {
         return time(NULL);
     }
-    //!½«ÓÃtTime±íÊ¾µÄÊ±¼ä×ª»»³ÉÓÃ"%Y-%m-%d %H-%M-%S"±íÊ¾
+    //!å°†ç”¨tTimeè¡¨ç¤ºçš„æ—¶é—´è½¬æ¢æˆç”¨"%Y-%m-%d %H-%M-%S"è¡¨ç¤º
     static int ConvertUnixTimeToTimeString(time_t tTime, char* szTimeString);
-    //!½«ÓÃtTime±íÊ¾µÄÊ±¼ä×ª»»³ÉÓÃ"%Y-%m-%d"±íÊ¾
+    //!å°†ç”¨tTimeè¡¨ç¤ºçš„æ—¶é—´è½¬æ¢æˆç”¨"%Y-%m-%d"è¡¨ç¤º
     static int ConvertUnixTimeToDateString(time_t tTime, char* szDateString);
-    //!½«ÓÃtTime±íÊ¾µÄÊ±¼ä×ª»»³ÉÓÃ"%Y-%m"±íÊ¾
+    //!å°†ç”¨tTimeè¡¨ç¤ºçš„æ—¶é—´è½¬æ¢æˆç”¨"%Y-%m"è¡¨ç¤º
     static int ConvertUinxTimeToMonthString(time_t tTime, char* szMonthString);
-    //!½«ÓÃ"%Y-%m-%d %H-%M-%S"±íÊ¾µÄÊ±¼ä×ª»»³ÉUnixTime
+    //!å°†ç”¨"%Y-%m-%d %H-%M-%S"è¡¨ç¤ºçš„æ—¶é—´è½¬æ¢æˆUnixTime
     static int ConvertTimeStringToUnixTime(char* szTimeString, time_t& rtTime);
-    //!½«ÓÃ"%Y-%m-%d %H-%M-%S"±íÊ¾µÄÊ±¼ä×ª»»³Étm±íÊ¾µÄ½á¹¹
+    //!å°†ç”¨"%Y-%m-%d %H-%M-%S"è¡¨ç¤ºçš„æ—¶é—´è½¬æ¢æˆtmè¡¨ç¤ºçš„ç»“æ„
     static int ConvertTimeStringToTmStruct(char* szTimeString, struct tm& rstTM);
-    //!½«ÓÃtTime±íÊ¾µÄÊ±¼ä×ª»»³ÉÄ³Ò»ÄêÖ®ºóµÄÄ³Ò»Ìì
+    //!å°†ç”¨tTimeè¡¨ç¤ºçš„æ—¶é—´è½¬æ¢æˆæŸä¸€å¹´ä¹‹åçš„æŸä¸€å¤©
     static int ConvertUnixTimeToDaysAfterYear(time_t tTime, int iYear, unsigned short& rushDays);
     //!tvResult = tvA + tvB
     static int TimeValPlus(const timeval& tvA, const timeval& tvB, timeval& tvResult);
     //!tvResult = tvA - tvB
     static int TimeValMinus(const timeval& tvA, const timeval& tvB, timeval& tvResult);
 
-    // »ñÈ¡tTimeÊÇÒ»ÖÜµÄµÚ¼¸Ìì
-    // ·µ»ØÖµ: ÖÜÒ»(1) - ÖÜÈÕ(7)
+    // è·å–tTimeæ˜¯ä¸€å‘¨çš„ç¬¬å‡ å¤©
+    // è¿”å›å€¼: å‘¨ä¸€(1) - å‘¨æ—¥(7)
     static int GetWeekDay(time_t tTime);
 
-    // »ñÈ¡µ±ÌìÖ¸¶¨µÄÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // iTimeSeconds: ´Ó0µã¿ªÊ¼µÄÃëÊı, Ä¬ÈÏÎª0, ¼´0µã
+    // è·å–å½“å¤©æŒ‡å®šçš„æ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // iTimeSeconds: ä»0ç‚¹å¼€å§‹çš„ç§’æ•°, é»˜è®¤ä¸º0, å³0ç‚¹
     static time_t GetTodayTime(time_t tTime, int iTimeSeconds = 0);
 
-    // »ñÈ¡±¾ÖÜÖ¸¶¨µÄÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // iWeekDay: ÖÜÒ»(1) - ÖÜÈÕ(7)
-    // iDaySeconds: iWeekDayµÄ´Ó0µã¿ªÊ¼µÄÃëÊı
+    // è·å–æœ¬å‘¨æŒ‡å®šçš„æ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // iWeekDay: å‘¨ä¸€(1) - å‘¨æ—¥(7)
+    // iDaySeconds: iWeekDayçš„ä»0ç‚¹å¼€å§‹çš„ç§’æ•°
     static time_t GetWeekTime(time_t tTime, int iWeekDay, int iDaySeconds);
 
-    // »ñµÃÖ¸¶¨iHourµÄÉÏÒ»¸öÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // Èç¹ûµ±Ç°Ê±¼äĞ¡ÓÚiHour Ôò·µ»ØÇ°Ò»ÌìµÄiHour¶ÔÓ¦µÄtime
-    // ·ñÔò·µ»Øµ±Ìì iHour¶ÔÓ¦µÄtime
+    // è·å¾—æŒ‡å®šiHourçš„ä¸Šä¸€ä¸ªæ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // å¦‚æœå½“å‰æ—¶é—´å°äºiHour åˆ™è¿”å›å‰ä¸€å¤©çš„iHourå¯¹åº”çš„time
+    // å¦åˆ™è¿”å›å½“å¤© iHourå¯¹åº”çš„time
     static int GetLastNearestHourTime(time_t tTime, int iHour);
 
-    // »ñµÃÖ¸¶¨iHourµÄÏÂÒ»¸öÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // Èç¹ûµ±Ç°Ê±¼äĞ¡ÓÚ iHour Ôò·µ»Øµ±ÌìµÄiHour¶ÔÓ¦µÄtime
-    // ·ñÔò·µ»ØÏÂÒ»Ìì iHour¶ÔÓ¦µÄtime
+    // è·å¾—æŒ‡å®šiHourçš„ä¸‹ä¸€ä¸ªæ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // å¦‚æœå½“å‰æ—¶é—´å°äº iHour åˆ™è¿”å›å½“å¤©çš„iHourå¯¹åº”çš„time
+    // å¦åˆ™è¿”å›ä¸‹ä¸€å¤© iHourå¯¹åº”çš„time
     static int GetNextNearestHourTime(time_t tTime, int iHour);
 
-    //»ñµÃÖ¸¶¨iHourµÄÏÂÒ»¸öÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // Èç¹ûµ±Ç°Ê±¼äĞ¡ÓÚ iSec Ôò·µ»Øµ±ÌìµÄiSec¶ÔÓ¦µÄtime
-    // ·ñÔò·µ»ØÏÂÒ»Ìì iSec¶ÔÓ¦µÄtime
+    //è·å¾—æŒ‡å®šiHourçš„ä¸‹ä¸€ä¸ªæ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // å¦‚æœå½“å‰æ—¶é—´å°äº iSec åˆ™è¿”å›å½“å¤©çš„iSecå¯¹åº”çš„time
+    // å¦åˆ™è¿”å›ä¸‹ä¸€å¤© iSecå¯¹åº”çš„time
     static int GetNextNearestSecTime(time_t tTime, int iSec);
 
-    // »ñµÃÖ¸¶¨iHourµÄÏÂ¼¸¸öÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // Èç¹ûµ±Ç°Ê±¼äĞ¡ÓÚ iHour Ôò·µ»Øµ±ÌìµÄiHour¶ÔÓ¦µÄtime
-    // ·ñÔò·µ»ØÏÂÒ»Ìì iHour¶ÔÓ¦µÄtime
+    // è·å¾—æŒ‡å®šiHourçš„ä¸‹å‡ ä¸ªæ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // å¦‚æœå½“å‰æ—¶é—´å°äº iHour åˆ™è¿”å›å½“å¤©çš„iHourå¯¹åº”çš„time
+    // å¦åˆ™è¿”å›ä¸‹ä¸€å¤© iHourå¯¹åº”çš„time
     static int GetNextNearestMutiHourTimes(time_t tTime, const MultiHours* pstMultiHours);
 
-    // »ñµÃÖ¸¶¨Ê±¼äµÄÉÏÒ»ÖÜÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // iWeekDay: ÖÜÒ»(1) - ÖÜÈÕ(7)
-    // iDaySeconds: iWeekDayµÄ´Ó0µã¿ªÊ¼µÄÃëÊı
+    // è·å¾—æŒ‡å®šæ—¶é—´çš„ä¸Šä¸€å‘¨æ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // iWeekDay: å‘¨ä¸€(1) - å‘¨æ—¥(7)
+    // iDaySeconds: iWeekDayçš„ä»0ç‚¹å¼€å§‹çš„ç§’æ•°
     static int GetLastNearestWeekTime(time_t tTime, int iWeekDay, int iDaySeconds);
 
-    // »ñµÃÖ¸¶¨Ê±¼äµÄÏÂÒ»ÖÜÊ±¼äµã
-    // tTime: µ±Ç°Ê±¼äµã
-    // iWeekDay: ÖÜÒ»(1) - ÖÜÈÕ(7)
-    // iDaySeconds: iWeekDayµÄ´Ó0µã¿ªÊ¼µÄÃëÊı
+    // è·å¾—æŒ‡å®šæ—¶é—´çš„ä¸‹ä¸€å‘¨æ—¶é—´ç‚¹
+    // tTime: å½“å‰æ—¶é—´ç‚¹
+    // iWeekDay: å‘¨ä¸€(1) - å‘¨æ—¥(7)
+    // iDaySeconds: iWeekDayçš„ä»0ç‚¹å¼€å§‹çš„ç§’æ•°
     static int GetNextNearestWeekTime(time_t tTime, int iWeekDay, int iDaySeconds);
 
-    // ·µ»ØÄêÔÂÈÕ£¬Ê±·ÖÃë£¬ĞÇÆÚ
+    // è¿”å›å¹´æœˆæ—¥ï¼Œæ—¶åˆ†ç§’ï¼Œæ˜ŸæœŸ
     static int GetTimeOfDay(time_t tTime,
                             int* iYear = NULL,
                             int* iMon = NULL,
@@ -123,44 +123,44 @@ public:
                             int* iWeekDay = NULL);
 
     /*
-     *Èç¹ûtTime > year..sec return 1
+     *å¦‚æœtTime > year..sec return 1
      *tTime < year..sec return -1
      *tTime == year..sec return 0
      *
-     *×¢ÒâiHour[0-23]
+     *æ³¨æ„iHour[0-23]
      */
     static int CompareDateTime(time_t tTime, int iYear, int iMonth, int iDay, int iHour, int iMin, int iSec);
 
     /*
-    *Èç¹ûtTime > year..sec return 1
+    *å¦‚æœtTime > year..sec return 1
     *tTime < year..sec return -1
     *tTime == year..sec return 0
     *
-    *×¢ÒâiHour[0-23]
+    *æ³¨æ„iHour[0-23]
     */
     static int CompareTime(time_t tTime, int iHour, int iMin, int iSec);
 
-    /* ÊÇ·ñÊÇÍ¬Ò»¸öÔÂ */
+    /* æ˜¯å¦æ˜¯åŒä¸€ä¸ªæœˆ */
     static bool IsInSameMonth(time_t tTime1, time_t tTime2);
 
-    /* ÊÇ·ñÊÇÍ¬Ò»Äê */
+    /* æ˜¯å¦æ˜¯åŒä¸€å¹´ */
     static bool IsInSameYear(time_t tTime1, time_t tTime2);
 
     static time_t MakeTime(int iYear, int iMonth, int iDay, int iHour, int iMin, int iSec);
 
-    // ÊÇ·ñÊÇÍ¬Ò»Ìì
+    // æ˜¯å¦æ˜¯åŒä¸€å¤©
     static bool IsInSameDay(time_t tTime1, time_t tTime2);
 
-    //ÊÇ·ñÔÚÍ¬Ò»ÖÜ
+    //æ˜¯å¦åœ¨åŒä¸€å‘¨
     static bool IsInSameWeek(time_t tTime1, time_t tTime2);
 
-    //»ñÈ¡ÏÂÒ»Ìì0µãµÄÊ±¼ä
+    //è·å–ä¸‹ä¸€å¤©0ç‚¹çš„æ—¶é—´
     static time_t GetNextDayBeginTime();
 public:
-    //±£´ætick¿ªÊ¼µÄtimevalue
+    //ä¿å­˜tickå¼€å§‹çš„timevalue
     static CTimeValue m_stTimeValueTick;
 
-    //±£´ætick¿ªÊ¼µÄtime
+    //ä¿å­˜tickå¼€å§‹çš„time
     static time_t m_uiTimeTick;
 
 };
@@ -168,3 +168,7 @@ public:
 
 #endif //__TIME_UTIL_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

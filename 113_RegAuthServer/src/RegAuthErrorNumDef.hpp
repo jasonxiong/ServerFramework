@@ -1,23 +1,27 @@
-#ifndef __REGAUTH_ERROR_NUM_DEF_HPP__
+ï»¿#ifndef __REGAUTH_ERROR_NUM_DEF_HPP__
 #define __REGAUTH_ERROR_NUM_DEF_HPP__
 
 #include "ErrorNumDef.hpp"
 
 enum EN_REGAUTH_MODULE_DEF
 {
-    EN_REGAUTH_MODULE_COMMON = 0x001,               //Í¨ÓÃÄ£¿é´íÎóÂë
+    EN_REGAUTH_MODULE_COMMON = 0x001,               //é€šç”¨æ¨¡å—é”™è¯¯ç 
 };
 
 #define TREGAUTH_COMMON_BASE MAKE_ERRNO(EN_SERVER_REGAUTH, EN_REGAUTH_MODULE_COMMON, 0)
 enum REGAUTH_SYSTEM_ERR_DEF
 {
-    T_REGAUTH_SYSTEM_PARA_ERR        = TREGAUTH_COMMON_BASE + 0x01,        //²ÎÊý´íÎó
-    T_REGAUTH_SERVER_BUSY            = TREGAUTH_COMMON_BASE + 0x02,      //RegAuth·þÎñÆ÷Ã¦
+    T_REGAUTH_SYSTEM_PARA_ERR        = TREGAUTH_COMMON_BASE + 0x01,        //å‚æ•°é”™è¯¯
+    T_REGAUTH_SERVER_BUSY            = TREGAUTH_COMMON_BASE + 0x02,      //RegAuthæœåŠ¡å™¨å¿™
 
-    T_REGAUTH_ACCOUNT_EXISTS         = TREGAUTH_COMMON_BASE + 0x03,      //ÕÊºÅÒÑ¾­´æÔÚ
-    T_REGAUTH_PASSWD_ERROR           = TREGAUTH_COMMON_BASE + 0x04,      //ÕÊºÅÃÜÂë´íÎó
+    T_REGAUTH_ACCOUNT_EXISTS         = TREGAUTH_COMMON_BASE + 0x03,      //å¸å·å·²ç»å­˜åœ¨
+    T_REGAUTH_PASSWD_ERROR           = TREGAUTH_COMMON_BASE + 0x04,      //å¸å·å¯†ç é”™è¯¯
 
-    T_REGAUTH_INVALID_OPTYPE         = TREGAUTH_COMMON_BASE + 0x05,      //·Ç·¨µÄ²Ù×÷ÀàÐÍ
+    T_REGAUTH_INVALID_OPTYPE         = TREGAUTH_COMMON_BASE + 0x05,      //éžæ³•çš„æ“ä½œç±»åž‹
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 
 #include "StringUtility.hpp"
 #include "ErrorNumDef.hpp"
@@ -25,7 +25,7 @@ void SessionKeyUtilityUnitTest::TearDown()
 
 TEST_F(SessionKeyUtilityUnitTest, GenerateTest)
 {
-    //Éú³ÉSession Key
+    //ç”ŸæˆSession Key
     m_iSessionKeyLen = sizeof(m_szSessionKey)-1;
 
     static char szOriginalString[256] = "NewGameServer";
@@ -38,7 +38,7 @@ TEST_F(SessionKeyUtilityUnitTest, GenerateTest)
 
 TEST_F(SessionKeyUtilityUnitTest, DecryptTest)
 {
-    //Éú³ÉSession Key
+    //ç”ŸæˆSession Key
     m_iSessionKeyLen = sizeof(m_szSessionKey)-1;
 
     static char szOriginalString[256] = "NewGameServer";
@@ -46,7 +46,7 @@ TEST_F(SessionKeyUtilityUnitTest, DecryptTest)
     int iRet = CSessionKeyUtility::GenerateSessionKey(szOriginalString, strlen(szOriginalString), m_szSessionKey, m_iSessionKeyLen);
     EXPECT_EQ(T_SERVER_SUCESS, iRet);
 
-    //½âÂëÉú³ÉµÄSessionKey
+    //è§£ç ç”Ÿæˆçš„SessionKey
     printf("Encrypt Session key: %s, len %d\n", m_szSessionKey, m_iSessionKeyLen);
 
     iRet = CSessionKeyUtility::DecryptSessionKey(m_szSessionKey, m_iSessionKeyLen, szOriginalString, iOriginalBuffLen);
@@ -80,3 +80,7 @@ TEST_F(SessionKeyUtilityUnitTest, PasswordEncryptTest)
 
     return; 
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __TEMPLATE_CONFIG_MANAGER_HPP__
 #define __TEMPLATE_CONFIG_MANAGER_HPP__
 
@@ -7,7 +7,7 @@
 
 using namespace GameConfig;
 
-//ÅäÖÃ¹ÜÀíÆ÷Ä£°æ
+//é…ç½®ç®¡ç†å™¨æ¨¡ç‰ˆ
 template <class TSERVERCONFIG, int MAX_TEMPLATE_CONFIG_NUM, const char CONFIG_FILE_NAME[]>
 class CTemplateConfigManager
 {
@@ -33,7 +33,7 @@ public:
             return iRet;
         }
 
-        //ÅÅĞò
+        //æ’åº
         qsort(m_astServerConfig, m_iConfigNum, sizeof(TSERVERCONFIG), cmp_one_key(TSERVERCONFIG, iConfigID));
 
         return 0;
@@ -54,11 +54,15 @@ public:
 
 private:
    
-    //Ä£°æ¹ÜÀíÆ÷Êµ¼ÊµÄÅäÖÃÊıÁ¿
+    //æ¨¡ç‰ˆç®¡ç†å™¨å®é™…çš„é…ç½®æ•°é‡
     int m_iConfigNum;
 
-    //Êµ¼ÊµÄÄÚÈİÅäÖÃ
+    //å®é™…çš„å†…å®¹é…ç½®
     TSERVERCONFIG m_astServerConfig[MAX_TEMPLATE_CONFIG_NUM];
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

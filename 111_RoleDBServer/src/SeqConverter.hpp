@@ -1,19 +1,23 @@
-#ifndef __SEQ_CONVERTER_HPP__
+ï»¿#ifndef __SEQ_CONVERTER_HPP__
 #define __SEQ_CONVERTER_HPP__
 
 #define DAY_BASE 100000
 #define WORLD_BASE 10
 
-// Éú³ÉÒ»¸öDBSeq£¬DBSeq = 100000 * unCreatedTime + 10 * nWorldID + nCacheSeq
+// ç”Ÿæˆä¸€ä¸ªDBSeqï¼ŒDBSeq = 100000 * unCreatedTime + 10 * nWorldID + nCacheSeq
 unsigned int GenerateDBSeq(const unsigned short unCreatedTime,
                            const short nWorldID, const short nCacheSeq);
-// ·µ»ØDBSeqÖĞµÄCacheSeqµÄÖµ
+// è¿”å›DBSeqä¸­çš„CacheSeqçš„å€¼
 short DBSeqToCacheSeq(const unsigned int uiDBSeq);
-// ·µ»ØDBSeqÖĞµÄWorldIDµÄÖµ
+// è¿”å›DBSeqä¸­çš„WorldIDçš„å€¼
 short DBSeqToWorldID(const unsigned int uiDBSeq);
-// ·µ»ØDBSeqÖĞµÄCreatedTimeµÄÖµ£¬Ëü±íÊ¾×Ô2011-1-1ÆğµÄÌìÊı
+// è¿”å›DBSeqä¸­çš„CreatedTimeçš„å€¼ï¼Œå®ƒè¡¨ç¤ºè‡ª2011-1-1èµ·çš„å¤©æ•°
 unsigned short DBSeqToCreatedTime(const unsigned int uiDBSeq);
-// ¼ì²éDBSeqµÄÈı¸ö×é³É²¿·ÖÊÇ·ñ¶¼ÔÚºÏ·¨·¶Î§ÄÚ
+// æ£€æŸ¥DBSeqçš„ä¸‰ä¸ªç»„æˆéƒ¨åˆ†æ˜¯å¦éƒ½åœ¨åˆæ³•èŒƒå›´å†…
 int CheckDBSeq(const unsigned int uiDBSeq);
 
 #endif // __SEQ_CONVERTER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

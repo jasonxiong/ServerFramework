@@ -1,4 +1,4 @@
-/**
+ï»¿/**
 *@file HashMap_KString.hpp
 *@author
 *@date
@@ -30,8 +30,8 @@ namespace ServerLib
 
 typedef enum enmHashNodeStatus
 {
-    EHNS_KSTRING_FREE = 0, //!<Hash½ÚµãÎ´Ê¹ÓÃ
-    EHNS_KSTRING_USED = 1, //!<Hash½ÚµãÒÑÊ¹ÓÃ
+    EHNS_KSTRING_FREE = 0, //!<HashèŠ‚ç‚¹æœªä½¿ç”¨
+    EHNS_KSTRING_USED = 1, //!<HashèŠ‚ç‚¹å·²ä½¿ç”¨
 } ENMHASHNODESTATUS;
 
 typedef struct tagDataString
@@ -73,10 +73,10 @@ class CHashMap_KString
 
     typedef struct tagHashMapNode_KSTRING
     {
-        TDataString m_stPriKey; //!<char[]ÀàĞÍµÄ½ÚµãÖ÷¼üÖµ£¬¸ù¾İÕâ¸öKey¼ÆËã³öHashÖµÀ´ÕÒµ½½Úµã
-        VALUE_TYPE m_iValue; //!<´æ·ÅÊı¾İ
-        int m_iIsNodeUsed; //!<½ÚµãÊÇ·ñÊ¹ÓÃ 1-Ê¹ÓÃ 0-Î´Ê¹ÓÃ
-        int m_iHashNext; //!<µ±HashÖµ³åÍ»Öµ£¬½«ĞÂ¼Ó½Úµã·ÅÔÚ½ÚµãºóÃæ£¬ĞÎ³É³åÍ»Á´
+        TDataString m_stPriKey; //!<char[]ç±»å‹çš„èŠ‚ç‚¹ä¸»é”®å€¼ï¼Œæ ¹æ®è¿™ä¸ªKeyè®¡ç®—å‡ºHashå€¼æ¥æ‰¾åˆ°èŠ‚ç‚¹
+        VALUE_TYPE m_iValue; //!<å­˜æ”¾æ•°æ®
+        int m_iIsNodeUsed; //!<èŠ‚ç‚¹æ˜¯å¦ä½¿ç”¨ 1-ä½¿ç”¨ 0-æœªä½¿ç”¨
+        int m_iHashNext; //!<å½“Hashå€¼å†²çªå€¼ï¼Œå°†æ–°åŠ èŠ‚ç‚¹æ”¾åœ¨èŠ‚ç‚¹åé¢ï¼Œå½¢æˆå†²çªé“¾
     } THashMapNode_KSTRING;
 
 public:
@@ -102,88 +102,88 @@ public:
 
 public:
 
-    //ÉèÖÃÏàÓ¦µÄÖ¸Õë
+    //è®¾ç½®ç›¸åº”çš„æŒ‡é’ˆ
     int AttachHashMap(char* pszMemoryAddress);
 
-    ////ÉèÖÃm_iUseFlag1
+    ////è®¾ç½®m_iUseFlag1
     //int SetUseFlagNW(const int iUseFlag);
 
-    ////»ñÈ¡m_iUseFlag1
+    ////è·å–m_iUseFlag1
     //int& GetUseFlagNW();
 
-    ////ÉèÖÃm_iUseFlag2
+    ////è®¾ç½®m_iUseFlag2
     //int SetUseFlagNR(const int iUseFlag);
 
-    ////»ñÈ¡m_iUseFlag2
+    ////è·å–m_iUseFlag2
     //int& GetUseFlagNR();
 
-    //!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡Êı¾İ£¬Ò»°ãÓÃÓÚ±éÀúÖĞ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–æ•°æ®ï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­ï¼Œè¿”å›å€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByIndex(const int iNodeIndex, VALUE_TYPE& riValue);
 
-    //!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡key£¬Ò»°ãÓÃÓÚ±éÀúÖĞ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–keyï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­ï¼Œè¿”å›å€¼0è¡¨ç¤ºæˆåŠŸ
     int GetKeyByIndex(const int iNodeIndex, TDataString& riHashMapKey);
 
-    //Á½¸öÓÃÓÚAssist¹¤¾ßµÄ¸¨Öúº¯Êı
-    //!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡Êı¾İ£¬Ò»°ãÓÃÓÚ±éÀúÖĞ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //ä¸¤ä¸ªç”¨äºAssistå·¥å…·çš„è¾…åŠ©å‡½æ•°
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–æ•°æ®ï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­ï¼Œè¿”å›å€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByIndexAssist(const int iNodeIndex, VALUE_TYPE& riValue);
 
-    //!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡key£¬Ò»°ãÓÃÓÚ±éÀúÖĞ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–keyï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­ï¼Œè¿”å›å€¼0è¡¨ç¤ºæˆåŠŸ
     int GetKeyByIndexAssist(const int iNodeIndex, TDataString& riHashMapKey);
 
 
 
 
-    //!Ö¸¶¨KeyÖµÀ´»ñÈ¡Êı¾İ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šKeyå€¼æ¥è·å–æ•°æ®ï¼Œè¿”å›å€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByKey(const TDataString stPriKey, VALUE_TYPE& riValue);
 
     VALUE_TYPE* GetValuePtrByKey(const TDataString stPriKey);
 
-    //!Çå³ı¶ÔÓ¦KeyµÄ½Úµã
+    //!æ¸…é™¤å¯¹åº”Keyçš„èŠ‚ç‚¹
     int DeleteByKey(const TDataString stPriKey, VALUE_TYPE& riValue);
 
-    //!Ö¸¶¨KeyÖµÀ´²åÈëÒ»¸öÊı¾İ£¨Èç¹ûÓĞÏàÍ¬KeyÖµµÄ½Úµã´æÔÚ£¬ÔòÊ§°Ü£©
+    //!æŒ‡å®šKeyå€¼æ¥æ’å…¥ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æœæœ‰ç›¸åŒKeyå€¼çš„èŠ‚ç‚¹å­˜åœ¨ï¼Œåˆ™å¤±è´¥ï¼‰
     int InsertValueByKey(const TDataString stPriKey, const VALUE_TYPE iValue);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üĞÂÒ»¸öÊı¾İ£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊı¾İÔò²»×öÈÎºÎÊÂ£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æœæœªå‘ç°è¯¥Keyå€¼çš„æ•°æ®åˆ™ä¸åšä»»ä½•äº‹ï¼‰
     int UpdateValueByKey(const TDataString stPriKey, const VALUE_TYPE iValue);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üĞÂÒ»¸öÊı¾İ£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊı¾İÔò²åÈëÒ»¸öÊı¾İ£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æœæœªå‘ç°è¯¥Keyå€¼çš„æ•°æ®åˆ™æ’å…¥ä¸€ä¸ªæ•°æ®ï¼‰
     int ReplaceValueByKey(const TDataString stPriKey, const VALUE_TYPE iValue);
 
-    //!»ñÈ¡ÒÑÓÃ½Úµã¸öÊı
+    //!è·å–å·²ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetUsedNodeNumber() const
     {
         return m_iUsedNodeNumber;
     }
 
-    //!»ñÈ¡¿ÉÓÃ½Úµã¸öÊı
+    //!è·å–å¯ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetFreeNodeNumber() const
     {
         return m_iNodeNumber - m_iUsedNodeNumber;
     }
 
-    //!»ñÈ¡×Ü¹²µÄ½Úµã¸öÊı
+    //!è·å–æ€»å…±çš„èŠ‚ç‚¹ä¸ªæ•°
     int GetNodeSize() const
     {
         return m_iNodeNumber;
     }
 
-    //!Çå³ıËùÓĞ½Úµã
+    //!æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
     int EraseAll();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!½«Êı¾İKeyÖµÍ¨¹ıHash×ª»»³ÉË÷Òı
+    //!å°†æ•°æ®Keyå€¼é€šè¿‡Hashè½¬æ¢æˆç´¢å¼•
     int HashKeyToIndex(const TDataString stPriKey) const;
 
     int BKDRHash(const char* szStr,int iStrLength) const;
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
@@ -192,18 +192,18 @@ private:
 private:
     int m_iNodeNumber;
 
-    //int m_iUseFlagNW;//±ê¼Ç¸ÃHashMapÊÇ·ñ±»±¸·İ¹¤¾ßÕ¼ÓÃÖĞ£¬ÆäÖµ²Î¼ûENMHASHUSEFLAG£¬¸Ã±ê¼ÇNameServerÖ»ÄÜĞ´
-    //int m_iUseFlagNR;//±ê¼Ç¸ÃHashMapÊÇ·ñ±»±¸·İ¹¤¾ßÕ¼ÓÃÖĞ£¬ÆäÖµ²Î¼ûENMHASHUSEFLAG£¬¸Ã±ê¼ÇNameServerÖ»ÄÜ¶Á
+    //int m_iUseFlagNW;//æ ‡è®°è¯¥HashMapæ˜¯å¦è¢«å¤‡ä»½å·¥å…·å ç”¨ä¸­ï¼Œå…¶å€¼å‚è§ENMHASHUSEFLAGï¼Œè¯¥æ ‡è®°NameServeråªèƒ½å†™
+    //int m_iUseFlagNR;//æ ‡è®°è¯¥HashMapæ˜¯å¦è¢«å¤‡ä»½å·¥å…·å ç”¨ä¸­ï¼Œå…¶å€¼å‚è§ENMHASHUSEFLAGï¼Œè¯¥æ ‡è®°NameServeråªèƒ½è¯»
 
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iUsedNodeNumber; //!<ÒÑ¾­Ê¹ÓÃµÄ½Úµã¸öÊı
-    int m_iFirstFreeIndex; //!<¿ÕÏĞÁ´±íÍ·½Úµã
-    THashMapNode_KSTRING* m_pastHashNode; //!<ËùÓĞ´æ·ÅµÄÊı¾İ½Úµã
-    int* m_paiHashFirstIndex; //!<Í¨¹ıKeyÀ´Hash¼ÆËã³öµÄ³åÍ»Á´±íµÄÍ·½ÚµãË÷Òı
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iUsedNodeNumber; //!<å·²ç»ä½¿ç”¨çš„èŠ‚ç‚¹ä¸ªæ•°
+    int m_iFirstFreeIndex; //!<ç©ºé—²é“¾è¡¨å¤´èŠ‚ç‚¹
+    THashMapNode_KSTRING* m_pastHashNode; //!<æ‰€æœ‰å­˜æ”¾çš„æ•°æ®èŠ‚ç‚¹
+    int* m_paiHashFirstIndex; //!<é€šè¿‡Keyæ¥Hashè®¡ç®—å‡ºçš„å†²çªé“¾è¡¨çš„å¤´èŠ‚ç‚¹ç´¢å¼•
 
-    //¶ÁHashMapµÄ¸¨ÖúÖ¸Õë
-    THashMapNode_KSTRING* m_pastHashNodeAssist; //!<ËùÓĞ´æ·ÅµÄÊı¾İ½Úµã
-    int* m_paiHashFirstIndexAssist; //!<Í¨¹ıKeyÀ´Hash¼ÆËã³öµÄ³åÍ»Á´±íµÄÍ·½ÚµãË÷Òı
+    //è¯»HashMapçš„è¾…åŠ©æŒ‡é’ˆ
+    THashMapNode_KSTRING* m_pastHashNodeAssist; //!<æ‰€æœ‰å­˜æ”¾çš„æ•°æ®èŠ‚ç‚¹
+    int* m_paiHashFirstIndexAssist; //!<é€šè¿‡Keyæ¥Hashè®¡ç®—å‡ºçš„å†²çªé“¾è¡¨çš„å¤´èŠ‚ç‚¹ç´¢å¼•
 
 };
 
@@ -236,7 +236,7 @@ int CHashMap_KString<VALUE_TYPE>::AttachHashMap(char* pszMemoryAddress)
     return 0;
 }
 
-////ÉèÖÃm_iUseFlagNW
+////è®¾ç½®m_iUseFlagNW
 //template <typename VALUE_TYPE>
 //int CHashMap_KString<VALUE_TYPE>::SetUseFlagNW(const int iUseFlag)
 //{
@@ -244,14 +244,14 @@ int CHashMap_KString<VALUE_TYPE>::AttachHashMap(char* pszMemoryAddress)
 //	return 0;
 //}
 
-////»ñÈ¡m_iUseFlagNW
+////è·å–m_iUseFlagNW
 //template <typename VALUE_TYPE>
 //int& CHashMap_KString<VALUE_TYPE>::GetUseFlagNW()
 //{
 //	return m_iUseFlagNW;
 //}
 
-////ÉèÖÃm_iUseFlagNR
+////è®¾ç½®m_iUseFlagNR
 //template <typename VALUE_TYPE>
 //int CHashMap_KString<VALUE_TYPE>::SetUseFlagNR(const int iUseFlag)
 //{
@@ -259,7 +259,7 @@ int CHashMap_KString<VALUE_TYPE>::AttachHashMap(char* pszMemoryAddress)
 //	return 0;
 //}
 
-////»ñÈ¡m_iUseFlagNR
+////è·å–m_iUseFlagNR
 //template <typename VALUE_TYPE>
 //int& CHashMap_KString<VALUE_TYPE>::GetUseFlagNR()
 //{
@@ -284,8 +284,8 @@ CHashMap_KString<VALUE_TYPE>::CHashMap_KString(int iNodeNumber)
 {
     __ASSERT_AND_LOG(iNodeNumber > 0);
 
-    //m_iUseFlagNR=EHNS_IDLE;// °ÑHashMapµÄ×´Ì¬ÉèÎªidle×´Ì¬
-    //m_iUseFlagNW=EHNS_IDLE;// °ÑHashMapµÄ×´Ì¬ÉèÎªidle×´Ì¬
+    //m_iUseFlagNR=EHNS_IDLE;// æŠŠHashMapçš„çŠ¶æ€è®¾ä¸ºidleçŠ¶æ€
+    //m_iUseFlagNW=EHNS_IDLE;// æŠŠHashMapçš„çŠ¶æ€è®¾ä¸ºidleçŠ¶æ€
 
     m_iErrorNO = 0;
 
@@ -349,7 +349,7 @@ int CHashMap_KString<VALUE_TYPE>::GetValueByIndex(const int iNodeIndex, VALUE_TY
 }
 
 
-//!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡Hash½Úµã£¬Ò»°ãÓÃÓÚ±éÀúÖĞ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+//!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–HashèŠ‚ç‚¹ï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­ï¼Œè¿”å›å€¼0è¡¨ç¤ºæˆåŠŸ
 template <typename VALUE_TYPE>
 int CHashMap_KString<VALUE_TYPE>::GetKeyByIndex(const int iNodeIndex, TDataString& riHashMapKey)
 {
@@ -372,7 +372,7 @@ int CHashMap_KString<VALUE_TYPE>::GetKeyByIndex(const int iNodeIndex, TDataStrin
     return 0;
 }
 
-//////////////ÓÃÓÚAssist¹¤¾ß////////////////////////
+//////////////ç”¨äºAssistå·¥å…·////////////////////////
 
 template <typename VALUE_TYPE>
 int CHashMap_KString<VALUE_TYPE>::GetValueByIndexAssist(const int iNodeIndex, VALUE_TYPE& riValue)
@@ -396,7 +396,7 @@ int CHashMap_KString<VALUE_TYPE>::GetValueByIndexAssist(const int iNodeIndex, VA
 }
 
 
-//!Ö¸¶¨Ë÷ÒıÖµÀ´»ñÈ¡Hash½Úµã£¬Ò»°ãÓÃÓÚ±éÀúÖĞ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+//!æŒ‡å®šç´¢å¼•å€¼æ¥è·å–HashèŠ‚ç‚¹ï¼Œä¸€èˆ¬ç”¨äºéå†ä¸­ï¼Œè¿”å›å€¼0è¡¨ç¤ºæˆåŠŸ
 template <typename VALUE_TYPE>
 int CHashMap_KString<VALUE_TYPE>::GetKeyByIndexAssist(const int iNodeIndex, TDataString& riHashMapKey)
 {
@@ -518,7 +518,7 @@ int CHashMap_KString<VALUE_TYPE>::DeleteByKey(const TDataString stPriKey, VALUE_
 
     while(iCurrentIndex != -1)
     {
-        //ÒÑ¾­´æÔÚ¸ÃKeyÔò·µ»ØÊ§°Ü
+        //å·²ç»å­˜åœ¨è¯¥Keyåˆ™è¿”å›å¤±è´¥
         //if(stPriKey == m_pastHashNode[iCurrentIndex].m_stPriKey)
         if(CompareKey(stPriKey,m_pastHashNode[iCurrentIndex].m_stPriKey))
         {
@@ -529,15 +529,15 @@ int CHashMap_KString<VALUE_TYPE>::DeleteByKey(const TDataString stPriKey, VALUE_
         iCurrentIndex = m_pastHashNode[iCurrentIndex].m_iHashNext;
     }
 
-    //ÕÒµ½ĞèÒªÉ¾³ıµÄ½Úµã
+    //æ‰¾åˆ°éœ€è¦åˆ é™¤çš„èŠ‚ç‚¹
     if(iCurrentIndex != -1)
     {
-        //ÊÇ³åÍ»Á´±íÍ·½Úµã
+        //æ˜¯å†²çªé“¾è¡¨å¤´èŠ‚ç‚¹
         if(m_paiHashFirstIndex[iHashIndex] == iCurrentIndex)
         {
             m_paiHashFirstIndex[iHashIndex] = m_pastHashNode[iCurrentIndex].m_iHashNext;
         }
-        //½«ÉÏÒ»¸ö½ÚµãµÄNextË÷ÒıµÈÓÚµ±Ç°ÒªÉ¾³ı½ÚµãµÄNextË÷Òı
+        //å°†ä¸Šä¸€ä¸ªèŠ‚ç‚¹çš„Nextç´¢å¼•ç­‰äºå½“å‰è¦åˆ é™¤èŠ‚ç‚¹çš„Nextç´¢å¼•
         else
         {
             m_pastHashNode[iPreIndex].m_iHashNext = m_pastHashNode[iCurrentIndex].m_iHashNext;
@@ -566,7 +566,7 @@ int CHashMap_KString<VALUE_TYPE>::InsertValueByKey(const TDataString stPriKey, c
         return -1;
     }
 
-    //ÒÑ¾­Ã»ÓĞ¿ÉÓÃµÄ½ÚµãÁË
+    //å·²ç»æ²¡æœ‰å¯ç”¨çš„èŠ‚ç‚¹äº†
     if(m_iFirstFreeIndex < 0)
     {
         SetErrorNO(EEN_HASH_MAP__NODE_IS_FULL);
@@ -579,7 +579,7 @@ int CHashMap_KString<VALUE_TYPE>::InsertValueByKey(const TDataString stPriKey, c
 
     while(iCurrentIndex != -1)
     {
-        //ÒÑ¾­´æÔÚ¸ÃKeyÔò·µ»ØÊ§°Ü
+        //å·²ç»å­˜åœ¨è¯¥Keyåˆ™è¿”å›å¤±è´¥
         //if(stPriKey == m_pastHashNode[iCurrentIndex].m_stPriKey)
         if(CompareKey(stPriKey,m_pastHashNode[iCurrentIndex].m_stPriKey))
         {
@@ -600,7 +600,7 @@ int CHashMap_KString<VALUE_TYPE>::InsertValueByKey(const TDataString stPriKey, c
     m_pastHashNode[iNowAssignIdx].m_iIsNodeUsed = EHNS_KSTRING_USED;
     m_pastHashNode[iNowAssignIdx].m_iHashNext = -1;
 
-    //ÊÇ³åÍ»Á´±íµÄµÚÒ»¸ö½Úµã
+    //æ˜¯å†²çªé“¾è¡¨çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
     if(m_paiHashFirstIndex[iHashIndex] == -1)
     {
         m_paiHashFirstIndex[iHashIndex] = iNowAssignIdx;
@@ -648,7 +648,7 @@ int CHashMap_KString<VALUE_TYPE>::ReplaceValueByKey(const TDataString stPriKey, 
     //while(iCurrentIndex != -1)
     while(iCurrentIndex >= 0)
     {
-        //ÒÑ¾­´æÔÚ¸ÃKeyÔòÖ±½Ó¸üĞÂ
+        //å·²ç»å­˜åœ¨è¯¥Keyåˆ™ç›´æ¥æ›´æ–°
         //if(stPriKey == m_pastHashNode[iCurrentIndex].m_stPriKey)
         if(CompareKey(stPriKey,m_pastHashNode[iCurrentIndex].m_stPriKey))
         {
@@ -660,7 +660,7 @@ int CHashMap_KString<VALUE_TYPE>::ReplaceValueByKey(const TDataString stPriKey, 
         iCurrentIndex = m_pastHashNode[iCurrentIndex].m_iHashNext;
     }
 
-    //ÒÑ¾­Ã»ÓĞ¿ÉÓÃµÄ½ÚµãÁË
+    //å·²ç»æ²¡æœ‰å¯ç”¨çš„èŠ‚ç‚¹äº†
     if(m_iFirstFreeIndex < 0)
     {
         SetErrorNO(EEN_HASH_MAP__NODE_IS_FULL);
@@ -676,7 +676,7 @@ int CHashMap_KString<VALUE_TYPE>::ReplaceValueByKey(const TDataString stPriKey, 
     m_pastHashNode[iNowAssignIdx].m_iIsNodeUsed = EHNS_KSTRING_USED;
     m_pastHashNode[iNowAssignIdx].m_iHashNext = -1;
 
-    //ÊÇ³åÍ»Á´±íµÄµÚÒ»¸ö½Úµã
+    //æ˜¯å†²çªé“¾è¡¨çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
     if(m_paiHashFirstIndex[iHashIndex] == -1)
     {
         m_paiHashFirstIndex[iHashIndex] = iNowAssignIdx;
@@ -701,7 +701,7 @@ int CHashMap_KString<VALUE_TYPE>::BKDRHash(const char* szStr,int iStrLength) con
     unsigned int hash = 0;
     unsigned int *piTemp = (unsigned int*)szStr;
 
-    //½«szStr°´Ã¿¸ö×Ö½Ú½øĞĞ²Ù×÷
+    //å°†szStræŒ‰æ¯ä¸ªå­—èŠ‚è¿›è¡Œæ“ä½œ
     unsigned int i;
     for( i = 0; i < iStrLength / sizeof(int); ++i)
     {
@@ -713,7 +713,7 @@ int CHashMap_KString<VALUE_TYPE>::BKDRHash(const char* szStr,int iStrLength) con
     {
         unsigned char* pByte = (unsigned char*)szStr;
         pByte += (iStrLength - (iStrLength % sizeof(int)));
-        unsigned int uiTemp = 0; // Ö®Ç°Î´³õÊ¼»¯£¬µ¼ÖÂ¶ÔÏàÍ¬µÄkeyÉú³ÉµÄhash location²»ÏàÍ¬
+        unsigned int uiTemp = 0; // ä¹‹å‰æœªåˆå§‹åŒ–ï¼Œå¯¼è‡´å¯¹ç›¸åŒçš„keyç”Ÿæˆçš„hash locationä¸ç›¸åŒ
         memcpy((void *)&uiTemp, (const void *)pByte, iStrLength%sizeof(int));
         hash += uiTemp;
     }
@@ -744,7 +744,7 @@ int CHashMap_KString<VALUE_TYPE>::HashKeyToIndex(const TDataString stPriKey) con
     //unsigned int uiHashSum = 0;
     //unsigned int *piTemp = (unsigned int*)&stPriKey;
 
-    ////Ä¿Ç°HashËã·¨ÊµÏÖ±È½Ï¼òµ¥Ö»ÊÇ½«KeyÖµµÄÃ¿¸ö×Ö½ÚµÄÖµ¼ÓÆğÀ´²¢¶ÔSIZEÈ¡Ä£
+    ////ç›®å‰Hashç®—æ³•å®ç°æ¯”è¾ƒç®€å•åªæ˜¯å°†Keyå€¼çš„æ¯ä¸ªå­—èŠ‚çš„å€¼åŠ èµ·æ¥å¹¶å¯¹SIZEå–æ¨¡
     //unsigned int i;
     //for( i = 0; i < uiKeyLength / sizeof(unsigned int); ++i)
     //{
@@ -867,3 +867,7 @@ bool CHashMap_KString<VALUE_TYPE>::CompareKey(const TDataString& key1,const TDat
 }
 
 #endif //__HASH_MAP_KSTRING_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include "SectionConfig.hpp"
+ï»¿#include "SectionConfig.hpp"
 #include "AppDefW.hpp"
 
 #include "ModuleHelper.hpp"
@@ -77,8 +77,8 @@ bool CModuleHelper::IsRealGM(unsigned int uiUin)
 		return false;
 	}
 
-	//todo jasonxiong ÔÝÊ±ÏÈÈ¥µôÕâ²¿·ÖÂß¼­£¬ºóÃæÔÙÍ³Ò»Ìí¼Ó
-	// GMÕÊºÅ²»×öÅÅÐÐ°ñ´¦Àí
+	//todo jasonxiong æš‚æ—¶å…ˆåŽ»æŽ‰è¿™éƒ¨åˆ†é€»è¾‘ï¼ŒåŽé¢å†ç»Ÿä¸€æ·»åŠ 
+	// GMå¸å·ä¸åšæŽ’è¡Œæ¦œå¤„ç†
 	/*
 	bool bGM = GetConfigManager()->GetWhiteListConfigManager().IsInGMList(uiUin);
 	if (bGM)
@@ -90,3 +90,7 @@ bool CModuleHelper::IsRealGM(unsigned int uiUin)
 	return false;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

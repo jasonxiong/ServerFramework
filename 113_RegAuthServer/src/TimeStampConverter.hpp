@@ -1,11 +1,15 @@
-#ifndef __TIME_STAMP_CONVERTER_HPP__
+ï»¿#ifndef __TIME_STAMP_CONVERTER_HPP__
 #define __TIME_STAMP_CONVERTER_HPP__
 
-// TimeStampµÄ¸ß16¸öbit´æ·Åsession fd£¬µÍ16¸öbit´æ·Å¸¨ÖúµÄvalue
+// TimeStampçš„é«˜16ä¸ªbitå­˜æ”¾session fdï¼Œä½16ä¸ªbitå­˜æ”¾è¾…åŠ©çš„value
 unsigned int GenerateTimeStamp(const unsigned int uiSessionFD, const unsigned short unValue);
-// ´ÓTimeStampÖĞ½âÎö³ösession fd
+// ä»TimeStampä¸­è§£æå‡ºsession fd
 unsigned int TimeStampToSessionFD(const unsigned int uiTimeStamp);
-// ´ÓTimeStampÖĞ½âÎö³ö¸¨Öúvalue
+// ä»TimeStampä¸­è§£æå‡ºè¾…åŠ©value
 unsigned short TimeStampToValue(const unsigned int uiTimeStamp);
 
 #endif // __TIME_STAMP_CONVERTER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

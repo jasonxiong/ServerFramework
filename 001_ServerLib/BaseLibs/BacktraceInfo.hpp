@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file BacktraceInfo.hpp
 *@author jasonxiong
 *@date 2009-11-30
 *@version 1.0
-*@brief ¶ÑÕ»Ä£¿é
+*@brief å †æ ˆæ¨¡å—
 *
-*	Í¨¹ı¸ÃÎÄ¼ş¶¨ÒåµÄÒ»Ğ©ºê»ñÈ¡¶ÑÕ»ĞÅÏ¢
+*	é€šè¿‡è¯¥æ–‡ä»¶å®šä¹‰çš„ä¸€äº›å®è·å–å †æ ˆä¿¡æ¯
 */
 
 #ifndef __BACK_TRACE_INFO_HPP__
@@ -16,8 +16,8 @@
 namespace ServerLib
 {
 
-const int MAX_BACKTRACE_SYMBOLS_NUMBER = 20; //!<×î¶à´òÓ¡µÄ¶ÑÕ»²ã´ÎÊı
-const int MAX_BACKTRACE_STRING_LENGTH = 10240; //!<¶ÑÕ»´òÓ¡ĞÅÏ¢µÄ×î´ó³¤¶È
+const int MAX_BACKTRACE_SYMBOLS_NUMBER = 20; //!<æœ€å¤šæ‰“å°çš„å †æ ˆå±‚æ¬¡æ•°
+const int MAX_BACKTRACE_STRING_LENGTH = 10240; //!<å †æ ˆæ‰“å°ä¿¡æ¯çš„æœ€å¤§é•¿åº¦
 
 class CBacktraceInfo
 {
@@ -27,13 +27,13 @@ public:
 
 public:
     /**
-    *»ñÈ¡ËùÓĞ¶ÑÕ»ĞÅÏ¢
-    *@return ÓÃ×Ö·û´®ÃèÊöµÄ¶ÑÕ»ĞÅÏ¢
+    *è·å–æ‰€æœ‰å †æ ˆä¿¡æ¯
+    *@return ç”¨å­—ç¬¦ä¸²æè¿°çš„å †æ ˆä¿¡æ¯
     */
     const char* GetAllBackTraceInfo();
 
     /**
-    *»ñÈ¡Ö¸¶¨µÄ¶ÑÕ»ĞÅÏ¢
+    *è·å–æŒ‡å®šçš„å †æ ˆä¿¡æ¯
     *@param[in]
     *@param[in]
     *@return 0 success
@@ -41,7 +41,7 @@ public:
     const char* GetBackTraceInfo(int iTraceDepth);
 
     /**
-    *Éú³É¶ÑÕ»ĞÅÏ¢£¬ÔÚ»ñÈ¡Ç°ĞèÒªÉú³É
+    *ç”Ÿæˆå †æ ˆä¿¡æ¯ï¼Œåœ¨è·å–å‰éœ€è¦ç”Ÿæˆ
     *@param[in]
     *@param[in]
     *@return 0 success
@@ -49,13 +49,13 @@ public:
     int GenBacktraceInfo();
 
 private:
-    void* m_apBacktraceSymbols[MAX_BACKTRACE_SYMBOLS_NUMBER]; //!<´Óbacktrace·µ»ØµÄ¶ÑÕ»·ûºÅµØÖ·´æ·ÅÔÚÕâ
-    char** m_apszBacktraceInfo; //!<´Óbacktrace_symbols·µ»ØµÄ¶ÑÕ»ĞÅÏ¢
-    int m_iCurTraceSymbolsNum; //!<µ±Ç°¶ÑÕ»·ûºÅ¸öÊı
-    char m_szAllBackTraceStr[MAX_BACKTRACE_STRING_LENGTH]; //!<ËùÓĞ¶ÑÕ»µÄ´òÓ¡ĞÅÏ¢
+    void* m_apBacktraceSymbols[MAX_BACKTRACE_SYMBOLS_NUMBER]; //!<ä»backtraceè¿”å›çš„å †æ ˆç¬¦å·åœ°å€å­˜æ”¾åœ¨è¿™
+    char** m_apszBacktraceInfo; //!<ä»backtrace_symbolsè¿”å›çš„å †æ ˆä¿¡æ¯
+    int m_iCurTraceSymbolsNum; //!<å½“å‰å †æ ˆç¬¦å·ä¸ªæ•°
+    char m_szAllBackTraceStr[MAX_BACKTRACE_STRING_LENGTH]; //!<æ‰€æœ‰å †æ ˆçš„æ‰“å°ä¿¡æ¯
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCBacktraceInfoÀà£¬ËùÒÔÊµÏÖ³Éµ¥¼ş
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCBacktraceInfoç±»ï¼Œæ‰€ä»¥å®ç°æˆå•ä»¶
 typedef CSingleton<CBacktraceInfo> BacktraceSingleton;
 
 }
@@ -63,3 +63,7 @@ typedef CSingleton<CBacktraceInfo> BacktraceSingleton;
 
 #endif //__BACK_TRACE_INFO_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

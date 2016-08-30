@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 #include <arpa/inet.h>
 
 #include "GameProtocol.hpp"
@@ -18,26 +18,26 @@ CAccountAddNewNameHandler::CAccountAddNewNameHandler()
 
 void CAccountAddNewNameHandler::OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃResult
+    // ä¸ä½¿ç”¨Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
     m_pRequestMsg = pstMsg;
 
-    //»ñÈ¡·µ»ØÖµ
+    //è·å–è¿”å›å€¼
     const AddNewName_Response& rstResp = pstMsg->m_stmsgbody().m_staddnewname_response();
     if(rstResp.iresult() != 0)
     {
-        //Ìí¼ÓÊ§°Ü£¬·µ»Ø´´½¨ÕÊºÅÊ§°Ü¸ø¿Í»§¶Ë
+        //æ·»åŠ å¤±è´¥ï¼Œè¿”å›åˆ›å»ºå¸å·å¤±è´¥ç»™å®¢æˆ·ç«¯
         SendCreateRoleFailedToLotus(rstResp.name_id(), rstResp.iresult());
 
-        //Çå³ıcacheÖĞ»º´æµÄ½Úµã
+        //æ¸…é™¤cacheä¸­ç¼“å­˜çš„èŠ‚ç‚¹
         CFixedHashCache<CCreateRoleRequestObj>::DeleteByUin(rstResp.name_id());
 
         return;
     }
 
-    //Ìí¼Ó½ÇÉ«Ãû×Ö³É¹¦£¬·¢ËÍ´´½¨½ÇÉ«µÄÇëÇó
+    //æ·»åŠ è§’è‰²åå­—æˆåŠŸï¼Œå‘é€åˆ›å»ºè§’è‰²çš„è¯·æ±‚
     int iRet = SendCreateRoleRequestToWorld(rstResp.strname(), rstResp.name_id());
     if(iRet)
     {
@@ -45,10 +45,10 @@ void CAccountAddNewNameHandler::OnClientMsg(TNetHead_V2* pstNetHead, GameProtoco
 
         SendCreateRoleFailedToLotus(rstResp.name_id(), iRet);
 
-        //Çå³ıcacheÖĞ»º´æµÄ½Úµã
+        //æ¸…é™¤cacheä¸­ç¼“å­˜çš„èŠ‚ç‚¹
         CFixedHashCache<CCreateRoleRequestObj>::DeleteByUin(rstResp.name_id());
 
-        //´´½¨½ÇÉ«Ê§°Ü£¬É¾³ıNameDBÖĞµÄÃû×Ö
+        //åˆ›å»ºè§’è‰²å¤±è´¥ï¼Œåˆ é™¤NameDBä¸­çš„åå­—
         SendDeleteNameRequestToWorld(rstResp.strname(), rstResp.itype(), rstResp.name_id());
 
         return;
@@ -57,7 +57,7 @@ void CAccountAddNewNameHandler::OnClientMsg(TNetHead_V2* pstNetHead, GameProtoco
     return;
 }
 
-//·¢ËÍ´´½¨½ÇÉ«µÄÇëÇó
+//å‘é€åˆ›å»ºè§’è‰²çš„è¯·æ±‚
 int CAccountAddNewNameHandler::SendCreateRoleRequestToWorld(const std::string& strName, unsigned int uin)
 {
     CCreateRoleRequestObj* pstRequestObj = CFixedHashCache<CCreateRoleRequestObj>::GetByUin(uin);
@@ -84,7 +84,7 @@ int CAccountAddNewNameHandler::SendCreateRoleRequestToWorld(const std::string& s
     return 0;
 }
 
-//·¢ËÍ´´½¨½ÇÉ«Ê§°ÜµÄÇëÇóµ½Lotus
+//å‘é€åˆ›å»ºè§’è‰²å¤±è´¥çš„è¯·æ±‚åˆ°Lotus
 void CAccountAddNewNameHandler::SendCreateRoleFailedToLotus(unsigned int uin, int iResult)
 {
     static GameProtocolMsg stResponseMsg;
@@ -112,7 +112,7 @@ void CAccountAddNewNameHandler::SendCreateRoleFailedToLotus(unsigned int uin, in
     return;
 }
 
-//É¾³ıNameDBÖĞµÄÃû×Ö
+//åˆ é™¤NameDBä¸­çš„åå­—
 int CAccountAddNewNameHandler::SendDeleteNameRequestToWorld(const std::string& strName, int iType, unsigned uin)
 {
     static GameProtocolMsg stDeleteNameMsg;
@@ -130,3 +130,7 @@ int CAccountAddNewNameHandler::SendDeleteNameRequestToWorld(const std::string& s
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include <stdlib.h>
+ï»¿#include <stdlib.h>
 #include <string.h>
 
 #include "AppDef.hpp"
@@ -25,7 +25,7 @@ void CAuthAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    // ÈÏÖ¤Æ½Ì¨ÕÊºÅµÄÇëÇó
+    // è®¤è¯å¹³å°å¸å·çš„è¯·æ±‚
     m_pstRequestMsg = pstRequestMsg;
 
     switch (m_pstRequestMsg->m_stmsghead().m_uimsgid())
@@ -60,16 +60,16 @@ void CAuthAccountHandler::OnAuthAccountRequest(SHandleResult* pstHandleResult)
 
     TRACE_THREAD(m_iThreadIdx, "Handling AuthAccountRequest, account: %s\n", strAccount.c_str());
 
-    // ÈÏÕËÆ½Ì¨ÕÊºÅµÄÏìÓ¦ÏûÏ¢
+    // è®¤è´¦å¹³å°å¸å·çš„å“åº”æ¶ˆæ¯
     GameProtocolMsg* pstMsgResp = &(pstHandleResult->stResponseMsg);
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(pstMsgResp, m_pstRequestMsg->m_stmsghead().m_uisessionfd(), MSGID_REGAUTH_AUTHACCOUNT_RESPONSE, 0);
 
-    // ÏìÓ¦ÏûÏ¢Ìå
+    // å“åº”æ¶ˆæ¯ä½“
     RegAuth_AuthAccount_Response* pstResp = pstMsgResp->mutable_m_stmsgbody()->mutable_m_stregauth_authaccount_response();
 
-    // ¸ù¾İAccountID²éÕÒÍæ¼ÒÕÊºÅĞÅÏ¢
+    // æ ¹æ®AccountIDæŸ¥æ‰¾ç©å®¶å¸å·ä¿¡æ¯
     int iRet = CheckAccountPasswd(strAccount, iLoginType, strPassword, *pstResp);
     if (iRet != 0)
     {
@@ -78,14 +78,14 @@ void CAuthAccountHandler::OnAuthAccountRequest(SHandleResult* pstHandleResult)
         return;
     }
 
-    // Ìî³ä³É¹¦»Ø¸´
+    // å¡«å……æˆåŠŸå›å¤
     FillSuccessfulResponse(pstMsgResp);
 }
 
-//²éÑ¯Íæ¼ÒÕÊºÅÏêÏ¸ĞÅÏ¢
+//æŸ¥è¯¢ç©å®¶å¸å·è¯¦ç»†ä¿¡æ¯
 int CAuthAccountHandler::CheckAccountPasswd(const std::string& strAccount, int iLoginType, const std::string& strPasswd, RegAuth_AuthAccount_Response& stResp)
 {
-    //¶ÁÈ¡ACCOUNTDBÊı¾İ¿âµÄÅäÖÃ
+    //è¯»å–ACCOUNTDBæ•°æ®åº“çš„é…ç½®
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -93,7 +93,7 @@ int CAuthAccountHandler::CheckAccountPasswd(const std::string& strAccount, int i
         return T_ACCOUNTDB_INVALID_CONFIG;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊı¾İ¿âÏà¹ØĞÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     int iRet = m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
     if(iRet)
     {
@@ -101,12 +101,12 @@ int CAuthAccountHandler::CheckAccountPasswd(const std::string& strAccount, int i
         return T_ACCOUNTDB_SQL_EXECUTE_FAILED;
     }
 
-    //¹¹ÔìSQLÓï¾ä
+    //æ„é€ SQLè¯­å¥
     static char szQueryString[256];
     int iLength = SAFE_SPRINTF(szQueryString, sizeof(szQueryString)-1, "select uin,password from %s where accountID = \"%s\" and accountType=%d", 
                  MYSQL_ACCOUNTINFO_TABLE, strAccount.c_str(), iLoginType);
 
-    //Ö´ĞĞ
+    //æ‰§è¡Œ
     iRet = m_pDatabase->ExecuteRealQuery(szQueryString, iLength, true);
     if(iRet)
     {
@@ -114,7 +114,7 @@ int CAuthAccountHandler::CheckAccountPasswd(const std::string& strAccount, int i
         return T_ACCOUNTDB_SQL_EXECUTE_FAILED;
     }
 
-    //·ÖÎö½á¹û
+    //åˆ†æç»“æœ
     int iRowNum = m_pDatabase->GetNumberRows();
     if(iRowNum != 1)
     {
@@ -133,24 +133,24 @@ int CAuthAccountHandler::CheckAccountPasswd(const std::string& strAccount, int i
         return T_ACCOUNTDB_SQL_EXECUTE_FAILED;
     }
 
-    //ÅĞ¶ÏuFieldsÊÇ·ñÏà·û
+    //åˆ¤æ–­uFieldsæ˜¯å¦ç›¸ç¬¦
     if(uFields != 2)
     {
         TRACE_THREAD(m_iThreadIdx, "Wrong result, real fields %u, needed %u\n", uFields, 2);
         return T_ACCOUNTDB_INVALID_RECORD;
     }
 
-    //ÏÈÑéÖ¤ÕÊºÅÃÜÂë
+    //å…ˆéªŒè¯å¸å·å¯†ç 
     if(SAFE_STRCMP(strPasswd.c_str(), pstResult[1], pLengths[1]) != 0)
     {
-        //ÃÜÂëĞ£Ñé²»Í¨¹ı£¬·µ»Ø´íÎó
+        //å¯†ç æ ¡éªŒä¸é€šè¿‡ï¼Œè¿”å›é”™è¯¯
         TRACE_THREAD(m_iThreadIdx, "Failed to check password, account: %s, type: %d\n", strAccount.c_str(), iLoginType);
         return T_ACCOUNTDB_AUTH_FAILED;
     }
 
-    //´Ó½á¹ûÖĞ½âÎöĞèÒªµÄ×Ö¶ÎÌî³äresp
+    //ä»ç»“æœä¸­è§£æéœ€è¦çš„å­—æ®µå¡«å……resp
 
-    //×Ö¶Î1ÊÇuin
+    //å­—æ®µ1æ˜¯uin
     stResp.set_uin(strtoul(pstResult[0], NULL, 10));
 
     return 0;
@@ -187,3 +187,7 @@ void CAuthAccountHandler::FillSuccessfulResponse(GameProtocolMsg* pstResponseMsg
 }
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

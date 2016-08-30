@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -22,7 +22,7 @@ CAccountDBFetchHandler::CAccountDBFetchHandler()
 
 void CAccountDBFetchHandler::OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃResult
+    // ä¸ä½¿ç”¨Result
     ASSERT_AND_LOG_RTN_VOID(pstNetHead);
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
@@ -33,7 +33,7 @@ void CAccountDBFetchHandler::OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMs
     {
         case MSGID_ACCOUNTDB_FETCH_RESPONSE:
             {
-                //À­È¡ÕÊºÅĞÅÏ¢µÄ·µ»Ø
+                //æ‹‰å–å¸å·ä¿¡æ¯çš„è¿”å›
                 OnResponseAccountDBFetch();
                 return;
             }
@@ -51,20 +51,20 @@ void CAccountDBFetchHandler::OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMs
 
 int CAccountDBFetchHandler::OnResponseAccountDBFetch()
 {
-    //»ñÈ¡·¢ËÍÏûÏ¢µÄFD
+    //è·å–å‘é€æ¶ˆæ¯çš„FD
     unsigned int uiSessionFd = m_pstRequestMsg->m_stmsghead().m_uisessionfd();
 
-    //AccountDBÀ­È¡ÕÊºÅĞÅÏ¢µÄ·µ»Ø
+    //AccountDBæ‹‰å–å¸å·ä¿¡æ¯çš„è¿”å›
     const AccountDB_FetchAccount_Response& rstResp = m_pstRequestMsg->m_stmsgbody().m_staccountdb_fetch_response();
     if(rstResp.iresult() != 0)
     {
-        //ÈÏÖ¤²éÑ¯ÕÊºÅÊ§°Ü£¬·µ»ØÈÏÖ¤Ê§°Ü¸øLotusServer
+        //è®¤è¯æŸ¥è¯¢å¸å·å¤±è´¥ï¼Œè¿”å›è®¤è¯å¤±è´¥ç»™LotusServer
         SendAuthFailedResponseToLotus(uiSessionFd, rstResp.iresult());
 
         return -1;
     }
 
-    //»ñÈ¡ËùÔÚ·şÎñÆ÷×éµÄÅäÖÃ
+    //è·å–æ‰€åœ¨æœåŠ¡å™¨ç»„çš„é…ç½®
     const WulinServerConfig* pstServerConfig = ConfigMgr->GetServerInfo(rstResp.iworldid());
     if(!pstServerConfig)
     {
@@ -74,7 +74,7 @@ int CAccountDBFetchHandler::OnResponseAccountDBFetch()
         return -2;
     }
 
-    //ÈÏÖ¤µÇÂ¼³É¹¦£¬·µ»ØÈÏÖ¤³É¹¦¸øLotusServer
+    //è®¤è¯ç™»å½•æˆåŠŸï¼Œè¿”å›è®¤è¯æˆåŠŸç»™LotusServer
     SendAuthSuccessResponseToLotus(uiSessionFd, *pstServerConfig, rstResp.uin(), rstResp.bisbinded());
 
     LOGDEBUG("Success to do auth account, account: %s, uin %u, lastworld:%d\n", rstResp.staccountid().straccount().c_str(), rstResp.uin(), rstResp.iworldid());
@@ -82,19 +82,19 @@ int CAccountDBFetchHandler::OnResponseAccountDBFetch()
     return T_SERVER_SUCESS;
 }
 
-//À­È¡ÕÊºÅÏêÏ¸ĞÅÏ¢
+//æ‹‰å–å¸å·è¯¦ç»†ä¿¡æ¯
 void CAccountDBFetchHandler::FetchAccount(unsigned uiSessionFd, const AccountID& stAccountID, const std::string& strPassword)
 {
     static GameProtocolMsg stMsg;
 
-    // ĞŞ¸ÄÏûÏ¢Í·ÖĞµÄSession FD
+    // ä¿®æ”¹æ¶ˆæ¯å¤´ä¸­çš„Session FD
     GenerateMsgHead(&stMsg, uiSessionFd, MSGID_ACCOUNTDB_FETCH_REQUEST, GetAccountHash(stAccountID.straccount()));
 
-    //AccountDBÀ­È¡ÕÊºÅĞÅÏ¢µÄÇëÇó
+    //AccountDBæ‹‰å–å¸å·ä¿¡æ¯çš„è¯·æ±‚
     AccountDB_FetchAccount_Request* pstReq = stMsg.mutable_m_stmsgbody()->mutable_m_staccountdb_fetch_request();
     pstReq->mutable_staccountid()->CopyFrom(stAccountID);
 
-    //¼ÓÃÜÃÜÂë
+    //åŠ å¯†å¯†ç 
     if(strPassword.size() != 0)
     {
         char szEncryptPasswd[256] = {0};
@@ -107,11 +107,11 @@ void CAccountDBFetchHandler::FetchAccount(unsigned uiSessionFd, const AccountID&
             return;
         }
 
-        //ÉèÖÃÃÜÂëÎª¼ÓÃÜºóµÄÃÜÂë
+        //è®¾ç½®å¯†ç ä¸ºåŠ å¯†åçš„å¯†ç 
         pstReq->set_strpassword(szEncryptPasswd, iEncryptBuffLen);
     }
     
-    //×ª·¢ÏûÏ¢¸øAccountDBServer
+    //è½¬å‘æ¶ˆæ¯ç»™AccountDBServer
     if (EncodeAndSendCode(SSProtocolEngine, NULL, &stMsg, GAME_SERVER_ACCOUNTDB) != 0)
     {
         TRACESVR("Failed to send fetch account request to Account DB server\n");
@@ -123,13 +123,13 @@ void CAccountDBFetchHandler::FetchAccount(unsigned uiSessionFd, const AccountID&
     return;
 }
 
-//·¢ËÍÈÏÖ¤Ê§°Ü»Ø¸´¸øLotusServer
+//å‘é€è®¤è¯å¤±è´¥å›å¤ç»™LotusServer
 void CAccountDBFetchHandler::SendAuthFailedResponseToLotus(unsigned int uiSessionFd, const unsigned int uiResultID)
 {
     static GameProtocolMsg stResponse;
     GenerateMsgHead(&stResponse, uiSessionFd, MSGID_REGAUTH_AUTHACCOUNT_RESPONSE, 0);
 
-    //Éú³ÉÏûÏ¢Ìå
+    //ç”Ÿæˆæ¶ˆæ¯ä½“
     RegAuth_AuthAccount_Response* pstResp = stResponse.mutable_m_stmsgbody()->mutable_m_stregauth_authaccount_response();
     pstResp->set_iresult(uiResultID);
 
@@ -144,13 +144,13 @@ void CAccountDBFetchHandler::SendAuthFailedResponseToLotus(unsigned int uiSessio
     return;
 }
 
-//·¢ËÍÈÏÖ¤³É¹¦»Ø¸´¸øLotusServer
+//å‘é€è®¤è¯æˆåŠŸå›å¤ç»™LotusServer
 void CAccountDBFetchHandler::SendAuthSuccessResponseToLotus(unsigned int uiSessionFd, const WulinServerConfig& stServerConfig, unsigned int uin, bool bIsBinded)
 {
     static GameProtocolMsg stResponse;
     GenerateMsgHead(&stResponse, uiSessionFd, MSGID_REGAUTH_AUTHACCOUNT_RESPONSE, 0);
 
-    //Éú³ÉÏìÓ¦ÏûÏ¢Ìå
+    //ç”Ÿæˆå“åº”æ¶ˆæ¯ä½“
     RegAuth_AuthAccount_Response* pstResp = stResponse.mutable_m_stmsgbody()->mutable_m_stregauth_authaccount_response();
     pstResp->set_iresult(T_SERVER_SUCESS);
     pstResp->set_uin(uin);
@@ -158,7 +158,7 @@ void CAccountDBFetchHandler::SendAuthSuccessResponseToLotus(unsigned int uiSessi
     pstResp->set_straccountip(stServerConfig.szAccountIP);
     pstResp->set_strzoneip(stServerConfig.szZoneIP);
 
-    //Éú³É²¢·µ»Øsessionkey
+    //ç”Ÿæˆå¹¶è¿”å›sessionkey
     //session key: uin|time|bIsBinded|WorldID
     static char szOriginSessionKey[256];
     SAFE_SPRINTF(szOriginSessionKey, sizeof(szOriginSessionKey)-1, "%u|%u|%d|%d", uin, (unsigned)CTimeUtility::GetNowTime(), bIsBinded, stServerConfig.iServerID);
@@ -179,3 +179,7 @@ void CAccountDBFetchHandler::SendAuthSuccessResponseToLotus(unsigned int uiSessi
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

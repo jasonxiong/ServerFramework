@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+﻿#include "GameProtocol.hpp"
 
 #include "RegAuthHandlerSet.hpp"
 
@@ -75,7 +75,7 @@ int CRegAuthHandlerSet::AllocAllHandlers()
 
 int CRegAuthHandlerSet::RegisterAllHandlers()
 {
-    //ע�ᴴ��ƽ̨�ʺŵ�Handler
+    //注册创建平台帐号的Handler
     int iRes = RegisterHandler(MSGID_REGAUTH_REGACCOUNT_REQUEST, m_pRegisterAccountHandler, EKMT_CLIENT);
     if (iRes != 0)
     {
@@ -94,14 +94,14 @@ int CRegAuthHandlerSet::RegisterAllHandlers()
         return -3;
     }
 
-    //ע����֤ƽ̨�ʺŵ�Handler
+    //注册认证平台帐号的Handler
     iRes = RegisterHandler(MSGID_REGAUTH_AUTHACCOUNT_REQUEST, m_pAuthAccountHandler, EKMT_CLIENT);
     if(iRes != 0)
     {
         return -4;
     }
 
-    //����ƽ̨�ʺŵ�Handler
+    //更新平台帐号的Handler
     iRes = RegisterHandler(MSGID_REGAUTH_UPDATE_REQUEST, m_pUpdateAccountHandler, EKMT_CLIENT);
     if(iRes != 0)
     {
@@ -158,3 +158,7 @@ int CRegAuthHandlerSet::Initialize()
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

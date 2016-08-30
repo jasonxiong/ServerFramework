@@ -1,32 +1,32 @@
-#ifndef __ADD_NAME_HANDLER_HPP__
+ï»¿#ifndef __ADD_NAME_HANDLER_HPP__
 #define __ADD_NAME_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
 #include "Handler.hpp"
 #include "NameDBPublic.hpp"
 
-//Ôö¼ÓÍæ¼ÒÃû×ÖµÄÇëÇó
+//å¢åŠ ç©å®¶åå­—çš„è¯·æ±‚
 
 class CNameDBHandlerSet;
 
-// MSGID_ADDNEWNAME_REQUEST ÏûÏ¢´¦ÀíÕß
+// MSGID_ADDNEWNAME_REQUEST æ¶ˆæ¯å¤„ç†è€…
 class CAddNameHandler : public CHandler
 {
 private:
-    DBClientWrapper* m_pDatabase;   // ·ÃÎÊÊı¾İ¿âµÄÖ¸Õë
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    DBClientWrapper* m_pDatabase;   // è®¿é—®æ•°æ®åº“çš„æŒ‡é’ˆ
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-	//ËùÊôÏß³Ìidx
+	//æ‰€å±çº¿ç¨‹idx
 	int m_iThreadIdx;
 
-    //Éú³ÉµÄSQLÓï¾ä
+    //ç”Ÿæˆçš„SQLè¯­å¥
     static char m_szQueryString[GameConfig::NAME_TABLE_SPLIT_FACTOR][1024];
 
 public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCNameDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CNameDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CNameDBHandlerSet;
     CAddNameHandler(DBClientWrapper* pDatabase);
 
@@ -35,14 +35,14 @@ public:
 
 private:
 
-    //½øĞĞ±ØÒªµÄ²ÎÊı¼ì²é
+    //è¿›è¡Œå¿…è¦çš„å‚æ•°æ£€æŸ¥
     int CheckParams();
 
     void OnAddNameRequest(SHandleResult* pstHandleResult);
 
     int CheckNameExist(const std::string& strName, int iType, bool& bIsExist);
 
-    //²åÈëĞÂµÄ¼ÇÂ¼
+    //æ’å…¥æ–°çš„è®°å½•
     int AddNewRecord(const std::string& strName, int iNameType, unsigned uNameID);
 
 private:
@@ -51,3 +51,7 @@ private:
 };
 
 #endif // __ADD_NAME_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

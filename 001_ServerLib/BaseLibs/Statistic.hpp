@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file Statistic
 *@author jasonxiong
 *@date 2009-11-20
 *@version 1.0
-*@brief »ù´¡Í³¼ÆÀà
+*@brief åŸºç¡€ç»Ÿè®¡ç±»
 *
 *
 */
@@ -18,29 +18,29 @@
 
 namespace ServerLib
 {
-const int MAX_STAT_ITEM_NAME_LENGTH = 32; //!<Í³¼ÆÏîµÄÃû×Ö×î´ó³¤¶È
-const int MAX_STAT_ITEM_NUMBER = 16; //!<Ã¿¸öÍ³¼Æ¶Î×î¶àÓÐ¶àÉÙ¸öÍ³¼ÆÏî
-const int MAX_STAT_SECTION_NAME_LENGTH = 64; //!<Í³¼Æ¶ÎµÄÃû×Ö×î´ó³¤¶È
-const int MAX_STAT_SECTION_STRING_LENGTH = 1024; //!<Ã¿Ò»¸öÍ³¼Æ¶Î´òÓ¡µ½ÎÄ¼þÖÐÃ¿Ò»ÐÐµÄ×î³¤³¤¶È
+const int MAX_STAT_ITEM_NAME_LENGTH = 32; //!<ç»Ÿè®¡é¡¹çš„åå­—æœ€å¤§é•¿åº¦
+const int MAX_STAT_ITEM_NUMBER = 16; //!<æ¯ä¸ªç»Ÿè®¡æ®µæœ€å¤šæœ‰å¤šå°‘ä¸ªç»Ÿè®¡é¡¹
+const int MAX_STAT_SECTION_NAME_LENGTH = 64; //!<ç»Ÿè®¡æ®µçš„åå­—æœ€å¤§é•¿åº¦
+const int MAX_STAT_SECTION_STRING_LENGTH = 1024; //!<æ¯ä¸€ä¸ªç»Ÿè®¡æ®µæ‰“å°åˆ°æ–‡ä»¶ä¸­æ¯ä¸€è¡Œçš„æœ€é•¿é•¿åº¦
 
-//!Í³¼ÆÏî,Ò»¸öÊý¾Ý±íÊ¾Ò»¸öÍ³¼ÆÏî
+//!ç»Ÿè®¡é¡¹,ä¸€ä¸ªæ•°æ®è¡¨ç¤ºä¸€ä¸ªç»Ÿè®¡é¡¹
 typedef struct tagStatItem
 {
-    char m_szName[MAX_STAT_ITEM_NAME_LENGTH]; //!<Í³¼ÆÏîÃû
-    double m_dValue; //!<Í³¼ÆÖµ
+    char m_szName[MAX_STAT_ITEM_NAME_LENGTH]; //!<ç»Ÿè®¡é¡¹å
+    double m_dValue; //!<ç»Ÿè®¡å€¼
 } TStatItem;
 
 typedef enum enmStatSectionFlag
 {
-    ESSF_NOT_PRINT = 0x0001, //!<²»´òÓ¡Í³¼Æ
+    ESSF_NOT_PRINT = 0x0001, //!<ä¸æ‰“å°ç»Ÿè®¡
 } ENMSTATSECTIONFLAG;
 
-//!Í³¼Æ¶Î£¬Ò»¸öÍ³¼Æ¶ÎÓÐ¶à¸öÍ³¼ÆÏî£¬Í¬Ò»¸öÍ³¼Æ¶ÎµÄÊý¾Ý´òÓ¡ÔÚÍ¬Ò»ÐÐÉÏ
+//!ç»Ÿè®¡æ®µï¼Œä¸€ä¸ªç»Ÿè®¡æ®µæœ‰å¤šä¸ªç»Ÿè®¡é¡¹ï¼ŒåŒä¸€ä¸ªç»Ÿè®¡æ®µçš„æ•°æ®æ‰“å°åœ¨åŒä¸€è¡Œä¸Š
 typedef struct tagStatSection
 {
-    char m_szName[MAX_STAT_SECTION_NAME_LENGTH]; //!<Í³¼Æ¶ÎÃû
-    int m_iStatFlag; //!<Í³¼Æ¶Î±êÖ¾£¬Ä¿Ç°ÓÃ×öÊÇ·ñ´òÓ¡¸ÃÍ³¼Æ¶Î
-    short m_shStatItemNum; //!<Í³¼ÆÏî¸öÊý
+    char m_szName[MAX_STAT_SECTION_NAME_LENGTH]; //!<ç»Ÿè®¡æ®µå
+    int m_iStatFlag; //!<ç»Ÿè®¡æ®µæ ‡å¿—ï¼Œç›®å‰ç”¨åšæ˜¯å¦æ‰“å°è¯¥ç»Ÿè®¡æ®µ
+    short m_shStatItemNum; //!<ç»Ÿè®¡é¡¹ä¸ªæ•°
     TStatItem m_astStatItem[MAX_STAT_ITEM_NUMBER];
 } TStatSection;
 
@@ -52,61 +52,61 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯Í³¼Æ¶Î
-    *@param[in] pszStatName Í³¼ÆÏîÃû
-    *@param[in] iMaxSectionNum ÐèÒªÖ§¸¶µÄÍ³¼Æ¶Î¸öÊý
+    *åˆå§‹åŒ–ç»Ÿè®¡æ®µ
+    *@param[in] pszStatName ç»Ÿè®¡é¡¹å
+    *@param[in] iMaxSectionNum éœ€è¦æ”¯ä»˜çš„ç»Ÿè®¡æ®µä¸ªæ•°
     *@return 0 success
     */
     int Initialize(const char* pszStatName, int iMaxSectionNum);
 
     /**
-    *³õÊ¼»¯Í³¼Æ¶Î£¨ÏêÏ¸ÅäÖÃ£©
-    *@param[in] pszStatName Í³¼ÆÏîÃû
-    *@param[in] iMaxSectionNum ÐèÒªÖ§¸¶µÄÍ³¼Æ¶Î¸öÊý
-    *@param[in] rstLogConfig Í³¼Æ´òÓ¡ÅäÖÃ
+    *åˆå§‹åŒ–ç»Ÿè®¡æ®µï¼ˆè¯¦ç»†é…ç½®ï¼‰
+    *@param[in] pszStatName ç»Ÿè®¡é¡¹å
+    *@param[in] iMaxSectionNum éœ€è¦æ”¯ä»˜çš„ç»Ÿè®¡æ®µä¸ªæ•°
+    *@param[in] rstLogConfig ç»Ÿè®¡æ‰“å°é…ç½®
     *@return 0 success
     */
     int Initialize(const char* pszStatName, int iMaxSectionNum,
                    const TLogConfig& rstLogConfig);
 
     /**
-    *Ôö¼ÓÍ³¼Æ¶Î
-    *@param[in] pszSectionName Í³¼Æ¶ÎÃû
-    *@param[out] riSectionIdx »ñµÃµÄÍ³¼Æ¶ÎË÷Òý
+    *å¢žåŠ ç»Ÿè®¡æ®µ
+    *@param[in] pszSectionName ç»Ÿè®¡æ®µå
+    *@param[out] riSectionIdx èŽ·å¾—çš„ç»Ÿè®¡æ®µç´¢å¼•
     *@return 0 success
     */
     int AddSection(const char* pszSectionName, int& riSectionIdx);
 
     /**
-    *Ôö¼ÓÍ³¼ÆÏî
-    *@param[in] iSectionIdx Í³¼Æ¶ÎË÷Òý
-    *@param[in] pszItemName Í³¼ÆÏîÃû
-    *@param[out] riItemIdx Í³¼ÆÏîË÷Òý
+    *å¢žåŠ ç»Ÿè®¡é¡¹
+    *@param[in] iSectionIdx ç»Ÿè®¡æ®µç´¢å¼•
+    *@param[in] pszItemName ç»Ÿè®¡é¡¹å
+    *@param[out] riItemIdx ç»Ÿè®¡é¡¹ç´¢å¼•
     *@return 0 success
     */
     int AddItem(int iSectionIdx, const char* pszItemName, int& riItemIdx);
 
     /**
-    *¸üÐÂÄ³¸öÍ³¼ÆÖµ
-    *@param[in] iSectionIdx Í³¼Æ¶ÎË÷Òý
-    *@param[in] iItemIdx Í³¼ÆÏîË÷Òý
-    *@param[in] dValue Í³¼ÆÖµ
+    *æ›´æ–°æŸä¸ªç»Ÿè®¡å€¼
+    *@param[in] iSectionIdx ç»Ÿè®¡æ®µç´¢å¼•
+    *@param[in] iItemIdx ç»Ÿè®¡é¡¹ç´¢å¼•
+    *@param[in] dValue ç»Ÿè®¡å€¼
     *@return 0 success
     */
     int SetValue(int iSectionIdx, int iItemIdx, double dValue);
 
     /**
-    *Ôö¼ÓÄ³¸öÍ³¼ÆÖµ
-    *@param[in] iSectionIdx Í³¼Æ¶ÎË÷Òý
-    *@param[in] iItemIdx Í³¼ÆÏîË÷Òý
-    *@param[in] dPlusValue ÒªÔö¼ÓµÄÍ³¼ÆÖµ
+    *å¢žåŠ æŸä¸ªç»Ÿè®¡å€¼
+    *@param[in] iSectionIdx ç»Ÿè®¡æ®µç´¢å¼•
+    *@param[in] iItemIdx ç»Ÿè®¡é¡¹ç´¢å¼•
+    *@param[in] dPlusValue è¦å¢žåŠ çš„ç»Ÿè®¡å€¼
     *@return 0 success
     */
     int AddValue(int iSectionIdx, int iItemIdx, double dPlusValue);
 
     /**
-    *»ñÈ¡Í³¼Æ¶Î£¬·½±ãÉÏ²ã¿ÉÒÔ×ÔÓÉ²Ù×÷
-    *@param[in] iSectionIdx ¶ÎË÷Òý
+    *èŽ·å–ç»Ÿè®¡æ®µï¼Œæ–¹ä¾¿ä¸Šå±‚å¯ä»¥è‡ªç”±æ“ä½œ
+    *@param[in] iSectionIdx æ®µç´¢å¼•
     *@return 0 success
     */
     TStatSection* GetSection(int iSectionIdx);
@@ -116,37 +116,37 @@ public:
         return m_iCurSectionNum;
     }
 
-    //!Í³¼Æ¸´Î»
+    //!ç»Ÿè®¡å¤ä½
     void Reset();
 
-    //!´òÓ¡Í³¼Æ
+    //!æ‰“å°ç»Ÿè®¡
     void Print();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
-    //!´ÖÂÔÅÐ¶ÏË«¸¡µãÊýÊÇ·ñÊÇÕûÊý£¬²âÊÔ¹ýÐ¡ÊýÐ¡ÓÚ0.0000001Ê±ÎÞ·¨¾«È·
+    //!ç²—ç•¥åˆ¤æ–­åŒæµ®ç‚¹æ•°æ˜¯å¦æ˜¯æ•´æ•°ï¼Œæµ‹è¯•è¿‡å°æ•°å°äºŽ0.0000001æ—¶æ— æ³•ç²¾ç¡®
     bool IsDoubleInt(double dValue);
 
 private:
     char m_szStatName[MAX_STAT_SECTION_NAME_LENGTH];
-    int m_iMaxSectionNum; //!<Ö§³ÖµÄÍ³¼Æ¶Î¸öÊý
-    int m_iCurSectionNum; //!<µ±Ç°Í³¼Æ¶Î¸öÊý
+    int m_iMaxSectionNum; //!<æ”¯æŒçš„ç»Ÿè®¡æ®µä¸ªæ•°
+    int m_iCurSectionNum; //!<å½“å‰ç»Ÿè®¡æ®µä¸ªæ•°
     TStatSection* m_astStatSection;
-    int m_iErrorNO; //!´íÎóÂë
+    int m_iErrorNO; //!é”™è¯¯ç 
 
     CLogFile m_stLogFile;
-    time_t m_tLastReset; //!<×îºóÒ»´Î¸´Î»Í³¼ÆµÄÊ±¼ä
+    time_t m_tLastReset; //!<æœ€åŽä¸€æ¬¡å¤ä½ç»Ÿè®¡çš„æ—¶é—´
 
 
 };
@@ -155,3 +155,7 @@ private:
 
 #endif //__STATISTIC_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

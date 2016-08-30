@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
@@ -21,25 +21,25 @@ EGameServerStatus g_enServerStatus;
 
 int GAME_GET_WORLD_ID(uint64_t busid)
 {
-    // TBUSµØÖ·Îª: world:16.zone:16.function:16.instance:16
+    // TBUSåœ°å€ä¸º: world:16.zone:16.function:16.instance:16
     return (int)(busid >> 48);
 }
 
 int GAME_GET_ZONE_ID(uint64_t busid)
 {
-    // TBUSµØÖ·Îª: world:16.zone:16.function:16.instance:16
+    // TBUSåœ°å€ä¸º: world:16.zone:16.function:16.instance:16
     return (int)((busid>>32)&0xFFFF);
 }
 
 int GAME_GET_FUNC_ID(uint64_t busid)
 {
-    // TBUSµØÖ·Îª: world:16.zone:16.function:16.instance:16
+    // TBUSåœ°å€ä¸º: world:16.zone:16.function:16.instance:16
     return (int)((busid<<32)>>48);
 }
 
 int GAME_GET_INST_ID(uint64_t busid)
 {
-    // TBUSµØÖ·Îª: world:16.zone:16.function:16.instance:16
+    // TBUSåœ°å€ä¸º: world:16.zone:16.function:16.instance:16
     return (int)((busid<<48)>>48);
 }
 
@@ -53,7 +53,7 @@ key_t GenerateServerShmKey(EGameServerID enServerID, int iKeyIndex)
     return enServerID * 100000 + iKeyIndex;
 }
 
-//ĞèÒª¶ÁÈ¡ZMQµÄÅäÖÃ
+//éœ€è¦è¯»å–ZMQçš„é…ç½®
 const char* GetZmqBusAddress(uint64_t ullClientBusID, uint64_t ullServerBusID)
 {
     static bool bIsConfigLoaded = false;
@@ -61,7 +61,7 @@ const char* GetZmqBusAddress(uint64_t ullClientBusID, uint64_t ullServerBusID)
 
     if(!bIsConfigLoaded)
     {
-        //»¹Ã»ÓĞ¼ÓÔØZMQµÄÅäÖÃ£¬ÔòÏÈ¼ÓÔØÅäÖÃ
+        //è¿˜æ²¡æœ‰åŠ è½½ZMQçš„é…ç½®ï¼Œåˆ™å…ˆåŠ è½½é…ç½®
         int iRet = oServerBusConfigManager.LoadServerBusConfig();
         if(iRet)
         {
@@ -109,7 +109,7 @@ int CreateThingGUID(THINGGUID& rstGUID, int iWorldID, int iZoneID)
     static int m_iLastCreateTime = 0;
     static unsigned short m_usThingCreatedSequence = 0;
 
-    // ³õÊ¼»¯ÎïÆ·Á÷Ë®ºÅ
+    // åˆå§‹åŒ–ç‰©å“æµæ°´å·
     CTimeValue tvNow;
     tvNow.RefreshTime();
     int iCreateTime = tvNow.GetTimeValue().tv_sec;
@@ -119,7 +119,7 @@ int CreateThingGUID(THINGGUID& rstGUID, int iWorldID, int iZoneID)
     {
         if (m_usThingCreatedSequence >= MAX_THING_CREATED_PER_SECOND)
         {
-            // ÎïÆ·´´½¨Ì«Æµ·±!
+            // ç‰©å“åˆ›å»ºå¤ªé¢‘ç¹!
             TRACESVR("Alert: Thing Created Too Frequently!\n");
             m_usThingCreatedSequence = 0;
             return -1;
@@ -144,7 +144,7 @@ int CreateThingGUID(THINGGUID& rstGUID, int iWorldID, int iZoneID)
 }
 */
 
-// ¸ù¾İGUID»ñÈ¡WorldIDºÍZoneID
+// æ ¹æ®GUIDè·å–WorldIDå’ŒZoneID
 /*
 extern void GetWorldZoneIDFromGUID(const THINGGUID& rstGUID, int& iWorldID, int& iZoneID)
 {
@@ -156,3 +156,7 @@ extern void GetWorldZoneIDFromGUID(const THINGGUID& rstGUID, int& iWorldID, int&
 } 
 */ 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

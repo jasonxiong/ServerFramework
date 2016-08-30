@@ -1,4 +1,4 @@
-#ifndef __PLUTO_STRING_UTILITY_HPP__
+﻿#ifndef __PLUTO_STRING_UTILITY_HPP__
 #define __PLUTO_STRING_UTILITY_HPP__
 
 #include <assert.h>
@@ -36,3 +36,7 @@ public:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include "GameProtocol.hpp"
+﻿#include "GameProtocol.hpp"
 
 #include "AccountHandlerSet.hpp"
 
@@ -233,3 +233,7 @@ int CAccountHandlerSet::Initialize()
     return 0;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

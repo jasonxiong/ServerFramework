@@ -1,4 +1,4 @@
-/*
+﻿/*
    LZ4 - Fast LZ compression algorithm
    Header File
    Copyright (C) 2011-2013, Yann Collet.
@@ -203,3 +203,7 @@ They are provided here for compatibility with existing user programs.
 #if defined (__cplusplus)
 }
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

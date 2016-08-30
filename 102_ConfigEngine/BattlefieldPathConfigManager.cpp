@@ -1,4 +1,4 @@
-
+ï»¿
 
 #include <string>
 #include <dirent.h>
@@ -14,7 +14,7 @@
 
 using namespace pugi;
 
-CScenePathManager CBattlefieldPathConfigManager::m_astBattlefiledPath[MAX_BATTLEFIELD_PATH_CONFIG_NUMBER];     //×èµ²ÅäÖÃĞÅÏ¢
+CScenePathManager CBattlefieldPathConfigManager::m_astBattlefiledPath[MAX_BATTLEFIELD_PATH_CONFIG_NUMBER];     //é˜»æŒ¡é…ç½®ä¿¡æ¯
 
 int CBattlefieldPathConfigManager::m_iBattlefieldPathNum = 0;
 
@@ -30,17 +30,17 @@ CBattlefieldPathConfigManager::~CBattlefieldPathConfigManager()
 
 }
 
-//¼ÓÔØÕ½³¡µØ±àĞÅÏ¢ÅäÖÃ
+//åŠ è½½æˆ˜åœºåœ°ç¼–ä¿¡æ¯é…ç½®
 int CBattlefieldPathConfigManager::LoadAllBattlefield()
 {
     m_iBattlefieldPathNum = 0;
 
     char szResPath[256] = {0};
 
-    //»ñÈ¡µØ±àÎÄ¼şµÄÂ·¾¶
+    //è·å–åœ°ç¼–æ–‡ä»¶çš„è·¯å¾„
     GetCommonResourcePath(szResPath, sizeof(szResPath), "map/");
 
-    //±éÀú¸ÃÄ¿Â¼ÏÂµÄËùÓĞÅäÖÃÎÄ¼ş
+    //éå†è¯¥ç›®å½•ä¸‹çš„æ‰€æœ‰é…ç½®æ–‡ä»¶
     DIR* pstDir = opendir(szResPath);
 
     int iRet = T_SERVER_SUCESS;
@@ -51,12 +51,12 @@ int CBattlefieldPathConfigManager::LoadAllBattlefield()
         {
             continue;
         }
-        //Ö»´¦ÀíÆÕÍ¨ÎÄ¼ş
+        //åªå¤„ç†æ™®é€šæ–‡ä»¶
         std::string strConfigFile(std::string(szResPath)+std::string(pstEntry->d_name));
 
         if(strConfigFile.find(std::string("tmx"),0) != std::string::npos)
         {
-            //TMX¸ñÊ½ÎªxmlµÄ×èµ²ĞÅÏ¢
+            //TMXæ ¼å¼ä¸ºxmlçš„é˜»æŒ¡ä¿¡æ¯
             iRet = LoadOneBattlefieldPath(strConfigFile);
             if(iRet)
             {
@@ -74,7 +74,7 @@ int CBattlefieldPathConfigManager::LoadAllBattlefield()
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡µØÍ¼µÄ×èµ²ĞÅÏ¢
+//è·å–åœ°å›¾çš„é˜»æŒ¡ä¿¡æ¯
 const CScenePathManager* CBattlefieldPathConfigManager::GetBattlefieldPathConfigManager(int iMapID)
 {
     for(int i=0; i<m_iBattlefieldPathNum; ++i)
@@ -88,7 +88,7 @@ const CScenePathManager* CBattlefieldPathConfigManager::GetBattlefieldPathConfig
     return NULL;
 }
 
-//¼ÓÔØµ¥¸öµØ±àĞÅÏ¢ÅäÖÃ
+//åŠ è½½å•ä¸ªåœ°ç¼–ä¿¡æ¯é…ç½®
 int CBattlefieldPathConfigManager::LoadOneBattlefieldPath(const std::string& strConfigFile)
 {
     if(m_iBattlefieldPathNum >= MAX_BATTLEFIELD_PATH_CONFIG_NUMBER)
@@ -106,7 +106,7 @@ int CBattlefieldPathConfigManager::LoadOneBattlefieldPath(const std::string& str
         return -2;
     }
 
-    //¶ÁÈ¡µØÍ¼ÎÄ¼şÅäÖÃµÄÊôĞÔ
+    //è¯»å–åœ°å›¾æ–‡ä»¶é…ç½®çš„å±æ€§
     int iMapID = 0;
     xml_node stProperties = stXmlDoc.child("map").child("properties");
     for(xml_node stOneProperty=stProperties.child("property"); stOneProperty; stOneProperty=stOneProperty.next_sibling())
@@ -114,22 +114,22 @@ int CBattlefieldPathConfigManager::LoadOneBattlefieldPath(const std::string& str
         const char* pstrName = stOneProperty.attribute("name").as_string();
         if(!SAFE_STRCMP(pstrName,"id", 2))
         {
-            //ÊÇµØÍ¼ID
+            //æ˜¯åœ°å›¾ID
             iMapID = stOneProperty.attribute("value").as_int();
         }
     }
 
-    //¶ÁÈ¡×èµ²²ãµÄĞÅÏ¢: map->layer->name "map_block"
+    //è¯»å–é˜»æŒ¡å±‚çš„ä¿¡æ¯: map->layer->name "map_block"
     xml_node stMap = stXmlDoc.child("map");
     for(xml_node stOneLayer = stMap.child("layer"); stOneLayer; stOneLayer=stOneLayer.next_sibling())
     {
         if(SAFE_STRCMP(stOneLayer.attribute("name").as_string(),"mapblock",sizeof("mapblock")-1))
         {
-            //²»ÊÇmapblock²ã
+            //ä¸æ˜¯mapblockå±‚
             continue;
         }
 
-        //ÕÒµ½×èµ²²ã£¬¶ÁÈ¡×èµ²ĞÅÏ¢
+        //æ‰¾åˆ°é˜»æŒ¡å±‚ï¼Œè¯»å–é˜»æŒ¡ä¿¡æ¯
         int iMapWidth = stOneLayer.attribute("width").as_int();
         int iMapHeight = stOneLayer.attribute("height").as_int();
         CScenePathManager& stPathManager = m_astBattlefiledPath[m_iBattlefieldPathNum];
@@ -153,3 +153,7 @@ int CBattlefieldPathConfigManager::LoadOneBattlefieldPath(const std::string& str
     return T_SERVER_SUCESS;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

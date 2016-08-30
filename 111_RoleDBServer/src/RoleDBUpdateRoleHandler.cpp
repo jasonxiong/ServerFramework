@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include "RoleDBLogManager.hpp"
 #include "StringUtility.hpp"
 #include "RoleDBApp.hpp"
@@ -8,7 +8,7 @@
 
 using namespace ServerLib;
 
-//SQLÓï¾ä×Ö·û´®»º³åÇø
+//SQLè¯­å¥å­—ç¬¦ä¸²ç¼“å†²åŒº
 char CRoleDBUpdateRoleHandler::m_szQueryString[GameConfig::ROLE_TABLE_SPLIT_FACTOR][51200];
 
 CRoleDBUpdateRoleHandler::CRoleDBUpdateRoleHandler(DBClientWrapper* pDatabase)
@@ -24,7 +24,7 @@ void CRoleDBUpdateRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    // update roleÇëÇóÏûÏ¢
+    // update roleè¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
 
     switch (pstRequestMsg->m_stmsghead().m_uimsgid())
@@ -50,15 +50,15 @@ void CRoleDBUpdateRoleHandler::OnUpdateRoleRequest(SHandleResult* pstHandleResul
              "need response: %d\n", 
 		pstReq->stroleid().uin(), pstReq->bneedresponse());
 
-    pstHandleResult->iNeedResponse = pstReq->bneedresponse(); // ÊÇ·ñĞèÒª»Ø¸´
+    pstHandleResult->iNeedResponse = pstReq->bneedresponse(); // æ˜¯å¦éœ€è¦å›å¤
 
-    // update roleÏìÓ¦ÏûÏ¢
+    // update roleå“åº”æ¶ˆæ¯
     GameProtocolMsg* pstResponseMsg = &(pstHandleResult->stResponseMsg);
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(pstResponseMsg, 0, MSGID_WORLD_UPDATEROLE_RESPONSE, pstReq->stroleid().uin());
 
-    // ÏìÓ¦ÏûÏ¢Ìå
+    // å“åº”æ¶ˆæ¯ä½“
 	World_UpdateRole_Response* pstResp = pstResponseMsg->mutable_m_stmsgbody()->mutable_m_stworld_updaterole_response();
 	pstResp->mutable_stroleid()->CopyFrom(pstReq->stroleid());
 
@@ -80,7 +80,7 @@ int CRoleDBUpdateRoleHandler::UpdateRole(const World_UpdateRole_Request* pstUpda
 		return -1;
 	}
 
-    //»ñÈ¡Á¬½ÓµÄÊı¾İ¿âÏà¹ØµÄÅäÖÃ
+    //è·å–è¿æ¥çš„æ•°æ®åº“ç›¸å…³çš„é…ç½®
     const ONEROLEDBINFO* pstDBConfig = (CRoleDBApp::m_stRoleDBConfigManager).GetOneRoleDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -88,10 +88,10 @@ int CRoleDBUpdateRoleHandler::UpdateRole(const World_UpdateRole_Request* pstUpda
         return -2;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊı¾İ¿âÏà¹ØĞÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
 
-    //³õÊ¼»¯SQLÓï¾ä
+    //åˆå§‹åŒ–SQLè¯­å¥
     int iLength = 0;
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
     int iRet = GenerateQueryString(*pstUpdateRoleRequest, pszQueryString, sizeof(m_szQueryString[m_iThreadIdx])-1, iLength);
@@ -101,7 +101,7 @@ int CRoleDBUpdateRoleHandler::UpdateRole(const World_UpdateRole_Request* pstUpda
         return iRet;
     }
 
-    //Ö´ĞĞ
+    //æ‰§è¡Œ
     iRet = m_pDatabase->ExecuteRealQuery(pszQueryString, iLength, false);
     if(iRet)
     {
@@ -131,19 +131,19 @@ int CRoleDBUpdateRoleHandler::GenerateQueryString(const World_UpdateRole_Request
 
     const GameUserInfo& rstUserInfo = rstUpdateReq.stuserinfo();
 
-    //1.Íæ¼Ò»ù±¾ĞÅÏ¢
+    //1.ç©å®¶åŸºæœ¬ä¿¡æ¯
     if(rstUserInfo.strbaseinfo().size() != 0)
     {
         SAFE_SPRINTF(pEnd, iBuffLen-1, "base_info=");
         pEnd += strlen("base_info=");
 
-        //Íæ¼Ò»ù±¾ĞÅÏ¢ base_info
+        //ç©å®¶åŸºæœ¬ä¿¡æ¯ base_info
         *pEnd++ = '\'';
         pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strbaseinfo().c_str(), rstUserInfo.strbaseinfo().size());
         *pEnd++ = '\'';
     }
 
-    //2.Íæ¼ÒÈÎÎñĞÅÏ¢
+    //2.ç©å®¶ä»»åŠ¡ä¿¡æ¯
     if(rstUserInfo.strquestinfo().size() != 0)
     {
         *pEnd++ = ',';
@@ -152,13 +152,13 @@ int CRoleDBUpdateRoleHandler::GenerateQueryString(const World_UpdateRole_Request
 
         pEnd += strlen("quest_info=");
 
-        //Íæ¼ÒµÄÈÎÎñĞÅÏ¢×Ö¶Î
+        //ç©å®¶çš„ä»»åŠ¡ä¿¡æ¯å­—æ®µ
         *pEnd++ = '\'';
         pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strquestinfo().c_str(), rstUserInfo.strquestinfo().size());
         *pEnd++ = '\'';
     }
 
-    //3.Íæ¼ÒµÄÎïÆ·ĞÅÏ¢
+    //3.ç©å®¶çš„ç‰©å“ä¿¡æ¯
     if(rstUserInfo.striteminfo().size() != 0)
     {
         *pEnd++ = ',';
@@ -167,13 +167,13 @@ int CRoleDBUpdateRoleHandler::GenerateQueryString(const World_UpdateRole_Request
 
         pEnd += strlen("item_info=");
 
-        //Íæ¼ÒµÄÎïÆ·ĞÅÏ¢ item_info
+        //ç©å®¶çš„ç‰©å“ä¿¡æ¯ item_info
         *pEnd++ = '\'';
         pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.striteminfo().c_str(), rstUserInfo.striteminfo().size());
         *pEnd++ = '\'';
     }
 
-    //4.Íæ¼ÒµÄÕ½¶·ĞÅÏ¢
+    //4.ç©å®¶çš„æˆ˜æ–—ä¿¡æ¯
     if(rstUserInfo.strfightinfo().size() != 0)
     {
         *pEnd++ = ',';
@@ -182,13 +182,13 @@ int CRoleDBUpdateRoleHandler::GenerateQueryString(const World_UpdateRole_Request
 
         pEnd += strlen("fight_info=");
 
-        //Íæ¼ÒµÄÕ½¶·ĞÅÏ¢
+        //ç©å®¶çš„æˆ˜æ–—ä¿¡æ¯
         *pEnd++ = '\'';
         pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strfightinfo().c_str(), rstUserInfo.strfightinfo().size());
         *pEnd++ = '\'';
     }
 
-    //5.Íæ¼ÒµÄºÃÓÑĞÅÏ¢
+    //5.ç©å®¶çš„å¥½å‹ä¿¡æ¯
     if(rstUserInfo.strfriendinfo().size() != 0)
     {
         *pEnd++ = ',';
@@ -197,13 +197,13 @@ int CRoleDBUpdateRoleHandler::GenerateQueryString(const World_UpdateRole_Request
 
         pEnd += strlen("friend_info=");
 
-        //Íæ¼ÒµÄºÃÓÑĞÅÏ¢
+        //ç©å®¶çš„å¥½å‹ä¿¡æ¯
         *pEnd++ = '\'';
         pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strfriendinfo().c_str(), rstUserInfo.strfriendinfo().size());
         *pEnd++ = '\'';
     }
 
-    //6.Íæ¼ÒµÄ±£Áô×Ö¶Î1
+    //6.ç©å®¶çš„ä¿ç•™å­—æ®µ1
     if(rstUserInfo.strreserved1().size() != 0)
     {        
         *pEnd++ = ',';
@@ -212,13 +212,13 @@ int CRoleDBUpdateRoleHandler::GenerateQueryString(const World_UpdateRole_Request
 
         pEnd += strlen("reserved1=");
 
-        //±£Áô×Ö¶Î1µÄ¸üĞÂ
+        //ä¿ç•™å­—æ®µ1çš„æ›´æ–°
         *pEnd++ = '\'';
         pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strreserved1().c_str(), rstUserInfo.strreserved1().size());
         *pEnd++ = '\'';
     }
 
-    //7.Íæ¼ÒµÄ±£Áô×Ö¶Î2
+    //7.ç©å®¶çš„ä¿ç•™å­—æ®µ2
     if(rstUserInfo.strreserved2().size() != 0)
     {        
         *pEnd++ = ',';
@@ -227,7 +227,7 @@ int CRoleDBUpdateRoleHandler::GenerateQueryString(const World_UpdateRole_Request
 
         pEnd += strlen("reserved2=");
 
-        //±£Áô×Ö¶Î2µÄ¸üĞÂ
+        //ä¿ç•™å­—æ®µ2çš„æ›´æ–°
         *pEnd++ = '\'';
         pEnd += mysql_real_escape_string(&stDBConn, pEnd, rstUserInfo.strreserved2().c_str(), rstUserInfo.strreserved2().size());
         *pEnd++ = '\'';
@@ -261,3 +261,7 @@ void CRoleDBUpdateRoleHandler::FillSuccessfulResponse(GameProtocolMsg* pstRespon
 
 	return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

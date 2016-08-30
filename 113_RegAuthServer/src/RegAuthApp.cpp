@@ -1,4 +1,4 @@
-#include <unistd.h>
+ï»¿#include <unistd.h>
 #include <string.h>
 #include <assert.h>
 #include <arpa/inet.h>
@@ -30,7 +30,7 @@ int CRegAuthApp::Initialize(bool bResume, int iWorldID)
 {
     g_pRegAuthApp = this;
 
-    // ¶ÁÈ¡ÅäÖÃ
+    // è¯»å–é…ç½®
     LoadConfig();
 
     m_bResumeMode = bResume;
@@ -71,7 +71,7 @@ int CRegAuthApp::Initialize(bool bResume, int iWorldID)
         return -1;
     }
 
-    // ¶ÁÈ¡RegAuth ServerµÄÅäÖÃ
+    // è¯»å–RegAuth Serverçš„é…ç½®
     iRes = ConfigMgr->LoadAllConf();
     if (iRes != 0)
     {
@@ -137,7 +137,7 @@ void CRegAuthApp::Run()
                 iNewMsgCount++;
             }
 
-            // Ã»ÓÐÊý¾Ý, »òÕßÊý¾Ý³¬³ö´¦ÀíÏÞÖÆ, ÔÝÍ£´¦ÀíÊý¾Ý
+            // æ²¡æœ‰æ•°æ®, æˆ–è€…æ•°æ®è¶…å‡ºå¤„ç†é™åˆ¶, æš‚åœå¤„ç†æ•°æ®
             iRecvMsgCount += iNewMsgCount;
             if (iNewMsgCount == 0 || iRecvMsgCount >= MAX_MSG_COUNT_PER_COUNT)
             {
@@ -148,11 +148,11 @@ void CRegAuthApp::Run()
         usleep(MAIN_LOOP_SLEEP);
         m_uiLoopTimes++;
 
-        // ÇåÀí³¬Ê±µÄcache½áµã£¬Ö÷Ñ­»·1Íò´ÎÇåÀíÒ»´Î
+        // æ¸…ç†è¶…æ—¶çš„cacheç»“ç‚¹ï¼Œä¸»å¾ªçŽ¯1ä¸‡æ¬¡æ¸…ç†ä¸€æ¬¡
         if (TIMES_TO_CLEAR_CACHE == m_uiLoopTimes)
         {
             ClearCache();
-            m_uiLoopTimes = 0; // ÖØÐÂ¼ÆÊý
+            m_uiLoopTimes = 0; // é‡æ–°è®¡æ•°
         }
     }
 }
@@ -197,11 +197,11 @@ int CRegAuthApp::HandleMsgIn(IProtocolEngine* pProtocolEngine, EGameServerID enM
     int iCodeLen;
     static GameProtocolMsg stRequestMsg;
 
-    // ³õÊ¼»¯code bufferºÍcode length
+    // åˆå§‹åŒ–code bufferå’Œcode length
     memset(szCodeBuf, 0, sizeof(szCodeBuf));
     iCodeLen = 0;
 
-    // ½ÓÊÜÍøÂçÊý¾Ý
+    // æŽ¥å—ç½‘ç»œæ•°æ®
     int iRet = RegAuthMsgTransceiver->RecvOneMsg((char*)szCodeBuf, iBufLen, iCodeLen, enMsgPeer, iInstance);
     if ((iRet < 0) || (0 == iCodeLen))
     {
@@ -210,18 +210,18 @@ int CRegAuthApp::HandleMsgIn(IProtocolEngine* pProtocolEngine, EGameServerID enM
 
     TRACESVR("Receive code OK, len: %d\n", iCodeLen);
 
-    // ³õÊ¼»¯Îª0£¬±ØÐëµÄ£¡
+    // åˆå§‹åŒ–ä¸º0ï¼Œå¿…é¡»çš„ï¼
     memset(&m_stNetHead, 0, sizeof(TNetHead_V2));
     stRequestMsg.Clear();
 
-    // ½âÂëÍøÂçÊý¾ÝÎª±¾µØÊý¾Ý
+    // è§£ç ç½‘ç»œæ•°æ®ä¸ºæœ¬åœ°æ•°æ®
     iRet = pProtocolEngine->Decode((unsigned char*)szCodeBuf, iCodeLen, &m_stNetHead, &stRequestMsg);
     if (iRet != 0)
     {
         return -1;
     }
 
-    // ´¦Àí±¾µØÊý¾Ý
+    // å¤„ç†æœ¬åœ°æ•°æ®
     IHandler* pHandler = NULL;
     if (enMsgPeer == GAME_SERVER_LOTUSREGAUTH)
     {
@@ -252,6 +252,10 @@ void CRegAuthApp::ClearCache()
 
     time_t stClearTime = time(NULL) - MAX_LIVE_TIME_OF_CACHE;
 
-    // ÇåÀísession»º´æ
+    // æ¸…ç†sessionç¼“å­˜
     SessionManager->ClearCache(stClearTime);
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

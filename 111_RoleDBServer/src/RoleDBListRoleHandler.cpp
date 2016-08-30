@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "RoleDBLogManager.hpp"
 #include "SeqConverter.hpp"
@@ -9,7 +9,7 @@
 
 #include "RoleDBListRoleHandler.hpp"
 
-//SQLÓï¾ä×Ö·û´®»º³åÇø
+//SQLè¯­å¥å­—ç¬¦ä¸²ç¼“å†²åŒº
 char CRoleDBListRoleHandler::m_szQueryString[GameConfig::ROLE_TABLE_SPLIT_FACTOR][256];
 
 CRoleDBListRoleHandler::CRoleDBListRoleHandler(DBClientWrapper* pDatabase)
@@ -25,7 +25,7 @@ void CRoleDBListRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    // list roleÇëÇóÏûÏ¢
+    // list roleè¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
 	int iRet = -1;
 	switch(m_pstRequestMsg->m_stmsghead().m_uimsgid())
@@ -53,19 +53,19 @@ int CRoleDBListRoleHandler::AccountListRole(SHandleResult* pstHandleResult)
 
     short usNewWorldID = static_cast<short>(CModuleHelper::GetWorldID());
 
-    // list roleÏìÓ¦ÏûÏ¢
+    // list roleå“åº”æ¶ˆæ¯
     GameProtocolMsg* pstResponseMsg = &(pstHandleResult->stResponseMsg);
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(pstResponseMsg, 
 							m_pstRequestMsg->m_stmsghead().m_uisessionfd(), 
 							MSGID_ACCOUNT_LISTROLE_RESPONSE, 
 							uiUin);
 
-    // ÏìÓ¦ÏûÏ¢Ìå
+    // å“åº”æ¶ˆæ¯ä½“
 	Account_ListRole_Response* pstResp = pstResponseMsg->mutable_m_stmsgbody()->mutable_m_staccountlistroleresponse();
 
-    // ¸ù¾İuinÔÚDBRoleInfo±íÖĞ¼ìË÷³öseq£¬½âÎöÆäÖĞµÄworldĞÅÏ¢£¬·µ»ØÖ¸¶¨worldÉÏµÄroleÁĞ±í
+    // æ ¹æ®uinåœ¨DBRoleInfoè¡¨ä¸­æ£€ç´¢å‡ºseqï¼Œè§£æå…¶ä¸­çš„worldä¿¡æ¯ï¼Œè¿”å›æŒ‡å®šworldä¸Šçš„roleåˆ—è¡¨
 	int iErrnoNum = T_ROLEDB_SQL_EXECUTE_FAILED;
 	int iRes = QueryAndParseRole(uiUin, usWorldID, usNewWorldID, pstResp, iErrnoNum);
 
@@ -90,9 +90,9 @@ int CRoleDBListRoleHandler::QueryAndParseRole(const unsigned int uiUin, short nW
 		return -1;
 	}
 
-	//²éÑ¯DBÖĞÊÇ·ñÒÑ¾­´æÔÚÍæ¼ÒÕÊºÅ
+	//æŸ¥è¯¢DBä¸­æ˜¯å¦å·²ç»å­˜åœ¨ç©å®¶å¸å·
 
-	//¶ÁÈ¡ROLEDBÏà¹ØµÄÅäÖÃ
+	//è¯»å–ROLEDBç›¸å…³çš„é…ç½®
 	const ONEROLEDBINFO* pstDBConfig = (CRoleDBApp::m_stRoleDBConfigManager).GetOneRoleDBInfoByIndex(m_iThreadIdx);
 	if(!pstDBConfig)
 	{
@@ -100,31 +100,31 @@ int CRoleDBListRoleHandler::QueryAndParseRole(const unsigned int uiUin, short nW
 		return -2;
 	}
 
-	//ÉèÖÃÒª·ÃÎÊµÄÊı¾İ¿âĞÅÏ¢
+	//è®¾ç½®è¦è®¿é—®çš„æ•°æ®åº“ä¿¡æ¯
 	m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
 
-	//¹¹ÔìSQLÓï¾ä
+	//æ„é€ SQLè¯­å¥
 	char* pszQueryString = m_szQueryString[m_iThreadIdx];
 	static int iQueryStringLen = sizeof(m_szQueryString[m_iThreadIdx])-1;
 	int iLength = 0;
 
-	//1·şÓÃ×÷¿ª·¢·ş£¬2·şÓÃ×÷Ô¤·¢²¼·ş,ÕâÁ½¸ö·ş¿ÉÄÜ»á´ÓÍâÍøµ¼ÈëÊı¾İ
+	//1æœç”¨ä½œå¼€å‘æœï¼Œ2æœç”¨ä½œé¢„å‘å¸ƒæœ,è¿™ä¸¤ä¸ªæœå¯èƒ½ä¼šä»å¤–ç½‘å¯¼å…¥æ•°æ®
 	if(nNewWorldID==1 || nNewWorldID==2)
 	{
-		//¿ª·¢·şºÍÔ¤·¢²¼·ş£¬»á´ÓÍâÍøµ¼Êı¾İ½øÀ´
+		//å¼€å‘æœå’Œé¢„å‘å¸ƒæœï¼Œä¼šä»å¤–ç½‘å¯¼æ•°æ®è¿›æ¥
 		iLength = SAFE_SPRINTF(pszQueryString, iQueryStringLen, 
 							   "select uin,seq from %s where uin=%u\n", 
 							   MYSQL_USERINFO_TABLE, uiUin);
 	}
 	else
 	{
-		//ÍâÍøÕıÊ½·ş£¬¿¼ÂÇºÏ·şµÄÇé¿ö
+		//å¤–ç½‘æ­£å¼æœï¼Œè€ƒè™‘åˆæœçš„æƒ…å†µ
 		iLength = SAFE_SPRINTF(pszQueryString, iQueryStringLen, 
 							   "select uin,seq from %s where uin = %u and floor(seq%%10000/10)=%d\n", 
 							   MYSQL_USERINFO_TABLE, uiUin, nWorldID);
 	}
 
-	//Ö´ĞĞ
+	//æ‰§è¡Œ
 	int iRet = m_pDatabase->ExecuteRealQuery(pszQueryString, iLength, true);
 	if(iRet)
 	{
@@ -132,17 +132,17 @@ int CRoleDBListRoleHandler::QueryAndParseRole(const unsigned int uiUin, short nW
 		return iRet;
 	}
 
-	//·ÖÎö·µ»Ø½á¹û
+	//åˆ†æè¿”å›ç»“æœ
 	int iRowNum = m_pDatabase->GetNumberRows();
 	if(iRowNum == 0)
 	{
-		//²»´æÔÚÍæ¼Ò¼ÇÂ¼£¬Ö±½Ó·µ»Ø³É¹¦
+		//ä¸å­˜åœ¨ç©å®¶è®°å½•ï¼Œç›´æ¥è¿”å›æˆåŠŸ
 		return T_SERVER_SUCESS;
 	}
 	
 	TRACE_THREAD(m_iThreadIdx, "List Role Num %d, uin %u, world id %d\n", iRowNum, uiUin, nWorldID);
 
-	//´æÔÚÍæ¼ÒÊı¾İ¼ÇÂ¼£¬·â×°Êı¾İ²¢·µ»Ø
+	//å­˜åœ¨ç©å®¶æ•°æ®è®°å½•ï¼Œå°è£…æ•°æ®å¹¶è¿”å›
 	MYSQL_ROW pstResult = NULL;
 	unsigned long* pLengths = NULL;
 	unsigned int uFields = 0;
@@ -155,20 +155,20 @@ int CRoleDBListRoleHandler::QueryAndParseRole(const unsigned int uiUin, short nW
 			return iRet;
 		}
 
-		//ÅĞ¶ÏÁĞÊıÊÇ·ñÏà·û
+		//åˆ¤æ–­åˆ—æ•°æ˜¯å¦ç›¸ç¬¦
 		if(uFields < 2)
 		{
 			TRACE_THREAD(m_iThreadIdx, "Wrong result, real fields %u, needed %u\n", uFields, 3);
 			return -1;
 		}
 
-		//´Ó½á¹ûÖĞ½âÎöĞèÒªµÄ×Ö¶Î
+		//ä»ç»“æœä¸­è§£æéœ€è¦çš„å­—æ®µ
 		RoleSummary* pstRoleSummary = pstListRoleResponse->add_roles();
 		pstRoleSummary->mutable_stroleid()->set_uin(uiUin);
 
-		//×Ö¶Î0ÊÇuin
+		//å­—æ®µ0æ˜¯uin
 
-		//×Ö¶Î1ÊÇseq
+		//å­—æ®µ1æ˜¯seq
 		unsigned int uRoleSeq = (unsigned)atoi(pstResult[1]);
 		pstRoleSummary->mutable_stroleid()->set_uiseq(uRoleSeq);
 	}
@@ -192,3 +192,7 @@ void CRoleDBListRoleHandler::FillSuccessfulResponse(GameProtocolMsg* pstResponse
 	return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

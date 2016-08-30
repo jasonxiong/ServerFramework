@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 *@file EncodeStream.hpp
 *@author jasonxiong
 *@date 2009-11-30
 *@version 1.0
-*@brief ±àÂëÀà
+*@brief ç¼–ç ç±»
 *
-*	½«»ù±¾Êı¾İÀàĞÍÒÔÍøÂç×Ö½ÚĞò±àÂëµ½Ò»¶ÎBufferÖĞ
+*	å°†åŸºæœ¬æ•°æ®ç±»å‹ä»¥ç½‘ç»œå­—èŠ‚åºç¼–ç åˆ°ä¸€æ®µBufferä¸­
 */
 
 #ifndef __ENCODE_STREAM_HPP__
@@ -24,77 +24,81 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯±àÂëÆ÷
-    *@param[in] pucCodeBuf ´æ·Å±àÂëµÄÂëÁ÷»º³åÇø
-    *@param[in] iMaxCodeLen ÂëÁ÷»º³åÇø×î´ó³¤¶È
+    *åˆå§‹åŒ–ç¼–ç å™¨
+    *@param[in] pucCodeBuf å­˜æ”¾ç¼–ç çš„ç æµç¼“å†²åŒº
+    *@param[in] iMaxCodeLen ç æµç¼“å†²åŒºæœ€å¤§é•¿åº¦
     *@return 0 success
     */
     int Initialize(unsigned char* pucCodeBuf, int iMaxCodeLen);
 
-    //!»ñÈ¡ÂëÁ÷»º³åÇø
+    //!è·å–ç æµç¼“å†²åŒº
     unsigned char* GetCodeBuf() const
     {
         return m_aucCodeBuf;
     }
 
-    //!»ñÈ¡µ±Ç°ÂëÁ÷Æ«ÒÆ
+    //!è·å–å½“å‰ç æµåç§»
     int GetCurOffset() const
     {
         return m_pCurCodePos - m_aucCodeBuf;
     }
 
-    //!ÉèÖÃµ±Ç°ÂëÁ÷Æ«ÒÆ
+    //!è®¾ç½®å½“å‰ç æµåç§»
     void SetCurOffset(int iOffset)
     {
         m_pCurCodePos = m_aucCodeBuf + iOffset;
     }
 
-    //±àÂëchar
+    //ç¼–ç char
     CEncodeStream& operator <<(char cChar);
     CEncodeStream& operator <<(unsigned char ucChar);
 
-    //±àÂëshort16
+    //ç¼–ç short16
     CEncodeStream& operator <<(short shShort16);
     CEncodeStream& operator <<(unsigned short ushShort16);
 
-    //±àÂëInt32
+    //ç¼–ç Int32
     CEncodeStream& operator <<(int iInt32);
     CEncodeStream& operator <<(unsigned int uiInt32);
 
-    //±àÂëInt64
+    //ç¼–ç Int64
     CEncodeStream& operator <<(uint64_t uiInt64);
 
-    ////±àÂëlong
+    ////ç¼–ç long
     //CEncodeStream& operator <<(long lLong);
     //CEncodeStream& operator <<(unsigned long ulLong);
 
-    //±àÂëString
+    //ç¼–ç String
     int EncodeString(char *strSrc, short sMaxStrLength);
 
-    //±àÂëMem
+    //ç¼–ç Mem
     int EncodeMem(char *pcSrc, int iMemorySize);
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
     }
 
 private:
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iMaxCodeLen; //!<ÂëÁ÷»º³åÇø×î´ó³¤¶È
-    unsigned char* m_aucCodeBuf; //!<´æ·Å±àÂëµÄÂëÁ÷»º³åÇø
-    unsigned char* m_pCurCodePos; //!<µ±Ç°ÂëÁ÷Î»ÖÃ
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iMaxCodeLen; //!<ç æµç¼“å†²åŒºæœ€å¤§é•¿åº¦
+    unsigned char* m_aucCodeBuf; //!<å­˜æ”¾ç¼–ç çš„ç æµç¼“å†²åŒº
+    unsigned char* m_pCurCodePos; //!<å½“å‰ç æµä½ç½®
 };
 
 }
 
 #endif //__ENCODE_STREAM_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

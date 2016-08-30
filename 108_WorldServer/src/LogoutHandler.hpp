@@ -1,4 +1,4 @@
-#ifndef __LOGOUT_HANDLER_HPP__
+ï»¿#ifndef __LOGOUT_HANDLER_HPP__
 #define __LOGOUT_HANDLER_HPP__
 
 #include "Handler.hpp"
@@ -19,11 +19,11 @@ public:
     virtual int OnClientMsg(const void* pMsg);
 
 public:
-    // Í¨ÖªZone·şÎñÆ÷½ÇÉ«ÏÂÏß
+    // é€šçŸ¥ZoneæœåŠ¡å™¨è§’è‰²ä¸‹çº¿
     static int LogoutRole(int iZoneID, const unsigned int uin);
 
 public:
-    // Í¨¸æ½ÇÉ«ÏÂÏßÏûÏ¢
+    // é€šå‘Šè§’è‰²ä¸‹çº¿æ¶ˆæ¯
     static int LogoutNotify(CWorldRoleStatusWObj* pRoleObj);
 
 private:
@@ -35,3 +35,7 @@ private:
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

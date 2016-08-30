@@ -1,4 +1,4 @@
-#ifndef __OBJIDX_LIST_HPP__
+ï»¿#ifndef __OBJIDX_LIST_HPP__
 #define __OBJIDX_LIST_HPP__
 
 #include "LogAdapter.hpp"
@@ -6,8 +6,8 @@ using namespace ServerLib;
 
 struct TObjIdxListNode
 {
-    int m_iPrevIdx; // ÉÏÒ»¸ö½Úµã
-    int m_iNextIdx; // ÏÂÒ»¸ö½Úµã
+    int m_iPrevIdx; // ä¸Šä¸€ä¸ªèŠ‚ç‚¹
+    int m_iNextIdx; // ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 
 public:
     void Initialize()
@@ -19,9 +19,9 @@ public:
 
 struct TObjIdxListHead
 {
-    int m_iNumber;      // Á´±íÔªËØÊıÁ¿
-    int m_iFirstIdx;    // Í·²¿½áµã
-    int m_iLastIdx;     // Î²²¿½Úµã
+    int m_iNumber;      // é“¾è¡¨å…ƒç´ æ•°é‡
+    int m_iFirstIdx;    // å¤´éƒ¨ç»“ç‚¹
+    int m_iLastIdx;     // å°¾éƒ¨èŠ‚ç‚¹
 
 public:
     void Initialize()
@@ -34,10 +34,14 @@ public:
 
 typedef TObjIdxListNode* (GETOBJLISTNODE)(int iIdx);
 
-// ½«Idx¼ÓÈëÁ´±íÖĞ
+// å°†IdxåŠ å…¥é“¾è¡¨ä¸­
 int AddObjIdxList(TObjIdxListHead& rstListHead, int iIdx, GETOBJLISTNODE* pGetObjListNode);
 
-// ½«Idx´ÓÁ´±íÖĞÉ¾³ı
+// å°†Idxä»é“¾è¡¨ä¸­åˆ é™¤
 int DelObjIdxList(TObjIdxListHead& rstListHead, int iIdx, GETOBJLISTNODE* pGetObjListNode);
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

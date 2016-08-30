@@ -1,4 +1,4 @@
-#include <string.h>
+﻿#include <string.h>
 
 #include "LogAdapter.hpp"
 
@@ -37,3 +37,7 @@ int CHandlerFactory::RegisterHandler(const unsigned int uiMsgID, const IHandler*
 }
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

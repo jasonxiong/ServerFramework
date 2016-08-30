@@ -1,4 +1,4 @@
-#ifndef __APP_LOOP_W_HPP__
+﻿#ifndef __APP_LOOP_W_HPP__
 #define __APP_LOOP_W_HPP__
 
 #include "TimeUtility.hpp"
@@ -59,3 +59,7 @@ private:
 #endif
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

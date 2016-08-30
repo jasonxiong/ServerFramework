@@ -1,10 +1,10 @@
-#ifndef __FREQ_CTRL_HPP
+ï»¿#ifndef __FREQ_CTRL_HPP
 #define __FREQ_CTRL_HPP
 
 #include "TimeUtility.hpp"
 #include "LogAdapter.hpp"
 
-// ²Ù×÷ÆµÂÊ¿ØÖÆÆ÷, ÓÃÓÚÏŞÖÆÄ³Ğ©²Ù×÷µÄÆ½¾ùÆµÂÊºÍ·åÖµÆµÂÊ. Ó¦ÓÃ³¡¾°ÈçDB·ÃÎÊµÈ.
+// æ“ä½œé¢‘ç‡æ§åˆ¶å™¨, ç”¨äºé™åˆ¶æŸäº›æ“ä½œçš„å¹³å‡é¢‘ç‡å’Œå³°å€¼é¢‘ç‡. åº”ç”¨åœºæ™¯å¦‚DBè®¿é—®ç­‰.
 
 namespace ServerLib
 {
@@ -13,15 +13,15 @@ class CFreqencyCtroller
 {
 public:
 
-    // ÉèÖÃ¿ØÖÆ²ÎÊı
-    // Æ½¾ùÆµÂÊ: iMeanTimes / iMeanPeroid  (´Î/Ãë)
-    // ·åÖµÆµÂÊ: iPeakFreq	(´Î/Ãë)
+    // è®¾ç½®æ§åˆ¶å‚æ•°
+    // å¹³å‡é¢‘ç‡: iMeanTimes / iMeanPeroid  (æ¬¡/ç§’)
+    // å³°å€¼é¢‘ç‡: iPeakFreq	(æ¬¡/ç§’)
     void SetParameters(time_t iMeanPeroid, int iMeanTimes, int iPeakFreq);
 
-    // ¼ì²éÊÇ·ñ¿ÉÒÔÖ´ĞĞiTimes´Î²Ù×÷
-    // ·µ»ØÖµ:
-    //		  true: ÔÊĞíÖ´ĞĞ£¬²¢ÀÛ¼ÆiTimes´Î²Ù×÷
-    //		  false: ²»ÔÊĞíÖ´ĞĞ
+    // æ£€æŸ¥æ˜¯å¦å¯ä»¥æ‰§è¡ŒiTimesæ¬¡æ“ä½œ
+    // è¿”å›å€¼:
+    //		  true: å…è®¸æ‰§è¡Œï¼Œå¹¶ç´¯è®¡iTimesæ¬¡æ“ä½œ
+    //		  false: ä¸å…è®¸æ‰§è¡Œ
     bool CheckFrequency(int iTimes);
 
 private:
@@ -32,16 +32,16 @@ public:
 private:
     static CFreqencyCtroller<TYPE_ID>* m_pInstance;
 
-    // ¿ØÖÆ²ÎÊı
+    // æ§åˆ¶å‚æ•°
     time_t m_iMeanPeroidCfg;
     int m_iMeanTimesCfg;
     int m_iPeakFreqCfg;
 
-    // ÔËĞĞ²ÎÊı - Æ½¾ùÆµÂÊ
+    // è¿è¡Œå‚æ•° - å¹³å‡é¢‘ç‡
     time_t m_iMeanLastTime;
     int m_iMeanAccTimes;
 
-    // ÔËĞĞ²ÎÊı - ·åÖµÆµÂÊ
+    // è¿è¡Œå‚æ•° - å³°å€¼é¢‘ç‡
     time_t m_iPeakLastTime;
     int m_iPeakAccTimes;
 };
@@ -90,7 +90,7 @@ bool CFreqencyCtroller<TYPE_ID>::CheckFrequency(int iTimes)
 
     time_t iNowTime = CTimeUtility::m_uiTimeTick;
 
-    // ¼ì²éÆ½¾ùÆµÂÊ
+    // æ£€æŸ¥å¹³å‡é¢‘ç‡
     time_t iMeanSlapTime = iNowTime - m_iMeanLastTime;
     if (iMeanSlapTime >= m_iMeanPeroidCfg)
     {
@@ -106,7 +106,7 @@ bool CFreqencyCtroller<TYPE_ID>::CheckFrequency(int iTimes)
         return false;
     }
 
-    // ¼ì²é·åÖµÆµÂÊ
+    // æ£€æŸ¥å³°å€¼é¢‘ç‡
     time_t iPeakSlapTime = iNowTime - m_iPeakLastTime;
     if (iPeakSlapTime >= 1)
     {
@@ -122,7 +122,7 @@ bool CFreqencyCtroller<TYPE_ID>::CheckFrequency(int iTimes)
         return false;
     }
 
-    // ¸üĞÂÆµÂÊÖµ
+    // æ›´æ–°é¢‘ç‡å€¼
     m_iMeanAccTimes = iMeanAccTimes;
     m_iPeakAccTimes = iPeakAccTimes;
 
@@ -132,3 +132,7 @@ bool CFreqencyCtroller<TYPE_ID>::CheckFrequency(int iTimes)
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

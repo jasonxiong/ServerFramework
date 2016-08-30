@@ -1,4 +1,4 @@
-#ifndef __SESSION_MANAGER_HPP__
+ï»¿#ifndef __SESSION_MANAGER_HPP__
 #define __SESSION_MANAGER_HPP__
 
 #include "AccountPublic.hpp"
@@ -15,8 +15,8 @@ public:
 
 private:
     CSessionObj m_astSessionList[MAX_CODEQUEUE_NUM][MAX_ROLE_OBJECT_NUMBER_IN_WORLD];
-    unsigned short m_unSeed; // ±êÊ¶sessionµÄ¸¨ÖúÊı¾İµÄÖÖ×Ó£¬¼´³õÊ¼Öµ
-    unsigned int m_uiActiveNumber; // ´¦ÓÚactive×´Ì¬µÄ»º´æ½áµãµÄ¸öÊı
+    unsigned short m_unSeed; // æ ‡è¯†sessionçš„è¾…åŠ©æ•°æ®çš„ç§å­ï¼Œå³åˆå§‹å€¼
+    unsigned int m_uiActiveNumber; // å¤„äºactiveçŠ¶æ€çš„ç¼“å­˜ç»“ç‚¹çš„ä¸ªæ•°
 
 public:
     int Initialize(bool bResume);
@@ -30,7 +30,11 @@ private:
 	CSessionObj* GetSessionByFd(unsigned int uiSessionFD);
 
 public:
-    void ClearCache(time_t& stTime); // ÇåÀíÔÚ²ÎÊıstTimeÖ®Ç°£¨<=stTime£©´´½¨µÄcache½áµã
+    void ClearCache(time_t& stTime); // æ¸…ç†åœ¨å‚æ•°stTimeä¹‹å‰ï¼ˆ<=stTimeï¼‰åˆ›å»ºçš„cacheç»“ç‚¹
 };
 
 #endif // __SESSION_MANAGER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

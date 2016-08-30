@@ -1,4 +1,4 @@
-#include "pugixml.hpp"
+﻿#include "pugixml.hpp"
 
 #include "StringUtility.hpp"
 #include "LogAdapter.hpp"
@@ -77,3 +77,7 @@ const ONENAMEDBINFO* CNameDBInfoConfig::GetOneNameDBInfoByIndex(int iDBIndex)
 
     return &m_astNameDBInfo[iDBIndex];
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

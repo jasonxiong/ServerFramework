@@ -1,4 +1,4 @@
-#include <string.h>
+﻿#include <string.h>
 #include <time.h>
 #include <arpa/inet.h>
 
@@ -85,3 +85,7 @@ const char* CSessionObj::GetClientIP()
     return szClientIP;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

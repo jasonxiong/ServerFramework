@@ -1,4 +1,4 @@
-#ifndef __CODE_QUEUE_MANAGER_HPP__
+ï»¿#ifndef __CODE_QUEUE_MANAGER_HPP__
 #define __CODE_QUEUE_MANAGER_HPP__
 
 #include "CodeQueue.hpp"
@@ -22,11 +22,11 @@ public:
 
     int SendOneMsg(const char* pszMsg, int iMsgLength, int iInstanceID = 0);
     int RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgLength, int iInstanceID = 0);
-    // ¶ÁÈ¡CodeQueueÅäÖÃ
+    // è¯»å–CodeQueueé…ç½®
 
 private:
     int m_iCodeQueueNum;
-    // LotusºÍGameÖ®¼äÍ¨¹ıCodeQueueÍ¨ĞÅ
+    // Lotuså’ŒGameä¹‹é—´é€šè¿‡CodeQueueé€šä¿¡
     CCodeQueue* m_apLotusCodeQueueIn[MAX_CODE_QUEUE_NUMBER];
     CCodeQueue* m_apLotusCodeQueueOut[MAX_CODE_QUEUE_NUMBER];
 
@@ -39,3 +39,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

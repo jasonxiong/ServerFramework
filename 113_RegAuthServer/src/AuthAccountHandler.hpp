@@ -1,26 +1,26 @@
-
+ï»¿
 #ifndef __AUTH_ACCOUNT_HANDLER_HPP__
 #define __AUTH_ACCOUNT_HANDLER_HPP__
 
 #include "Handler.hpp"
 
-//Íæ¼ÒµÇÂ¼ÈÏÖ¤µÄÏûÏ¢´¦Àí
+//ç©å®¶ç™»å½•è®¤è¯çš„æ¶ˆæ¯å¤„ç†
 
 class CRegAuthHandlerSet;
 
-// ´¦ÀíÀ´×ÔLotusServerµÄMSGID_AUTHACCOUNT_REQUESTÏûÏ¢
+// å¤„ç†æ¥è‡ªLotusServerçš„MSGID_AUTHACCOUNT_REQUESTæ¶ˆæ¯
 class CAuthAccountHandler : public IHandler
 {
 private:
-    TNetHead_V2* m_pstNetHead;  // ¿Í»§Á¬½Ó
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    TNetHead_V2* m_pstNetHead;  // å®¢æˆ·è¿æ¥
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRegAuthHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRegAuthHandlerSetç±»ä¸­åˆ›å»º
     friend class CRegAuthHandlerSet;
     CAuthAccountHandler();
 
@@ -32,7 +32,7 @@ private:
 
 private:
 
-    //·¢ËÍÈÏÖ¤Ê§°ÜµÄ»Ø¸´¸øLotusServer
+    //å‘é€è®¤è¯å¤±è´¥çš„å›å¤ç»™LotusServer
     void SendFailedResponseToLotus(unsigned int uiResult);
 
     int CheckParam();
@@ -40,3 +40,7 @@ private:
 
 #endif // __AUTH_ACCOUNT_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

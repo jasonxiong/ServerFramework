@@ -1,4 +1,4 @@
-#ifndef __SS_PROTOCOL_ENGINE_HPP__
+﻿#ifndef __SS_PROTOCOL_ENGINE_HPP__
 #define __SS_PROTOCOL_ENGINE_HPP__
 
 #include "GameProtocol.hpp"
@@ -17,3 +17,7 @@ private:
 
 #endif // __SS_PROTOCOL_ENGINE_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

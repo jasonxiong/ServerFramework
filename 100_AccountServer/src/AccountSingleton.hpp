@@ -1,4 +1,4 @@
-#ifndef __ACCOUNT_SINGLETON_HPP__
+Ôªø#ifndef __ACCOUNT_SINGLETON_HPP__
 #define __ACCOUNT_SINGLETON_HPP__
 
 #include "CSProtocolEngine.hpp"
@@ -11,7 +11,7 @@
 #include "ConfigMgr.hpp"
 #include "AccountApp.hpp"
 
-// Account”¶”√≥Ã–Ú÷–µƒµ•º˛
+// AccountÂ∫îÁî®Á®ãÂ∫è‰∏≠ÁöÑÂçï‰ª∂
 using namespace ServerLib;
 
 extern CAccountApp* g_pAccountApp;
@@ -26,3 +26,7 @@ extern CAccountApp* g_pAccountApp;
 
 #endif // __ACCOUNT_SINGLETON_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

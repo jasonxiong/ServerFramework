@@ -1,8 +1,8 @@
-
+ï»¿
 #ifndef __SINGLETON_TEMPLATE_HPP__
 #define __SINGLETON_TEMPLATE_HPP__
 
-//ÔÚÕâÌí¼Ó±ê×¼¿âÍ·ÎÄ¼þ
+//åœ¨è¿™æ·»åŠ æ ‡å‡†åº“å¤´æ–‡ä»¶
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -39,3 +39,7 @@ CSingleton<TYPE>* CSingleton<TYPE>::m_pSingleton = NULL;
 
 #endif /* __SINGLETON_TEMPLATE_HPP__ */
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

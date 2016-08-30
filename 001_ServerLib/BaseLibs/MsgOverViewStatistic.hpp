@@ -1,4 +1,4 @@
-#ifndef __MSG_OVERVIEW_STATISTIC_HPP__
+ï»¿#ifndef __MSG_OVERVIEW_STATISTIC_HPP__
 #define __MSG_OVERVIEW_STATISTIC_HPP__
 
 
@@ -55,23 +55,23 @@ public:
 
 public:
 
-    // À´×Ô¿Í»§¶ËµÄÏûÏ¢ÊıºÍ°ü´óĞ¡
+    // æ¥è‡ªå®¢æˆ·ç«¯çš„æ¶ˆæ¯æ•°å’ŒåŒ…å¤§å°
     int m_iMsgNumberFromClient;
     int m_iMsgSizeFromClient;
 
-    // À´×Ô·şÎñÆ÷µÄÏûÏ¢ÊıºÍ°ü´óĞ¡
+    // æ¥è‡ªæœåŠ¡å™¨çš„æ¶ˆæ¯æ•°å’ŒåŒ…å¤§å°
     int m_iMsgNumberFromServer;
     int m_iMsgSizeFromServer;
 
-    // ·¢ËÍ¸ø¿Í»§¶ËµÄÏûÏ¢ÊıºÍ°ü´óĞ¡
+    // å‘é€ç»™å®¢æˆ·ç«¯çš„æ¶ˆæ¯æ•°å’ŒåŒ…å¤§å°
     int m_iMsgNumberToClient;
     int m_iMsgSizeToClient;
 
-    // ·¢ËÍ¸ø·şÎñÆ÷µÄÏûÏ¢ÊıºÍ°ü´óĞ¡
+    // å‘é€ç»™æœåŠ¡å™¨çš„æ¶ˆæ¯æ•°å’ŒåŒ…å¤§å°
     int m_iMsgNumberToServer;
     int m_iMsgSizeToServer;
 
-    // ³ÌĞòLoopÑ­»·
+    // ç¨‹åºLoopå¾ªç¯
     int m_iLoopNumber;
 };
 
@@ -84,3 +84,7 @@ typedef CSingleton<CMsgOverViewStatistic> MsgOverViewStatisticSingleton;
 
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

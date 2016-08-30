@@ -1,4 +1,4 @@
-#ifndef __APP_ALLOCATOR_K32_HPP__
+ï»¿#ifndef __APP_ALLOCATOR_K32_HPP__
 #define __APP_ALLOCATOR_K32_HPP__
 
 #include "ObjAllocator.hpp"
@@ -7,7 +7,7 @@
 
 using namespace ServerLib;
 
-//¶ÔÏó²Ù×÷Æ÷
+//å¯¹è±¡æ“ä½œå™¨
 template <class TYPE_Object>
 class WorldType
 {
@@ -46,7 +46,7 @@ private:
 template <class TYPE_Object>
 CObjAllocator* WorldType<TYPE_Object>::m_pAllocator = 0;
 
-//32Î»Hash¶ÔÏó²Ù×÷Æ÷
+//32ä½Hashå¯¹è±¡æ“ä½œå™¨
 template <class TYPE_Object>
 class WorldTypeK32
 {
@@ -84,7 +84,7 @@ public:
 		return (TYPE_Object*)m_pAllocator->GetObj(iID);
 	}
 
-	//É¾³ı¶ÔÏó»¹±ØĞëÉ¾³ıHash
+	//åˆ é™¤å¯¹è±¡è¿˜å¿…é¡»åˆ é™¤Hash
 	static int DeleteByUin(const unsigned int uiUin)
 	{
 		int iID = 0;
@@ -104,7 +104,7 @@ public:
 		return 0;
 	}
 
-    //¸ù¾İRoleID»ñÈ¡»º´æ½ÇÉ«ĞÅÏ¢
+    //æ ¹æ®RoleIDè·å–ç¼“å­˜è§’è‰²ä¿¡æ¯
     static TYPE_Object* GetByRoleID(const RoleID& stRoleID)
     {
         CWorldRoleStatusWObj* pRoleObj = (CWorldRoleStatusWObj*)GetByUin(stRoleID.uin());
@@ -159,7 +159,7 @@ public:
         return (TYPE_Object*)m_pAllocator->GetObj(iID);
     }
 
-    //É¾³ı¶ÔÏó»¹±ØĞëÉ¾³ıHash
+    //åˆ é™¤å¯¹è±¡è¿˜å¿…é¡»åˆ é™¤Hash
     static int DeleteByHashKey(const unsigned int uiHashKey)
     {
         int iID = 0;
@@ -232,3 +232,7 @@ CHashMap_K32* WorldTypeK32<TYPE_Object>::m_pHashMap = 0;
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

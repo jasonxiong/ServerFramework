@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "AppDef.hpp"
 #include "RoleDBLogManager.hpp"
@@ -10,7 +10,7 @@
 
 using namespace ServerLib;
 
-//todo jasonxiong2 Ä¿Ç°Ã»ÓÐÉ¾ºÅÐèÇó£¬µÈÓÐÔÙÀ´¿ª·¢
+//todo jasonxiong2 ç›®å‰æ²¡æœ‰åˆ å·éœ€æ±‚ï¼Œç­‰æœ‰å†æ¥å¼€å‘
 
 char CRoleDBDeleteRoleHandler::m_szQueryString[GameConfig::ROLE_TABLE_SPLIT_FACTOR][512];
 
@@ -27,7 +27,7 @@ void CRoleDBDeleteRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    // delete roleÇëÇóÏûÏ¢
+    // delete roleè¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
     const DeleteRole_Account_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_staccountdeleterolerequest();
     
@@ -35,22 +35,22 @@ void CRoleDBDeleteRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 
     TRACE_THREAD(m_iThreadIdx, "Handling DeleteRoleRequest, uin: %u\n", uiUin);
 
-    // delete roleÏìÓ¦ÏûÏ¢
+    // delete roleå“åº”æ¶ˆæ¯
     GameProtocolMsg* pstMsgResp = &(pstHandleResult->stResponseMsg);
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(pstMsgResp, 0, MSGID_ACCOUNT_DELETEROLE_RESPONSE, uiUin);
 
-    // ¸ù¾ÝuinºÍworldid¶ÁÈ¡Êý¾Ý¿âÖÐµÄnickname£¬´æÈëm_szNicknameÖÐ
+    // æ ¹æ®uinå’Œworldidè¯»å–æ•°æ®åº“ä¸­çš„nicknameï¼Œå­˜å…¥m_szNicknameä¸­
     int iRes = QueryRoleInfo(rstReq.stroleid());
     if (iRes != 0)
     {
-        // Ã»ÓÐÕÒµ½ÒªÉ¾³ýµÄ½ÇÉ«, Ö±½Ó·µ»Ø³É¹¦
+        // æ²¡æœ‰æ‰¾åˆ°è¦åˆ é™¤çš„è§’è‰², ç›´æŽ¥è¿”å›žæˆåŠŸ
         FillSuccessfulResponse(pstMsgResp);
         return;
     }
 
-    // ¸ù¾ÝRoleIDÉ¾³ý±íDBRoleInfoÖÐµÄÏàÓ¦¼ÇÂ¼
+    // æ ¹æ®RoleIDåˆ é™¤è¡¨DBRoleInfoä¸­çš„ç›¸åº”è®°å½•
     iRes = DeleteRole(rstReq.stroleid());
     if (iRes != 0)
     {
@@ -63,7 +63,7 @@ void CRoleDBDeleteRoleHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 
 int CRoleDBDeleteRoleHandler::DeleteRole(const RoleID& stRoleID)
 {
-    //À­È¡ROLEDBÊý¾Ý¿âÏà¹ØÅäÖÃ
+    //æ‹‰å–ROLEDBæ•°æ®åº“ç›¸å…³é…ç½®
     const ONEROLEDBINFO* pstDBConfig = (CRoleDBApp::m_stRoleDBConfigManager).GetOneRoleDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -71,7 +71,7 @@ int CRoleDBDeleteRoleHandler::DeleteRole(const RoleID& stRoleID)
         return -1;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊý¾Ý¿âÏà¹ØÐÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
 
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
@@ -91,7 +91,7 @@ int CRoleDBDeleteRoleHandler::DeleteRole(const RoleID& stRoleID)
 
 int CRoleDBDeleteRoleHandler::QueryRoleInfo(const RoleID& stRoleID)
 {
-    //´ÓXMLÎÄ¼þÖÐ¶ÁÈ¡Êý¾Ý¿âÅäÖÃÐÅÏ¢
+    //ä»ŽXMLæ–‡ä»¶ä¸­è¯»å–æ•°æ®åº“é…ç½®ä¿¡æ¯
     const ONEROLEDBINFO* pstDBInfoConfig = (CRoleDBApp::m_stRoleDBConfigManager).GetOneRoleDBInfoByIndex(m_iThreadIdx);
     if(!pstDBInfoConfig)
     {
@@ -99,10 +99,10 @@ int CRoleDBDeleteRoleHandler::QueryRoleInfo(const RoleID& stRoleID)
         return -1;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊý¾Ý¿âÏà¹ØÐÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     m_pDatabase->SetMysqlDBInfo(pstDBInfoConfig->szDBHost, pstDBInfoConfig->szUserName, pstDBInfoConfig->szUserPasswd, pstDBInfoConfig->szDBName);
 
-    //³õÊ¼»¯²éÑ¯µÄSQLÓï¾ä
+    //åˆå§‹åŒ–æŸ¥è¯¢çš„SQLè¯­å¥
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
     int iQueryBuffLen = sizeof(m_szQueryString[m_iThreadIdx])-1;
     int iLength = SAFE_SPRINTF(pszQueryString, iQueryBuffLen, "select uin from %s where uin=%u and seq=%u\n", MYSQL_USERINFO_TABLE, stRoleID.uin(), stRoleID.uiseq());
@@ -114,7 +114,7 @@ int CRoleDBDeleteRoleHandler::QueryRoleInfo(const RoleID& stRoleID)
         return T_ROLEDB_SQL_EXECUTE_FAILED;
     }
 
-    //ÅÐ¶ÏÊÇ·ñÒÑ¾­´æÔÚÒªÉ¾³ýµÄ¼ÇÂ¼
+    //åˆ¤æ–­æ˜¯å¦å·²ç»å­˜åœ¨è¦åˆ é™¤çš„è®°å½•
     int iNum = m_pDatabase->GetNumberRows();
     if(iNum != 1)
     {
@@ -154,3 +154,7 @@ void CRoleDBDeleteRoleHandler::FillSuccessfulResponse(GameProtocolMsg* pstRespon
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

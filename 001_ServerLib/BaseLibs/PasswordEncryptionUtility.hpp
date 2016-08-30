@@ -1,20 +1,24 @@
-#ifndef __PASSWORD_ENCRYPTION_UTILITY_HPP__
+ï»¿#ifndef __PASSWORD_ENCRYPTION_UTILITY_HPP__
 #define __PASSWORD_ENCRYPTION_UTILITY_HPP__
 
 #include "AESCbcEncryptor.hpp"
 
-//ÓÃ»§ Password ¼ÓÃÜ¹¤¾ßÀà
+//ç”¨æˆ· Password åŠ å¯†å·¥å…·ç±»
 
-//Ö±½ÓÊ¹ÓÃMD5Ëã·¨¼ÓÃÜ£¬²»¿ÉÄæ
+//ç›´æ¥ä½¿ç”¨MD5ç®—æ³•åŠ å¯†ï¼Œä¸å¯é€†
 
-//¼ÓÃÜÓÃµÄKey
+//åŠ å¯†ç”¨çš„Key
 #define PASSWORD_ENCRYPT_KEY "FkuL+QD1IjWp-Oh"
 
 class CPasswordEncryptionUtility
 {
 public:
-    //¶ÔÃÜÂë½øĞĞ¼ÓÃÜ£¬Éú³ÉÃÜÂëµÄÃÜÎÄ
+    //å¯¹å¯†ç è¿›è¡ŒåŠ å¯†ï¼Œç”Ÿæˆå¯†ç çš„å¯†æ–‡
     static int DoPasswordEncryption(const char* pszPasswd, int iPasswdLen, char* pszOutBuff, int& iOutBuffLen);
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

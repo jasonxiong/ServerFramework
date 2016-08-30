@@ -1,4 +1,4 @@
-#ifndef __HANDLER_SET_HPP__
+ï»¿#ifndef __HANDLER_SET_HPP__
 #define __HANDLER_SET_HPP__
 
 #include <string.h>
@@ -7,21 +7,21 @@
 
 typedef enum tagenAccountMsgType
 {
-    EKMT_CLIENT = 1,    // ¿Í»§¶ËÏûÏ¢
-    EKMT_SERVER = 2,    // ·şÎñÆ÷ÏûÏ¢
+    EKMT_CLIENT = 1,    // å®¢æˆ·ç«¯æ¶ˆæ¯
+    EKMT_SERVER = 2,    // æœåŠ¡å™¨æ¶ˆæ¯
 }EAccountMsgType;
 
 typedef struct tagAccountMsgHandler
 {
-    IHandler* m_pHandler;       // ÏûÏ¢´¦Àíº¯Êı
-    EAccountMsgType m_enMsgType;   // ÏûÏ¢ÀàĞÍ
+    IHandler* m_pHandler;       // æ¶ˆæ¯å¤„ç†å‡½æ•°
+    EAccountMsgType m_enMsgType;   // æ¶ˆæ¯ç±»å‹
 }TAccountMsgHandler;
 
-// ÏûÏ¢´¦ÀíÕß¹ÜÀíÆ÷
+// æ¶ˆæ¯å¤„ç†è€…ç®¡ç†å™¨
 class CHandlerSet
 {
 protected:
-    // ÓÃÊı×é±íÊ¾µÄÏûÏ¢´¦ÀíÕß¼¯ºÏ
+    // ç”¨æ•°ç»„è¡¨ç¤ºçš„æ¶ˆæ¯å¤„ç†è€…é›†åˆ
     TAccountMsgHandler m_apHandler[MAX_ACCOUNT_HANDLER_NUMBER];
 
 protected:
@@ -31,16 +31,20 @@ public:
     virtual ~CHandlerSet() {}
 
 public:
-    // ³õÊ¼»¯ÏûÏ¢´¦ÀíÕß¼¯ºÏÖĞµÄ¸÷¸öÏûÏ¢´¦ÀíÕß£¬·µ»ØÖµÎª0±íÊ¾³É¹¦£¬ÆäËû±íÊ¾Ê§°Ü
+    // åˆå§‹åŒ–æ¶ˆæ¯å¤„ç†è€…é›†åˆä¸­çš„å„ä¸ªæ¶ˆæ¯å¤„ç†è€…ï¼Œè¿”å›å€¼ä¸º0è¡¨ç¤ºæˆåŠŸï¼Œå…¶ä»–è¡¨ç¤ºå¤±è´¥
     virtual int Initialize();
 
-    // ¸ù¾İÏûÏ¢id·µ»Ø¸ÃÏûÏ¢µÄ´¦ÀíÕß
+    // æ ¹æ®æ¶ˆæ¯idè¿”å›è¯¥æ¶ˆæ¯çš„å¤„ç†è€…
     IHandler* GetHandler(const unsigned int uiMsgID, EAccountMsgType enMsgType = EKMT_SERVER);
 
 protected:
-    // ¸ù¾İÏûÏ¢id×¢²áËüµÄ´¦ÀíÕß£¬·µ»ØÖµÎª0±íÊ¾³É¹¦£¬ÆäËû±íÊ¾Ê§°Ü
+    // æ ¹æ®æ¶ˆæ¯idæ³¨å†Œå®ƒçš„å¤„ç†è€…ï¼Œè¿”å›å€¼ä¸º0è¡¨ç¤ºæˆåŠŸï¼Œå…¶ä»–è¡¨ç¤ºå¤±è´¥
     int RegisterHandler(const unsigned int uiMsgID, IHandler* pHandler, EAccountMsgType enMsgType = EKMT_SERVER);
 };
 
 #endif // __HANDLER_SET_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

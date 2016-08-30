@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -20,7 +20,7 @@ CListRoleResponseHandler::CListRoleResponseHandler()
 void CListRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃNetHeadºÍResult
+    // ä¸ä½¿ç”¨NetHeadå’ŒResult
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
     m_pstRequestMsg = pstMsg;
     m_uiSessionFD = TimeStampToSessionFD(m_pstRequestMsg->m_stmsghead().m_uisessionfd());
@@ -35,9 +35,9 @@ void CListRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
              pstListRoleResponse->iresult(), uiUin, nWorldID, pstListRoleResponse->roles_size(), m_uiSessionFD, m_unValue);
 
     CSessionObj* pSession = SessionManager->GetSession(m_uiSessionFD, m_unValue);
-    if (pSession != NULL) // Ô­Ê¼sessionÈÔÈ»´æÔÚ
+    if (pSession != NULL) // åŽŸå§‹sessionä»ç„¶å­˜åœ¨
     {
-        // ÊÇ·ñ½ûÖ¹´´½¨½ÇÉ«
+        // æ˜¯å¦ç¦æ­¢åˆ›å»ºè§’è‰²
         if (!ConfigMgr->IsCreateRoleEnabled())
         {
             if (pstListRoleResponse->roles_size() == 0)
@@ -48,7 +48,7 @@ void CListRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
 
         SendListRoleResponseToLotus();
 
-        // Çå³ýcacheÖÐµÄsession½áµã
+        // æ¸…é™¤cacheä¸­çš„sessionç»“ç‚¹
         //SessionManager->DeleteSession(m_uiSessionFD);
     }
 }
@@ -65,3 +65,7 @@ void CListRoleResponseHandler::SendListRoleResponseToLotus()
 
     LOGDEBUG("Send ListRoleResponse to lotus server\n");
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

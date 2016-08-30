@@ -1,4 +1,4 @@
-#ifndef __ROLE_DB_HANDLER_SET_HPP__
+ï»¿#ifndef __ROLE_DB_HANDLER_SET_HPP__
 #define __ROLE_DB_HANDLER_SET_HPP__
 
 #include "HandlerSet.hpp"
@@ -7,11 +7,11 @@
 #include "FetchAccountHandler.hpp"
 #include "UpdateAccountHandler.hpp"
 
-// AccountDBÓ¦ÓÃÖĞµÄÏûÏ¢´¦ÀíÕß¹ÜÀíÆ÷
+// AccountDBåº”ç”¨ä¸­çš„æ¶ˆæ¯å¤„ç†è€…ç®¡ç†å™¨
 class CAccountDBHandlerSet : public CHandlerSet
 {
 private:
-    // ¸Ã¼¯ºÏ¹ÜÀíµÄËùÓĞÏûÏ¢´¦ÀíÕß
+    // è¯¥é›†åˆç®¡ç†çš„æ‰€æœ‰æ¶ˆæ¯å¤„ç†è€…
     CAddAccountHandler m_stAddAccountHandler;
     CDeleteAccountHandler m_stDeleteAccountHandler;
     CFetchAccountHandler m_stFetchAccountHandler;
@@ -22,7 +22,7 @@ private:
     int OpenAccountDB();
 
 private:
-    // ÏûÏ¢´¦ÀíÕß´¦ÀíÏûÏ¢Ê±ĞèÒª·ÃÎÊÊı¾İ¿â
+    // æ¶ˆæ¯å¤„ç†è€…å¤„ç†æ¶ˆæ¯æ—¶éœ€è¦è®¿é—®æ•°æ®åº“
     DBClientWrapper m_oDBClient;
 
 	int m_iThreadIdx;
@@ -31,8 +31,12 @@ public:
     CAccountDBHandlerSet();
     ~CAccountDBHandlerSet();
 
-    // ³õÊ¼»¯¸Ã¼¯ºÏÖĞµÄÏûÏ¢´¦ÀíÕßºÍÊı¾İ¿âÅäÖÃ²¢Á¬½ÓÊı¾İ¿â
+    // åˆå§‹åŒ–è¯¥é›†åˆä¸­çš„æ¶ˆæ¯å¤„ç†è€…å’Œæ•°æ®åº“é…ç½®å¹¶è¿æ¥æ•°æ®åº“
     int Initialize(const int iThreadIdx);
 };
 
 #endif // __ROLE_DB_HANDLER_SET_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

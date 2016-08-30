@@ -1,4 +1,4 @@
-#include "AccountDBLogManager.hpp"
+ï»¿#include "AccountDBLogManager.hpp"
 #include "AccountDBApp.hpp"
 #include "SSProtocolEngine.hpp"
 #include "StringUtility.hpp"
@@ -13,20 +13,20 @@ int CSSProtocolEngine::Initialize(const int iThreadIdx)
 
 int CSSProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen, GameProtocolMsg* pstMsg)
 {
-    // ²»Ê¹ÓÃNetHead
+    // ä¸ä½¿ç”¨NetHead
 
     if (!pszCodeBuf || !pstMsg)
 	{
 		return -1;
 	}
 
-    // ÍøÂçÊı¾İ
+    // ç½‘ç»œæ•°æ®
 	int iBuffLen = iCodeLen - sizeof(unsigned short);
 	char* pszBuff = (char*)pszCodeBuf + sizeof(unsigned short);
 
     DEBUG_THREAD(m_iThreadIdx, "Decode Buff len: %d\n", iBuffLen);
 
-	//½âÂë
+	//è§£ç 
 	bool bRet = pstMsg->ParseFromArray(pszBuff, iBuffLen);
 	if(!bRet)
 	{
@@ -34,7 +34,7 @@ int CSSProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen, Gam
 		return -2;
 	}
 
-	//todo jasonxiong ºóĞø¿ÉÄÜĞèÒª½«ÄÚÈİ´òÓ¡³öÀ´µ÷ÊÔ¿´¿´
+	//todo jasonxiong åç»­å¯èƒ½éœ€è¦å°†å†…å®¹æ‰“å°å‡ºæ¥è°ƒè¯•çœ‹çœ‹
 	DEBUG_THREAD(m_iThreadIdx, "Success to parse proto data!");
 
     return 0;
@@ -42,7 +42,7 @@ int CSSProtocolEngine::Decode(unsigned char* pszCodeBuf, const int iCodeLen, Gam
 
 int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf, int iBufLen, int& iCodeLen)
 {
-    // ²»Ê¹ÓÃNetHead
+    // ä¸ä½¿ç”¨NetHead
     if (!pstMsg)
 	{
 		return -1;
@@ -53,7 +53,7 @@ int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf
 		return -3;
 	}
 
-	//¶Ôprotobuf½øĞĞ±àÂë
+	//å¯¹protobufè¿›è¡Œç¼–ç 
 	int iProtoMsgLen = pstMsg->ByteSize();
 	if(iProtoMsgLen >= iBufLen)
 	{
@@ -61,7 +61,7 @@ int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf
 		return -4;
 	}
 
-    // ±àÂëÊı¾İ
+    // ç¼–ç æ•°æ®
 	bool bRet = pstMsg->SerializeToArray(pszCodeBuf+sizeof(unsigned short), iBufLen);
 	if(!bRet)
 	{
@@ -73,8 +73,12 @@ int CSSProtocolEngine::Encode(GameProtocolMsg* pstMsg, unsigned char* pszCodeBuf
 	pszCodeBuf[0] = iCodeLen / 256;
 	pszCodeBuf[1] = iCodeLen % 256;
 
-	//todo jasonxiong ºóĞøµ÷ÊÔ¿¼ÂÇ´òÓ¡ÏûÏ¢µÄÄÚÈİ
+	//todo jasonxiong åç»­è°ƒè¯•è€ƒè™‘æ‰“å°æ¶ˆæ¯çš„å†…å®¹
 	DEBUG_THREAD(m_iThreadIdx, "Success to serialize proto to array!");
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

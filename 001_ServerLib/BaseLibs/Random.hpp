@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __RANDOM_HPP__
 #define __RANDOM_HPP__
 
@@ -25,56 +25,56 @@ public:
 
     static int GetMyRand();
 
-    // Ëæ»ú·µ»Ø0~MAX_DROP_RATEÖ®¼äµÄÒ»¸öÊı
+    // éšæœºè¿”å›0~MAX_DROP_RATEä¹‹é—´çš„ä¸€ä¸ªæ•°
     static int  GetRandomInRangeHundredMillion();
 
-    //pluto jasonxiong ĞÂÔö¼Ó·µ»Ø0 ~ 1000 ·¶Î§ÄÚµÄËæ»úÊı
+    //pluto jasonxiong æ–°å¢åŠ è¿”å›0 ~ 1000 èŒƒå›´å†…çš„éšæœºæ•°
     static int GetRandomInRangeThousand();
 
-	//jasonxiong ĞÂÔö¼Ó·µ»Ø0 ~ 10000 ·¶Î§ÄÚµÄËæ»úÊı
+	//jasonxiong æ–°å¢åŠ è¿”å›0 ~ 10000 èŒƒå›´å†…çš„éšæœºæ•°
 	static int GetRandomInRangeTenThousand();
 
-	//jasonxiong ·µ»Ø[0,range) Çø¼äÄÚµÄÒ»¸öÊı
+	//jasonxiong è¿”å›[0,range) åŒºé—´å†…çš„ä¸€ä¸ªæ•°
 	static int GetRandomNumberInRange(int iRange);
 
-    // Ëæ»ú·µ»ØÒ»¸ö²¼¶ûÖµ
+    // éšæœºè¿”å›ä¸€ä¸ªå¸ƒå°”å€¼
     static bool GetRandomBool();
 
-    // Ëæ»ú·µ»ØÒ»¸ö[min, max]Çø¼äÊı
+    // éšæœºè¿”å›ä¸€ä¸ª[min, max]åŒºé—´æ•°
     static int  GetRandomNumber(int iMin, int iMax);
 
-    // Ëæ»ú·µ»ØÒ»¸ö·ûºÏp=0.5µÄ¶şÏî·Ö²¼µÄ[min, max]Çø¼äÊı
+    // éšæœºè¿”å›ä¸€ä¸ªç¬¦åˆp=0.5çš„äºŒé¡¹åˆ†å¸ƒçš„[min, max]åŒºé—´æ•°
     static int  GetBinoRandNum(int iMin, int iMax);
 
-    // Ëæ»úÊÇ·ñÔÚÒ¼Íò·¶Î§ÄÚ
+    // éšæœºæ˜¯å¦åœ¨å£¹ä¸‡èŒƒå›´å†…
     static bool IsInRangeTenThousand(int iIn);
 
-    // Ëæ»úÊÇ·ñÔÚÒ¼ÒÚ·¶Î§ÄÚ
+    // éšæœºæ˜¯å¦åœ¨å£¹äº¿èŒƒå›´å†…
     static bool IsInRangeHundredMillion(int iIn);
 
-    // Ëæ»úÊÇ·ñÔÚÖ¸¶¨·¶Î§
+    // éšæœºæ˜¯å¦åœ¨æŒ‡å®šèŒƒå›´
     static bool IsInGivenRange(int iRange, int iIn);
 
-    // Éú³É[iLow, iHigh]Ö®¼äµÄÎŞÖØ¸´µÄiCount¸öËæ»úÊı
+    // ç”Ÿæˆ[iLow, iHigh]ä¹‹é—´çš„æ— é‡å¤çš„iCountä¸ªéšæœºæ•°
     static int GetDistinctRandNumber(const int iLow, const int iHigh,
                                      const int iCount, int aiNumber[]);
 
-    // Éú³É[iLow, iHigh]Ö®¼äµÄ¿ÉÖØ¸´µÄiCount¸öËæ»úÊı
+    // ç”Ÿæˆ[iLow, iHigh]ä¹‹é—´çš„å¯é‡å¤çš„iCountä¸ªéšæœºæ•°
     static int GetManyRandNumber(const int iLow, const int iHigh,
                                  const int iCount, int aiNumber[]);
 
 
-    //²âÊÔÊÇ·ñ»á³É¹¦
+    //æµ‹è¯•æ˜¯å¦ä¼šæˆåŠŸ
     static bool TestSuccess(int iSuccessRate);
 
-    //¸ù¾İÈ¨ÖØ´ÓTotalNum ÀïÑ¡ÔñSelectNum²»Í¨ÎïÆ·³öÀ´
+    //æ ¹æ®æƒé‡ä»TotalNum é‡Œé€‰æ‹©SelectNumä¸é€šç‰©å“å‡ºæ¥
     static int GetNotSameRand(int iTotalNum, int iSelectNum, int *aiLoot);
 
-    //¸ù¾İÈ¨ÖØ´ÓTotalNum ÀïÑ¡ÔñSelectNum¸ö²»Í¬ÎïÆ·³öÀ´, ´æ´¢ÔÚaiLootÀï
-    //Ê±¼ä¸´ÔÓ¶ÈO(TotalNum * SelectNum)
+    //æ ¹æ®æƒé‡ä»TotalNum é‡Œé€‰æ‹©SelectNumä¸ªä¸åŒç‰©å“å‡ºæ¥, å­˜å‚¨åœ¨aiLooté‡Œ
+    //æ—¶é—´å¤æ‚åº¦O(TotalNum * SelectNum)
     static int GetNotSameRandByWeight(int *aiWeight, int iTotalNum, int iSelectNum, int *aiLoot);
 
-    //Ï´ÅÆËã·¨
+    //æ´—ç‰Œç®—æ³•
     template<typename T>
     static void Shuffle(T *array, int iNum)
     {
@@ -94,3 +94,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

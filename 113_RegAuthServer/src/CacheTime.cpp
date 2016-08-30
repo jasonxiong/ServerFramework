@@ -1,4 +1,4 @@
-#include <string.h>
+﻿#include <string.h>
 #include "CacheTime.hpp"
 
 CCacheTime::CCacheTime()
@@ -29,3 +29,7 @@ void CCacheTime::GetCreatedTime(char* pszTime, unsigned int uiBufLen)
 
     strncpy(pszTime, ctime(GetCreatedTime()), uiBufLen - 1);
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

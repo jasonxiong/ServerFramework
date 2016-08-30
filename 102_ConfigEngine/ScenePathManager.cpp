@@ -1,4 +1,4 @@
-
+ï»¿
 #include "CommonDef.hpp"
 #include "LogAdapter.hpp"
 #include "ErrorNumDef.hpp"
@@ -21,17 +21,17 @@ CScenePathManager::~CScenePathManager()
 
 }
 
-//³õÊ¼»¯Õ½¶·µØÍ¼×èµ²ĞÅÏ¢,ÊÇXML¸ñÊ½µÄÎÄ¼ş
+//åˆå§‹åŒ–æˆ˜æ–—åœ°å›¾é˜»æŒ¡ä¿¡æ¯,æ˜¯XMLæ ¼å¼çš„æ–‡ä»¶
 int CScenePathManager::Initialize(int iMapID, int iBlockWidthNum, int iBlockHeightNum, pugi::xml_node& stBlockLayer)
 {
     m_iMapID = iMapID;
 
-    //ÉèÖÃµØÍ¼µÄBlockÊıÁ¿´óĞ¡
+    //è®¾ç½®åœ°å›¾çš„Blockæ•°é‡å¤§å°
     m_iMapBlockWidthNum = iBlockWidthNum;
     m_iMapBlockHeigthNum = iBlockHeightNum;
 
-    //¶ÁÈ¡µØÍ¼µÄ×èµ²ĞÅÏ¢
-    //1±íÊ¾ÓĞ×èµ²£¬²»¿ÉĞĞ×ß
+    //è¯»å–åœ°å›¾çš„é˜»æŒ¡ä¿¡æ¯
+    //1è¡¨ç¤ºæœ‰é˜»æŒ¡ï¼Œä¸å¯è¡Œèµ°
     m_aBlockInfo.reset();
     xml_node stOneBlock = stBlockLayer.child("data").child("tile");
     int iIndex = 0;
@@ -39,7 +39,7 @@ int CScenePathManager::Initialize(int iMapID, int iBlockWidthNum, int iBlockHeig
     {
         if(stOneBlock.attribute("gid").as_int())
         {
-            //ÊÇ×èµ²
+            //æ˜¯é˜»æŒ¡
             m_aBlockInfo.set(iIndex);
         }
 
@@ -49,25 +49,25 @@ int CScenePathManager::Initialize(int iMapID, int iBlockWidthNum, int iBlockHeig
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡µØÍ¼±àºÅµÄID
+//è·å–åœ°å›¾ç¼–å·çš„ID
 int CScenePathManager::GetMapID()
 {
     return m_iMapID;
 }
 
-//»ñÈ¡Õ½³¡µÄ¿í¶È
+//è·å–æˆ˜åœºçš„å®½åº¦
 int CScenePathManager::GetBattlefieldWidth() const
 {
     return m_iMapBlockWidthNum;
 }
 
-//»ñÈ¡Õ½³¡µÄ¸ß¶È
+//è·å–æˆ˜åœºçš„é«˜åº¦
 int CScenePathManager::GetBattlefieldHeight() const
 {
     return m_iMapBlockHeigthNum;
 }
 
-//ÊÇ·ñÂ·¾¶¿ÉÒÔÁ¬ĞøĞĞ×ß
+//æ˜¯å¦è·¯å¾„å¯ä»¥è¿ç»­è¡Œèµ°
 bool CScenePathManager::CanContinueWalk(const TUNITPOSITION& stStartPos, const TUNITPATH& stPath) const
 {
     if(stPath.iPosNum == 0)
@@ -75,7 +75,7 @@ bool CScenePathManager::CanContinueWalk(const TUNITPOSITION& stStartPos, const T
         return true;
     }
 
-    //ÏÈ¼ì²éÆğµãµ½µÚÒ»¸öµã
+    //å…ˆæ£€æŸ¥èµ·ç‚¹åˆ°ç¬¬ä¸€ä¸ªç‚¹
     if(!CanContinueWalk(stStartPos,stPath.astPos[0]))
     {
         return false;
@@ -92,10 +92,10 @@ bool CScenePathManager::CanContinueWalk(const TUNITPOSITION& stStartPos, const T
     return true;
 }
 
-//Á½µãÖ®¼äÊÇ·ñ¿ÉÒÔÁ¬ĞøĞĞ×ß
+//ä¸¤ç‚¹ä¹‹é—´æ˜¯å¦å¯ä»¥è¿ç»­è¡Œèµ°
 bool CScenePathManager::CanContinueWalk(const TUNITPOSITION& stStartPos, const TUNITPOSITION& stEndPos) const
 {
-    //ÏÈ¼ì²éÁ½µãÊÇ·ñÁ¬Ğø
+    //å…ˆæ£€æŸ¥ä¸¤ç‚¹æ˜¯å¦è¿ç»­
     if(ABS(stStartPos.iPosX,stEndPos.iPosX) == 0)
     {
         if(ABS(stStartPos.iPosY,stEndPos.iPosY) > 1)
@@ -123,10 +123,10 @@ bool CScenePathManager::CanContinueWalk(const TUNITPOSITION& stStartPos, const T
     return true;
 }
 
-//Õ½³¡ÉÏµÄÄ³µãÊÇ·ñ¿ÉÒÔĞĞ×ß
+//æˆ˜åœºä¸Šçš„æŸç‚¹æ˜¯å¦å¯ä»¥è¡Œèµ°
 bool CScenePathManager::BattlefieldPosCanWalk(const TUNITPOSITION& stPos) const
 {
-    //¼ì²éÎ»ÖÃÊÇ·ñºÏ·¨
+    //æ£€æŸ¥ä½ç½®æ˜¯å¦åˆæ³•
     if(stPos.iPosX < 0 || stPos.iPosX>=m_iMapBlockWidthNum
        || stPos.iPosY < 0 || stPos.iPosY>=m_iMapBlockHeigthNum)
     {
@@ -135,10 +135,14 @@ bool CScenePathManager::BattlefieldPosCanWalk(const TUNITPOSITION& stPos) const
 
     if(m_aBlockInfo.test(stPos.iPosY*m_iMapBlockWidthNum+stPos.iPosX))
     {
-        //ÊÇ×èµ²
+        //æ˜¯é˜»æŒ¡
         return false;
     }
 
     return true;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

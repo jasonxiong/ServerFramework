@@ -1,4 +1,4 @@
-#ifndef __ROLEDBTHREADMANAGER_HPP
+﻿#ifndef __ROLEDBTHREADMANAGER_HPP
 #define __ROLEDBTHREADMANAGER_HPP
 
 #include "GameConfigDefine.hpp"
@@ -30,3 +30,7 @@ private:
 
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

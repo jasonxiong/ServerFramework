@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "ProtoDataUtility.hpp"
 #include "WorldObjectHelperW_K64.hpp"
@@ -59,7 +59,7 @@ int CCreateRoleAccountHandler::OnRequestCreateRoleAccount()
 
     LOGDEBUG("Correct Uin CreateRoleAccount Request, Uin %u\n", uiUin);
 
-    //×ª·¢´´½¨½ÇÉ«ÕÊºÅµÄÇëÇó¸øDB Server
+    //è½¬å‘åˆ›å»ºè§’è‰²å¸å·çš„è¯·æ±‚ç»™DB Server
     int iRet = SendCreateRoleRequestToDBSvr();
     if(iRet)
     {
@@ -82,7 +82,7 @@ int CCreateRoleAccountHandler::OnResponseCreateRoleAccount()
         return -1;
     }
 
-    // ×ª»»³ÉMsgID_Account_CreateRole_Response·¢ËÍ¸øAccount
+    // è½¬æ¢æˆMsgID_Account_CreateRole_Responseå‘é€ç»™Account
     int iRet = SendCreateRoleResponseToAccount();
 
     LOGDEBUG("CreateRoleAccount Response To Account, Uin %d\n", uiUin);
@@ -92,13 +92,13 @@ int CCreateRoleAccountHandler::OnResponseCreateRoleAccount()
 
 int CCreateRoleAccountHandler::SendCreateRoleRequestToDBSvr()
 {
-    //Éú³ÉÏûÏ¢Í·
+    //ç”Ÿæˆæ¶ˆæ¯å¤´
     CWorldMsgHelper::GenerateMsgHead(m_stWorldMsg,
                                      m_pMsg->m_stmsghead().m_uisessionfd(),
                                      MSGID_WORLD_CREATEROLE_REQUEST,
                                      m_pMsg->m_stmsghead().m_uin());
 
-    //Éú³É´´½¨½ÇÉ«ÕÊºÅµÄÏûÏ¢Ìå
+    //ç”Ÿæˆåˆ›å»ºè§’è‰²å¸å·çš„æ¶ˆæ¯ä½“
     World_CreateRole_Request* pstRequest = m_stWorldMsg.mutable_m_stmsgbody()->mutable_m_stworld_createrole_request();
 
     int iRet = InitBirthInfo(*pstRequest);
@@ -115,7 +115,7 @@ int CCreateRoleAccountHandler::SendCreateRoleRequestToDBSvr()
 
 int CCreateRoleAccountHandler::SendCreateRoleResponseToAccount()
 {
-    //³õÊ¼»¯ÏûÏ¢Í·
+    //åˆå§‹åŒ–æ¶ˆæ¯å¤´
     CWorldMsgHelper::GenerateMsgHead(m_stWorldMsg,
                                      m_pMsg->m_stmsghead().m_uisessionfd(),
                                      MSGID_ACCOUNT_CREATEROLE_RESPONSE,
@@ -126,10 +126,10 @@ int CCreateRoleAccountHandler::SendCreateRoleResponseToAccount()
 
     pstAccountResp->set_iresult(rstResp.iresult());
     pstAccountResp->mutable_stroleid()->CopyFrom(rstResp.stroleid());
-    //todo jasonxiong2 µ¥»ú°æ²»ĞèÒªÃû×Ö
+    //todo jasonxiong2 å•æœºç‰ˆä¸éœ€è¦åå­—
     //pstAccountResp->set_sznickname(rstResp.sznickname());
 
-    //todo jasonxiong ºóĞø´´½¨ÍêÕÊºÅºó¿ÉÄÜĞèÒª·µ»Ø¸ü¶àµÄ¶«Î÷£¬¸ù¾İ²ß»®ĞèÒªÔÙÌí¼Ó
+    //todo jasonxiong åç»­åˆ›å»ºå®Œå¸å·åå¯èƒ½éœ€è¦è¿”å›æ›´å¤šçš„ä¸œè¥¿ï¼Œæ ¹æ®ç­–åˆ’éœ€è¦å†æ·»åŠ 
 
     int iRet = CWorldMsgHelper::SendWorldMsgToAccount(m_stWorldMsg);
 
@@ -143,12 +143,12 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
     rstRequest.set_uin(stAccountRequest.uin());
     rstRequest.set_world(stAccountRequest.worldid());
 
-    //todo jasonxiong2 ÏÈ²»ÒªÃû×Ö
+    //todo jasonxiong2 å…ˆä¸è¦åå­—
     //rstRequest.set_sznickname(stAccountRequest.sznickname());
 
     CConfigManager* pstConfigManager = CModuleHelper::GetConfigManager();
 
-    //todo jasonxiong2 Õâ¸öÔİÊ±Ö»¿¼ÂÇÒ»ÌõÅäÖÃ
+    //todo jasonxiong2 è¿™ä¸ªæš‚æ—¶åªè€ƒè™‘ä¸€æ¡é…ç½®
     const SRoleBirthConfig* pstBirthConfig = pstConfigManager->GetBirthConfigManager().GetConfig(1);
     if(!pstBirthConfig)
     {
@@ -156,16 +156,16 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
         return T_WORLD_SYSYTEM_INVALID_CFG;
     }
 
-    //³õÊ¼»¯Íæ¼Ò»ù´¡ÊôĞÔ
+    //åˆå§‹åŒ–ç©å®¶åŸºç¡€å±æ€§
     unsigned int uTimeNow = time(NULL);
 
     BASEDBINFO stBaseInfo;
 
-    //todo jasonxiong2 µ¥»ú°æ²»ĞèÒªÃû×Ö
+    //todo jasonxiong2 å•æœºç‰ˆä¸éœ€è¦åå­—
     //stBaseInfo.set_sznickname(stAccountRequest.sznickname());
     stBaseInfo.set_icreatetime(uTimeNow);
 
-    //³õÊ¼»¯×ÊÔ´
+    //åˆå§‹åŒ–èµ„æº
     for(int i=RESOURCE_TYPE_INVALID; i<RESOURCE_TYPE_MAX; ++i)
     {
         stBaseInfo.add_iresources(0);
@@ -175,14 +175,14 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
     stBaseInfo.set_iresources(RESOURCE_TYPE_CASH, pstBirthConfig->iInitGold);
     stBaseInfo.set_iresources(RESOURCE_TYPE_ENERGY, pstBirthConfig->iInitEnergy);
 
-    //³õÊ¼»¯Íæ¼ÒµÄÈÎÎñĞÅÏ¢
+    //åˆå§‹åŒ–ç©å®¶çš„ä»»åŠ¡ä¿¡æ¯
     QUESTDBINFO stQuestInfo;
 
-    //³õÊ¼»¯Íæ¼ÒµÄ±³°üĞÅÏ¢
+    //åˆå§‹åŒ–ç©å®¶çš„èƒŒåŒ…ä¿¡æ¯
     ITEMDBINFO stItemInfo;
     stItemInfo.set_m_iopenedslotnum(pstBirthConfig->iInitBagNum);
 
-    //³õÊ¼»¯Íæ¼ÒµÄÕ½¶·µ¥Î»ĞÅÏ¢
+    //åˆå§‹åŒ–ç©å®¶çš„æˆ˜æ–—å•ä½ä¿¡æ¯
     int iRet = InitFightUnitInfo(*pstBirthConfig, rstRequest);
     if(iRet)
     {
@@ -190,16 +190,16 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
         return iRet;
     }
 
-    //³õÊ¼»¯Íæ¼ÒµÄºÃÓÑĞÅÏ¢
+    //åˆå§‹åŒ–ç©å®¶çš„å¥½å‹ä¿¡æ¯
     FRIENDDBINFO stFriendInfo;
 
-    //³õÊ¼»¯±£Áô×Ö¶Î1
+    //åˆå§‹åŒ–ä¿ç•™å­—æ®µ1
     RESERVED1DBINFO stReserved1;
 
-    //³õÊ¼»¯±£Áô×Ö¶Î2
+    //åˆå§‹åŒ–ä¿ç•™å­—æ®µ2
     RESERVED2DBINFO stReserved2;
 
-    //1.½«Íæ¼Ò»ù´¡ĞÅÏ¢±àÂëµ½ÇëÇóÖĞ
+    //1.å°†ç©å®¶åŸºç¡€ä¿¡æ¯ç¼–ç åˆ°è¯·æ±‚ä¸­
     if(!EncodeProtoData(stBaseInfo, *rstRequest.mutable_stbirthdata()->mutable_strbaseinfo()))
     {
         LOGERROR("Failed to encode base proto data, uin %u!\n", rstRequest.uin());
@@ -208,7 +208,7 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
 
     LOGDEBUG("Base proto Info compress rate %d:%zu, uin %u\n", stBaseInfo.ByteSize(), rstRequest.stbirthdata().strbaseinfo().size(), rstRequest.uin());
 
-    //2.½«Íæ¼ÒÈÎÎñĞÅÏ¢±àÂëµ½ÇëÇóÖĞ
+    //2.å°†ç©å®¶ä»»åŠ¡ä¿¡æ¯ç¼–ç åˆ°è¯·æ±‚ä¸­
     if(!EncodeProtoData(stQuestInfo, *rstRequest.mutable_stbirthdata()->mutable_strquestinfo()))
     {
         LOGERROR("Failed to encode quest proto data, uin %u!\n", rstRequest.uin());
@@ -217,7 +217,7 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
 
     LOGDEBUG("quest proto Info compress rate %d:%zu, uin %u\n", stQuestInfo.ByteSize(), rstRequest.stbirthdata().strquestinfo().size(), rstRequest.uin());
 
-    //3.½«Íæ¼ÒÎïÆ·ĞÅÏ¢±àÂëµ½ÇëÇóÖĞ
+    //3.å°†ç©å®¶ç‰©å“ä¿¡æ¯ç¼–ç åˆ°è¯·æ±‚ä¸­
     if(!EncodeProtoData(stItemInfo, *rstRequest.mutable_stbirthdata()->mutable_striteminfo()))
     {
         LOGERROR("Failed to encode item proto data, uin %u!\n", rstRequest.uin());
@@ -226,7 +226,7 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
 
     LOGDEBUG("item proto Info compress rate %d:%zu, uin %u\n", stItemInfo.ByteSize(), rstRequest.stbirthdata().striteminfo().size(), rstRequest.uin());
 
-    //4.½«Íæ¼ÒºÃÓÑĞÅÏ¢ĞÅÏ¢±àÂëµ½ÇëÇóÖĞ
+    //4.å°†ç©å®¶å¥½å‹ä¿¡æ¯ä¿¡æ¯ç¼–ç åˆ°è¯·æ±‚ä¸­
     if(!EncodeProtoData(stFriendInfo, *rstRequest.mutable_stbirthdata()->mutable_strfriendinfo()))
     {
         LOGERROR("Failed to encode friend proto data, uin %u!\n", rstRequest.uin());
@@ -235,7 +235,7 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
 
     LOGDEBUG("friend proto Info compress rate %d:%zu, uin %u\n", stFriendInfo.ByteSize(), rstRequest.stbirthdata().strfriendinfo().size(), rstRequest.uin());
 
-    //5.½«Íæ¼ÒReserved1×Ö¶Î±àÂëµ½ÇëÇóÖĞ
+    //5.å°†ç©å®¶Reserved1å­—æ®µç¼–ç åˆ°è¯·æ±‚ä¸­
     if(!EncodeProtoData(stReserved1, *rstRequest.mutable_stbirthdata()->mutable_strreserved1()))
     {
         LOGERROR("Failed to encode reserved1 proto data, uin %u!\n", rstRequest.uin());
@@ -244,7 +244,7 @@ int CCreateRoleAccountHandler::InitBirthInfo(World_CreateRole_Request& rstReques
 
     LOGDEBUG("reserved1 proto Info compress rate %d:%zu, uin %u\n", stReserved1.ByteSize(), rstRequest.stbirthdata().strreserved1().size(), rstRequest.uin());
 
-    //6.½«Íæ¼ÒReserved2×Ö¶Î±àÂëµ½ÇëÇóÖĞ
+    //6.å°†ç©å®¶Reserved2å­—æ®µç¼–ç åˆ°è¯·æ±‚ä¸­
     if(!EncodeProtoData(stReserved2, *rstRequest.mutable_stbirthdata()->mutable_strreserved2()))
     {
         LOGERROR("Failed to encode reserved2 proto data, uin %u!\n", rstRequest.uin());
@@ -269,7 +269,7 @@ int CCreateRoleAccountHandler::InitFightUnitInfo(const SRoleBirthConfig& stConfi
             continue;
         }
 
-        //Ôö¼ÓÒ»¸öµ¥Î»
+        //å¢åŠ ä¸€ä¸ªå•ä½
         iRet = InitOneFightUnitInfo(stConfig.aiUnitID[i], *stFightInfo.mutable_stunitrep()->add_stunits());
         if(iRet)
         {
@@ -277,11 +277,11 @@ int CCreateRoleAccountHandler::InitFightUnitInfo(const SRoleBirthConfig& stConfi
             return -1;
         }
 
-        //Ôö¼Óµ½ÕóĞÍÖĞ
+        //å¢åŠ åˆ°é˜µå‹ä¸­
         stFightInfo.mutable_stforms()->add_ifightunitids(stConfig.aiUnitID[i]);
     }
 
-    //½«Íæ¼ÒÕ½¶·ĞÅÏ¢±àÂëµ½ÇëÇóÖĞ
+    //å°†ç©å®¶æˆ˜æ–—ä¿¡æ¯ç¼–ç åˆ°è¯·æ±‚ä¸­
     if(!EncodeProtoData(stFightInfo, *rstRequest.mutable_stbirthdata()->mutable_strfightinfo()))
     {
         LOGERROR("Failed to encode fight proto data, uin %u!\n", rstRequest.uin());
@@ -293,7 +293,7 @@ int CCreateRoleAccountHandler::InitFightUnitInfo(const SRoleBirthConfig& stConfi
     return T_SERVER_SUCESS;
 }
 
-//³õÊ¼»¯Ò»¸öÕ½¶·µ¥Î»
+//åˆå§‹åŒ–ä¸€ä¸ªæˆ˜æ–—å•ä½
 int CCreateRoleAccountHandler::InitOneFightUnitInfo(int iConfigID, OneFightUnitInfo& stOneFightUnit)
 {
     const SFightUnitConfig* pstUnitConfig = CModuleHelper::GetConfigManager()->GetFightUnitConfigManager().GetConfig(iConfigID);
@@ -307,13 +307,13 @@ int CCreateRoleAccountHandler::InitOneFightUnitInfo(int iConfigID, OneFightUnitI
     stOneFightUnit.set_iunitaiid(pstUnitConfig->aiUnitAIID[0]);
     stOneFightUnit.set_inormalskillid(pstUnitConfig->iNormalSkill);
     
-    //³õÊ¼»¯ÊôĞÔ
+    //åˆå§‹åŒ–å±æ€§
     for(int i=0; i<FIGHT_ATTR_MAX; ++i)
     {
         stOneFightUnit.add_iattributes(pstUnitConfig->aiAttribute[i]);
     }
 
-    //³õÊ¼»¯ÎïÆ·²ÛĞÅÏ¢
+    //åˆå§‹åŒ–ç‰©å“æ§½ä¿¡æ¯
     for(int i=0; i<pstUnitConfig->iInitSlot; ++i)
     {
         stOneFightUnit.mutable_stiteminfo()->add_stitems();
@@ -322,3 +322,7 @@ int CCreateRoleAccountHandler::InitOneFightUnitInfo(int iConfigID, OneFightUnitI
     return T_SERVER_SUCESS;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#-------------------------------------------------------
+ï»¿#-------------------------------------------------------
 cmake_minimum_required(VERSION 2.6)
 cmake_policy(SET CMP0003 NEW)
 project(NewGameSvr)
@@ -25,12 +25,12 @@ else()
     cecho(cred "-- Check: ARCH ${PLATFORM} detected.")
 endif()
 
-## ÒÀÀµ¿â¶¨Òå
+## ä¾èµ–åº“å®šä¹‰
 #####################################################################
-# ÏµÍ³¿â
+# ç³»ç»Ÿåº“
 set (SYSTEM_LAS z dl pthread)
 
-# µÚÈý·½×é¼þ¿â
+# ç¬¬ä¸‰æ–¹ç»„ä»¶åº“
 #set third party lib dir
 set (3RD_PARTY_DIR ${PROJECT_SOURCE_DIR}/001_ServerLib/3RdParty)
 
@@ -109,14 +109,14 @@ set (PROTOCOL_LIB protocol)
 set (ALL_LAS ${SERVERLIB_LAS} ${CONFIG_LAS} ${SERVERLIB_LAS}
 	${TDRCONFIG_LIB} ${PROTOCOL_LIB} ${LUALIB_LIB} ${ZMQLIB_LIB}
 	${PROTOBUF_LIB} ${JSONCPP_LIB} ${SYSTEM_LAS})
-	#jasonxiong todo ºóÐøÖØ¹¹ÐÞ¸ÄÊ±ÔÙÌí¼Ó
+	#jasonxiong todo åŽç»­é‡æž„ä¿®æ”¹æ—¶å†æ·»åŠ 
 	#${CONFIG_LAS} ${TSF4G_LAS} {SYSTEM_LAS} ${LUALIB_LAS})
 #set (ALL_MTLAS ${SERVERLIB_MTLAS} ${SYSTEM_LAS} ${CONFIG_LAS} ${PROTOLAS} ${LUALIB_LIB}
 	#${ZMQLIB_LIB} ${PROTOBUF_LIB})
-	#jasonxiong todo ºóÐøÖØ¹¹Ê±ÐÞ¸ÄÔÙÌí¼Ó
+	#jasonxiong todo åŽç»­é‡æž„æ—¶ä¿®æ”¹å†æ·»åŠ 
 	#${CONFIG_LAS} ${TSF4G_LAS} ${SYSTEM_LAS})
 
-# ±àÒëÑ¡Ïî
+# ç¼–è¯‘é€‰é¡¹
 #####################################################################
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
@@ -132,9 +132,9 @@ else()
     set(MT_NAME_TAG ".run")
 endif()
 
-#Õâ¸öÕÒ¸öÒª´¦Àíµô
+#è¿™ä¸ªæ‰¾ä¸ªè¦å¤„ç†æŽ‰
 add_definitions(-D_POSIX_MT_)
-# ¿âÎÄ¼þµÄ¸½¼Ó²ÎÊý -fPIC
+# åº“æ–‡ä»¶çš„é™„åŠ å‚æ•° -fPIC
 set(ALL_FLAGS_IN_ONE_COMMON "-Wall -fPIC -rdynamic -D_FILE_OFFSET_BITS=64 -Werror -Wno-deprecated-declarations") 
 set(ALL_FLAGS_IN_ONE_DEBUG "-g -ggdb -O0 ${ALL_FLAGS_IN_ONE_COMMON}")
 set(ALL_FLAGS_IN_ONE_RELEASE "-O3 ${ALL_FLAGS_IN_ONE_COMMON} -DNDEBUG")
@@ -157,7 +157,7 @@ message(STATUS "CMAKE_CXX_FLAGS_RELWITHDEBINFO =" ${CMAKE_CXX_FLAGS_RELWITHDEBIN
 message(STATUS "CMAKE_CXX_FLAGS_MINSIZEREL =" ${CMAKE_CXX_FLAGS_MINSIZEREL})
 
 #####################################################################
-# ¹Ì¶¨Éú³ÉÄ¿Â¼Îª
+# å›ºå®šç”Ÿæˆç›®å½•ä¸º
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/release/bin)
 set (LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/release/lib)
 
@@ -241,3 +241,7 @@ else()
 	#add_subdirectory(114_AccountDBServer)
 endif()
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

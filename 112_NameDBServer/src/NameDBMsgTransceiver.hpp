@@ -1,4 +1,4 @@
-#ifndef __NAMEDB_MSG_TRANSCEIVER_HPP__
+ï»¿#ifndef __NAMEDB_MSG_TRANSCEIVER_HPP__
 #define __NAMEDB_MSG_TRANSCEIVER_HPP__
 
 #include "ZmqBus.hpp"
@@ -7,19 +7,23 @@
 class CNameDBMsgTransceiver
 {
 public:
-    // ³õÊ¼»¯ZMQ BusÏµÍ³
+    // åˆå§‹åŒ–ZMQ Busç³»ç»Ÿ
     int Initialize(bool bResumeMode, int iWorldID);
 
 public:
-    // ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+    // å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
     int SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer);
     int RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMsgLength, EGameServerID enMsgPeer);
 
 private:
 
-    //World µ½ NameDBµÄZMQÍ¨ĞÅÍ¨µÀ
+    //World åˆ° NameDBçš„ZMQé€šä¿¡é€šé“
     ZmqBus m_oWorld2NameDBSvr;
 };
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

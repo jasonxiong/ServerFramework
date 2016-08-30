@@ -1,4 +1,4 @@
-#include <stdlib.h>
+﻿#include <stdlib.h>
 
 #include "ErrorNumDef.hpp"
 #include "StringUtility.hpp"
@@ -78,3 +78,7 @@ TEST_F(ZmqBusUnitTest, PairTcp)
 
     printf("client recv from server, len %d, data %s\n", iMsgLen, m_szRecvBuff);
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

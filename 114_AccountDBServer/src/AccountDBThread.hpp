@@ -1,4 +1,4 @@
-#ifndef __ACCOUNTDB_THREAD_HPP__
+ï»¿#ifndef __ACCOUNTDB_THREAD_HPP__
 #define __ACCOUNTDB_THREAD_HPP__
 
 #include <pthread.h>
@@ -9,7 +9,7 @@
 
 using namespace ServerLib;
 
-// AccountDBÏß³Ì
+// AccountDBçº¿ç¨‹
 class CAccountDBThread
 {
 public:
@@ -46,8 +46,8 @@ private:
     CAccountDBHandlerSet m_stAccountDBHandlerSet;
 
 private:
-	CCodeQueue* m_pInputQueue; //ÊäÈëÏûÏ¢¶ÓÁĞ£¬À´×ÔÄÚ²¿·şÎñÆ÷£¬ÓÉÖ÷Ïß³Ì·Ö·¢
-	CCodeQueue* m_pOutputQueue; //Êä³öÏûÏ¢¶ÓÁĞ
+	CCodeQueue* m_pInputQueue; //è¾“å…¥æ¶ˆæ¯é˜Ÿåˆ—ï¼Œæ¥è‡ªå†…éƒ¨æœåŠ¡å™¨ï¼Œç”±ä¸»çº¿ç¨‹åˆ†å‘
+	CCodeQueue* m_pOutputQueue; //è¾“å‡ºæ¶ˆæ¯é˜Ÿåˆ—
 	//thread index in array
 	int m_iThreadIdx;
 
@@ -61,3 +61,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

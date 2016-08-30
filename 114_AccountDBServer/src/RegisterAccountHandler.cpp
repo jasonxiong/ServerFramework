@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include "AccountDBLogManager.hpp"
 #include "NowTime.hpp"
 #include "UnixTime.hpp"
@@ -23,18 +23,18 @@ void CRegisterAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandl
         return;
     }
 
-    //×¢²áÕÊºÅµÄÇëÇó
+    //æ³¨å†Œå¸å·çš„è¯·æ±‚
     m_pstRequestMsg = pstRequestMsg;
     const RegAuth_RegAccount_Request& rstReq = m_pstRequestMsg->m_stmsgbody().m_stregauth_regaccount_request();
 
-    //×¢²áÕÊºÅµÄÏìÓ¦
+    //æ³¨å†Œå¸å·çš„å“åº”
     GameProtocolMsg* pstMsgResp = &(pstHandleResult->stResponseMsg);
 
-    //Éú³ÉÏìÓ¦ÏûÏ¢Í·
+    //ç”Ÿæˆå“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(pstMsgResp, m_pstRequestMsg->m_stmsghead().m_uisessionfd(), 
                             MSGID_REGAUTH_REGACCOUNT_RESPONSE, m_pstRequestMsg->m_stmsghead().m_uin());
 
-    //Ê×ÏÈ²éÕÒÏàÍ¬µÄÕÊºÅÊÇ·ñÒÑ¾­×¢²á
+    //é¦–å…ˆæŸ¥æ‰¾ç›¸åŒçš„å¸å·æ˜¯å¦å·²ç»æ³¨å†Œ
     bool bIsAccountExist = false;
     int iRet = CheckAccountIsExist(bIsAccountExist);
     if(iRet)
@@ -46,12 +46,12 @@ void CRegisterAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandl
 
     if(bIsAccountExist)
     {
-        //Òª×¢²áµÄÕÊºÅÒÑ¾­´æÔÚ
+        //è¦æ³¨å†Œçš„å¸å·å·²ç»å­˜åœ¨
         FillFailedResponse(T_ACCOUNTDB_ACCOUNT_EXISTS, pstMsgResp);
         return;
     }
 
-    //´ÓUinÊı¾İ¿âÖĞ»ñÈ¡µ±Ç°¿ÉÓÃµÄUin
+    //ä»Uinæ•°æ®åº“ä¸­è·å–å½“å‰å¯ç”¨çš„Uin
     unsigned int uiUin = 0;
     iRet = GetAccountUin(uiUin);
     if(iRet)
@@ -61,7 +61,7 @@ void CRegisterAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandl
         return;
     }
 
-    //½«ĞÂÍæ¼ÒµÄÕÊºÅÊı¾İ²åÈëµ½AccountDBÖĞ
+    //å°†æ–°ç©å®¶çš„å¸å·æ•°æ®æ’å…¥åˆ°AccountDBä¸­
     iRet = InsertNewAccountRecord(rstReq, uiUin);
     if(iRet)
     {
@@ -77,10 +77,10 @@ void CRegisterAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandl
     return;
 }
 
-//ÏÈ¼ì²éÏàÍ¬µÄÕÊºÅÊÇ·ñÒÑ¾­´æÔÚ
+//å…ˆæ£€æŸ¥ç›¸åŒçš„å¸å·æ˜¯å¦å·²ç»å­˜åœ¨
 int CRegisterAccountHandler::CheckAccountIsExist(bool& bIsAccountExist)
 {
-    //ÉèÖÃÁ¬½ÓµÄDB
+    //è®¾ç½®è¿æ¥çš„DB
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -110,7 +110,7 @@ int CRegisterAccountHandler::CheckAccountIsExist(bool& bIsAccountExist)
 
     if(m_pDatabase->GetNumberRows() != 0)
     {
-        //ÒÑ¾­´æÔÚ¸ÃÕÊºÅ
+        //å·²ç»å­˜åœ¨è¯¥å¸å·
         bIsAccountExist = true;
     }
     else
@@ -121,10 +121,10 @@ int CRegisterAccountHandler::CheckAccountIsExist(bool& bIsAccountExist)
     return T_SERVER_SUCESS;
 }
 
-//»ñÈ¡µ±Ç°¿ÉÓÃ¿É×¢²áµÄUin
+//è·å–å½“å‰å¯ç”¨å¯æ³¨å†Œçš„Uin
 int CRegisterAccountHandler::GetAccountUin(unsigned& uiUin)
 {
-    //Õâ¸öÊı¾İ¿âµÄÅäÖÃÖĞÖ»ÓĞÒ»Ïî
+    //è¿™ä¸ªæ•°æ®åº“çš„é…ç½®ä¸­åªæœ‰ä¸€é¡¹
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stUniqUinDBConfigManager).GetOneAccountDBInfoByIndex(0);
     if(!pstDBConfig)
     {
@@ -139,7 +139,7 @@ int CRegisterAccountHandler::GetAccountUin(unsigned& uiUin)
         return iRet;
     }
 
-    //»ñÈ¡×îĞÂµÄUIN
+    //è·å–æœ€æ–°çš„UIN
     static char szQueryString[256] = {0};
     int iLength = SAFE_SPRINTF(szQueryString, sizeof(szQueryString)-1, "insert into %s set uin=NULL", MYSQL_UNIQUININFO_TABLE);
 
@@ -162,10 +162,10 @@ int CRegisterAccountHandler::GetAccountUin(unsigned& uiUin)
     return T_SERVER_SUCESS;
 }
 
-//ÏòÊı¾İ¿âÖĞ²åÈëÒ»ÌõĞÂ×¢²áÕÊºÅµÄ¼ÇÂ¼
+//å‘æ•°æ®åº“ä¸­æ’å…¥ä¸€æ¡æ–°æ³¨å†Œå¸å·çš„è®°å½•
 int CRegisterAccountHandler::InsertNewAccountRecord(const RegAuth_RegAccount_Request& rstReq, unsigned int uiUin)
 {
-    //ÉèÖÃÁ¬½ÓµÄDBĞÅÏ¢
+    //è®¾ç½®è¿æ¥çš„DBä¿¡æ¯
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -180,7 +180,7 @@ int CRegisterAccountHandler::InsertNewAccountRecord(const RegAuth_RegAccount_Req
         return T_ACCOUNTDB_SQL_EXECUTE_FAILED;
     }
 
-    //²åÈëĞÂµÄ¼ÇÂ¼
+    //æ’å…¥æ–°çš„è®°å½•
     static char szQueryString[512] = {0};
     int iLength = SAFE_SPRINTF(szQueryString, sizeof(szQueryString)-1, "insert into %s(accountID,uin,accountType,password,lastWorldID,activeState) values(\"%s\",%u,%u,\"%s\",%d,%d)", \
                  MYSQL_ACCOUNTINFO_TABLE, rstReq.staccountid().straccount().c_str(), uiUin, rstReq.staccountid().iaccounttype(), rstReq.strpassword().c_str(), 1, 0);
@@ -223,3 +223,7 @@ void CRegisterAccountHandler::FillSuccessfulResponse(unsigned int uiUin, GamePro
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

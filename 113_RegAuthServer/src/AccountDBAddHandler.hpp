@@ -1,30 +1,30 @@
-#ifndef __ACCOUNT_DB_ADD_HANDLER_HPP__
+ï»¿#ifndef __ACCOUNT_DB_ADD_HANDLER_HPP__
 #define __ACCOUNT_DB_ADD_HANDLER_HPP__
 
 #include "Handler.hpp"
 
 class CRegAuthHandlerSet;
 
-// ´¦ÀíÀ´×ÔAccountDB ServerµÄ MSGID_ACCOUNTDB_ADDACCOUNT_RESPONSE ÏûÏ¢
+// å¤„ç†æ¥è‡ªAccountDB Serverçš„ MSGID_ACCOUNTDB_ADDACCOUNT_RESPONSE æ¶ˆæ¯
 class CAccountDBAddHandler : public IHandler
 {
 private:
-    TNetHead_V2* m_pstNetHead;  // ¿Í»§Á¬½Ó
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    TNetHead_V2* m_pstNetHead;  // å®¢æˆ·è¿æ¥
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCRegAuthHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CRegAuthHandlerSetç±»ä¸­åˆ›å»º
     friend class CRegAuthHandlerSet;
     CAccountDBAddHandler();
 
 public:
     virtual void OnClientMsg(TNetHead_V2* pstNetHead, GameProtocolMsg* pstMsg, SHandleResult* pstResult);
 
-    //ĞÂÔö¼ÓÕÊºÅ
+    //æ–°å¢åŠ å¸å·
     static void AddAccount(unsigned uiSessionFd, const AccountID& stAccountID, int iWorldID, const std::string& strPasswd);
 
 private:
@@ -37,3 +37,7 @@ private:
 
 #endif // __ACCOUNT_DB_ADD_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __DELETE_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __DELETE_ACCOUNT_HANDLER_HPP__
 #define __DELETE_ACCOUNT_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
@@ -7,23 +7,23 @@
 
 class CAccountDBHandlerSet;
 
-// MSGID_ACCOUNTDB_DELETE_REQUEST ÏûÏ¢´¦ÀíÕß
+// MSGID_ACCOUNTDB_DELETE_REQUEST æ¶ˆæ¯å¤„ç†è€…
 class CDeleteAccountHandler : public CHandler
 {
 private:
-    DBClientWrapper* m_pDatabase;   // ·ÃÎÊÊı¾İ¿âµÄÖ¸Õë
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    DBClientWrapper* m_pDatabase;   // è®¿é—®æ•°æ®åº“çš„æŒ‡é’ˆ
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
 	int m_iThreadIdx;
 
-    //Éú³ÉµÄSQLÓï¾ä
+    //ç”Ÿæˆçš„SQLè¯­å¥
     static char m_szQueryString[GameConfig::ACCOUNT_TABLE_SPLIT_FACTOR][256];
 
 public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountDBHandlerSet;
     CDeleteAccountHandler(DBClientWrapper* pDatabase);
 
@@ -32,7 +32,7 @@ public:
 
 private:
 
-    //É¾³ıAccountÕÊºÅ
+    //åˆ é™¤Accountå¸å·
     int DeleteAccount(const AccountID& stAccountID);
 
     void FillFailedResponse(const unsigned int uiResultID, GameProtocolMsg* pstResponseMsg);
@@ -40,3 +40,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

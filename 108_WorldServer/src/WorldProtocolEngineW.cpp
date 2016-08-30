@@ -1,4 +1,4 @@
-#include <math.h>
+ï»¿#include <math.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -25,7 +25,7 @@ int CWorldProtocolEngineW::OnRecvCode(char* pszMsgBuffer, const int iMsgLength, 
     int iRet = -1;
     timeval tvtmp = {0, 0};
 
-    //½âÂëÏûÏ¢
+    //è§£ç æ¶ˆæ¯
     char* pRealBuff = pszMsgBuffer + sizeof(unsigned short);
     int iBuffLen = iMsgLength - sizeof(unsigned short);
 
@@ -37,7 +37,7 @@ int CWorldProtocolEngineW::OnRecvCode(char* pszMsgBuffer, const int iMsgLength, 
 
     unsigned int uiMsgID = m_stWorldMsg.m_stmsghead().m_uimsgid();
 
-    //¸ù¾İMsgID»ñÈ¡ÏûÏ¢´¦ÀíÆ÷Handler
+    //æ ¹æ®MsgIDè·å–æ¶ˆæ¯å¤„ç†å™¨Handler
     IHandler* pHandler = CHandlerFactory::GetHandler(uiMsgID);
     if (!pHandler)
     {
@@ -65,7 +65,7 @@ int CWorldProtocolEngineW::ForwardMsg(char* pszMsgBuffer, const int iMsgLength)
     EGameServerID eServerID;
     switch (m_stWorldMsg.m_stmsghead().m_uimsgid())
     {
-        //todo jasonxiong ºóĞø¿¼ÂÇ½øĞĞĞŞ¸Ä
+        //todo jasonxiong åç»­è€ƒè™‘è¿›è¡Œä¿®æ”¹
         /*
         case MSGID_FETCHROLELIST_REQUEST:
         case MSGID_FETCHROLEALLINFOREQUEST:
@@ -87,7 +87,7 @@ int CWorldProtocolEngineW::ForwardMsg(char* pszMsgBuffer, const int iMsgLength)
             break;
         }
 
-        //todo jasonxiong ºóĞøÖØĞÂ¿ª·¢
+        //todo jasonxiong åç»­é‡æ–°å¼€å‘
         /*
         case MSGID_FETCHROLELIST_RESPONSE:
         case MSGID_FETCHROLEALLINFORESPONSE:
@@ -135,7 +135,7 @@ int CWorldProtocolEngineW::ForwardMsg(char* pszMsgBuffer, const int iMsgLength)
     }
     else
     {
-        //todo jasonxiong Ä¿Ç°Ã»ÓĞÊ¹ÓÃfeedback×Ö¶ÎµÄ·½Ê½£¬ºóÃæÍ³Ò»ÔÙ¿¼ÂÇ
+        //todo jasonxiong ç›®å‰æ²¡æœ‰ä½¿ç”¨feedbackå­—æ®µçš„æ–¹å¼ï¼Œåé¢ç»Ÿä¸€å†è€ƒè™‘
         //int* pFeedback = GetMsgFeedbackPointer(pszMsgBuffer);
         //int iFeedback = ntohl(*pFeedback);
         //return m_pAppLoop->SendWorldMsg(iMsgLength, pszMsgBuffer, eServerID, iFeedback);
@@ -152,26 +152,26 @@ int CWorldProtocolEngineW::SendWorldMsg(const GameProtocolMsg& rstWorldMsg, EGam
     unsigned short ushTotalLength = 0;
     if(enMsgPeer == GAME_SERVER_ROLEDB)
     {
-        //2×Ö½Ú³¤¶È
+        //2å­—èŠ‚é•¿åº¦
         ushTotalLength = rstWorldMsg.ByteSize()+ sizeof(unsigned short) + sizeof(unsigned int);
         m_szCode[0] = ushTotalLength / 256;
         m_szCode[1] = ushTotalLength % 256;
 
-        //Èç¹ûÊÇRoleDB¼Ó4×Ö½Úuin
+        //å¦‚æœæ˜¯RoleDBåŠ 4å­—èŠ‚uin
         *((unsigned*)(&m_szCode[sizeof(unsigned short)])) = rstWorldMsg.m_stmsghead().m_uin();
 
-        //Êı¾İ
+        //æ•°æ®
         iBuffLen = sizeof(m_szCode) - sizeof(unsigned short) - sizeof(unsigned int);
         pBuff = &m_szCode[sizeof(unsigned short) + sizeof(unsigned int)];
     }
     else
     {
-        //2×Ö½Ú³¤¶È
+        //2å­—èŠ‚é•¿åº¦
         ushTotalLength = rstWorldMsg.ByteSize()+ sizeof(unsigned short);
         m_szCode[0] = ushTotalLength / 256;
         m_szCode[1] = ushTotalLength % 256;
 
-        //Êı¾İ
+        //æ•°æ®
         iBuffLen = sizeof(m_szCode) - sizeof(unsigned short);
         pBuff = &m_szCode[sizeof(unsigned short)];
     }
@@ -234,7 +234,7 @@ int CWorldProtocolEngineW::RegisterAllHandler()
     // Chat
     CHandlerFactory::RegisterHandler(MSGID_WORLD_CHAT_NOTIFY, &m_stChatHandler);
 
-    //À­È¡ZoneÁĞ±í
+    //æ‹‰å–Zoneåˆ—è¡¨
     CHandlerFactory::RegisterHandler(MSGID_ACCOUNT_LISTZONE_REQUEST, &m_stListZoneHandler);
 
     // Mail
@@ -288,3 +288,7 @@ int CWorldProtocolEngineW::RegisterAllHandler()
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

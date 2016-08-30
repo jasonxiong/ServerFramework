@@ -1,19 +1,19 @@
-#ifndef __ROLEDB_INFO_CONFIG_HPP__
+ï»¿#ifndef __ROLEDB_INFO_CONFIG_HPP__
 #define __ROLEDB_INFO_CONFIG_HPP__
 
-//¶ÁÈ¡ROLEDBµÄĞÅÏ¢ÎÄ¼ş£¬²ÉÓÃXMLµÄÎÄ¼ş¸ñÊ½
+//è¯»å–ROLEDBçš„ä¿¡æ¯æ–‡ä»¶ï¼Œé‡‡ç”¨XMLçš„æ–‡ä»¶æ ¼å¼
 
 #include "GameConfigDefine.hpp"
 
 struct ONEROLEDBINFO
 {
-    int iDBMajorVersion;    //Ê¹ÓÃµÄÊı¾İ¿âµÄÖ÷°æ±¾ºÅ
-    int iDBMinVersion;      //Ê¹ÓÃµÄÊı¾İ¿âµÄ×Ó°æ±¾ºÅ
-    char szDBEngine[64];    //Ê¹ÓÃµÄDBÒıÇæµÄÃû×Ö
-    char szDBHost[64];      //Á¬½ÓÊı¾İ¿âµÄHOST
-    char szUserName[64];    //Á¬½ÓÊı¾İ¿âµÄÓÃ»§Ãû
-    char szUserPasswd[64];  //Á¬½ÓÊı¾İ¿âµÄÃÜÂë
-    char szDBName[64];      //Á¬½ÓµÄÊı¾İ¿âµÄDB±íÃû
+    int iDBMajorVersion;    //ä½¿ç”¨çš„æ•°æ®åº“çš„ä¸»ç‰ˆæœ¬å·
+    int iDBMinVersion;      //ä½¿ç”¨çš„æ•°æ®åº“çš„å­ç‰ˆæœ¬å·
+    char szDBEngine[64];    //ä½¿ç”¨çš„DBå¼•æ“çš„åå­—
+    char szDBHost[64];      //è¿æ¥æ•°æ®åº“çš„HOST
+    char szUserName[64];    //è¿æ¥æ•°æ®åº“çš„ç”¨æˆ·å
+    char szUserPasswd[64];  //è¿æ¥æ•°æ®åº“çš„å¯†ç 
+    char szDBName[64];      //è¿æ¥çš„æ•°æ®åº“çš„DBè¡¨å
 
     ONEROLEDBINFO()
     {
@@ -42,3 +42,7 @@ private:
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

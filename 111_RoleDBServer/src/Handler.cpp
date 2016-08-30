@@ -1,4 +1,4 @@
-#include <string.h>
+﻿#include <string.h>
 
 #include "Handler.hpp"
 #include "ConfigHelper.hpp"
@@ -14,3 +14,7 @@ void CHandler::GenerateResponseMsgHead(GameProtocolMsg* pstServerMsg, unsigned i
 
     pstServerMsg->mutable_m_stmsgbody()->Clear();
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

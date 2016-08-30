@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file StringUtility.hpp
 *@author jasonxiong
 *@date 2009-11-18
 *@version 1.0
-*@brief ×Ö·û´®²Ù×÷¹¤¾ßÀà
+*@brief å­—ç¬¦ä¸²æ“ä½œå·¥å…·ç±»
 *
 *
 */
@@ -36,7 +36,7 @@
     strncmp(pszStr1, pszStr2, (iMinStrBufLen)); \
 })
 
-//NOTE: Õâ¸öµØ·½±ØĞë´«ÈëÊµ¼ÊÊ£Óà»º³åÇøµÄ´óĞ¡£¬·ñÔòÓĞ¿ÉÄÜ±¨´í
+//NOTE: è¿™ä¸ªåœ°æ–¹å¿…é¡»ä¼ å…¥å®é™…å‰©ä½™ç¼“å†²åŒºçš„å¤§å°ï¼Œå¦åˆ™æœ‰å¯èƒ½æŠ¥é”™
 #define SAFE_SPRINTF(pszBuf, iBufLen, pszFormat, ...) \
 ({ \
     int iSafeRet = snprintf(pszBuf, iBufLen, pszFormat, ##__VA_ARGS__); \
@@ -62,27 +62,27 @@ public:
 
 public:
     /**
-    *É¾³ı×Ö·û´®Ê×²¿ºÍÎ²²¿µÄ¿Õ°××Ö·û
-    *@param[in] szTrimString ĞèÒªÉ¾³ı¿Õ°×µÄ×Ö·û´®
+    *åˆ é™¤å­—ç¬¦ä¸²é¦–éƒ¨å’Œå°¾éƒ¨çš„ç©ºç™½å­—ç¬¦
+    *@param[in] szTrimString éœ€è¦åˆ é™¤ç©ºç™½çš„å­—ç¬¦ä¸²
     *@return 0 success
     */
     static int TrimString(char* szTrimString);
 
     /**
-    *ÅĞ¶Ï´«ÈëµÄ×Ö·ûÊÇ·ñÊÇ¿Õ°××Ö·û
-    *@param[in] c ¼ì²éµÄ×Ö·û
+    *åˆ¤æ–­ä¼ å…¥çš„å­—ç¬¦æ˜¯å¦æ˜¯ç©ºç™½å­—ç¬¦
+    *@param[in] c æ£€æŸ¥çš„å­—ç¬¦
     *@return true or false
     */
     static bool IsBlankChar(char c);
 
     /**
-    *×ª»»×Ö·û´®±àÂë
-    *@param[in] szInBuffer ĞèÒª×ª»»µÄ×Ö·û´®
-    *@param[in] iInLength ĞèÒª×ª»»µÄ×Ö·û´®µÄÊµ¼Ê³¤¶È
-    *@param[out] szOutBuffer ×ª»»ºóµÄ×Ö·û´®³¤¶È
-    *@param[in/out] iOutLength szOutBufferµÄ×î´ó³¤¶È£¬outÎª×ª»»ºóµÄ³¤¶È
-    *@param[in] szToCode ×ª»»ºóµÄ¸ñÊ½
-    *@param[in] szFromCode ×ª»»Ç°µÄ¸ñÊ½
+    *è½¬æ¢å­—ç¬¦ä¸²ç¼–ç 
+    *@param[in] szInBuffer éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸²
+    *@param[in] iInLength éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸²çš„å®é™…é•¿åº¦
+    *@param[out] szOutBuffer è½¬æ¢åçš„å­—ç¬¦ä¸²é•¿åº¦
+    *@param[in/out] iOutLength szOutBufferçš„æœ€å¤§é•¿åº¦ï¼Œoutä¸ºè½¬æ¢åçš„é•¿åº¦
+    *@param[in] szToCode è½¬æ¢åçš„æ ¼å¼
+    *@param[in] szFromCode è½¬æ¢å‰çš„æ ¼å¼
     */
     static int ConvertCode(char* szInBuffer, size_t uiInLength, char* szOutBuffer, size_t  uiOutLength, const char* szToCode, const char* szFromCode);
 
@@ -93,3 +93,7 @@ public:
 
 #endif //__STRING_UTIL_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,28 +1,28 @@
-#ifndef __AUTH_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __AUTH_ACCOUNT_HANDLER_HPP__
 #define __AUTH_ACCOUNT_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
 #include "Handler.hpp"
 #include "AccountDBPublic.hpp"
 
-//ÈÏÖ¤Æ½Ì¨ÕÊºÅµÄÏà¹ØÇëÇó´¦Àí
+//è®¤è¯å¹³å°å¸å·çš„ç›¸å…³è¯·æ±‚å¤„ç†
 
 class CAccountDBHandlerSet;
 
-// MSGID_ACCOUNTDB_FETCHROLE_REQUESTÏûÏ¢´¦ÀíÕß
+// MSGID_ACCOUNTDB_FETCHROLE_REQUESTæ¶ˆæ¯å¤„ç†è€…
 class CAuthAccountHandler : public CHandler
 {
 private:
-    DBClientWrapper* m_pDatabase;   // ·ÃÎÊÊı¾İ¿âµÄÖ¸Õë
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    DBClientWrapper* m_pDatabase;   // è®¿é—®æ•°æ®åº“çš„æŒ‡é’ˆ
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-	//ËùÊôÏß³Ìidx
+	//æ‰€å±çº¿ç¨‹idx
 	int m_iThreadIdx;
 public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountDBHandlerSet;
     CAuthAccountHandler(DBClientWrapper* pDatabase);
 
@@ -32,7 +32,7 @@ public:
 private:
     void OnAuthAccountRequest(SHandleResult* pstHandleResult);
 
-    //Ğ£ÑéÈÏÖ¤ÕË»§µÄÃÜÂë
+    //æ ¡éªŒè®¤è¯è´¦æˆ·çš„å¯†ç 
     int CheckAccountPasswd(const std::string& strAccount, int iLoginType, const std::string& strPasswd, RegAuth_AuthAccount_Response& stResp);
 
 private:
@@ -41,3 +41,7 @@ private:
 };
 
 #endif // __ROLE_DB_FETCH_ROLE_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

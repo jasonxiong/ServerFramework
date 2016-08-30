@@ -1,22 +1,22 @@
-#ifndef __DELETE_ROLE_RESPONSE_HANDLER_HPP__
+ï»¿#ifndef __DELETE_ROLE_RESPONSE_HANDLER_HPP__
 #define __DELETE_ROLE_RESPONSE_HANDLER_HPP__
 
 #include "Handler.hpp"
 
 class CAccountHandlerSet;
 
-// ´¦ÀíÀ´×ÔWorldServerµÄMSGID_ACCOUNT_DELETEROLE_RESPONSEÏûÏ¢
+// å¤„ç†æ¥è‡ªWorldServerçš„MSGID_ACCOUNT_DELETEROLE_RESPONSEæ¶ˆæ¯
 class CDeleteRoleResponseHandler : public IHandler
 {
 private:
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-    // ÏÂÃæÁ½¸ö±äÁ¿ÓÃÓÚ±êÊ¶Ò»¸ösession
+    // ä¸‹é¢ä¸¤ä¸ªå˜é‡ç”¨äºæ ‡è¯†ä¸€ä¸ªsession
     unsigned int m_uiSessionFD;
     unsigned short m_unValue;
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountHandlerSet;
     CDeleteRoleResponseHandler();
 
@@ -30,3 +30,7 @@ private:
 
 #endif // __DELETE_ROLE_RESPONSE_HANDLER_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

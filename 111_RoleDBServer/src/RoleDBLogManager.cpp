@@ -1,4 +1,4 @@
-#include "RoleDBLogManager.hpp"
+ï»¿#include "RoleDBLogManager.hpp"
 #include "StringUtility.hpp"
 
 int CRoleDBLogManager::Initialize(const int iLogNum, const TLogConfig& rLogConfig)
@@ -20,7 +20,7 @@ int CRoleDBLogManager::Initialize(const int iLogNum, const TLogConfig& rLogConfi
 	{
 		TLogConfig stLogConfig = rLogConfig;
 		SAFE_STRCPY(szBaseName, stLogConfig.m_szBaseName, sizeof(stLogConfig.m_szBaseName));
-		//¼ÓÉÏÏß³ÌµÄindexµ½ÈÕÖ¾Ãû×ÖµÄÄ©Î²
+		//åŠ ä¸Šçº¿ç¨‹çš„indexåˆ°æ—¥å¿—åå­—çš„æœ«å°¾
 		SAFE_SPRINTF(stLogConfig.m_szBaseName, sizeof(stLogConfig.m_szBaseName), "%s%d", szBaseName, i);
 		m_pLogAdapter[i].ReloadLogConfig(stLogConfig);
 	}
@@ -39,3 +39,7 @@ CServerLogAdapter* CRoleDBLogManager::GetLogAdapter(const int iThreadIdx)
 	return &m_pLogAdapter[iThreadIdx];
 }
 		
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

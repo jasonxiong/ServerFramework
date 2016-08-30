@@ -1,4 +1,4 @@
-#ifndef __DB_CLIENT_WRAPPER_HPP__
+ï»¿#ifndef __DB_CLIENT_WRAPPER_HPP__
 #define __DB_CLIENT_WRAPPER_HPP__
 
 #include <stdlib.h>
@@ -10,7 +10,7 @@
 #define mysql_connect(m,h,u,p) mysql_real_connect((m),(h),(u),(p),NULL,0,NULL,0)
 #endif
 
-//MYSQL Êı¾İ¿âµÄÁ¬½Ó
+//MYSQL æ•°æ®åº“çš„è¿æ¥
 struct MysqlConnection
 {
     struct MysqlConnection* pNext;
@@ -66,28 +66,32 @@ public:
 
     int FreeResult();
 
-    //·µ»Øselectµ½µÄµ¥ĞĞµÄ½á¹û£¬·µ»ØpstResult½á¹û£¬pLengths·µ»ØÊı×éÖĞÃ¿¸ö×Ö¶ÎµÄ³¤¶È£¬uFieldsµ¥ĞĞ·µ»Ø×Ö¶ÎµÄÊıÁ¿
+    //è¿”å›selectåˆ°çš„å•è¡Œçš„ç»“æœï¼Œè¿”å›pstResultç»“æœï¼ŒpLengthsè¿”å›æ•°ç»„ä¸­æ¯ä¸ªå­—æ®µçš„é•¿åº¦ï¼ŒuFieldså•è¡Œè¿”å›å­—æ®µçš„æ•°é‡
     int FetchOneRow(MYSQL_ROW& pstResult, unsigned long*& pLengthes, unsigned int& uFields);
 
     int GetAffectedRows();
     int GetNumberRows();
 
-    //»ñÈ¡ÉÏ´Î²åÈëµÄAUTO_INCREMENT·µ»ØµÄIDÖµ
+    //è·å–ä¸Šæ¬¡æ’å…¥çš„AUTO_INCREMENTè¿”å›çš„IDå€¼
     unsigned GetLastInsertID();
 
     const char* GetDBErrString() { return m_szErrString; };
 
 private:
 
-     MysqlDBLinkedList m_stDBLinkedList;    //²Ù×÷µÄMYSQL handlerµÄÁ´±í
+     MysqlDBLinkedList m_stDBLinkedList;    //æ“ä½œçš„MYSQL handlerçš„é“¾è¡¨
 
-     MYSQL_RES* m_pstRes;           //µ±Ç°²Ù×÷µÄRecordSetµÄÄÚÈİ
+     MYSQL_RES* m_pstRes;           //å½“å‰æ“ä½œçš„RecordSetçš„å†…å®¹
 
-     int m_iResNum;                 //µ±Ç°²Ù×÷µÄRecordSetµÄÊıÄ¿
+     int m_iResNum;                 //å½“å‰æ“ä½œçš„RecordSetçš„æ•°ç›®
 
-     bool m_bMultiDBConn;           //ÊÇ·ñÖ§³Ö¶à¸öMYSQLÁ¬½Ó
+     bool m_bMultiDBConn;           //æ˜¯å¦æ”¯æŒå¤šä¸ªMYSQLè¿æ¥
 
-     char m_szErrString[1024];      //Ö´ĞĞSQLÓï¾ä¹ı³ÌÖĞ²úÉúµÄ´íÎó
+     char m_szErrString[1024];      //æ‰§è¡ŒSQLè¯­å¥è¿‡ç¨‹ä¸­äº§ç”Ÿçš„é”™è¯¯
 };
 
 #endif
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

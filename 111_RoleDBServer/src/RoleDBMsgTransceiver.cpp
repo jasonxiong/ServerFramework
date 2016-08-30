@@ -1,4 +1,4 @@
-
+ï»¿
 #include "Int64Utility.hpp"
 #include "LogAdapter.hpp"
 #include "ConfigHelper.hpp"
@@ -10,7 +10,7 @@ using namespace ServerLib;
 int CRoleDBMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
 {
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    // ³õÊ¼»¯ZMQÍ¨ĞÅÍ¨µÀ
+    // åˆå§‹åŒ–ZMQé€šä¿¡é€šé“
     uint64_t ullWorldSvrID = GetServerBusID(iWorldID, GAME_SERVER_WORLD);
     uint64_t ullRoleDBSvrID = GetServerBusID(iWorldID, GAME_SERVER_ROLEDB);
 
@@ -33,7 +33,7 @@ int CRoleDBMsgTransceiver::Initialize(bool bResumeMode, int iWorldID)
     return 0;
 }
 
-// ·¢ËÍºÍ½ÓÊÕÏûÏ¢
+// å‘é€å’Œæ¥æ”¶æ¶ˆæ¯
 int CRoleDBMsgTransceiver::SendOneMsg(const char* pszMsg, int iMsgLength, EGameServerID enMsgPeer)
 {
     int iRet = 0;
@@ -79,3 +79,7 @@ int CRoleDBMsgTransceiver::RecvOneMsg(char* pszMsg, int iMaxOutMsgLen, int& riMs
 
     return iRet;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

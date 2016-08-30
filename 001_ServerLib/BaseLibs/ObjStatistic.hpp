@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef __OBJ_STATISTIC_HPP__
 #define __OBJ_STATISTIC_HPP__
 
@@ -53,8 +53,8 @@ enum enmStatObjectItemIndex
     ESOII_OBJECT_ITEM_RESERVER_MAX
 };
 
-extern const char* DEFAULT_OBJECT_STAT_DIRECTORY_PATH; //!<¶ÔÏóÍ³¼ÆÎÄ¼þËù´æ·ÅÎÄ¼þ¼Ð
-extern const char* DEFAULT_OBJECT_STAT_FILE_NAME; //!<¶ÔÏóÍ³¼ÆÎÄ¼þÃû
+extern const char* DEFAULT_OBJECT_STAT_DIRECTORY_PATH; //!<å¯¹è±¡ç»Ÿè®¡æ–‡ä»¶æ‰€å­˜æ”¾æ–‡ä»¶å¤¹
+extern const char* DEFAULT_OBJECT_STAT_FILE_NAME; //!<å¯¹è±¡ç»Ÿè®¡æ–‡ä»¶å
 
 const int MAX_STAT_OBJECT_NAME_LENGTH = 64;
 extern char g_aszObjectName[ESOTI_OBJECT_ITEM_RESERVER_MAX][MAX_STAT_OBJECT_NAME_LENGTH];
@@ -70,32 +70,32 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯£¬ÔÚ³õÊ¼»¯Ê±»á·ÖÅäÄÚ´æ¸øCStatisticÀàÖÐµÄSection
-    *@param[in] pszStatPath Í³¼ÆÎÄ¼þÂ·¾¶£¬Ä¬ÈÏÊÇ../stat/
-    *@param[in] pszStatFileName Í³¼ÆÎÄ¼þÃû£¬Ä¬ÈÏÊÇs
+    *åˆå§‹åŒ–ï¼Œåœ¨åˆå§‹åŒ–æ—¶ä¼šåˆ†é…å†…å­˜ç»™CStatisticç±»ä¸­çš„Section
+    *@param[in] pszStatPath ç»Ÿè®¡æ–‡ä»¶è·¯å¾„ï¼Œé»˜è®¤æ˜¯../stat/
+    *@param[in] pszStatFileName ç»Ÿè®¡æ–‡ä»¶åï¼Œé»˜è®¤æ˜¯s
     *@return 0 success
     */
     int Initialize(const char* pszStatPath = NULL, const char* pszStatFileName = NULL);
 
-    // ÉèÖÃÍ³¼ÆÃû³Æ
+    // è®¾ç½®ç»Ÿè®¡åç§°
     void SetObjectStatName(const char** apszObjectName, const int iObjectNumber);
 
-    // Ìí¼ÓÄ³¶ÔÏóÍ³¼Æ
+    // æ·»åŠ æŸå¯¹è±¡ç»Ÿè®¡
     int AddObjectStat(int iObjectType, int iObjectNumber);
 
-    //!´òÓ¡Í³¼ÆÐÅÏ¢
+    //!æ‰“å°ç»Ÿè®¡ä¿¡æ¯
     void Print();
 
-    //!Çå¿ÕÍ³¼ÆÐÅÏ¢
+    //!æ¸…ç©ºç»Ÿè®¡ä¿¡æ¯
     void Reset();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iObjectErrorNO;
     }
 
-    // ÉèÖÃÅäÖÃÐÅÏ¢
+    // è®¾ç½®é…ç½®ä¿¡æ¯
     int ReloadLogConfig(TLogConfig& rstLogConfig);
 
 private:
@@ -104,7 +104,7 @@ private:
 
     TObjectStatInfo* GetObjectStatInfo(int iObjectType);
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iObjectErrorNO = iErrorNO;
@@ -113,7 +113,7 @@ private:
 private:
 
     CStatistic m_stObjectStatistic;
-    int m_iObjectErrorNO; //!´íÎóÂë
+    int m_iObjectErrorNO; //!é”™è¯¯ç 
 
     short m_shObjectTypeNum;
     TObjectStatInfo m_astObjectTypeInfo[ESOTI_OBJECT_ITEM_RESERVER_MAX];
@@ -122,10 +122,14 @@ private:
 };
 
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCObjStatisticÀà£¬ËùÒÔÊµÏÖÒ»¸öµ¥¼þ·½±ãÊ¹ÓÃ
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCObjStatisticç±»ï¼Œæ‰€ä»¥å®žçŽ°ä¸€ä¸ªå•ä»¶æ–¹ä¾¿ä½¿ç”¨
 typedef CSingleton<CObjStatistic> ObjectStatisticSingleton;
 
 }
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

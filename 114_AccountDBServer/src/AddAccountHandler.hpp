@@ -1,32 +1,32 @@
-#ifndef __ADD_ACCOUNT_HANDLER_HPP__
+ï»¿#ifndef __ADD_ACCOUNT_HANDLER_HPP__
 #define __ADD_ACCOUNT_HANDLER_HPP__
 
 #include "DBClientWrapper.hpp"
 #include "Handler.hpp"
 #include "AccountDBPublic.hpp"
 
-//ĞÂÔöÕÊºÅÏà¹ØÇëÇóµÄ´¦Àí
+//æ–°å¢å¸å·ç›¸å…³è¯·æ±‚çš„å¤„ç†
 
 class CAccountDBHandlerSet;
 
-// MSGID_ACCOUNTDB_ADDACCOUNT_REQUEST ÏûÏ¢´¦ÀíÕß
+// MSGID_ACCOUNTDB_ADDACCOUNT_REQUEST æ¶ˆæ¯å¤„ç†è€…
 class CAddAccountHandler : public CHandler
 {
 private:
-    DBClientWrapper* m_pDatabase;   // ·ÃÎÊÊı¾İ¿âµÄÖ¸Õë
-    GameProtocolMsg* m_pstRequestMsg; // ´ı´¦ÀíµÄÏûÏ¢
+    DBClientWrapper* m_pDatabase;   // è®¿é—®æ•°æ®åº“çš„æŒ‡é’ˆ
+    GameProtocolMsg* m_pstRequestMsg; // å¾…å¤„ç†çš„æ¶ˆæ¯
 
-	//ËùÊôÏß³Ìidx
+	//æ‰€å±çº¿ç¨‹idx
 	int m_iThreadIdx;
 
-    //Éú³ÉµÄSQLÓï¾ä
+    //ç”Ÿæˆçš„SQLè¯­å¥
     static char m_szQueryString[GameConfig::ACCOUNT_TABLE_SPLIT_FACTOR][1024];
 
 public:
 	void SetThreadIdx(const int iThreadIdx){m_iThreadIdx = iThreadIdx;}
 
 private:
-    // ±¾ÀàµÄ¶ÔÏóÖ»ÄÜÔÚCAccountDBHandlerSetÀàÖĞ´´½¨
+    // æœ¬ç±»çš„å¯¹è±¡åªèƒ½åœ¨CAccountDBHandlerSetç±»ä¸­åˆ›å»º
     friend class CAccountDBHandlerSet;
     CAddAccountHandler(DBClientWrapper* pDatabase);
 
@@ -35,18 +35,18 @@ public:
 
 private:
 
-    //½øĞĞ±ØÒªµÄ²ÎÊı¼ì²é
+    //è¿›è¡Œå¿…è¦çš„å‚æ•°æ£€æŸ¥
     int CheckParams();
 
     void OnAddAccountRequest(SHandleResult* pstHandleResult);
 
-    //¼ì²éÕÊºÅÊÇ·ñ´æÔÚ
+    //æ£€æŸ¥å¸å·æ˜¯å¦å­˜åœ¨
     int CheckAccountExist(const AccountID& stAccountID, bool& bIsExist);
 
-    //»ñÈ¡»¹Î´±»Ê¹ÓÃµÄUIN
+    //è·å–è¿˜æœªè¢«ä½¿ç”¨çš„UIN
     int GetAvaliableUin(unsigned int& uin);
 
-    //²åÈëĞÂµÄ¼ÇÂ¼
+    //æ’å…¥æ–°çš„è®°å½•
     int AddNewRecord(const AccountID& stAccountID, unsigned int uin, int iWorldID, const std::string& strPassword);
 
 private:
@@ -55,3 +55,7 @@ private:
 };
 
 #endif // __ADD_ACCOUNT_HANDLER_HPP__
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file MsgStatistic.hpp
 *@author jasonxiong
 *@date 2009-11-20
 *@version 1.0
-*@brief ÏûÏ¢Í³¼ÆÀà
+*@brief æ¶ˆæ¯ç»Ÿè®¡ç±»
 *
 *
 */
@@ -16,73 +16,73 @@
 
 namespace ServerLib
 {
-const int MAX_STAT_MSG_NUMBER = 4096; //×î¶àÍ³¼ÆµÄÏûÏ¢ÖÖÀàÊı
-const int MAX_STAT_MSG_TYPE = 4; // ×î¶àÍ³¼ÆÏûÏ¢ÖÖÀà
+const int MAX_STAT_MSG_NUMBER = 4096; //æœ€å¤šç»Ÿè®¡çš„æ¶ˆæ¯ç§ç±»æ•°
+const int MAX_STAT_MSG_TYPE = 4; // æœ€å¤šç»Ÿè®¡æ¶ˆæ¯ç§ç±»
 const int MAX_STAT_LOOP_STAT = 1;
 
-//!ÓÃÓÚÍ¨¹ıMsgID·½±ã¶¨Î»µ½ÔÚCStatisticÖĞµÄSectionË÷Òı
+//!ç”¨äºé€šè¿‡MsgIDæ–¹ä¾¿å®šä½åˆ°åœ¨CStatisticä¸­çš„Sectionç´¢å¼•
 typedef struct tagStatMsgInfo
 {
-    int m_iMsgID; //!<ÏûÏ¢ID
-    int m_iMsgIndex; //!<ÏûÏ¢ÔÚCStaitisticÖĞµÄSectionË÷Òı
+    int m_iMsgID; //!<æ¶ˆæ¯ID
+    int m_iMsgIndex; //!<æ¶ˆæ¯åœ¨CStaitisticä¸­çš„Sectionç´¢å¼•
 } TStatMsgInfo;
 
 
 typedef struct tagStatMsgTypeInfo
 {
-    int m_iMsgType; //!<ÏûÏ¢ÀàĞÍ
-    int m_iMsgTypeIndex; //!<ÏûÏ¢ÔÚCStaitisticÖĞµÄSectionË÷Òı
+    int m_iMsgType; //!<æ¶ˆæ¯ç±»å‹
+    int m_iMsgTypeIndex; //!<æ¶ˆæ¯åœ¨CStaitisticä¸­çš„Sectionç´¢å¼•
 } TStatMsgTypeInfo;
 
 typedef enum enmStatMsgType
 {
-    ESMT_FROM_CLIENT = 0, // ´Ó¿Í»§¶ËÊÕµ½ÏûÏ¢
-    ESMT_FROM_SERVER = 1, // ´Ó·şÎñÆ÷ÊÕµ½ÏûÏ¢
-    ESMT_TO_CLIENT = 2,   // ·¢ËÍ¸ø¿Í»§¶Ë
-    ESMT_TO_SERVER = 3,   // ·¢ËÍ¸ø·şÎñÆ÷
+    ESMT_FROM_CLIENT = 0, // ä»å®¢æˆ·ç«¯æ”¶åˆ°æ¶ˆæ¯
+    ESMT_FROM_SERVER = 1, // ä»æœåŠ¡å™¨æ”¶åˆ°æ¶ˆæ¯
+    ESMT_TO_CLIENT = 2,   // å‘é€ç»™å®¢æˆ·ç«¯
+    ESMT_TO_SERVER = 3,   // å‘é€ç»™æœåŠ¡å™¨
 } ENMSTATMSGTYPE;
 
 typedef enum enmStatMsgResult
 {
-    ESMR_SUCCEED = 0, //!<ÏûÏ¢´¦Àí³É¹¦
-    ESMR_FAILED = 1, //!<ÏûÏ¢´¦ÀíÊ§°Ü
-    ESMR_TIMEOUT = 2, //!<ÏûÏ¢´¦Àí³¬Ê±
+    ESMR_SUCCEED = 0, //!<æ¶ˆæ¯å¤„ç†æˆåŠŸ
+    ESMR_FAILED = 1, //!<æ¶ˆæ¯å¤„ç†å¤±è´¥
+    ESMR_TIMEOUT = 2, //!<æ¶ˆæ¯å¤„ç†è¶…æ—¶
 } ENMSTATMSGRESULT;
 
 /**
-*@brief ÏûÏ¢ĞèÒªÍ³¼ÆµÄÍ³¼ÆÏî
+*@brief æ¶ˆæ¯éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹
 *
 *
 */
 typedef enum enmStatMsgItemIndex
 {
-    ESMI_SUCCESS_MSG_NUMBER_IDX = 0, //!<ÏûÏ¢´¦Àí³É¹¦µÄ¸öÊı
-    ESMI_FAILED_MSG_NUMBER_IDX, //!<ÏûÏ¢´¦ÀíÊ§°ÜµÄ¸öÊı
-    ESMI_TIMEOUT_MSG_NUMBER_IDX, //!<ÏûÏ¢´¦Àí³¬Ê±µÄ¸öÊı
-    ESMI_SUM_PROCESSTIME_IDX, //!<×Ü´¦ÀíºÄÊ±
-    ESMI_MAX_PROCESSTIME_IDX, //!<×î´ó´¦ÀíºÄÊ±
-    ESMI_AVA_PROCESSTIME_IDX, //!<Æ½¾ù´¦ÀíºÄÊ±
-    ESMI_MSG_LENGTH,  // ÏûÏ¢³¤¶È
-    ESMI_MAX_ITEM_NUMBER //!<×Ü¹²ĞèÒªÍ³¼ÆµÄÍ³¼ÆÏî¸öÊı£¬±£Ö¤Õâ¸öÖµ²»»á³¬¹ıSectionÄÜÈİÄÉµÄItem×î´óÖµ
+    ESMI_SUCCESS_MSG_NUMBER_IDX = 0, //!<æ¶ˆæ¯å¤„ç†æˆåŠŸçš„ä¸ªæ•°
+    ESMI_FAILED_MSG_NUMBER_IDX, //!<æ¶ˆæ¯å¤„ç†å¤±è´¥çš„ä¸ªæ•°
+    ESMI_TIMEOUT_MSG_NUMBER_IDX, //!<æ¶ˆæ¯å¤„ç†è¶…æ—¶çš„ä¸ªæ•°
+    ESMI_SUM_PROCESSTIME_IDX, //!<æ€»å¤„ç†è€—æ—¶
+    ESMI_MAX_PROCESSTIME_IDX, //!<æœ€å¤§å¤„ç†è€—æ—¶
+    ESMI_AVA_PROCESSTIME_IDX, //!<å¹³å‡å¤„ç†è€—æ—¶
+    ESMI_MSG_LENGTH,  // æ¶ˆæ¯é•¿åº¦
+    ESMI_MAX_ITEM_NUMBER //!<æ€»å…±éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ä¸ªæ•°ï¼Œä¿è¯è¿™ä¸ªå€¼ä¸ä¼šè¶…è¿‡Sectionèƒ½å®¹çº³çš„Itemæœ€å¤§å€¼
 } ENMSTATMSGITEMINDEX;
 
 typedef enum enmStatMsgTypeItemIndex
 {
-    ESMTI_TOTAL_MSG_NUMBER = 0, // ÏûÏ¢¸öÊı
-    ESMTI_TOTAL_SUCCESS_MSG_NUMBER, // ³É¹¦µÄÏûÏ¢¸öÊı
-    ESMTI_TOTAL_FAILED_MSG_NUMBER, // Ê§°ÜµÄÏûÏ¢¸öÊı
-    ESMTI_TOTAL_TIMEOUT_NUMBER, // ³¬Ê±µÄÏûÏ¢¸öÊı
-    ESMTI_MAX_ITEM_NUMBER //!<×Ü¹²ĞèÒªÍ³¼ÆµÄÍ³¼ÆÏî¸öÊı£¬±£Ö¤Õâ¸öÖµ²»»á³¬¹ıSectionÄÜÈİÄÉµÄItem×î´óÖµ
+    ESMTI_TOTAL_MSG_NUMBER = 0, // æ¶ˆæ¯ä¸ªæ•°
+    ESMTI_TOTAL_SUCCESS_MSG_NUMBER, // æˆåŠŸçš„æ¶ˆæ¯ä¸ªæ•°
+    ESMTI_TOTAL_FAILED_MSG_NUMBER, // å¤±è´¥çš„æ¶ˆæ¯ä¸ªæ•°
+    ESMTI_TOTAL_TIMEOUT_NUMBER, // è¶…æ—¶çš„æ¶ˆæ¯ä¸ªæ•°
+    ESMTI_MAX_ITEM_NUMBER //!<æ€»å…±éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ä¸ªæ•°ï¼Œä¿è¯è¿™ä¸ªå€¼ä¸ä¼šè¶…è¿‡Sectionèƒ½å®¹çº³çš„Itemæœ€å¤§å€¼
 } ENMSTATMSGTYPEITEMINDEX;
 
 typedef enum enmStatLoopItemIndex
 {
-    ESLI_LOOP_NUMBER = 0,  // Loop¸öÊı
-    ESLI_MAX_ITEM_NUMBER //!<×Ü¹²ĞèÒªÍ³¼ÆµÄÍ³¼ÆÏî¸öÊı£¬±£Ö¤Õâ¸öÖµ²»»á³¬¹ıSectionÄÜÈİÄÉµÄItem×î´óÖµ
+    ESLI_LOOP_NUMBER = 0,  // Loopä¸ªæ•°
+    ESLI_MAX_ITEM_NUMBER //!<æ€»å…±éœ€è¦ç»Ÿè®¡çš„ç»Ÿè®¡é¡¹ä¸ªæ•°ï¼Œä¿è¯è¿™ä¸ªå€¼ä¸ä¼šè¶…è¿‡Sectionèƒ½å®¹çº³çš„Itemæœ€å¤§å€¼
 } ENMSTATLOOPITEMINDEX;
 
-extern const char* DEFAULT_MSG_STAT_DIRECTORY_PATH; //!<ÏûÏ¢Í³¼ÆÎÄ¼şËù´æ·ÅÎÄ¼ş¼Ğ
-extern const char* DEFAULT_MSG_STAT_FILE_NAME; //!<ÏûÏ¢Í³¼ÆÎÄ¼şÃû
+extern const char* DEFAULT_MSG_STAT_DIRECTORY_PATH; //!<æ¶ˆæ¯ç»Ÿè®¡æ–‡ä»¶æ‰€å­˜æ”¾æ–‡ä»¶å¤¹
+extern const char* DEFAULT_MSG_STAT_FILE_NAME; //!<æ¶ˆæ¯ç»Ÿè®¡æ–‡ä»¶å
 extern const char* g_apszMsgItemName[ESMI_MAX_ITEM_NUMBER];
 extern const char* g_apszMsgTypeItemName[ESMTI_MAX_ITEM_NUMBER];
 extern const char* g_apszLoopItemName[ESLI_MAX_ITEM_NUMBER];
@@ -95,50 +95,50 @@ public:
 
 public:
     /**
-    *³õÊ¼»¯£¬ÔÚ³õÊ¼»¯Ê±»á·ÖÅäÄÚ´æ¸øCStatisticÀàÖĞµÄSection
-    *@param[in] pszStatPath Í³¼ÆÎÄ¼şÂ·¾¶£¬Ä¬ÈÏÊÇ../stat/
-    *@param[in] pszStatFileName Í³¼ÆÎÄ¼şÃû£¬Ä¬ÈÏÊÇs
+    *åˆå§‹åŒ–ï¼Œåœ¨åˆå§‹åŒ–æ—¶ä¼šåˆ†é…å†…å­˜ç»™CStatisticç±»ä¸­çš„Section
+    *@param[in] pszStatPath ç»Ÿè®¡æ–‡ä»¶è·¯å¾„ï¼Œé»˜è®¤æ˜¯../stat/
+    *@param[in] pszStatFileName ç»Ÿè®¡æ–‡ä»¶åï¼Œé»˜è®¤æ˜¯s
     *@return 0 success
     */
     int Initialize(const char* pszStatPath = NULL, const char* pszStatFileName = NULL);
 
-    //!Ìí¼ÓÍ³¼ÆĞÅÏ¢
+    //!æ·»åŠ ç»Ÿè®¡ä¿¡æ¯
     int AddMsgStat(int iMsgID, short shResult, int iMsgLength, timeval tvProcessTime, int iMsgType, int iMsgTimes = 1);
 
-    // Ìí¼ÓLoopÍ³¼ÆĞÅÏ¢
+    // æ·»åŠ Loopç»Ÿè®¡ä¿¡æ¯
     int AddLoopStat(int iLoopNumber);
 
-    //!´òÓ¡Í³¼ÆĞÅÏ¢
+    //!æ‰“å°ç»Ÿè®¡ä¿¡æ¯
     void Print();
 
-    //!Çå¿ÕÍ³¼ÆĞÅÏ¢
+    //!æ¸…ç©ºç»Ÿè®¡ä¿¡æ¯
     void Reset();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êı»ñÈ¡´íÎóºÅ
+    //!åœ¨æ¥å£è¿”å›é”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°è·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iMsgErrorNO;
     }
 
-    // ÉèÖÃÅäÖÃĞÅÏ¢
+    // è®¾ç½®é…ç½®ä¿¡æ¯
     int ReloadLogConfig(TLogConfig& rstLogConfig);
 
 private:
-    //!Í¨¹ıMsgIDÑ°ÕÒµ½¶ÔÓ¦µÄTStatMsgInfo½á¹¹
+    //!é€šè¿‡MsgIDå¯»æ‰¾åˆ°å¯¹åº”çš„TStatMsgInfoç»“æ„
     TStatMsgInfo* GetStatMsgInfo(int iMsgID);
 
     TStatMsgTypeInfo* GetStatMsgTypeInfo(int iMsgType);
 
-    //!Ôö¼ÓMsgIDµ½Í³¼Æ
+    //!å¢åŠ MsgIDåˆ°ç»Ÿè®¡
     int AddMsgInfo(int iMsgID);
 
-    // Ìí¼ÓMsgTypeÍ³¼Æ
+    // æ·»åŠ MsgTypeç»Ÿè®¡
     int AddMsgTypeInfoStat(int iMsgType, short shResult, int iMsgTimes = 1);
 
-    // Ôö¼ÓMsgTypeµ½Í³¼Æ
+    // å¢åŠ MsgTypeåˆ°ç»Ÿè®¡
     int AddMsgTypeInfo(int iMsgID);
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iMsgErrorNO = iErrorNO;
@@ -147,7 +147,7 @@ private:
 private:
 
     CStatistic m_stMsgStatistic;
-    int m_iMsgErrorNO; //!´íÎóÂë
+    int m_iMsgErrorNO; //!é”™è¯¯ç 
 
     short m_shMsgNum;
     TStatMsgInfo m_astMsgInfo[MAX_STAT_MSG_NUMBER];
@@ -161,10 +161,14 @@ private:
     bool m_bAddedLoopFlag;
 };
 
-//!Ò»°ãÀ´ËµÖ»»áÓÃµ½Ò»¸öCMsgStatisticÀà£¬ËùÒÔÊµÏÖÒ»¸öµ¥¼ş·½±ãÊ¹ÓÃ
+//!ä¸€èˆ¬æ¥è¯´åªä¼šç”¨åˆ°ä¸€ä¸ªCMsgStatisticç±»ï¼Œæ‰€ä»¥å®ç°ä¸€ä¸ªå•ä»¶æ–¹ä¾¿ä½¿ç”¨
 typedef CSingleton<CMsgStatistic> MsgStatisticSingleton;
 
 }
 
 #endif //__MSG_STATISTIC_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#include "RoleDBLogManager.hpp"
+ï»¿#include "RoleDBLogManager.hpp"
 #include "StringUtility.hpp"
 #include "ConfigHelper.hpp"
 #include "RoleDBApp.hpp"
@@ -78,9 +78,13 @@ int CRoleDBHandlerSet::Initialize(const int iThreadIdx)
 
 int CRoleDBHandlerSet::OpenRoleDB()
 {
-    //todo jasonxiong Õâ¸öµØ·½Ä¿Ç°Ö»¶Ômysql½øĞĞ³õÊ¼»¯
-    //Ä¿Ç°Ö»Ö§³Öµ¥¸öÏß³Ìµ¥¸öMYSQLÁ¬½Ó
+    //todo jasonxiong è¿™ä¸ªåœ°æ–¹ç›®å‰åªå¯¹mysqlè¿›è¡Œåˆå§‹åŒ–
+    //ç›®å‰åªæ”¯æŒå•ä¸ªçº¿ç¨‹å•ä¸ªMYSQLè¿æ¥
     m_oDBClient.Init(false);
 
     return 0;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

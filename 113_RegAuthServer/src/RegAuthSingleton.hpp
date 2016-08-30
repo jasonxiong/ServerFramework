@@ -1,4 +1,4 @@
-#ifndef __REGAUTH_SINGLETON_HPP__
+Ôªø#ifndef __REGAUTH_SINGLETON_HPP__
 #define __REGAUTH_SINGLETON_HPP__
 
 #include "CSProtocolEngine.hpp"
@@ -11,7 +11,7 @@
 #include "ConfigMgr.hpp"
 #include "RegAuthApp.hpp"
 
-// RegAuth”¶”√≥Ã–Ú÷–µƒµ•º˛
+// RegAuthÂ∫îÁî®Á®ãÂ∫è‰∏≠ÁöÑÂçï‰ª∂
 using namespace ServerLib;
 
 extern CRegAuthApp* g_pRegAuthApp;
@@ -26,3 +26,7 @@ extern CRegAuthApp* g_pRegAuthApp;
 
 #endif // __REGAUTH_SINGLETON_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

@@ -1,4 +1,4 @@
-#ifndef __CREATE_ROLE_REQUEST_OBJ_HPP__
+﻿#ifndef __CREATE_ROLE_REQUEST_OBJ_HPP__
 #define __CREATE_ROLE_REQUEST_OBJ_HPP__
 
 #include "ObjAllocator.hpp"
@@ -32,3 +32,7 @@ public:
 
 #endif // __CREATE_ROLE_REQUEST_OBJ_HPP__
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

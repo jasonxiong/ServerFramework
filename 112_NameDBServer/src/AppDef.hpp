@@ -1,20 +1,20 @@
-#ifndef __APP_DEF_HPP__
+ï»¿#ifndef __APP_DEF_HPP__
 #define __APP_DEF_HPP__
 
 
-//ÔÚÕâÀïÌí¼ÓÒ»Ğ©ºê¶¨Òå
+//åœ¨è¿™é‡Œæ·»åŠ ä¸€äº›å®å®šä¹‰
 #ifdef _DEBUG_
-const int MAX_SERVICEAPP_NUMBER = 2;                //×î¶àÆô¶¯µÄ·şÎñ½ø³ÌµÄÊıÄ¿
-const int APP_NAMEDB_MAX_SLEEP_USEC = 10 * 1000;    //Ïß³ÌsleepÊ±¼ä
+const int MAX_SERVICEAPP_NUMBER = 2;                //æœ€å¤šå¯åŠ¨çš„æœåŠ¡è¿›ç¨‹çš„æ•°ç›®
+const int APP_NAMEDB_MAX_SLEEP_USEC = 10 * 1000;    //çº¿ç¨‹sleepæ—¶é—´
 #else
-const int MAX_SERVICEAPP_NUMBER = 8;                //×î¶àÆô¶¯µÄ·şÎñ½ø³ÌµÄÊıÄ¿
-const int APP_NAMEDB_MAX_SLEEP_USEC = 10;           //Ïß³ÌsleepÊ±¼ä
+const int MAX_SERVICEAPP_NUMBER = 8;                //æœ€å¤šå¯åŠ¨çš„æœåŠ¡è¿›ç¨‹çš„æ•°ç›®
+const int APP_NAMEDB_MAX_SLEEP_USEC = 10;           //çº¿ç¨‹sleepæ—¶é—´
 #endif
 
-//Í³¼ÆCache¶¨Òå
-const int STAT_CACHE_ID_TIMER      = 0;        //¶¨Ê±Æ÷
-const int STAT_CACHE_ID_TIMERINDEX = 1;        //¶¨Ê±Æ÷Ë÷Òı
-const int STAT_CHCHE_ID_TRANSFER   = 2;        //¿Í»§¶ËÏûÏ¢Í·
+//ç»Ÿè®¡Cacheå®šä¹‰
+const int STAT_CACHE_ID_TIMER      = 0;        //å®šæ—¶å™¨
+const int STAT_CACHE_ID_TIMERINDEX = 1;        //å®šæ—¶å™¨ç´¢å¼•
+const int STAT_CHCHE_ID_TRANSFER   = 2;        //å®¢æˆ·ç«¯æ¶ˆæ¯å¤´
 
 #define STAT_CACHE_NAME_TIMER       "TimerCache"
 #define STAT_CACHE_NAME_TIMERINDEX  "TimerIndexCache"
@@ -27,23 +27,27 @@ typedef enum enIOIndex
     EII_QueryProxy  = 3,
     EII_AvatarProxy = 4,
 
-    //100 ÒÔÄÚÎªProxyID
+    //100 ä»¥å†…ä¸ºProxyID
     EII_CodeQueue = 100,
 
 } EIOIndex;
 
 #define APP_CONFIG_FILE     "../conf/GameServer.tcm"
 
-//Á¬½ÓµÄMYSQLÊı¾İ¿âÏà¹ØµÄÅäÖÃÎÄ¼ş
+//è¿æ¥çš„MYSQLæ•°æ®åº“ç›¸å…³çš„é…ç½®æ–‡ä»¶
 #define NAMEDBINFO_CONFIG_FILE "../conf/DBMSConf.xml"
 
-//¶¨ÒåMYSQLµÄ±íÃû
+//å®šä¹‰MYSQLçš„è¡¨å
 
-//Ãû×ÖÊı¾İ¿âµÄ±íÃû
+//åå­—æ•°æ®åº“çš„è¡¨å
 #define MYSQL_NAMEINFO_TABLE "t_wulin_nameinfo"
 
-//Ãû×ÖÊı¾İ¿âµÄÁĞÊı¶¨Òå: nickname, nametype, nameid
+//åå­—æ•°æ®åº“çš„åˆ—æ•°å®šä¹‰: nickname, nametype, nameid
 #define MYSQL_NAMEINFO_FIELDS   3
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

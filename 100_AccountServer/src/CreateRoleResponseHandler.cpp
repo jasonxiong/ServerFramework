@@ -1,4 +1,4 @@
-#include <assert.h>
+ï»¿#include <assert.h>
 
 #include "GameProtocol.hpp"
 #include "LogAdapter.hpp"
@@ -20,7 +20,7 @@ CCreateRoleResponseHandler::CCreateRoleResponseHandler()
 void CCreateRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         GameProtocolMsg* pstMsg, SHandleResult* pstResult)
 {
-    // ²»Ê¹ÓÃNetHeadºÍResult
+    // ä¸ä½¿ç”¨NetHeadå’ŒResult
     ASSERT_AND_LOG_RTN_VOID(pstMsg);
 
     m_pstRequestMsg = pstMsg;
@@ -31,39 +31,39 @@ void CCreateRoleResponseHandler::OnClientMsg(TNetHead_V2* pstNetHead,
         m_pstRequestMsg->mutable_m_stmsgbody()->mutable_m_staccountcreateroleresponse();
     unsigned int uiUin = pstCreateRoleResponse->stroleid().uin();
 
-    //ÉèÖÃ½ÇÉ«µÄworld id
+    //è®¾ç½®è§’è‰²çš„world id
     pstCreateRoleResponse->set_uworldid(CAccountApp::GetWorldID());
 
     LOGDEBUG("Handling CreateRoleResponse from world server, uin: %u, result: %d, sockfd: %u, value: %d\n",
              uiUin, pstCreateRoleResponse->iresult(), m_uiSessionFD, m_unValue);
 
-    // ÏûÏ¢´¦Àí³É¹¦£¬¼´ºóÌ¨´´½¨½ÇÉ«³É¹¦
+    // æ¶ˆæ¯å¤„ç†æˆåŠŸï¼Œå³åå°åˆ›å»ºè§’è‰²æˆåŠŸ
     if (T_SERVER_SUCESS == pstCreateRoleResponse->iresult())
     {
-        //¼ÇÂ¼´´½¨½ÇÉ«³É¹¦µÄOSSÈÕÖ¾
+        //è®°å½•åˆ›å»ºè§’è‰²æˆåŠŸçš„OSSæ—¥å¿—
         CAccountOssLog::TraceCreateAccount(pstCreateRoleResponse->stroleid().uin(), m_uiSessionFD);
     }
     else
     {
-        //·¢ËÍÉ¾³ıÃû×ÖµÄÇëÇó¸øNameDB
+        //å‘é€åˆ é™¤åå­—çš„è¯·æ±‚ç»™NameDB
         SendDeleteNameRequestToWorld(pstCreateRoleResponse->sznickname());
     }
 
     CSessionObj* pSession = SessionManager->GetSession(m_uiSessionFD, m_unValue);
     if (pSession != NULL)
     {
-        // ½«¸ÃÏìÓ¦ÏûÏ¢¼ÓÉÏNetHeadºó×ª·¢¸øLotusServer
+        // å°†è¯¥å“åº”æ¶ˆæ¯åŠ ä¸ŠNetHeadåè½¬å‘ç»™LotusServer
         SendCreateRoleResponseToLotus();
 
-        // Çå³ıcacheÖĞµÄsession½áµã
+        // æ¸…é™¤cacheä¸­çš„sessionç»“ç‚¹
         //SessionManager->DeleteSession(m_uiSessionFD);
     }
 
-    // Çå³ıcacheÖĞµÄ´´½¨½ÇÉ«ÏûÏ¢½áµã
+    // æ¸…é™¤cacheä¸­çš„åˆ›å»ºè§’è‰²æ¶ˆæ¯ç»“ç‚¹
     CFixedHashCache<CCreateRoleRequestObj>::DeleteByUin(uiUin);
 }
 
-//·¢ËÍÉ¾³ıÃû×ÖµÄÇëÇó¸øNameDB
+//å‘é€åˆ é™¤åå­—çš„è¯·æ±‚ç»™NameDB
 void CCreateRoleResponseHandler::SendDeleteNameRequestToWorld(const std::string& strName)
 {
     static GameProtocolMsg stDeleteNameMsg;
@@ -97,3 +97,7 @@ void CCreateRoleResponseHandler::SendCreateRoleResponseToLotus()
 
     LOGDEBUG("Send CreateRoleResponse to lotus server\n");
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

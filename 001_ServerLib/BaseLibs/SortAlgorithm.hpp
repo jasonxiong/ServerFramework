@@ -1,9 +1,9 @@
-/**
+Ôªø/**
 *@file SortAlgorithm.hpp
 *@author jasonxiong
 *@date 2009-01-08
 *@version 1.0
-*@brief ≈≈–ÚÀ„∑®¿‡
+*@brief ÊéíÂ∫èÁÆóÊ≥ïÁ±ª
 *
 *
 */
@@ -200,3 +200,7 @@ void CQuickSort<T, CMP_FUNC, SWAP_FUNC>::RecursiveSort(T* astItem, int left, int
 
 #endif //__SORT_ALGORITHM_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

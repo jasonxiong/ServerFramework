@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "AppDef.hpp"
 #include "AccountDBLogManager.hpp"
@@ -9,7 +9,7 @@
 
 using namespace ServerLib;
 
-//Ö´ĞĞµÄSQLÓï¾ä
+//æ‰§è¡Œçš„SQLè¯­å¥
 char CDeleteAccountHandler::m_szQueryString[GameConfig::ACCOUNT_TABLE_SPLIT_FACTOR][256];
 
 CDeleteAccountHandler::CDeleteAccountHandler(DBClientWrapper* pDatabase)
@@ -25,22 +25,22 @@ void CDeleteAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
 		return;
 	}
 
-    //DeleteÇëÇó²»ĞèÒª»Ø°ü
-    //pstHandleResult->iNeedResponse = true;  //ĞèÒª»Ø¸´
+    //Deleteè¯·æ±‚ä¸éœ€è¦å›åŒ…
+    //pstHandleResult->iNeedResponse = true;  //éœ€è¦å›å¤
 
-    //Delete Account µÄÇëÇóÏûÏ¢
+    //Delete Account çš„è¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
     const AccountDB_DeleteAccount_Request& rstDeleteReq = m_pstRequestMsg->m_stmsgbody().m_staccountdb_delete_request();
 
     TRACE_THREAD(m_iThreadIdx, "Handling DeleteAccountRequest, account: %s, type %d\n", rstDeleteReq.staccountid().straccount().c_str(), rstDeleteReq.staccountid().iaccounttype());
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(&pstHandleResult->stResponseMsg, 
                             m_pstRequestMsg->m_stmsghead().m_uisessionfd(),
                             MSGID_ACCOUNTDB_DELETE_RESPONSE, 
                             0);
 
-    //¸ù¾İAccountIDºÍAccountTypeÉ¾³ı¼ÇÂ¼
+    //æ ¹æ®AccountIDå’ŒAccountTypeåˆ é™¤è®°å½•
     int iRet = DeleteAccount(rstDeleteReq.staccountid());
     if (iRet)
     {
@@ -53,10 +53,10 @@ void CDeleteAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg,
     return;
 }
 
-//É¾³ıAccountÕÊºÅ
+//åˆ é™¤Accountå¸å·
 int CDeleteAccountHandler::DeleteAccount(const AccountID& stAccountID)
 {
-    //À­È¡ACCOUNTDBÊı¾İ¿âÏà¹ØÅäÖÃ
+    //æ‹‰å–ACCOUNTDBæ•°æ®åº“ç›¸å…³é…ç½®
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -64,12 +64,12 @@ int CDeleteAccountHandler::DeleteAccount(const AccountID& stAccountID)
         return -1;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊı¾İ¿âÏà¹ØĞÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
 
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
 
-    //Éú³ÉÉ¾³ıµÄSQLÓï¾ä
+    //ç”Ÿæˆåˆ é™¤çš„SQLè¯­å¥
     int iLength = SAFE_SPRINTF(pszQueryString, sizeof(m_szQueryString[m_iThreadIdx])-1, "delete from %s where accountID= '%s' and accountType=%d", 
                  MYSQL_ACCOUNTINFO_TABLE, stAccountID.straccount().c_str(), stAccountID.iaccounttype());
 
@@ -115,3 +115,7 @@ void CDeleteAccountHandler::FillSuccessfulResponse(GameProtocolMsg* pstResponseM
 
     return;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

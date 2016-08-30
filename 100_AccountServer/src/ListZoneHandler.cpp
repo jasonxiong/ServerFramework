@@ -1,4 +1,4 @@
-
+﻿
 #include <assert.h>
 #include <arpa/inet.h>
 
@@ -51,7 +51,7 @@ void CListZoneHandler::SendListZoneRequestToWorld()
 {
     ASSERT_AND_LOG_RTN_VOID(m_pstNetHead);
 
-    // �޸���Ϣͷ�е�TimeStamp
+    // 修改消息头中的TimeStamp
     m_pstRequestMsg->mutable_m_stmsghead()->set_m_uisessionfd(ntohl(m_pstNetHead->m_uiSocketFD));
 
     if (EncodeAndSendCode(SSProtocolEngine,
@@ -79,3 +79,7 @@ void CListZoneHandler::SendListZoneResponseToLotus()
 
     LOGDEBUG("Send ListZoneResponse to lotus server\n");
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

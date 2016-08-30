@@ -1,4 +1,4 @@
-/**
+ï»¿/**
 *@file HashMap_K32.hpp
 *@author
 *@date
@@ -28,18 +28,18 @@ class CHashMap_K32
 
     typedef enum enmHashNodeStatus
     {
-        EHNS_K32_FREE = 0, //!<Hash½ÚµãÎ´Ê¹ÓÃ
-        EHNS_K32_USED = 1, //!<Hash½ÚµãÒÑÊ¹ÓÃ
+        EHNS_K32_FREE = 0, //!<HashèŠ‚ç‚¹æœªä½¿ç”¨
+        EHNS_K32_USED = 1, //!<HashèŠ‚ç‚¹å·²ä½¿ç”¨
     } ENMHASHNODESTATUS;
 
     //const int HASHMAP_K32_MAX_NODE_NUMBER = 200000;
 
     typedef struct tagHashMapNode_K32
     {
-        unsigned int m_uiKey; //!<½ÚµãÖ÷¼üÖµ£¬¸ù¾ÝÕâ¸öKey¼ÆËã³öHashÖµÀ´ÕÒµ½½Úµã
-        int m_iValue; //!<´æ·ÅÊý¾Ý
-        int m_iIsNodeUsed; //!<½ÚµãÊÇ·ñÊ¹ÓÃ 1-Ê¹ÓÃ 0-Î´Ê¹ÓÃ
-        int m_iHashNext; //!<µ±HashÖµ³åÍ»Öµ£¬½«ÐÂ¼Ó½Úµã·ÅÔÚ½ÚµãºóÃæ£¬ÐÎ³É³åÍ»Á´
+        unsigned int m_uiKey; //!<èŠ‚ç‚¹ä¸»é”®å€¼ï¼Œæ ¹æ®è¿™ä¸ªKeyè®¡ç®—å‡ºHashå€¼æ¥æ‰¾åˆ°èŠ‚ç‚¹
+        int m_iValue; //!<å­˜æ”¾æ•°æ®
+        int m_iIsNodeUsed; //!<èŠ‚ç‚¹æ˜¯å¦ä½¿ç”¨ 1-ä½¿ç”¨ 0-æœªä½¿ç”¨
+        int m_iHashNext; //!<å½“Hashå€¼å†²çªå€¼ï¼Œå°†æ–°åŠ èŠ‚ç‚¹æ”¾åœ¨èŠ‚ç‚¹åŽé¢ï¼Œå½¢æˆå†²çªé“¾
     } THashMapNode_K32;
 
 public:
@@ -61,58 +61,58 @@ public:
     ~CHashMap_K32();
 
 public:
-    //!Ö¸¶¨Ë÷ÒýÖµÀ´»ñÈ¡Êý¾Ý£¬Ò»°ãÓÃÓÚ±éÀúÖÐ£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šç´¢å¼•å€¼æ¥èŽ·å–æ•°æ®ï¼Œä¸€èˆ¬ç”¨äºŽéåŽ†ä¸­ï¼Œè¿”å›žå€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByIndex(const int iNodeIndex, int& riValue);
 
-    //!Ö¸¶¨KeyÖµÀ´»ñÈ¡Êý¾Ý£¬·µ»ØÖµ0±íÊ¾³É¹¦
+    //!æŒ‡å®šKeyå€¼æ¥èŽ·å–æ•°æ®ï¼Œè¿”å›žå€¼0è¡¨ç¤ºæˆåŠŸ
     int GetValueByKey(const unsigned int uiKey, int& riValue);
 
     int* GetValuePtrByKey(const unsigned int uiKey);
 
-    //!Çå³ý¶ÔÓ¦KeyµÄ½Úµã
+    //!æ¸…é™¤å¯¹åº”Keyçš„èŠ‚ç‚¹
     int DeleteByKey(const unsigned int uiKey, int& riValue);
 
-    //!Ö¸¶¨KeyÖµÀ´²åÈëÒ»¸öÊý¾Ý£¨Èç¹ûÓÐÏàÍ¬KeyÖµµÄ½Úµã´æÔÚ£¬ÔòÊ§°Ü£©
+    //!æŒ‡å®šKeyå€¼æ¥æ’å…¥ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æžœæœ‰ç›¸åŒKeyå€¼çš„èŠ‚ç‚¹å­˜åœ¨ï¼Œåˆ™å¤±è´¥ï¼‰
     int InsertValueByKey(const unsigned int uiKey, const int iValue);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üÐÂÒ»¸öÊý¾Ý£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊý¾ÝÔò²»×öÈÎºÎÊÂ£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æžœæœªå‘çŽ°è¯¥Keyå€¼çš„æ•°æ®åˆ™ä¸åšä»»ä½•äº‹ï¼‰
     int UpdateValueByKey(const unsigned int uiKey, const int iValue);
 
-    //!Ö¸¶¨KeyÖµÀ´¸üÐÂÒ»¸öÊý¾Ý£¨Èç¹ûÎ´·¢ÏÖ¸ÃKeyÖµµÄÊý¾ÝÔò²åÈëÒ»¸öÊý¾Ý£©
+    //!æŒ‡å®šKeyå€¼æ¥æ›´æ–°ä¸€ä¸ªæ•°æ®ï¼ˆå¦‚æžœæœªå‘çŽ°è¯¥Keyå€¼çš„æ•°æ®åˆ™æ’å…¥ä¸€ä¸ªæ•°æ®ï¼‰
     int ReplaceValueByKey(const unsigned int uiKey, const int iValue);
 
-    //!»ñÈ¡ÒÑÓÃ½Úµã¸öÊý
+    //!èŽ·å–å·²ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetUsedNodeNumber() const
     {
         return m_iUsedNodeNumber;
     }
 
-    //!»ñÈ¡¿ÉÓÃ½Úµã¸öÊý
+    //!èŽ·å–å¯ç”¨èŠ‚ç‚¹ä¸ªæ•°
     int GetFreeNodeNumber() const
     {
         return m_iNodeNumber - m_iUsedNodeNumber;
     }
 
-    //!»ñÈ¡×Ü¹²µÄ½Úµã¸öÊý
+    //!èŽ·å–æ€»å…±çš„èŠ‚ç‚¹ä¸ªæ•°
     int GetNodeSize() const
     {
         return m_iNodeNumber;
     }
 
-    //!Çå³ýËùÓÐ½Úµã
+    //!æ¸…é™¤æ‰€æœ‰èŠ‚ç‚¹
     int EraseAll();
 
-    //!ÔÚ½Ó¿Ú·µ»Ø´íÎóÊ±£¬µ÷ÓÃÕâ¸öº¯Êý»ñÈ¡´íÎóºÅ
+    //!åœ¨æŽ¥å£è¿”å›žé”™è¯¯æ—¶ï¼Œè°ƒç”¨è¿™ä¸ªå‡½æ•°èŽ·å–é”™è¯¯å·
     int GetErrorNO() const
     {
         return m_iErrorNO;
     }
 
 private:
-    //!½«Êý¾ÝKeyÖµÍ¨¹ýHash×ª»»³ÉË÷Òý
+    //!å°†æ•°æ®Keyå€¼é€šè¿‡Hashè½¬æ¢æˆç´¢å¼•
     int HashKeyToIndex(const unsigned int uiKey) const;
 
-    //!ÉèÖÃ´íÎóºÅ
+    //!è®¾ç½®é”™è¯¯å·
     void SetErrorNO(int iErrorNO)
     {
         m_iErrorNO = iErrorNO;
@@ -121,11 +121,11 @@ private:
 private:
     int m_iNodeNumber;
 
-    int m_iErrorNO; //!´íÎóÂë
-    int m_iUsedNodeNumber; //!<ÒÑ¾­Ê¹ÓÃµÄ½Úµã¸öÊý
-    int m_iFirstFreeIndex; //!<¿ÕÏÐÁ´±íÍ·½Úµã
-    THashMapNode_K32* m_pastHashNode; //!<ËùÓÐ´æ·ÅµÄÊý¾Ý½Úµã
-    int* m_paiHashFirstIndex; //!<Í¨¹ýKeyÀ´Hash¼ÆËã³öµÄ³åÍ»Á´±íµÄÍ·½ÚµãË÷Òý
+    int m_iErrorNO; //!é”™è¯¯ç 
+    int m_iUsedNodeNumber; //!<å·²ç»ä½¿ç”¨çš„èŠ‚ç‚¹ä¸ªæ•°
+    int m_iFirstFreeIndex; //!<ç©ºé—²é“¾è¡¨å¤´èŠ‚ç‚¹
+    THashMapNode_K32* m_pastHashNode; //!<æ‰€æœ‰å­˜æ”¾çš„æ•°æ®èŠ‚ç‚¹
+    int* m_paiHashFirstIndex; //!<é€šè¿‡Keyæ¥Hashè®¡ç®—å‡ºçš„å†²çªé“¾è¡¨çš„å¤´èŠ‚ç‚¹ç´¢å¼•
 
 };
 
@@ -135,3 +135,7 @@ private:
 
 #endif //__HASH_MAP_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

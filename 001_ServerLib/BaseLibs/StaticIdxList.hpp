@@ -1,4 +1,4 @@
-
+ï»¿
 #ifndef _BASELIB_STATICIDXLIST_H_
 #define _BASELIB_STATICIDXLIST_H_
 
@@ -18,10 +18,10 @@ namespace BaseLib
     };
 
     /**
-     * ¿ÉÓÃÓÚ¹²ÏíÄÚ´æµÄC++ĞÍÁ´±í
-     * @warning ×¢Òâ£ºÈç¹ûÊÇĞÂ´´½¨µÄ½á¹¹£¬ĞèÒªÖ´ĞĞconstructº¯Êı³õÊ¼»¯,Èç¹û´Ó¹²ÏíÄÚ´æ»Ö¸´£¬ÎŞĞèÖ´ĞĞ
-     * @note Ä¿±ê½á¹¹ÌåÖÁÉÙÒªÓĞÄ¬ÈÏ¹¹Ôìº¯Êı, ¹¹Ôìº¯Êı×î¶àÈı¸ö²ÎÊı
-     * @note ÄÚ´æÏûºÄÎª (sizeof(TObj) + 2 * sizeof(size_type)) * (MAX_SIZE + 1)
+     * å¯ç”¨äºå…±äº«å†…å­˜çš„C++å‹é“¾è¡¨
+     * @warning æ³¨æ„ï¼šå¦‚æœæ˜¯æ–°åˆ›å»ºçš„ç»“æ„ï¼Œéœ€è¦æ‰§è¡Œconstructå‡½æ•°åˆå§‹åŒ–,å¦‚æœä»å…±äº«å†…å­˜æ¢å¤ï¼Œæ— éœ€æ‰§è¡Œ
+     * @note ç›®æ ‡ç»“æ„ä½“è‡³å°‘è¦æœ‰é»˜è®¤æ„é€ å‡½æ•°, æ„é€ å‡½æ•°æœ€å¤šä¸‰ä¸ªå‚æ•°
+     * @note å†…å­˜æ¶ˆè€—ä¸º (sizeof(TObj) + 2 * sizeof(size_type)) * (MAX_SIZE + 1)
      */
     template<typename TObj, int MAX_SIZE>
     class StaticIdxList
@@ -33,7 +33,7 @@ namespace BaseLib
         typedef StaticIdxList<TObj, MAX_SIZE> self_type;
 
         /**
-         * µü´úÆ÷ÀàĞÍ
+         * è¿­ä»£å™¨ç±»å‹
          */
         template<typename ITObj>
         class Iterator
@@ -138,7 +138,7 @@ namespace BaseLib
 
     private:
         /**
-         * Êı¾İ½»»»º¯ÊıÓÅ»¯(size_type)
+         * æ•°æ®äº¤æ¢å‡½æ•°ä¼˜åŒ–(size_type)
          * @param [in] left
          * @param [in] right
          */
@@ -166,13 +166,13 @@ namespace BaseLib
                 iNewIdx = m_stData[iNewIdx].iNextIdx;
             }
 
-            // ¶ÓÁĞÂú£¬·µ»Ø-1
+            // é˜Ÿåˆ—æ»¡ï¼Œè¿”å›-1
             if (iNewIdx >= MAX_SIZE || IsExists(iNewIdx))
             {
                 return -1;
             }
 
-            // ¹Ø±ÕÎ´³õÊ¼»¯·ûºÅ¡¢ÒÆ¶¯×îºó½Úµã¡¢¼ÆÊı +1
+            // å…³é—­æœªåˆå§‹åŒ–ç¬¦å·ã€ç§»åŠ¨æœ€åèŠ‚ç‚¹ã€è®¡æ•° +1
             m_stData[iNewIdx].bIsInited = true;
             m_stHeader.m_iLastUsedNode = iNewIdx;
             ++ m_stHeader.m_iSize;
@@ -182,7 +182,7 @@ namespace BaseLib
 
 
         /**
-         * Îö¹¹º¯ÊıÊ¹ÓÃ
+         * ææ„å‡½æ•°ä½¿ç”¨
          */
         template<typename CObj>
         struct _destruct_obj
@@ -199,7 +199,7 @@ namespace BaseLib
         };
 
         /**
-         * Ìõ¼ş¼ÆÊıº¯ÊıÎªÆÕÍ¨º¯ÊıÊ±Ê¹ÓÃ
+         * æ¡ä»¶è®¡æ•°å‡½æ•°ä¸ºæ™®é€šå‡½æ•°æ—¶ä½¿ç”¨
          */
         template<typename CObj>
         struct _count_cc_func
@@ -217,7 +217,7 @@ namespace BaseLib
         };
 
         /**
-         * Ìõ¼ş¼ÆÊıº¯ÊıÎª·Âº¯ÊıÊ±Ê¹ÓÃ
+         * æ¡ä»¶è®¡æ•°å‡½æ•°ä¸ºä»¿å‡½æ•°æ—¶ä½¿ç”¨
          */
         template<typename _F, typename CObj>
         struct _count_obj_func
@@ -245,12 +245,12 @@ namespace BaseLib
         }
 
         /**
-         * Èç¹ûÊÇµÚÒ»´Î´´½¨£¬±ØĞëµ÷ÓÃ´Îº¯Êı½øĞĞ³õÊ¼»¯
+         * å¦‚æœæ˜¯ç¬¬ä¸€æ¬¡åˆ›å»ºï¼Œå¿…é¡»è°ƒç”¨æ¬¡å‡½æ•°è¿›è¡Œåˆå§‹åŒ–
          */
         void construct()
         {
             m_stHeader.m_iSize = 0;
-            m_stHeader.m_iLastUsedNode = MAX_SIZE; // ×îºóÒ»¸öÎªÍ·½áµã
+            m_stHeader.m_iLastUsedNode = MAX_SIZE; // æœ€åä¸€ä¸ªä¸ºå¤´ç»“ç‚¹
 
             for (size_type i = 0; i <= MAX_SIZE; ++i)
             {
@@ -264,41 +264,41 @@ namespace BaseLib
         }
 
         /**
-         * µ÷ÓÃËùÓĞ¶ÔÏóµÄÎö¹¹º¯Êı(¿ÉÑ¡)
+         * è°ƒç”¨æ‰€æœ‰å¯¹è±¡çš„ææ„å‡½æ•°(å¯é€‰)
          */
         void destruct()
         {
-            // É¾³ıËùÓĞÎ´ÊÍ·Å¶ÔÏó
+            // åˆ é™¤æ‰€æœ‰æœªé‡Šæ”¾å¯¹è±¡
             Foreach(_destruct_obj<TObj>(*this));
         }
 
         /**
-         * ÅĞ¶ÏÏÂ±ê½Úµã´æÔÚ
+         * åˆ¤æ–­ä¸‹æ ‡èŠ‚ç‚¹å­˜åœ¨
          * @param [in] idx idx
-         * @return ´æÔÚ·µ»Øtrue£¬·ñÔò·µ»Øfalse
+         * @return å­˜åœ¨è¿”å›trueï¼Œå¦åˆ™è¿”å›false
          */
         bool IsExists(size_type idx) const
         {
-            // ³¬³ö×î´ó¸öÊıÏŞÖÆ
+            // è¶…å‡ºæœ€å¤§ä¸ªæ•°é™åˆ¶
             if (idx >= MAX_SIZE)
             {
                 return false;
             }
 
-            // Ğ¡ÓÚ0
+            // å°äº0
             if (idx < 0)
             {
                 return false;
             }
 
-            // flag ¼ì²é
+            // flag æ£€æŸ¥
             return m_stData[idx].bIsInited;
         }
 
         /**
-         * »ñÈ¡ÏÂÒ»¸öÔªËØµÄÏÂ±ê
-         * @param [in] idx µ±Ç°ÔªËØÏÂ±ê
-         * @return ´æÔÚ·µ»ØÏÂÒ»¸öÔªËØÏÂ±ê£¬²»´æÔÚ·µ»Ø-1
+         * è·å–ä¸‹ä¸€ä¸ªå…ƒç´ çš„ä¸‹æ ‡
+         * @param [in] idx å½“å‰å…ƒç´ ä¸‹æ ‡
+         * @return å­˜åœ¨è¿”å›ä¸‹ä¸€ä¸ªå…ƒç´ ä¸‹æ ‡ï¼Œä¸å­˜åœ¨è¿”å›-1
          */
         size_type GetNextIdx(size_type idx) const
         {
@@ -316,9 +316,9 @@ namespace BaseLib
         }
 
         /**
-         * »ñÈ¡ÉÏÒ»¸öÔªËØµÄÏÂ±ê
-         * @param [in] idx µ±Ç°ÔªËØÏÂ±ê
-         * @return ´æÔÚ·µ»ØÉÏÒ»¸öÔªËØÏÂ±ê£¬²»´æÔÚ·µ»Ø-1
+         * è·å–ä¸Šä¸€ä¸ªå…ƒç´ çš„ä¸‹æ ‡
+         * @param [in] idx å½“å‰å…ƒç´ ä¸‹æ ‡
+         * @return å­˜åœ¨è¿”å›ä¸Šä¸€ä¸ªå…ƒç´ ä¸‹æ ‡ï¼Œä¸å­˜åœ¨è¿”å›-1
          */
         size_type GetPreIdx(size_type idx) const
         {
@@ -336,9 +336,9 @@ namespace BaseLib
         }
 
         /**
-         * °´Idx»ñÈ¡½Úµã
+         * æŒ‰Idxè·å–èŠ‚ç‚¹
          * @param [in] idx
-         * @return ´æÔÚÔò·µ»ØÊı¾İµü´úÆ÷£¬²»´æÔÚÔò·µ»Øendµü´úÆ÷
+         * @return å­˜åœ¨åˆ™è¿”å›æ•°æ®è¿­ä»£å™¨ï¼Œä¸å­˜åœ¨åˆ™è¿”å›endè¿­ä»£å™¨
          */
         inline iterator Get(size_type idx)
         {
@@ -346,9 +346,9 @@ namespace BaseLib
         }
 
         /**
-         * °´Idx»ñÈ¡½Úµã(const)
+         * æŒ‰Idxè·å–èŠ‚ç‚¹(const)
          * @param [in] idx
-         * @return ´æÔÚÔò·µ»ØÊı¾İµü´úÆ÷£¬²»´æÔÚÔò·µ»Øendµü´úÆ÷
+         * @return å­˜åœ¨åˆ™è¿”å›æ•°æ®è¿­ä»£å™¨ï¼Œä¸å­˜åœ¨åˆ™è¿”å›endè¿­ä»£å™¨
          */
         inline const_iterator Get(size_type idx) const
         {
@@ -356,22 +356,22 @@ namespace BaseLib
         }
 
         /**
-         * °´Idx»ñÈ¡½Úµã(const)
+         * æŒ‰Idxè·å–èŠ‚ç‚¹(const)
          * @param [in] idx
-         * @return ´æÔÚÔò·µ»ØÊı¾İÒıÓÃ
+         * @return å­˜åœ¨åˆ™è¿”å›æ•°æ®å¼•ç”¨
          */
         inline TObj& operator[](size_type idx) { return *get(idx); };
 
         /**
-         * °´Idx»ñÈ¡½Úµã(const)
+         * æŒ‰Idxè·å–èŠ‚ç‚¹(const)
          * @param [in] idx
-         * @return ´æÔÚÔò·µ»ØÊı¾İ³£Á¿ÒıÓÃ
+         * @return å­˜åœ¨åˆ™è¿”å›æ•°æ®å¸¸é‡å¼•ç”¨
          */
         inline const TObj& operator[](size_type idx) const { return *get(idx); };
 
         /**
-         * ´´½¨½Úµã£¬·µ»Øidx
-         * @return ĞÂ½ÚµãµÄidx£¬Ê§°Ü·µ»Ø-1
+         * åˆ›å»ºèŠ‚ç‚¹ï¼Œè¿”å›idx
+         * @return æ–°èŠ‚ç‚¹çš„idxï¼Œå¤±è´¥è¿”å›-1
          */
         size_type Create()
         {
@@ -385,9 +385,9 @@ namespace BaseLib
         }
 
         /**
-         * ´´½¨½Úµã£¬·µ»Øidx
-         * @param [in] param1 ¹¹Ôìº¯Êı²ÎÊı1
-         * @return ĞÂ½ÚµãµÄidx£¬Ê§°Ü·µ»Ø-1
+         * åˆ›å»ºèŠ‚ç‚¹ï¼Œè¿”å›idx
+         * @param [in] param1 æ„é€ å‡½æ•°å‚æ•°1
+         * @return æ–°èŠ‚ç‚¹çš„idxï¼Œå¤±è´¥è¿”å›-1
          */
         template<typename _TP1>
         size_type Create(const _TP1& param1)
@@ -402,10 +402,10 @@ namespace BaseLib
         }
 
         /**
-         * ´´½¨½Úµã£¬·µ»Øidx
-         * @param [in] param1 ¹¹Ôìº¯Êı²ÎÊı1
-         * @param [in] param2 ¹¹Ôìº¯Êı²ÎÊı2
-         * @return ĞÂ½ÚµãµÄidx£¬Ê§°Ü·µ»Ø-1
+         * åˆ›å»ºèŠ‚ç‚¹ï¼Œè¿”å›idx
+         * @param [in] param1 æ„é€ å‡½æ•°å‚æ•°1
+         * @param [in] param2 æ„é€ å‡½æ•°å‚æ•°2
+         * @return æ–°èŠ‚ç‚¹çš„idxï¼Œå¤±è´¥è¿”å›-1
          */
         template<typename _TP1, typename _TP2>
         size_type Create(const _TP1& param1, const _TP2& param2)
@@ -420,11 +420,11 @@ namespace BaseLib
         }
 
         /**
-         * ´´½¨½Úµã£¬·µ»Øidx
-         * @param [in] param1 ¹¹Ôìº¯Êı²ÎÊı1
-         * @param [in] param2 ¹¹Ôìº¯Êı²ÎÊı2
-         * @param [in] param3 ¹¹Ôìº¯Êı²ÎÊı3
-         * @return ĞÂ½ÚµãµÄidx£¬Ê§°Ü·µ»Ø-1
+         * åˆ›å»ºèŠ‚ç‚¹ï¼Œè¿”å›idx
+         * @param [in] param1 æ„é€ å‡½æ•°å‚æ•°1
+         * @param [in] param2 æ„é€ å‡½æ•°å‚æ•°2
+         * @param [in] param3 æ„é€ å‡½æ•°å‚æ•°3
+         * @return æ–°èŠ‚ç‚¹çš„idxï¼Œå¤±è´¥è¿”å›-1
          */
         template<typename _TP1, typename _TP2, typename _TP3>
         size_type Create(const _TP1& param1, const _TP2& param2, const _TP3& param3)
@@ -439,14 +439,14 @@ namespace BaseLib
         }
 
         /**
-         * ÒÆ³ıÒ»¸öÔªËØ
-         * @param [in] idx ÏÂ±ê
+         * ç§»é™¤ä¸€ä¸ªå…ƒç´ 
+         * @param [in] idx ä¸‹æ ‡
          */
         void Remove(size_type idx)
         {
             using std::swap;
 
-            // ²»´æÔÚÖ±½Ó·µ»Ø
+            // ä¸å­˜åœ¨ç›´æ¥è¿”å›
             if(!IsExists(idx))
             {
                 return;
@@ -456,44 +456,44 @@ namespace BaseLib
             size_type iNextIdx = m_stData[idx].iNextIdx;
             size_type iFreeFirst = m_stData[m_stHeader.m_iLastUsedNode].iNextIdx;
 
-            // É¾³ı½Úµã£¬½»»»Á´½Ó
+            // åˆ é™¤èŠ‚ç‚¹ï¼Œäº¤æ¢é“¾æ¥
             swap(m_stData[iPreIdx].iNextIdx, m_stData[idx].iNextIdx);
             swap(m_stData[iNextIdx].iPreIdx, m_stData[idx].iPreIdx);
 
-            // ·ÀÖ¹×Ô¼ººÍ×Ô¼º½»»»
+            // é˜²æ­¢è‡ªå·±å’Œè‡ªå·±äº¤æ¢
             if (idx == m_stHeader.m_iLastUsedNode)
             {
                 m_stHeader.m_iLastUsedNode = iPreIdx;
             }
 
-            // ´¦Àí×ÔÓÉ½Úµã£¬½»»»Á´½Ó
+            // å¤„ç†è‡ªç”±èŠ‚ç‚¹ï¼Œäº¤æ¢é“¾æ¥
             swap(m_stData[m_stHeader.m_iLastUsedNode].iNextIdx, m_stData[idx].iNextIdx);
             swap(m_stData[iFreeFirst].iPreIdx, m_stData[idx].iPreIdx);
 
-            // ½ÚµãĞĞÎª
+            // èŠ‚ç‚¹è¡Œä¸º
             m_stData[idx].bIsInited = false;
             m_stHeader.m_iLastUsedNode = iPreIdx;
 
-            // Ö´ĞĞÎö¹¹
+            // æ‰§è¡Œææ„
             ((TObj*)m_stData[idx].stObjBin)->~TObj();
-            // ¼ÆÊı¼õÒ»
+            // è®¡æ•°å‡ä¸€
             -- m_stHeader.m_iSize;
         }
 
         /**
-         * ÊÇ·ñÎª¿Õ
-         * @return Îª¿Õ·µ»Øtrue
+         * æ˜¯å¦ä¸ºç©º
+         * @return ä¸ºç©ºè¿”å›true
          */
         inline bool IsEmpty() const { return empty(); }
 
         /**
-         * ÊÇ·ñÒÑÂú
-         * @return ÒÑÂú·µ»Øtrue
+         * æ˜¯å¦å·²æ»¡
+         * @return å·²æ»¡è¿”å›true
          */
         inline bool IsFull() const { return size() >= max_size(); }
 
         // ===============================
-        // =====        µü´úÆ÷ ²Ù×÷                  =====
+        // =====        è¿­ä»£å™¨ æ“ä½œ                  =====
         // ===============================
         iterator get(size_type idx)
         {
@@ -550,15 +550,15 @@ namespace BaseLib
             return size() == 0;
         }
 
-        // ¸ß¼¶¹¦ÄÜ
+        // é«˜çº§åŠŸèƒ½
         // ===============================
-        // =====       Lambda ²Ù×÷             =====
+        // =====       Lambda æ“ä½œ             =====
         // ===============================
 
 
         /**
-         * foreach ²Ù×÷
-         * @param fn Ö´ĞĞ·Âº¯Êı£¬²ÎÊı±ØĞëÎª (size_type, TObj&)
+         * foreach æ“ä½œ
+         * @param fn æ‰§è¡Œä»¿å‡½æ•°ï¼Œå‚æ•°å¿…é¡»ä¸º (size_type, TObj&)
          */
         template<typename _F>
         void Foreach(_F fn)
@@ -572,8 +572,8 @@ namespace BaseLib
         }
 
         /**
-         * const foreach ²Ù×÷
-         * @param fn Ö´ĞĞ·Âº¯Êı£¬²ÎÊı±ØĞëÎª (size_type, TObj&)
+         * const foreach æ“ä½œ
+         * @param fn æ‰§è¡Œä»¿å‡½æ•°ï¼Œå‚æ•°å¿…é¡»ä¸º (size_type, TObj&)
          */
         template<typename _F>
         void Foreach(_F fn) const
@@ -587,8 +587,8 @@ namespace BaseLib
         }
 
         /**
-         * foreach ²Ù×÷
-         * @param fn Ö´ĞĞº¯Êı£¬²ÎÊı±ØĞëÎª (size_type, TObj&)
+         * foreach æ“ä½œ
+         * @param fn æ‰§è¡Œå‡½æ•°ï¼Œå‚æ•°å¿…é¡»ä¸º (size_type, TObj&)
          */
         template<typename _R>
         void Foreach(_R (*fn)(size_type, TObj&))
@@ -602,8 +602,8 @@ namespace BaseLib
         };
 
         /**
-         * const foreach ²Ù×÷
-         * @param fn Ö´ĞĞº¯Êı£¬²ÎÊı±ØĞëÎª (size_type, TObj&)
+         * const foreach æ“ä½œ
+         * @param fn æ‰§è¡Œå‡½æ•°ï¼Œå‚æ•°å¿…é¡»ä¸º (size_type, TObj&)
          */
         template<typename _R>
         void Foreach(_R (*fn)(size_type, const TObj&)) const
@@ -617,16 +617,16 @@ namespace BaseLib
         };
 
         /**
-         * »ñÈ¡ÔªËØ¸öÊı
-         * @return ÔªËØ¸öÊı
+         * è·å–å…ƒç´ ä¸ªæ•°
+         * @return å…ƒç´ ä¸ªæ•°
          */
         size_type Count() const { return m_stHeader.m_iSize; };
 
     public:
         /**
-         * »ñÈ¡·ûºÏÌõ¼şµÄÔªËØ¸öÊı
-         * @param [in] fn Ìõ¼şº¯Êı
-         * @return ·ûºÏÌõ¼şµÄÔªËØ¸öÊı
+         * è·å–ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
+         * @param [in] fn æ¡ä»¶å‡½æ•°
+         * @return ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
          */
         size_type Count(bool (*fn)(size_type, const TObj&)) const
         {
@@ -638,9 +638,9 @@ namespace BaseLib
         };
 
         /**
-         * »ñÈ¡·ûºÏÌõ¼şµÄÔªËØ¸öÊı
-         * @param [in] fn Ìõ¼şº¯Êı
-         * @return ·ûºÏÌõ¼şµÄÔªËØ¸öÊı
+         * è·å–ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
+         * @param [in] fn æ¡ä»¶å‡½æ•°
+         * @return ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
          */
         size_type Count(bool (*fn)(size_type, TObj&))
         {
@@ -653,9 +653,9 @@ namespace BaseLib
 
     public:
         /**
-         * »ñÈ¡·ûºÏÌõ¼şµÄÔªËØ¸öÊı
-         * @param [in] fn Ìõ¼ş·Âº¯Êı
-         * @return ·ûºÏÌõ¼şµÄÔªËØ¸öÊı
+         * è·å–ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
+         * @param [in] fn æ¡ä»¶ä»¿å‡½æ•°
+         * @return ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
          */
         template<typename _F>
         size_type Count(_F fn) const
@@ -668,9 +668,9 @@ namespace BaseLib
         };
 
         /**
-         * »ñÈ¡·ûºÏÌõ¼şµÄÔªËØ¸öÊı
-         * @param [in] fn Ìõ¼ş·Âº¯Êı
-         * @return ·ûºÏÌõ¼şµÄÔªËØ¸öÊı
+         * è·å–ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
+         * @param [in] fn æ¡ä»¶ä»¿å‡½æ•°
+         * @return ç¬¦åˆæ¡ä»¶çš„å…ƒç´ ä¸ªæ•°
          */
         template<typename _F>
         size_type Count(_F fn)
@@ -687,3 +687,7 @@ namespace BaseLib
 
 
 #endif /* IDXLIST_H_ */
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

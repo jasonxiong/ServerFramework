@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "ProtoDataUtility.hpp"
 #include "ModuleHelper.hpp"
@@ -59,7 +59,7 @@ int CWorldNameHandler::OnClientMsg(const void* pMsg)
 	return 0;
 }
 
-//¸üĞÂÃû×ÖÇëÇóµÄ´¦Àí
+//æ›´æ–°åå­—è¯·æ±‚çš„å¤„ç†
 int CWorldNameHandler::OnRequestAddNewName()
 {
 	AddNewName_Request* pstReq = m_pMsg->mutable_m_stmsgbody()->mutable_m_staddnewname_request();
@@ -67,10 +67,10 @@ int CWorldNameHandler::OnRequestAddNewName()
 
     LOGDEBUG("AddNewName: Uin = %u\n", uiUin);
 
-	//½«ÏûÏ¢Í·ÖĞµÄuinÌæ»»ÎªnameµÄhash
+	//å°†æ¶ˆæ¯å¤´ä¸­çš„uinæ›¿æ¢ä¸ºnameçš„hash
 	m_pMsg->mutable_m_stmsghead()->set_m_uin(GetNameHash(pstReq->strname()));
 
-    //×ª·¢¸üĞÂÃû×ÖµÄÇëÇóµ½NameDB
+    //è½¬å‘æ›´æ–°åå­—çš„è¯·æ±‚åˆ°NameDB
     int iRet = CWorldMsgHelper::SendWorldMsgToNameDB(*m_pMsg);
     if(iRet < 0)
     {
@@ -84,10 +84,10 @@ int CWorldNameHandler::OnRequestAddNewName()
     return 0;
 }
 
-//¸üĞÂÃû×Ö·µ»ØµÄ´¦Àí
+//æ›´æ–°åå­—è¿”å›çš„å¤„ç†
 int CWorldNameHandler::OnResponseAddNewName()
 {
-	//Ö±½Ó×ª·¢¸øAccountServer
+	//ç›´æ¥è½¬å‘ç»™AccountServer
 	const AddNewName_Response& rstResp = m_pMsg->m_stmsgbody().m_staddnewname_response();
 	unsigned int uiUin = rstResp.name_id();
 	int iResult = rstResp.iresult();
@@ -111,16 +111,16 @@ int CWorldNameHandler::SendAddNewNameResponseToAccount(const std::string& strNam
 	return 0;
 }
 
-//É¾³ıÃû×ÖµÄÇëÇó´¦Àí
+//åˆ é™¤åå­—çš„è¯·æ±‚å¤„ç†
 int CWorldNameHandler::OnRequestDeleteName()
 {
 	DeleteName_Request* pstReq = m_pMsg->mutable_m_stmsgbody()->mutable_m_stdeletename_request();
     LOGDEBUG("Delete Name: name = %s, type = %d\n", pstReq->strname().c_str(), pstReq->itype());
 
-	//½«ÏûÏ¢Í·ÖĞµÄuinÌæ»»ÎªnameµÄhash
+	//å°†æ¶ˆæ¯å¤´ä¸­çš„uinæ›¿æ¢ä¸ºnameçš„hash
 	m_pMsg->mutable_m_stmsghead()->set_m_uin(GetNameHash(pstReq->strname()));
 
-    //×ª·¢É¾³ıÃû×ÖµÄÇëÇóµ½NameDB
+    //è½¬å‘åˆ é™¤åå­—çš„è¯·æ±‚åˆ°NameDB
     int iRet = CWorldMsgHelper::SendWorldMsgToNameDB(*m_pMsg);
     if(iRet < 0)
     {
@@ -135,3 +135,7 @@ int CWorldNameHandler::OnRequestDeleteName()
 
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

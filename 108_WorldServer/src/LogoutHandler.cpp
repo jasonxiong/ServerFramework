@@ -1,4 +1,4 @@
-#include <string.h>
+Ôªø#include <string.h>
 
 #include "ModuleHelper.hpp"
 #include "WorldMsgHelper.hpp"
@@ -51,17 +51,17 @@ int CLogoutHandler::OnLogoutNotify()
     return 0;
 }
 
-// Õ®÷™Zone∑˛ŒÒ∆˜Ω«…´œ¬œﬂ
+// ÈÄöÁü•ZoneÊúçÂä°Âô®ËßíËâ≤‰∏ãÁ∫ø
 int CLogoutHandler::LogoutRole(int iZoneID, const unsigned int uin)
 {
-    //todo jasonxiong ‘› ±œ»◊¢ ÕµÙ’‚∏ˆ∫Ø ˝µƒ µœ÷£¨∫Û√Ê»Áπ˚–Ë“™ µœ÷‘Ÿ‘ˆº”
+    //todo jasonxiong ÊöÇÊó∂ÂÖàÊ≥®ÈáäÊéâËøô‰∏™ÂáΩÊï∞ÁöÑÂÆûÁé∞ÔºåÂêéÈù¢Â¶ÇÊûúÈúÄË¶ÅÂÆûÁé∞ÂÜçÂ¢ûÂä†
     /*
     CWorldMsgHelper::GenerateMsgHead(m_stWorldMsg, time(NULL), M, rstRoleID.m_uiUin);
     KICKROLE_WORLD_REQUEST& rstWorldRequest = m_stWorldMsg.m_stMsgBody.m_stKickRoleWorld_Request;
 
     rstWorldRequest.m_stRoleID = rstRoleID;
 
-    // œÚZone∑¢ÀÕÃﬂ»À«Î«Û
+    // ÂêëZoneÂèëÈÄÅË∏¢‰∫∫ËØ∑Ê±Ç
     CWorldMsgHelper::SendWorldMsgToWGS(m_stWorldMsg, iZoneID);
 
     return 0;
@@ -83,7 +83,7 @@ int CLogoutHandler::LogoutNotify(CWorldRoleStatusWObj* pRoleObj)
 
     pstNotify->mutable_stroleid()->CopyFrom(pRoleObj->GetRoleID());
 
-    //œÚ÷˜±∏cluster∂º∑¢“ª∑›
+    //Âêë‰∏ªÂ§áclusterÈÉΩÂèë‰∏Ä‰ªΩ
 	//CWorldMsgHelper::SendWorldMsgToCluster(m_stWorldMsg);
     */
 
@@ -96,3 +96,7 @@ int CLogoutHandler::LogoutNotify(CWorldRoleStatusWObj* pRoleObj)
 
 
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

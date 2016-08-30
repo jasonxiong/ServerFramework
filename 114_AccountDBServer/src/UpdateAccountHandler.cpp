@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 
 #include "AccountDBLogManager.hpp"
 #include "StringUtility.hpp"
@@ -9,7 +9,7 @@
 
 using namespace ServerLib;
 
-//Éú³ÉµÄSQLÓï¾ä
+//ç”Ÿæˆçš„SQLè¯­å¥
 char CUpdateAccountHandler::m_szQueryString[GameConfig::ACCOUNT_TABLE_SPLIT_FACTOR][1024];
 
 CUpdateAccountHandler::CUpdateAccountHandler(DBClientWrapper* pDatabase)
@@ -24,7 +24,7 @@ void CUpdateAccountHandler::OnClientMsg(GameProtocolMsg* pstRequestMsg, SHandleR
     	return;
     }
 
-    // update accountÇëÇóÏûÏ¢
+    // update accountè¯·æ±‚æ¶ˆæ¯
     m_pstRequestMsg = pstRequestMsg;
 
     switch (pstRequestMsg->m_stmsghead().m_uimsgid())
@@ -48,12 +48,12 @@ void CUpdateAccountHandler::OnUpdateAccountRequest(SHandleResult* pstHandleResul
 
     TRACE_THREAD(m_iThreadIdx, "Handling UpdateAccountRequest, account: %s, type %d\n", rstReq.staccountid().straccount().c_str(), rstReq.staccountid().iaccounttype());
 
-    pstHandleResult->iNeedResponse = true;  //ÐèÒª»Ø¸´
+    pstHandleResult->iNeedResponse = true;  //éœ€è¦å›žå¤
 
-    // ÏìÓ¦ÏûÏ¢Í·
+    // å“åº”æ¶ˆæ¯å¤´
     GenerateResponseMsgHead(&(pstHandleResult->stResponseMsg), m_pstRequestMsg->m_stmsghead().m_uisessionfd(), MSGID_ACCOUNTDB_UPDATE_RESPONSE, 0);
 
-    //Ê×ÏÈ¼ì²éÕÊºÅÃÜÂëµÄÓÐÐ§ÐÔ
+    //é¦–å…ˆæ£€æŸ¥å¸å·å¯†ç çš„æœ‰æ•ˆæ€§
     int iRet = UpdateSecurityCheck(rstReq.staccountid(), rstReq.strpassword());
     if(iRet)
     {
@@ -77,10 +77,10 @@ void CUpdateAccountHandler::OnUpdateAccountRequest(SHandleResult* pstHandleResul
     return;
 }
 
-//¼ì²éÕÊºÅÃÜÂëµÄÓÐÐ§ÐÔ
+//æ£€æŸ¥å¸å·å¯†ç çš„æœ‰æ•ˆæ€§
 int CUpdateAccountHandler::UpdateSecurityCheck(const AccountID& stAccountID, const std::string& strPassword)
 {
-    //»ñÈ¡µ½Êý¾Ý¿âµÄÁ¬½ÓÅäÖÃ
+    //èŽ·å–åˆ°æ•°æ®åº“çš„è¿žæŽ¥é…ç½®
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -88,7 +88,7 @@ int CUpdateAccountHandler::UpdateSecurityCheck(const AccountID& stAccountID, con
         return -2;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊý¾Ý¿âÏà¹ØÐÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     int iRet = m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
     if(iRet)
     {
@@ -96,12 +96,12 @@ int CUpdateAccountHandler::UpdateSecurityCheck(const AccountID& stAccountID, con
         return iRet;
     }
 
-    //³õÊ¼»¯²éÑ¯µÄSQLÓï¾ä
+    //åˆå§‹åŒ–æŸ¥è¯¢çš„SQLè¯­å¥
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
     int iLength = SAFE_SPRINTF(pszQueryString, sizeof(m_szQueryString[m_iThreadIdx])-1, "select password from %s where accountID='%s' and accountType=%d",
                   MYSQL_ACCOUNTINFO_TABLE, stAccountID.straccount().c_str(), stAccountID.iaccounttype());
 
-    //Ö´ÐÐ²éÑ¯
+    //æ‰§è¡ŒæŸ¥è¯¢
     iRet = m_pDatabase->ExecuteRealQuery(pszQueryString, iLength, true);
     if(iRet)
     {
@@ -116,7 +116,7 @@ int CUpdateAccountHandler::UpdateSecurityCheck(const AccountID& stAccountID, con
         return T_ACCOUNTDB_INVALID_RECORD;
     }
 
-    //Ð£ÑéÃÜÂëÊÇ·ñÒ»ÖÂ
+    //æ ¡éªŒå¯†ç æ˜¯å¦ä¸€è‡´
     MYSQL_ROW pstResult = NULL;
     unsigned long* pLengths = NULL;
     unsigned int uFields = 0;
@@ -131,7 +131,7 @@ int CUpdateAccountHandler::UpdateSecurityCheck(const AccountID& stAccountID, con
 
     if(strDBPassword.compare(strPassword) != 0)
     {
-        //ÃÜÂë²»ÕýÈ·£¬·µ»Ø´íÎó
+        //å¯†ç ä¸æ­£ç¡®ï¼Œè¿”å›žé”™è¯¯
         TRACE_THREAD(m_iThreadIdx, "Failed to update account %s, password not match!\n", stAccountID.straccount().c_str());
         return T_ACCOUNTDB_PASSWD_NOT_MATCH;
     }
@@ -141,7 +141,7 @@ int CUpdateAccountHandler::UpdateSecurityCheck(const AccountID& stAccountID, con
 
 int CUpdateAccountHandler::UpdateAccountInfo(const AccountID& stAccountID)
 {
-    //»ñÈ¡Á¬½ÓµÄÊý¾Ý¿âÏà¹ØµÄÅäÖÃ
+    //èŽ·å–è¿žæŽ¥çš„æ•°æ®åº“ç›¸å…³çš„é…ç½®
     const ONEACCOUNTDBINFO* pstDBConfig = (CAccountDBApp::m_stAccountDBConfigManager).GetOneAccountDBInfoByIndex(m_iThreadIdx);
     if(!pstDBConfig)
     {
@@ -149,16 +149,16 @@ int CUpdateAccountHandler::UpdateAccountInfo(const AccountID& stAccountID)
         return -2;
     }
 
-    //ÉèÖÃÒª²Ù×÷µÄÊý¾Ý¿âÏà¹ØÐÅÏ¢
+    //è®¾ç½®è¦æ“ä½œçš„æ•°æ®åº“ç›¸å…³ä¿¡æ¯
     m_pDatabase->SetMysqlDBInfo(pstDBConfig->szDBHost, pstDBConfig->szUserName, pstDBConfig->szUserPasswd, pstDBConfig->szDBName);
 
-    //³õÊ¼»¯SQLÓï¾ä
+    //åˆå§‹åŒ–SQLè¯­å¥
     char* pszQueryString = m_szQueryString[m_iThreadIdx];
     int iLength = SAFE_SPRINTF(pszQueryString, sizeof(m_szQueryString[m_iThreadIdx])-1, 
                  "update %s set lastWorldID=%d where accountID='%s' and accountType=%d",
                  MYSQL_ACCOUNTINFO_TABLE, 1, stAccountID.straccount().c_str(), stAccountID.iaccounttype());
 
-    //Ö´ÐÐ
+    //æ‰§è¡Œ
     int iRet = m_pDatabase->ExecuteRealQuery(pszQueryString, iLength, false);
     if(iRet)
     {
@@ -191,3 +191,7 @@ void CUpdateAccountHandler::FillSuccessfulResponse(GameProtocolMsg* pstResponseM
     return;
 }
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

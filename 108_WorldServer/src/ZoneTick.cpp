@@ -1,4 +1,4 @@
-#include "ModuleHelper.hpp"
+ï»¿#include "ModuleHelper.hpp"
 #include "WorldRoleStatus.hpp"
 #include "WorldObjectHelperW_K32.hpp"
 #include "WorldMsgHelper.hpp"
@@ -50,7 +50,7 @@ int CZoneTick::OnTick()
 		
         if (tNow > (rstZoneStatus.m_iLastActiveTime + UNACTIVE_ZONE_TIMEOUT))
         {
-			// Zone ³¬Ê±ËÀÍö
+			// Zone è¶…æ—¶æ­»äº¡
             rstZoneStatus.m_ucActive = 0;
 			rstZoneStatus.m_iOnlineNumber = 0;
 
@@ -79,7 +79,7 @@ void CZoneTick::ActiveRefresh(int iZoneID, int iOnlineNumber)
 
 	if (iOnlineNumber == -1)
 	{
-		// Zone »Ö¸´£¬ÌŞ³ıËùÓĞ±¾ÏßµÄ²ĞÁô»º´æ
+		// Zone æ¢å¤ï¼Œå‰”é™¤æ‰€æœ‰æœ¬çº¿çš„æ®‹ç•™ç¼“å­˜
 		OnZoneDead(iZoneID);
 
 		iOnlineNumber = 0;
@@ -100,7 +100,7 @@ void CZoneTick::ActiveRefresh(int iZoneID, int iOnlineNumber)
         rstZoneStatus.m_iOnlineNumber = iOnlineNumber;
     }
 
-	// 1,2Ïß¿ª·ş·ÖÁ÷
+	// 1,2çº¿å¼€æœåˆ†æµ
 	if (CModuleHelper::IsZoneBalanceEnabled())
 	{
 		if (m_astZoneStatus[1].m_iOnlineNumber > m_astZoneStatus[2].m_iOnlineNumber)
@@ -119,7 +119,7 @@ void CZoneTick::ActiveRefresh(int iZoneID, int iOnlineNumber)
 		rstZoneStatus.m_ucState = SERVER_STATE_IDLE;
 	}
 
-    //todo jasonxiong2 Õâ±ßºóÃæĞèÒª¸ù¾İµ¥·ş³ĞÔØÈËÊıÉèÖÃZoneµÄ×´Ì¬
+    //todo jasonxiong2 è¿™è¾¹åé¢éœ€è¦æ ¹æ®å•æœæ‰¿è½½äººæ•°è®¾ç½®Zoneçš„çŠ¶æ€
 
     return;
 }
@@ -144,7 +144,7 @@ void CZoneTick::OnZoneDead(int iZoneID)
 { 
     TRACESVR("Kick Dead Zone roles: %d\n", iZoneID);
 
-    // ½«ËùÓĞ¸ÃZoneÉÏµÄÍæ¼Ò¶¼ÌßÏÂÏß
+    // å°†æ‰€æœ‰è¯¥Zoneä¸Šçš„ç©å®¶éƒ½è¸¢ä¸‹çº¿
     CWorldRoleStatusWObj* pRoleObj = WorldTypeK32<CWorldRoleStatusWObj>::GetFirstUin();
     CWorldRoleStatusWObj* pNextRoleObj = pRoleObj;
     while(1)
@@ -185,3 +185,7 @@ int CZoneTick::GetLowestZoneID(bool bHomeZone)
 
 	return iZoneID;
 }
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

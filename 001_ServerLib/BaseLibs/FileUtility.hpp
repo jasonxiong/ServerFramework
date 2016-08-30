@@ -1,9 +1,9 @@
-/**
+ï»¿/**
 *@file FileUtility.hpp
 *@author jasonxiong
 *@date 2009-10-29
 *@version 1.0
-*@brief ÎÄ¼şÏà¹Ø²Ù×÷º¯Êı¼¯ºÏÀà
+*@brief æ–‡ä»¶ç›¸å…³æ“ä½œå‡½æ•°é›†åˆç±»
 *
 *
 */
@@ -22,15 +22,15 @@ private:
 
 public:
     /**
-    *´´½¨Ò»¸öÎÄ¼ş¼Ğ
-    *@param[in] pszDirName ĞèÒª´´½¨µÄÎÄ¼ş¼ĞÃû
+    *åˆ›å»ºä¸€ä¸ªæ–‡ä»¶å¤¹
+    *@param[in] pszDirName éœ€è¦åˆ›å»ºçš„æ–‡ä»¶å¤¹å
     *@return 0 success
     */
     static int MakeDir(const char* pszDirName);
 
     /**
-    *¸ü»»ËùÔÚÄ¿Â¼
-    *@param[in] pszDirName ĞèÒª¸Ä±äµ½µÄ¹¤×÷Ä¿Â¼
+    *æ›´æ¢æ‰€åœ¨ç›®å½•
+    *@param[in] pszDirName éœ€è¦æ”¹å˜åˆ°çš„å·¥ä½œç›®å½•
     *@return 0 success
     */
     static int ChangeDir(const char* pszDirName);
@@ -41,3 +41,7 @@ public:
 
 #endif //__FILE_UTIL_HPP__
 ///:~
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------

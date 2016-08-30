@@ -1,23 +1,23 @@
-#ifndef __APP_UTILITY_HPP__
+ï»¿#ifndef __APP_UTILITY_HPP__
 #define __APP_UTILITY_HPP__
 
 #include "SignalUtility.hpp"
 
 namespace ServerLib
 {
-const int APPCMD_NOTHING_TODO   = 0;          //É¶Ò²²»¸É
-const int APPCMD_STOP_SERVICE   = 1;          //Í£Ö¹ÃüÁî
-const int APPCMD_RELOAD_CONFIG  = 2;          //ÖØ¶ÁÅäÖÃÃüÁî
-const int APPCMD_QUIT_SERVICE   = 3;          //Á¢¿ÌÌø³öÑ­»·
+const int APPCMD_NOTHING_TODO   = 0;          //å•¥ä¹Ÿä¸å¹²
+const int APPCMD_STOP_SERVICE   = 1;          //åœæ­¢å‘½ä»¤
+const int APPCMD_RELOAD_CONFIG  = 2;          //é‡è¯»é…ç½®å‘½ä»¤
+const int APPCMD_QUIT_SERVICE   = 3;          //ç«‹åˆ»è·³å‡ºå¾ªç¯
 
 class CAppUtility
 {
 public:
-    // Æô¶¯·şÎñÆ÷½ø³Ì, Íê³ÉµÄ¹¦ÄÜÓĞ:
-    // 1. ×¢²áUSR´¦Àíº¯Êı, ¸ºÔğÍ£Ö¹/Ë¢ĞÂ·şÎñÆ÷
-    // 2. Ö§³ÖÔ­ÓĞµÄ²ÎÊıºÍTCM²ÎÊı, ¼ì²âÊÇ·ñ»Ö¸´Ä£Ê½Æô¶¯, ·ÖÎöTBUSµØÖ·
-    // 3. Ô­ÓĞµÄ²ÎÊıÊÇ-r, -w, -insÖ¸¶¨»Ö¸´Ä£Ê½ºÍTBUSµØÖ·
-    // 4. TAppÄ£Ê½µÄ½ø³Ì, Ê¹ÓÃ--resumeºÍ--idÖ¸¶¨»Ö¸´Ä£Ê½ºÍTBUSµØÖ·
+    // å¯åŠ¨æœåŠ¡å™¨è¿›ç¨‹, å®Œæˆçš„åŠŸèƒ½æœ‰:
+    // 1. æ³¨å†ŒUSRå¤„ç†å‡½æ•°, è´Ÿè´£åœæ­¢/åˆ·æ–°æœåŠ¡å™¨
+    // 2. æ”¯æŒåŸæœ‰çš„å‚æ•°å’ŒTCMå‚æ•°, æ£€æµ‹æ˜¯å¦æ¢å¤æ¨¡å¼å¯åŠ¨, åˆ†æTBUSåœ°å€
+    // 3. åŸæœ‰çš„å‚æ•°æ˜¯-r, -w, -insæŒ‡å®šæ¢å¤æ¨¡å¼å’ŒTBUSåœ°å€
+    // 4. TAppæ¨¡å¼çš„è¿›ç¨‹, ä½¿ç”¨--resumeå’Œ--idæŒ‡å®šæ¢å¤æ¨¡å¼å’ŒTBUSåœ°å€
     static void AppLaunch(int argc, char** argv,
                           Function_SignalHandler pSigHandler,
                           bool& rbResume,
@@ -29,43 +29,47 @@ public:
                           bool bEnableQuitSig = false);
 
 public:
-    // ³õÊ¼»¯ÈÕÖ¾ÅäÖÃ
-    // pszConfigFile: ÅäÖÃÎÄ¼ş. NULLÔòÊ¹ÓÃÄ¬ÈÏÅäÖÃ
-    // pszLogName: ÈÕÖ¾ÎÄ¼şÃû
+    // åˆå§‹åŒ–æ—¥å¿—é…ç½®
+    // pszConfigFile: é…ç½®æ–‡ä»¶. NULLåˆ™ä½¿ç”¨é»˜è®¤é…ç½®
+    // pszLogName: æ—¥å¿—æ–‡ä»¶å
     static void LoadLogConfig(const char* pszConfigFile, const char* pszLogName);
 
 public:
-    // ×¢²áÍ£Ö¹ºÍÖØÔØÅäÖÃĞÅºÅ´¦Àí
+    // æ³¨å†Œåœæ­¢å’Œé‡è½½é…ç½®ä¿¡å·å¤„ç†
     static void RegisterSignalHandler(Function_SignalHandler pSigHandler, bool bEnableQuitSig);
 
 private:
-    // ´òÓ¡°æ±¾
+    // æ‰“å°ç‰ˆæœ¬
     static void ShowVersion();
 
-    // Æô¶¯·½·¨
+    // å¯åŠ¨æ–¹æ³•
     static void ShowUsage(const char* pszName);
 
-    //¼ì²éÎÄ¼şËø£¬·ÀÖ¹ÖØ¸´ÔËĞĞ
+    //æ£€æŸ¥æ–‡ä»¶é”ï¼Œé˜²æ­¢é‡å¤è¿è¡Œ
     static void CheckLock(const char* pszLockFile);
 
-    //³õÊ¼»¯ÎªÊØ»¤½ø³ÌµÄº¯Êı
+    //åˆå§‹åŒ–ä¸ºå®ˆæŠ¤è¿›ç¨‹çš„å‡½æ•°
     static void DaemonLaunch(void);
 
-    //Èç½ø³ÌÕı³£ÍË³ö£¬pidÎÄ¼ş½«±»É¾³ı£»·ñÔòÎªÒì³£ÖÕÖ¹
-    //½ø³Ìpid¿É±»½Å±¾ÓÃÀ´¹Ø±Õ½ø³Ì¡¢ÖØĞÂ¶ÁÈ¡ÅäÖÃÎÄ¼ş
+    //å¦‚è¿›ç¨‹æ­£å¸¸é€€å‡ºï¼Œpidæ–‡ä»¶å°†è¢«åˆ é™¤ï¼›å¦åˆ™ä¸ºå¼‚å¸¸ç»ˆæ­¢
+    //è¿›ç¨‹pidå¯è¢«è„šæœ¬ç”¨æ¥å…³é—­è¿›ç¨‹ã€é‡æ–°è¯»å–é…ç½®æ–‡ä»¶
     static void WritePidFile();
 
-    // Çå³ıPIDÎÄ¼ş
+    // æ¸…é™¤PIDæ–‡ä»¶
     static void CleanPidFile();
 
-    // ¶ÁÈ¡PIDÎÄ¼ş
+    // è¯»å–PIDæ–‡ä»¶
     static int ReadPidFile();
 
 private:
-    // Ö§³ÖÎÄ¼ş²ÎÊıÆô¶¯
+    // æ”¯æŒæ–‡ä»¶å‚æ•°å¯åŠ¨
     static int ReadConfigFile(const char* pszFilename, bool* pbDaemonLaunch, bool* pbResume, int *piWorldID,int *piZoneID, int *piInstance);
 };
 }
 
 #endif
 
+
+----------------------------------------------------------------
+This file is converted by NJStar Communicator - www.njstar.com
+----------------------------------------------------------------
